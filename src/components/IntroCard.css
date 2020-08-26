@@ -1,0 +1,9 @@
+.intro-card-text{
+    color:white !important;
+    text-align: center;
+}
+
+.intro-card .card-deck{
+    margin: 42px !important;
+    padding: 42px !important;
+}

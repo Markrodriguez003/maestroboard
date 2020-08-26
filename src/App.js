@@ -1,11 +1,19 @@
-import React from 'react';
-import './App.css';
-import Header from "./components/Header"
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
+import Header from "./components/Header";
+import IntroCard from "./components/IntroCard";
+import ExampleBoard from "./components/ExampleBoard";
+import SiteButton from "./components/SiteButton";
 
 function App() {
   return (
-    <Header / >
+    <div>
+      <Header />
+      <IntroCard />
+      <SiteButton />
+      <ExampleBoard />
+    </div>
   );
 }
 

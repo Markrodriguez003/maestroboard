@@ -1,4 +1,61 @@
-#header-icon{
-    width: 85px;
-    height: auto;
+/* ************************* */
+/* Header icon and brand anchor */
+.header-title-a:link {
+  color: black;
+}
+
+.header-title-a:visited {
+  color: black;
+}
+
+.header-title-a:hover {
+  font-style: normal;
+  text-decoration: none;
+  text-decoration-style: none;
+}
+
+.header-title-a:active {
+  color: red;
+}
+/* ************************* */
+
+/* ************************* */
+/* Header Anchor Menu Items */
+.header-options-a:link {
+  color: white;
+}
+
+.header-options-a:visited {
+  color: white;
+}
+
+.header-options-a:hover {
+  font-style: normal;
+  text-decoration: none;
+  text-decoration-style: none;
+}
+
+.header-options-a:active {
+  color: red;
+}
+
+.main-header {
+  background-color: rgb(9, 173, 173);
+  margin: 0;
+  padding: 4px;
+}
+
+.header-icon {
+  height: 120px;
+  width: auto;
+  margin: 5px;
+}
+
+.header-title {
+  font-size: 26px;
+  color: white;
+}
+.header-small {
+  font-size: 14px;
+  color: white;
 }

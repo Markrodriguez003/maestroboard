@@ -1,0 +1,14 @@
+.main-example-board-container {
+    margin: 42px !important;
+    padding: 42px !important;
+}
+
+.main-example-board{
+    display:inline-block;
+    text-align: center;
+    margin-top:-52px;
+    margin-right: auto;
+    margin-left: auto;
+    width:600px;
+    height: auto;
+}
