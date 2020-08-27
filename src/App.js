@@ -2,7 +2,6 @@ import React from "react";
 import "./App.css";
  
 
-import MainState from "./components/MainState";
 import Header from "./components/Header";
 import IntroCard from "./components/IntroCard";
 // import ExampleBoard from "./components/ExampleBoard";

@@ -73,9 +73,6 @@
   color:  #22b8b8;
 }
 
-
-
-
 /* ********************************* */
 /* ********************************* */
 .main-header {
@@ -127,7 +124,7 @@
 }
 .header-items{
   color:white !important;
-  font-size:20px;
+  font-size:16px;
   margin-right: 54px;
 }
 

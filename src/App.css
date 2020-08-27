@@ -1,6 +1,6 @@
  
   
-  html{
+  html body{
      background-color:rgba(5, 34, 34, 0.9);
      background-image: url("./components/bg/bg-pattern-f.png");
      background-size: cover;
