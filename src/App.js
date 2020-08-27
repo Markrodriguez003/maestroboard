@@ -1,18 +1,21 @@
 import React from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
+ 
+
+import MainState from "./components/MainState";
 import Header from "./components/Header";
 import IntroCard from "./components/IntroCard";
-import ExampleBoard from "./components/ExampleBoard";
-import SiteButton from "./components/SiteButton";
+// import ExampleBoard from "./components/ExampleBoard";
+// import SiteButton from "./components/SiteButton";
 
 function App() {
   return (
     <div>
+ 
       <Header />
       <IntroCard />
-      <SiteButton />
-      <ExampleBoard />
+       {/* <SiteButton /> */}
+      {/* <ExampleBoard /> */}
     </div>
   );
 }

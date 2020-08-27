@@ -1,61 +1,66 @@
 import React from "react";
 import "./Header.css";
-import { Nav, Navbar, Row, Col, Container } from "react-bootstrap";
+import { Nav, Navbar, Row, Col } from "react-bootstrap";
 
 function Header() {
   return (
-    // xs, sm, md, lg, and x
-    <div className="main-header">
-      <Container fluid>
-        <header>
-          <Row>
-            <Col xs sm md lg={1}>
-              <a href="#">
-                <img
-                  className="header-icon"
-                  src="./assets/imgs/MaestroBoard-Logo-White.png"
-                  alt="MaestroBoard Logo"
-                  className="header-icon"
-                ></img>
-              </a>
-            </Col>
-            <Col xs sm md lg={6}>
-              <a href="#" w to>
-                <h1 className="header-title">MAESTROBOARD</h1>
-                <small className="header-small">
-                  buy. sell. trade.connect. | Just chase your muse.
-                </small>
-              </a>
-            </Col>
-            <Col xs sm md lg={1}>
-              <a href="#" className="header-options-a">
-                Community Boards
-              </a>
-            </Col>
-            <Col xs sm md lg={1}>
-              <a href="#" className="header-options-a">
-                Forums
-              </a>
-            </Col>
-            <Col xs sm md lg={1}>
-              <a href="#" className="header-options-a">
-                My Profile
-              </a>
-            </Col>
-            <Col xs sm md lg={1}>
-              <a href="#" className="header-options-a">
-                Log In
-              </a>
-            </Col>
-            <Col xs sm md lg={1}>
-              <a href="#" className="header-options-a">
-                Sign up
-              </a>
-            </Col>
-          </Row>
-        </header>
-      </Container>
-    </div>
+    <Navbar
+      collapseOnSelect
+      expand="lg"
+      bg="dark"
+      variant="dark"
+      className="main-header"
+    >
+      <a href="#">
+        <img
+          className="header-icon"
+          src="./assets/imgs/Maestro-Logo-R.png"
+          alt="MaestroBoard Logo"
+        ></img>
+      </a>
+      <Row>
+        <Col>
+          <Navbar.Brand href="#home" className="header-title d-flex">
+            MaestroBoard
+            <small className="header-small-text">
+              buy. sell. trade.connect. |{"  "}
+              <span className="header-muse-small">
+                {" "}
+                Just chase your <span> 
+                <a
+                  href="https://en.wikipedia.org/wiki/Euterpe#:~:text=Euterpe%20(%2Fju%CB%90%CB%88t,named%20muse%20of%20lyric%20poetry."
+                  className="muse-anchor"
+                >
+                  muse
+                </a></span>
+                .{" "}
+              </span>
+            </small>
+          </Navbar.Brand>
+        </Col>
+      </Row>
+      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+      <Navbar.Collapse id="responsive-navbar-nav header-menu-center">
+        <Nav className="mr-auto"></Nav>
+        <Nav className="header-container header-menu-center">
+          <Nav.Link href="#" className="header-items">
+            Community Board
+          </Nav.Link>
+          <Nav.Link href="#" className="header-items">
+            News
+          </Nav.Link>
+          <Nav.Link href="#" className="header-items">
+            Forum
+          </Nav.Link>
+          <Nav.Link href="#" className="header-items">
+            My Account
+          </Nav.Link>
+          <Nav.Link eventKey={2} href="#memes" className="header-items">
+            Log in
+          </Nav.Link>
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
   );
 }
 
