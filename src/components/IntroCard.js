@@ -3,13 +3,42 @@ import "./IntroCard.css";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
+import { SRLWrapper } from "simple-react-lightbox"; //https://reactjsexample.com/a-simple-but-functional-light-box-for-react/
+
 import cardImgA from "./imgs/AKAI-Apc.jpg"; // relative path to image
+import { ArrowRight, ArrowLeft } from "react-bootstrap-icons";
+// import MaximizeIcon from "@material-ui/icons/Maximize";
+
 import { CardDeck, Card, Row, Col, Container } from "react-bootstrap";
 /*
     Card components for the intro page. There are 3 in the front page
 */
 function IntroCard() {
-  // let cardColor = "rgb(9, 173, 173)";
+  function cardInfoFlip() {
+    console.log("hello");
+  }
+
+  // Custom Arrow Icons for react-multi-carousel
+  // https://www.npmjs.com/package/react-bootstrap-icons
+  // https://icons.getbootstrap.com/
+  // https://codesandbox.io/s/react-multi-carousel-customdot-3q0f4?file=/src/App.js:156-334
+  const arrowStyle = {
+    background: "transparent",
+    border: 0,
+    color: "#fff",
+    fontSize: "35px",
+  };
+  const CustomRightArrow = ({ onClick }) => (
+    <button className="arrow right" onClick={onClick} style={arrowStyle}>
+      <ArrowRight style={{ fontSize: "50px" }} />
+    </button>
+  );
+  const CustomLeftArrow = ({ onClick }) => (
+    <button className="arrow left" onClick={onClick} style={arrowStyle}>
+      <ArrowLeft style={{ fontSize: "50px" }} />
+    </button>
+  );
+
   let userName = "Paolo124";
   let postDate = "1/21/2020";
   return (
@@ -20,8 +49,6 @@ function IntroCard() {
           <div className="flip-card">
             <div className="flip-card-inner">
               <div className="flip-card-front">
-
-
                 {/* IMAGE CAROUSEL HERE*/}
                 {/* ****************************************** */}
                 <div>
@@ -33,113 +60,106 @@ function IntroCard() {
                   </span>{" "}
                   <span>***</span>
                 </div>
-                <Carousel
-                  additionalTransfrom={0}
-                  arrows
-                  autoPlaySpeed={3000}
-                  centerMode={false}
-                  className=""
-                  containerClass="container"
-                  dotListClass=""
-                  draggable
-                  focusOnSelect={false}
-                  infinite
-                  itemClass=""
-                  keyBoardControl
-                  minimumTouchDrag={80}
-                  renderButtonGroupOutside={false}
-                  renderDotsOutside={false}
-                  responsive={{
-                    desktop: {
-                      breakpoint: {
-                        max: 3000,
-                        min: 1024,
+                <SRLWrapper>
+                  <Carousel
+                    additionalTransfrom={0}
+                    arrows
+                    customLeftArrow={<CustomLeftArrow />}
+                    customRightArrow={<CustomRightArrow />}
+                    autoPlaySpeed={3000}
+                    centerMode={false}
+                    className=""
+                    containerClass="container"
+                    dotListClass=""
+                    draggable
+                    focusOnSelect={false}
+                    infinite
+                    itemClass=""
+                    keyBoardControl
+                    minimumTouchDrag={80}
+                    renderButtonGroupOutside={false}
+                    renderDotsOutside={false}
+                    responsive={{
+                      desktop: {
+                        breakpoint: {
+                          max: 3000,
+                          min: 1024,
+                        },
+                        items: 1,
                       },
-                      items: 1,
-                    },
-                    mobile: {
-                      breakpoint: {
-                        max: 464,
-                        min: 0,
+                      mobile: {
+                        breakpoint: {
+                          max: 464,
+                          min: 0,
+                        },
+                        items: 1,
                       },
-                      items: 1,
-                    },
-                    tablet: {
-                      breakpoint: {
-                        max: 1024,
-                        min: 464,
+                      tablet: {
+                        breakpoint: {
+                          max: 1024,
+                          min: 464,
+                        },
+                        items: 1,
                       },
-                      items: 1,
-                    },
-                  }}
-                  showDots
-                  sliderClass=""
-                  slidesToSlide={1}
-                  swipeable
-                >
-                  <img
-                    src="https://images.unsplash.com/photo-1549989476-69a92fa57c36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
-                    style={{
-                      display: "block",
-                      height: "235px",
-                      margin: "-15px",
-                      width: "100%",
                     }}
-                  />
-                  <img
-                    src="https://images.unsplash.com/photo-1549396535-c11d5c55b9df?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
-                    style={{
-                      display: "block",
-                      height: "235px",
-                      margin: "-15px",
-                      width: "100%",
-                    }}
-                  />
-                  <img
-                    src="https://images.unsplash.com/photo-1550133730-695473e544be?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
-                    style={{
-                      display: "block",
-                      height: "235px",
-                      margin: "-15px",
-                      width: "100%",
-                    }}
-                  />
-                  <img
-                    src="https://images.unsplash.com/photo-1550167164-1b67c2be3973?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
-                    style={{
-                      display: "block",
-                      height: "235px",
-                      margin: "-15px",
-                      width: "100%",
-                    }}
-                  />
-                  <img
-                    src="https://images.unsplash.com/photo-1550338861-b7cfeaf8ffd8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
-                    style={{
-                      display: "block",
-                      height: "235px",
-                      margin: "-15px",
-                      width: "100%",
-                    }}
-                  />
-                </Carousel>
+                    showDots
+                    sliderClass=""
+                    slidesToSlide={1}
+                    swipeable
+                  >
+                    <img
+                      src="https://images.unsplash.com/photo-1549989476-69a92fa57c36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
+                      style={{
+                        display: "block",
+                        height: "235px",
+                        margin: "-15px",
+                        width: "100%",
+                      }}
+                    />
+                    <img
+                      src="https://images.unsplash.com/photo-1549396535-c11d5c55b9df?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
+                      style={{
+                        display: "block",
+                        height: "235px",
+                        margin: "-15px",
+                        width: "100%",
+                      }}
+                    />
+                    <img
+                      src="https://images.unsplash.com/photo-1550133730-695473e544be?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
+                      style={{
+                        display: "block",
+                        height: "235px",
+                        margin: "-15px",
+                        width: "100%",
+                      }}
+                    />
+                    <img
+                      src="https://images.unsplash.com/photo-1550167164-1b67c2be3973?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
+                      style={{
+                        display: "block",
+                        height: "235px",
+                        margin: "-15px",
+                        width: "100%",
+                      }}
+                    />
+                    <img
+                      src="https://images.unsplash.com/photo-1550338861-b7cfeaf8ffd8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
+                      style={{
+                        display: "block",
+                        height: "235px",
+                        margin: "-15px",
+                        width: "100%",
+                      }}
+                    />
+                  </Carousel>
+                </SRLWrapper>
                 {/* ****************************************** */}
-
-
-
 
                 {/* LIGHTBOX */}
                 {/* ****************************************** */}
 
-                      
-
-
                 {/* ****************************************** */}
-
-
-
-
-
 
                 {/* <img src={cardImgA} alt="card-post-img" className="card-post-img" /> */}
                 <div className="card">
@@ -171,8 +191,10 @@ function IntroCard() {
                       </p>
                     </Col>
                     <Col>
-                      <button>More Info</button>
-                      <button>Contact</button>
+                      <button className="card-info-btn" onClick={cardInfoFlip}>
+                        More Info
+                      </button>
+                      <button className="card-contact-btn">Contact</button>
                     </Col>
                   </Row>
                 </div>
