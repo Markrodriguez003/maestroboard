@@ -1,0 +1,79 @@
+.newbie-accordion {
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.newbie-accordion-btn btn {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn-text {
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.newbie-accordion-btn btn {
+    color: white;
+}
+
+.newbie-accordion-btn btn {
+    color: white;
+}
+
+.newbie-accordion-btn btn {
+    color: white;
+}
+
+.continue-reading:active btn {
+    color: white;
+}
+
+.newbie-card {
+    background-color: rgb(104, 50, 104) !important;
+}
+
+.main-jumbotron {
+    background-color: rgb(104, 50, 104) !important;
+    border-radius: 99px !important;
+    color: white;
+    
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding:2px !important;
+}
+
+.newbie-accordion {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.main-jumbotron h1 {
+    font-size: 48px;
+    color: white;
+}
+
+.muse-logo {
+    border: white 2px solid;
+    border-radius: 100%;
+    display: block;
+    width: 327px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.newbie-ul li{
+    /* align-content: center;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    padding:-2px; */
+    list-style-position: inside;
+    float: left;
+}

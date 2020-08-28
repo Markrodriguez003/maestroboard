@@ -1,5 +1,5 @@
 import React from "react"; // React module for JSX functionaity
-import "./IntroInfoBlock.css"; // CSS file for IntroInfoBlock
+import "./css/IntroInfoBlock.css"; // CSS file for IntroInfoBlock
 import Carousel from "react-multi-carousel"; // Module that adds Carousel functionality
 import "react-multi-carousel/lib/styles.css"; // Module that adds Carousel CSS functionality
 import { SRLWrapper } from "simple-react-lightbox"; //  Lightbox modulehttps://reactjsexample.com/a-simple-but-functional-light-box-for-react/
@@ -32,8 +32,8 @@ import img5 from "./article-imgs/5.jpg";
 
 function IntroInfoBlock() {
   return (
-    <div>
-      <Carousel
+    <div className ="carousel-container">
+      <Carousel className ="carousel-container"
         additionalTransfrom={0}
         arrows
         // customLeftArrow={<CustomLeftArrow />}

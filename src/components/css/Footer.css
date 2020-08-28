@@ -1,0 +1,116 @@
+/* ************************* */
+/* Header icon and brand anchor */
+.footer-title-a:link {
+    color: black;
+  }
+  
+  .footer-title-a:visited {
+    color: black;
+  }
+  
+  .footer-title-a:hover {
+    font-style: normal;
+    text-decoration: none;
+    text-decoration-style: none;
+   
+  
+  }
+  
+  .footer-title-a:active {
+    color: red;
+  }
+  
+  /* ************************* */
+  
+  /* ************************* */
+  /* Header Anchor Menu Items */
+  .footer-options-a:link {
+    color: white;
+  }
+  
+  .footer-options-a:visited {
+    color: white;
+  }
+  
+  .footer-options-a:hover {
+    
+    
+  }
+  
+  .footer-options-a:active {
+    color: red;
+  }
+  .footer-options-a {
+    margin-top: 10px;
+  }
+  
+  /* ********************************* */
+  /* ********************************* */
+  .main-footer {
+    /* background-color: rgb(10, 172, 172); */
+    /*  HEX #0aacac */
+    background: #102933;
+    background: -moz-linear-gradient(left, #102933 0%, #102933 50%, #102933 100%);
+    background: -webkit-linear-gradient(left, #102933 0%, #102933 50%, #102933 100%);
+    background: linear-gradient(to right, #102933 0%, #102933 50%, #102933 100%);
+    margin: 0;
+    height: 175px;
+    /* margin-bottom: 12px; */
+    padding: 0px;
+    -webkit-box-shadow: 0px 10px 13px -7px #000000,
+      5px 5px 15px 5px rgba(0, 0, 0, 0);
+    box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+    /* border-bottom: #0aacac  2px solid; */
+  }
+  
+  .footer-icon {
+    
+    height: 80px;
+    width: auto;
+    padding:6px;
+    margin-left: 18px;
+    /* margin-bottom: px; */
+    margin-top: -5px;
+  }
+  
+  .footer-title {
+    font-weight: 500;
+    font-size: 40px!important;
+    color: white;
+    /* margin-top: 2px; */
+    /* margin-bottom: -2px; */
+    margin-left: 12px;
+  }
+  
+  .footer-small-text {
+    font-size: 12px;
+    color: white;
+    margin-left: -254px;
+    margin-top: 50px;
+  }
+  
+  .footer-muse-small{
+    font-style: italic;
+  }
+  
+  .footer-container{
+    margin-right: 15px;
+  }
+  .footer-items{
+    color:white !important;
+    font-size:16px;
+    margin-right: 54px;
+  }
+  
+ .footer-return-top-btn{
+     display:inline-block;
+     position:absolute;
+     font-size:35px;
+     width: 25px;
+     height:auto;
+     color: white;
+     margin-left: auto;
+     margin-right: auto;
+     margin-top: -29px;
+
+ }

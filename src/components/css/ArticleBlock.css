@@ -1,0 +1,53 @@
+
+.article-container {
+    display: block;
+    position: relative;
+    width: 1200px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 16px;
+    padding: 22px;
+    background-color: rgba(16, 41, 51, 1);
+    color: white;
+}
+
+.article-img-1 {
+    position: inherit;
+    width: 575px;
+    height: auto;
+}
+
+.article-hr {
+    font-size: 25px;
+    color: white;
+}
+
+.article-small {
+    font-style: italic;
+    font-weight: lighter;
+}
+
+.article-type-header {
+    color: rgb(4, 179, 126);
+}
+
+.continue-reading {
+
+}
+
+.continue-reading:link {
+    color: white;
+}
+
+.continue-reading:visited {
+    color: white;
+}
+
+.continue-reading:hover {
+
+}
+
+.continue-reading:active {
+    color: red;
+}

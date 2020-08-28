@@ -1,5 +1,5 @@
 import React from "react"; // React module for JSX functionaity
-import "./PostBoardCard.css"; // CSS file for PostBoardCard
+import "./css/PostBoardCard.css"; // CSS file for PostBoardCard
 import Carousel from "react-multi-carousel"; // Module that adds Carousel functionality 
 import "react-multi-carousel/lib/styles.css"; // Module that adds Carousel CSS functionality
 import { SRLWrapper } from "simple-react-lightbox"; //  Lightbox modulehttps://reactjsexample.com/a-simple-but-functional-light-box-for-react/

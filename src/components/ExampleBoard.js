@@ -1,5 +1,5 @@
 import React from "react";
-import "./ExampleBoard.css";
+import "./components/css/xampleBoard.css";
 import { Row, Col, Card, Container } from "react-bootstrap";
 
 function ExampleBoard() {
