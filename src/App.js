@@ -2,18 +2,21 @@ import React from "react";
 import "./App.css";
 
 import Header from "./components/Header";
-import IntroCard from "./components/IntroCard";
+import PostBoardCard from "./components/PostBoardCard";
 import SimpleReactLightbox from "simple-react-lightbox";
 // import ExampleBoard from "./components/ExampleBoard";
-// import SiteButton from "./components/SiteButton";
+import SiteButton from "./components/SiteButton";
+import IntroInfoBlock from "./components/IntroInfoBlock";
+
 
 function App() {
   return (
     <div>
       <SimpleReactLightbox>
         <Header />
-        <IntroCard />
+        {/* <IntroInfoBlock /> */}
         {/* <SiteButton /> */}
+        <PostBoardCard />
         {/* <ExampleBoard /> */}
       </SimpleReactLightbox>
     </div>

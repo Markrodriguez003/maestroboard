@@ -3,7 +3,7 @@
   width: 275px;
   height: 275px;
   perspective: 1000px;
-  margin-right:auto;
+  margin-right: auto;
   margin-left: auto;
 }
 
@@ -18,9 +18,14 @@
 }
 
 .flip-card .flip-card-inner {
-    /* transform: rotateY(180deg); */
-    transform: rotateY(0deg);
-  }
+  /* transform: rotateY(180deg); */
+  transform: rotateY(0deg);
+}
+
+/* .flip-card .flip-card-inner2 {
+  transform: rotateY(180deg);
+  transform: rotateY(0deg);
+} */
 
 .flip-card-front,
 .flip-card-back {
@@ -49,6 +54,7 @@
 .card-header-username,
 .card-header-date {
   font-size: 10px;
+  margin: 4px;
 }
 .card-post-title {
   font-size: 18px;
