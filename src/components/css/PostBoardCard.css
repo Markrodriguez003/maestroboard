@@ -1,4 +1,8 @@
+.card-container{
+}
+
 .flip-card {
+  
   background-color: transparent;
   width: 275px;
   height: 275px;
@@ -17,18 +21,15 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
-.flip-card .flip-card-inner {
-  /* transform: rotateY(180deg); */
+.flip-card .flip-card-inner:hover {
   transform: rotateY(0deg);
+  
 }
 
-/* .flip-card .flip-card-inner2 {
-  transform: rotateY(180deg);
-  transform: rotateY(0deg);
-} */
 
 .flip-card-front,
 .flip-card-back {
+  
   position: absolute;
   width: 100%;
   height: 100%;
@@ -37,6 +38,7 @@
 }
 
 .flip-card-front {
+  
   background-color: #bbb;
   color: black;
 }
@@ -51,10 +53,25 @@
   width: 100%;
 }
 
-.card-header-username,
-.card-header-date {
+.card-top-header{
+  /* padding-top: -25px !important; */
+}
+
+.top-card-header{
+  background-color: purple;
+  color:white;
+}
+
+.card-header-small-labels{
+  font-weight: bold;
   font-size: 10px;
-  margin: 4px;
+}
+.card-top-header-user-input{
+  font-size: 10px;
+}
+
+.card-top-header-inputs{
+  margin-top:-5px;
 }
 .card-post-title {
   font-size: 18px;
@@ -70,12 +87,73 @@
 }
 
 .card-deck-group {
-  /* margin: 4px; */
 }
 
-.card-info-btn {
-  margin: 2px;
+.card-btn{
+  margin-top: -50px;
+  margin-bottom: 8px;
 }
-.card-contact-btn {
-  margin: 2px;
+
+.card-price-tag{
+  display:inline;
+  position:inherit;
+  padding: 4px;
+  left:-33.5px;
+  top:-1px;
+  background-color:purple;
+  font-weight: bold;
+  color:white;
+  border-top: purple 2px dotted;
+  border-right: purple 2px dotted;
+  border-radius: 5px;
+  
 }
+
+
+
+/* ********************************************************************************* */
+/* BOOTSTRAP CARD CSS */
+/* 
+.flip-card {
+  background-color: transparent;
+  width: 300px;
+  height: 200px;
+  border: 1px solid #f1f1f1;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(0deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+}
+
+.flip-card-back {
+  background-color: dodgerblue;
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.card-header-title{
+  font-size: 10px;
+  float: left;
+}  */

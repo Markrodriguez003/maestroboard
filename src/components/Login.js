@@ -18,13 +18,13 @@ function Login() {
                   <form action="" className="justify-content-center">
                     <div className="form-group">
                       <label className="sr-only" />Username
-                                <input type="text" className="form-control" placeholder="Jane Doe" />
+                                <input type="text" className="form-control" placeholder="@Username123" />
                     </div>
                     <div className="form-group">
                       <label className="sr-only" />Email
-                                <input type="text" className="form-control" placeholder="jane.doe@example.com" />
+                                <input type="password" className="form-control" placeholder="!Password" />
                     </div>
-                    <button type="submit" className="btn btn-info btn-lg login-btn">Sign in</button>
+                    <button type="submit" className="btn btn-info btn-lg login-btn">Log in</button>
                   </form>
                     <small><a href="#">Need help?</a></small>
                 </div>
