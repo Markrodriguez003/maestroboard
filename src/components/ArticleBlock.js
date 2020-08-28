@@ -32,13 +32,13 @@ function ArticleBlock() {
             {/* ******************************************************************************************************/}
             {/* THIRD  ARTICLE */}
             {/* ******************************************************************************************************/}
-            <article className="article-container">
+            <article className="article-container ">
                 <Row>
                     <Col xs sm md lg={6}  >
                         <img src={art1} className="article-img-1" alt="article image"></img>
                     </Col>
                     <Col xs sm md lg={6}  >
-                        <h6 className="article-type-header">Electronic Music: VST</h6>
+                        <h6 className="article-type-header">Electronic Music: VSTs</h6>
                         <h3> Arturia announces 3 Modulation plug-ins You’ll Actually Use</h3>
                         <small className="article-small">Written by: Jeremy Frazen - 12/24/19</small>
                         <hr className="article-hr" />

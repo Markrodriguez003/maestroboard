@@ -9,6 +9,7 @@ import SimpleReactLightbox from "simple-react-lightbox";
 // import ExampleBoard from "./components/ExampleBoard";
 import SiteButton from "./components/SiteButton";
 import IntroInfoBlock from "./components/IntroInfoBlock";
+import Login from "./components/Login";
 import Footer from "./components/Footer";
 
 
@@ -17,13 +18,14 @@ function App() {
     <div>
       <SimpleReactLightbox>
         <Header />
-        <NewUserInfoAccordion />
+        <Login />
+        {/* <NewUserInfoAccordion />
         <ArticleBlock />
-        <IntroInfoBlock />
+        <IntroInfoBlock /> */}
         {/* <SiteButton /> */}
         {/* <PostBoardCard /> */}
         {/* <ExampleBoard /> */}
-        <Footer />
+        {/* <Footer /> */}
       </SimpleReactLightbox>
     </div>
   );
