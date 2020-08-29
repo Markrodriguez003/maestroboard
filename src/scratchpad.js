@@ -1,3 +1,4 @@
+// FUCKING OLD CARD
 import React from "react"; // React module for JSX functionaity
 import "./css/PostBoardCard.css"; // CSS file for PostBoardCard
 import Carousel from "react-multi-carousel"; // Module that adds Carousel functionality
@@ -25,25 +26,9 @@ import cardImgE from "./imgs/postImg6.jpg";
 import cardImgF from "./imgs/postImg6.jpg";
 import cardImgG from "./imgs/postImg7.jpg";
 
-import noteBG from "./post-imgs/notecard5.png";
-
-
 // Example User Post details
 let userName = "Paolo124";
 let postDate = "1/21/2020";
-
-
-let userPost = {
-  userName: "Asmongo1S4",
-  postDate: "1/24/22",
-  userZip: "0G4WE21",
-  gearPrice: 200.00,
-  gearListingType: "Selling-Gear",
-  title: "AKAI MIDI 23X PAD CONSOLE FOR SALE!",
-  quickBody: "Barely used and kept in a smoke free studio. Tested and it's 100% working. Comes with USB cable. Asking for $200.00 CASH or trade for bass.",
-  slowBody: "This was used maybe 3 or 4 times max. It connects with my macbook and windows no problem. I didn't even need drivers. I don't have the original box but it has no scratches or dents."
-
-}
 
 // ***********************************************************************************************************************
 
@@ -53,6 +38,10 @@ function PostBoardCard() {
   }
 
   // ***********************************************************************************************************************
+  // Custom Arrow Icons for react-multi-carousel
+  // https://www.npmjs.com/package/react-bootstrap-icons
+  // https://icons.getbootstrap.com/
+  // https://codesandbox.io/s/react-multi-carousel-customdot-3q0f4?file=/src/App.js:156-334
   const arrowStyle = {
     background: "transparent",
     border: 0,
@@ -73,145 +62,176 @@ function PostBoardCard() {
 
   return (
     <div>
-      <Card style={{ width: '23rem' }}>
-        <div className="card-top-header">
-          <Row className="card-header-labels">
-            <Col>
-              Posted By:
-                </Col>
-            <Col>
-              Date Posted:
-                </Col>
-            <Col>
-              Zipcode:
-                </Col>
-          </Row>
-          {/* User Post input */}
-          <Row className="card-header-user-input">
-            <Col>
-              Asmongo5124
-                </Col>
-            <Col>
-              10/12/20
-                </Col>
-            <Col>
-              E29B2R
-                </Col>
-          </Row>
-        </div>
-        <SRLWrapper>
-          <Carousel
-            additionalTransfrom={0}
-            arrows
-            customLeftArrow={<CustomLeftArrow />}
-            customRightArrow={<CustomRightArrow />}
-            autoPlaySpeed={3000}
-            centerMode={false}
-            className=""
-            containerClass="container"
-            dotListClass=""
-            draggable
-            focusOnSelect={false}
-            infinite
-            itemClass=""
-            keyBoardControl
-            minimumTouchDrag={80}
-            renderButtonGroupOutside={false}
-            renderDotsOutside={false}
-            responsive={{
-              desktop: {
-                breakpoint: {
-                  max: 3000,
-                  min: 1024,
-                },
-                items: 1,
-              },
-              mobile: {
-                breakpoint: {
-                  max: 464,
-                  min: 0,
-                },
-                items: 1,
-              },
-              tablet: {
-                breakpoint: {
-                  max: 1024,
-                  min: 464,
-                },
-                items: 1,
-              },
-            }}
-            showDots
-            sliderClass=""
-            slidesToSlide={1}
-            swipeable
-          >
-            <img
-              src={cardImgA}
-              style={{
-                display: "block",
-                height: "275px",
-                margin: "-15px",
-                width: "100%",
-              }}
-            />
-            <img
-              src={cardImgB}
-              style={{
-                display: "block",
-                height: "275px",
-                margin: "-15px",
-                width: "100%",
-              }}
-            />
-            <img
-              src={cardImgC}
-              style={{
-                display: "block",
-                height: "275px",
-                margin: "-15px",
-                width: "100%",
-              }}
-            />
-            <img
-              src={cardImgD}
-              style={{
-                display: "block",
-                height: "275px",
-                margin: "-15px",
-                width: "100%",
-              }}
-            />
-            <img
-              src={cardImgE}
-              style={{
-                display: "block",
-                height: "275px",
-                margin: "-15px",
-                width: "100%",
-              }}
-            />
-          </Carousel>
-        </SRLWrapper>
-        <Card.Body>
-          <Card.Title>{userPost.title}</Card.Title>
-          <Card.Text>
-            {userPost.quickBody}
-          </Card.Text>
-        </Card.Body>
-        <Card.Body>
-          <Row className="text-center mx-auto">
-            <Col>
-              <Button className="ard-info-btn btn btn-lg btn-info">Contact</Button>
-            </Col>
-            <Col>
-              <Button className="card-contact-btn btn btn-lg btn-info">Contact</Button>
-            </Col>
-          </Row>
-        </Card.Body>
 
-      </Card>
+      <Row>
+
+        <Col>
+          <div className="card-container">
+            <div className="flip-card">
+              <div className="flip-card-inner">
+                <div className="flip-card-front">
+
+                  {/* ********************** */}
+                  {/* HEADER SECTION */}
+                  {/* ********************** */}
+                  {/* Header Label */}
+                  <div className="card-top-header">
+                    <Row className="card-header-labels">
+                      <Col>
+                        Posted By:
+                </Col>
+                      <Col>
+                        Date Posted:
+                </Col>
+                      <Col>
+                        Zipcode:
+                </Col>
+                    </Row>
+                    {/* User Post input */}
+                    <Row className="card-header-user-input">
+                      <Col>
+                        Asmongo5124
+                </Col>
+                      <Col>
+                        10/12/20
+                </Col>
+                      <Col>
+                        E29B2R
+                </Col>
+                    </Row>
+                  </div>
+
+                  {/* ********************** */}
+                  {/* IMAGE CAROUSEL SECTION */}
+                  {/* ********************** */}
+
+                  {/* <div>
+                    <SRLWrapper>
+                      <Carousel
+                        additionalTransfrom={0}
+                        arrows
+                        customLeftArrow={<CustomLeftArrow />}
+                        customRightArrow={<CustomRightArrow />}
+                        autoPlaySpeed={3000}
+                        centerMode={false}
+                        className=""
+                        containerClass="container"
+                        dotListClass=""
+                        draggable
+                        focusOnSelect={false}
+                        infinite
+                        itemClass=""
+                        keyBoardControl
+                        minimumTouchDrag={80}
+                        renderButtonGroupOutside={false}
+                        renderDotsOutside={false}
+                        responsive={{
+                          desktop: {
+                            breakpoint: {
+                              max: 3000,
+                              min: 1024,
+                            },
+                            items: 1,
+                          },
+                          mobile: {
+                            breakpoint: {
+                              max: 464,
+                              min: 0,
+                            },
+                            items: 1,
+                          },
+                          tablet: {
+                            breakpoint: {
+                              max: 1024,
+                              min: 464,
+                            },
+                            items: 1,
+                          },
+                        }}
+                        showDots
+                        sliderClass=""
+                        slidesToSlide={1}
+                        swipeable
+                      >
+                        <img
+                          src={cardImgA}
+                          style={{
+                            display: "block",
+                            height: "275px",
+                            margin: "-15px",
+                            width: "100%",
+                          }}
+                        />
+                        <img
+                          src={cardImgB}
+                          style={{
+                            display: "block",
+                            height: "275px",
+                            margin: "-15px",
+                            width: "100%",
+                          }}
+                        />
+                        <img
+                          src={cardImgC}
+                          style={{
+                            display: "block",
+                            height: "275px",
+                            margin: "-15px",
+                            width: "100%",
+                          }}
+                        />
+                        <img
+                          src={cardImgD}
+                          style={{
+                            display: "block",
+                            height: "275px",
+                            margin: "-15px",
+                            width: "100%",
+                          }}
+                        />
+                        <img
+                          src={cardImgE}
+                          style={{
+                            display: "block",
+                            height: "275px",
+                            margin: "-15px",
+                            width: "100%",
+                          }}
+                        />
+                      </Carousel>
+                    </SRLWrapper>
+                  </div> */}
+                </div>
+
+
+                {/* ********************** */}
+                {/* CARD BODY SECTION */}
+                {/* ********************** */}
+                <div>
+                  <h1>AKAI MIDI PAD FOR SALE!</h1>
+                </div>
+                <div className="flip-card-back">
+                  <h1>AKAI MIDI PAD FOR SALE!</h1>
+                  <p>Architect - Engineer</p>
+                  <p>We love that guy</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </Col>
+
+      </Row>
+
+
+
+
     </div>
+
+
+
+
 
   );
 }
@@ -233,7 +253,163 @@ export default PostBoardCard;
 
 
 
+//  FUCKING CSS
+/* FLIP CARD CSS */
 
+/* ********************************************************************************* */
+
+.flip-card {
+    background-color: transparent;
+    width: 340px;
+    height: 510px;
+    perspective: 1000px;
+  }
+  
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+  
+  
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(0deg);
+  }
+  
+  .flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  
+  .flip-card-front {
+    border-radius: 20px;
+    background-color: white;
+    color: black;
+  }
+  
+  .flip-card-back {
+    border-radius: 20px;
+    background-color: dodgerblue;
+    color: white;
+    transform: rotateY(180deg);
+  }
+  
+  /* CARD CSS */
+  
+  /* ********************************************************************************* */
+  
+  /* CARD HEADER */
+  
+  .card-top-header {
+    /* margin-top: 10px; */
+    padding-bottom: 4px;
+    color: white;
+    background-color: purple;
+    border-top-right-radius: 6px;
+    border-top-left-radius: 6px;
+  }
+  
+  .card-header-labels {
+    font-size: 15px;
+    font-weight: bold;
+  }
+  
+  .card-header-user-input {
+    font-size: 12px;
+  }
+  
+  
+  /* IMAGE CAROUSEL */
+  /* card-post-img-container{} */
+  
+  /* ********************************************************************************* */
+  
+  /* BOOTSTRAP CARD CSS */
+  
+  /* .fix{
+    width: 100%
+  }
+  .card{
+    border-radius: 1.25rem !important;
+    width: 22rem !important;
+  }
+  .card-body{
+    padding: 0.55rem !important;
+    padding-bottom: 25px !important;
+  }
+  .card-post-img {
+    width: 100%;
+  }
+  
+  .card-top-header {}
+  
+  .top-card-header {
+    background-color: purple;
+    color: white;
+  }
+  
+  .card-header-small-labels {
+    font-weight: bold;
+    font-size: 12px;
+  }
+  
+  .card-top-header-user-input {
+    font-size: 12px;
+  }
+  
+  .card-top-header-inputs {
+    margin-top: -5px;
+  }
+   
+  .flip-card {
+    background-color: transparent;
+    width: 300px;
+    height: 200px;
+    border-radius: 1.25rem !important;
+    perspective: 1000px;
+  }
+  
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+  
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(0deg);
+  }
+  
+  .flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+  }
+  
+  .flip-card-front {
+    background-color: #bbb;
+    color: black;
+  }
+  
+  .flip-card-back {
+    background-color: dodgerblue;
+    color: white;
+    transform: rotateY(180deg);
+  }
+  
+  .card-header-title {
+    font-size: 10px;
+    float: left;
+  } */
 
 
 

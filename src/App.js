@@ -24,10 +24,10 @@ function App() {
         {/* <ArticleBlock /> */}
         {/* <IntroInfoBlock /> */}
         {/* <SiteButton /> */}
-        {/* <PostBoardCard /> */}
+        <PostBoardCard />
         {/* <ExampleBoard /> */}
-        <SignUpForm/>
-        <Footer />
+        {/* <SignUpForm/> */}
+        {/* <Footer /> */}
       </SimpleReactLightbox>
     </div>
   );

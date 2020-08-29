@@ -10,6 +10,10 @@
     position: relative;
 }
 
+.login-title{
+    font-size: 45px !important;
+}
+
 .cover-caption {
     padding:20px;
 

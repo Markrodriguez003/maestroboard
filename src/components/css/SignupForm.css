@@ -1,25 +1,38 @@
 
+.signup-title{
+    font-size: 45px !important;
+}
+.f-field{
+    margin-bottom: 22px !important;
+    
+}
+.form-container{
+    
+}
+.form-main-container{
+    /* margin: 85px !important; */
+}
+
 .cover {
-    /* background: #222 url('https://unsplash.it/1920/1080/?random') center center no-repeat;
-    background-size: cover; */
-    height: 100%;
+    /* height: 100%;
     padding:20px;
     text-align: center;
     display: flex;
     align-items: center;
-    position: relative;
+    position: relative; */
 }
-
+.formContainer{
+    /* padding: -100px;
+    width: -129px; */
+}
 .cover-caption {
     padding:20px;
-
     width: 100%;
-    position: relative;
-    z-index: 1;
+    /* position: relative;
+    z-index: 1; */
 }
 
-/* only used for background overlay not needed for centering */
-form:before {
+/* form:before {
     content: '';
     height: 100%;
     width: 1200px;
@@ -30,15 +43,15 @@ form:before {
     background-color: rgba(0,0,0,0.5);
     z-index: -1;
     border-radius: 10px;
-}
+} */
 
-form:after{
+/* form:after{
     width: 250px;
-}
-form{
+} */
+/* form{
     
     padding: 24px;
-}
+} */
 
 .login-btn{
     margin-top: 14px;
@@ -50,5 +63,5 @@ form{
     margin-right: auto;
     margin-top: 26px;
     margin-bottom: 2px;
-    transform: scale(4.2)
+    /* transform: scale(4.2) */
 }
