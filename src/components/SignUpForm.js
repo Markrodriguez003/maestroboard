@@ -29,7 +29,7 @@ function SignUpForm() {
                     <input
                             type="text"
                             className="form-control f-field"
-                            placeholder="@Username123"
+                            placeholder="Enter Your First Name"
                           />
                         </Col>
                         <Col>
@@ -38,7 +38,7 @@ function SignUpForm() {
                     <input
                             type="text"
                             className="form-control f-field"
-                            placeholder="@Username123"
+                            placeholder="Enter Your Last Name"
                           />
                         </Col>
                       </Row>
@@ -47,14 +47,14 @@ function SignUpForm() {
                 <input
                         type="text"
                         className="form-control f-field" 
-                        placeholder="@Username123"
+                        placeholder="Enter Your Adress"
                       />
                       <label className="sr-only" />
                 Address 2
                 <input
                         type="text"
                         className="form-control f-field"
-                        placeholder="@Username123"
+                        placeholder="Enter Your Enter Your Address (Cont.)"
                       />
                       <Row>
                         <Col>
@@ -63,7 +63,7 @@ function SignUpForm() {
                     <input
                             type="text"
                             className="form-control f-field"
-                            placeholder="@Username123"
+                            placeholder="Enter Your Zip Code"
                           />
                         </Col>
                         <Col>
@@ -72,7 +72,7 @@ function SignUpForm() {
                     <input
                             type="text"
                             className="form-control f-field"
-                            placeholder="@Username123"
+                            placeholder="Enter Your City"
                           />
                         </Col>
                         <Col>
@@ -81,7 +81,7 @@ function SignUpForm() {
                     <input
                             type="text"
                             className="form-control f-field"
-                            placeholder="@Username123"
+                            placeholder="Enter Your Country"
                           />
                         </Col>
                       </Row>
@@ -91,20 +91,20 @@ function SignUpForm() {
                 <input
                         type="text"
                         className="form-control f-field"
-                        placeholder="@Username123"
+                        placeholder="Please select a username"
                       />
                       <label className="sr-only" />
                 Password
                 <input
                         type="password"
                         className="form-control f-field"
-                        placeholder="@Username123"
+                        placeholder="Enter a strongly typed password"
                       />
                   Confirm  Password
                 <input
                         type="password"
                         className="form-control f-field"
-                        placeholder="@Username123"
+                        placeholder="Re-Enter a strongly typed password"
                       />
                     </div>
 

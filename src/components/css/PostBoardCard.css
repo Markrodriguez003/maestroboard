@@ -13,9 +13,13 @@
    font-size: 12px;
  }
 
+ .post-title-text{
+  font-size: 16px !important;
 
-
-
+ }
+ .post-quickBody-text{
+   font-size: 13px;
+ }
 
  /* css flip */
 
@@ -37,11 +41,11 @@
   transform: rotateY(-180deg);
 }
 
-/* .card-container .card-flip {
+.card-container:hover .card-flip {
   
-  transform: rotateY(0deg); 
+  /* transform: rotateY(180deg);  */
 
-} */
+}
 
  .card-flip {
    display: grid;

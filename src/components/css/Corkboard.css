@@ -2,19 +2,50 @@
     display:block;
     z-index: -1;
     /* width: 1600px; */
-    width: 80%;
+    width: 1195px;
     height: auto;
     /* padding-top: 180px; */
     margin-top: 12px;
-    margin-left: 35px;
-    margin-right: 35px;
+    margin-left: auto;
+    margin-right:auto;
+    border: grey 7.2px solid;
+}
+
+.user-board-accordion{
+    background-color:red;
+}
+.my-Board{
+    display:block;
+    z-index: -1;
+    /* width: 1600px; */
+    width: 800px;
+    height: auto;
+    /* padding-top: 180px; */
+    margin-top: 12px;
+    margin-left: auto;
+    margin-right:auto;
+    border: grey 7.2px solid;
 }
 .filter-btn-container{
     display:block;
     z-index: -1;
+    margin-top: 16px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: -14px;
+ 
     /* width: 1600px; */
     /* width: 80%; */
  
     padding-top: 10px;
 
+}
+
+.corkBoard-title
+{
+    color:white;
+    background-color: rgb(10, 71, 71);
+    margin-left: 32px;
+    margin-right: 32px;
+    margin-bottom: -38px;
 }

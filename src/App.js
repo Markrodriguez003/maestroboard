@@ -25,8 +25,8 @@ function App() {
         {/* <ArticleBlock /> */}
         {/* <IntroInfoBlock /> */}
         {/* <SiteButton /> */}
-        {/* <PostBoardCard /> */}
-        <Corkboard />
+        <PostBoardCard />
+        {/* <Corkboard /> */}
         {/* <ExampleBoard /> */}
         {/* <SignUpForm/> */}
         {/* <Footer /> */}
