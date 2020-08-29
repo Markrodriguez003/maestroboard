@@ -73,144 +73,317 @@ function PostBoardCard() {
 
   return (
     <div>
-      <Card style={{ width: '23rem' }}>
-        <div className="card-top-header">
-          <Row className="card-header-labels">
-            <Col>
-              Posted By:
-                </Col>
-            <Col>
-              Date Posted:
-                </Col>
-            <Col>
-              Zipcode:
-                </Col>
-          </Row>
-          {/* User Post input */}
-          <Row className="card-header-user-input">
-            <Col>
-              Asmongo5124
-                </Col>
-            <Col>
-              10/12/20
-                </Col>
-            <Col>
-              E29B2R
-                </Col>
-          </Row>
-        </div>
-        <SRLWrapper>
-          <Carousel
-            additionalTransfrom={0}
-            arrows
-            customLeftArrow={<CustomLeftArrow />}
-            customRightArrow={<CustomRightArrow />}
-            autoPlaySpeed={3000}
-            centerMode={false}
-            className=""
-            containerClass="container"
-            dotListClass=""
-            draggable
-            focusOnSelect={false}
-            infinite
-            itemClass=""
-            keyBoardControl
-            minimumTouchDrag={80}
-            renderButtonGroupOutside={false}
-            renderDotsOutside={false}
-            responsive={{
-              desktop: {
-                breakpoint: {
-                  max: 3000,
-                  min: 1024,
-                },
-                items: 1,
-              },
-              mobile: {
-                breakpoint: {
-                  max: 464,
-                  min: 0,
-                },
-                items: 1,
-              },
-              tablet: {
-                breakpoint: {
-                  max: 1024,
-                  min: 464,
-                },
-                items: 1,
-              },
-            }}
-            showDots
-            sliderClass=""
-            slidesToSlide={1}
-            swipeable
-          >
-            <img
-              src={cardImgA}
-              style={{
-                display: "block",
-                height: "275px",
-                margin: "-15px",
-                width: "100%",
-              }}
-            />
-            <img
-              src={cardImgB}
-              style={{
-                display: "block",
-                height: "275px",
-                margin: "-15px",
-                width: "100%",
-              }}
-            />
-            <img
-              src={cardImgC}
-              style={{
-                display: "block",
-                height: "275px",
-                margin: "-15px",
-                width: "100%",
-              }}
-            />
-            <img
-              src={cardImgD}
-              style={{
-                display: "block",
-                height: "275px",
-                margin: "-15px",
-                width: "100%",
-              }}
-            />
-            <img
-              src={cardImgE}
-              style={{
-                display: "block",
-                height: "275px",
-                margin: "-15px",
-                width: "100%",
-              }}
-            />
-          </Carousel>
-        </SRLWrapper>
-        <Card.Body>
-          <Card.Title>{userPost.title}</Card.Title>
-          <Card.Text>
-            {userPost.quickBody}
-          </Card.Text>
-        </Card.Body>
-        <Card.Body>
-          <Row className="text-center mx-auto">
-            <Col>
-              <Button className="ard-info-btn btn btn-lg btn-info">Contact</Button>
-            </Col>
-            <Col>
-              <Button className="card-contact-btn btn btn-lg btn-info">Contact</Button>
-            </Col>
-          </Row>
-        </Card.Body>
 
-      </Card>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 card-container">
+            <div class="card-flip">
+              {/* ***************************** */}
+              {/* CARD FRONT */}
+              {/* ***************************** */}
+              <div class="card front">
+                <Card style={{ width: '23rem' }}>
+                  <div className="card-top-header">
+                    <Row className="card-header-labels">
+                      <Col>
+                        Posted By:
+                </Col>
+                      <Col>
+                        Date Posted:
+                </Col>
+                      <Col>
+                        Zipcode:
+                </Col>
+                    </Row>
+                    {/* User Post input */}
+                    <Row className="card-header-user-input">
+                      <Col>
+                        Asmongo5124
+                </Col>
+                      <Col>
+                        10/12/20
+                </Col>
+                      <Col>
+                        E29B2R
+                </Col>
+                    </Row>
+                  </div>
+                  <SRLWrapper>
+                    <Carousel
+                      additionalTransfrom={0}
+                      arrows
+                      customLeftArrow={<CustomLeftArrow />}
+                      customRightArrow={<CustomRightArrow />}
+                      autoPlaySpeed={3000}
+                      centerMode={false}
+                      className=""
+                      containerClass="container"
+                      dotListClass=""
+                      draggable
+                      focusOnSelect={false}
+                      infinite
+                      itemClass=""
+                      keyBoardControl
+                      minimumTouchDrag={80}
+                      renderButtonGroupOutside={false}
+                      renderDotsOutside={false}
+                      responsive={{
+                        desktop: {
+                          breakpoint: {
+                            max: 3000,
+                            min: 1024,
+                          },
+                          items: 1,
+                        },
+                        mobile: {
+                          breakpoint: {
+                            max: 464,
+                            min: 0,
+                          },
+                          items: 1,
+                        },
+                        tablet: {
+                          breakpoint: {
+                            max: 1024,
+                            min: 464,
+                          },
+                          items: 1,
+                        },
+                      }}
+                      showDots
+                      sliderClass=""
+                      slidesToSlide={1}
+                      swipeable
+                    >
+                      <img
+                        src={cardImgA}
+                        style={{
+                          display: "block",
+                          height: "275px",
+                          margin: "-15px",
+                          width: "100%",
+                        }}
+                      />
+                      <img
+                        src={cardImgB}
+                        style={{
+                          display: "block",
+                          height: "275px",
+                          margin: "-15px",
+                          width: "100%",
+                        }}
+                      />
+                      <img
+                        src={cardImgC}
+                        style={{
+                          display: "block",
+                          height: "275px",
+                          margin: "-15px",
+                          width: "100%",
+                        }}
+                      />
+                      <img
+                        src={cardImgD}
+                        style={{
+                          display: "block",
+                          height: "275px",
+                          margin: "-15px",
+                          width: "100%",
+                        }}
+                      />
+                      <img
+                        src={cardImgE}
+                        style={{
+                          display: "block",
+                          height: "275px",
+                          margin: "-15px",
+                          width: "100%",
+                        }}
+                      />
+                    </Carousel>
+                  </SRLWrapper>
+                  <Card.Body>
+                    <Card.Title>{userPost.title}</Card.Title>
+                    <Card.Text>
+                      {userPost.quickBody}
+                    </Card.Text>
+                  </Card.Body>
+                  <Card.Body>
+                    <Row className="text-center mx-auto">
+                      <Col>
+                        <Button className="ard-info-btn btn btn-lg btn-info">Contact</Button>
+                      </Col>
+                      <Col>
+                        <Button className="card-contact-btn btn btn-lg btn-info">Contact</Button>
+                      </Col>
+                    </Row>
+                  </Card.Body>
+
+                </Card>
+              </div>
+              {/* ***************************** */}
+              {/* CARD BACK */}
+              {/* ***************************** */}
+
+              <div class=" card back">
+                <Card style={{ width: '23rem' }}>
+                  <div className="card-top-header">
+                    <Row className="card-header-labels">
+                      <Col>
+                        Posted By:
+                </Col>
+                      <Col>
+                        Date Posted:
+                </Col>
+                      <Col>
+                        Zipcode:
+                </Col>
+                    </Row>
+                    {/* User Post input */}
+                    <Row className="card-header-user-input">
+                      <Col>
+                        Asmongo5124
+                </Col>
+                      <Col>
+                        10/12/20
+                </Col>
+                      <Col>
+                        E29B2R
+                </Col>
+                    </Row>
+                  </div>
+                  <SRLWrapper>
+                    <Carousel
+                      additionalTransfrom={0}
+                      arrows
+                      customLeftArrow={<CustomLeftArrow />}
+                      customRightArrow={<CustomRightArrow />}
+                      autoPlaySpeed={3000}
+                      centerMode={false}
+                      className=""
+                      containerClass="container"
+                      dotListClass=""
+                      draggable
+                      focusOnSelect={false}
+                      infinite
+                      itemClass=""
+                      keyBoardControl
+                      minimumTouchDrag={80}
+                      renderButtonGroupOutside={false}
+                      renderDotsOutside={false}
+                      responsive={{
+                        desktop: {
+                          breakpoint: {
+                            max: 3000,
+                            min: 1024,
+                          },
+                          items: 1,
+                        },
+                        mobile: {
+                          breakpoint: {
+                            max: 464,
+                            min: 0,
+                          },
+                          items: 1,
+                        },
+                        tablet: {
+                          breakpoint: {
+                            max: 1024,
+                            min: 464,
+                          },
+                          items: 1,
+                        },
+                      }}
+                      showDots
+                      sliderClass=""
+                      slidesToSlide={1}
+                      swipeable
+                    >
+                      <img
+                        src={cardImgA}
+                        style={{
+                          display: "block",
+                          height: "275px",
+                          margin: "-15px",
+                          width: "100%",
+                        }}
+                      />
+                      <img
+                        src={cardImgB}
+                        style={{
+                          display: "block",
+                          height: "275px",
+                          margin: "-15px",
+                          width: "100%",
+                        }}
+                      />
+                      <img
+                        src={cardImgC}
+                        style={{
+                          display: "block",
+                          height: "275px",
+                          margin: "-15px",
+                          width: "100%",
+                        }}
+                      />
+                      <img
+                        src={cardImgD}
+                        style={{
+                          display: "block",
+                          height: "275px",
+                          margin: "-15px",
+                          width: "100%",
+                        }}
+                      />
+                      <img
+                        src={cardImgE}
+                        style={{
+                          display: "block",
+                          height: "275px",
+                          margin: "-15px",
+                          width: "100%",
+                        }}
+                      />
+                    </Carousel>
+                  </SRLWrapper>
+                  <Card.Body>
+                    <Card.Title>{userPost.title} 12412 4124</Card.Title>
+                    <Card.Text>
+                      {userPost.quickBody} 1241 2412 4124
+          </Card.Text>
+                  </Card.Body>
+                  <Card.Body>
+                    <Row className="text-center mx-auto">
+                      <Col>
+                        <Button className="ard-info-btn btn btn-lg btn-info">Con124124tact</Button>
+                      </Col>
+                      <Col>
+                        <Button className="card-contact-btn btn btn-lg btn-info">Con1412412tact</Button>
+                      </Col>
+                    </Row>
+                  </Card.Body>
+
+                </Card>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </div>
 
   );

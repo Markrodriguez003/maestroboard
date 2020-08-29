@@ -1,14 +1,64 @@
- .card-top-header{
+ .card-top-header {
    text-align: center;
    padding-bottom: 3.5px;
    padding-top: 1.5px;
-
  }
 
- .card-header-labels{
+ .card-header-labels {
    font-size: 12px;
    font-weight: bold;
  }
- .card-header-user-input{
+
+ .card-header-user-input {
    font-size: 12px;
  }
+
+
+
+
+
+ /* css flip */
+
+ .card-container {
+  perspective: 700px;
+}
+
+.card-flip, .card-container {
+  transform-style: preserve-3d;
+  transition: all 0.7s ease;
+}
+
+.card-flip div {
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+.back {
+  transform: rotateY(-180deg);
+}
+
+.card-container:hover .card-flip {
+  transform: rotateY(180deg);
+}
+
+ .card-flip {
+   display: grid;
+   grid-template: 1fr / 1fr;
+   grid-template-areas: "frontAndBack";
+   transform-style: preserve-3d;
+   transition: all 0.7s ease;
+ }
+
+ .front {
+   grid-area: frontAndBack;
+ }
+
+ .back {
+   grid-area: frontAndBack;
+   transform: rotateY(-180deg);
+ }
+
+ .card-container {
+  display: grid;
+  perspective: 700px;
+}
