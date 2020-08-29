@@ -37,9 +37,11 @@
   transform: rotateY(-180deg);
 }
 
-.card-container:hover .card-flip {
-  transform: rotateY(180deg);
-}
+/* .card-container .card-flip {
+  
+  transform: rotateY(0deg); 
+
+} */
 
  .card-flip {
    display: grid;

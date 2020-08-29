@@ -45,11 +45,17 @@ let userPost = {
 
 }
 
+// let flipNum =0;
+let flipper ={};
 // ***********************************************************************************************************************
 
 function PostBoardCard() {
-  function cardInfoFlip() {
-
+  function flipCard() {
+    
+    console.log("hello");
+    flipper ={
+      transform: `rotateY(180deg)`
+    }
   }
 
   // ***********************************************************************************************************************
@@ -69,15 +75,15 @@ function PostBoardCard() {
       <ArrowLeft style={{ fontSize: "50px" }} />
     </button>
   );
+
   // ***********************************************************************************************************************
 
   return (
     <div>
-
       <div class="container">
         <div class="row">
-          <div class="col-md-4 card-container">
-            <div class="card-flip">
+          <div class="col-md-4 card-container" style={flipper} >
+            <div class="card-flip" style={flipper}>
               {/* ***************************** */}
               {/* CARD FRONT */}
               {/* ***************************** */}
@@ -211,7 +217,7 @@ function PostBoardCard() {
                   <Card.Body>
                     <Row className="text-center mx-auto">
                       <Col>
-                        <Button className="ard-info-btn btn btn-lg btn-info">Contact</Button>
+                        <Button className="ard-info-btn btn btn-lg btn-info" onClick={flipCard}>More Info!</Button>
                       </Col>
                       <Col>
                         <Button className="card-contact-btn btn btn-lg btn-info">Contact</Button>
@@ -226,7 +232,7 @@ function PostBoardCard() {
               {/* ***************************** */}
 
               <div class=" card back">
-                <Card style={{ width: '23rem' }}>
+                <Card style={{ width: '21.5rem' }}>
                   <div className="card-top-header">
                     <Row className="card-header-labels">
                       <Col>
@@ -252,113 +258,27 @@ function PostBoardCard() {
                 </Col>
                     </Row>
                   </div>
-                  <SRLWrapper>
-                    <Carousel
-                      additionalTransfrom={0}
-                      arrows
-                      customLeftArrow={<CustomLeftArrow />}
-                      customRightArrow={<CustomRightArrow />}
-                      autoPlaySpeed={3000}
-                      centerMode={false}
-                      className=""
-                      containerClass="container"
-                      dotListClass=""
-                      draggable
-                      focusOnSelect={false}
-                      infinite
-                      itemClass=""
-                      keyBoardControl
-                      minimumTouchDrag={80}
-                      renderButtonGroupOutside={false}
-                      renderDotsOutside={false}
-                      responsive={{
-                        desktop: {
-                          breakpoint: {
-                            max: 3000,
-                            min: 1024,
-                          },
-                          items: 1,
-                        },
-                        mobile: {
-                          breakpoint: {
-                            max: 464,
-                            min: 0,
-                          },
-                          items: 1,
-                        },
-                        tablet: {
-                          breakpoint: {
-                            max: 1024,
-                            min: 464,
-                          },
-                          items: 1,
-                        },
-                      }}
-                      showDots
-                      sliderClass=""
-                      slidesToSlide={1}
-                      swipeable
-                    >
-                      <img
-                        src={cardImgA}
-                        style={{
-                          display: "block",
-                          height: "275px",
-                          margin: "-15px",
-                          width: "100%",
-                        }}
-                      />
-                      <img
-                        src={cardImgB}
-                        style={{
-                          display: "block",
-                          height: "275px",
-                          margin: "-15px",
-                          width: "100%",
-                        }}
-                      />
-                      <img
-                        src={cardImgC}
-                        style={{
-                          display: "block",
-                          height: "275px",
-                          margin: "-15px",
-                          width: "100%",
-                        }}
-                      />
-                      <img
-                        src={cardImgD}
-                        style={{
-                          display: "block",
-                          height: "275px",
-                          margin: "-15px",
-                          width: "100%",
-                        }}
-                      />
-                      <img
-                        src={cardImgE}
-                        style={{
-                          display: "block",
-                          height: "275px",
-                          margin: "-15px",
-                          width: "100%",
-                        }}
-                      />
-                    </Carousel>
-                  </SRLWrapper>
+
                   <Card.Body>
-                    <Card.Title>{userPost.title} 12412 4124</Card.Title>
+                    <Card.Title>{userPost.title} </Card.Title>
                     <Card.Text>
-                      {userPost.quickBody} 1241 2412 4124
-          </Card.Text>
+                      {userPost.slowBody}
+                    </Card.Text>
                   </Card.Body>
+ 
+                  <ListGroup >
+                    <ListGroup.Item><span>Listing Type:</span>{userPost.gearListingType}</ListGroup.Item>
+                    <ListGroup.Item><span>Zipcode:</span>{userPost.userZip}</ListGroup.Item>
+                    <ListGroup.Item><span>Gear Price:</span>{userPost.gearPrice}</ListGroup.Item>
+               
+                  </ListGroup>
                   <Card.Body>
                     <Row className="text-center mx-auto">
                       <Col>
-                        <Button className="ard-info-btn btn btn-lg btn-info">Con124124tact</Button>
+                        <Button className="ard-info-btn btn btn-lg btn-info">Go Back</Button>
                       </Col>
                       <Col>
-                        <Button className="card-contact-btn btn btn-lg btn-info">Con1412412tact</Button>
+                        <Button className="card-contact-btn btn btn-lg btn-info">Contact</Button>
                       </Col>
                     </Row>
                   </Card.Body>

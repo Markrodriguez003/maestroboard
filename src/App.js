@@ -12,6 +12,7 @@ import IntroInfoBlock from "./components/IntroInfoBlock";
 import Login from "./components/Login";
 import SignUpForm from "./components/SignUpForm";
 import Footer from "./components/Footer";
+import Corkboard from "./components/CorkBoard";
 
 
 function App() {
@@ -24,7 +25,8 @@ function App() {
         {/* <ArticleBlock /> */}
         {/* <IntroInfoBlock /> */}
         {/* <SiteButton /> */}
-        <PostBoardCard />
+        {/* <PostBoardCard /> */}
+        <Corkboard />
         {/* <ExampleBoard /> */}
         {/* <SignUpForm/> */}
         {/* <Footer /> */}
