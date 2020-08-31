@@ -13,23 +13,17 @@ import Login from "./components/Login";
 import SignUpForm from "./components/SignUpForm";
 import Footer from "./components/Footer";
 import Corkboard from "./components/CorkBoard";
+import userCardPostReply from "./components/userCardPostReply";
 
 
 function App() {
   return (
     <div>
       <SimpleReactLightbox>
-        <Header />
         {/* <Login /> */}
-        {/* <NewUserInfoAccordion /> */}
-        {/* <ArticleBlock /> */}
-        {/* <IntroInfoBlock /> */}
-        {/* <SiteButton /> */}
-        <PostBoardCard />
-        {/* <Corkboard /> */}
-        {/* <ExampleBoard /> */}
         {/* <SignUpForm/> */}
-        {/* <Footer /> */}
+        {/* <ArticleBlock /> */}
+        <Corkboard />
       </SimpleReactLightbox>
     </div>
   );

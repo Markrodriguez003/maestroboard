@@ -1,13 +1,15 @@
 import React from "react";
 import "./css/Login.css";
 // import { ArrowUpCircle } from "react-bootstrap-icons"; // Importing Bootstrap Icon Components
-
+import Header from "./Header"
+import Footer from "./Footer"
 import { Form, Button, Row, Col } from "react-bootstrap";
 
 // <Navbar fixed="bottom" />
 function Login() {
   return (
     <div className="login-container">
+      <Header/>
       <section className="cover" className="min-vh-100">
         <div className="cover-caption">
           <div className="container">
@@ -36,6 +38,7 @@ function Login() {
           </div>
         </div>
       </section>
+      <Footer />
     </div >
   );
 }

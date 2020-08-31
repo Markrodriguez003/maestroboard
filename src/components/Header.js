@@ -26,7 +26,7 @@ function Header() {
               buy. sell. trade.connect. |{"  "}
               <span className="header-muse-small">
                 {" "}
-                Just chase your <span> 
+                Chase your <span> 
                 <a
                   href="https://en.wikipedia.org/wiki/Euterpe#:~:text=Euterpe%20(%2Fju%CB%90%CB%88t,named%20muse%20of%20lyric%20poetry."
                   className="muse-anchor"

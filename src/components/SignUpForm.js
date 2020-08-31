@@ -3,11 +3,15 @@ import "./css/SignUpForm.css";
 import { PersonCircle } from "react-bootstrap-icons"; // Importing Bootstrap Icon Components
 
 import { Form, Button, Row, Col } from "react-bootstrap";
+import Header from "./Header"
+import Footer from "./Footer"
+
 const accountLogo = ""
 function SignUpForm() {
   return (
 
     <div className="sign-up-container">
+      <Header />
       <section className="cover" >
         <div className="cover-caption">
           <div className="container">
@@ -115,8 +119,8 @@ function SignUpForm() {
                       Create Account
               </button>
                   </form>
-                  <small className="mb-4">
-                    <a href="#">Need help?</a>
+                  <small >
+                    <a href="#" ><span className="mb-4 pb-4">Need Help?</span></a>
                   </small>
                 </div>
               </div>
@@ -124,6 +128,7 @@ function SignUpForm() {
           </div>
         </div>
       </section>
+      <Footer />
     </div>
 
   );

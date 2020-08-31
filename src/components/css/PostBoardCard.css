@@ -21,34 +21,28 @@
    font-size: 13px;
  }
 
+ /* .card-container{
+   width: 10000px;
+ } */
 
-
-
-
-
- /* css flip */
-
- .card-container {
+/* ************************** */
+ /* CSS CARD ANIMATIONS */
+  .card-container {
+    display: inline;
+  /* padding: 65px;    */
+  display: inline;
   perspective: 700px;
   overflow: hidden;
+  
 }
 
-.card-flip, .card-container {
-  transform-style: preserve-3d;
-  transition: all 0.7s ease;
-}
-
-.card-flip div {
-  backface-visibility: hidden;
-  transform-style: preserve-3d;
-}
 
 .under-card {
   position: absolute;
   width: 100%;
   height: 100%;
-  left: 0;
-  top: 498px;
+  left: 17px;
+  top: 220;
   -moz-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
@@ -56,34 +50,5 @@
  
 }
 
-/* .bottom-slider{
-  display:none;
-} */
-.card-container .under-card {
-  /* top: 0; */
 
-}
 
- .card-flip {
-   display: grid;
-   grid-template: 1fr / 1fr;
-   grid-template-areas: "frontAndBack";
-   transform-style: preserve-3d;
-   transition: all 0.7s ease;
- }
-
- .front {
-   grid-area: frontAndBack;
- }
-
- .back {
-   grid-area: frontAndBack;
-   transform: rotateY(-180deg);
- }
-
- 
-
- .card-container {
-  display: grid;
-  perspective: 700px;
-}

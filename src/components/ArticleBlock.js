@@ -1,7 +1,10 @@
 import React from "react";
 import "./css/ArticleBlock.css";
 import { ArrowRightCircle } from "react-bootstrap-icons"; // Importing Bootstrap Icon Components
-import { Row, Col, Button, Card, Accordion, Jumbotron } from "react-bootstrap";
+import { Row, Col, Figure, Button, Card, Accordion, Jumbotron } from "react-bootstrap";
+import IntroInfoBlock from "./IntroInfoBlock"
+import Header from "./Header"
+import Footer from "./Footer"
 import art1 from "./article-imgs/Article-6.png";
 import art2 from "./article-imgs/Article-7.jpg";
 import art3 from "./article-imgs/Article-8.jpg";
@@ -12,6 +15,7 @@ function ArticleBlock() {
     return (
         // xs, sm, md, lg , and x
         <div>
+        <Header />
             {/* ******************************************************************************************************/}
             {/* FIRST ARTICLE */}
             {/* ******************************************************************************************************/}
@@ -36,6 +40,7 @@ function ArticleBlock() {
                 <Row>
                     <Col xs sm md lg={6}  >
                         <img src={art1} className="article-img-1" alt="article image"></img>
+                        <caption>Image Taken from gearonline.com</caption>
                     </Col>
                     <Col xs sm md lg={6}  >
                         <h6 className="article-type-header">Electronic Music: VSTs</h6>
@@ -73,13 +78,27 @@ function ArticleBlock() {
                              vitae semper quis lectus nulla at volutpat diam ut. Orci phasellus egestas tellus rutru augue eget arcu. Arcu ac tortor dignissim .</p>
                         <a href="#" className="continue-reading"> <small>Continue Reading </small> <ArrowRightCircle style={{ fontSize: "35px", color: "rgba(250,250,250,0.9)" }} className="float-right" /> </a>
                     </Col>
-                    <Col xs sm md lg={6}  >
-                        <img src={art2} className="article-img-1" alt="article image"></img>
+                    <Col xs sm md lg={6}>
+                        <Figure>
+                            <Figure.Image
+                                // width={171}
+                                // height={180}
+                                className="article-img-1"
+                                alt="article image"
+                                src={art2} 
+                            />
+                            <Figure.Caption>
+                                Image Taken from gearonline.com. 
+                         </Figure.Caption>
+                        </Figure>
+                        {/* <img src={art2} className="article-img-1" alt="article image"></img> */}
+                        {/* <small>Image Taken from gearonline.com</small> */}
                     </Col>
                 </Row>
             </article>
             {/* ******************************************************************************************************/}
-
+            <IntroInfoBlock />
+            <Footer/>
         </div>
     );
 }
