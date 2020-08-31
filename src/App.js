@@ -13,7 +13,7 @@ import Login from "./components/Login";
 import SignUpForm from "./components/SignUpForm";
 import Footer from "./components/Footer";
 import Corkboard from "./components/CorkBoard";
-import userCardPostReply from "./components/userCardPostReply";
+import CardReplyModal from "./components/CardReplyModal";
 
 
 function App() {

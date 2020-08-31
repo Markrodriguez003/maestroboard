@@ -2,7 +2,7 @@
     display:block;
     z-index: -1;
     /* width: 1600px; */
-    width: 1495px;
+    width: 95%;
     height: auto;
     /* padding-top: 180px; */
     margin-top: 12px;
@@ -31,15 +31,13 @@
 }
 /* Filter Button Divs */
 .filter-btn-container{
-    display:block;
+    display:inline-block;
     z-index: -1;
-    margin-top: 50px;
-    margin-left: 204px;
-    margin-right: auto;
+    margin-top: 5px;
+    margin-left: -41.5px;
+    padding-right: -225px;
     margin-bottom: -14px;
- 
- 
- 
+    width: 55%; 
     padding-top: 10px;
 
 }
@@ -50,7 +48,11 @@
     background-color: rgb(10, 71, 71);
     margin-left: 32px;
     margin-right: 32px;
-    margin-bottom: -38px;
+    margin-bottom: 22px;
+    padding: 12px;
+    letter-spacing: 2.2px;
+    /* width: 75%; */
+    
 }
 
 .corkboard-card-container{
@@ -78,3 +80,17 @@ background-color: purple;
 .individualCard{
     width:100%;
 } 
+
+
+/* ************************ */
+/* MEDIA QUERIES */
+/* ************************ */
+
+
+ @media only screen and (min-width: 500px) { 
+    .corkboard-title {
+        color:red;
+      /* text-align: center !important;
+      font-size: 8px !important; */
+    }
+  }

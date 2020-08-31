@@ -1,14 +1,17 @@
 import React from "react";
 import "./css/Corkboard.css";
-import Header from "./Header"
-import Footer from "./Footer"
+import Header from "./Header";
+import Footer from "./Footer";
 import corkboardImg from "./imgs/User-Corkboard.jpg";
 import PostBoardCard from "./PostBoardCard";
+import CardReplyModal from "./CardReplyModal";
 import { GearFill } from "react-bootstrap-icons"; // Importing Bootstrap Icon Components
 
 import {
   Row,
   Col,
+  Nav,
+  Navbar,
   Form,
   Button,
   Dropdown,
@@ -23,7 +26,7 @@ function Corkboard() {
       <Header />
       <div>
         {/* ********************************************************************** */}
-        {/* DROP FILTERS */}
+        {/* USER CUSTOM BOARD */}
         {/* ********************************************************************** */}
 
         {/* <Accordion defaultActiveKey="0" className="user-board-accordion">
@@ -53,45 +56,75 @@ function Corkboard() {
             </Accordion.Collapse>
           </Card>
         </Accordion>
- */}
+  */}
 
-
-
+        {/* ********************************************************************** */}
+        {/* CORKBOARD HEADER */}
+        {/* ********************************************************************** */}
         <h4 className="display-4 corkBoard-title">Community Board</h4>
+
         {/* ************************ */}
         {/* FILTER - SEARCH BUTTONS */}
         {/* ************************ */}
-        <Container>
-          <div className="filter-btn-container">
-            <Row className="" xs sm md lg={6}>
+        <Container className="filter-btn-container">
+          <div>
+            <Row className="" xs sm md lg={2}>
               <Col xs sm md lg={2}>
                 <Dropdown>
                   <Dropdown.Toggle variant="info" id="dropdown-basic">
                     Filter:
-                </Dropdown.Toggle>
+                  </Dropdown.Toggle>
 
                   <Dropdown.Menu>
-                    <Dropdown.Item href="#/action-1">Selling Gear</Dropdown.Item>
+                    <Dropdown.Item href="#/action-1">
+                      Selling Gear
+                    </Dropdown.Item>
                     <Dropdown.Item href="#/action-2">Buying Gear</Dropdown.Item>
                     <Dropdown.Item href="#/action-3">
                       Looking To Trade
-                  </Dropdown.Item>
+                    </Dropdown.Item>
                     <Dropdown.Item href="#/action-4">
                       Looking for Gigs
-                  </Dropdown.Item>
+                    </Dropdown.Item>
                     <Dropdown.Item href="#/action-5">
                       Looking for Bandmate
-                  </Dropdown.Item>
+                    </Dropdown.Item>
                     <Dropdown.Item href="#/action-6">
                       Looking for to Jam
-                  </Dropdown.Item>
+                    </Dropdown.Item>
                     <Dropdown.Item href="#/action-7">
                       Looking for Music Teacher
-                  </Dropdown.Item>
+                    </Dropdown.Item>
                     <Dropdown.Item href="#/action-8">
                       Looking for Promoter
-                  </Dropdown.Item>
+                    </Dropdown.Item>
                   </Dropdown.Menu>
+
+                  <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                  <Navbar.Collapse id="responsive-navbar-nav header-menu-center">
+                    <Nav className="mr-auto"></Nav>
+                    <Nav className="header-container header-menu-center">
+                      <Nav.Link href="#" className="header-items">
+                        Community Board
+                      </Nav.Link>
+                      <Nav.Link href="#" className="header-items">
+                        News
+                      </Nav.Link>
+                      <Nav.Link href="#" className="header-items">
+                        Forum
+                      </Nav.Link>
+                      <Nav.Link href="#" className="header-items">
+                        My Account
+                      </Nav.Link>
+                      <Nav.Link
+                        eventKey={2}
+                        href="#memes"
+                        className="header-items"
+                      >
+                        Log in
+                      </Nav.Link>
+                    </Nav>
+                  </Navbar.Collapse>
                 </Dropdown>
               </Col>
 
@@ -99,26 +132,28 @@ function Corkboard() {
                 <Dropdown>
                   <Dropdown.Toggle variant="info" id="dropdown-basic">
                     Instrument:
-                </Dropdown.Toggle>
+                  </Dropdown.Toggle>
 
                   <Dropdown.Menu>
                     <Dropdown.Item href="#/action-9">
                       Electric Guitar
-                  </Dropdown.Item>
+                    </Dropdown.Item>
                     <Dropdown.Item href="#/action-10">Bass</Dropdown.Item>
                     <Dropdown.Item href="#/action-11">Drums</Dropdown.Item>
                     <Dropdown.Item href="#/action-12">Percussion</Dropdown.Item>
                     <Dropdown.Item href="#/action-13">Brass</Dropdown.Item>
                     <Dropdown.Item href="#/action-14">Woodwind</Dropdown.Item>
-                    <Dropdown.Item href="#/action-15">Microphones</Dropdown.Item>
+                    <Dropdown.Item href="#/action-15">
+                      Microphones
+                    </Dropdown.Item>
                     <Dropdown.Item href="#/action-16">
                       Recording Studio Equipment
-                  </Dropdown.Item>
+                    </Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
               </Col>
 
-              <Col xs sm md lg={2}>
+              {/* <Col xs sm md lg={3}>
                 <Form.Group>
                   <Form.Control type="text" placeholder="Enter Zipcode" />
                 </Form.Group>
@@ -128,7 +163,7 @@ function Corkboard() {
                 <Dropdown>
                   <Dropdown.Toggle variant="info" id="dropdown-basic">
                     Miles from Zipcode:
-                </Dropdown.Toggle>
+                  </Dropdown.Toggle>
 
                   <Dropdown.Menu>
                     <Dropdown.Item href="#/action-10">5 Miles</Dropdown.Item>
@@ -142,8 +177,7 @@ function Corkboard() {
               <Col xs sm md lg={2}>
                 {" "}
                 <Button variant="info">Search!</Button>{" "}
-              </Col>
-
+              </Col> */}
             </Row>
           </div>
         </Container>
@@ -175,12 +209,12 @@ function Corkboard() {
           </Col>
        
         </Row>
-      </Container> */}
+      </Container>
 
       {/* ********************************************************************** */}
       {/* FOOTER */}
       {/* ********************************************************************** */}
-
+    
       <Footer />
     </div>
   );

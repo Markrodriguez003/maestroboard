@@ -1,7 +1,7 @@
  .card-top-header {
    text-align: center;
    padding-bottom: 3.5px;
-   padding-top: 1.5px;
+   padding-top: 2px;
  }
 
  .card-header-labels {
@@ -11,6 +11,7 @@
 
  .card-header-user-input {
    font-size: 12px;
+   font-style: italic;
  }
 
  .post-title-text{
@@ -28,6 +29,7 @@
 /* ************************** */
  /* CSS CARD ANIMATIONS */
   .card-container {
+    background-color:lightcoral;
     display: inline;
   /* padding: 65px;    */
   display: inline;
