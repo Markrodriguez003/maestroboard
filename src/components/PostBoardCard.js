@@ -1,4 +1,4 @@
-import React, {useState} from "react"; // React module for JSX functionaity
+import React, { useState } from "react"; // React module for JSX functionaity
 import "./css/PostBoardCard.css"; // CSS file for PostBoardCard
 import Carousel from "react-multi-carousel"; // Module that adds Carousel functionality
 import "react-multi-carousel/lib/styles.css"; // Module that adds Carousel CSS functionality
@@ -27,12 +27,11 @@ import cardImgG from "./imgs/postImg7.jpg";
 
 import noteBG from "./post-imgs/notecard5.png";
 
-// Example User Post details
-let userName = "Paolo124";
-let postDate = "1/21/2020";
 
 let userPost = {
   userName: "Asmongo1S4",
+  userEmail: "amsongo22@gmail.com",
+  userPhone: "08645897755",
   postDate: "1/24/22",
   userZip: "0G4WE21",
   gearPrice: 200.0,
@@ -44,18 +43,37 @@ let userPost = {
     "This was used maybe 3 or 4 times max. It connects with my macbook and windows no problem. I didn't even need drivers. I don't have the original box but it has no scratches or dents.",
 };
 
-// let flipNum =0;
+
 
 // ***********************************************************************************************************************
 
 function PostBoardCard() {
 
-  const [flipper, setFlipper] =useState({});
-  
-  function flipCard() { 
-    console.log("hello");
-    setFlipper({transform: `rotateY(180deg)`});
-    };
+  const [flipper, setFlipper] = useState({});
+  const [flipperBack, setflipperBack] = useState({});
+  const [revealUnderCard, setRevealUnderCard] = useState({});
+  const [revealUnderCardBack, setRevealUnderCardBack] = useState({});
+
+  function flipCard() {
+    console.log('Flipping card');
+    setFlipper({ transform: `rotateY(180deg)` });
+  };
+
+  function flipCardBack() {
+    console.log('Flipping card back ');
+    setflipperBack({ transform: `rotateY(-180deg)` });
+    setFlipper({ transform: `rotateY(0deg)` });
+  }
+
+  function flipUnderCard() {
+    console.log('Sliding under card');
+    setRevealUnderCard({ top: "0" })
+  }
+  function flipUnderCardBack() {
+    console.log('Sliding unde card');
+    setRevealUnderCard({ top: "500px" })
+  }
+
 
   // ***********************************************************************************************************************
   const arrowStyle = {
@@ -79,14 +97,14 @@ function PostBoardCard() {
 
   return (
     <div>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-4 card-container" >
-            <div class="card-flip" style={flipper}>
+      <div className="container">
+        <div className="row">
+          <div className="col-md-4 card-container" >
+            <div className="card-flip" style={flipper}>
               {/* ***************************** */}
               {/* CARD FRONT */}
               {/* ***************************** */}
-              <div class="card front">
+              <div className="card front">
                 <Card style={{ width: "21rem", height: "29.2rem" }}>
                   <div className="card-top-header">
                     <Row className="card-header-labels">
@@ -214,7 +232,7 @@ function PostBoardCard() {
                         </Button>
                       </Col>
                       <Col>
-                        <Button className="card-contact-btn btn-info">
+                        <Button className="card-contact-btn btn-info" onClick={flipUnderCard}>
                           Contact
                         </Button>
                       </Col>
@@ -226,9 +244,9 @@ function PostBoardCard() {
               {/* CARD BACK */}
               {/* ***************************** */}
 
-              <div class=" card back">
-                <Card style={{ width: "21.5rem", height: "22rem" }}>
-                  <div className="card-top-header">
+              <div className=" card back" style={flipperBack}>
+                <Card style={{ width: "21.5rem", height: "22rem", flipperBack }}>
+                  <div className="card-top-header" >
                     <Row className="card-header-labels">
                       <Col>Posted By:</Col>
                       <Col>Date Posted:</Col>
@@ -264,7 +282,7 @@ function PostBoardCard() {
                   <Card.Body>
                     <Row className="text-center mx-auto">
                       <Col>
-                        <Button className="ard-info-btn btn btn-lg btn-info">
+                        <Button className="ard-info-btn btn btn-lg btn-info" onClick={flipCardBack}>
                           Go Back
                         </Button>
                       </Col>
@@ -281,8 +299,9 @@ function PostBoardCard() {
               {/* ***************************** */}
               {/* CARD SIDE */}
               {/* ***************************** */}
-              {/* <div class=" card side">
-                <Card style={{ width: "21.5rem", height: "22rem" }}>
+              <div className="under-card" style={revealUnderCard}>
+
+                <Card style={{ width: "21.5rem", height: "29rem" }}>
                   <div className="card-top-header">
                     <Row className="card-header-labels">
                       <Col>Posted By:</Col>
@@ -295,48 +314,45 @@ function PostBoardCard() {
                       <Col>E29B2R</Col>
                     </Row>
                   </div>
-
                   <Card.Body>
-                    <Card.Title>{userPost.title} </Card.Title>
-                    <Card.Text>{userPost.slowBody}</Card.Text>
+                    <Card.Title>Contact: </Card.Title>
+                    <ListGroup>
+                      <ListGroup.Item>
+                        <span><svg width="1.3em" height="1.3em" viewBox="0 0 20 20" class="bi bi-person-lines-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd" d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm7 1.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm2 9a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5z" />
+                        </svg> Email:</span>
+                        <span> {userPost.userEmail}</span>
+                      </ListGroup.Item>
+                      <ListGroup.Item>
+                        <span><svg width="1.3em" height="1.3em" viewBox="0 0 20 20" class="bi bi-telephone-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd" d="M2.267.98a1.636 1.636 0 0 1 2.448.152l1.681 2.162c.309.396.418.913.296 1.4l-.513 2.053a.636.636 0 0 0 .167.604L8.65 9.654a.636.636 0 0 0 .604.167l2.052-.513a1.636 1.636 0 0 1 1.401.296l2.162 1.681c.777.604.849 1.753.153 2.448l-.97.97c-.693.693-1.73.998-2.697.658a17.47 17.47 0 0 1-6.571-4.144A17.47 17.47 0 0 1 .639 4.646c-.34-.967-.035-2.004.658-2.698l.97-.969z" />
+                        </svg> Number:</span>
+                        <span>  {userPost.userPhone}</span>
+                      </ListGroup.Item>
+                      <ListGroup.Item>
+
+                        <Button> Send Message to MaestroBoard Profile</Button>
+                      </ListGroup.Item>
+                    </ListGroup>
                   </Card.Body>
 
-                  <ListGroup>
-                    <ListGroup.Item>
-                      <span>Listing Type:</span>
-                      {userPost.gearListingType}
-                    </ListGroup.Item>
-                    <ListGroup.Item>
-                      <span>Zipcode:</span>
-                      {userPost.userZip}
-                    </ListGroup.Item>
-                    <ListGroup.Item>
-                      <span>Gear Price:</span>
-                      {userPost.gearPrice}
-                    </ListGroup.Item>
-                  </ListGroup>
                   <Card.Body>
                     <Row className="text-center mx-auto">
                       <Col>
-                        <Button className="ard-info-btn btn btn-lg btn-info">
+                        <Button className="ard-info-btn btn btn-lg btn-info" onClick={flipUnderCardBack}>
                           Go Back
-                        </Button>
-                      </Col>
-                      <Col>
-                        <Button className="card-contact-btn btn btn-lg btn-info">
-                          Contact
                         </Button>
                       </Col>
                     </Row>
                   </Card.Body>
                 </Card>
-              </div> */}
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   );
-          }
+}
 
 export default PostBoardCard;
