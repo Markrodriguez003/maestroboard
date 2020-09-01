@@ -11,9 +11,10 @@
 }
 
 .btn-text {
+    /* font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; */
     color: white;
     font-size: 22px;
-    font-weight: bold;
+    /* font-weight: bold; */
 }
 
 .newbie-accordion-btn btn {
@@ -33,7 +34,9 @@
 }
 
 .newbie-card {
-    background-color: rgb(104, 50, 104) !important;
+    padding:-22px;
+    background-color: rgba(85, 39, 85, 0.568) !important;
+    padding: 2px !important;
 }
 
 .main-jumbotron {
@@ -51,18 +54,20 @@
     text-align: center;
     margin-left: auto;
     margin-right: auto;
+    padding: -22px;
 }
 
 .main-jumbotron h1 {
     font-size: 48px;
     color: white;
+
 }
 
 .muse-logo {
     border: white 2px solid;
     border-radius: 100%;
     display: block;
-    width: 327px;
+    width: 347px;
     text-align: center;
     margin-left: auto;
     margin-right: auto;

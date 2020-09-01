@@ -1,5 +1,52 @@
-.details-panel-container{
-    width: 500px !important;
-    height: auto !important; 
-    background-color:white !important;
+.details-panel-container {
+  /* border: red 2px solid; */
+  /* width: 500px !important; */
+  /* height: auto !important;  */
+  /* background-color:white !important; */
+  margin-bottom: 22px;
+}
+
+.panel-sub-header {
+  font-size: 24px !important;
+}
+
+.change-setting-fx {
+  margin-right: 16px;
+  padding-right: 16px;
+}
+
+.userBoard-header {
+  /* width: 25%; */
+  font-size: 38px !important;
+
+  color: white !important;
+}
+
+.entire-Userdetails-container {
+  border: rgba(66, 66, 66, 0.295) 2px solid;
+}
+.accordion-details-container {
+  display: inline-block;
+  background-color: rgb(22, 81, 104) !important;
+  border: black 2px solid;
+  /* font-family: ; */
+  font-size: 12px !important;
+  letter-spacing: 2.2px;
+  padding: -14px;
+}
+
+.board-details-container {
+  /* width: 100%;  */
+  /* height: 625%; */
+  background-size: contain;
+  border: rgba(66, 66, 66, 0.295) 2px solid;
+}
+.userBoard-corkBoard {
+    
+  width: 100%;
+  height: auto;
+}
+.myBoard {
+  width: 55%;
+  height: 65%;
 }

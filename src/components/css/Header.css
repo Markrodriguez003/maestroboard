@@ -19,6 +19,28 @@
 .header-title-a:active {
   color: red;
 }
+/* ************************* */
+/* Header Options */
+.header-container .header-items:link {
+  color: black;
+}
+
+.header-container .header-items:visited {
+  color: black;
+}
+
+.header-container .header-items:hover {
+  font-style: normal;
+  text-decoration: underline;
+  text-decoration-style: solid;
+  font-size: 19px;
+ 
+
+}
+
+.header-container .header-items:active {
+  color: red;
+}
 
 /* ************************* */
 

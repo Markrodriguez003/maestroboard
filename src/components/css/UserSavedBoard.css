@@ -8,7 +8,8 @@
 
 .entire-myboard-container{
 
-    border: black 2px solid;
+    border: rgba(66, 66, 66, 0.295) 2px solid;
+
 }
 .accordion-container{
     display:inline-block;
@@ -22,13 +23,15 @@
 }
 
 .board-container{
-    width: 55%; 
-    height: 25%;
-    border: black 2px solid;
+    /* width: 100%;  */
+    /* height: 625%; */
+    background-image: url("../imgs/User-Corkboard-2.jpg");
+    background-size: contain;
+    border: rgba(66, 66, 66, 0.295) 2px solid;
 }
 .userBoard-corkBoard{
-    width: 55%; 
-    height: 25%;
+    width: 100%; 
+    height: auto;
 }
 .myBoard{
     width: 55%; 

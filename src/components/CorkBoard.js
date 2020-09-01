@@ -206,9 +206,9 @@ function Corkboard() {
           <Col xs sm md lg={4} className="individualCard">
             <PostBoardCard />
           </Col>
-          <Col xs sm md lg={4} className="individualCard">
+          {/* <Col xs sm md lg={4} className="individualCard">
             <PostBoardCard />
-          </Col>
+          </Col> */}
        
         </Row>
       </Container>

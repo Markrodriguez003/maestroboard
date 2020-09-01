@@ -8,7 +8,9 @@ import Login from "./components/Login";
 import SignUpForm from "./components/SignUpForm";
 import Footer from "./components/Footer";
 import Corkboard from "./components/CorkBoard";
-import UserProfile from "./components/UserProfile";
+import MyProfile from "./components/MyProfile";
+
+
 
 
 function App() {
@@ -18,8 +20,8 @@ function App() {
         {/* <ArticleBlock /> */}
         {/* <Login /> */}
         {/* <SignUpForm/> */}
-        <Corkboard />
-        {/* <UserProfile /> */}
+        {/* <Corkboard /> */}
+        <MyProfile />
       </SimpleReactLightbox>
     </div>
   );
