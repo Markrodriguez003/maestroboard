@@ -67,8 +67,8 @@ function Corkboard() {
         {/* FILTER - SEARCH BUTTONS */}
         {/* ************************ */}
         <Container className="filter-btn-container">
-          <div>
-            <Row className="" xs sm md lg={2}>
+          <div className="filter-btn-container">
+            <Row className="filter-btn-container">
               <Col xs sm md lg={2}>
                 <Dropdown>
                   <Dropdown.Toggle variant="info" id="dropdown-basic">
@@ -80,8 +80,7 @@ function Corkboard() {
                       Selling Gear
                     </Dropdown.Item>
                     <Dropdown.Item href="#/action-2">Buying Gear</Dropdown.Item>
-                    <Dropdown.Item href="#/action-3">
-                      Looking To Trade
+                    <Dropdown.Item href="#/action-3"> Looking To Trade
                     </Dropdown.Item>
                     <Dropdown.Item href="#/action-4">
                       Looking for Gigs
@@ -100,7 +99,7 @@ function Corkboard() {
                     </Dropdown.Item>
                   </Dropdown.Menu>
 
-                  <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                  {/* <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                   <Navbar.Collapse id="responsive-navbar-nav header-menu-center">
                     <Nav className="mr-auto"></Nav>
                     <Nav className="header-container header-menu-center">
@@ -124,7 +123,10 @@ function Corkboard() {
                         Log in
                       </Nav.Link>
                     </Nav>
-                  </Navbar.Collapse>
+                  </Navbar.Collapse> */}
+                  
+
+
                 </Dropdown>
               </Col>
 
@@ -153,7 +155,7 @@ function Corkboard() {
                 </Dropdown>
               </Col>
 
-              {/* <Col xs sm md lg={3}>
+              <Col xs sm md lg={3}>
                 <Form.Group>
                   <Form.Control type="text" placeholder="Enter Zipcode" />
                 </Form.Group>
@@ -177,7 +179,7 @@ function Corkboard() {
               <Col xs sm md lg={2}>
                 {" "}
                 <Button variant="info">Search!</Button>{" "}
-              </Col> */}
+              </Col>
             </Row>
           </div>
         </Container>
@@ -193,7 +195,7 @@ function Corkboard() {
       {/* CORKBOARD CARDS */}
       {/* ********************************************************************** */}
       <PostBoardCard />
-      {/* <Container className="corkboard-card-container">
+       <Container className="corkboard-card-container">
         <Row>
           <Col xs sm md lg={4} className="individualCard">
             <PostBoardCard />
@@ -211,10 +213,8 @@ function Corkboard() {
         </Row>
       </Container>
 
-      {/* ********************************************************************** */}
-      {/* FOOTER */}
-      {/* ********************************************************************** */}
-    
+ 
+
       <Footer />
     </div>
   );

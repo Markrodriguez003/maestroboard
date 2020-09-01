@@ -53,7 +53,7 @@ function Header() {
             Forum
           </Nav.Link>
           <Nav.Link href="#" className="header-items">
-            My Account
+            My Profile
           </Nav.Link>
           <Nav.Link eventKey={2} href="#memes" className="header-items">
             Log in

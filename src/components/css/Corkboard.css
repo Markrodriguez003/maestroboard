@@ -32,13 +32,13 @@
 /* Filter Button Divs */
 .filter-btn-container{
     display:inline-block;
-    z-index: -1;
-    margin-top: 5px;
-    margin-left: -41.5px;
-    padding-right: -225px;
+    position:inherit;
+    /* z-index: -1; */
+    /* margin-top: 5px; */
+    margin-left: 32px;
     margin-bottom: -14px;
-    width: 55%; 
-    padding-top: 10px;
+    /* width: 100%;  */
+    /* padding-top: 10px; */
 
 }
 

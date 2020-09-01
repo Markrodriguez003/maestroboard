@@ -1,0 +1,36 @@
+.userBoard-header{
+    /* width: 25%; */
+    font-size: 38px !important;
+    
+    color: white !important;
+
+}
+
+.entire-myboard-container{
+
+    border: black 2px solid;
+}
+.accordion-container{
+    display:inline-block;
+    background-color: rgb(22, 81, 104) !important;
+      border: black 2px solid;
+    /* font-family: ; */
+    font-size: 12px !important;
+    letter-spacing: 2.2px;
+    padding: -14px;
+
+}
+
+.board-container{
+    width: 55%; 
+    height: 25%;
+    border: black 2px solid;
+}
+.userBoard-corkBoard{
+    width: 55%; 
+    height: 25%;
+}
+.myBoard{
+    width: 55%; 
+    height: 65%;
+}

@@ -1,24 +1,27 @@
 import React from "react";
 import "./css/Login.css";
-// import { ArrowUpCircle } from "react-bootstrap-icons"; // Importing Bootstrap Icon Components
+import { Key } from "react-bootstrap-icons"; // Importing Bootstrap Icon Components
 import Header from "./Header"
 import Footer from "./Footer"
 import { Form, Button, Row, Col } from "react-bootstrap";
+{/* <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-key" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M0 8a4 4 0 0 1 7.465-2H14a.5.5 0 0 1 .354.146l1.5 1.5a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0L13 9.207l-.646.647a.5.5 0 0 1-.708 0L11 9.207l-.646.647a.5.5 0 0 1-.708 0L9 9.207l-.646.647A.5.5 0 0 1 8 10h-.535A4 4 0 0 1 0 8zm4-3a3 3 0 1 0 2.712 4.285A.5.5 0 0 1 7.163 9h.63l.853-.854a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.793-.793-1-1h-6.63a.5.5 0 0 1-.451-.285A3 3 0 0 0 4 5z" />
+                    <path d="M4 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                  </svg>  */}
 
 // <Navbar fixed="bottom" />
 function Login() {
   return (
     <div className="login-container">
-      <Header/>
+      <Header />
       <section className="cover" className="min-vh-100">
         <div className="cover-caption">
           <div className="container">
             <div className="row text-white">
               <div className="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4">
-                {/* <svg width="5em" height="5em" viewBox="0 0 16 16" class="bi bi-person-check text-center mx-auto" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" d="M8 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm6 5c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10zm4.854-7.85a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
-                </svg> */}
-                <h1 className="display-4 py-2 text-truncate login-title">Log in</h1>
+
+                <h1 className="display-4 py-2 text-truncate login-title">
+                  Log in</h1>
                 <div className="px-2">
                   <form action="" className="justify-content-center">
                     <div className="form-group">

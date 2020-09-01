@@ -237,7 +237,7 @@ function PostBoardCard() {
                       <Row className="text-center mx-auto">
                         <Col>
                           <Button
-                            className="ard-info-btn btn btn-info mt-3 mb-3"
+                            className="ard-info-btn btn btn-info mt-2 mb-2"
                             onClick={handleClick}
                           >
                             More Info!
@@ -245,7 +245,7 @@ function PostBoardCard() {
                         </Col>
                         <Col>
                           <Button
-                            className="card-contact-btn btn-info mt-3 mb-3"
+                            className="card-contact-btn btn-info mt-2 mb-2"
                             onClick={flipUnderCard}
                           >
                             Contact
@@ -326,7 +326,7 @@ function PostBoardCard() {
               {/* CARD SIDE */}
               {/* ***************************** */}
               <div className="under-card" style={revealUnderCard}>
-                <Card style={{ width: "21.5rem", height: "30rem" }}>
+                <Card style={{ width: "21.5rem", height: "30.3rem" }}>
                   <div className="card-top-header">
                     <Row className="card-header-labels">
                       <Col>

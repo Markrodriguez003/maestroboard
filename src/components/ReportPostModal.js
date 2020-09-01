@@ -11,7 +11,7 @@ function CardReplyModal() {
   const handleShow = () => setShow(true);
 
   return (
-    <div>
+    <div className="text-center mx-auto">
       <Button variant="outline-danger" size="sm" className="ml-4 mr-4"  onClick={handleShow}>
         <small>Report Post</small>
       </Button>
@@ -30,12 +30,12 @@ function CardReplyModal() {
         <Modal.Body>
           <ReportForm />
         </Modal.Body>
-        <Modal.Footer>
+        <Modal.Footer className="modal-footer">
           <Button variant="danger" onClick={handleClose}>
             {" "}
             <BackspaceReverse /> Cancel Report{" "}
           </Button>
-          <Button variant="info">
+          <Button variant="info" className="mx-auto text-center reportPost-btn">
             <Reply /> Report Post
           </Button>
         </Modal.Footer>

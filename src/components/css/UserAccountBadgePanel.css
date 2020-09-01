@@ -1,0 +1,19 @@
+.userBadgeContainer{
+    display: inline-block;
+    margin-top: 22px;
+    margin-bottom: 22px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    /* background-color: rgb(22, 81, 104) !important; */
+    background-color: rgba(95, 94, 94, 0.048);
+    border:  rgba(179, 179, 179, 0.144) 2px solid;
+    width: 1160px;
+    padding: 20px;
+}
+.userBadgeContainer-bg{
+    
+    /* background-color: rgba(12, 12, 12, 0.246) !important; */
+    /* width: 1160px;
+    padding: 20px; */
+}
