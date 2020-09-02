@@ -2,7 +2,7 @@ import { useState } from "react";
 import React from "react";
 import { Button, Modal, Row, Col, Form } from "react-bootstrap";
 import ReportForm from "./ReportForm";
-import { Reply, BackspaceReverse } from "react-bootstrap-icons"; // Importing Bootstrap Icon Components
+import { Reply, BackspaceReverse, ExclamationCircleFill} from "react-bootstrap-icons"; // Importing Bootstrap Icon Components
 
 function CardReplyModal() {
   const [show, setShow] = useState(false);
@@ -12,8 +12,7 @@ function CardReplyModal() {
 
   return (
     <div className="text-center mx-auto">
-      <Button variant="outline-danger" size="sm" className="ml-4 mr-4"  onClick={handleShow}>
-        <small>Report Post</small>
+      <Button variant="outline-danger" size="sm" className="mt-4" onClick={handleShow}> <ExclamationCircleFill />  <small> Report </small>
       </Button>
 
       <Modal
@@ -33,10 +32,10 @@ function CardReplyModal() {
         <Modal.Footer className="modal-footer">
           <Button variant="danger" onClick={handleClose}>
             {" "}
-            <BackspaceReverse /> Cancel Report{" "}
+            <BackspaceReverse /> Cancel{" "}
           </Button>
           <Button variant="info" className="mx-auto text-center reportPost-btn">
-            <Reply /> Report Post
+            <Reply /> Report
           </Button>
         </Modal.Footer>
       </Modal>

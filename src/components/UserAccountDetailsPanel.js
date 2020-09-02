@@ -64,7 +64,7 @@ function UserAccountDetailsPanel() {
                       {" "}
                       <People />{" "}
                     </span>{" "}
-                     Account Details{" "}
+                    Account Details{" "}
                     <Accordion.Toggle as={Button} variant="link" eventKey="1">
                       <CaretDown
                         style={{ transform: "scale(1.5)", color: "white" }}
@@ -83,9 +83,7 @@ function UserAccountDetailsPanel() {
                   <Card.Body>
                     {/* **************** */}
                     <div>
-                      <Card.Header className="lead display-4">
-                     
-                      </Card.Header>
+                      <Card.Header className="lead display-4"></Card.Header>
                       <Card.Body>
                         <Card.Title className="panel-sub-header">
                           Account Credentials
@@ -182,6 +180,11 @@ function UserAccountDetailsPanel() {
                               Alternate Phone Number:{" "}
                             </span>
                             {userAccountDetails.altPhoneNumber}
+                          </ListGroup.Item>
+                          <ListGroup.Item>
+                            <Button variant="outline-danger">
+                              Delete Account
+                            </Button>
                           </ListGroup.Item>
                         </ListGroup>
                       </Card.Body>

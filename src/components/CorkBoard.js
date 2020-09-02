@@ -26,39 +26,6 @@ function Corkboard() {
       <Header />
       <div>
         {/* ********************************************************************** */}
-        {/* USER CUSTOM BOARD */}
-        {/* ********************************************************************** */}
-
-        {/* <Accordion defaultActiveKey="0" className="user-board-accordion">
-          <Card className="user-board-accordion">
-            <Card.Header className="user-board-accordion">
-              <h4 className="display-4 corkBoard-title">My Saved Board</h4>
-
-              <Accordion.Toggle
-                as={Button}
-                variant="link"
-                eventKey="1"
-              ></Accordion.Toggle>
-            </Card.Header>
-          </Card>
-          <Card>
-            <Card.Header>
-              <Accordion.Toggle as={Button} variant="link" eventKey="1">
-                Click me!
-              </Accordion.Toggle>
-            </Card.Header>
-            <Accordion.Collapse eventKey="1">
-              <Card.Body className="user-board-accordion">  <img
-                src={corkboardImg}
-                alt="corkboard image"
-                className="myBoard"
-              /></Card.Body>
-            </Accordion.Collapse>
-          </Card>
-        </Accordion>
-  */}
-
-        {/* ********************************************************************** */}
         {/* CORKBOARD HEADER */}
         {/* ********************************************************************** */}
         <h4 className="display-4 corkBoard-title">Community Board</h4>
@@ -66,9 +33,9 @@ function Corkboard() {
         {/* ************************ */}
         {/* FILTER - SEARCH BUTTONS */}
         {/* ************************ */}
-        <Container className="filter-btn-container">
+        <Container>
           <div className="filter-btn-container">
-            <Row className="filter-btn-container">
+            <Row>
               <Col xs sm md lg={2}>
                 <Dropdown>
                   <Dropdown.Toggle variant="info" id="dropdown-basic">
@@ -80,7 +47,9 @@ function Corkboard() {
                       Selling Gear
                     </Dropdown.Item>
                     <Dropdown.Item href="#/action-2">Buying Gear</Dropdown.Item>
-                    <Dropdown.Item href="#/action-3"> Looking To Trade
+                    <Dropdown.Item href="#/action-3">
+                      {" "}
+                      Looking To Trade
                     </Dropdown.Item>
                     <Dropdown.Item href="#/action-4">
                       Looking for Gigs
@@ -89,44 +58,15 @@ function Corkboard() {
                       Looking for Bandmate
                     </Dropdown.Item>
                     <Dropdown.Item href="#/action-6">
-                      Looking for to Jam
+                      Looking for a Jam
                     </Dropdown.Item>
                     <Dropdown.Item href="#/action-7">
                       Looking for Music Teacher
                     </Dropdown.Item>
                     <Dropdown.Item href="#/action-8">
-                      Looking for Promoter
+                      Looking for Promoter / Manager
                     </Dropdown.Item>
                   </Dropdown.Menu>
-
-                  {/* <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                  <Navbar.Collapse id="responsive-navbar-nav header-menu-center">
-                    <Nav className="mr-auto"></Nav>
-                    <Nav className="header-container header-menu-center">
-                      <Nav.Link href="#" className="header-items">
-                        Community Board
-                      </Nav.Link>
-                      <Nav.Link href="#" className="header-items">
-                        News
-                      </Nav.Link>
-                      <Nav.Link href="#" className="header-items">
-                        Forum
-                      </Nav.Link>
-                      <Nav.Link href="#" className="header-items">
-                        My Account
-                      </Nav.Link>
-                      <Nav.Link
-                        eventKey={2}
-                        href="#memes"
-                        className="header-items"
-                      >
-                        Log in
-                      </Nav.Link>
-                    </Nav>
-                  </Navbar.Collapse> */}
-                  
-
-
                 </Dropdown>
               </Col>
 
@@ -155,7 +95,7 @@ function Corkboard() {
                 </Dropdown>
               </Col>
 
-              <Col xs sm md lg={3}>
+              <Col xs sm md lg={2}>
                 <Form.Group>
                   <Form.Control type="text" placeholder="Enter Zipcode" />
                 </Form.Group>
@@ -176,9 +116,13 @@ function Corkboard() {
                   </Dropdown.Menu>
                 </Dropdown>
               </Col>
-              <Col xs sm md lg={2}>
+              <Col xs sm md lg={1}>
                 {" "}
                 <Button variant="info">Search!</Button>{" "}
+              </Col>
+              <Col xs sm md lg={2}>
+                {" "}
+                <Button variant="success">Create Post!</Button>{" "}
               </Col>
             </Row>
           </div>
@@ -194,27 +138,39 @@ function Corkboard() {
       {/* ********************************************************************** */}
       {/* CORKBOARD CARDS */}
       {/* ********************************************************************** */}
-      <PostBoardCard />
-       <Container className="corkboard-card-container">
+      {/* <PostBoardCard /> */}
+      <Container className="corkboard-card-container">
+        <Row className="mb-3">
+          <Col xs sm md lg={3} className="individualCard">
+            <PostBoardCard />
+          </Col>
+          <Col xs sm md lg={3} className="individualCard">
+            <PostBoardCard />
+          </Col>
+          <Col xs sm md lg={3} className="individualCard">
+            <PostBoardCard />
+          </Col>
+          <Col xs sm md lg={3} className="individualCard">
+            <PostBoardCard />
+          </Col>
+        </Row>
+
+        
         <Row>
-          <Col xs sm md lg={4} className="individualCard">
+          <Col xs sm md lg={3} className="individualCard">
             <PostBoardCard />
           </Col>
-          <Col xs sm md lg={4} className="individualCard">
+          <Col xs sm md lg={3} className="individualCard">
             <PostBoardCard />
           </Col>
-          <Col xs sm md lg={4} className="individualCard">
+          <Col xs sm md lg={3} className="individualCard">
             <PostBoardCard />
           </Col>
-          {/* <Col xs sm md lg={4} className="individualCard">
+          <Col xs sm md lg={3} className="individualCard">
             <PostBoardCard />
-          </Col> */}
-       
+          </Col>
         </Row>
       </Container>
-
- 
-
       <Footer />
     </div>
   );

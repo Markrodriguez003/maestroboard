@@ -1,6 +1,10 @@
+// REACT COMPONENTS
 import React from "react";
+
+// APP CSS
 import "./components/css/App.css";
 
+// SITE COMPONENTS
 import Header from "./components/Header";
 import ArticleBlock from "./components/ArticleBlock";
 import SimpleReactLightbox from "simple-react-lightbox";
@@ -10,9 +14,6 @@ import Footer from "./components/Footer";
 import Corkboard from "./components/CorkBoard";
 import MyProfile from "./components/MyProfile";
 
-
-
-
 function App() {
   return (
     <div>
@@ -20,8 +21,8 @@ function App() {
         {/* <ArticleBlock /> */}
         {/* <Login /> */}
         {/* <SignUpForm/> */}
-        {/* <Corkboard /> */}
-        <MyProfile />
+        <Corkboard />
+        {/* <MyProfile /> */}
       </SimpleReactLightbox>
     </div>
   );

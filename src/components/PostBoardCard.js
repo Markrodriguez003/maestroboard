@@ -8,11 +8,18 @@ import { SRLWrapper } from "simple-react-lightbox"; //  Lightbox modulehttps://r
 import {
   ArrowRight,
   ArrowLeft,
-  Building,
-  ChatDots,
+  ArrowLeftCircleFill,
+  ChatDotsFill,
   People,
   CalendarEvent,
-  AlertCircle
+  StarFill,
+  InfoSquareFill,
+  CashStack,
+  GeoAlt,
+  Gem,
+  At,
+  TelephoneFill,
+  Mailbox2
 } from "react-bootstrap-icons"; // Importing Bootstrap Icon Components
 import ReactCardFlip from "react-card-flip";
 import CardReplyModal from "./CardReplyModal";
@@ -20,6 +27,7 @@ import ReportPostModal from "./ReportPostModal";
 
 import {
   Card,
+  Badge,
   ListGroup,
   ListGroupItem,
   Row,
@@ -49,12 +57,11 @@ let userPost = {
   postDate: "1/24/22",
   userZip: "0G4WE21",
   gearPrice: 200.0,
+  gearType: "Studio-Equipment",
   gearListingType: "Selling-Gear",
   title: "AKAI MIDI 23X PAD CONSOLE FOR SALE!",
-  quickBody:
-    "Barely used and kept in a smoke free studio. Tested and it's 100% working. Comes with USB cable. Asking for $200.00 CASH or trade for bass.",
   slowBody:
-    "This was used maybe 3 or 4 times max. It connects with my macbook and windows no problem. I didn't even need drivers. I don't have the original box but it has no scratches or dents.",
+    "Barely used and kept in a smoke free studio. Tested and it's 100% working. Comes with USB cable. Asking for $200.00 CASH or trade for bass. Velocity and LED lighting on all buttons and faders throw smoothly. Rotary knobs are smooth with no lag. All menu functions work perfectly as well. ",
 };
 
 let mailTo = "mailto:" + userPost.userEmail;
@@ -103,7 +110,7 @@ function PostBoardCard() {
     <div>
       <div className="container">
         <div className="row">
-          <div className="col-md-4 card-container">
+          <div className="card-container">
             <div className="card-flip">
               {/* ***************************** */}
               {/* CARD FRONT */}
@@ -111,7 +118,7 @@ function PostBoardCard() {
 
               <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
                 <div className="card front">
-                  <Card style={{ width: "340px", height: "485px" }}>
+                  <Card style={{ width: "250px", height: "370px" }}>
                     <div className="card-top-header">
                       <Row className="card-header-labels">
                         <Col>
@@ -121,7 +128,8 @@ function PostBoardCard() {
                           {" "}
                           <CalendarEvent /> Date Posted:
                         </Col>
-                        <Col><Building /> Zipcode:
+                        <Col>
+                          <GeoAlt /> Zipcode:
                         </Col>
                       </Row>
                       {/* User Post input */}
@@ -131,6 +139,22 @@ function PostBoardCard() {
                         <Col>E29B2R</Col>
                       </Row>
                     </div>
+                    <Row className="mx-auto">
+                      <Col>
+                        <Badge variant="success">
+                          {" "}
+                          <CashStack style={{ marginBottom: "3.25px" }} /> $
+                          {userPost.gearPrice} or trade
+                        </Badge>
+                      </Col>
+                      <Col>
+                        <Badge variant="warning">
+                          {" "}
+                          <Gem style={{ marginBottom: "3.25px" }} />{" "}
+                          {userPost.gearListingType}
+                        </Badge>
+                      </Col>
+                    </Row>
                     <SRLWrapper>
                       <Carousel
                         additionalTransfrom={0}
@@ -182,7 +206,7 @@ function PostBoardCard() {
                           src={cardImgA}
                           style={{
                             display: "block",
-                            height: "275px",
+                            height: "195px",
                             margin: "-15px",
                             width: "100%",
                           }}
@@ -191,7 +215,7 @@ function PostBoardCard() {
                           src={cardImgB}
                           style={{
                             display: "block",
-                            height: "275px",
+                            height: "195px",
                             margin: "-15px",
                             width: "100%",
                           }}
@@ -200,7 +224,7 @@ function PostBoardCard() {
                           src={cardImgC}
                           style={{
                             display: "block",
-                            height: "275px",
+                            height: "195px",
                             margin: "-15px",
                             width: "100%",
                           }}
@@ -209,7 +233,7 @@ function PostBoardCard() {
                           src={cardImgD}
                           style={{
                             display: "block",
-                            height: "275px",
+                            height: "195px",
                             margin: "-15px",
                             width: "100%",
                           }}
@@ -218,7 +242,7 @@ function PostBoardCard() {
                           src={cardImgE}
                           style={{
                             display: "block",
-                            height: "275px",
+                            height: "195px",
                             margin: "-15px",
                             width: "100%",
                           }}
@@ -226,34 +250,41 @@ function PostBoardCard() {
                       </Carousel>
                     </SRLWrapper>
                     <Card.Body>
-                      <Card.Title className="post-title-text">
+                      <Card.Title className="post-title-text text-center mx-auto">
                         {userPost.title}
                       </Card.Title>
-                      <Card.Text className="post-quickBody-text">
+                      {/* <Card.Text className="post-quickBody-text">
                         {userPost.quickBody}
-                      </Card.Text>
+                      </Card.Text> */}
                     </Card.Body>
                     <Card.Body>
-                      <Row className="text-center mx-auto">
+                      <Row className="text-center">
                         <Col>
                           <Button
-                            className="ard-info-btn btn btn-info mt-2 mb-2"
+                            className="card-contact-btn btn btn-sm btn-info btn-block "
                             onClick={handleClick}
                           >
-                            More Info!
+                            <InfoSquareFill style={{ marginBottom: "4.5px" }} />{" "}
+                            Info
                           </Button>
                         </Col>
                         <Col>
-                          <Button
-                            className="card-contact-btn btn-info mt-2 mb-2"
-                            onClick={flipUnderCard}
-                          >
-                            Contact
+                          <Button className="card-contact-btn btn-sm btn-info btn-block">
+                            <StarFill style={{ marginBottom: "3.65px" }} />{" "}
+                            Favorite
                           </Button>
                         </Col>
                       </Row>
                     </Card.Body>
-                    <ReportPostModal />   
+                    {/* <ReportPostModal />    */}
+                    <Button
+                      variant="success"
+                      className="btn btn-sm btn-block"
+                      onClick={flipUnderCard}
+                    >
+                      <ChatDotsFill style={{ marginBottom: "3.65px" }} />{" "}
+                      Contact
+                    </Button>
                   </Card>
                 </div>
                 {/* ***************************** */}
@@ -261,7 +292,7 @@ function PostBoardCard() {
                 {/* ***************************** */}
 
                 <div className=" card back">
-                  <Card style={{ width: "340px", height: "485px" }}>
+                  <Card style={{ width: "250px", height: "371.5px" }}>
                     <div className="card-top-header">
                       <Row className="card-header-labels">
                         <Col>
@@ -271,7 +302,8 @@ function PostBoardCard() {
                           {" "}
                           <CalendarEvent /> Date Posted:
                         </Col>
-                        <Col><Building /> Zipcode:
+                        <Col>
+                          <GeoAlt /> Zipcode:
                         </Col>
                       </Row>
                       {/* User Post input */}
@@ -282,51 +314,66 @@ function PostBoardCard() {
                       </Row>
                     </div>
 
-                    <Card.Body>
-                      <Card.Title>{userPost.title} </Card.Title>
-                      <p>{userPost.slowBody}</p>
-                      <ListGroup>
-                        <ListGroup.Item variant="secondary">
-                          <span className="font-weight-bold"> Listing Type: </span>
-                          {userPost.gearListingType}
-                        </ListGroup.Item>
-                        <ListGroup.Item  >
-                          <span className="font-weight-bold"> Zipcode: </span>
-                          {userPost.userZip}
-                        </ListGroup.Item>
-                        <ListGroup.Item variant="secondary">
-                          <span className="font-weight-bold"> Gear Price: $ </span>
-                          {userPost.gearPrice}
-                        </ListGroup.Item>
-                      </ListGroup>
+                    <Card.Body className="table-text">
+                      <Card.Title className="info-card-title">
+                        {userPost.title}{" "}
+                      </Card.Title>
+                      <p className="info-card-body">{userPost.slowBody}</p>
+
+                      <Row className="mx-auto">
+                        <Col>
+                          <Badge variant="success">
+                            {" "}
+                            <CashStack style={{ marginBottom: "3.25px" }} /> $
+                            {userPost.gearPrice} or trade
+                          </Badge>
+                        </Col>
+                        <Col>
+                          <Badge variant="warning">
+                            {" "}
+                            <Gem style={{ marginBottom: "3.25px" }} />{" "}
+                            {userPost.gearListingType}
+                          </Badge>
+                        </Col>
+                      </Row>
+                      <Row>
+                        <Col>
+                          <Badge variant="primary">
+                            {" "}
+                            <Gem style={{ marginBottom: "3.25px" }} />
+                            {userPost.gearType}
+                          </Badge>
+                        </Col>
+                      </Row>
                     </Card.Body>
 
                     <Card.Body>
                       <Row className="text-center mx-auto">
                         <Col>
                           <Button
-                            className="ard-info-btn btn btn-lg btn-info"
+                            className="btn btn-sm btn-info mt-4"
                             onClick={handleClick}
                           >
-                            Go Back
+                            <ArrowLeftCircleFill
+                              style={{ marginBottom: "3.65px" }}
+                            />{" "}
+                            Back
                           </Button>
                         </Col>
-                        {/* <Col>
-                        <Button className="card-contact-btn btn btn-lg btn-info" >
-                          Contact
-                        </Button>
-                      </Col> */}
+                        <Col>
+                          <ReportPostModal />
+                        </Col>
                       </Row>
                     </Card.Body>
                   </Card>
-
                 </div>
               </ReactCardFlip>
 
-              {/* CARD SIDE */}
+              {/* UNDER CARD */}
               {/* ***************************** */}
+
               <div className="under-card" style={revealUnderCard}>
-                <Card style={{ width: "21.5rem", height: "30.3rem" }}>
+                <Card style={{ width: "250px", height: "340px" }}>
                   <div className="card-top-header">
                     <Row className="card-header-labels">
                       <Col>
@@ -336,7 +383,8 @@ function PostBoardCard() {
                         {" "}
                         <CalendarEvent /> Date Posted:
                       </Col>
-                      <Col><Building /> Zipcode:
+                      <Col>
+                        <GeoAlt /> Zipcode:
                       </Col>
                     </Row>
                     {/* User Post input */}
@@ -347,49 +395,43 @@ function PostBoardCard() {
                     </Row>
                   </div>
                   <Card.Body>
-                    <Card.Title>Contact: </Card.Title>
+                    {/* <Row>
+                      <Col>
+                        <Badge variant="success" className="mb-2">
+                          {" "}
+                          <CashStack style={{ marginBottom: "3.25px" }} /> $
+                          {userPost.gearPrice} or trade
+                        </Badge>
+                      </Col>
+                      <Col>
+                        <Badge variant="warning" className="mb-2">
+                          {" "}
+                          <CashStack style={{ marginBottom: "3.25px" }} />{" "}
+                          {userPost.gearListingType}
+                        </Badge>
+                      </Col>
+                    </Row> */}
+                    <Card.Title className="text-center"> <Mailbox2 style={{marginBottom:"4.8px"}}/> Contact </Card.Title>
                     <ListGroup>
                       <ListGroup.Item>
-                        <span className="font-weight-bold">
-                          <svg
-                            width="1.3em"
-                            height="1.3em"
-                            viewBox="0 0 20 20"
-                            class="bi bi-person-lines-fill"
-                            fill="currentColor"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              fill-rule="evenodd"
-                              d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm7 1.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm2 9a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5z"
-                              
-                            />
-                          </svg>{" "}  Email:
+                        <span className="font-weight-bold contact-text">
+                          <At />
+                          Email:
                         </span>
 
-                        <span>
+                        <span className="contact-text">
                           {" "}
                           <a href={mailTo}>{userPost.userEmail}</a>
                         </span>
                       </ListGroup.Item>
                       <ListGroup.Item>
-                        <span className="font-weight-bold">
-                          <svg
-                            width="1.3em"
-                            height="1.3em"
-                            viewBox="0 0 20 20"
-                            class="bi bi-telephone-fill"
-                            fill="currentColor"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              fill-rule="evenodd"
-                              d="M2.267.98a1.636 1.636 0 0 1 2.448.152l1.681 2.162c.309.396.418.913.296 1.4l-.513 2.053a.636.636 0 0 0 .167.604L8.65 9.654a.636.636 0 0 0 .604.167l2.052-.513a1.636 1.636 0 0 1 1.401.296l2.162 1.681c.777.604.849 1.753.153 2.448l-.97.97c-.693.693-1.73.998-2.697.658a17.47 17.47 0 0 1-6.571-4.144A17.47 17.47 0 0 1 .639 4.646c-.34-.967-.035-2.004.658-2.698l.97-.969z"
-                            />
-                          </svg>{" "}
-                          Number:
+                        <span className="font-weight-bold contact-text">
+                          <TelephoneFill /> Number:
                         </span>
-                        <span> {userPost.userPhone}</span>
+                        <span className="contact-text">
+                          {" "}
+                          {userPost.userPhone}
+                        </span>
                       </ListGroup.Item>
                       <ListGroup.Item>
                         <CardReplyModal />
@@ -401,15 +443,20 @@ function PostBoardCard() {
                     <Row className="text-center mx-auto">
                       <Col>
                         <Button
-                          className="ard-info-btn btn btn-lg btn-info"
+                          className="btn btn-sm btn-info mt-4"
                           onClick={flipUnderCardBack}
                         >
-                          Go Back
+                          <ArrowLeftCircleFill
+                            style={{ marginBottom: "3.65px" }}
+                          />{" "}
+                          Back
                         </Button>
                       </Col>
+                      <Col>
+                        <ReportPostModal />
+                      </Col>
                     </Row>
-                  </Card.Body> 
-                  <ReportPostModal />
+                  </Card.Body>
                 </Card>
               </div>
             </div>
@@ -422,60 +469,10 @@ function PostBoardCard() {
 
 export default PostBoardCard;
 
-// CARD UNDERNEATH
+// CARD VERSION 1.3
 // ******************************************************************************************* //
-{
-  /* ***************************** */
-}
-{
-  /* CARD SIDE */
-}
-{
-  /* ***************************** */
-}
-{
-  /* <div className="under-card" style={}>
+/* 
 
-                <Card style={{ width: "21.5rem", height: "30rem" }}>
-                  <div className="card-top-header">
-                    <Row className="card-header-labels">
-                      <Col>Posted By:</Col>
-                      <Col>Date Posted:</Col>
-                      <Col>Zipcode:</Col>
-                    </Row>
-                    <Row className="card-header-user-input">
-                      <Col>Asmongo5124</Col>
-                      <Col>10/12/20</Col>
-                      <Col>E29B2R</Col>
-                    </Row>
-                  </div>
-                  <Card.Body>
-                    <Card.Title>Contact: </Card.Title>
-                    <ListGroup>
-                      <ListGroup.Item>
-                        <span><svg width="1.3em" height="1.3em" viewBox="0 0 20 20" class="bi bi-person-lines-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                          <path fill-rule="evenodd" d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm7 1.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm2 9a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5z" />
-                        </svg> Email:</span>
-                        <span> {userPost.userEmail}</span>
-                      </ListGroup.Item>
-                      <ListGroup.Item>
-                        <span><svg width="1.3em" height="1.3em" viewBox="0 0 20 20" class="bi bi-telephone-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                          <path fill-rule="evenodd" d="M2.267.98a1.636 1.636 0 0 1 2.448.152l1.681 2.162c.309.396.418.913.296 1.4l-.513 2.053a.636.636 0 0 0 .167.604L8.65 9.654a.636.636 0 0 0 .604.167l2.052-.513a1.636 1.636 0 0 1 1.401.296l2.162 1.681c.777.604.849 1.753.153 2.448l-.97.97c-.693.693-1.73.998-2.697.658a17.47 17.47 0 0 1-6.571-4.144A17.47 17.47 0 0 1 .639 4.646c-.34-.967-.035-2.004.658-2.698l.97-.969z" />
-                        </svg> Number:</span>
-                        <span>  {userPost.userPhone}</span>
-                      </ListGroup.Item>
-                    </ListGroup>
-                  </Card.Body>
 
-                  <Card.Body>
-                    <Row className="text-center mx-auto">
-                      <Col>
-                        <Button className="ard-info-btn btn btn-lg btn-info" onClick={}>
-                          Go Back
-                        </Button>
-                      </Col>
-                    </Row>
-                  </Card.Body>
-                </Card>
-              </div> */
-}
+
+*/

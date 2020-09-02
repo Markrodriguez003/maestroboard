@@ -1,6 +1,6 @@
 import React from "react";
 import "./css/UserAccountBadgePanel.css";
-import { PieChart } from "react-bootstrap-icons"; // Importing Bootstrap Icon Components
+import { PieChartFill } from "react-bootstrap-icons"; // Importing Bootstrap Icon Components
 import { Form, Badge, Button, Row, Col } from "react-bootstrap";
 
 const userProfileDetails = {
@@ -15,7 +15,7 @@ function UserAccountBadgePanel() {
     <div className="userBadgeContainer-bg mx-auto text-center">
       <h4 className="lead display-4 text-black float-left ml-3">
         <span>
-          <PieChart />
+          <PieChartFill />
         </span>{" "}
         Account Updates{" "}
       </h4>

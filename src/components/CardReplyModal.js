@@ -13,7 +13,7 @@ function CardReplyModal() {
 
   return (
     <div>
-      <Button variant="primary" onClick={handleShow}>
+      <Button variant="primary" size="sm" onClick={handleShow}>
       Reply via Maestroboard
       </Button>
 
