@@ -37,7 +37,9 @@ import {
 } from "react-bootstrap"; // Importing Bootstrap Components
 // ***********************************************************************************************************************
 
+import pushPin from "./post-imgs/notecard1.png"
 // USER INFO
+
 // Example User Pictures
 import cardImgA from "./imgs/postImg2.jpg";
 import cardImgB from "./imgs/postImg3.jpg";
@@ -117,9 +119,11 @@ function PostBoardCard() {
               {/* ***************************** */}
 
               <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
+              
                 <div className="card front">
                   <Card style={{ width: "250px", height: "370px" }}>
                     <div className="card-top-header">
+                    {/* <img src={pushPin} alt="pushpin ></img> */}
                       <Row className="card-header-labels">
                         <Col>
                           <People /> Posted By:
