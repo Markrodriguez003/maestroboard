@@ -1,6 +1,7 @@
 import React from "react";
 import "./css/Header.css";
 import { Nav, Navbar, Row, Col } from "react-bootstrap";
+import {Link} from "react-router-dom" // Wrap it around li or nav elements to link to specific pages
 
 function Header() {
   return (
@@ -11,7 +12,7 @@ function Header() {
       variant="dark"
       className="main-header"
     >
-      <a href="#">
+      <a href="/myprofile">
         <img
           className="header-icon"
           src="./assets/imgs/Maestro-Logo-R.png"
@@ -20,7 +21,7 @@ function Header() {
       </a>
       <Row>
         <Col>
-          <Navbar.Brand href="#home" className="header-title d-flex">
+          <Navbar.Brand href="/home" className="header-title d-flex">
             MaestroBoard
             <small className="header-small-text">
               buy. sell. trade.connect. |{"  "}
@@ -43,19 +44,19 @@ function Header() {
       <Navbar.Collapse id="responsive-navbar-nav header-menu-center">
         <Nav className="mr-auto"></Nav>
         <Nav className="header-container header-menu-center">
-          <Nav.Link href="#" className="header-items">
+          <Nav.Link href="/board" className="header-items">
             Community Board
           </Nav.Link>
-          <Nav.Link href="#" className="header-items">
+          <Nav.Link href="/news" className="header-items">
             News
           </Nav.Link>
-          <Nav.Link href="#" className="header-items">
+          <Nav.Link href="/forum" className="header-items">
             Forum
           </Nav.Link>
-          <Nav.Link href="#" className="header-items">
+          <Nav.Link href="/myprofile" className="header-items">
             My Profile
           </Nav.Link>
-          <Nav.Link eventKey={2} href="#memes" className="header-items">
+          <Nav.Link eventKey={2} href="/login" className="header-items">
             Log in
           </Nav.Link>
         </Nav>

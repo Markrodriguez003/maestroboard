@@ -4,6 +4,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import corkboardImg from "./imgs/User-Corkboard.jpg";
 import PostBoardCard from "./PostBoardCard";
+import BoardPostModal from "./BoardPostModal";
 import CardReplyModal from "./CardReplyModal";
 import { GearFill } from "react-bootstrap-icons"; // Importing Bootstrap Icon Components
 
@@ -28,7 +29,7 @@ function Corkboard() {
         {/* ********************************************************************** */}
         {/* CORKBOARD HEADER */}
         {/* ********************************************************************** */}
-        <h4 className="display-4 corkBoard-title">Community Board</h4>
+        <h4 className="display-4 corkBoard-title">Community Board <span className="lead"> - Search or post all your music needs here!</span></h4>
 
         {/* ************************ */}
         {/* FILTER - SEARCH BUTTONS */}
@@ -122,7 +123,7 @@ function Corkboard() {
               </Col>
               <Col xs sm md lg={2}>
                 {" "}
-                <Button variant="success">Create Post!</Button>{" "}
+                <BoardPostModal />
               </Col>
             </Row>
           </div>

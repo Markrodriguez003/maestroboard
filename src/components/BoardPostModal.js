@@ -1,11 +1,11 @@
 import { useState } from "react";
 import React from "react";
 import { Button, Modal, Row, Col, Form } from "react-bootstrap";
-import ReplyForm from "./ReplyForm"
+import BoardPostForm from "./BoardPostForm"
 import { Reply, BackspaceReverse } from "react-bootstrap-icons"; // Importing Bootstrap Icon Components
 
 
-function CardReplyModal() {
+function BoardPostModal() {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -13,8 +13,8 @@ function CardReplyModal() {
 
   return (
     <div>
-      <Button variant="primary" size="sm" onClick={handleShow}>
-      Reply via Maestroboard
+      <Button variant="info" size="md" className="ml-3" onClick={handleShow}>
+      Create Post!
       </Button>
 
       <Modal
@@ -24,18 +24,18 @@ function CardReplyModal() {
         keyboard={false}
       >
         <Modal.Header closeButton>
-          <Modal.Title className="text-center mx-auto">Send a MaestroBoard Reply Message</Modal.Title>
+          <Modal.Title className="text-center mx-auto">Create a Post</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-                  <ReplyForm / >
+                  <BoardPostForm / >
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="danger" className="mx-auto text-center" onClick={handleClose}> <BackspaceReverse /> Cancel Reply </Button>
-          <Button variant="info" className="mx-auto text-center"><Reply/> Send Reply</Button>
+          <Button variant="danger" className="mx-auto text-center" onClick={handleClose}> <BackspaceReverse /> Cancel Post </Button>
+          <Button variant="info" className="mx-auto text-center"><Reply/> Create Post</Button>
         </Modal.Footer>
       </Modal>
     </div>
   );
 }
 
-export default CardReplyModal;
+export default BoardPostModal;

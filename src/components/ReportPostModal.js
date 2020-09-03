@@ -29,12 +29,9 @@ function CardReplyModal() {
         <Modal.Body>
           <ReportForm />
         </Modal.Body>
-        <Modal.Footer className="modal-footer">
-          <Button variant="danger" onClick={handleClose}>
-            {" "}
-            <BackspaceReverse /> Cancel{" "}
-          </Button>
-          <Button variant="info" className="mx-auto text-center reportPost-btn">
+        <Modal.Footer className="modal-footer">   
+          <Button variant="danger" className="mx-auto text-center" onClick={handleClose}><BackspaceReverse /> Cancel</Button>
+          <Button variant="info" className="mx-auto text-center">
             <Reply /> Report
           </Button>
         </Modal.Footer>

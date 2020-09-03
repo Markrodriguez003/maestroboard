@@ -12,7 +12,7 @@ function ReplyForm() {
     <div>
       <InputGroup className="mb-3">
         <InputGroup.Prepend>
-          <InputGroup.Text id="basic-addon1">Title:</InputGroup.Text>
+          <InputGroup.Text id="basic-addon1"><span className="font-weight-bold">Title:</span></InputGroup.Text>
         </InputGroup.Prepend>
         <FormControl
           placeholder=""
@@ -22,14 +22,14 @@ function ReplyForm() {
       </InputGroup>
       <InputGroup>
         <InputGroup.Prepend>
-          <InputGroup.Text>Message:</InputGroup.Text>
+          <InputGroup.Text><span className="font-weight-bold">Message:</span></InputGroup.Text>
         </InputGroup.Prepend>
-        <FormControl as="textarea" rows="8" aria-label="With textarea" />
+        <FormControl as="textarea" rows="6" aria-label="With textarea" />
       </InputGroup>
 
-      <InputGroup className="mb-3">
+      <InputGroup className="mb-3 mt-3">
         <InputGroup.Prepend>
-          <InputGroup.Text id="basic-addon1">CounterOffer:</InputGroup.Text>
+          <InputGroup.Text id="basic-addon1"><span className="font-weight-bold">Counter-offer:</span></InputGroup.Text>
         </InputGroup.Prepend>
         <FormControl
           placeholder=""
