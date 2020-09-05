@@ -5,6 +5,7 @@ import { Row, Col, Figure, Button, Card, Accordion, Jumbotron } from "react-boot
 import IntroInfoBlock from "./IntroInfoBlock";
 import NewUserInfoAccordion from "./NewUserInfoAccordion";
 import PostCounter from "./PostCounter";
+import ForumPostCounter from "./ForumPostCounter";
 import Header from "./Header";
 import Footer from "./Footer";
 
@@ -155,6 +156,7 @@ function IntroSplashPage() {
           </Col>
         </Row>
       </article>
+      <ForumPostCounter />
       {/* ******************************************************************************************************/}
       <IntroInfoBlock />
       <PostCounter />

@@ -1,9 +1,6 @@
 import React from "react";
 import "./css/PostCounter.css";
-import { Key } from "react-bootstrap-icons"; // Importing Bootstrap Icon Components
-import Header from "./Header"
-import Footer from "./Footer"
-import { Button, Row, Col, Jumbotron } from "react-bootstrap";
+ import { Button, Row, Col, Jumbotron } from "react-bootstrap";
 
 function PostCounter(props) {
     return (

@@ -1,52 +1,62 @@
 {
-  "name": "maestroboard",
-  "version": "0.1.0",
-  "private": true,
-  "description": "The ultimate support site for musicians and artists! Buy, sell and trade music gear and look for your next gig!",
-  "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
-    "@testing-library/user-event": "^7.2.1",
-    "body-parser-json": "^1.9.2",
-    "bootstrap": "^4.5.2",
-    "concurrently": "^5.3.0",
-    "express": "^4.17.1",
-    "mongoose": "^5.10.3",
-    "react": "^16.13.1",
-    "react-bootstrap": "^1.3.0",
-    "react-bootstrap-icons": "^1.0.3-alpha5",
-    "react-card-flip": "^1.0.11",
-    "react-dom": "^16.13.1",
-    "react-flip-page": "^1.6.2",
-    "react-multi-carousel": "^2.5.5",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.3",
-    "simple-react-lightbox": "^3.3.4-1"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "server": "nodemon server.js"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.4",
-    "prettier": "^2.1.1"
+    "name": "maestroboard",
+    "version": "0.1.0",
+    "private": true,
+    "author": "Mark Anthony Patrick Rodriguez <Markrodriguez003@gmail.com>",
+    "license": "SEE LICENSE IN",
+    "description": "The ultimate support site for musicians and artists! Buy, sell and trade music gear and look for your next gig!",
+    "main": "server.js",
+    "dependencies": {
+      "@testing-library/jest-dom": "^4.2.4",
+      "@testing-library/react": "^9.5.0",
+      "@testing-library/user-event": "^7.2.1",
+      "bootstrap": "^4.5.2",
+      "concurrently": "^5.3.0",
+      "express": "^4.17.1",
+      "if-env": "^1.0.4",
+      "react": "^16.13.1",
+      "react-bootstrap": "^1.3.0",
+      "react-bootstrap-icons": "^1.0.3-alpha5",
+      "react-card-flip": "^1.0.11",
+      "react-dom": "^16.13.1",
+      "react-flip-page": "^1.6.2",
+      "react-multi-carousel": "^2.5.5",
+      "react-scripts": "3.4.3",
+      "react-router-dom": "^5.2.0",
+      "simple-react-lightbox": "^3.3.4-1",
+      "body-parser-json": "^1.9.2",
+      "mongoose": "^5.10.3"
+    },
+    
+    "proxy": "http://localhost:3005",
+    "scripts": {
+      "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+      "start:prod": "node server.js",
+      "start:dev": "concurrently \"nodemon server\" \"npm run ReactStart\"",
+      "client": "npm run start",
+      "seed": "node scripts/seedDB.js",
+      "build": "npm run build",
+      "heroku-postbuild": "npm run build",
+      "ReactStart": "react-scripts start" 
+    },
+    "eslintConfig": {
+      "extends": "react-app"
+    },
+    "browserslist": {
+      "production": [
+        ">0.2%",
+        "not dead",
+        "not op_mini all"
+      ],
+      "development": [
+        "last 1 chrome version",
+        "last 1 firefox version",
+        "last 1 safari version"
+      ]
+    },
+    "devDependencies": {
+      "concurrently": "^5.3.0",
+      "nodemon": "^2.0.4",
+      "prettier": "^2.1.1"
+    }
   }
-}
