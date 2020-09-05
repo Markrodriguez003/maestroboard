@@ -34,20 +34,28 @@
 }
 
 .newbie-card {
-    padding:-22px;
-    background-color: rgba(85, 39, 85, 0.568) !important;
+    padding: -22px;
+    background-color: rgba(85, 39, 85, 0.528) !important;
     padding: 2px !important;
 }
 
 .main-jumbotron {
-    background-color: rgb(104, 50, 104) !important;
+    /* background-color: rgb(104, 50, 104) !important; */
+    /* background-image: url("../imgs/MusicNotes2.png");
+    background-size: contain;
+    background-repeat: repeat;
+    background-blend-mode: multiply; */
+    background: #572A57;
+    background: -moz-linear-gradient(top, #572A57 0%, #683268 100%);
+    background: -webkit-linear-gradient(top, #572A57 0%, #683268 100%);
+    background: linear-gradient(to bottom, #572A57 0%, #683268 100%);
     border-radius: 99px !important;
     color: white;
-    
     margin-left: auto;
     margin-right: auto;
     text-align: center;
-    padding:2px !important;
+    padding: 22px !important;
+    border: 2px rgba(10, 10, 10, 0.233) solid;
 }
 
 .newbie-accordion {
@@ -60,20 +68,19 @@
 .main-jumbotron h1 {
     font-size: 48px;
     color: white;
-
 }
 
 .muse-logo {
     border: white 2px solid;
     border-radius: 100%;
     display: block;
-    width: 347px;
+    width: 320px;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
 }
 
-.newbie-ul li{
+.newbie-ul li {
     /* align-content: center;
     align-items: center;
     text-align: center;
@@ -81,4 +88,8 @@
     padding:-2px; */
     list-style-position: inside;
     float: left;
+}
+
+.newUserInfo-btn{
+    background-color: #994399 !important; 
 }

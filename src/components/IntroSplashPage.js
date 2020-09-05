@@ -1,26 +1,22 @@
 import React from "react";
-import "./css/ArticleBlock.css";
+import "./css/IntroSplashPage.css";
 import { ArrowRightCircle } from "react-bootstrap-icons"; // Importing Bootstrap Icon Components
-import {
-  Row,
-  Col,
-  Figure,
-  Button,
-  Card,
-  Accordion,
-  Jumbotron,
-} from "react-bootstrap";
+import { Row, Col, Figure, Button, Card, Accordion, Jumbotron } from "react-bootstrap";
 import IntroInfoBlock from "./IntroInfoBlock";
 import NewUserInfoAccordion from "./NewUserInfoAccordion";
+import PostCounter from "./PostCounter";
 import Header from "./Header";
 import Footer from "./Footer";
+
+
+
 import art1 from "./article-imgs/Article-6.png";
 import art2 from "./article-imgs/Article-7.jpg";
 import art3 from "./article-imgs/Article-8.jpg";
 import art4 from "./article-imgs/Article-10.jpg";
 import muse from "./imgs/muse.png";
 
-function ArticleBlock() {
+function IntroSplashPage() {
   return (
     // xs, sm, md, lg , and x
     <div>
@@ -44,9 +40,9 @@ function ArticleBlock() {
       {/* ******************************************************************************************************/}
       {/* THIRD  ARTICLE */}
       {/* ******************************************************************************************************/}
-      
-        <NewUserInfoAccordion />
-      
+
+      <NewUserInfoAccordion />
+
       <article className="article-container ">
         <Row>
           <Col xs sm md lg={6}>
@@ -161,9 +157,10 @@ function ArticleBlock() {
       </article>
       {/* ******************************************************************************************************/}
       <IntroInfoBlock />
+      <PostCounter />
       <Footer />
     </div>
   );
 }
 
-export default ArticleBlock;
+export default IntroSplashPage;

@@ -47,7 +47,7 @@ import cardImgC from "./imgs/postImg4.jpg";
 import cardImgD from "./imgs/postImg5.jpg";
 import cardImgE from "./imgs/postImg6.jpg";
 import cardImgF from "./imgs/postImg6.jpg";
-import cardImgG from "./imgs/postImg7.jpg";
+ 
 
 import noteBG from "./post-imgs/notecard5.png";
 // import userCardPostReply from "./userPostReply";

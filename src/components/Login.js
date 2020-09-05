@@ -34,7 +34,14 @@ function Login() {
                     </div>
                     <button type="submit" className="btn btn-info btn-lg login-btn">Log in</button>
                   </form>
-                  <small><a href="#">Need help?</a></small>
+                  <Row>
+                    <Col>
+                      <small><a href="#">Need help?</a></small>
+                    </Col>
+                    <Col>
+                      <small><a href="/signup">Create New Account</a></small>
+                    </Col>
+                  </Row>
                 </div>
               </div>
             </div>
@@ -47,62 +54,3 @@ function Login() {
 }
 
 export default Login;
-
-
-// OLD FORM
-
-
-
-{/* <div className="signup-form-container justify-content-center">
-        <Form>
-          <Form.Row>
-            <Form.Group as={Col} controlId="formGridEmail">
-              <Form.Label>Email</Form.Label>
-              <Form.Control type="email" placeholder="Enter email" />
-            </Form.Group>
-
-            <Form.Group as={Col} controlId="formGridPassword">
-              <Form.Label>Password</Form.Label>
-              <Form.Control type="password" placeholder="Password" />
-            </Form.Group>
-          </Form.Row>
-
-          <Form.Group controlId="formGridAddress1">
-            <Form.Label>Address</Form.Label>
-            <Form.Control placeholder="1234 Main St" />
-          </Form.Group>
-
-          <Form.Group controlId="formGridAddress2">
-            <Form.Label>Address 2</Form.Label>
-            <Form.Control placeholder="Apartment, studio, or floor" />
-          </Form.Group>
-
-          <Form.Row>
-            <Form.Group as={Col} controlId="formGridCity">
-              <Form.Label>City</Form.Label>
-              <Form.Control />
-            </Form.Group>
-
-            <Form.Group as={Col} controlId="formGridState">
-              <Form.Label>State</Form.Label>
-              <Form.Control as="select" defaultValue="Choose...">
-                <option>Choose...</option>
-                <option>...</option>
-              </Form.Control>
-            </Form.Group>
-
-            <Form.Group as={Col} controlId="formGridZip">
-              <Form.Label>Zip</Form.Label>
-              <Form.Control />
-            </Form.Group>
-          </Form.Row>
-
-          <Form.Group id="formGridCheckbox">
-            <Form.Check type="checkbox" label="Check me out" />
-          </Form.Group>
-
-          <Button variant="info" type="submit">
-            Submit
-  </Button>
-        </Form>
-      </div> */}

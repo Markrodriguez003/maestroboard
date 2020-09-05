@@ -125,6 +125,7 @@ function Corkboard() {
                 {" "}
                 <BoardPostModal />
               </Col>
+              
             </Row>
           </div>
         </Container>
@@ -154,10 +155,13 @@ function Corkboard() {
           <Col xs sm md lg={3} className="individualCard">
             <PostBoardCard />
           </Col>
+          <Col xs sm md lg={3} className="individualCard">
+            <PostBoardCard />
+          </Col>
         </Row>
 
         
-        <Row>
+        {/* <Row>
           <Col xs sm md lg={3} className="individualCard">
             <PostBoardCard />
           </Col>
@@ -170,7 +174,7 @@ function Corkboard() {
           <Col xs sm md lg={3} className="individualCard">
             <PostBoardCard />
           </Col>
-        </Row>
+        </Row> */}
       </Container>
       <Footer />
     </div>

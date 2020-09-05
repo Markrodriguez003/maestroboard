@@ -46,7 +46,7 @@ function NewUserInfoAccordion() {
                                     </Col>
                                 </Row>
                                 
-                                    <Button variant="info" className="btn btn-lg mb-3" href="/signup" >Sign Up!</Button>
+                                    <Button variant="info" className="btn btn-lg mb-3 newUserInfo-btn" href="/signup" >Sign Up!</Button>
                                 
                             </Jumbotron>
                         </Card.Body>
