@@ -1,6 +1,6 @@
 import React from "react";
 import "./css/Footer.css";
-import { ArrowUpCircle } from "react-bootstrap-icons"; // Importing Bootstrap Icon Components
+// import { ArrowUpCircle } from "react-bootstrap-icons"; // Importing Bootstrap Icon Components
 
 import { Navbar, Row, Col } from "react-bootstrap";
 

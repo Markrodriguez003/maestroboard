@@ -62,7 +62,7 @@
     /* z-index: 1; */
     /* display: inline !important; */
     position: absolute;
-    width:100%;
+    /* width:100%; */
     height:auto;
     top:295px;
     left: 38px;
@@ -72,15 +72,23 @@
 
 .boardCard{
 background-color: purple;
- 
+        width:100%;
     /* width:250%; */
     /* background-color: red; */
     
 }
 
 .individualCard{
-    width:100%;
+    /* width:100%; */
+    /* flex: 0 0 6.666667% !important;
+    max-width: 36.666667% !important; */
+
 } 
+
+.carousel-container{
+     /* margin-right: -600px; */
+
+}
 
 
 /* ************************ */

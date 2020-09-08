@@ -1,7 +1,7 @@
 import React from "react";
 import "./css/UserAccountBadgePanel.css";
 import { PieChartFill } from "react-bootstrap-icons"; // Importing Bootstrap Icon Components
-import { Form, Badge, Button, Row, Col } from "react-bootstrap";
+import {Badge, Button, Row, Col } from "react-bootstrap";
 
 const userProfileDetails = {
   forumAlerts: 5,

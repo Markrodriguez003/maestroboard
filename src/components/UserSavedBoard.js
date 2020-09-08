@@ -1,17 +1,16 @@
 import React from "react";
 import "./css/UserSavedBoard.css";
-import corkboardImg from "./imgs/User-Corkboard.jpg";
+// import corkboardImg from "./imgs/User-Corkboard.jpg";
 import { TextareaResize, CaretDown } from "react-bootstrap-icons"; // Importing Bootstrap Icon Components
-import Header from "./Header";
-import Footer from "./Footer";
-import UserAccountBadgePanel from "./UserAccountBadgePanel";
-import UserAccountDetailsPanel from "./UserAccountDetailsPanel";
+// import Header from "./Header";
+// import Footer from "./Footer";
+// import UserAccountBadgePanel from "./UserAccountBadgePanel";
+// import UserAccountDetailsPanel from "./UserAccountDetailsPanel";
 import PostBoardCard from "./PostBoardCard";
 import {
   Card,
   Accordion,
   Carousel,
-  Form,
   Button,
   Row,
   Col,

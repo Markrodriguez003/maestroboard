@@ -1,10 +1,14 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import "./css/SignUpForm.css";
-import { PersonCircle } from "react-bootstrap-icons"; // Importing Bootstrap Icon Components
+// import { PersonCircle } from "react-bootstrap-icons"; // Importing Bootstrap Icon Components
 
-import { Form, Button, Row, Col } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import Header from "./Header"
 import Footer from "./Footer"
+
+let [userInfo, setUserInfo] = useState({})
+let [acctUserName, setacctUserName] = useState('')
+let [acctUserPass, setacctUserPass] = useState('')
 
 const accountLogo = ""
 function SignUpForm() {

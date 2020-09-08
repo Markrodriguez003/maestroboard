@@ -56,14 +56,14 @@ require("./controller/API_Get_Routes.js")(app);
 //   })
 
 // * Loads an array of "post objects Used function to have async / await before running any routes
-// async function loadPosts() {
-//   await Post.insertMany(ex.examplePosts, (err, confirm) => {
-//     if (err) {
-//       console.log("An error has occured bulk inserting posts::::: " + err)
-//     }
-//     console.log("Bulk insert of posts has sucessfully been created!::::: ");
-//   })
-// }
+async function loadPosts() {
+  await Post.insertMany(ex.examplePosts, (err, confirm) => {
+    if (err) {
+      console.log("An error has occured bulk inserting posts::::: " + err)
+    }
+    console.log("Bulk insert of posts has sucessfully been created!::::: ");
+  })
+}
 
 // Loads Posts
 // loadPosts();

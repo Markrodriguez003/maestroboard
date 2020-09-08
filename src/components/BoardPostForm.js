@@ -1,7 +1,7 @@
 import  React, {useState} from "react";
 // import "./css/SignUpForm.css";
-import { PersonCircle } from "react-bootstrap-icons"; // Importing Bootstrap Icon Components
-import { Form, Button, Row, Col, Dropdown, InputGroup, FormControl } from "react-bootstrap";
+// import { PersonCircle } from "react-bootstrap-icons"; // Importing Bootstrap Icon Components
+import { Dropdown, InputGroup} from "react-bootstrap";
 import FormSelector from "./FormSelector";
 
 const accountLogo = "";

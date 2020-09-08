@@ -1,6 +1,6 @@
 import React from "react";
 import "./css/SiteButton.css";
-import { Row, Col, Button, Container } from "react-bootstrap";
+import {Button, Container } from "react-bootstrap";
 
 function SiteButton() {
   return (

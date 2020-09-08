@@ -29,15 +29,13 @@ import {
   Card,
   Badge,
   ListGroup,
-  ListGroupItem,
   Row,
   Col,
-  Container,
   Button,
 } from "react-bootstrap"; // Importing Bootstrap Components
 // ***********************************************************************************************************************
 
-import pushPin from "./post-imgs/notecard1.png"
+// import pushPin from "./post-imgs/notecard1.png"
 // USER INFO
 
 // Example User Pictures
@@ -46,34 +44,13 @@ import cardImgB from "./imgs/postImg3.jpg";
 import cardImgC from "./imgs/postImg4.jpg";
 import cardImgD from "./imgs/postImg5.jpg";
 import cardImgE from "./imgs/postImg6.jpg";
-import cardImgF from "./imgs/postImg6.jpg";
- 
-
-import noteBG from "./post-imgs/notecard5.png";
-// import userCardPostReply from "./userPostReply";
-
-let userPost = {
-  userName: "Asmongo1S4",
-  userEmail: "amsongo22@gmail.com",
-  userPhone: "08645897755",
-  postDate: "1/24/22",
-  userZip: "0G4WE21",
-  gearPrice: 200.0,
-  gearType: "Studio-Equipment",
-  gearListingType: "Selling-Gear",
-  title: "AKAI MIDI 23X PAD CONSOLE FOR SALE!",
-  slowBody:
-    "Barely used and kept in a smoke free studio. Tested and it's 100% working. Comes with USB cable. Asking for $200.00 CASH or trade for bass. Velocity and LED lighting on all buttons and faders throw smoothly. Rotary knobs are smooth with no lag. All menu functions work perfectly as well. ",
-};
-
-let mailTo = "mailto:" + userPost.userEmail;
 
 // ***********************************************************************************************************************
 
-function PostBoardCard() {
+function PostBoardCard(prop) {
   const [isFlipped, setIsFlipped] = useState(false);
   const [revealUnderCard, setRevealUnderCard] = useState({});
-  const [revealUnderCardBack, setRevealUnderCardBack] = useState({});
+  // const [revealUnderCardBack, setRevealUnderCardBack] = useState({});
 
   function flipUnderCard() {
     console.log("Sliding under card");
@@ -119,11 +96,11 @@ function PostBoardCard() {
               {/* ***************************** */}
 
               <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
-              
+
                 <div className="card front">
                   <Card style={{ width: "250px", height: "370px" }}>
                     <div className="card-top-header">
-                    {/* <img src={pushPin} alt="pushpin ></img> */}
+                      {/* <img src={pushPin} alt="pushpin ></img> */}
                       <Row className="card-header-labels">
                         <Col>
                           <People /> Posted By:
@@ -138,9 +115,9 @@ function PostBoardCard() {
                       </Row>
                       {/* User Post input */}
                       <Row className="card-header-user-input">
-                        <Col>Asmongo5124</Col>
-                        <Col>10/12/20</Col>
-                        <Col>E29B2R</Col>
+                        <Col>{prop.username}</Col>
+                        <Col>{Date}</Col>
+                        <Col>{prop.zip}</Col>
                       </Row>
                     </div>
                     <Row className="mx-auto">
@@ -148,14 +125,14 @@ function PostBoardCard() {
                         <Badge variant="success">
                           {" "}
                           <CashStack style={{ marginBottom: "3.25px" }} /> $
-                          {userPost.gearPrice} or trade
+                          {prop.price} {prop.trade}
                         </Badge>
                       </Col>
                       <Col>
                         <Badge variant="warning">
                           {" "}
                           <Gem style={{ marginBottom: "3.25px" }} />{" "}
-                          {userPost.gearListingType}
+                          {prop.type}
                         </Badge>
                       </Col>
                     </Row>
@@ -255,7 +232,7 @@ function PostBoardCard() {
                     </SRLWrapper>
                     <Card.Body>
                       <Card.Title className="post-title-text text-center mx-auto">
-                        {userPost.title}
+                        {prop.title}
                       </Card.Title>
                       {/* <Card.Text className="post-quickBody-text">
                         {userPost.quickBody}
@@ -312,31 +289,31 @@ function PostBoardCard() {
                       </Row>
                       {/* User Post input */}
                       <Row className="card-header-user-input">
-                        <Col>Asmongo5124</Col>
-                        <Col>10/12/20</Col>
-                        <Col>E29B2R</Col>
+                        <Col>{prop.username}</Col>
+                        <Col>{prop.date}</Col>
+                        <Col>{prop.zip}</Col>
                       </Row>
                     </div>
 
                     <Card.Body className="table-text">
                       <Card.Title className="info-card-title">
-                        {userPost.title}{" "}
+                        {prop.title}{" "}
                       </Card.Title>
-                      <p className="info-card-body">{userPost.slowBody}</p>
+                      <p className="info-card-body">{prop.body}</p>
 
                       <Row className="mx-auto">
                         <Col>
                           <Badge variant="success">
                             {" "}
                             <CashStack style={{ marginBottom: "3.25px" }} /> $
-                            {userPost.gearPrice} or trade
+                            {prop.price} {prop.trade}
                           </Badge>
                         </Col>
                         <Col>
                           <Badge variant="warning">
                             {" "}
                             <Gem style={{ marginBottom: "3.25px" }} />{" "}
-                            {userPost.gearListingType}
+                            {prop.type}
                           </Badge>
                         </Col>
                       </Row>
@@ -345,7 +322,7 @@ function PostBoardCard() {
                           <Badge variant="primary">
                             {" "}
                             <Gem style={{ marginBottom: "3.25px" }} />
-                            {userPost.gearType}
+                            {prop.equipment}
                           </Badge>
                         </Col>
                       </Row>
@@ -393,9 +370,9 @@ function PostBoardCard() {
                     </Row>
                     {/* User Post input */}
                     <Row className="card-header-user-input">
-                      <Col>Asmongo5124</Col>
-                      <Col>10/12/20</Col>
-                      <Col>E29B2R</Col>
+                      <Col>{prop.username}</Col>
+                      <Col>{prop.date}</Col>
+                      <Col>{prop.zip}</Col>
                     </Row>
                   </div>
                   <Card.Body>
@@ -415,7 +392,7 @@ function PostBoardCard() {
                         </Badge>
                       </Col>
                     </Row> */}
-                    <Card.Title className="text-center"> <Mailbox2 style={{marginBottom:"4.8px"}}/> Contact </Card.Title>
+                    <Card.Title className="text-center"> <Mailbox2 style={{ marginBottom: "4.8px" }} /> Contact </Card.Title>
                     <ListGroup>
                       <ListGroup.Item>
                         <span className="font-weight-bold contact-text">
@@ -425,7 +402,7 @@ function PostBoardCard() {
 
                         <span className="contact-text">
                           {" "}
-                          <a href={mailTo}>{userPost.userEmail}</a>
+                          <a href={"mailTo" + prop.email}>{prop.email}</a>
                         </span>
                       </ListGroup.Item>
                       <ListGroup.Item>
@@ -434,7 +411,7 @@ function PostBoardCard() {
                         </span>
                         <span className="contact-text">
                           {" "}
-                          {userPost.userPhone}
+                          {prop.phone}
                         </span>
                       </ListGroup.Item>
                       <ListGroup.Item>
@@ -473,10 +450,3 @@ function PostBoardCard() {
 
 export default PostBoardCard;
 
-// CARD VERSION 1.3
-// ******************************************************************************************* //
-/* 
-
-
-
-*/

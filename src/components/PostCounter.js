@@ -1,6 +1,6 @@
 import React from "react";
 import "./css/PostCounter.css";
- import { Button, Row, Col, Jumbotron } from "react-bootstrap";
+ import { Button, Jumbotron } from "react-bootstrap";
 
 function PostCounter(props) {
     return (

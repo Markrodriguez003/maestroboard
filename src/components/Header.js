@@ -1,7 +1,7 @@
 import React from "react";
 import "./css/Header.css";
 import { Nav, Navbar, Row, Col } from "react-bootstrap";
-import {Link} from "react-router-dom" // Wrap it around li or nav elements to link to specific pages
+// import {Link} from "react-router-dom" // Wrap it around li or nav elements to link to specific pages
 
 function Header() {
   return (

@@ -2,17 +2,13 @@ import React from "react";
 import "./css/UserAccountDetailsPanel.css";
 import UserAccountBadgePanel from "./UserAccountBadgePanel";
 import UserSavedBoard from "./UserSavedBoard";
-import corkboardImg from "./imgs/User-Corkboard.jpg";
-import { People, Gear, CaretDown, TextareaResize } from "react-bootstrap-icons"; // Importing Bootstrap Icon Components
+// import corkboardImg from "./imgs/User-Corkboard.jpg";
+import { People, Gear, CaretDown } from "react-bootstrap-icons"; // Importing Bootstrap Icon Components
 import {
   Accordion,
   Container,
   ListGroup,
-  Tabs,
-  Tab,
   Card,
-  Form,
-  Badge,
   Button,
   Row,
   Col,

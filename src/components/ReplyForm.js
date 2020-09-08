@@ -1,10 +1,10 @@
 import React from "react";
 import "./css/SignUpForm.css";
-import { PersonCircle } from "react-bootstrap-icons"; // Importing Bootstrap Icon Components
+// import { PersonCircle } from "react-bootstrap-icons"; // Importing Bootstrap Icon Components
 
-import { Form, Button, Row, Col, InputGroup, FormControl } from "react-bootstrap";
-import Header from "./Header";
-import Footer from "./Footer";
+import { InputGroup, FormControl } from "react-bootstrap";
+// import Header from "./Header";
+// import Footer from "./Footer";
 
 const accountLogo = "";
 function ReplyForm() {

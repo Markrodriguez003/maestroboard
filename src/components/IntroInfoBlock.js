@@ -2,16 +2,16 @@ import React from "react"; // React module for JSX functionaity
 import "./css/IntroInfoBlock.css"; // CSS file for IntroInfoBlock
 import Carousel from "react-multi-carousel"; // Module that adds Carousel functionality
 import "react-multi-carousel/lib/styles.css"; // Module that adds Carousel CSS functionality
-import { SRLWrapper } from "simple-react-lightbox"; //  Lightbox modulehttps://reactjsexample.com/a-simple-but-functional-light-box-for-react/
-import { ArrowRight, ArrowLeft } from "react-bootstrap-icons"; // Importing Bootstrap Icon Components
-import { Row, Col, Container } from "react-bootstrap"; // Importing Bootstrap Components
+// import { SRLWrapper } from "simple-react-lightbox"; //  Lightbox modulehttps://reactjsexample.com/a-simple-but-functional-light-box-for-react/
+// import { ArrowRight, ArrowLeft } from "react-bootstrap-icons"; // Importing Bootstrap Icon Components
+// import { Row, Col, Container } from "react-bootstrap"; // Importing Bootstrap Components
 // ***********************************************************************************************************************
 
 import img1 from "./article-imgs/1.jpg";
 import img2 from "./article-imgs/2.jpg";
 import img3 from "./article-imgs/3.jpg";
-import img4 from "./article-imgs/4.jpg";
-import img5 from "./article-imgs/5.jpg";
+// import img4 from "./article-imgs/4.jpg";
+// import img5 from "./article-imgs/5.jpg";
 
 // const arrowStyle = {
 //   background: "transparent",

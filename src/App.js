@@ -4,8 +4,8 @@ import React from "react";
 // APP CSS
 import "./components/css/App.css";
 
+
 // SITE COMPONENTS
-import Header from "./components/Header";
 import IntroSplashPage from "./components/IntroSplashPage";
 import SimpleReactLightbox from "simple-react-lightbox";
 import Login from "./components/Login";

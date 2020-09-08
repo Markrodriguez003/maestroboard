@@ -1,7 +1,7 @@
 import React from "react";
 import "./css/IntroSplashPage.css";
 import { ArrowRightCircle } from "react-bootstrap-icons"; // Importing Bootstrap Icon Components
-import { Row, Col, Figure, Button, Card, Accordion, Jumbotron } from "react-bootstrap";
+import { Row, Col, Figure } from "react-bootstrap";
 import IntroInfoBlock from "./IntroInfoBlock";
 import NewUserInfoAccordion from "./NewUserInfoAccordion";
 import PostCounter from "./PostCounter";
@@ -13,9 +13,9 @@ import Footer from "./Footer";
 
 import art1 from "./article-imgs/Article-6.png";
 import art2 from "./article-imgs/Article-7.jpg";
-import art3 from "./article-imgs/Article-8.jpg";
-import art4 from "./article-imgs/Article-10.jpg";
-import muse from "./imgs/muse.png";
+// import art3 from "./article-imgs/Article-8.jpg";
+// import art4 from "./article-imgs/Article-10.jpg";
+// import muse from "./imgs/muse.png";
 
 function IntroSplashPage() {
   return (
