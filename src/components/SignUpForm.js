@@ -1,17 +1,44 @@
 import React, {useEffect, useState} from "react";
-import "./css/SignUpForm.css";
+import "./css/SignupForm.css";
 // import { PersonCircle } from "react-bootstrap-icons"; // Importing Bootstrap Icon Components
 
 import { Row, Col } from "react-bootstrap";
 import Header from "./Header"
 import Footer from "./Footer"
 
-let [userInfo, setUserInfo] = useState({})
-let [acctUserName, setacctUserName] = useState('')
-let [acctUserPass, setacctUserPass] = useState('')
 
 const accountLogo = ""
 function SignUpForm() {
+
+
+  let [userInfo, setUserInfo] = useState({
+    // fname: " " ",
+    // lname: " ",
+    // address1: " ",
+    // address2: " ",
+    // zip: " ",
+    // city: " ",
+    // country: " ",
+    // phone: " ",
+  })
+  
+  
+  let [acctUserName, setAcctUserName] = useState('')
+  let [acctUserPass, setAcctUserPass] = useState('')
+  
+  function formAccSubmit(e){
+    e.preventDefault();
+    console.log(userInfo);
+    console.log(acctUserName);
+    console.log(acctUserPass);
+
+    // Make Post Call here
+
+
+    // 
+  
+  }
+
   return (
 
     <div className="sign-up-container">
@@ -28,7 +55,7 @@ function SignUpForm() {
                 </svg></div>
                 <h1 className=" display-4 py-2 text-truncatee signup-title">Create a new account</h1>
                 <div className="">
-                  <form action="" className="justify-content-center">
+                  <form action="" onSubmit ={formAccSubmit} className="justify-content-center">
                     <div className="form-group">
                       <Row>
                         <Col>
@@ -38,6 +65,8 @@ function SignUpForm() {
                             type="text"
                             className="form-control f-field"
                             placeholder="Enter Your First Name"
+                            value={userInfo.fName } 
+                            onChange={e => setUserInfo(userInfo, userInfo.fName = e.target.value) }
                           />
                         </Col>
                         <Col>
@@ -47,15 +76,29 @@ function SignUpForm() {
                             type="text"
                             className="form-control f-field"
                             placeholder="Enter Your Last Name"
+                            value={userInfo.lname } 
+                            onChange={e => setUserInfo(userInfo, userInfo.lName = e.target.value) }
                           />
                         </Col>
                       </Row>
+                      <label className="sr-only" />
+                Contact Number
+                <input
+                        type="text"
+                        className="form-control f-field" 
+                        placeholder="Enter Your Contact Number"
+                        value={userInfo.number } 
+                        onChange={e => setUserInfo(userInfo, userInfo.number = e.target.value) }
+                      />
+                      <label className="sr-only" />
                       <label className="sr-only" />
                 Address 1
                 <input
                         type="text"
                         className="form-control f-field" 
-                        placeholder="Enter Your Adress"
+                        placeholder="Enter Your Address"
+                        value={userInfo.address1 } 
+                        onChange={e => setUserInfo(userInfo, userInfo.address1 = e.target.value) }
                       />
                       <label className="sr-only" />
                 Address 2
@@ -63,6 +106,8 @@ function SignUpForm() {
                         type="text"
                         className="form-control f-field"
                         placeholder="Enter Your Enter Your Address (Cont.)"
+                        value={userInfo.address2 } 
+                        onChange={e => setUserInfo(userInfo, userInfo.address2 = e.target.value) }
                       />
                       <Row>
                         <Col>
@@ -72,6 +117,8 @@ function SignUpForm() {
                             type="text"
                             className="form-control f-field"
                             placeholder="Enter Your Zip Code"
+                            value={userInfo.zip } 
+                            onChange={e => setUserInfo(userInfo, userInfo.zip = e.target.value) }
                           />
                         </Col>
                         <Col>
@@ -81,15 +128,19 @@ function SignUpForm() {
                             type="text"
                             className="form-control f-field"
                             placeholder="Enter Your City"
+                            value={userInfo.city } 
+                            onChange={e => setUserInfo(userInfo, userInfo.city = e.target.value) }
                           />
                         </Col>
                         <Col>
                           <label className="sr-only" />
-                    Country
+                    State
                     <input
                             type="text"
                             className="form-control f-field"
-                            placeholder="Enter Your Country"
+                            placeholder="Enter Your State"
+                            value={userInfo.state } 
+                            onChange={e => setUserInfo(userInfo, userInfo.state = e.target.value) }
                           />
                         </Col>
                       </Row>
@@ -100,6 +151,8 @@ function SignUpForm() {
                         type="text"
                         className="form-control f-field"
                         placeholder="Please select a username"
+                        value={acctUserName } 
+                        onChange={e => setAcctUserName(e.target.value) }
                       />
                       <label className="sr-only" />
                 Password
@@ -107,6 +160,8 @@ function SignUpForm() {
                         type="password"
                         className="form-control f-field"
                         placeholder="Enter a strongly typed password"
+                        value={acctUserPass } 
+                        onChange={e => setAcctUserPass(e.target.value)}
                       />
                   Confirm  Password
                 <input

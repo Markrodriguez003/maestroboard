@@ -1,5 +1,6 @@
 import React from "react";
-import "./css/SignUpForm.css";
+// import "./css/SignUpForm.css";
+import "./css/ReplyForm.css";
 // import { PersonCircle } from "react-bootstrap-icons"; // Importing Bootstrap Icon Components
 
 import { InputGroup, FormControl } from "react-bootstrap";

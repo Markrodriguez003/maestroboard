@@ -34,10 +34,11 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/maestroboard", 
 // Assigning "db" to created mongoose link above
 const db = mongoose.connection;
 
-
-
 // This will handle API GET requests
 require("./controller/API_Get_Routes.js")(app);
+
+// This will handle API POST requests
+require("./controller/API_Post_Routes.js")(app);
 
  
 

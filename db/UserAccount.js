@@ -35,7 +35,7 @@ const UserAccountSchema = new Schema({
         // required: "String is Required",
         // required: true
     },
-    country: {
+    state: {
         type: String,
         // required: "String is Required",
         // required: true
