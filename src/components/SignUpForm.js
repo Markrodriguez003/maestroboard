@@ -1,5 +1,6 @@
-import React, {useEffect, useState} from "react";
-import "./css/SignupForm.css";
+import React, { useEffect, useState } from "react";
+import "../components/css/SignUpForm.css";
+import SuccessfullyCreatedUserModal from "./SuccessfullyCreatedUserModal"
 // import { PersonCircle } from "react-bootstrap-icons"; // Importing Bootstrap Icon Components
 
 import { Row, Col } from "react-bootstrap";
@@ -12,31 +13,43 @@ function SignUpForm() {
 
 
   let [userInfo, setUserInfo] = useState({
-    // fname: " " ",
-    // lname: " ",
-    // address1: " ",
-    // address2: " ",
-    // zip: " ",
-    // city: " ",
-    // country: " ",
-    // phone: " ",
+    // posts: [ 1, 2, 3, 4 ],
+    // address1: "",
+    // address2: "",
+    // zip: "",
+    // city: "",
+    // state: "",
+    // username: "",
+    // password: ""
   })
-  
-  
-  let [acctUserName, setAcctUserName] = useState('')
-  let [acctUserPass, setAcctUserPass] = useState('')
-  
-  function formAccSubmit(e){
+
+  // let [acctUserName, setAcctUserName] = useState('')
+  // let [acctUserPass, setAcctUserPass] = useState('')
+
+
+  // Function that creates new user via fetch POST request
+  async function CREATE_NEW_USER(newUser) {
+    fetch('/api/createuser', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(newUser)
+
+    })
+      .then((res) => { return res })
+      .then((data) => { console.log("data:" + JSON.stringify(data)) })
+      .catch(err => { console.log("An error has occurred:::: " + err) })
+  }
+
+  function formAccSubmit(e) {
     e.preventDefault();
     console.log(userInfo);
-    console.log(acctUserName);
-    console.log(acctUserPass);
-
-    // Make Post Call here
-
-
-    // 
-  
+    CREATE_NEW_USER(userInfo);
+    // console.log(userInfo);
+    // console.log(acctUserName);
+    // console.log(acctUserPass);
   }
 
   return (
@@ -55,7 +68,7 @@ function SignUpForm() {
                 </svg></div>
                 <h1 className=" display-4 py-2 text-truncatee signup-title">Create a new account</h1>
                 <div className="">
-                  <form action="" onSubmit ={formAccSubmit} className="justify-content-center">
+                  <form action="" onSubmit={formAccSubmit} className="justify-content-center">
                     <div className="form-group">
                       <Row>
                         <Col>
@@ -65,8 +78,8 @@ function SignUpForm() {
                             type="text"
                             className="form-control f-field"
                             placeholder="Enter Your First Name"
-                            value={userInfo.fName } 
-                            onChange={e => setUserInfo(userInfo, userInfo.fName = e.target.value) }
+                            onChange={e => setUserInfo(userInfo, userInfo["firstname"] = e.target.value)}
+                            value={userInfo.fName}
                           />
                         </Col>
                         <Col>
@@ -76,8 +89,8 @@ function SignUpForm() {
                             type="text"
                             className="form-control f-field"
                             placeholder="Enter Your Last Name"
-                            value={userInfo.lname } 
-                            onChange={e => setUserInfo(userInfo, userInfo.lName = e.target.value) }
+                            onChange={e => setUserInfo(userInfo, userInfo["lastname"] = e.target.value)}
+                            value={userInfo.lname}
                           />
                         </Col>
                       </Row>
@@ -85,20 +98,20 @@ function SignUpForm() {
                 Contact Number
                 <input
                         type="text"
-                        className="form-control f-field" 
+                        className="form-control f-field"
                         placeholder="Enter Your Contact Number"
-                        value={userInfo.number } 
-                        onChange={e => setUserInfo(userInfo, userInfo.number = e.target.value) }
+                        onChange={e => setUserInfo(userInfo, userInfo["number"] = e.target.value)}
+                        value={userInfo.number}
                       />
                       <label className="sr-only" />
                       <label className="sr-only" />
                 Address 1
                 <input
                         type="text"
-                        className="form-control f-field" 
+                        className="form-control f-field"
                         placeholder="Enter Your Address"
-                        value={userInfo.address1 } 
-                        onChange={e => setUserInfo(userInfo, userInfo.address1 = e.target.value) }
+                        onChange={e => setUserInfo(userInfo, userInfo["address1"] = e.target.value)}
+                        value={userInfo.address1}
                       />
                       <label className="sr-only" />
                 Address 2
@@ -106,8 +119,8 @@ function SignUpForm() {
                         type="text"
                         className="form-control f-field"
                         placeholder="Enter Your Enter Your Address (Cont.)"
-                        value={userInfo.address2 } 
-                        onChange={e => setUserInfo(userInfo, userInfo.address2 = e.target.value) }
+                        onChange={e => setUserInfo(userInfo, userInfo["address2"] = e.target.value)}
+                        value={userInfo.address2}
                       />
                       <Row>
                         <Col>
@@ -117,8 +130,8 @@ function SignUpForm() {
                             type="text"
                             className="form-control f-field"
                             placeholder="Enter Your Zip Code"
-                            value={userInfo.zip } 
-                            onChange={e => setUserInfo(userInfo, userInfo.zip = e.target.value) }
+                            onChange={e => setUserInfo(userInfo, userInfo["zip"] = e.target.value)}
+                            value={userInfo.zip}
                           />
                         </Col>
                         <Col>
@@ -128,8 +141,8 @@ function SignUpForm() {
                             type="text"
                             className="form-control f-field"
                             placeholder="Enter Your City"
-                            value={userInfo.city } 
-                            onChange={e => setUserInfo(userInfo, userInfo.city = e.target.value) }
+                            onChange={e => setUserInfo(userInfo, userInfo["city"] = e.target.value)}
+                            value={userInfo.city}
                           />
                         </Col>
                         <Col>
@@ -139,8 +152,8 @@ function SignUpForm() {
                             type="text"
                             className="form-control f-field"
                             placeholder="Enter Your State"
-                            value={userInfo.state } 
-                            onChange={e => setUserInfo(userInfo, userInfo.state = e.target.value) }
+                            onChange={e => setUserInfo(userInfo, userInfo["state"] = e.target.value)}
+                            value={userInfo.state}
                           />
                         </Col>
                       </Row>
@@ -151,8 +164,8 @@ function SignUpForm() {
                         type="text"
                         className="form-control f-field"
                         placeholder="Please select a username"
-                        value={acctUserName } 
-                        onChange={e => setAcctUserName(e.target.value) }
+                        onChange={e => setUserInfo(userInfo, userInfo["username"] = e.target.value)}
+                        value={userInfo.username}
                       />
                       <label className="sr-only" />
                 Password
@@ -160,8 +173,8 @@ function SignUpForm() {
                         type="password"
                         className="form-control f-field"
                         placeholder="Enter a strongly typed password"
-                        value={acctUserPass } 
-                        onChange={e => setAcctUserPass(e.target.value)}
+                        onChange={e => setUserInfo(userInfo, userInfo["password"] = e.target.value)}
+                        value={userInfo.password}
                       />
                   Confirm  Password
                 <input
@@ -171,12 +184,15 @@ function SignUpForm() {
                       />
                     </div>
 
-                    <button
+                    <SuccessfullyCreatedUserModal />
+                    
+                    {/* <button
                       type="submit"
                       className="btn btn-info btn-lg login-btn"
                     >
                       Create Account
-              </button>
+              </button> */}
+                  
                   </form>
                   <small >
                     <a href="#" ><span className="mb-4 pb-4">Need Help?</span></a>
@@ -194,180 +210,3 @@ function SignUpForm() {
 }
 
 export default SignUpForm;
-
-// OLD FORM
-
-{
-  /* <div className="signup-form-container justify-content-center">
-        <Form>
-          <Form.Row>
-            <Form.Group as={Col} controlId="formGridEmail">
-              <Form.Label>Email</Form.Label>
-              <Form.Control type="email" placeholder="Enter email" />
-            </Form.Group>
-
-            <Form.Group as={Col} controlId="formGridPassword">
-              <Form.Label>Password</Form.Label>
-              <Form.Control type="password" placeholder="Password" />
-            </Form.Group>
-          </Form.Row>
-
-          <Form.Group controlId="formGridAddress1">
-            <Form.Label>Address</Form.Label>
-            <Form.Control placeholder="1234 Main St" />
-          </Form.Group>
-
-          <Form.Group controlId="formGridAddress2">
-            <Form.Label>Address 2</Form.Label>
-            <Form.Control placeholder="Apartment, studio, or floor" />
-          </Form.Group>
-
-          <Form.Row>
-            <Form.Group as={Col} controlId="formGridCity">
-              <Form.Label>City</Form.Label>
-              <Form.Control />
-            </Form.Group>
-
-            <Form.Group as={Col} controlId="formGridState">
-              <Form.Label>State</Form.Label>
-              <Form.Control as="select" defaultValue="Choose...">
-                <option>Choose...</option>
-                <option>...</option>
-              </Form.Control>
-            </Form.Group>
-
-            <Form.Group as={Col} controlId="formGridZip">
-              <Form.Label>Zip</Form.Label>
-              <Form.Control />
-            </Form.Group>
-          </Form.Row>
-
-          <Form.Group id="formGridCheckbox">
-            <Form.Check type="checkbox" label="Check me out" />
-          </Form.Group>
-
-          <Button variant="info" type="submit">
-            Submit
-  </Button>
-        </Form>
-      </div> */
-}
-
-
-
-/*********************************************************** */
-// OLD CODE AGAIN
-{/* <div className="sign-up-container">
-<section className="cover" className="min-vh-100">
-  <div className="cover-caption">
-    <div className="container">
-      <div className="row text-white formContainer">
-        <div className="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form">
-          <div className="create-acct-smiley mb-4"><PersonCircle /></div>
-          <h1 className=" text-truncate">Create a new account</h1>
-          <div className="">
-            <form action="" className="justify-content-center">
-              <div className="form-group">
-                <Row>
-                  <Col>
-                    <label className="sr-only" />
-                    First Name
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="@Username123"
-                    />
-                  </Col>
-                  <Col>
-                    <label className="sr-only" />
-                    Last Name
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="@Username123"
-                    />
-                  </Col>
-                </Row>
-                <label className="sr-only" />
-                Address 1
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="@Username123"
-                />
-                <label className="sr-only" />
-                Address 2
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="@Username123"
-                />
-                <Row>
-                  <Col>
-                    <label className="sr-only" />
-                    Zipcode
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="@Username123"
-                    />
-                  </Col>
-                  <Col>
-                    <label className="sr-only" />
-                    City
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="@Username123"
-                    />
-                  </Col>
-                  <Col>
-                    <label className="sr-only" />
-                    Country
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="@Username123"
-                    />
-                  </Col>
-                </Row>
-
-                <label className="sr-only" />
-                Username
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="@Username123"
-                />
-                <label className="sr-only" />
-                Password
-                <input
-                  type="password"
-                  className="form-control"
-                  placeholder="@Username123"
-                />
-                  Confirm  Password
-                <input
-                  type="password"
-                  className="form-control"
-                  placeholder="@Username123"
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="btn btn-info btn-lg login-btn"
-              >
-                Create Account
-              </button>
-            </form>
-            <small>
-              <a href="#">Need help?</a>
-            </small>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-</div> */}

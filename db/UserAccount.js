@@ -12,7 +12,7 @@ const UserAccountSchema = new Schema({
         // required: "String is Required",
         // required: true
     },
-    number: {
+    phone: {
         type: String,
     },
     address1: {

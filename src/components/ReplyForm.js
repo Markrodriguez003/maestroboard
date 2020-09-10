@@ -4,8 +4,7 @@ import "./css/ReplyForm.css";
 // import { PersonCircle } from "react-bootstrap-icons"; // Importing Bootstrap Icon Components
 
 import { InputGroup, FormControl } from "react-bootstrap";
-// import Header from "./Header";
-// import Footer from "./Footer";
+ 
 
 const accountLogo = "";
 function ReplyForm() {
