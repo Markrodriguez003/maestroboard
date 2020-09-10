@@ -25,10 +25,7 @@ function Corkboard() {
     setIndex(selectedIndex);
   };
 
-
-
   const [testPost, setTestPost] = useState([{}]);
-
 
   useEffect(() => {
     async function grabPosts() {
@@ -42,10 +39,6 @@ function Corkboard() {
 
   // console.log("Posts[0] ===>" + testPost[0].title );
   // console.log("Posts[0] ===>" + JSON.stringify(testPost[0]) );
-
-
-
-
 
   // #region
   // ******************************************** 
@@ -86,7 +79,6 @@ function Corkboard() {
   // OLD CODE *********************************** 
   // ******************************************** 
   //#endregion
-
 
   return (
 
@@ -201,8 +193,6 @@ function Corkboard() {
       {/* ********************************************************************** */}
       {/* CORKBOARD */}
       {/* ********************************************************************** */}
-
-
       {/* ********************************************************************** */}
       {/* CORKBOARD CARDS */}
       {/* ********************************************************************** */}
@@ -219,9 +209,6 @@ function Corkboard() {
                   type={p.type} equipment={p.equipment} date={p.date} phone={p.phone}
                   body={p.body} /></Col>))}
           </Row> */}
-
-
-
         {/* <Carousel activeIndex={index} onSelect={handleSelect} autoPlay={null} className="carousel-container" > */}
 {/* 
         <Carousel.Item> */}
@@ -234,15 +221,7 @@ function Corkboard() {
                     body={p.body} /></Col>))}
             </Row>
           {/* </Carousel.Item> */}
-
-   
-
-
         {/* </Carousel> */}
-
-
-
-
       </Container>
       <Footer />
     </div>

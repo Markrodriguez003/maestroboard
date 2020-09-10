@@ -3,7 +3,7 @@ import "../components/css/SignUpForm.css";
 import SuccessfullyCreatedUserModal from "./SuccessfullyCreatedUserModal"
 // import { PersonCircle } from "react-bootstrap-icons"; // Importing Bootstrap Icon Components
 
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Button } from "react-bootstrap";
 import Header from "./Header"
 import Footer from "./Footer"
 
@@ -185,14 +185,15 @@ function SignUpForm() {
                     </div>
 
                     <SuccessfullyCreatedUserModal />
-                    
+
+
                     {/* <button
                       type="submit"
                       className="btn btn-info btn-lg login-btn"
                     >
                       Create Account
               </button> */}
-                  
+
                   </form>
                   <small >
                     <a href="#" ><span className="mb-4 pb-4">Need Help?</span></a>
