@@ -212,7 +212,7 @@ function Corkboard() {
         {/* <Carousel activeIndex={index} onSelect={handleSelect} autoPlay={null} className="carousel-container" > */}
 {/* 
         <Carousel.Item> */}
-            <Row className="mb-3 p-4 mx-auto text-center">
+            <Row className="mb-3 p-4 mx-auto text-center cardFix">
               {testPost.map((p, i) =>
                 (<Col xs={12} sm={12} md={2} lg={2} className="individualCard">
                   <PostBoardCard key={0} title={p.title} email={p.email}

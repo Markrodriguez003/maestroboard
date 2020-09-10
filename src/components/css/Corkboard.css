@@ -55,9 +55,13 @@
     /* width: 75%; */
     
 }
-
+/* .cardFix{
+    margin-left: 3500px;
+    margin-right:3500px;
+    padding: 2120px !important;
+} */
 .corkboard-card-container{
-/* background-color: RED; */
+background-color: yellow;
     
     /* z-index: 1; */
     /* display: inline !important; */
@@ -66,12 +70,18 @@
     height:auto;
     top:295px;
     left: 38px;
+    right: 50px;
+    /* margin-left: auto !important;
+    margin-right: auto !important;
+    align-items: center !important;
+    text-align: center !important; */
 }
   
  
 
 .boardCard{
-background-color: purple;
+
+    background-color: purple;
         width:100%;
     /* width:250%; */
     /* background-color: red; */
@@ -79,9 +89,11 @@ background-color: purple;
 }
 
 .individualCard{
+    background-color: RED;
     /* width:100%; */
-    /* flex: 0 0 6.666667% !important;
-    max-width: 36.666667% !important; */
+    flex: 0 0 6.666667% !important;
+    max-width: 36.666667% !important;
+    /* margin-left: 900px !important; */
 
 } 
 

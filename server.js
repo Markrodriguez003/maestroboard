@@ -67,7 +67,7 @@ async function loadPosts() {
 }
 
 // Loads Posts
-// loadPosts();
+loadPosts();
 
 // * Testing connection to db
 db.on('error', console.error.bind(console, 'connection error:'));
