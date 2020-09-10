@@ -18,7 +18,7 @@ exports.examplePosts = [
     {
         username: 'Asmongo22',
         email: "Asmongo@battlenet.com",
-        number: "N/A",
+        phone: "N/A",
         zip: "32003",
         type: "Selling Gear",
         equipment: "Guitar",
@@ -30,7 +30,7 @@ exports.examplePosts = [
     {
         username: 'Serg51',
         email: "sergioBalos@gmail.com",
-        number: "9855648196",
+        phone: "9855648196",
         zip: "32044",
         type: "Buying Gear",
         equipment: "Bass",
@@ -43,7 +43,7 @@ exports.examplePosts = [
     {
         username: 'Razzys',
         email: "RazMgmt@razzyproductions.com",
-        number: "7779978456",
+        phone: "7779978456",
         zip: "33863",
         type: "Selling Gear",
         equipment: "Drums",
@@ -56,7 +56,7 @@ exports.examplePosts = [
     {
         username: 'Mariol33t',
         email: "mariomario@Nitendo.jp",
-        number: "9584531524",
+        phone: "9584531524",
         zip: "32056",
         type: "Selling Gear",
         equipment: "Studio Equipment",
@@ -68,7 +68,7 @@ exports.examplePosts = [
     {
         username: 'AvsFan44',
         email: "butler23@hotmail.com",
-        number: "7894162154",
+        phone: "7894162154",
         zip: "32511",
         type: "Selling Gear",
         equipment: "Brass",
@@ -80,7 +80,7 @@ exports.examplePosts = [
     // {
     //     username: 'JaxStudios',
     //     email: "jaxstudios999@gmail.com",
-    //     number: "9584531524",
+    //     phone: "9584531524",
     //     zip: "32326",
     //     type: "Buying Gear",
     //     equipment: "Microphones",
@@ -92,7 +92,7 @@ exports.examplePosts = [
     // {
     //     username: 'Bobocolopous14',
     //     email: "N/A",
-    //     number: "N/A",
+    //     phone: "N/A",
     //     zip: "34219",
     //     type: "Selling Gear",
     //     equipment: "Woodwind",
@@ -104,7 +104,7 @@ exports.examplePosts = [
     // {
     //     username: 'GuitarFreak198',
     //     email: "JGuitar297@yahoo.com",
-    //     number: "N/A",
+    //     phone: "N/A",
     //     zip: "32668",
     //     type: "Selling Gear",
     //     equipment: "Guitar",
@@ -116,7 +116,7 @@ exports.examplePosts = [
     // {
     //     username: 'Korn2Freak',
     //     email: "Korn2Freak@gmail.com",
-    //     number: "N/A",
+    //     phone: "N/A",
     //     zip: "32639",
     //     type: "Selling Gear",
     //     equipment: "Bass",
@@ -128,7 +128,7 @@ exports.examplePosts = [
     // {
     //     username: 'Korn2Freak',
     //     email: "Korn2Freak@gmail.com",
-    //     number: "N/A",
+    //     phone: "N/A",
     //     zip: "32639",
     //     type: "Selling Gear",
     //     equipment: "Amp",
@@ -140,7 +140,7 @@ exports.examplePosts = [
     // {
     //     username: 'JaxStudios',
     //     email: "jaxstudios999@gmail.com",
-    //     number: "9584531524",
+    //     phone: "9584531524",
     //     zip: "32326",
     //     type: "Buying Gear",
     //     equipment: "Studio Equipment",

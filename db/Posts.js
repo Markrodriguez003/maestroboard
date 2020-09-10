@@ -15,7 +15,7 @@ const PostsSchema = new Schema({
     // match: [/.+@.+\..+/, "Please enter a valid e-mail address"],
     // required: true
   },
-  number: {
+  phone: {
     type: String,
   },
 

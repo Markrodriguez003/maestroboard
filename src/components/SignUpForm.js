@@ -7,25 +7,11 @@ import { Row, Col, Button } from "react-bootstrap";
 import Header from "./Header"
 import Footer from "./Footer"
 
-
-const accountLogo = ""
 function SignUpForm() {
 
 
   let [userInfo, setUserInfo] = useState({
-    // posts: [ 1, 2, 3, 4 ],
-    // address1: "",
-    // address2: "",
-    // zip: "",
-    // city: "",
-    // state: "",
-    // username: "",
-    // password: ""
   })
-
-  // let [acctUserName, setAcctUserName] = useState('')
-  // let [acctUserPass, setAcctUserPass] = useState('')
-
 
   // Function that creates new user via fetch POST request
   async function CREATE_NEW_USER(newUser) {

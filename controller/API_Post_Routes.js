@@ -54,20 +54,44 @@ module.exports = (app) => {
         console.log("This is what it logs out:::Doesnt Exist:::  " + chk);
         return res.status(500).send("User does not exist!");
       }
-    //   Use Bcrypt to compare found username/password with inputted username/password
-      bCrypt.compare(req.body.password, chk[0].password, (err, res)=>{
-        if(err){ 
-            console.log("An error has occurred::: " + err);
+      //   Use Bcrypt to compare found username/password with inputted username/password
+      bCrypt.compare(req.body.password, chk[0].password, (err, res) => {
+        if (err) {
+          console.log("An error has occurred::: " + err);
         }
 
-        if(res === true){
-            console.log(" Inputted Username and Password match!");
+        if (res === true) {
+          console.log(" Inputted Username and Password match!");
         } else {
-            console.log("Inputted Usernamd & Password do not match")
+          console.log("Inputted Usernamd & Password do not match")
         }
       });
-      
+
 
     });
   });
+
+
+  app.post("/api/insertpost", async (req, res) => {
+
+    let newPost = {
+      username: "test",
+      email: req.email,
+      phone: req.phone,
+      zip: "333test333",
+      type: req.type,
+      equipment: req.instrument,
+      title: req.title,
+      body: req.pBody,
+      price: req.price
+    }
+
+    await Post.create(newPost, (err, confirm) => {
+      if (err) {
+        console.log("An error has occured  inserting post::::: " + err)
+      }
+      console.log("Insertion of post was successful!::::: ");
+    })
+
+  })
 };
