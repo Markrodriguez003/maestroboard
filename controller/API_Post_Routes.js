@@ -73,7 +73,7 @@ module.exports = (app) => {
 
 
   app.post("/api/insertpost", async (req, res) => {
-
+      
     let newPost = {
       username: "test",
       email: req.email,
