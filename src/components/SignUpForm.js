@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "../components/css/SignUpForm.css";
+import "./css/SignupForm.css";
 import SuccessfullyCreatedUserModal from "./SuccessfullyCreatedUserModal"
 // import { PersonCircle } from "react-bootstrap-icons"; // Importing Bootstrap Icon Components
 

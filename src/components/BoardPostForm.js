@@ -36,7 +36,7 @@ function BoardPostForm() {
 
         })
             .then((res) => { return res })
-            .then((data) => { console.log("data:" + JSON.stringify(data)) })
+            .then((data) => { console.log("data:" + data) })
             .catch(err => { console.log("An error has occurred:::: " + err) })
     }
 

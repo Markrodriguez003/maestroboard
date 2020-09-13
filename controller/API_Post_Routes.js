@@ -72,25 +72,27 @@ module.exports = (app) => {
   });
 
 
+  // app.post("/api/insertpost", async (req, res) => {
   app.post("/api/insertpost", async (req, res) => {
-      
+    
     let newPost = {
-      username: "test",
-      email: req.email,
-      phone: req.phone,
-      zip: "333test333",
-      type: req.type,
-      equipment: req.instrument,
-      title: req.title,
-      body: req.pBody,
-      price: req.price
+      username: "test", // Fill user data with session
+      email: req.body.email,
+      phone: req.body.phone,
+      zip: "333test333", // Fill user data with session
+      type: req.body.type,
+      equipment: req.body.instrument,
+      title: req.body.title,
+      body: req.body.pBody,
+      price: req.body.price
     }
 
     await Post.create(newPost, (err, confirm) => {
       if (err) {
         console.log("An error has occured  inserting post::::: " + err)
       }
-      console.log("Insertion of post was successful!::::: ");
+      console.log("Insertion of post was successful!::::: " + JSON.stringify(newPost));
+      res.status(200).send("This works?");
     })
 
   })
