@@ -66,6 +66,15 @@ async function loadPosts() {
   })
 }
 
+async function loadUsers() {
+  await Post.insertMany(ex.examplePosts, (err, confirm) => {
+    if (err) {
+      console.log("An error has occured bulk inserting posts::::: " + err)
+    }
+    console.log("Bulk insert of posts has sucessfully been created!::::: ");
+  })
+}
+
 // Loads Posts
 // loadPosts();
 
