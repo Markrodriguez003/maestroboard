@@ -34,13 +34,11 @@ module.exports = (app) => {
         })
         .catch((err) => {
           console.log("An Error has occured inserting a new user::::: " + err);
-          res.status(400).send("Error creating user acct");
+          res.status(400);
         });
 
-      res.status(200).send("CREATED USER! ::::::");
-    } catch {
-      res.status(500).send("An error has occurred");
-    }
+      res.status(200);
+    } catch {res.status(500);}
   });
 
   // * **********************************************************************************
@@ -52,29 +50,21 @@ module.exports = (app) => {
       if (chk == 0) { // User does not exist
         console.log("User does not exist");
         console.log("This is what it logs out:::Doesnt Exist:::  " + chk);
-        return res.status(500).send("User does not exist!");
+        return res.status(500);
       }
       //   Use Bcrypt to compare found username/password with inputted username/password
       bCrypt.compare(req.body.password, chk[0].password, (err, res) => {
-        if (err) {
-          console.log("An error has occurred::: " + err);
-        }
-
-        if (res === true) {
-          console.log(" Inputted Username and Password match!");
-        } else {
-          console.log("Inputted Usernamd & Password do not match")
-        }
+        if (err) { console.log("An error has occurred::: " + err); }
+        if (res === true) { console.log(" Inputted Username and Password match!"); }
+        else { console.log("Inputted Usernamd & Password do not match") }
       });
-
-
     });
   });
 
 
   // app.post("/api/insertpost", async (req, res) => {
   app.post("/api/insertpost", async (req, res) => {
-    
+
     let newPost = {
       username: "test", // Fill user data with session
       email: req.body.email,
@@ -88,11 +78,9 @@ module.exports = (app) => {
     }
 
     await Post.create(newPost, (err, confirm) => {
-      if (err) {
-        console.log("An error has occured  inserting post::::: " + err)
-      }
+      if (err) { console.log("An error has occured  inserting post::::: " + err) }
       console.log("Insertion of post was successful!::::: " + JSON.stringify(newPost));
-      res.status(200).send("This works?");
+      res.status(200);
     })
 
   })
