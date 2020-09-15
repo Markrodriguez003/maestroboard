@@ -1,10 +1,23 @@
+
 const Post = require("../db/Posts");
 const UserAccount = require("../db/UserAccount");
 const e = require("express");
+// const fetch = require("node-fetch");
+const jwt = require("jsonwebtoken");
+const JWT_KEY = process.env.JWT_KEY; // Setting jwt Key
 const bCrypt = require("bcrypt");
+const { sign } = require("jsonwebtoken");
 
 module.exports = (app) => {
+
   // * **********************************************************************************
+
+  // TODO Read this to determine to save JWT in local storage (local or web shesh)
+  // TODO or save JWT in a cookie - IMPLEMENT REACT ROUTER TO PROTECT ROUTES!
+  // TODO and HELMET to help prevent cross-site scripting (XSS) attacks
+  // TODO https://stackoverflow.com/questions/
+
+
   // * Creates new user account
   app.post("/api/createuser", async (req, res) => {
     try {
@@ -38,25 +51,65 @@ module.exports = (app) => {
         });
 
       res.status(200);
-    } catch {res.status(500);}
+    } catch { res.status(500); }
   });
 
   // * **********************************************************************************
   // * Checks if user exists and checking password
   app.post("/api/login", async (req, res) => {
 
-    // Searches inputted username through db saved usernames a 
+    // Searches inputted username through db  
     UserAccount.find({ username: req.body.username }).then((chk) => {
+
       if (chk == 0) { // User does not exist
-        console.log("User does not exist");
-        console.log("This is what it logs out:::Doesnt Exist:::  " + chk);
-        return res.status(500);
+        console.log("User does not exist!");
+        res.status(500);
       }
-      //   Use Bcrypt to compare found username/password with inputted username/password
-      bCrypt.compare(req.body.password, chk[0].password, (err, res) => {
-        if (err) { console.log("An error has occurred::: " + err); }
-        if (res === true) { console.log(" Inputted Username and Password match!"); }
-        else { console.log("Inputted Usernamd & Password do not match") }
+      //Use Bcrypt to compare found username/password with inputted username/password
+      bCrypt.compare(req.body.password, chk[0].password, (err, response) => {
+        if (err) {
+          console.log("An error has occurred comparing encrypted credentials ::::> " + err)
+          res.status(500);
+        }
+        if (response === true) {
+          console.log("Username and Password match!");
+
+          signed_user = {
+            id: chk[0].id,
+            username: chk[0].username,
+            zip: chk[0].zip
+          }
+
+          // JWT CREATION
+          let expiry_var = Math.floor(Date.now() / 1000) + (60 * 3);
+
+          // User cred. reference object
+          let payload = {
+            db_id: req.body.id,
+            username: req.body.username,
+            zip: req.body.zip,
+            exp: expiry_var // Timestamp is measured in seconds, not miliseconds. //! Be careful!
+          }
+
+          // User session token
+          let token = jwt.sign(payload, JWT_KEY); // Save in cookie or Local storage
+          
+          
+          console.log("Token inside API route =====>" + token);
+
+          // ! REDIRECT EXPRESS/REACT ISSUE
+          // TODO https://stackoverflow.com/questions/38105453/how-do-i-redirect-into-react-router-from-express
+          // TODO https://stackoverflow.com/questions/51251684/redirect-in-react-node
+          // res.redirect(200, '/');
+
+          // Saving user info after authentication / authorization is complete in Local Storage
+
+          res.status(201).send("PLEASE WORK.");
+        }
+        else {
+          console.log("Username & Password do not match!")
+          // res.status(500);
+        }
       });
     });
   });
@@ -85,3 +138,4 @@ module.exports = (app) => {
 
   })
 };
+

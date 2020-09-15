@@ -2,13 +2,17 @@ const express = require("express"); // Bringing in Express
 const path = require("path"); // Bringing in Path
 const mongoose = require("mongoose"); // Mongoose
 const app = express(); //Intializing  Express
+require("dotenv").config();
+const jwt = require("jsonwebtoken");
+const jwt_key = process.env.JWT_KEY; // Setting jwt Key
+const cors = require("cors");
 
-// Loading middleware for body parsing / json / urlecoding
+// Loading middleware for body parsing / json / urlecoding / cors
 const bodyParser = require('body-parser');
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
+app.use(cors());
 
 //  Creating Port
 const PORT = process.env.PORT || 3005;
@@ -39,11 +43,7 @@ require("./controller/API_Get_Routes.js")(app);
 
 // This will handle API POST requests
 require("./controller/API_Post_Routes.js")(app);
-
  
-
-
-
 
 // * **********************************************************************************
 // * **********************************************************************************

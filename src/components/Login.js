@@ -1,38 +1,45 @@
 import React, { useEffect, useState } from "react";
+import { Redirect } from "react-router-dom";
 import "./css/Login.css";
 import Header from "./Header"
 import Footer from "./Footer"
 import { Row, Col } from "react-bootstrap";
 
 
-function Login() {
-
+function Login(props) {
+  // let redirector = false;
   let [userAuthInfo, setUserAuthInfo] = useState({});
 
-
-
+  // Makes API Fetch request to pass and check status to see is user credentials are valid. 
   async function LOGIN_USER_AUTH(userChk) {
-    fetch('/api/login', {
-        method: 'post',
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-        },
-        body: JSON.stringify(userChk)
+    // API POST request
+    let user_auth = await fetch('/api/login', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(userChk)
 
     })
-        .then((res) => { return res })
-        // .then((data) => { console.log("data:" + data) })
-        .catch(err => { console.log("An error has occurred:::: " + err) })
-}
+      .then((res) => { return res })
+      .catch(err => { console.log("An error has occurred:::: " + err) });
+
+    // console.log("THE STATUS OF THE LOGIN PAGE IS :::::> " + JSON.stringify(status.status));
+    if (user_auth.status === 201) {
+      console.log('redirect me bitch');
+      props.history.push("/");
+    } else {
+      console.log("..crap");
+    }
+  }
 
 
+  // Submit Button function 
   function formSubmit(e) {
     e.preventDefault();
     // console.log(userAuthInfo);
     LOGIN_USER_AUTH(userAuthInfo)
-
-
 
   }
 
@@ -52,8 +59,8 @@ function Login() {
                     <div className="form-group">
                       <label className="sr-only" />Username
                                 <input type="text" className="form-control" placeholder="@Username123"
-                            onChange={e => setUserAuthInfo(userAuthInfo, userAuthInfo["username"] = e.target.value)}
-                            value={userAuthInfo.username} />
+                        onChange={e => setUserAuthInfo(userAuthInfo, userAuthInfo["username"] = e.target.value)}
+                        value={userAuthInfo.username} />
 
                     </div>
                     <div className="form-group">

@@ -1,9 +1,19 @@
 import React from "react";
+import {withRouter} from "react-router-dom";
 import "./css/Header.css";
 import { Nav, Navbar, Row, Col } from "react-bootstrap";
 // import {Link} from "react-router-dom" // Wrap it around li or nav elements to link to specific pages
 
-function Header() {
+
+
+
+function Header(prop) {
+  let loginWord;
+  if(prop.user === undefined || prop.user === ""){
+    loginWord = "Log in";
+  } else {loginWord = prop.user}
+
+  
   return (
     <Navbar
       collapseOnSelect
@@ -57,7 +67,7 @@ function Header() {
             My Profile
           </Nav.Link>
           <Nav.Link eventKey={2} href="/login" className="header-items">
-            Log in
+            {loginWord}
           </Nav.Link>
         </Nav>
       </Navbar.Collapse>
@@ -65,4 +75,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default withRouter(Header);
