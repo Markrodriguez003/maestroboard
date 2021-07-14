@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
-//  Creating Port
+//  Creating Port <<- fixed
 const PORT = process.env.PORT || 3005;
 
 // Express Middleware to handle JSON
