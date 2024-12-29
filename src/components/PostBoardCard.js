@@ -19,20 +19,13 @@ import {
   Gem,
   At,
   TelephoneFill,
-  Mailbox2
+  Mailbox2,
 } from "react-bootstrap-icons"; // Importing Bootstrap Icon Components
 import ReactCardFlip from "react-card-flip";
 import CardReplyModal from "./CardReplyModal";
 import ReportPostModal from "./ReportPostModal";
 
-import {
-  Card,
-  Badge,
-  ListGroup,
-  Row,
-  Col,
-  Button,
-} from "react-bootstrap"; // Importing Bootstrap Components
+import { Card, Badge, ListGroup, Row, Col, Button } from "react-bootstrap"; // Importing Bootstrap Components
 // ***********************************************************************************************************************
 
 // import pushPin from "./post-imgs/notecard1.png"
@@ -96,46 +89,8 @@ function PostBoardCard(prop) {
               {/* ***************************** */}
 
               <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
-
                 <div className="card front">
-                  <Card style={{ width: "250px", height: "370px" }}>
-                    <div className="card-top-header">
-                      {/* <img src={pushPin} alt="pushpin ></img> */}
-                      <Row className="card-header-labels">
-                        <Col>
-                          <People /> Posted By:
-                        </Col>
-                        <Col>
-                          {" "}
-                          <CalendarEvent /> Date Posted:
-                        </Col>
-                        <Col>
-                          <GeoAlt /> Zipcode:
-                        </Col>
-                      </Row>
-                      {/* User Post input */}
-                      <Row className="card-header-user-input">
-                        <Col>{prop.username}</Col>
-                        <Col>{Date}</Col>
-                        <Col>{prop.zip}</Col>
-                      </Row>
-                    </div>
-                    <Row className="mx-auto">
-                      <Col>
-                        <Badge variant="success">
-                          {" "}
-                          <CashStack style={{ marginBottom: "3.25px" }} /> $
-                          {prop.price} {prop.trade}
-                        </Badge>
-                      </Col>
-                      <Col>
-                        <Badge variant="warning">
-                          {" "}
-                          <Gem style={{ marginBottom: "3.25px" }} />{" "}
-                          {prop.type}
-                        </Badge>
-                      </Col>
-                    </Row>
+                  <Card style={{ width: "325px", height: "420px" }}>
                     <SRLWrapper>
                       <Carousel
                         additionalTransfrom={0}
@@ -187,7 +142,7 @@ function PostBoardCard(prop) {
                           src={cardImgA}
                           style={{
                             display: "block",
-                            height: "195px",
+                            height: "255px",
                             margin: "-15px",
                             width: "100%",
                           }}
@@ -196,7 +151,7 @@ function PostBoardCard(prop) {
                           src={cardImgB}
                           style={{
                             display: "block",
-                            height: "195px",
+                            height: "255px",
                             margin: "-15px",
                             width: "100%",
                           }}
@@ -205,7 +160,7 @@ function PostBoardCard(prop) {
                           src={cardImgC}
                           style={{
                             display: "block",
-                            height: "195px",
+                            height: "255px",
                             margin: "-15px",
                             width: "100%",
                           }}
@@ -214,7 +169,7 @@ function PostBoardCard(prop) {
                           src={cardImgD}
                           style={{
                             display: "block",
-                            height: "195px",
+                            height: "255px",
                             margin: "-15px",
                             width: "100%",
                           }}
@@ -223,13 +178,50 @@ function PostBoardCard(prop) {
                           src={cardImgE}
                           style={{
                             display: "block",
-                            height: "195px",
+                            height: "255px",
                             margin: "-15px",
                             width: "100%",
                           }}
                         />
                       </Carousel>
                     </SRLWrapper>
+                    <div className="card-top-header">
+                      {/* <img src={pushPin} alt="pushpin ></img> */}
+                      <Row className="card-header-labels">
+                        <Col>
+                          <People /> Posted By:
+                        </Col>
+                        <Col>
+                          {" "}
+                          <CalendarEvent /> Date Posted:
+                        </Col>
+                        <Col>
+                          <GeoAlt /> Zipcode:
+                        </Col>
+                      </Row>
+                      {/* User Post input */}
+                      <Row className="card-header-user-input">
+                        <Col>{prop.username}</Col>
+                        <Col>{Date}</Col>
+                        <Col>{prop.zip}</Col>
+                      </Row>
+                    </div>
+                    <Row className="mx-auto" style={{ fontSize: "20px" }}>
+                      <Col>
+                        <Badge variant="success">
+                          {" "}
+                          <CashStack style={{ marginBottom: "3.25px" }} /> $
+                          {prop.price} {prop.trade}
+                        </Badge>
+                      </Col>
+                      <Col>
+                        <Badge variant="warning">
+                          {" "}
+                          <Gem style={{ marginBottom: "3.25px" }} /> {prop.type}
+                        </Badge>
+                      </Col>
+                    </Row>
+
                     <Card.Body>
                       <Card.Title className="post-title-text text-center mx-auto">
                         {prop.title}
@@ -238,34 +230,27 @@ function PostBoardCard(prop) {
                         {userPost.quickBody}
                       </Card.Text> */}
                     </Card.Body>
-                    <Card.Body>
-                      <Row className="text-center">
-                        <Col>
-                          <Button
-                            className="card-contact-btn btn btn-sm btn-info btn-block "
-                            onClick={handleClick}
-                          >
-                            <InfoSquareFill style={{ marginBottom: "4.5px" }} />{" "}
-                            Info
-                          </Button>
-                        </Col>
-                        <Col>
-                          <Button className="card-contact-btn btn-sm btn-info btn-block">
-                            <StarFill style={{ marginBottom: "3.65px" }} />{" "}
-                            Favorite
-                          </Button>
-                        </Col>
-                      </Row>
-                    </Card.Body>
-                    {/* <ReportPostModal />    */}
-                    <Button
-                      variant="success"
-                      className="btn btn-sm btn-block"
-                      onClick={flipUnderCard}
-                    >
-                      <ChatDotsFill style={{ marginBottom: "3.65px" }} />{" "}
-                      Contact
-                    </Button>
+
+                    <Row>
+                      <Col className="">
+                        <Button
+                          className="card-contact-btn btn btn-sm btn-info btn-block "
+                          onClick={handleClick}
+                        >
+                          <InfoSquareFill /> Info
+                        </Button>
+                      </Col>
+                      <Col>
+                        <Button
+                          variant="success"
+                          className="btn btn-sm btn-block"
+                          onClick={flipUnderCard}
+                        >
+                          <ChatDotsFill style={{ marginBottom: "3.65px" }} />{" "}
+                          Contact
+                        </Button>
+                      </Col>
+                    </Row>
                   </Card>
                 </div>
                 {/* ***************************** */}
@@ -273,7 +258,7 @@ function PostBoardCard(prop) {
                 {/* ***************************** */}
 
                 <div className=" card back">
-                  <Card style={{ width: "250px", height: "371.5px" }}>
+                  <Card style={{ width: "325px", height: "420px" }}>
                     <div className="card-top-header">
                       <Row className="card-header-labels">
                         <Col>
@@ -354,7 +339,14 @@ function PostBoardCard(prop) {
               {/* ***************************** */}
 
               <div className="under-card" style={revealUnderCard}>
-                <Card style={{ width: "250px", height: "340px" }}>
+                <Card
+                  style={{
+                    width: "325px",
+                    height: "420px",
+                    backgroundColor: "darkcyan",
+                    color: "white",
+                  }}
+                >
                   <div className="card-top-header">
                     <Row className="card-header-labels">
                       <Col>
@@ -392,7 +384,12 @@ function PostBoardCard(prop) {
                         </Badge>
                       </Col>
                     </Row> */}
-                    <Card.Title className="text-center"> <Mailbox2 style={{ marginBottom: "4.8px" }} /> Contact </Card.Title>
+                    <Card.Title className="text-center">
+                      {" "}
+                      <Mailbox2
+                        style={{ marginBottom: "4.8px" }}
+                      /> Contact{" "}
+                    </Card.Title>
                     <ListGroup>
                       <ListGroup.Item>
                         <span className="font-weight-bold contact-text">
@@ -409,10 +406,7 @@ function PostBoardCard(prop) {
                         <span className="font-weight-bold contact-text">
                           <TelephoneFill /> Number:
                         </span>
-                        <span className="contact-text">
-                          {" "}
-                          {prop.phone}
-                        </span>
+                        <span className="contact-text"> {prop.phone}</span>
                       </ListGroup.Item>
                       <ListGroup.Item>
                         <CardReplyModal />
@@ -449,4 +443,3 @@ function PostBoardCard(prop) {
 }
 
 export default PostBoardCard;
-

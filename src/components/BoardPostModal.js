@@ -42,7 +42,7 @@ function BoardPostModal() {
 
   return (
     <div>
-      <Button variant="info" size="md" className="ml-3" onClick={handleShow}>
+      <Button variant="info" size="md" className="float-right mr-5 mb-4" onClick={handleShow}>
         Create Post!
       </Button>
 

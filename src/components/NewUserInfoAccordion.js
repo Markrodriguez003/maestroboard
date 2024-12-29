@@ -1,7 +1,7 @@
 import React from "react";
 import "./css/NewUserInfoAccordion.css";
 import { EmojiSunglasses } from "react-bootstrap-icons"; // Importing Bootstrap Icon Components
-import { Row, Col, Button, Card, Accordion, Jumbotron } from "react-bootstrap";
+import { Row, Col, Button, Card, Accordion, Container } from "react-bootstrap";
 import muse from "./imgs/muse.png";
 function NewUserInfoAccordion() {
 
@@ -20,7 +20,7 @@ function NewUserInfoAccordion() {
                     </Card.Header>
                     <Accordion.Collapse eventKey="1">
                         <Card.Body className="newbie-card">
-                            <Jumbotron className="main-jumbotron">
+                            <Container className="main-jumbotron">
                                 <Row>
                                     <Col>
                                         <img src={muse} className="muse-logo mt-4"></img>
@@ -48,7 +48,7 @@ function NewUserInfoAccordion() {
                                 
                                     <Button variant="info" className="btn btn-lg mb-3 newUserInfo-btn" href="/signup" >Sign Up!</Button>
                                 
-                            </Jumbotron>
+                            </Container>
                         </Card.Body>
                     </Accordion.Collapse>
                 </Card>

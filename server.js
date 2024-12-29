@@ -1,6 +1,7 @@
 const express = require("express"); // Bringing in Express
 const path = require("path"); // Bringing in Path
 const mongoose = require("mongoose"); // Mongoose
+// const CP = require("cookie-parser");
 const app = express(); //Intializing  Express
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
@@ -13,6 +14,7 @@ app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
+// app.use(cookieParser()); // TODO Pass a secret here?
 
 //  Creating Port
 const PORT = process.env.PORT || 3005;
@@ -31,6 +33,7 @@ const ex = require("./server/ExamplePosts.js");
 
 // Bringing in POST schema model
 const Post = require("./db/Posts");
+const cookieParser = require("cookie-parser");
 
 // Connecting project to mongoose database.
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/maestroboard", { useNewUrlParser: true, useUnifiedTopology: true });

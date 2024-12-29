@@ -1,6 +1,8 @@
 
 const Post = require("../db/Posts");
 const UserAccount = require("../db/UserAccount");
+// const CP = require("cookie-parser");
+
 const e = require("express");
 // const fetch = require("node-fetch");
 const jwt = require("jsonwebtoken");
@@ -88,14 +90,14 @@ module.exports = (app) => {
             db_id: req.body.id,
             username: req.body.username,
             zip: req.body.zip,
-            exp: expiry_var // Timestamp is measured in seconds, not miliseconds. //! Be careful!
+            exp: expiry_var // Timestamp is measured in seconds, not miliseconds. //! Be aware!
           }
 
           // User session token
           let token = jwt.sign(payload, JWT_KEY); // Save in cookie or Local storage
           
           
-          console.log("Token inside API route =====>" + token);
+          // console.log("Token inside API route =====>" + token);
 
           // ! REDIRECT EXPRESS/REACT ISSUE
           // TODO https://stackoverflow.com/questions/38105453/how-do-i-redirect-into-react-router-from-express
@@ -104,7 +106,14 @@ module.exports = (app) => {
 
           // Saving user info after authentication / authorization is complete in Local Storage
 
-          res.status(201).send("PLEASE WORK.");
+          // Middleware to validate cookie
+          // TODO https://www.youtube.com/watch?v=2so3hh8n-3w&ab_channel=AnsontheDeveloper
+          function cookieValidation(){
+
+          }
+
+          // res.cookie("user-session", token);
+          res.status(201);
         }
         else {
           console.log("Username & Password do not match!")

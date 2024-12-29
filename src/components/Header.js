@@ -1,78 +1,18 @@
-import React from "react";
-import {withRouter} from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { withRouter } from "react-router-dom";
 import "./css/Header.css";
-import { Nav, Navbar, Row, Col } from "react-bootstrap";
+import LoggedInHeader from "./LoggedInHeader";
+import GuestHeader from "./GuestHeader";
+import { Nav, Navbar, Row, Col, NavDropdown } from "react-bootstrap";
 // import {Link} from "react-router-dom" // Wrap it around li or nav elements to link to specific pages
-
-
-
-
+// coookies
 function Header(prop) {
-  let loginWord;
-  if(prop.user === undefined || prop.user === ""){
-    loginWord = "Log in";
-  } else {loginWord = prop.user}
-
-  
-  return (
-    <Navbar
-      collapseOnSelect
-      expand="lg"
-      bg="dark"
-      variant="dark"
-      className="main-header"
-    >
-      <a href="/myprofile">
-        <img
-          className="header-icon"
-          src="./assets/imgs/Maestro-Logo-R.png"
-          alt="MaestroBoard Logo"
-        ></img>
-      </a>
-      <Row>
-        <Col>
-          <Navbar.Brand href="/home" className="header-title d-flex">
-            MaestroBoard
-            <small className="header-small-text">
-              buy. sell. trade.connect. |{"  "}
-              <span className="header-muse-small">
-                {" "}
-                Chase your <span> 
-                <a
-                  href="https://en.wikipedia.org/wiki/Euterpe#:~:text=Euterpe%20(%2Fju%CB%90%CB%88t,named%20muse%20of%20lyric%20poetry."
-                  className="muse-anchor"
-                >
-                  muse
-                </a></span>
-                .{" "}
-              </span>
-            </small>
-          </Navbar.Brand>
-        </Col>
-      </Row>
-      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-      <Navbar.Collapse id="responsive-navbar-nav header-menu-center">
-        <Nav className="mr-auto"></Nav>
-        <Nav className="header-container header-menu-center">
-          <Nav.Link href="/board" className="header-items">
-            Community Board
-          </Nav.Link>
-          <Nav.Link href="/news" className="header-items">
-            News
-          </Nav.Link>
-          <Nav.Link href="/forum" className="header-items">
-            Forum
-          </Nav.Link>
-          <Nav.Link href="/myprofile" className="header-items">
-            My Profile
-          </Nav.Link>
-          <Nav.Link eventKey={2} href="/login" className="header-items">
-            {loginWord}
-          </Nav.Link>
-        </Nav>
-      </Navbar.Collapse>
-    </Navbar>
-  );
+  let logged_In_Auth = -1;
+  if (logged_In_Auth === 1) {
+    return <LoggedInHeader />;
+  } else {
+    return <GuestHeader />;
+  }
 }
 
 export default withRouter(Header);

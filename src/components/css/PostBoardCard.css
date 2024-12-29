@@ -1,11 +1,11 @@
 .card-top-header {
   text-align: center;
-  padding-bottom: 3.5px;
   padding-top: 2px;
+  margin-bottom: 10px;
 }
 
 .card-header-labels {
-  font-size: 8px;
+  font-size: 10px;
   font-weight: bold;
 }
 
@@ -29,17 +29,17 @@
   border-radius: 75% !important;
 }
 
-.info-card-title{
+.info-card-title {
   font-size: 12px !important;
 }
 
-.info-card-body{
+.info-card-body {
   font-size: 12px !important;
   border: purple 1px dotted;
   padding: 3px;
 }
 
-.table-text{
+.table-text {
   font-size: 12px !important;
 }
 
@@ -49,15 +49,14 @@
   /* margin-top: -3px; */
 }
 
-.contact-text{
+.contact-text {
   font-size: 11px;
 }
-
 
 /* ************************** */
 /* CSS CARD ANIMATIONS */
 .card-container {
-  background-color: lightcoral;
+  background-color: rgba(0, 0, 0, 0.3);
   display: inline;
   /* padding: 65px;    */
   display: inline;
@@ -77,9 +76,6 @@
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-
-
-
 
 @media only screen and (max-width: 600px) {
   body {
