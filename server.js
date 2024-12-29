@@ -9,7 +9,7 @@ const jwt_key = process.env.JWT_KEY; // Setting jwt Key
 const cors = require("cors");
 
 // Loading middleware for body parsing / json / urlecoding / cors
-const bodyParser = require('body-parser');
+const bodyParser = require("body-parser");
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -36,7 +36,10 @@ const Post = require("./db/Posts");
 const cookieParser = require("cookie-parser");
 
 // Connecting project to mongoose database.
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/maestroboard", { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(
+  process.env.MONGODB_URI || "mongodb://localhost/maestroboard",
+  { useNewUrlParser: true, useUnifiedTopology: true }
+);
 
 // Assigning "db" to created mongoose link above
 const db = mongoose.connection;
@@ -46,11 +49,10 @@ require("./controller/API_Get_Routes.js")(app);
 
 // This will handle API POST requests
 require("./controller/API_Post_Routes.js")(app);
- 
 
 // * **********************************************************************************
 // * **********************************************************************************
- 
+
 // * Creates a single new post
 // Post.create(*insert post object here)
 //   .then(post => {
@@ -63,27 +65,34 @@ require("./controller/API_Post_Routes.js")(app);
 async function loadPosts() {
   await Post.insertMany(ex.examplePosts, (err, confirm) => {
     if (err) {
-      console.log("An error has occured bulk inserting posts::::: " + err)
+      console.log("An error has occured bulk inserting posts::::: " + err);
     }
     console.log("Bulk insert of posts has sucessfully been created!::::: ");
-  })
+  });
+}
+
+async function deletePosts() {
+  await Post.deleteMany({});
 }
 
 async function loadUsers() {
   await Post.insertMany(ex.examplePosts, (err, confirm) => {
     if (err) {
-      console.log("An error has occured bulk inserting posts::::: " + err)
+      console.log("An error has occured bulk inserting posts::::: " + err);
     }
     console.log("Bulk insert of posts has sucessfully been created!::::: ");
-  })
+  });
 }
 
 // Loads Posts
 // loadPosts();
 
+// Deletes Posts
+// deletePosts();
+
 // * Testing connection to db
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function () {
+db.on("error", console.error.bind(console, "connection error:"));
+db.once("open", function () {
   console.log("DB connected");
 });
 
@@ -101,12 +110,13 @@ db.once('open', function () {
 
 // * LOADS MAIN PAGE
 app.get("/", function (req, res) {
-  res.send("Hello!");
+  // res.send("Hello!");
 });
 
 // // * **********************************************************************************
 // // * ROUTES RELATED TO BOARD/POSTS
 // // * Finds and returns all posts in db
+
 // app.get("/api/loadPosts", function (req, res) {
 //   Post.find({})
 //     .then((posts) => {
@@ -122,7 +132,7 @@ app.get("/", function (req, res) {
 //       console.log("There are " + posts.length + " posts currently in the database.");
 //       console.log("Posts: " + posts);
 //       res.json(posts);
-//     }) 
+//     })
 // });
 
 // // * Finds all posts and returns it by ascending date ordered
@@ -132,56 +142,56 @@ app.get("/", function (req, res) {
 //       console.log("There are " + posts.length + " posts currently in the database.");
 //       console.log("Posts: " + posts);
 //       res.json(posts);
-//     }) 
+//     })
 // });
 
 // //  ! FIGURE OUT HOW TO MAKE USERNAMES SEARCHABLE BY LOWERCASE, PERHAPS IT NEEDS TO BE DONE DURING DB POST INSERTION
-// // * Finds all posts by specific username 
+// // * Finds all posts by specific username
 // app.get("/api/loadPosts/username/:username", function (req, res) {
 //   Post.find({username: req.params.username }) // -1 means oldest post to earliest
 //     .then((posts,err) => {
 //       console.log("Posts made by: " + req.params.username + " + posts");
 //       res.json(posts);
-//     }) 
+//     })
 // });
 
-// // * Finds all posts by specific type / Selling%20Gear /Buying%20Gear  
+// // * Finds all posts by specific type / Selling%20Gear /Buying%20Gear
 // app.get("/api/loadPosts/type/:type", function (req, res) {
 //   Post.find({type: req.params.type }) // -1 means oldest post to earliest
 //     .then((posts,err) => {
 //       console.log("Posts made by: " + req.params.type + " + posts");
 //       res.json(posts);
-//     }) 
+//     })
 // });
 
-// // * Finds all posts by specific Zipcode   
+// // * Finds all posts by specific Zipcode
 // app.get("/api/loadPosts/zip/:zip", function (req, res) {
 //   Post.find({zip: req.params.zip }) // -1 means oldest post to earliest
 //     .then((posts,err) => {
 //       console.log("Posts made by: " + req.params.zip + " + posts");
 //       res.json(posts);
-//     }) 
+//     })
 // });
 
-// // * Finds all posts by asc price    
+// // * Finds all posts by asc price
 // app.get("/api/loadPosts/price/asc", function (req, res) {
 //   Post.find({}).sort({price: 1}) // -1 means least expensive gear price to most expensive price
 //     .then((posts,err) => {
 //       res.json(posts);
-//     }) 
+//     })
 // });
 
-// // * Finds all posts by desc price    
+// // * Finds all posts by desc price
 // app.get("/api/loadPosts/price/desc", function (req, res) {
 //   Post.find({}).sort({price: -1}) // -1 means most expensive gear price to lowest price
 //     .then((posts,err) => {
 //       res.json(posts);
-//     }) 
+//     })
 // });
 
 // * **********************************************************************************
 
-// Listens to port (3003) for route inputs 
+// Listens to port (3003) for route inputs
 app.listen(PORT, function () {
   console.log(`🌎 ==> API server now on port ${PORT}!`);
 });

@@ -41,7 +41,6 @@ function SignUpForm() {
   return (
 
     <div className="sign-up-container">
-      <Header />
       <section className="cover" >
         <div className="cover-caption">
           <div className="container">
@@ -190,7 +189,6 @@ function SignUpForm() {
           </div>
         </div>
       </section>
-      <Footer />
     </div>
 
   );

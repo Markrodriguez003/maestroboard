@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./css/Corkboard.css";
-
-import corkboardImg from "./imgs/User-Corkboard.jpg";
 import PostBoardCard from "./PostBoardCard";
 import BoardPostModal from "./BoardPostModal";
 // import CardReplyModal from "./CardReplyModal";
-import { Row, Col, Form, Button, Dropdown, Container } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 function Corkboard() {
   // CAROUSEL STATE FUNCTION
 
@@ -51,14 +49,10 @@ function Corkboard() {
       </div>
 
       {/* ********************************************************************** */}
-      {/* CORKBOARD */}
-      {/* ********************************************************************** */}
-      {/* ********************************************************************** */}
-      {/* CORKBOARD CARDS */}
+      {/* CORKBOARD + POST CARDS*/}
       {/* ********************************************************************** */}
 
-      {/* <img src={corkboardImg} className="board" alt="post-corkboard"></img> */}
-      <div className="corkboard-card-container">
+      <div className="corkboard-card-container shadow-lg ">
         {posts.map((p, i) => (
           <PostBoardCard
             key={0}

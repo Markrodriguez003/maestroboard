@@ -57,8 +57,10 @@
   margin-right: auto;
   margin-left: auto;
   gap: 20px;
-  background-image: url("../../../public/assets/imgs/User-Corkboard.jpg");
-  border: darkgrey 7px solid;
+  /* background-image: url("../../../public/assets/imgs/User-Corkboard.jpg"); */
+  background-image: url("../../../public/assets/imgs/Corkboard.jpg");
+
+  border: rgb(134, 134, 134) 8px solid;
 }
 
 .boardCard {

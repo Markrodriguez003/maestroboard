@@ -28,7 +28,13 @@ import ReportPostModal from "./ReportPostModal";
 import { Card, Badge, ListGroup, Row, Col, Button } from "react-bootstrap"; // Importing Bootstrap Components
 // ***********************************************************************************************************************
 
-// import pushPin from "./post-imgs/notecard1.png"
+import pushPinA from "./post-imgs/push-pin1.png";
+import pushPinB from "./post-imgs/push-pin2.png";
+import pushPinC from "./post-imgs/push-pin3.png";
+import pushPinD from "./post-imgs/push-pin4.png";
+import pushPinE from "./post-imgs/push-pin5.png";
+import pushPinF from "./post-imgs/push-pin6.png";
+
 // USER INFO
 
 // Example User Pictures
@@ -43,7 +49,15 @@ import cardImgE from "./imgs/postImg6.jpg";
 function PostBoardCard(prop) {
   const [isFlipped, setIsFlipped] = useState(false);
   const [revealUnderCard, setRevealUnderCard] = useState({});
-  // const [revealUnderCardBack, setRevealUnderCardBack] = useState({});
+
+  const pushPinRand = [
+    pushPinA,
+    pushPinB,
+    pushPinC,
+    pushPinD,
+    pushPinE,
+    pushPinF,
+  ];
 
   function flipUnderCard() {
     console.log("Sliding under card");
@@ -186,7 +200,11 @@ function PostBoardCard(prop) {
                       </Carousel>
                     </SRLWrapper>
                     <div className="card-top-header">
-                      {/* <img src={pushPin} alt="pushpin ></img> */}
+                      <img
+                        src={pushPinRand[1]}
+                        alt="pushpin"
+                        className="pushPin"
+                      ></img>
                       <Row className="card-header-labels">
                         <Col>
                           <People /> Posted By:
@@ -206,7 +224,10 @@ function PostBoardCard(prop) {
                         <Col>{prop.zip}</Col>
                       </Row>
                     </div>
-                    <Row className="mx-auto" style={{ fontSize: "20px" }}>
+                    <Row
+                      className="mx-auto"
+                      style={{ fontSize: "16px", color: "white" }}
+                    >
                       <Col>
                         <Badge variant="success">
                           {" "}
@@ -230,7 +251,6 @@ function PostBoardCard(prop) {
                         {userPost.quickBody}
                       </Card.Text> */}
                     </Card.Body>
-
                     <Row>
                       <Col className="">
                         <Button
@@ -285,39 +305,14 @@ function PostBoardCard(prop) {
                         {prop.title}{" "}
                       </Card.Title>
                       <p className="info-card-body">{prop.body}</p>
-
-                      <Row className="mx-auto">
-                        <Col>
-                          <Badge variant="success">
-                            {" "}
-                            <CashStack style={{ marginBottom: "3.25px" }} /> $
-                            {prop.price} {prop.trade}
-                          </Badge>
-                        </Col>
-                        <Col>
-                          <Badge variant="warning">
-                            {" "}
-                            <Gem style={{ marginBottom: "3.25px" }} />{" "}
-                            {prop.type}
-                          </Badge>
-                        </Col>
-                      </Row>
-                      <Row>
-                        <Col>
-                          <Badge variant="primary">
-                            {" "}
-                            <Gem style={{ marginBottom: "3.25px" }} />
-                            {prop.equipment}
-                          </Badge>
-                        </Col>
-                      </Row>
                     </Card.Body>
 
                     <Card.Body>
-                      <Row className="text-center mx-auto">
-                        <Col>
+                      <Card.Body>
+                        <Col className="text-center">
                           <Button
-                            className="btn btn-sm btn-info mt-4"
+                            size="lg"
+                            className="btn-info"
                             onClick={handleClick}
                           >
                             <ArrowLeftCircleFill
@@ -326,10 +321,8 @@ function PostBoardCard(prop) {
                             Back
                           </Button>
                         </Col>
-                        <Col>
-                          <ReportPostModal />
-                        </Col>
-                      </Row>
+                        <ReportPostModal />
+                      </Card.Body>
                     </Card.Body>
                   </Card>
                 </div>
@@ -368,30 +361,17 @@ function PostBoardCard(prop) {
                     </Row>
                   </div>
                   <Card.Body>
-                    {/* <Row>
-                      <Col>
-                        <Badge variant="success" className="mb-2">
-                          {" "}
-                          <CashStack style={{ marginBottom: "3.25px" }} /> $
-                          {userPost.gearPrice} or trade
-                        </Badge>
-                      </Col>
-                      <Col>
-                        <Badge variant="warning" className="mb-2">
-                          {" "}
-                          <CashStack style={{ marginBottom: "3.25px" }} />{" "}
-                          {userPost.gearListingType}
-                        </Badge>
-                      </Col>
-                    </Row> */}
                     <Card.Title className="text-center">
                       {" "}
-                      <Mailbox2
-                        style={{ marginBottom: "4.8px" }}
-                      /> Contact{" "}
+                      <h3>
+                        {" "}
+                        <Mailbox2
+                          style={{ marginBottom: "4.8px" }}
+                        /> Contact{" "}
+                      </h3>
                     </Card.Title>
-                    <ListGroup>
-                      <ListGroup.Item>
+                    <ListGroup className="p-0">
+                      <ListGroup.Item style={{ color: "black" }}>
                         <span className="font-weight-bold contact-text">
                           <At />
                           Email:
@@ -402,23 +382,24 @@ function PostBoardCard(prop) {
                           <a href={"mailTo" + prop.email}>{prop.email}</a>
                         </span>
                       </ListGroup.Item>
-                      <ListGroup.Item>
+                      <ListGroup.Item style={{ color: "black" }}>
                         <span className="font-weight-bold contact-text">
                           <TelephoneFill /> Number:
                         </span>
                         <span className="contact-text"> {prop.phone}</span>
                       </ListGroup.Item>
                       <ListGroup.Item>
-                        <CardReplyModal />
+                        {/* <CardReplyModal /> */}
                       </ListGroup.Item>
                     </ListGroup>
                   </Card.Body>
 
                   <Card.Body>
-                    <Row className="text-center mx-auto">
-                      <Col>
+                    <Row className="text-center ">
+                      <Col className="text-center">
                         <Button
-                          className="btn btn-sm btn-info mt-4"
+                          size="lg"
+                          className="btn-info"
                           onClick={flipUnderCardBack}
                         >
                           <ArrowLeftCircleFill
@@ -427,10 +408,8 @@ function PostBoardCard(prop) {
                           Back
                         </Button>
                       </Col>
-                      <Col>
-                        <ReportPostModal />
-                      </Col>
                     </Row>
+                    <ReportPostModal />
                   </Card.Body>
                 </Card>
               </div>

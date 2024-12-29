@@ -4,6 +4,14 @@
   margin-bottom: 10px;
 }
 
+.pushPin {
+  display: inline;
+  position: absolute;
+  width: 35px;
+  height: auto;
+  top: -2px;
+}
+
 .card-header-labels {
   font-size: 10px;
   font-weight: bold;
@@ -30,11 +38,11 @@
 }
 
 .info-card-title {
-  font-size: 12px !important;
+  font-size: 18px !important;
 }
 
 .info-card-body {
-  font-size: 12px !important;
+  font-size: 16px !important;
   border: purple 1px dotted;
   padding: 3px;
 }
@@ -43,6 +51,10 @@
   font-size: 12px !important;
 }
 
+.card-badge {
+  font-size: 14px !important;
+  color: white;
+}
 .card-contact-btn {
   padding: 255px;
   margin-right: 300px !important;
@@ -50,7 +62,7 @@
 }
 
 .contact-text {
-  font-size: 11px;
+  font-size: 14px;
 }
 
 /* ************************** */

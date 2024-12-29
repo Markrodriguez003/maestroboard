@@ -45,7 +45,6 @@ function Login(props) {
 
   return (
     <div className="login-container">
-      <Header />
       <section className="cover" className="min-vh-100">
         <div className="cover-caption">
           <div className="container">
@@ -117,7 +116,6 @@ function Login(props) {
           </div>
         </div>
       </section>
-      <Footer />
     </div>
   );
 }

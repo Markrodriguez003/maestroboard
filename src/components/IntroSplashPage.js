@@ -3,13 +3,11 @@ import "./css/IntroSplashPage.css";
 import { ArrowRightCircle } from "react-bootstrap-icons"; // Importing Bootstrap Icon Components
 import { Row, Col, Figure } from "react-bootstrap";
 import IntroInfoBlock from "./IntroInfoBlock";
-import NewUserInfoAccordion from "./NewUserInfoAccordion";
+
 import PostCounter from "./PostCounter";
 import ForumPostCounter from "./ForumPostCounter";
 import Header from "./Header";
 import Footer from "./Footer";
-
-
 
 import art1 from "./article-imgs/Article-6.png";
 import art2 from "./article-imgs/Article-7.jpg";
@@ -21,29 +19,6 @@ function IntroSplashPage() {
   return (
     // xs, sm, md, lg , and x
     <div>
-      <Header />
-      {/* ******************************************************************************************************/}
-      {/* FIRST ARTICLE */}
-      {/* ******************************************************************************************************/}
-      {/* <article className="article-container">
-                <Row>
-                    <Col>
-                        <img src={art3}></img>
-
-                    </Col>
-                    <Col>
-                        <img src={art4}></img>
-
-                    </Col>
-                </Row>
-            </article> */}
-
-      {/* ******************************************************************************************************/}
-      {/* THIRD  ARTICLE */}
-      {/* ******************************************************************************************************/}
-
-      <NewUserInfoAccordion />
-
       <article className="article-container ">
         <Row>
           <Col xs sm md lg={6}>
@@ -160,7 +135,6 @@ function IntroSplashPage() {
       {/* ******************************************************************************************************/}
       <IntroInfoBlock />
       <PostCounter />
-      <Footer />
     </div>
   );
 }
