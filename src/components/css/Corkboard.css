@@ -50,15 +50,16 @@
   position: relative;
   display: flex;
   flex-wrap: wrap;
-  width: 94%;
+  width: 95%;
   padding: 10px;
   align-content: center;
   justify-content: center;
   margin-right: auto;
   margin-left: auto;
   gap: 20px;
+
   /* background-image: url("../../../public/assets/imgs/User-Corkboard.jpg"); */
-  background-image: url("../../../public/assets/imgs/Corkboard.jpg");
+  background-image: url("../../assets//imgs/corkboards/User-Corkboard.jpg");
 
   border: rgb(134, 134, 134) 8px solid;
 }

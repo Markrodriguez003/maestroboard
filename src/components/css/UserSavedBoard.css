@@ -1,39 +1,35 @@
-.userBoard-header{
-    /* width: 25%; */
-    font-size: 38px !important;
-    
-    color: white !important;
+.userBoard-header {
+  /* width: 25%; */
+  font-size: 38px !important;
 
+  color: white !important;
 }
 
-.entire-myboard-container{
-
-    border: rgba(66, 66, 66, 0.295) 2px solid;
-
+.entire-myboard-container {
+  border: rgba(66, 66, 66, 0.295) 2px solid;
 }
-.accordion-container{
-    display:inline-block;
-    background-color: rgb(22, 81, 104) !important;
-      border: black 2px solid;
-    /* font-family: ; */
-    font-size: 12px !important;
-    letter-spacing: 2.2px;
-    padding: -14px;
-
+.accordion-container {
+  display: inline-block;
+  background-color: rgb(22, 81, 104) !important;
+  border: black 2px solid;
+  /* font-family: ; */
+  font-size: 12px !important;
+  letter-spacing: 2.2px;
+  padding: -14px;
 }
 
-.board-container{
-    /* width: 100%;  */
-    /* height: 625%; */
-    background-image: url("../imgs/User-Corkboard-2.jpg");
-    background-size: contain;
-    border: rgba(66, 66, 66, 0.295) 2px solid;
+.board-container {
+  /* width: 100%;  */
+  /* height: 625%; */
+  background-image: url("../../assets/imgs/corkboards/User-Corkboard-2.jpg");
+  background-size: contain;
+  border: rgba(66, 66, 66, 0.295) 2px solid;
 }
-.userBoard-corkBoard{
-    width: 100%; 
-    height: auto;
+.userBoard-corkBoard {
+  width: 100%;
+  height: auto;
 }
-.myBoard{
-    width: 55%; 
-    height: 65%;
+.myBoard {
+  width: 55%;
+  height: 65%;
 }

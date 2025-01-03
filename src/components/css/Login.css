@@ -1,49 +1,45 @@
-
 .cover {
-    /* background: #222 url('https://unsplash.it/1920/1080/?random') center center no-repeat;
-    background-size: cover; */
-    height: 100%;
-    padding:20px;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    position: relative;
+  height: 100%;
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  position: relative;
 }
 
-.login-title{
-    font-size: 45px !important;
+.login-title {
+  font-size: 45px !important;
 }
 
 .cover-caption {
-    padding:20px;
+  padding: 20px;
 
-    width: 100%;
-    position: relative;
-    z-index: 1;
+  width: 100%;
+  position: relative;
+  z-index: 1;
 }
 
 /* only used for background overlay not needed for centering */
 form:before {
-    content: '';
-    height: 100%;
-    width: 1200px;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    background-color: rgba(0,0,0,0.5);
-    z-index: -1;
-    border-radius: 10px;
+  content: "";
+  height: 100%;
+  width: 1200px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+  border-radius: 10px;
 }
 
-form:after{
-    width: 250px;
+form:after {
+  width: 250px;
 }
-form{
-    
-    padding: 24px;
+form {
+  padding: 24px;
 }
 
-.login-btn{
-    margin-top: 14px;
+.login-btn {
+  margin-top: 14px;
 }
