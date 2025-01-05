@@ -38,17 +38,25 @@ import pushPinC from "../assets/imgs/post-imgs/push-pin3.png";
 import pushPinD from "../assets/imgs/post-imgs/push-pin4.png";
 import pushPinE from "../assets/imgs/post-imgs/push-pin5.png";
 import pushPinF from "../assets/imgs/post-imgs/push-pin6.png";
+import { propTypes } from "react-bootstrap/esm/Image";
 
 // USER INFO
 
 // Example User Pictures
-import cardImgA from "../assets/test_post_images/akai APC 40/postImg1.jpg";
-import cardImgB from "../assets/test_post_images/akai APC 40//postImg2.jpg";
-import cardImgC from "../assets/test_post_images/akai APC 40//postImg3.jpg";
-import cardImgD from "../assets/test_post_images/akai APC 40//postImg4.jpg";
-import cardImgE from "../assets/test_post_images/akai APC 40//postImg5.jpg";
+// import cardImgA from "../assets/test_post_images/akai APC 40/postImg1.jpg";
+// import cardImgB from "../assets/test_post_images/akai APC 40//postImg2.jpg";
+// import cardImgC from "../assets/test_post_images/akai APC 40//postImg3.jpg";
+// import cardImgD from "../assets/test_post_images/akai APC 40//postImg4.jpg";
+// import cardImgE from "../assets/test_post_images/akai APC 40//postImg5.jpg";
 
-const test_image_array = [cardImgA, cardImgB, cardImgC, cardImgD, cardImgE];
+
+// const A = "https://m.media-amazon.com/images/I/819Coz2HcAL._AC_SY879_.jpg";
+// const B = "https://m.media-amazon.com/images/I/71gOqpBIHBL._AC_SX679_.jpg";
+// const C = "https://m.media-amazon.com/images/I/71FcK0+PVCL._AC_SX679_.jpg";
+// const D = "https://m.media-amazon.com/images/I/61azDPXkg1L._AC_SX679_.jpg";
+// const E = "https://m.media-amazon.com/images/I/51tDzkCce0L._AC_.jpg";
+
+// const img_arry_a = [A, B, C, D, E];
 
 
 // ***********************************************************************************************************************
@@ -85,22 +93,8 @@ function PostBoardCard(prop) {
     setIsFlipped(!isFlipped);
   };
 
-  const arrowStyle = {
-    background: "transparent",
-    border: 0,
-    color: "#fff",
-    fontSize: "35px",
-  };
-  const CustomRightArrow = ({ onClick }) => (
-    <button className="arrow right" onClick={onClick} style={arrowStyle}>
-      <ArrowRight style={{ fontSize: "50px" }} />
-    </button>
-  );
-  const CustomLeftArrow = ({ onClick }) => (
-    <button className="arrow left" onClick={onClick} style={arrowStyle}>
-      <ArrowLeft style={{ fontSize: "50px" }} />
-    </button>
-  );
+
+
 
   // ***********************************************************************************************************************
   // ***********************************************************************************************************************
@@ -117,25 +111,25 @@ function PostBoardCard(prop) {
 
               <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
                 <div className="card front">
-                  <Card style={{ width: "350px", height: "450px" }}>
-                    <Carousel data-bs-theme="dark" interval={null}>
+                  <Card style={{ width: "400px", height: "500px" }}>
+                    <Carousel data-bs-theme="light" interval={null}>
 
                       ({
-                        test_image_array.map(function (img, i) {
-
+                        prop.images.map(function (img, i) {
 
                           return (
-                            <Carousel.Item key={`post-key}`}>
+                            <Carousel.Item key={`post-key-${img}}`}>
                               <div key={`container-${img} + ${i}`}>
                                 < Image
                                   key={`image-${img} - ${i}`}
                                   className="d-block w-100"
                                   style={{
                                     display: "block",
-                                    height: "255px",
+                                    height: "300px",
                                     width: "100%",
+                                    objectFit: "cover"
                                   }}
-
+                                  rounded
                                   src={img}
                                   alt={`alt- post-slide - ${img}`
                                   }

@@ -54,7 +54,7 @@ const db = mongoose.connection;
 // * **********************************************************************************
 
 // * Creates a single new post
-// Post.create(*insert post object here)
+// Post.create()
 //   .then(post => {
 //     console.log("INSERTED NEW POST::::: " + post);
 //   }).catch(err => {
