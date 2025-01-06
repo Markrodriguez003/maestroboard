@@ -9,11 +9,11 @@
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 48px;
-  border: grey 7.2px solid;
+  border: rgb(95, 89, 89) 7.2px solid;
 }
 
 .user-board-accordion {
-  background-color: rgb(117, 117, 117) (107, 84, 84);
+  background-color: rgb(80, 78, 78) (107, 84, 84);
 }
 
 /* custom board for user */
@@ -27,7 +27,7 @@
   margin-top: 12px;
   margin-left: auto;
   margin-right: auto;
-  border: grey 7.2px solid;
+  border: rgb(67, 64, 64) 7.2px solid;
 }
 
 .corkBoard-title {
@@ -61,7 +61,7 @@
   /* background-image: url("../../../public/assets/imgs/User-Corkboard.jpg"); */
   background-image: url("../../assets//imgs/corkboards/User-Corkboard.jpg");
 
-  border: rgb(134, 134, 134) 8px solid;
+  border: rgb(87, 83, 83) 8px solid;
 }
 
 .boardCard {
@@ -93,4 +93,21 @@
     /* text-align: center !important;
       font-size: 8px !important; */
   }
+}
+
+/* Pagination styling */
+
+.corkboard-pagination {
+  margin-right: 40px;
+}
+
+
+/* .page-item.active.page-link{ */
+  /* color:white !important; */
+  /* background-color: teal !important; */
+/* } */
+.page-link {
+  color:white !important;
+  background-color: teal !important;
+  cursor: pointer;
 }

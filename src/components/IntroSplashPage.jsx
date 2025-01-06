@@ -9,7 +9,7 @@ import ForumPostCounter from "./ForumPostCounter";
 
 
 import art1 from "../assets/imgs/article-imgs/Article-6.png";
-import art2 from "../assets/imgs/article-imgs/Article-7.png";
+import art2 from "../assets/imgs/article-imgs/Article-7.jpg";
 
 
 function IntroSplashPage() {

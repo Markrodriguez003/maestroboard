@@ -4,7 +4,7 @@ import axios from "axios";
 import BoardPostModal from "./BoardPostModal";
 import PostBoardCard from "./PostBoardCard";
 
-import { Container, Pagination, Row, Col } from "react-bootstrap";
+import { Container, Pagination, Row, Col, Stack } from "react-bootstrap";
 
 function Corkboard() {
 
@@ -149,44 +149,59 @@ function Corkboard() {
         {/* ************************ */}
         {/* FILTER - SEARCH BUTTONS */}
         {/* ************************ */}
-        <Container>
-          <Row>
-            <Col className="ml-auto">
-              <Pagination>
-                {postItems}
-              </Pagination>
-              {/* <Col><BoardPostModal /></Col> */}
-            </Col>
-          </Row>
-          <br />
-        </Container>
+
+
+        <Stack direction="horizontal" gap={3}>
+          <Pagination className="ms-auto corkboard-pagination" size="md">
+            {postItems}
+          </Pagination>
+        </Stack>
       </div>
 
       {/* ********************************************************************** */}
       {/* CORKBOARD + POST CARDS*/}
       {/* ********************************************************************** */}
 
-      <div className="corkboard-card-container shadow-lg ">
-        {/* {posts.allEntries?.map((p, i) => ( */}
-        {posts.paginationEntries?.map((p, i) => (
-          <PostBoardCard
-            key={`post-${p.title} - ${i}`}
-            title={p.title}
-            email={p.email}
-            username={p.username}
-            price={p.price}
-            zip={p.zip}
-            trade={p.trade}
-            type={p.type}
-            equipment={p.equipment}
-            date={p.date}
-            phone={p.phone}
-            body={p.body}
-            images={p.images}
-          />
-        ))}
-      </div>
-    </div>
+
+      {posts.paginationEntries !== undefined ?
+
+        <div className="corkboard-card-container shadow-lg ">
+
+          {posts.paginationEntries?.map((p, i) => (
+            <PostBoardCard
+              key={`post-${p.title} - ${i}`}
+              title={p.title}
+              email={p.email}
+              username={p.username}
+              price={p.price}
+              zip={p.zip}
+              trade={p.trade}
+              type={p.type}
+              equipment={p.equipment}
+              date={p.date}
+              phone={p.phone}
+              body={p.body}
+              images={p.images}
+            />
+          ))}
+        </div>
+
+        :
+        <div className="corkboard-card-container shadow-lg" style={{ height: "400px" }}>
+          <Stack gap={3} className="col-md-5 mx-auto">
+            <h1 className="p-2" style={{ color: "white", fontSize: "40px" }}> Posterboard is empty!</h1>
+            <small className="p-2" style={{ color: "white" }}> Come back later!</small>
+          </Stack>
+        </div>
+      }
+
+      <Stack direction="horizontal" gap={3} className="mt-2">
+        <Pagination className="ms-auto corkboard-pagination" size="md">
+          {postItems}
+        </Pagination>
+      </Stack>
+
+    </div >
   );
 }
 

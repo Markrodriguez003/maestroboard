@@ -12,8 +12,6 @@
   font-style: normal;
   text-decoration: none;
   text-decoration-style: none;
- 
-
 }
 
 .header-title-a:active {
@@ -34,8 +32,6 @@
   text-decoration: underline;
   text-decoration-style: solid;
   font-size: 19px;
- 
-
 }
 
 .header-container .header-items:active {
@@ -55,8 +51,6 @@
 }
 
 .header-options-a:hover {
-  
-  
 }
 
 .header-options-a:active {
@@ -70,13 +64,11 @@
 /* ********************************* */
 
 .muse-anchor:link {
-  color:  #22b8b8;
+  color: #22b8b8;
 }
 
-
-
 .muse-anchor:visited {
-  color:  #22b8b8;
+  color: #22b8b8;
 }
 
 .muse-anchor:hover {
@@ -90,8 +82,8 @@
   color: red;
 }
 
-.muse-anchor{
-  color:  #22b8b8;
+.muse-anchor {
+  color: #22b8b8;
 }
 
 /* ********************************* */
@@ -101,7 +93,12 @@
   /*  HEX #0aacac */
   background: #102933;
   background: -moz-linear-gradient(left, #102933 0%, #102933 50%, #102933 100%);
-  background: -webkit-linear-gradient(left, #102933 0%, #102933 50%, #102933 100%);
+  background: -webkit-linear-gradient(
+    left,
+    #102933 0%,
+    #102933 50%,
+    #102933 100%
+  );
   background: linear-gradient(to right, #102933 0%, #102933 50%, #102933 100%);
   margin: 0;
   margin-bottom: 16px;
@@ -110,12 +107,13 @@
     5px 5px 15px 5px rgba(0, 0, 0, 0);
   box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
   /* border-bottom: #0aacac  2px solid; */
+  /* font-family: "main-logo"; */
 }
 
 .header-icon {
   height: 88px;
   width: auto;
-  padding:6px;
+  padding: 6px;
   margin-left: 18px;
   /* margin-bottom: px; */
   margin-top: -5px;
@@ -123,7 +121,7 @@
 
 .header-title {
   font-weight: 500;
-  font-size: 40px!important;
+  font-size: 40px !important;
   color: white;
   /* margin-top: 2px; */
   /* margin-bottom: -2px; */
@@ -137,16 +135,16 @@
   margin-top: 48px;
 }
 
-.header-muse-small{
+.header-muse-small {
   font-style: italic;
 }
 
-.header-container{
+.header-container {
   margin-right: 15px;
 }
-.header-items{
-  color:white !important;
-  font-size:18px;
+.header-items {
+  color: white !important;
+  font-size: 18px;
   margin-right: 54px;
 }
 
@@ -157,7 +155,6 @@
   display:inline-block;  
   text-align: center !important;
 } */
-
 
 /* @media only screen and (max-width: 100px) {
   .header-items{

@@ -31,11 +31,8 @@ import ReportPostModal from "./ReportPostModal";
 
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
-import Captions from "yet-another-react-lightbox/plugins/captions";
 import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
-import Slideshow from "yet-another-react-lightbox/plugins/slideshow";
 import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
-import Video from "yet-another-react-lightbox/plugins/video";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import "yet-another-react-lightbox/plugins/captions.css";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
@@ -48,7 +45,7 @@ import pushPinC from "../assets/imgs/post-imgs/push-pin3.png";
 import pushPinD from "../assets/imgs/post-imgs/push-pin4.png";
 import pushPinE from "../assets/imgs/post-imgs/push-pin5.png";
 import pushPinF from "../assets/imgs/post-imgs/push-pin6.png";
-import { propTypes } from "react-bootstrap/esm/Image";
+
 
 function PostBoardCard(prop) {
   const [isFlipped, setIsFlipped] = useState(false);
@@ -77,79 +74,45 @@ function PostBoardCard(prop) {
     setIsFlipped(!isFlipped);
   };
 
-  const [advancedExampleOpen, setAdvancedExampleOpen] = useState(false);
+  const [lightBoxOpen, setLightBoxOpen] = useState(false);
   const [postImages, setPostImages] = useState(false);
 
-
-
-
-
   useEffect(() => {
-    // console.log(`prop images::: ${prop.images}`);
 
     let postImages = [];
-    
+
     async function setPostLightboxImages() {
       for (let i = 0; i < prop.images.length; i++) {
 
         postImages.push({
           src: prop.images[i],
           alt: `post-image-[${i}]`,
-          width: 384,
-          height: 560,
+          width: "90%",
+          height: "auto",
         });
       }
-
       await setPostImages(postImages);
-
-      // console.log(`POSTIMAGES::: ${JSON.stringify(postImages)}`);
-
     }
 
     setPostLightboxImages();
   }, []);
 
-
-
-
-  const test = [
-    {
-      src: "https://images.craigslist.org/00t0t_afVCM7ePuXj_0jm0ew_600x450.jpg",
-      alt: `post-image-https://images.craigslist.org/00t0t_afVCM7ePuXj_0jm0ew_600x450.jpg`,
-      width: 384,
-      height: 560,
-    },
-    {
-      src: "https://images.craigslist.org/00808_leE6aXDLf9A_0fu0ak_600x450.jpg",
-      alt: `post-image-https://images.craigslist.org/00808_leE6aXDLf9A_0fu0ak_600x450.jpg`,
-      width: 384,
-      height: 560,
-    },
-    {
-      src: "https://images.craigslist.org/00404_leOYhpqPMf4_0jm0ew_600x450.jpg",
-      alt: `post-image-https://images.craigslist.org/00404_leOYhpqPMf4_0jm0ew_600x450.jpg`,
-      width: 384,
-      height: 560,
-    },
-  ]
-
   return (
     <div>
 
       <Lightbox
-        open={advancedExampleOpen}
-        close={() => setAdvancedExampleOpen(false)}
+        open={lightBoxOpen}
+        close={() => setLightBoxOpen(false)}
         slides={postImages}
-        // slides={test}
         // slides={[
         //   {
         //     src: postImages,
         //     alt: "image 1",
         //     width: 380,
         //     height: 560,
-        //     srcSet: postImages,
+        //  !   srcSet: postImages,
         //   }]}
-        plugins={[Fullscreen, Slideshow, Thumbnails, Zoom]}
+        plugins={[Fullscreen, Thumbnails]}
       />
       <div className="container">
         <div className="row">
@@ -168,7 +131,7 @@ function PostBoardCard(prop) {
                         prop.images.map(function (img, i) {
 
                           return (
-                            <Carousel.Item key={`post-key-${img}}`} onClick={() => setAdvancedExampleOpen(true)} style={{ cursor: "pointer" }}>
+                            <Carousel.Item key={`post-key-${img}}`} onClick={() => setLightBoxOpen(true)} style={{ cursor: "pointer" }}>
                               <div key={`container-${img} + ${i}`}>
                                 < Image
                                   key={`image-${img} - ${i}`}
@@ -183,7 +146,6 @@ function PostBoardCard(prop) {
                                   rounded
                                   src={img}
                                   alt={`alt- post-slide - ${img}`
-
                                   }
                                 />
                               </div>
@@ -200,44 +162,36 @@ function PostBoardCard(prop) {
                         className="pushPin"
                       // style={{ transform: "scaleX(-1)" }}
                       ></img>
-                      <Row className="card-header-labels">
-                        <Col>
-                          <People /> Posted By:
-                        </Col>
-                        <Col>
-                          {" "}
-                          <CalendarEvent /> Date Posted:
-                        </Col>
-                        <Col>
-                          <GeoAlt /> Zipcode:
-                        </Col>
-                      </Row>
-                      {/* User Post input */}
-                      <Row className="card-header-user-input">
-                        <Col>{prop.username}</Col>
-                        <Col>{Date}</Col>
-                        <Col>{prop.zip}</Col>
-                      </Row>
                     </div>
                     <Row
                       className="mx-auto"
-                      style={{ fontSize: "16px", color: "white" }}
+                      style={{ fontSize: "16px", color: "white", height:"450px" }}
                     >
                       <Col>
-                        <Badge variant="success">
+                        <Badge bg="success" style={{ fontSize: "16px" }}>
                           {" "}
                           <CashStack style={{ marginBottom: "3.25px" }} /> $
                           {prop.price} {prop.trade}
                         </Badge>
                       </Col>
+                      <Col className="vr">
+                      </Col>
+                      <Col className="vr">
+                      </Col>
+                      <Col className="vr">
+                      </Col>
+                      <Col className="vr">
+                      </Col>
+                      <Col className="vr">
+                      </Col>
                       <Col>
-                        <Badge variant="warning">
+                        <Badge bg="info" style={{ fontSize: "16px" }}>
                           {" "}
                           <Gem style={{ marginBottom: "3.25px" }} /> {prop.type}
                         </Badge>
                       </Col>
                     </Row>
-
+                    <br />
                     <Card.Body>
                       <Card.Title className="post-title-text text-center mx-auto">
                         {prop.title}
@@ -246,7 +200,7 @@ function PostBoardCard(prop) {
                         {userPost.quickBody}
                       </Card.Text> */}
                     </Card.Body>
-                    <Card.Footer className="text-muted">
+                    <Card.Footer className="text-muted" >
                       <Row className="text-center mb-5">
                         <Col className="">
                           <Button

@@ -1,9 +1,11 @@
 
 import "./css/Footer.css";
-import { Navbar, Row, Col } from "react-bootstrap";
+import { Navbar, Row, Col, Nav, Container } from "react-bootstrap";
+import mainLogo from "../assets/imgs/logo/Maestro-Logo-R.png"
+
 function Footer() {
   return (
-    <div>
+    <Container fluid style={{width:"100% important"}} className="p-0 m-0">
 
       <Navbar sticky="bottom"
         collapseOnSelect
@@ -15,7 +17,7 @@ function Footer() {
         <a href="#">
           <img
             className="footer-icon"
-            src="./assets/imgs/Maestro-Logo-R.png"
+            src={mainLogo}
             alt="MaestroBoard Logo"
           ></img>
         </a>
@@ -39,17 +41,28 @@ function Footer() {
               </small>
             </Navbar.Brand>
           </Col>
-          {/* <Col>
-              <a href="#">Site-map</a>
-              <a href="#">Legal</a>
-              <a href="#">About</a>
-              <a href="#">Contact</a>
-          
-          </Col> */}
-        </Row>
+          <Col>
+            <Nav className="pl-5"></Nav>
+            <Nav className="pl-5 ms-auto header-container header-menu-center">
+              <Nav.Link href="/board" className="header-items">
+                Community Board
+              </Nav.Link>
+              <Nav.Link href="/news" className="header-items">
+                News
+              </Nav.Link>
+              <Nav.Link href="/forum" className="header-items">
+                Forum
+              </Nav.Link>
+              <Nav.Link eventKey={2} href="/login" className="header-items">
+                Log in
+              </Nav.Link>
+            </Nav>
 
+          </Col>
+        </Row>
+        {/* <small style={{textAlign:"center", color:"white"}}>Copyright 2022</small> */}
       </Navbar>
-    </div >
+    </Container >
   );
 }
 

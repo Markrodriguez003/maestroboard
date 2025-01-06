@@ -3,6 +3,7 @@
 
 import { Nav, Navbar, Row, Col } from "react-bootstrap";
 import siteLogo from "../assets/imgs/logo/Maestro-Logo-R.png";
+import "./css/Header.css";
 
 function GuestHeader(prop) {
   return (
@@ -47,7 +48,7 @@ function GuestHeader(prop) {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav header-menu-center">
           <Nav className="pl-5"></Nav>
-          <Nav className="pl-5 header-container header-menu-center">
+          <Nav className="pl-5 ms-auto header-container header-menu-center">
             <Nav.Link href="/board" className="header-items">
               Community Board
             </Nav.Link>
