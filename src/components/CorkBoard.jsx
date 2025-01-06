@@ -8,32 +8,21 @@ import { Container, Pagination, Row, Col } from "react-bootstrap";
 
 function Corkboard() {
 
-  // SETS ALL POSTS from DB, total posts, & PAGINATION TABS TO STATE 
+  // ALL POSTS FROM DB, SEPARATED PAGINATED POSTS, TOTAL POSTS, & PAGINATION TABS TO STATE 
   const [posts, setPosts] = useState({
     totalPosts: 0,
     allEntries: [],
     paginationEntries: [],
     paginationTotal: 0,
     paginationIndex: 1,
+    loading: false
   });
 
-  // TOTAL POSTS ALLOWS ON 1 CORKBOARD PANEL
+  // TOTAL POSTS ALLOWS ON CORKBOARD PANEL
   const CORKBOARD_TOTAL_POSTS_ALLOWED = 9;
 
-  const POST_GROUP = [];
-  let POST_GROUP_BEGIN;
-  let POST_GROUP_END;
-
-  // SETS PAGINATION INDEX 
-  const [index, setIndex] = useState(1);
-
-  // HANDLES SETTING CURRENT PAGINATION INDEX WHEN USER CLICK
-  const handleSelect = (selectedIndex, e) => {
-    setIndex(selectedIndex);
-  };
-
+  // SETS PAGINATION INDEX WHEN USER CLICKS ON PAGINATION TAB
   function handlePaginationIndex(currentIndex) {
-    // let activeIndex = parseInt(currentIndex, 10);
     setPosts((prev) => (
       {
         ...prev,
@@ -42,7 +31,10 @@ function Corkboard() {
     ));
   }
 
+  // SETS ACTIVE PAGINATED TAB
   let active = 1;
+
+  // INTIATED PAGINATED TABS VARIABLE 
   let postItems = [];
 
   // SETS AMOUNT OF PAGINATION # TABS
@@ -68,15 +60,26 @@ function Corkboard() {
           // HOW MANY PAGINATION TABS NEEDED
           let PAGINATION_TABS = Math.ceil(response.data.length / CORKBOARD_TOTAL_POSTS_ALLOWED);
 
+          // TEMPORARY ARRAY OF POSTS
+          let firstLoadedPosts = [];
+
+          // SETTING 
           setPosts((prev) => (
             {
               ...prev,
               allEntries: response.data,
               paginationTotal: PAGINATION_TABS,
-              totalPosts: (response.data.length)
+              totalPosts: (response.data.length),
+              paginationEntries: firstLoadedPosts
             }
           ));
-          // console.log(`posts total:: ${posts.paginationTotal}, total posts in db::: ${posts.totalPosts}`);
+
+          // SETS THE FIRST POSTS TO BOARD
+          for (let i = 0; i < CORKBOARD_TOTAL_POSTS_ALLOWED; i++) {
+            if (response.data[0] === undefined) { break; }
+            // console.log(`Posts[${i} --> ${JSON.stringify(response.data[i])}]`)
+            firstLoadedPosts.push(response.data[i]);
+          }
         })
         .catch((err) => console.log(err));
     }
@@ -93,7 +96,6 @@ function Corkboard() {
 
     // GRABS ALL POSTS FROM DB
     async function setPaginatedPosts() {
-      console.log(`Active pagination index is::::: ${posts.paginationIndex}`);
       const POST_GROUP = [];
       let POST_GROUP_BEGIN;
       let POST_GROUP_END;
@@ -104,24 +106,18 @@ function Corkboard() {
       // SETS THE BEGINNING MARKER FOR ARRAY OF GROUPED POST
       POST_GROUP_BEGIN = (posts.paginationIndex * CORKBOARD_TOTAL_POSTS_ALLOWED) - CORKBOARD_TOTAL_POSTS_ALLOWED;
 
-      console.log(`POST ARRAY FOR PAGINATION: -> ${POST_GROUP_BEGIN} - ${POST_GROUP_END}`);
+      // console.log(`POST ARRAY FOR PAGINATION: -> ${POST_GROUP_BEGIN} - ${POST_GROUP_END}`);
 
       for (; POST_GROUP_BEGIN <= POST_GROUP_END; POST_GROUP_BEGIN++) {
         // console.log(`POST:: ${JSON.stringify(posts.allEntries[POST_GROUP_BEGIN])}`);
 
-        if (POST_GROUP_BEGIN === posts.totalPosts - 1) {
-          break;
-        }
+        if (POST_GROUP_BEGIN === posts.totalPosts - 1) { break; }
 
-        if (posts.allEntries[POST_GROUP_BEGIN] === undefined) {
-          break;
-        }
+        if (posts.allEntries[POST_GROUP_BEGIN] === undefined) { break; }
 
         // PUSHES POST OBJECTS TO PAGE TAB 
         POST_GROUP.push(posts.allEntries[POST_GROUP_BEGIN]);
       }
-
-      // setPosts.paginationEntries
       setPosts((prev) => (
         {
           ...prev,
@@ -129,9 +125,6 @@ function Corkboard() {
 
         }
       ));
-
-      // console.log(`Paginated Posts:::: ${JSON.stringify(posts.paginationEntries)}`)
-
     }
 
     setPaginatedPosts();
@@ -165,7 +158,6 @@ function Corkboard() {
               {/* <Col><BoardPostModal /></Col> */}
             </Col>
           </Row>
-
           <br />
         </Container>
       </div>
@@ -192,7 +184,6 @@ function Corkboard() {
             body={p.body}
             images={p.images}
           />
-
         ))}
       </div>
     </div>

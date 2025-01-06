@@ -8,7 +8,6 @@ import "./css/PostBoardCard.css"; // CSS file for PostBoardCard
 // ? AWS CDN TUTS
 // ? https://aws.amazon.com/getting-started/hands-on/deliver-content-faster/ 
 
-
 import {
   ArrowRight,
   ArrowLeft,
@@ -24,14 +23,25 @@ import {
   At,
   TelephoneFill,
   Mailbox2,
-} from "react-bootstrap-icons"; // Importing Bootstrap Icon Components
+} from "react-bootstrap-icons";
 import ReactCardFlip from "react-card-flip";
 import CardReplyModal from "./CardReplyModal";
 import ReportPostModal from "./ReportPostModal";
 
-import { Card, Badge, ListGroup, Row, Col, Button, Carousel, Image } from "react-bootstrap"; // Importing Bootstrap Components
-// ***********************************************************************************************************************
 
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
+import Captions from "yet-another-react-lightbox/plugins/captions";
+import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
+import Slideshow from "yet-another-react-lightbox/plugins/slideshow";
+import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
+import Video from "yet-another-react-lightbox/plugins/video";
+import Zoom from "yet-another-react-lightbox/plugins/zoom";
+import "yet-another-react-lightbox/plugins/captions.css";
+import "yet-another-react-lightbox/plugins/thumbnails.css";
+
+
+import { Card, Badge, ListGroup, Row, Col, Button, Carousel, Image } from "react-bootstrap";
 import pushPinA from "../assets/imgs/post-imgs/push-pin1.png";
 import pushPinB from "../assets/imgs/post-imgs/push-pin2.png";
 import pushPinC from "../assets/imgs/post-imgs/push-pin3.png";
@@ -40,37 +50,11 @@ import pushPinE from "../assets/imgs/post-imgs/push-pin5.png";
 import pushPinF from "../assets/imgs/post-imgs/push-pin6.png";
 import { propTypes } from "react-bootstrap/esm/Image";
 
-// USER INFO
-
-// Example User Pictures
-// import cardImgA from "../assets/test_post_images/akai APC 40/postImg1.jpg";
-// import cardImgB from "../assets/test_post_images/akai APC 40//postImg2.jpg";
-// import cardImgC from "../assets/test_post_images/akai APC 40//postImg3.jpg";
-// import cardImgD from "../assets/test_post_images/akai APC 40//postImg4.jpg";
-// import cardImgE from "../assets/test_post_images/akai APC 40//postImg5.jpg";
-
-
-// const A = "https://m.media-amazon.com/images/I/819Coz2HcAL._AC_SY879_.jpg";
-// const B = "https://m.media-amazon.com/images/I/71gOqpBIHBL._AC_SX679_.jpg";
-// const C = "https://m.media-amazon.com/images/I/71FcK0+PVCL._AC_SX679_.jpg";
-// const D = "https://m.media-amazon.com/images/I/61azDPXkg1L._AC_SX679_.jpg";
-// const E = "https://m.media-amazon.com/images/I/51tDzkCce0L._AC_.jpg";
-
-// const img_arry_a = [A, B, C, D, E];
-
-
-// ***********************************************************************************************************************
-
-
-
 function PostBoardCard(prop) {
   const [isFlipped, setIsFlipped] = useState(false);
   const [revealUnderCard, setRevealUnderCard] = useState({});
 
   // chooses randomized push pin
-
-
-
   const pushPinRand = [
     pushPinA,
     pushPinB,
@@ -93,14 +77,80 @@ function PostBoardCard(prop) {
     setIsFlipped(!isFlipped);
   };
 
+  const [advancedExampleOpen, setAdvancedExampleOpen] = useState(false);
+  const [postImages, setPostImages] = useState(false);
 
 
 
-  // ***********************************************************************************************************************
-  // ***********************************************************************************************************************
+
+
+  useEffect(() => {
+    // console.log(`prop images::: ${prop.images}`);
+
+    let postImages = [];
+    
+    async function setPostLightboxImages() {
+      for (let i = 0; i < prop.images.length; i++) {
+
+        postImages.push({
+          src: prop.images[i],
+          alt: `post-image-[${i}]`,
+          width: 384,
+          height: 560,
+        });
+      }
+
+      await setPostImages(postImages);
+
+      // console.log(`POSTIMAGES::: ${JSON.stringify(postImages)}`);
+
+    }
+
+    setPostLightboxImages();
+  }, []);
+
+
+
+
+  const test = [
+    {
+      src: "https://images.craigslist.org/00t0t_afVCM7ePuXj_0jm0ew_600x450.jpg",
+      alt: `post-image-https://images.craigslist.org/00t0t_afVCM7ePuXj_0jm0ew_600x450.jpg`,
+      width: 384,
+      height: 560,
+    },
+    {
+      src: "https://images.craigslist.org/00808_leE6aXDLf9A_0fu0ak_600x450.jpg",
+      alt: `post-image-https://images.craigslist.org/00808_leE6aXDLf9A_0fu0ak_600x450.jpg`,
+      width: 384,
+      height: 560,
+    },
+    {
+      src: "https://images.craigslist.org/00404_leOYhpqPMf4_0jm0ew_600x450.jpg",
+      alt: `post-image-https://images.craigslist.org/00404_leOYhpqPMf4_0jm0ew_600x450.jpg`,
+      width: 384,
+      height: 560,
+    },
+  ]
 
   return (
     <div>
+
+      <Lightbox
+        open={advancedExampleOpen}
+        close={() => setAdvancedExampleOpen(false)}
+        slides={postImages}
+        // slides={test}
+        // slides={[
+        //   {
+        //     src: postImages,
+        //     alt: "image 1",
+        //     width: 380,
+        //     height: 560,
+        //     srcSet: postImages,
+        //   }]}
+        plugins={[Fullscreen, Slideshow, Thumbnails, Zoom]}
+      />
       <div className="container">
         <div className="row">
           <div className="card-container">
@@ -118,7 +168,7 @@ function PostBoardCard(prop) {
                         prop.images.map(function (img, i) {
 
                           return (
-                            <Carousel.Item key={`post-key-${img}}`}>
+                            <Carousel.Item key={`post-key-${img}}`} onClick={() => setAdvancedExampleOpen(true)} style={{ cursor: "pointer" }}>
                               <div key={`container-${img} + ${i}`}>
                                 < Image
                                   key={`image-${img} - ${i}`}
@@ -133,6 +183,7 @@ function PostBoardCard(prop) {
                                   rounded
                                   src={img}
                                   alt={`alt- post-slide - ${img}`
+
                                   }
                                 />
                               </div>
@@ -142,7 +193,6 @@ function PostBoardCard(prop) {
                       })
 
                     </Carousel>
-
                     <div className="card-top-header">
                       <img
                         src={pushPinRand[Math.floor(Math.random() * 5)]}
@@ -196,9 +246,7 @@ function PostBoardCard(prop) {
                         {userPost.quickBody}
                       </Card.Text> */}
                     </Card.Body>
-
                     <Card.Footer className="text-muted">
-
                       <Row className="text-center mb-5">
                         <Col className="">
                           <Button
@@ -219,10 +267,7 @@ function PostBoardCard(prop) {
                           </Button>
                         </Col>
                       </Row>
-
                     </Card.Footer>
-
-
                   </Card>
                 </div>
                 {/* ***************************** */}
@@ -252,14 +297,12 @@ function PostBoardCard(prop) {
                         <Col>{prop.zip}</Col>
                       </Row>
                     </div>
-
                     <Card.Body className="table-text">
                       <Card.Title className="info-card-title">
                         {prop.title}{" "}
                       </Card.Title>
                       <p className="info-card-body">{prop.body}</p>
                     </Card.Body>
-
                     <Card.Body>
                       <Card.Body>
                         <Col className="text-center">
@@ -292,8 +335,6 @@ function PostBoardCard(prop) {
                     backgroundColor: "darkcyan",
                     color: "white",
                   }}
-
-
                 >
                   <div className="card-top-header">
                     <Row className="card-header-labels">
