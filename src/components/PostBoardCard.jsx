@@ -127,7 +127,8 @@ function PostBoardCard(prop) {
                                     display: "block",
                                     height: "300px",
                                     width: "100%",
-                                    objectFit: "cover"
+                                    objectFit: "contain",
+                                    backgroundColor: "rgba(0,0,0,0.2)"
                                   }}
                                   rounded
                                   src={img}
@@ -229,7 +230,7 @@ function PostBoardCard(prop) {
                 {/* ***************************** */}
 
                 <div className=" card back">
-                  <Card style={{ width: "350px", height: "450px" }}>
+                  <Card style={{ width: "400px", height: "500px" }}>
                     <div className="card-top-header">
                       <TrashFill className="delete-icon" />
                       <Row className="card-header-labels">
@@ -286,11 +287,13 @@ function PostBoardCard(prop) {
               <div className="under-card" style={revealUnderCard}>
                 <Card
                   style={{
-                    width: "350px",
-                    height: "450px",
+                    width: "400px",
+                    height: "500px",
                     backgroundColor: "darkcyan",
                     color: "white",
                   }}
+
+
                 >
                   <div className="card-top-header">
                     <Row className="card-header-labels">

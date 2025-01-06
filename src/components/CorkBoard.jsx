@@ -8,68 +8,23 @@ import { Container, Pagination, Row, Col } from "react-bootstrap";
 
 function Corkboard() {
 
-  // SETS ALL POSTS & PAGINATION TABS TO STATE 
-  const [posts, setPosts] = useState([{
-    'total': 0,
-    'pagination_total': 0,
+  // SETS ALL POSTS from DB, total posts, & PAGINATION TABS TO STATE 
+  const [posts, setPosts] = useState({
+    totalPosts: 0,
+    allEntries: [],
+    paginationEntries: [],
+    paginationTotal: 0,
+    paginationIndex: 1,
+  });
 
-  }]);
+  // TOTAL POSTS ALLOWS ON 1 CORKBOARD PANEL
+  const CORKBOARD_TOTAL_POSTS_ALLOWED = 9;
 
-
-  // TOTAL POSTS DISPLAYED ON A SINGLE CORKBOARD 
-  const AMOUNT_OF_BOARD_POSTS = 9;
-
-  {/* ********************************************************************** */ }
-  {/* GRABS POSTS FROM BACK-END*/ }
-  {/* ********************************************************************** */ }
-  useEffect(() => {
-
-
-
-    // GRABS ALL POSTS FROM DB
-    async function grabPosts() {
-      axios
-        .get("http://localhost:3005/api/loadPosts")
-        .then((response) => {
-          setPosts(response);
-
-          // TOTAL AMOUNT OF POSTS IN DB
-          const TOTAL_DB_POSTS = posts.length;
-
- 
-
-
-          // SETS AMOUNT OF PAGINATION # TABS
-          for (let number = 1; number <= 5; number++) {
-            postItems.push(
-              <Pagination.Item key={number} active={number === active} onClick={(e) => loadPaginatedPosts(e.target.innerText)}>
-                {number}
-              </Pagination.Item >,
-            );
-          }
-
-          // for (let number = 1; number <= 5; number++) {
-          //   postItems.push(
-          //     <Pagination.Item key={number} active={number === active} onClick={(e) => loadPaginatedPosts(e.target.innerText)}>
-          //       {number}
-          //     </Pagination.Item >,
-          //   );
-          // }
-        })
-        .catch((err) => console.log(err));
-    }
-    grabPosts();
-
-
-
-  }, []);
-
-
-
-  // PAGINATION
+  const POST_GROUP = [];
+  let POST_GROUP_BEGIN;
+  let POST_GROUP_END;
 
   // SETS PAGINATION INDEX 
-  // const [index, setIndex] = useState({ currentIndex: 1 });
   const [index, setIndex] = useState(1);
 
   // HANDLES SETTING CURRENT PAGINATION INDEX WHEN USER CLICK
@@ -77,50 +32,111 @@ function Corkboard() {
     setIndex(selectedIndex);
   };
 
+  function handlePaginationIndex(currentIndex) {
+    // let activeIndex = parseInt(currentIndex, 10);
+    setPosts((prev) => (
+      {
+        ...prev,
+        paginationIndex: parseInt(currentIndex, 10)
+      }
+    ));
+  }
 
   let active = 1;
   let postItems = [];
 
-
-  /* 
-   
-  EXAMPLES:
-  1 - 0-8 
-  2 - 9-17
-  3 - 18-26
-  4 - 27-35
-  5 - 36-44
-  6 - 45-53
-  7 - 53-61
-   
-  */
-
-
-
-
-
-  function loadPaginatedPosts(currentIndex) {
-    let activeIndex = parseInt(currentIndex, 10);
-    let paginationStartIndex = (activeIndex * AMOUNT_OF_POSTS) - AMOUNT_OF_POSTS;
-    let postsTempArry = [];
-    let paginationTempVar;
-
-    console.log(`Total posts in db ${TOTAL_DB_POSTS} `);
-    console.log(`*********************************************** `);
-    console.log(`Total posts display on a single corkboard panel: ${AMOUNT_OF_BOARD_POSTS} `);
-    console.log(`*********************************************** `);
-    console.log(`Amount of pagination tabs: ${TOTAL_PAGINATION_TABS} `);
-    console.log(`*********************************************** `);
-    console.log(`Indexed Posts Array START --> ${activeIndex}::: Indexed Posts Array END --> ${paginationStartIndex + 8} `)
-    console.log(`*********************************************** `);
-
-    // for (let i = 0; i < 9; i++) {
-    //   paginationTempVar = paginationStartIndex;
-    //   // postsTempArry.push(posts[paginationTempVar]);
-    //   paginationTempVar++;
-    //   console.log()
-    // }
+  // SETS AMOUNT OF PAGINATION # TABS
+  for (let i = 1; i <= posts.paginationTotal; i++) {
+    postItems.push(
+      <Pagination.Item key={i} active={i === active} onClick={(e) => handlePaginationIndex(e.target.innerText)}>
+        {i}
+      </Pagination.Item >,
+    );
   }
+
+  {/* ********************************************************************** */ }
+  {/* GRABS POSTS FROM BACK-END*/ }
+  {/* ********************************************************************** */ }
+  useEffect(() => {
+
+    // GRABS ALL POSTS FROM DB
+    async function grabPosts() {
+      await axios
+        .get("http://localhost:3005/api/loadPosts")
+        .then((response) => {
+
+          // HOW MANY PAGINATION TABS NEEDED
+          let PAGINATION_TABS = Math.ceil(response.data.length / CORKBOARD_TOTAL_POSTS_ALLOWED);
+
+          setPosts((prev) => (
+            {
+              ...prev,
+              allEntries: response.data,
+              paginationTotal: PAGINATION_TABS,
+              totalPosts: (response.data.length)
+            }
+          ));
+          // console.log(`posts total:: ${posts.paginationTotal}, total posts in db::: ${posts.totalPosts}`);
+        })
+        .catch((err) => console.log(err));
+    }
+    grabPosts();
+
+  }, []);
+
+
+  {/* ********************************************************************** */ }
+  {/* SETS INDEX AND GROUPS POSTS ACCORIDNG TO ALLOWED POST LIMIT PER CORKBOARD PANEL*/ }
+  {/* ********************************************************************** */ }
+
+  useEffect(() => {
+
+    // GRABS ALL POSTS FROM DB
+    async function setPaginatedPosts() {
+      console.log(`Active pagination index is::::: ${posts.paginationIndex}`);
+      const POST_GROUP = [];
+      let POST_GROUP_BEGIN;
+      let POST_GROUP_END;
+
+      // SETS THE ENDING MARKER FOR ARRAY OF GROUPED POST
+      POST_GROUP_END = (posts.paginationIndex * CORKBOARD_TOTAL_POSTS_ALLOWED) - 1;
+
+      // SETS THE BEGINNING MARKER FOR ARRAY OF GROUPED POST
+      POST_GROUP_BEGIN = (posts.paginationIndex * CORKBOARD_TOTAL_POSTS_ALLOWED) - CORKBOARD_TOTAL_POSTS_ALLOWED;
+
+      console.log(`POST ARRAY FOR PAGINATION: -> ${POST_GROUP_BEGIN} - ${POST_GROUP_END}`);
+
+      for (; POST_GROUP_BEGIN <= POST_GROUP_END; POST_GROUP_BEGIN++) {
+        // console.log(`POST:: ${JSON.stringify(posts.allEntries[POST_GROUP_BEGIN])}`);
+
+        if (POST_GROUP_BEGIN === posts.totalPosts - 1) {
+          break;
+        }
+
+        if (posts.allEntries[POST_GROUP_BEGIN] === undefined) {
+          break;
+        }
+
+        // PUSHES POST OBJECTS TO PAGE TAB 
+        POST_GROUP.push(posts.allEntries[POST_GROUP_BEGIN]);
+      }
+
+      // setPosts.paginationEntries
+      setPosts((prev) => (
+        {
+          ...prev,
+          paginationEntries: POST_GROUP
+
+        }
+      ));
+
+      // console.log(`Paginated Posts:::: ${JSON.stringify(posts.paginationEntries)}`)
+
+    }
+
+    setPaginatedPosts();
+
+  }, [posts.paginationIndex]);
 
 
   return (
@@ -142,7 +158,10 @@ function Corkboard() {
         {/* ************************ */}
         <Container>
           <Row>
-            <Col className="ml-auto"><Pagination>{postItems}</Pagination>
+            <Col className="ml-auto">
+              <Pagination>
+                {postItems}
+              </Pagination>
               {/* <Col><BoardPostModal /></Col> */}
             </Col>
           </Row>
@@ -156,7 +175,8 @@ function Corkboard() {
       {/* ********************************************************************** */}
 
       <div className="corkboard-card-container shadow-lg ">
-        {posts.data?.map((p, i) => (
+        {/* {posts.allEntries?.map((p, i) => ( */}
+        {posts.paginationEntries?.map((p, i) => (
           <PostBoardCard
             key={`post-${p.title} - ${i}`}
             title={p.title}
