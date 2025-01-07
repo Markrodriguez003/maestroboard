@@ -70,7 +70,7 @@ function NewsArticle(props) {
                             textOverflow: "ellipsis",
                         }}>
 
-                            {body.length <= 750 ? body : body.substring(0, 750)}
+                            {body.length <= 750 ? body : body.substring(0, 550)}
                             {/* <span style={{ position: "relative", display: "inline", color: "darkcyan", fontSize: "44px" }}>{" "}...</span> */}
                         </p>
                     </Row>

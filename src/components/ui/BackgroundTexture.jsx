@@ -1,11 +1,3 @@
-
-
-
-
-
-
-
-
 import BGTexture from "../../assets/imgs/background-textures/bg-pattern-c.png";
 const backgroundStyling = {
 

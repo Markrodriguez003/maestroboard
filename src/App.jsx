@@ -9,6 +9,7 @@ import Login from "./components/Login";
 
 // import MyProfile from "./components/MyProfile";
 import Forum from "./components/Forum";
+import News from "./components/pages/News";
 import CommunityBoard from "./components/pages/CommunityBoard";
 // import Test from "./components/test";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -30,9 +31,9 @@ function App() {
 
 
           <Route path="/" element={<IntroSplashPage />}></Route>
-          {/* <Route path="/home" element={<IntroSplashPage />}></Route> */}
+          <Route path="/home" element={<IntroSplashPage />}></Route>
           <Route path="/board" element={<CommunityBoard />}></Route>
-          <Route path="/news" element={<IntroSplashPage />}></Route>
+          <Route path="/news" element={<News />}></Route>
           <Route path="/forum" element={<Forum />}></Route>
           <Route path="/login" element={<Login />}></Route>
           {/* <Route path="/signup" element={<SignUpForm />}></Route> */}
