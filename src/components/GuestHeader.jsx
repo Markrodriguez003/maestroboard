@@ -25,23 +25,14 @@ function GuestHeader(prop) {
         <Row>
           <Col>
             <Navbar.Brand href="/home" className="header-title d-flex">
-              MaestroBoard
-              <small className="header-small-text">
-                buy. sell. trade. connect. |{"  "}
-                <span className="header-muse-small">
-                  {" "}
-                  Chase your Muse.{" "}
-                  <span>
-                    {/* <a
-                      href="https://en.wikipedia.org/wiki/Euterpe#:~:text=Euterpe%20(%2Fju%CB%90%CB%88t,named%20muse%20of%20lyric%20poetry."
-                      className="muse-anchor"
-                    >
-                      muse
-                    </a> */}
-                  </span>
+              <div className="header-title-group">
 
-                </span>
-              </small>
+                MaestroBoard
+                <small className="header-small-text">
+                  buy. sell. trade. connect. |{"  "} Chase your Muse.{" "}
+                </small>
+
+              </div>
             </Navbar.Brand>
           </Col>
         </Row>
@@ -64,7 +55,7 @@ function GuestHeader(prop) {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-    </div>
+    </div >
   );
 }
 

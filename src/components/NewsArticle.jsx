@@ -1,17 +1,9 @@
 import { useState } from "react";
 import "./css/NewsArticle.css";
-import { Row, Col, Figure, Stack, Container } from "react-bootstrap";
+import { Row, Col, Container } from "react-bootstrap";
 import { ArrowRightCircle } from "react-bootstrap-icons";
-
-
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
-import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
-import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
-
-// ART 
-import art1 from "../assets/imgs/article-imgs/Article-6.png";
-import art2 from "../assets/imgs/article-imgs/Article-7.jpg";
 
 function NewsArticle(props) {
 
@@ -19,7 +11,7 @@ function NewsArticle(props) {
     const [lightBoxOpen, setLightBoxOpen] = useState(false);
 
     // Article Props
-    const { title, subject, author, date, body, link, image, caption } = props.article;
+    const { title, subject, author, date, body, link, image, caption, subTitle } = props.article;
 
     return (
         <Container as={"article"} className={"p-4 mt-5"} style={{ backgroundColor: "rgba(16, 41, 51, 1)" }}>
@@ -53,16 +45,21 @@ function NewsArticle(props) {
                     </Row>
                 </Col>
                 <Col>
-                    <Row>
-                        <h6 className="article-type-header">{subject}</h6>
+                    <Row className="justify-content-between align-content-end" sm={2} style={{ width: "100%" }}>
+                        <div style={{ color: "darkcyan" }}>{subject}</div>
+                        <div className="" style={{ color: "grey", fontSize: "14px" }}>Written by: {author} - {date}</div>
                     </Row>
+                    <Row><br /></Row>
                     <Row>
                         <h3 style={{ color: "white" }}>{title} </h3>
                     </Row>
                     <Row>
-                        <small className="article-small" style={{ color: "white" }}>Written by: {author} - {date}</small>
+                        <h6 style={{ color: "grey" }}>{subTitle} </h6>
+                    </Row>
+                    <Row>
                         <hr style={{ color: "white" }} className="mt-2 mb-0" />
                     </Row>
+
                     <Row>
                         <p style={{
                             whiteSpace: "pre-wrap",
