@@ -14,33 +14,37 @@ import CommunityBoard from "./components/pages/CommunityBoard";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import BackgroundTexture from "./components/ui/BackgroundTexture"
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function App() {
   return (
-    <Router>
-      <Header />
-      <Routes>
+    <BackgroundTexture>
 
-        {/* <Route path="/test" element={<Test />}></Route> */}
+      <Router>
+        <Header />
+        <Routes>
 
-
-        <Route path="/" element={<IntroSplashPage />}></Route>
-        {/* <Route path="/home" element={<IntroSplashPage />}></Route> */}
-        <Route path="/board" element={<CommunityBoard />}></Route>
-        <Route path="/news" element={<IntroSplashPage />}></Route>
-        <Route path="/forum" element={<Forum />}></Route>
-        <Route path="/login" element={<Login />}></Route>
-        {/* <Route path="/signup" element={<SignUpForm />}></Route> */}
+          {/* <Route path="/test" element={<Test />}></Route> */}
 
 
-      </Routes>
-      <br />
-      <br />
-      <Footer />
-    </Router>
+          <Route path="/" element={<IntroSplashPage />}></Route>
+          {/* <Route path="/home" element={<IntroSplashPage />}></Route> */}
+          <Route path="/board" element={<CommunityBoard />}></Route>
+          <Route path="/news" element={<IntroSplashPage />}></Route>
+          <Route path="/forum" element={<Forum />}></Route>
+          <Route path="/login" element={<Login />}></Route>
+          {/* <Route path="/signup" element={<SignUpForm />}></Route> */}
 
+
+        </Routes>
+        <br />
+        <br />
+        <Footer />
+      </Router>
+
+    </BackgroundTexture>
 
   );
 }

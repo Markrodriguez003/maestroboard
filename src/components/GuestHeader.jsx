@@ -13,7 +13,7 @@ function GuestHeader(prop) {
         expand="lg"
         bg="dark"
         variant="dark"
-        className="main-header"
+        className="main-header p-3"
       >
         <a href="/myprofile">
           <img
@@ -30,7 +30,7 @@ function GuestHeader(prop) {
                 buy. sell. trade. connect. |{"  "}
                 <span className="header-muse-small">
                   {" "}
-                  Chase your{" "}
+                  Chase your Muse.{" "}
                   <span>
                     {/* <a
                       href="https://en.wikipedia.org/wiki/Euterpe#:~:text=Euterpe%20(%2Fju%CB%90%CB%88t,named%20muse%20of%20lyric%20poetry."
@@ -39,7 +39,7 @@ function GuestHeader(prop) {
                       muse
                     </a> */}
                   </span>
-                  .{" "}
+
                 </span>
               </small>
             </Navbar.Brand>
@@ -49,7 +49,7 @@ function GuestHeader(prop) {
         <Navbar.Collapse id="responsive-navbar-nav header-menu-center">
           <Nav className="pl-5"></Nav>
           <Nav className="pl-5 ms-auto header-container header-menu-center">
-            <Nav.Link href="/board" className="header-items">
+            <Nav.Link href="/board" className="header-items pl-2">
               Community Board
             </Nav.Link>
             <Nav.Link href="/news" className="header-items">
