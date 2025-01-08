@@ -9,9 +9,9 @@ const ArticlesSchema = new Schema({
     // required: true
   },
 
-  subtitle: {
+  subTitle: {
     type: String,
-    trim: true,
+    // trim: true,
     // match: [/.+@.+\..+/, "Please enter a valid e-mail address"],
     // required: true
   },

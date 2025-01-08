@@ -1,9 +1,9 @@
-import {   useState } from "react";
+import { useState } from "react";
 import "./css/SignupForm.css";
-import SuccessfullyCreatedUserModal from "./SuccessfullyCreatedUserModal"
+
 // import { PersonCircle } from "react-bootstrap-icons"; // Importing Bootstrap Icon Components
 
-import { Row, Col   } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 
 function SignUpForm() {
   let [userInfo, setUserInfo] = useState({

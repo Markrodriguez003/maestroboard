@@ -87,6 +87,10 @@ async function deletePosts() {
   await Post.deleteMany({});
 }
 
+async function deleteArticles() {
+  await Article.deleteMany({});
+}
+
 async function loadUsers() {
   await Post.insertMany(ex.examplePosts, (err, confirm) => {
     if (err) {
@@ -100,10 +104,13 @@ async function loadUsers() {
 // loadPosts();
 
 // Loads Articles
-// loadArticles();
+loadArticles();
 
 // Deletes Posts
 // deletePosts();
+
+// Deletes Articles
+// deleteArticles();
 
 // * Testing connection to db
 db.on("error", console.error.bind(console, "connection error:"));

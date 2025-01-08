@@ -5,6 +5,7 @@ import BoardPostModal from "./BoardPostModal";
 import PostBoardCard from "./PostBoardCard";
 
 import { Container, Pagination, Row, Col, Stack } from "react-bootstrap";
+import LoadingSpinner from "./ui/LoadingSpinner";
 
 function Corkboard() {
 
@@ -133,75 +134,92 @@ function Corkboard() {
 
 
   return (
-    <div>
-      <div>
-        {/* ********************************************************************** */}
-        {/* CORKBOARD HEADER */}
-        {/* ********************************************************************** */}
-        <Container className="shadow-md">
-          <h4 className="display-4 corkBoard-title ">
-            Community Board <br />
-            <span className="lead">
-              Search or post all your music needs here!
-            </span>
-          </h4>
-        </Container>
-        {/* ************************ */}
-        {/* FILTER - SEARCH BUTTONS */}
-        {/* ************************ */}
+
+    <>
+
+      {
+        posts.totalPosts === 0
+          ?
+
+          <div className="corkboard-card-container shadow-lg" style={{height:"500px"}} >
+            <LoadingSpinner title="Loading Posts">
+            </LoadingSpinner>
+          </div>
+          : <div>
+            <div>
+              {/* ********************************************************************** */}
+              {/* CORKBOARD HEADER */}
+              {/* ********************************************************************** */}
+              <Container className="shadow-md">
+                <h4 className="display-4 corkBoard-title ">
+                  Community Board <br />
+                  <span className="lead">
+                    Search or post all your music needs here!
+                  </span>
+                </h4>
+              </Container>
+              {/* ************************ */}
+              {/* FILTER - SEARCH BUTTONS */}
+              {/* ************************ */}
 
 
-        <Stack direction="horizontal" gap={3}>
-          <Pagination className="ms-auto corkboard-pagination" size="md">
-            {postItems}
-          </Pagination>
-        </Stack>
-      </div>
+              <Stack direction="horizontal" gap={3}>
+                <Pagination className="ms-auto corkboard-pagination" size="md">
+                  {postItems}
+                </Pagination>
+              </Stack>
+            </div>
 
-      {/* ********************************************************************** */}
-      {/* CORKBOARD + POST CARDS*/}
-      {/* ********************************************************************** */}
+            {/* ********************************************************************** */}
+            {/* CORKBOARD + POST CARDS*/}
+            {/* ********************************************************************** */}
 
 
-      {posts.paginationEntries !== undefined ?
+            {posts.paginationEntries !== undefined ?
 
-        <div className="corkboard-card-container shadow-lg ">
+              <div className="corkboard-card-container shadow-lg ">
 
-          {posts.paginationEntries?.map((p, i) => (
-            <PostBoardCard
-              key={`post-${p.title} - ${i}`}
-              title={p.title}
-              email={p.email}
-              username={p.username}
-              price={p.price}
-              zip={p.zip}
-              trade={p.trade}
-              type={p.type}
-              equipment={p.equipment}
-              date={p.date}
-              phone={p.phone}
-              body={p.body}
-              images={p.images}
-            />
-          ))}
-        </div>
+                {posts.paginationEntries?.map((p, i) => (
+                  <PostBoardCard
+                    key={`post-${p.title} - ${i}`}
+                    title={p.title}
+                    email={p.email}
+                    username={p.username}
+                    price={p.price}
+                    zip={p.zip}
+                    trade={p.trade}
+                    type={p.type}
+                    equipment={p.equipment}
+                    date={p.date}
+                    phone={p.phone}
+                    body={p.body}
+                    images={p.images}
+                  />
+                ))}
+              </div>
 
-        :
-        <div className="corkboard-card-container shadow-lg" style={{ height: "400px" }}>
-          <Stack gap={3} className="col-md-5 mx-auto">
-            <h1 className="p-2" style={{ color: "white", fontSize: "40px" }}> Posterboard is empty!</h1>
-            <small className="p-2" style={{ color: "white" }}> Come back later!</small>
-          </Stack>
-        </div>
+              :
+              <div className="corkboard-card-container shadow-lg" style={{ height: "400px" }}>
+                <Stack gap={3} className="col-md-5 mx-auto">
+                  <h1 className="p-2" style={{ color: "white", fontSize: "40px" }}> Posterboard is empty!</h1>
+                  <small className="p-2" style={{ color: "white" }}> Come back later!</small>
+                </Stack>
+              </div>
+            }
+
+            <Stack direction="horizontal" gap={3} className="mt-2">
+              <Pagination className="ms-auto corkboard-pagination" size="md">
+                {postItems}
+              </Pagination>
+            </Stack>
+
+          </div >
       }
 
-      <Stack direction="horizontal" gap={3} className="mt-2">
-        <Pagination className="ms-auto corkboard-pagination" size="md">
-          {postItems}
-        </Pagination>
-      </Stack>
 
-    </div >
+
+
+    </>
   );
 }
 
