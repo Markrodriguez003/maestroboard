@@ -63,7 +63,6 @@ function News(props) {
   {/* ********************************************************************** */ }
   useEffect(() => {
 
-
     // const pullArticles = async () => {
     //   const res = await axios({
     //     method: "get",
@@ -105,15 +104,14 @@ function News(props) {
               color: "white",
               textAlign: "center",
               fontSize: "55px",
-              border: "white 5px solid",
+              // border: "white 5px solid",
               borderRadius: "12px",
               display: "inline-block",
               padding: "15px"
             }}
             >NEWS
             </h1>
-            <br />
-            <small style={{ color: "white", fontSize: "18px" }}>Latest music gear articles</small>
+            <small style={{ color: "white", fontSize: "18px" }}>  Latest music gear articles</small>
             <hr style={{ color: "white", borderTop: "4px white solid" }} />
           </HeaderPanel>
           <Container fluid>

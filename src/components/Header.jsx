@@ -46,7 +46,7 @@ function Header(prop) {
               Forum
             </Nav.Link>
             <Nav.Link eventKey={2} href="/login" className="">
-              Log in
+              Admin Log in
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
