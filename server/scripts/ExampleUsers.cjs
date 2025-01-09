@@ -15,6 +15,7 @@ exports.exampleUsers = [
   },
   {
     username: "Serg51",
+    password: "AhH82u41!",
     email: "sergioBalos@gmail.com",
     phone: "9855648196",
     zip: "32044",
@@ -28,6 +29,7 @@ exports.exampleUsers = [
 
   {
     username: "Razzys",
+    password: "91kJjNF928",
     email: "RazMgmt@razzyproductions.com",
     phone: "7779978456",
     zip: "33863",
@@ -41,6 +43,7 @@ exports.exampleUsers = [
 
   {
     username: "Mariol33t",
+    password: "@iUTh298",
     email: "mariomario@Nitendo.jp",
     phone: "9584531524",
     zip: "32056",
@@ -53,6 +56,7 @@ exports.exampleUsers = [
   },
   {
     username: "AvsFan44",
+    password: "0912rj@magm",
     email: "butler23@hotmail.com",
     phone: "7894162154",
     zip: "32511",

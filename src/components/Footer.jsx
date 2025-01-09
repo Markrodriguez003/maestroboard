@@ -5,14 +5,13 @@ import mainLogo from "../assets/imgs/logo/Maestro-Logo-R.png"
 
 function Footer() {
   return (
-    <Container fluid style={{width:"100% important"}} className="p-0 m-0">
-
+    <Container fluid className="p-0 m-0">
       <Navbar sticky="bottom"
         collapseOnSelect
         expand="lg"
         bg="dark"
         variant="dark"
-        className="main-footer"
+      // className="main-footer"
       >
         <a href="#">
           <img
@@ -28,32 +27,29 @@ function Footer() {
               <small className="footer-small-text">
                 buy. sell. trade.connect. |{"  "}
                 <span className="footer-muse-small">
-                  {" "}
+
                   Chase your <span>
-                    <a
-                      href="https://en.wikipedia.org/wiki/Euterpe#:~:text=Euterpe%20(%2Fju%CB%90%CB%88t,named%20muse%20of%20lyric%20poetry."
-                      className="muse-anchor"
-                    >
-                      muse
-                    </a></span>
+
+                    muse
+                  </span>
                   .{" "}
                 </span>
               </small>
             </Navbar.Brand>
           </Col>
-          <Col>
+          <Col className="w-100" style={{ backgroundColor: "red", width: "100%" }}>
             <Nav className="pl-5"></Nav>
             <Nav className="pl-5 ms-auto header-container header-menu-center">
-              <Nav.Link href="/board" className="header-items">
+              <Nav.Link href="/board" className="w-100" style={{ backgroundColor: "purple" }} >
                 Community Board
               </Nav.Link>
-              <Nav.Link href="/news" className="header-items">
+              <Nav.Link href="/news" >
                 News
               </Nav.Link>
-              <Nav.Link href="/forum" className="header-items">
+              <Nav.Link href="/forum" >
                 Forum
               </Nav.Link>
-              <Nav.Link eventKey={2} href="/login" className="header-items">
+              <Nav.Link eventKey={2} href="/login" >
                 Log in
               </Nav.Link>
             </Nav>

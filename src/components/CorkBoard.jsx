@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import "./css/Corkboard.css";
 import axios from "axios";
 import BoardPostModal from "./BoardPostModal";
@@ -6,6 +6,8 @@ import PostBoardCard from "./PostBoardCard";
 
 import { Container, Pagination, Row, Col, Stack } from "react-bootstrap";
 import LoadingSpinner from "./ui/LoadingSpinner";
+
+import { IsComponentVisible } from "./ui/isComponentVisible";
 
 function Corkboard() {
 
@@ -132,16 +134,16 @@ function Corkboard() {
 
   }, [posts.paginationIndex]);
 
+  // BRINGING IN INTERSECTION OBSERVER
+  // const ref = useRef();
+  // const isVisible = IsComponentVisible(ref);
 
   return (
-
     <>
-
       {
         posts.totalPosts === 0
           ?
-
-          <div className="corkboard-card-container shadow-lg" style={{height:"500px"}} >
+          <div className="corkboard-card-container shadow-lg" style={{ height: "550px" }} >
             <LoadingSpinner title="Loading Posts">
             </LoadingSpinner>
           </div>
@@ -161,24 +163,17 @@ function Corkboard() {
               {/* ************************ */}
               {/* FILTER - SEARCH BUTTONS */}
               {/* ************************ */}
-
-
               <Stack direction="horizontal" gap={3}>
                 <Pagination className="ms-auto corkboard-pagination" size="md">
                   {postItems}
                 </Pagination>
               </Stack>
             </div>
-
             {/* ********************************************************************** */}
             {/* CORKBOARD + POST CARDS*/}
             {/* ********************************************************************** */}
-
-
             {posts.paginationEntries !== undefined ?
-
               <div className="corkboard-card-container shadow-lg ">
-
                 {posts.paginationEntries?.map((p, i) => (
                   <PostBoardCard
                     key={`post-${p.title} - ${i}`}
@@ -197,7 +192,6 @@ function Corkboard() {
                   />
                 ))}
               </div>
-
               :
               <div className="corkboard-card-container shadow-lg" style={{ height: "400px" }}>
                 <Stack gap={3} className="col-md-5 mx-auto">
@@ -206,18 +200,18 @@ function Corkboard() {
                 </Stack>
               </div>
             }
-
             <Stack direction="horizontal" gap={3} className="mt-2">
               <Pagination className="ms-auto corkboard-pagination" size="md">
                 {postItems}
               </Pagination>
             </Stack>
-
           </div >
       }
 
 
-
+      {/* <div ref={ref}>
+        <p>{isVisible ? console.log('is visible!') : console.log('is Not visible!')}</p>
+      </div> */}
 
     </>
   );

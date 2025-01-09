@@ -72,4 +72,4 @@ const UserAccountSchema = new Schema({
 const UserAccount = mongoose.model("UserAccountModel", UserAccountSchema);
 
 // module.exports = UserAccount;
-export default UserAccount;
+module.exports = UserAccount;

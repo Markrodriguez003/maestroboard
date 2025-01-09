@@ -1,9 +1,18 @@
-import { useState } from "react";
+
+// CSS
 import "./css/NewsArticle.css";
-import { Row, Col, Container } from "react-bootstrap";
-import { ArrowRightCircle } from "react-bootstrap-icons";
-import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
+
+// COMPONENTS
+import { useState } from "react";
+import { Row, Col, Container, Image } from "react-bootstrap";
+
+// LIBRARIES
+import Lightbox from "yet-another-react-lightbox";
+
+// ASSETS
+import { ArrowRightCircle } from "react-bootstrap-icons";
+import defaultImage from "../assets/imgs/misc/missing-img.png";
 
 function NewsArticle(props) {
 
@@ -14,13 +23,14 @@ function NewsArticle(props) {
     const { title, subject, author, date, body, link, image, caption, subTitle } = props.article;
 
     return (
-        <Container as={"article"} className={"p-4 mt-5"} style={{ backgroundColor: "rgba(16, 41, 51, 1)" }}>
+        <Container as={"article"} className={"p-4 mt-5 newsArticleStyling"} >
             <Lightbox
                 open={lightBoxOpen}
                 close={() => setLightBoxOpen(false)}
                 slides={[
                     {
-                        src: props.artImage,
+                        // src: `${props.artImage ? props.artImage : defaultImage}`,
+                        src: `${props.artImage !== undefined ? props.artImage : defaultImage}`,
                         alt: "Article-image",
                         width: "100%",
                         height: "100%",
@@ -31,13 +41,17 @@ function NewsArticle(props) {
             <Row xl={2} xxl={2} lg={2} md={2} sm={1} xs={1} className={props.rowInverse}>
                 <Col>
                     <Row>
-                        {/* <img src={props} className="article-img-1" alt="article image" style={{ width: "100%" }}></img> */}
-                        <img
-                            src={props.artImage}
+                        <Image
+                            src={props.artImage ? props.artImage : defaultImage}
                             className="article-img-1"
                             alt="article image"
                             style={{ width: "100%", height: "375px", objectFit: "cover", cursor: "pointer" }}
                             onClick={() => setLightBoxOpen(true)}
+                            onError={event => {
+                                console.log(`Image not loaded::: ${event.onerror}`)
+                                event.target.src = { defaultImage }
+                                event.onerror = null
+                            }}
                         />
                     </Row>
                     <Row>
@@ -69,9 +83,7 @@ function NewsArticle(props) {
                             overflow: "hidden",
                             textOverflow: "ellipsis",
                         }}>
-
                             {body.length <= 750 ? body : body.substring(0, 550)}
-                            {/* <span style={{ position: "relative", display: "inline", color: "darkcyan", fontSize: "44px" }}>{" "}...</span> */}
                         </p>
                     </Row>
                     <Row className="float-right">
@@ -86,7 +98,6 @@ function NewsArticle(props) {
                     </Row>
                 </Col>
             </Row >
-
         </Container >
     );
 }

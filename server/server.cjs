@@ -31,10 +31,12 @@ if (process.env.NODE_ENV === "production") {
 // Bringing in example posts array AS an object. { [{},{},{},{}] }
 const ex = require("./scripts/ExamplePosts.cjs");
 const ar = require("./scripts/ArticlePosts.cjs");
+const us = require("./scripts/ExampleUsers.cjs");
 
 // Bringing in POST schema model
 const Post = require("./db/Posts.js");
 const Article = require("./db/Articles");
+const UserAccount = require("./db/UserAccount");
 const cookieParser = require("cookie-parser");
 
 // Connecting project to mongoose database.
@@ -92,19 +94,23 @@ async function deleteArticles() {
 }
 
 async function loadUsers() {
-  await Post.insertMany(ex.examplePosts, (err, confirm) => {
-    if (err) {
-      console.log("An error has occured bulk inserting posts::::: " + err);
-    }
-    console.log("Bulk insert of posts has sucessfully been created!::::: ");
-  });
+  await UserAccount.insertMany(us.exampleUsers)
+    .then(() => {
+      console.log("Successfully inserted test user items to DB");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 }
 
 // Loads Posts
 // loadPosts();
 
+// Loads Users
+loadUsers();
+
 // Loads Articles
-loadArticles();
+// loadArticles();
 
 // Deletes Posts
 // deletePosts();
@@ -158,6 +164,17 @@ app.get("/api/loadArticles", function (req, res) {
     })
     .catch((err) => {
       console.log("articles cannot be loaded from the db!");
+    });
+});
+
+app.get("/api/login", function (req, res) {
+  UserAccount.find({})
+    .then((users) => {
+      console.log(`Users:::${users}`);
+      res.json(users);
+    })
+    .catch((err) => {
+      console.log("users cannot be received from the db!");
     });
 });
 

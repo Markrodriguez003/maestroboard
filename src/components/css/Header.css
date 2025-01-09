@@ -20,11 +20,11 @@
 /* ************************* */
 /* Header Options */
 .header-container .header-items:link {
-  color: black;
+  color: white;
 }
 
 .header-container .header-items:visited {
-  color: black;
+  color: white;
 }
 
 .header-container .header-items:hover {
@@ -32,10 +32,11 @@
   text-decoration: underline;
   text-decoration-style: solid;
   font-size: 19px;
+  color: "white";
 }
 
 .header-container .header-items:active {
-  color: red;
+  color: teal;
 }
 
 /* ************************* */
@@ -88,6 +89,14 @@
 
 /* ********************************* */
 /* ********************************* */
+
+.header-list-item {
+  color: darkgrey;
+}
+
+.header-list-item:hover {
+  color: white;
+}
 .main-header {
   background: #102933;
   background: -moz-linear-gradient(left, #102933 0%, #102933 50%, #102933 100%);
@@ -110,8 +119,15 @@
   height: 88px;
   width: auto;
   padding: 6px;
+  margin-top: -16.5px;
+}
 
-  margin-top: -5px;
+.header-icon-hover:hover {
+  color: white;
+}
+
+.header-title-group:hover {
+  color: "white";
 }
 
 .header-title-group {
@@ -125,9 +141,10 @@
   font-size: 40px !important;
   font-family: "main-logo";
   color: white;
-  /* margin-top: 2px; */
-  /* margin-bottom: -2px; */
-  /* margin-left: 12px; */
+}
+
+.header-title:hover {
+  color: white;
 }
 
 .header-small-text {
@@ -136,8 +153,6 @@
   color: white;
   margin-top: -12px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  /* margin-left: -253px; */
-  /* margin-top: 48px; */
 }
 
 .header-muse-small {
