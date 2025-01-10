@@ -30,6 +30,7 @@ function Footer() {
       className="p-0 mt-5 justify-content-center"
       style={{
         backgroundColor: SITE_COLORS.main,
+
       }}
     >
       <Row className="p-4 mt-0 justify-content-center justify-content-sm-center ">

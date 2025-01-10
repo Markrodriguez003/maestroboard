@@ -11,11 +11,9 @@ import axios from "axios";
 import BoardPostModal from "./BoardPostModal";
 import PostBoardCard from "./PostBoardCard";
 import LoadingSpinner from "./ui/LoadingSpinner";
-import { Container, Pagination, Row, Col, Stack } from "react-bootstrap";
+import { Container, Pagination, Stack } from "react-bootstrap";
 import { IsComponentVisible } from "./ui/isComponentVisible";
 import HeaderPanel from "./ui/HeaderPanel";
-
-
 
 function Corkboard() {
 
@@ -195,7 +193,7 @@ function Corkboard() {
             {/* CORKBOARD + POST CARDS*/}
             {/* ********************************************************************** */}
             {posts.paginationEntries !== undefined ?
-              <div className="corkboard-card-container shadow-lg ">
+              <div className="corkboard-card-container">
                 {posts.paginationEntries?.map((p, i) => (
                   <PostBoardCard
                     key={`post-${p.title} - ${i}`}

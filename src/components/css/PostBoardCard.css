@@ -85,12 +85,12 @@
 
 .carousel-control-next:hover {
   transition: 0.2s ease-in-out;
-  background-color: rgba(0,0,0,0.25  ) !important;
+  background-color: rgba(0, 0, 0, 0.25) !important;
 }
 
 .carousel-control-prev:hover {
   transition: 0.2s ease-in-out;
-  background-color: rgba(0,0,0,0.25  ) !important;
+  background-color: rgba(0, 0, 0, 0.25) !important;
 }
 
 .carousel-control-prev-icon:hover {
@@ -116,13 +116,14 @@
 /* CSS CARD ANIMATIONS */
 /* ************************** */
 .card-container {
-  background-color: rgba(0, 0, 0, 0.3);
-  display: inline;
-  /* padding: 65px;    */
+  /* background-color: rgba(0, 0, 0, 0.3); */
   display: inline;
   perspective: 1700px;
   overflow: hidden;
   margin-bottom: 4px;
+  -webkit-box-shadow: -1px 26px 79px -42px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -1px 26px 79px -42px rgba(0, 0, 0, 0.75);
+  box-shadow: -1px 26px 79px -42px rgba(0, 0, 0, 0.75);
 }
 
 .under-card {

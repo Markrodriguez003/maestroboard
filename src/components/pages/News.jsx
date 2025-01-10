@@ -7,7 +7,11 @@ import { Row, Col, Carousel, Image, Container } from "react-bootstrap";
 // COMPONENTS
 import NewsArticle from "../NewsArticle";
 import HeaderPanel from "../ui/HeaderPanel";
+import QuickArticlesPanel from "../ui/QuickArticlesPanel";
 
+
+// TEST ARTICLES
+import testArticles from "../../../server/scripts/quickArticles.json";
 
 
 // TEST IMAGES
@@ -124,19 +128,7 @@ function News(props) {
               </Col>
 
               <Col lg={4}>
-                <div className="rounded" style={{ width: "100%", backgroundColor: "rgba(0,0,0,0.5)", padding: "10px 10px 10px 10px" }}>
-                  <h2 style={{ color: "white", textAlign: "center" }}>Quick Articles</h2>
-                  <ul>
-                    <li style={{ color: "white", marginBottom: "12px" }}><a style={{ color: "white", fontSize: "20px" }} href="#">Audio Interfaces, Why are they needed?</a></li>
-                    <li style={{ color: "white", marginBottom: "12px" }}><a style={{ color: "white", fontSize: "20px" }} href="#">Learn the guitar neck! Learn the "cage" system</a></li>
-                    <li style={{ color: "white", marginBottom: "12px" }}><a style={{ color: "white", fontSize: "20px" }} href="#">When to use a compressor - learn how!</a></li>
-                    <li style={{ color: "white", marginBottom: "12px" }}><a style={{ color: "white", fontSize: "20px" }} href="#">Analog vs. Hybrid vs. Software: Which is better?</a></li>
-                    <li style={{ color: "white", marginBottom: "12px" }}><a style={{ color: "white", fontSize: "20px" }} href="#">Tube warmth for microphones. See what mic pres we tested!</a></li>
-                    <li style={{ color: "white", marginBottom: "12px" }}><a style={{ color: "white", fontSize: "20px" }} href="#">The difference between single coil and double coil guitar pickups.</a></li>
-                    <li style={{ color: "white", marginBottom: "12px" }}><a style={{ color: "white", fontSize: "20px" }} href="#">Studio Headphones tested. Check out what our editors think!</a></li>
-                    <li style={{ color: "white", marginBottom: "12px" }}><a style={{ color: "white", fontSize: "20px" }} href="#">How ear plugs help preserve your hearing.</a></li>
-                  </ul>
-                </div>
+                <QuickArticlesPanel articles={testArticles} />
               </Col>
             </Row >
           </Container>
@@ -152,7 +144,9 @@ function News(props) {
           }
         </div>
         :
-        <LoadingSpinner type="grow" title="Loading News" />
+        <div style={{ marginBottom: "500px", marginTop: "150px" }}>
+          <LoadingSpinner type="grow" title="Loading News" />
+        </div>
 
 
       }
