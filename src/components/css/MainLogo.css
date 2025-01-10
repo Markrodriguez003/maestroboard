@@ -1,0 +1,19 @@
+.brand-logo-title {
+  color: white;
+  font-size: 40px;
+  font-family: "main-logo";
+  margin: 0px 0px -15px 0px;
+  padding: 0;
+}
+
+.brand-logo-img {
+  height: 95px;
+  width: auto;
+}
+
+.brand-title-small {
+  font-size: 14px;
+  color: white;
+  padding-top: -50px;
+  margin-left: 3px;
+}

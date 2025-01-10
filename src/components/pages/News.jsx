@@ -63,21 +63,6 @@ function News(props) {
   {/* ********************************************************************** */ }
   useEffect(() => {
 
-    // const pullArticles = async () => {
-    //   const res = await axios({
-    //     method: "get",
-    //     url: "http://localhost:3005/api/loadArticles",
-    //     // params: {
-    //     //   limit: 2
-    //     // }
-    //   })
-
-    //   setArticles(res)
-    //   return res
-    // };
-
-
-
     // GRABS ALL ARTICLES FROM DB
     async function grabArticles() {
       await axios
@@ -104,12 +89,11 @@ function News(props) {
               color: "white",
               textAlign: "center",
               fontSize: "55px",
-              // border: "white 5px solid",
-              borderRadius: "12px",
+              borderRadius: "5px",
               display: "inline-block",
-              padding: "15px"
+              padding: "1px",
             }}
-            >NEWS
+            >NEWS |
             </h1>
             <small style={{ color: "white", fontSize: "18px" }}>  Latest music gear articles</small>
             <hr style={{ color: "white", borderTop: "4px white solid" }} />
@@ -117,7 +101,7 @@ function News(props) {
           <Container fluid>
             <Row lg={2} xs={1} sm={1} className="justify-content-start p-3">
               <Col lg={8} className="w-">
-                <Carousel className="mt-5" style={{ width: "100%" }}>
+                <Carousel className="mt-0" style={{ width: "100%" }}>
                   {console.log(`Articles: ${JSON.stringify(articles)}`)}
 
                   {
@@ -139,10 +123,9 @@ function News(props) {
                 </Carousel >
               </Col>
 
-              <Col lg={4} style={{ marginTop: "50px" }}>
+              <Col lg={4}>
                 <div className="rounded" style={{ width: "100%", backgroundColor: "rgba(0,0,0,0.5)", padding: "10px 10px 10px 10px" }}>
                   <h2 style={{ color: "white", textAlign: "center" }}>Quick Articles</h2>
-                  {/* <ul style={{ textDecoration: "none", listStyle: "none" }}> */}
                   <ul>
                     <li style={{ color: "white", marginBottom: "12px" }}><a style={{ color: "white", fontSize: "20px" }} href="#">Audio Interfaces, Why are they needed?</a></li>
                     <li style={{ color: "white", marginBottom: "12px" }}><a style={{ color: "white", fontSize: "20px" }} href="#">Learn the guitar neck! Learn the "cage" system</a></li>

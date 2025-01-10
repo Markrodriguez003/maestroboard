@@ -47,7 +47,6 @@ function Login(props) {
   }
 
   return (
-
     <Container className="col-11 col-lg-5 col-md-7 p-1 rounded-4" style={{ backgroundColor: "rgba(0,0,0,0.7)" }}>
       <Row className="text-center mx-auto">
         <Col className="mt-3">

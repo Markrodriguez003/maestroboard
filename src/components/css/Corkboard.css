@@ -58,9 +58,9 @@
   margin-left: auto;
   gap: 20px;
 
-  /* background-image: url("../../../public/assets/imgs/User-Corkboard.jpg"); */
-  background-image: url("../../assets//imgs/corkboards/User-Corkboard.jpg");
-
+  background-image: url("../../assets//imgs/corkboards/User-Corkboard-0.jpg");
+  background-color: rgb(90, 88, 88);
+  background-blend-mode: hard-light;
   border: rgb(87, 83, 83) 8px solid;
 }
 

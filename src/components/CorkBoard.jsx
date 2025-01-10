@@ -1,13 +1,21 @@
+// REACT
 import { useState, useRef, useEffect } from "react";
+
+// CSS
 import "./css/Corkboard.css";
+
+// LIBRARIES
 import axios from "axios";
+
+// COMPONENTS
 import BoardPostModal from "./BoardPostModal";
 import PostBoardCard from "./PostBoardCard";
-
-import { Container, Pagination, Row, Col, Stack } from "react-bootstrap";
 import LoadingSpinner from "./ui/LoadingSpinner";
-
+import { Container, Pagination, Row, Col, Stack } from "react-bootstrap";
 import { IsComponentVisible } from "./ui/isComponentVisible";
+import HeaderPanel from "./ui/HeaderPanel";
+
+
 
 function Corkboard() {
 
@@ -152,14 +160,28 @@ function Corkboard() {
               {/* ********************************************************************** */}
               {/* CORKBOARD HEADER */}
               {/* ********************************************************************** */}
-              <Container className="shadow-md">
+              {/* <Container className="shadow-md">
                 <h4 className="display-4 corkBoard-title ">
                   Community Board <br />
                   <span className="lead">
                     Search or post all your music needs here!
                   </span>
                 </h4>
-              </Container>
+              </Container> */}
+              <HeaderPanel>
+                <h1 style={{
+                  color: "white",
+                  textAlign: "center",
+                  fontSize: "55px",
+                  borderRadius: "5px",
+                  display: "inline-block",
+                  padding: "1px"
+                }}
+                >Community Board |
+                </h1>
+                <small style={{ color: "white", fontSize: "18px" }}>  Latest music related posts</small>
+                <hr style={{ color: "white", borderTop: "4px white solid" }} />
+              </HeaderPanel>
               {/* ************************ */}
               {/* FILTER - SEARCH BUTTONS */}
               {/* ************************ */}

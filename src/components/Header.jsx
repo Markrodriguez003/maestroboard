@@ -1,11 +1,13 @@
 
 // COMPONENTS
 import { Image, Nav, Navbar, Row, Col } from "react-bootstrap";
+import { PersonFillLock, Newspaper } from "react-bootstrap-icons";
+import MainLogo from "./ui/MainLogo";
 
 // ASSETS
 import siteLogo from "../assets/imgs/logo/Maestro-Logo-R.png";
 import { SITE_COLORS } from "./css/site";
-import { PersonFillLock, Newspaper } from "react-bootstrap-icons";
+
 // CSS
 import "./css/Header.css";
 
@@ -15,7 +17,7 @@ function Header(prop) {
     <Navbar
       collapseOnSelect
       expand="lg"
-      className="p-4 mb-5 justify-content-lg-between justify-content-md-between justify-content-sm-center justify-content-xl-between"
+      className="p-4 mb-4 justify-content-lg-between justify-content-md-between justify-content-sm-center justify-content-xl-between"
       style={{
         backgroundColor: SITE_COLORS.main,
         boxShadow: "0px 2px 53px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0)"
@@ -24,20 +26,8 @@ function Header(prop) {
       <Row>
         <Col >
           <Row>
-            <Navbar.Brand href="/home" className="header-title d-flex">
-              <a href="/home" className="header-icon-hover">
-                <Image
-                  className="header-icon"
-                  src={siteLogo}
-                  alt="MaestroBoard Logo"
-                />
-              </a>
-              <div className="header-title-group">
-                MaestroBoard
-                <small className="header-small-text">
-                  buy. sell. trade. connect. |{"  "} Chase your Muse.{" "}
-                </small>
-              </div>
+            <Navbar.Brand href="/home" >
+              <MainLogo />
             </Navbar.Brand>
           </Row>
         </Col>
