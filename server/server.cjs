@@ -93,6 +93,10 @@ async function deleteArticles() {
   await Article.deleteMany({});
 }
 
+async function deleteUsers() {
+  await UserAccount.deleteMany({});
+}
+
 async function loadUsers() {
   await UserAccount.insertMany(us.exampleUsers)
     .then(() => {
@@ -107,10 +111,13 @@ async function loadUsers() {
 // loadPosts();
 
 // Loads Users
-loadUsers();
+// loadUsers();
 
 // Loads Articles
 // loadArticles();
+
+// Deletes users
+// deleteUsers();
 
 // Deletes Posts
 // deletePosts();
@@ -167,16 +174,47 @@ app.get("/api/loadArticles", function (req, res) {
     });
 });
 
-app.get("/api/login", function (req, res) {
-  UserAccount.find({})
+// ? https://www.geeksforgeeks.org/how-to-send-basic-auth-with-axios-in-react-node/#
+
+app.post("/api/login", (req, res) => {
+  const { email, password } = req.body;
+  let x = email;
+  let p = password;
+
+  // FINDS USERNAME. IF IT HAS TROUBLE COMMUNITING WITH DB IT WILL RUN CATCH
+  UserAccount.find({ email: x })
     .then((users) => {
-      console.log(`Users:::${users}`);
-      res.json(users);
+      // let user = JSON.stringify(users);
+      let user = users;
+
+      if (user !== undefined) {
+        res.status(200).json({ message: `${user}`, crendentials: user });
+      } else {
+        res.status(401).json({ message: "Invalid credentials!" });
+      }
+      // if (email === "admin" && password === "1234") {
+      // if (users.email === "admin") {
+      //   res.status(200).json({ message: "Login successful!" });
+      // } else {
+      //   res.status(401).json({ message: "Invalid credentials!" });
+      // }
+
+      // res.json(users);
     })
     .catch((err) => {
       console.log("users cannot be received from the db!");
     });
 });
+
+// app.get("/api/login", function (req, res) {
+//   UserAccount.find({ username: "Admin" })
+//     .then((users) => {
+//       res.json(users[0]);
+//     })
+//     .catch((err) => {
+//       console.log("users cannot be received from the db!");
+//     });
+// });
 
 // // * **********************************************************************************
 // // * ROUTES RELATED TO BOARD/POSTS

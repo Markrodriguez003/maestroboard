@@ -83,33 +83,56 @@
 
 /* ************************** */
 
+/* FIXES BOOTSTRAP CAROUSEL */
+.carousel-inner:not(.carousel-item)::after {
+  display: none !important;
+}
+
+.carousel-inner > div {
+  /* display: none !important; */
+  /* color: red !important; */
+  background-color: grey !important;
+}
+.carousel-controls {
+  color: white !important;
+  background-color: white !important;
+}
 .carousel-control-next:hover {
   transition: 0.2s ease-in-out;
-  background-color: rgba(0, 0, 0, 0.25) !important;
+  background-color: rgba(0, 0, 0, 1) !important;
+}
+
+.carousel-control-prev {
+  /* display: none;
+  background-color: red; */
 }
 
 .carousel-control-prev:hover {
   transition: 0.2s ease-in-out;
-  background-color: rgba(0, 0, 0, 0.25) !important;
+  background-color: rgba(0, 0, 0, 1) !important;
+  /* display: none !important; */
 }
 
 .carousel-control-prev-icon:hover {
   transition: 0.2s ease-in-out;
   color: white !important;
-  width: 4rem !important;
-  height: 4rem !important;
+  /* width: 4rem !important; */
+  /* height: 4rem !important; */
+  /* display: none !important; */
 }
 
 .carousel-control-next-icon:hover {
   transition: 0.2s ease-in-out;
   color: white !important;
-  width: 4rem !important;
-  height: 4rem !important;
+  /* width: 4rem !important; */
+  /* height: 4rem !important; */
+  /* display: none !important; */
 }
 
-/* .carousel-indicators button:hover {
+/* .carousel .slide .carousel-indicators {
   transition: 0.2s ease-in-out;
   color: white !important;
+  display: none !important;
 } */
 
 /* ************************** */

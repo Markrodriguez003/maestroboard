@@ -196,7 +196,7 @@ function Corkboard() {
               <div className="corkboard-card-container">
                 {posts.paginationEntries?.map((p, i) => (
                   <PostBoardCard
-                    key={`post-${p.title} - ${i}`}
+                    key={`post-${p.title} - ${i}-${p._id}`}
                     title={p.title}
                     email={p.email}
                     username={p.username}

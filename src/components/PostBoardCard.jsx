@@ -34,8 +34,6 @@ import pushPinE from "../assets/imgs/post-imgs/push-pin5.png";
 import pushPinF from "../assets/imgs/post-imgs/push-pin6.png";
 
 import {
-  ArrowRight,
-  ArrowLeft,
   ArrowLeftCircleFill,
   ChatDotsFill,
   People,
@@ -127,19 +125,19 @@ function PostBoardCard(prop) {
                   <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
                     <div className="card front">
                       <Card style={{ width: "400px", height: "500px" }}>
-                        <Carousel data-bs-theme="light" interval={null}>
+                        <Carousel interval={null}>
+
 
                           ({
                             prop.images.map(function (img, i) {
-
+                              console.log(`image test: ${img}`)
                               return (
-                                <Carousel.Item key={`post-key-${img}}`} onClick={() => setLightBoxOpen(true)} style={{ cursor: "pointer" }}>
-                                  <div key={`container-${img} + ${i}`}>
+                                <Carousel.Item key={`${Math.floor(Math.random() * 100)}-cork-post-key-${img}-${Math.floor(Math.random() * 100)}`} onClick={() => setLightBoxOpen(true)} style={{ cursor: "pointer" }}>
+                                  <div>
                                     < Image
                                       key={`image-${img} - ${i}`}
-                                      className="d-block w-100"
+                                      className="d-block"
                                       style={{
-                                        display: "block",
                                         height: "300px",
                                         width: "100%",
                                         objectFit: "contain",
@@ -147,8 +145,8 @@ function PostBoardCard(prop) {
                                       }}
                                       rounded
                                       src={img}
-                                      alt={`alt- post-slide - ${img}`
-                                      }
+                                      alt={`alt- post-slide - ${img}`}
+
                                     />
                                   </div>
                                 </ Carousel.Item>
@@ -290,6 +288,8 @@ function PostBoardCard(prop) {
                       }}
                     >
                       <div className="card-top-header">
+                        <br />
+                        <br />
                         <Row className="card-header-labels">
                           <Col>
                             <People /> Posted By:
@@ -315,8 +315,8 @@ function PostBoardCard(prop) {
                           <h3>
                             {" "}
                             <Mailbox2
-                              style={{ marginBottom: "4.8px" }}
-                            /> Contact{" "}
+                              style={{ marginBottom: "6px", marginRight:"5px" }}
+                            /> Contact {" "}
                           </h3>
                         </Card.Title>
                         <ListGroup className="p-0">
@@ -367,8 +367,9 @@ function PostBoardCard(prop) {
             </div>
           </div >
         </div >
-        : <LoadingPostCard />}
-    </div>
+        : <LoadingPostCard />
+      }
+    </div >
 
   );
 }

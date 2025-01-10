@@ -1,5 +1,19 @@
 exports.exampleUsers = [
   {
+    username: "Admin",
+    password: "12345",
+    email: "admin@admin.com",
+    profileImg: "admin.png",
+    address1: "",
+    address2: "",
+    zipcode: "",
+    city: "",
+    state: "",
+    country: "",
+    phoneNumber: "",
+    altPhoneNumber: "",
+  },
+  {
     username: "Asmongo22",
     password: "981249824",
     email: "amsongo22@gmail.com",

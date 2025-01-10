@@ -4,6 +4,8 @@ import Corkboard from "../CorkBoard";
 function CommunityBoard() {
   return (
     <>
+      <br />
+      <br />
       <Corkboard />
     </>
   );

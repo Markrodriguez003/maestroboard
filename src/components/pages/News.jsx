@@ -87,7 +87,8 @@ function News(props) {
       {articles !== undefined
         ?
         <div>
-
+          <br />
+          <br />
           <HeaderPanel>
             <h1 style={{
               color: "white",
