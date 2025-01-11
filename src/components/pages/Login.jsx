@@ -1,7 +1,7 @@
 
 // COMPONENTS
 import { useState } from "react";
-import { Row, Col, Form, Button, Container } from "react-bootstrap";
+import { Row, Col, Form, Button, Container, Spinner, Toast } from "react-bootstrap";
 
 // LIBRARIES
 import axios from "axios";
@@ -12,74 +12,80 @@ import { PersonFillLock } from "react-bootstrap-icons";
 // CSS
 import "../css/Login.css";
 
-// !
-// !     password: "981249824",
-// !    email: "amsongo22@gmail.com",
-
 function Login(props) {
 
+  // Sets field values to form object )
   const [form, setForm] = useState({});
-  const [errors, setErrors] = useState({});
+
+  // Handles button spinner: submit (true), initial(false),
+  // const [formLoading, setFormLoading] = useState(false);
+  const [formActionResults, setFormActionResults] = useState({
+    loading: false,
+    errors: false,
+    popup: false,
+    status: "null"
+  });
+
+  // Handles form error handling (UX popups | false nothing, true | popup)
+  const togglePopup = () => setFormActionResults(prev => (
+    {
+      ...prev,
+      loading: false,
+      popup: !prev.popup
+    }
+  ));;
 
   // Makes API Fetch request to pass and check status to see is user credentials are valid.
   async function LOGIN_USER_AUTH(userChk) {
-    // console.log(`INSIDE API POST REQUEST:::: ${JSON.stringify(userChk)}`)
     try {
       const response = await axios.post('http://localhost:3005/api/login',
         { email: userChk.email, password: userChk.password });
-      console.log(`RESPONSE::: ${JSON.stringify(response.data.crendentials)}`);
-      setErrors(response.data.crendentials);
-
-
+      setFormActionResults(prev => (
+        {
+          ...prev,
+          loading: false,
+          popup: true,
+          status: "successful"
+        }
+      ));
+      console.log(`Inside response message! --> ${JSON.stringify(response.data.message)}`)
+      console.log(`Inside response message! -- > ${JSON.stringify(response.data.status)} `)
     } catch (error) {
-      console.error('Error logging in:', error);
-      // setMessage('An error occurred');
+      setFormActionResults(prev => (
+        {
+          ...prev,
+          loading: false,
+          popup: true,
+          errors: true,
+          status: "failure"
+        }
+      ));
+      console.error('Error logging in:', error.status);
     }
-
-
-    // API POST request
-
-    // await axios
-    //   .get("http://localhost:3005/api/login")
-    //   .then((response) => {
-    //     console.log(`USERS::::${JSON.stringify(response.data)}`)
-    //   })
-    //   .catch((err) => console.log(`-->${err}`));
   }
 
-
   const setField = (field, value) => {
-    console.log(`${field}:::${value}`);
     setForm({
       ...form,
       [field]: value
     })
   }
 
-
   // Submit Button function
   function formSubmit(e) {
     e.preventDefault();
-    console.log(`Form:: ${JSON.stringify(form)}`);
     LOGIN_USER_AUTH(form);
   }
 
   return (
-    <Container className="col-11 col-lg-5 col-md-7 p-1 rounded-4" style={{ backgroundColor: "rgba(0,0,0,0.7)" }}>
-      <Row className="text-center mx-auto">
-        <Col className="mt-3">
+
+
+    <Container className="col-11 col-lg-5 col-md-7 p-1 mt-5 rounded-4" style={{ backgroundColor: "rgba(0,0,0,0.7)", transition: "0.5s ease-in-out !important" }}>
+      <Row className="text-center mx-auto" >
+        <Col className="mt-3" >
           <PersonFillLock style={{ color: "white", fontSize: "70px", }} />
           <h1 className="text-center" style={{ color: "white" }}>
             Log in
-          </h1>
-
-          <h1 style={{ color: "red" }}>
-
-            {setForm === undefined ? "Nothing!"
-              : `Email: ${setForm.email} - Password: ${setForm.password}`
-
-            }
-
           </h1>
         </Col>
       </Row>
@@ -89,42 +95,55 @@ function Login(props) {
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control type="email"
-            // onChange={(e) =>
-            //   setUserAuthInfo(
-            //     ...userAuthInfo,
-            //     userAuthInfo.email = e.target.value
-            //   )
-            // }
             onChange={(e) => setField('email', e.target.value)}
-
-          // value={userAuthInfo.email}
           />
           <Form.Text className="text-light">
             Don't share your credentials with anyone else.
           </Form.Text>
         </Form.Group>
-
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
           <Form.Control type="password"
-            // onChange={(e) =>
-            //   setUserAuthInfo(
-            //     ...userAuthInfo,
-            //     userAuthInfo.password = e.target.value
-            //   )
-            // }
             onChange={(e) => setField('password', e.target.value)}
-          // value={userAuthInfo.password} 
           />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicCheckbox">
+        {/* <Form.Group className="mb-3" controlId="formBasicCheckbox">
           <Form.Check type="checkbox" label="Check me out" />
-        </Form.Group>
-        <Button type="submit" onSubmit={formSubmit}>
-          Submit
+        </Form.Group> */}
+        <Button
+          type="submit"
+          onSubmit={formSubmit}
+          disabled={formActionResults.loading}
+        // onClick={!formLoading ? handleClick : null}
+        >
+          {formActionResults.loading ? <Spinner /> : 'Sign-in'}
         </Button>
       </Form>
+
+      {/* LOGIN TOAST */}
+      {formActionResults.status === "failure" ?
+        <Toast show={formActionResults.popup} onClose={togglePopup} delay={3000} autohide className="mx-auto m-3" aria-controls="example-fade-text">
+          <Toast.Header style={{ backgroundColor: "red", color: "white" }}>
+            <strong className="me-auto">Invalid Credentials!</strong>
+          </Toast.Header>
+          <Toast.Body>Check your form fields!</Toast.Body>
+        </Toast>
+        :
+        formActionResults.status === "successful" ?
+
+          <Toast show={formActionResults.popup} onClose={togglePopup} delay={3000} autohide className="mx-auto m-3" aria-controls="example-fade-text" >
+            <Toast.Header style={{ backgroundColor: "green", color: "white" }}>
+              <strong className="me-auto">Login in Successful!</strong>
+            </Toast.Header>
+            <Toast.Body>Welcome!</Toast.Body>
+          </Toast>
+          :
+          <></>
+      }
+
+
     </Container >
+
 
   );
 }

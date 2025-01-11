@@ -178,31 +178,29 @@ app.get("/api/loadArticles", function (req, res) {
 
 app.post("/api/login", (req, res) => {
   const { email, password } = req.body;
-  let x = email;
+  let e = email;
   let p = password;
 
-  // FINDS USERNAME. IF IT HAS TROUBLE COMMUNITING WITH DB IT WILL RUN CATCH
-  UserAccount.find({ email: x })
+  UserAccount.find({ email: e })
     .then((users) => {
-      // let user = JSON.stringify(users);
-      let user = users;
+      let foundAccountEmail = users[0].email;
+      let foundAccountPassword = users[0].password;
 
-      if (user !== undefined) {
-        res.status(200).json({ message: `${user}`, crendentials: user });
+      if (
+        foundAccountEmail !== undefined &&
+        foundAccountEmail === "admin@admin.com" &&
+        p === users[0].password
+      ) {
+        res.status(200).json({
+          message: `Signed in!`,
+          status: "successful",
+        });
       } else {
-        res.status(401).json({ message: "Invalid credentials!" });
+        res.status(401).json({ message: "Invalid credentials!", status: 401 });
       }
-      // if (email === "admin" && password === "1234") {
-      // if (users.email === "admin") {
-      //   res.status(200).json({ message: "Login successful!" });
-      // } else {
-      //   res.status(401).json({ message: "Invalid credentials!" });
-      // }
-
-      // res.json(users);
     })
     .catch((err) => {
-      console.log("users cannot be received from the db!");
+      res.status(401).json({ message: `Invalid credentials! :: ${err}` });
     });
 });
 
