@@ -1,6 +1,9 @@
+// COMPONENTS
 import { useState } from "react";
+import axios from "axios";
 import { Button, Modal, Form } from "react-bootstrap";
 
+// ASSETS
 import { Reply, BackspaceReverse } from "react-bootstrap-icons"; // Importing Bootstrap Icon Components
 
 function BoardPostModal() {
@@ -13,29 +16,20 @@ function BoardPostModal() {
 
   // Function that creates new user via fetch POST request
   async function CREATE_NEW_POST(newPost) {
-    fetch("/api/insertpost", {
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify(newPost),
-    })
-      .then((res) => {
-        return res;
-      })
-      .then((data) => {
-        console.log("data:" + data);
-      })
-      .catch((err) => {
-        console.log("An error has occurred:::: " + err);
-      });
+
+    try {
+      const response = await axios.post('http://localhost:3005/api/insertpost',
+        newPost);
+      console.log(`Inside response message! --> ${JSON.stringify(response)}`)
+      console.log(`Inside response message! -- > ${JSON.stringify(response)} `)
+    } catch (error) {
+      console.log(`Here is the error inserting new post::: ${error}`)
+    }
   }
 
-  function formAccSubmit(e) {
+  async function formAccSubmit(e) {
     e.preventDefault();
-    console.log(newPost);
-    CREATE_NEW_POST(newPost);
+    await CREATE_NEW_POST(newPost);
     setShow(false);
   }
 
@@ -58,7 +52,7 @@ function BoardPostModal() {
           <small>Type of Post</small>
           <br />
           <select
-            class="form-select"
+            className="form-select"
             aria-label="Default select example"
             onChange={(e) =>
               setNewPost(newPost, (newPost["type"] = e.target.value))
@@ -73,7 +67,7 @@ function BoardPostModal() {
           <small>Type of Instrument</small>
           <br />
           <select
-            class="form-select"
+            className="form-select"
             aria-label="Default select example"
             onChange={(e) =>
               setNewPost(newPost, (newPost["instrument"] = e.target.value))
@@ -99,7 +93,7 @@ function BoardPostModal() {
                 onChange={(e) =>
                   setNewPost(newPost, (newPost["title"] = e.target.value))
                 }
-                value={newPost.title}
+              // value={newPost.title}
               />
             </Form.Group>
           </div>
@@ -113,7 +107,7 @@ function BoardPostModal() {
                 onChange={(e) =>
                   setNewPost(newPost, (newPost["title"] = e.target.value))
                 }
-                value={newPost.email}
+              // value={newPost.email}
               />
             </Form.Group>
           </div>
@@ -126,7 +120,7 @@ function BoardPostModal() {
                 onChange={(e) =>
                   setNewPost(newPost, (newPost["number"] = e.target.value))
                 }
-                value={newPost.phone}
+              // value={newPost.phone}
               />
             </Form.Group>
           </div>
@@ -140,7 +134,7 @@ function BoardPostModal() {
                 onChange={(e) =>
                   setNewPost(newPost, (newPost["pBody"] = e.target.value))
                 }
-                value={newPost.pBody}
+              // value={newPost.pBody}
               />
             </Form.Group>
             <Form.Label>Price:</Form.Label>
@@ -150,7 +144,7 @@ function BoardPostModal() {
               onChange={(e) =>
                 setNewPost(newPost, (newPost["price"] = e.target.value))
               }
-              value={newPost.price}
+            // value={newPost.price}
             />
             <Form.Group controlId="formGrid-trade">
               <Form.Check type="checkbox" label="...Or trade" />

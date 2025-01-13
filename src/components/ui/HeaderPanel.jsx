@@ -1,19 +1,21 @@
 
 import { Container } from "react-bootstrap";
 
-function HeaderPanel({ children }) {
+// STYLING
+import { SITE_COLORS } from "../css/site";
 
+function HeaderPanel(props) {
+    const { bgColor = SITE_COLORS.main, width = "w-100", color = "white" } = props;
     return (
         <Container fluid
             style={{
-                // border: "rgba(0,0,0,0.3) 3px solid",
-                // borderRadius: "20px",
-                backgroundColor: "rgb(0, 66, 65)"
+                backgroundColor: bgColor,
             }}
-            // className="p-4 mt-5 text-center shadow-lg">
-            className="p-4 mb-2 mt-3 text-start">
-            {children}
-        </Container>
+            className={`p-2     shadow-lg ${width} `}
+        // className={`p-0 m-0 shadow-lg ${width} `} 
+        >
+            {props.children}
+        </Container >
     )
 
 }

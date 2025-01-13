@@ -97,9 +97,9 @@ function Login(props) {
           <Form.Control type="email"
             onChange={(e) => setField('email', e.target.value)}
           />
-          <Form.Text className="text-light">
+          {/* <Form.Text className="text-light">
             Don't share your credentials with anyone else.
-          </Form.Text>
+          </Form.Text> */}
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>

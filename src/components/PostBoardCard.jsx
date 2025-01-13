@@ -33,6 +33,8 @@ import pushPinD from "../assets/imgs/post-imgs/push-pin4.png";
 import pushPinE from "../assets/imgs/post-imgs/push-pin5.png";
 import pushPinF from "../assets/imgs/post-imgs/push-pin6.png";
 
+import defaultImage from "../assets/imgs/misc/missing-img.png";
+
 import {
   ArrowLeftCircleFill,
   ChatDotsFill,
@@ -48,7 +50,7 @@ import {
   Mailbox2,
 } from "react-bootstrap-icons";
 
-function PostBoardCard(prop) {
+function PostBoardCard(props) {
   const [isFlipped, setIsFlipped] = useState(false);
   const [revealUnderCard, setRevealUnderCard] = useState({});
   const [isPostCardLoaded, setIsPostCardLoaded] = useState(false);
@@ -90,10 +92,10 @@ function PostBoardCard(prop) {
 
     let postImages = [];
     async function setPostLightboxImages() {
-      for (let i = 0; i < prop.images.length; i++) {
+      for (let i = 0; i < props.images.length; i++) {
 
         postImages.push({
-          src: prop.images[i],
+          src: props.images[i],
           alt: `post-image-[${i}]`,
           width: "90%",
           height: "auto",
@@ -125,12 +127,63 @@ function PostBoardCard(prop) {
                   <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
                     <div className="card front">
                       <Card style={{ width: "400px", height: "500px" }}>
-                        <Carousel interval={null}>
 
 
+                        {props.images.length !== 0
+                          ?
+
+
+                          <Carousel interval={null}>
+                            ({
+                              props.images.map(function (img, i) {
+                                return (
+                                  <Carousel.Item key={`${Math.floor(Math.random() * 100)}-cork-post-key-${img}-${Math.floor(Math.random() * 100)}`} onClick={() => setLightBoxOpen(true)} style={{ cursor: "pointer" }}>
+                                    <div>
+                                      < Image
+                                        key={`image-${img} - ${i}`}
+                                        className="d-block"
+                                        style={{
+                                          height: "300px",
+                                          width: "100%",
+                                          objectFit: "contain",
+                                          backgroundColor: "rgba(0,0,0,0.2)"
+                                        }}
+                                        rounded
+                                        src={img}
+                                        // src={img !== undefined ? img : defaultImage}
+                                        alt={`alt- post-slide - ${img}`}
+                                      />
+                                    </div>
+                                  </ Carousel.Item>
+                                )
+                              })
+                            })
+                          </Carousel>
+
+
+                          :
+                          < Image
+                            key={`image-==`}
+                            className="d-block"
+                            style={{
+                              height: "300px",
+                              width: "100%",
+                              objectFit: "contain",
+                              backgroundColor: "rgba(0,0,0,0.2)"
+                            }}
+                            rounded
+                            src={defaultImage}
+                            alt={`alt- post-slide`}
+
+                          />
+
+                        }
+
+
+
+                        {/* <Carousel interval={null}>
                           ({
-                            prop.images.map(function (img, i) {
-                              console.log(`image test: ${img}`)
+                            props.images.map(function (img, i) {
                               return (
                                 <Carousel.Item key={`${Math.floor(Math.random() * 100)}-cork-post-key-${img}-${Math.floor(Math.random() * 100)}`} onClick={() => setLightBoxOpen(true)} style={{ cursor: "pointer" }}>
                                   <div>
@@ -145,16 +198,15 @@ function PostBoardCard(prop) {
                                       }}
                                       rounded
                                       src={img}
+                                      // src={img !== undefined ? img : defaultImage}
                                       alt={`alt- post-slide - ${img}`}
-
                                     />
                                   </div>
                                 </ Carousel.Item>
                               )
                             })
                           })
-
-                        </Carousel>
+                        </Carousel> */}
                         <div className="card-top-header">
                           <img
                             src={pushPinRand[Math.floor(Math.random() * 5)]}
@@ -171,7 +223,7 @@ function PostBoardCard(prop) {
                             <Badge bg="success" style={{ fontSize: "16px" }}>
                               {" "}
                               <CashStack style={{ marginBottom: "3.25px" }} /> $
-                              {prop.price} {prop.trade}
+                              {props.price} {props.trade}
                             </Badge>
                           </Col>
                           <Col className="vr">
@@ -187,14 +239,14 @@ function PostBoardCard(prop) {
                           <Col>
                             <Badge bg="info" style={{ fontSize: "16px" }}>
                               {" "}
-                              <Gem style={{ marginBottom: "3.25px" }} /> {prop.type}
+                              <Gem style={{ marginBottom: "3.25px" }} /> {props.type}
                             </Badge>
                           </Col>
                         </Row>
                         <br />
                         <Card.Body>
                           <Card.Title className="post-title-text text-center mx-auto">
-                            {prop.title}
+                            {props.title}
                           </Card.Title>
                         </Card.Body>
                         <Card.Footer className="text-muted" >
@@ -243,16 +295,16 @@ function PostBoardCard(prop) {
                           </Row>
                           {/* User Post input */}
                           <Row className="card-header-user-input">
-                            <Col>{prop.username}</Col>
-                            <Col>{prop.date}</Col>
-                            <Col>{prop.zip}</Col>
+                            <Col>{props.username}</Col>
+                            <Col>{props.date}</Col>
+                            <Col>{props.zip}</Col>
                           </Row>
                         </div>
                         <Card.Body className="table-text">
                           <Card.Title className="info-card-title">
-                            {prop.title}{" "}
+                            {props.title}{" "}
                           </Card.Title>
-                          <p className="info-card-body">{prop.body}</p>
+                          <p className="info-card-body">{props.body}</p>
                         </Card.Body>
                         <Card.Body>
                           <Card.Body>
@@ -304,9 +356,9 @@ function PostBoardCard(prop) {
                         </Row>
                         {/* User Post input */}
                         <Row className="card-header-user-input">
-                          <Col>{prop.username}</Col>
-                          <Col>{prop.date}</Col>
-                          <Col>{prop.zip}</Col>
+                          <Col>{props.username}</Col>
+                          <Col>{props.date}</Col>
+                          <Col>{props.zip}</Col>
                         </Row>
                       </div>
                       <Card.Body>
@@ -315,7 +367,7 @@ function PostBoardCard(prop) {
                           <h3>
                             {" "}
                             <Mailbox2
-                              style={{ marginBottom: "6px", marginRight:"5px" }}
+                              style={{ marginBottom: "6px", marginRight: "5px" }}
                             /> Contact {" "}
                           </h3>
                         </Card.Title>
@@ -328,14 +380,14 @@ function PostBoardCard(prop) {
 
                             <span className="contact-text">
                               {" "}
-                              <a href={"mailTo" + prop.email}>{prop.email}</a>
+                              <a href={"mailTo" + props.email}>{props.email}</a>
                             </span>
                           </ListGroup.Item>
                           <ListGroup.Item style={{ color: "black" }}>
                             <span className="font-weight-bold contact-text">
                               <TelephoneFill /> Number:
                             </span>
-                            <span className="contact-text"> {prop.phone}</span>
+                            <span className="contact-text"> {props.phone}</span>
                           </ListGroup.Item>
                           <ListGroup.Item>
                             {/* <CardReplyModal /> */}

@@ -161,6 +161,36 @@ app.get("/api/loadPosts", function (req, res) {
     });
 });
 
+// * Inserts new post
+app.post("/api/insertpost", async (req, res) => {
+  let newPost = {
+    username: "test", // Fill user data with session
+    email: req.body.email,
+    phone: req.body.phone,
+    zip: "333test333", // Fill user data with session
+    type: req.body.type,
+    equipment: req.body.instrument,
+    title: req.body.title,
+    body: req.body.pBody,
+    price: req.body.price,
+  };
+
+  await Post.create(newPost).then((result) => {
+    console.log(result);
+    res.json({ response: result });
+  });
+
+  // await Post.create(newPost, (err, confirm) => {
+  //   if (err) {
+  //     console.log("An error has occured  inserting post::::: " + err);
+  //   }
+  //   console.log(
+  //     "Insertion of post was successful!::::: " + JSON.stringify(newPost)
+  //   );
+  //   res.status(200);
+  // });
+});
+
 app.get("/api/loadArticles", function (req, res) {
   Article.find({})
     .then((articles) => {
@@ -168,6 +198,17 @@ app.get("/api/loadArticles", function (req, res) {
         "There are " + articles.length + " articles currently in the database."
       );
       res.json(articles);
+    })
+    .catch((err) => {
+      console.log("articles cannot be loaded from the db!");
+    });
+});
+
+app.get("/api/load-user-count", function (req, res) {
+  UserAccount.find({})
+    .then((users) => {
+      console.log("There are " + users + " users currently in the database.");
+      res.json(users.length);
     })
     .catch((err) => {
       console.log("articles cannot be loaded from the db!");

@@ -83,6 +83,8 @@ function Corkboard() {
             }
           ));
 
+          console.log(`INSIDE CORKBOARD::: ${JSON.stringify(response.data)}`)
+
           // SETS THE FIRST POSTS TO BOARD
           for (let i = 0; i < CORKBOARD_TOTAL_POSTS_ALLOWED; i++) {
             if (response.data[0] === undefined) { break; }
@@ -138,7 +140,7 @@ function Corkboard() {
 
     setPaginatedPosts();
 
-  }, [posts.paginationIndex]);
+  }, [posts.allEntries, posts.paginationIndex, posts.totalPosts]);
 
   // BRINGING IN INTERSECTION OBSERVER
   // const ref = useRef();

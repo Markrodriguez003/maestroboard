@@ -3,12 +3,17 @@
 import "./components/css/App.css";
 
 // SITE COMPONENTS
-import IntroSplashPage from "./components/IntroSplashPage";
+
+// PAGES
 import Login from "./components/pages/Login";
-import SignUpForm from "./components/SignUpForm";
-import Forum from "./components/Forum";
 import News from "./components/pages/News";
 import CommunityBoard from "./components/pages/CommunityBoard";
+import Forum from "./components/Forum";
+// ! change to home
+import IntroSplashPage from "./components/IntroSplashPage";
+import Dashboard from "./components/pages/Dashboard";
+
+import SignUpForm from "./components/SignUpForm";
 import NewsArticlePage from "./components/NewsArticlePage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
@@ -28,6 +33,7 @@ function App() {
         <Route path="/forum" element={<Forum />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/signup" element={<SignUpForm />}></Route>
+        <Route path="/dashboard" element={<Dashboard />}></Route>
       </Routes>
 
       <Footer />
