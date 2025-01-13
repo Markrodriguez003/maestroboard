@@ -1,10 +1,14 @@
 // COMPONENTS
 import { useState } from "react";
 import axios from "axios";
-import { Button, Modal, Form } from "react-bootstrap";
+import { Button, Modal, Form, Container, Row, Col } from "react-bootstrap";
 
 // ASSETS
-import { Reply, BackspaceReverse } from "react-bootstrap-icons"; // Importing Bootstrap Icon Components
+import { Reply, BackspaceReverse, PinAngleFill, XCircleFill } from "react-bootstrap-icons"; // Importing Bootstrap Icon Components
+
+// DESIGN CSS
+import { SITE_COLORS } from "./css/site";
+
 
 function BoardPostModal() {
   const [show, setShow] = useState(false);
@@ -33,9 +37,27 @@ function BoardPostModal() {
     setShow(false);
   }
 
+
+  // SETS FILES THAT CAN BE UPLOADED
+  const [postImageFiles, setPostImageFiles] = useState([]);
+
+  // LIMITS FILES THAT CAN BE UPLOADED
+  const handleFileChange = (event) => {
+    const files = event.target.files;
+
+    // Limit the number of files
+    const maxFiles = 5; // Set your desired limit here
+    if (files.length > maxFiles) {
+      alert(`You can only upload a maximum of ${maxFiles} files.`);
+      event.target.value = null
+      return;
+    }
+
+    setPostImageFiles([...files]);
+  };
   return (
-    <div className="mx-auto text-center mb-3 mt-4 shadow-sm">
-      <Button variant="info" size="lg" onClick={handleShow}>
+    <>
+      <Button size="md" onClick={handleShow}>
         Create Post!
       </Button>
 
@@ -44,53 +66,64 @@ function BoardPostModal() {
         onHide={handleClose}
         backdrop="static"
         keyboard={false}
-        className="text-center"
+        size="lg"
       >
-        <h1 className="mt-2">Create a Post</h1>
+        <Container style={{ backgroundColor: SITE_COLORS.secondary, color: "white" }} className="" fluid>
+          <span
+            onClick={handleClose}
+            style={{ display: "inline-block", right: "15px", top: "4px", fontSize: "30px", position: "absolute", cursor: "pointer" }}>
+            <XCircleFill />
+          </span>
+          <Form className="p-3 m-0 ">
+            <h1 className="mt-0 text-center"><PinAngleFill className="mb-3" /> {" "} Create a Post</h1>
+            <Row>
 
-        <Form className="p-5">
-          <small>Type of Post</small>
-          <br />
-          <select
-            className="form-select"
-            aria-label="Default select example"
-            onChange={(e) =>
-              setNewPost(newPost, (newPost["type"] = e.target.value))
-            }
-            value={newPost.type}
-          >
-            <option>Selling </option>
-            <option>Buying </option>
-          </select>
-          <br />
+              <Col>
+                <Form.Label className="mt-1">Post Type:</Form.Label>
+                {/* //! CHANGE THIS TO BOOTSTRAP SELECT */}
+                <select
+                  className="form-select"
+                  aria-label="Default select example"
+                  onChange={(e) =>
+                    setNewPost(newPost, (newPost["type"] = e.target.value))
+                  }
+                  value={newPost.type}
+                >
+                  <option>Selling </option>
+                  <option>Buying </option>
+                </select>
+              </Col>
 
-          <small>Type of </small>
-          <br />
-          <select
-            className="form-select"
-            aria-label="Default select example"
-            onChange={(e) =>
-              setNewPost(newPost, (newPost["instrument"] = e.target.value))
-            }
-            // value={newPost.instrument}
-          >
-            <option>Instrument - Guitar</option>
-            <option>Instrument - Bass</option>
-            <option>Instrument - Drums</option>
-            <option>Instrument - Percussion</option>
-            <option>Instrument - Synthesizer</option>
-            <option>Instrument - Brass</option>
-            <option>Instrument - Woodwinds</option>
-            <option>Instrument - Microphones</option>
-            <option>Instrument - Studio Equipment</option>
-            <option>Instrument - DJ Equipment</option>
-            <option>Band Personnel - Band Member</option>
-            <option>Service - Advertisement</option>
-          </select>
+              <Col>
+                <Form.Label className="mt-1">Post Type:</Form.Label>
 
-          <div>
+                <br />
+                <select
+                  className="form-select"
+                  aria-label="Default select example"
+                  onChange={(e) =>
+                    setNewPost(newPost, (newPost["instrument"] = e.target.value))
+                  }
+                >
+
+                  {/* //! MOVE THIS TO JSON */}
+                  <option>Instrument - Guitar</option>
+                  <option>Instrument - Bass</option>
+                  <option>Instrument - Drums</option>
+                  <option>Instrument - Percussion</option>
+                  <option>Instrument - Synthesizer</option>
+                  <option>Instrument - Brass</option>
+                  <option>Instrument - Woodwinds</option>
+                  <option>Instrument - Microphones</option>
+                  <option>Instrument - Studio Equipment</option>
+                  <option>Instrument - DJ Equipment</option>
+                  <option>Band Personnel - Band Member</option>
+                  <option>Service - Advertisement</option>
+                </select>
+              </Col>
+            </Row>
             <Form.Group controlId="">
-              <Form.Label>Post Title:</Form.Label>
+              <Form.Label className="mt-1">Post Title:</Form.Label>
               <Form.Control
                 placeholder="..."
                 onChange={(e) =>
@@ -98,11 +131,9 @@ function BoardPostModal() {
                 }
               />
             </Form.Group>
-          </div>
 
-          <div>
-            <Form.Group className="mb-3" controlId="">
-              <small>Your Email</small>
+            <Form.Group className="" controlId="">
+              <Form.Label className="mt-1">Your Email</Form.Label>
               <Form.Control
                 type="email"
                 placeholder="@"
@@ -111,65 +142,90 @@ function BoardPostModal() {
                 }
               />
             </Form.Group>
-          </div>
-          <div>
-            <Form.Group controlId="formGridPhone">
-              <small>Your Phone Number</small>
 
-              <Form.Control
-                placeholder="#"
-                onChange={(e) =>
-                  setNewPost(newPost, (newPost["number"] = e.target.value))
-                }
-              />
-            </Form.Group>
-          </div>
-          <div>
+            <Row>
+              <Col>
+                <Form.Group controlId="formGridPhone">
+                  <Form.Label className="mt-1">Your Phone Number</Form.Label>
+                  <Form.Control
+                    placeholder="#"
+                    onChange={(e) =>
+                      setNewPost(newPost, (newPost["number"] = e.target.value))
+                    }
+                  />
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group controlId="formGrid.images">
+                  <Form.Group controlId="formFile">
+                    <Form.Label className="mt-1">Upload Post Images</Form.Label>
+                    <Form.Control type="file" multiple accept="image/*"
+                      onChange={handleFileChange} />
+                  </Form.Group>
+                </Form.Group>
+              </Col>
+            </Row>
+
             <Form.Group controlId="formGrid.body">
-              <Form.Label>Post Body</Form.Label>
+              <Form.Label className="mt-1">Post Body</Form.Label>
               <Form.Control
                 as="textarea"
-                rows="4"
+                rows="3"
                 onChange={(e) =>
                   setNewPost(newPost, (newPost["pBody"] = e.target.value))
                 }
               />
             </Form.Group>
-            <Form.Label>Price:</Form.Label>
-            <Form.Control
-              type="number"
-              placeholder="Price"
-              onChange={(e) =>
-                setNewPost(newPost, (newPost["price"] = e.target.value))
-              }
-            />
-            <Form.Group controlId="formGrid-trade">
-              <Form.Check type="checkbox" label="...Or trade" />
-              <Form.Text className="text-muted">
-                Tick this if you want to add the tag "Or trade" next to your
-                price!
-              </Form.Text>
-            </Form.Group>
-            {/* <Form.File id="browseImageControl" label="Load your post images" /> */}
-          </div>
-        </Form>
-        <Button
-          variant="danger"
-          className="mx-auto text-center"
-          onClick={handleClose}
-        >
-          {" "}
-          <BackspaceReverse /> Cancel Post{" "}
-        </Button>
-        <Button
-          variant="info"
-          className="mx-auto text-center"
-          onClick={formAccSubmit}
-        >
-          <Reply /> Create Post
-        </Button>
+            <Row>
+
+              <Col>
+                <Form.Label className="mt-1">Price:</Form.Label>
+                <Form.Control
+                  type="number"
+                  placeholder="Price"
+                  onChange={(e) =>
+                    setNewPost(newPost, (newPost["price"] = e.target.value))
+                  }
+                />
+              </Col>
+
+              <Col>
+
+                <Form.Group controlId="formGrid-trade" className="mt-5">
+                  {/* <Form.Text className="text-light">
+                    Tick this if you want to add the tag "Or trade" next to your
+                    price!
+                  </Form.Text> */}
+                  <Form.Check type="checkbox" label="...Or trade" />
+                </Form.Group>
+              </Col>
+
+            </Row>
+
+          </Form>
+          <Row className="justify-content-center mb-4 text-lg-center">
+            <Col>
+              <Button
+                variant="danger"
+                // className="mx-auto text-center"
+                onClick={handleClose}
+              >
+                {" "}
+                <BackspaceReverse /> Cancel Post{" "}
+              </Button>
+            </Col>
+            <Col>
+              <Button
+                className="text-light"
+                onClick={formAccSubmit}
+              >
+                <Reply /> Create Post
+              </Button>
+            </Col>
+          </Row>
+        </Container>
       </Modal>
-    </div>
+    </>
   );
 }
 

@@ -107,15 +107,17 @@ async function loadUsers() {
     });
 }
 
+// * LOADS
 // Loads Posts
-loadPosts();
+// loadPosts();
 
 // Loads Users
 // loadUsers();
 
 // Loads Articles
-// loadArticles();
+loadArticles();
 
+// ! DELETES
 // Deletes users
 // deleteUsers();
 
@@ -179,16 +181,25 @@ app.post("/api/insertpost", async (req, res) => {
     console.log(result);
     res.json({ response: result });
   });
+});
 
-  // await Post.create(newPost, (err, confirm) => {
-  //   if (err) {
-  //     console.log("An error has occured  inserting post::::: " + err);
-  //   }
-  //   console.log(
-  //     "Insertion of post was successful!::::: " + JSON.stringify(newPost)
-  //   );
-  //   res.status(200);
-  // });
+// * Inserts new article
+app.post("/api/insert-article", async (req, res) => {
+  let newArticle = {
+    title: req.body.title,
+    subTitle: req.body.subTitle,
+    author: req.body.author,
+    type: req.body.articleType,
+    body: req.body.body,
+    // images: req.body.instrument,
+    caption: req.body.caption,
+    link: req.body.link,
+  };
+
+  await Article.create(newArticle).then((result) => {
+    console.log(result);
+    res.json({ response: result });
+  });
 });
 
 app.get("/api/loadArticles", function (req, res) {

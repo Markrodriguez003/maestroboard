@@ -55,7 +55,7 @@ function NewsArticle(props) {
                         />
                     </Row>
                     <Row>
-                        <caption style={{ color: "grey", textDecoration: "italic", display: "inline-block" }}>{caption}</caption>
+                        <caption style={{ color: "grey", textDecoration: "italic", display: "inline-block" }}>Image taken from {caption}</caption>
                     </Row>
                 </Col>
                 <Col>

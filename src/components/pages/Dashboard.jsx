@@ -4,8 +4,8 @@ import { useState, useEffect } from "react";
 import { Row, Col, Card, Button, Image, Carousel, Container, Spinner, Toast } from "react-bootstrap";
 import HeaderPanel from "../ui/HeaderPanel";
 import PostBoardCard from "../PostBoardCard";
-import BoardPostForm from "../BoardPostForm";
 import BoardPostModal from "../BoardPostModal";
+import ArticlePostModal from "../ArticlePostModal";
 
 // LIBRARIES
 import axios from "axios";
@@ -181,8 +181,12 @@ function Dashboard(props) {
                             </h1>
 
                         </Row>
-                        <Row className="w-100 m-0 p-0 mb-2">
+                        <Row className="w-100 m-0 p-0 mb-3">
                             <BoardPostModal />
+
+                        </Row>
+                        <Row className="w-100 m-0 p-0 mb-2 btn-info">
+                            <ArticlePostModal />
                         </Row>
                     </Col>
 
