@@ -108,7 +108,7 @@ async function loadUsers() {
 }
 
 // Loads Posts
-// loadPosts();
+loadPosts();
 
 // Loads Users
 // loadUsers();

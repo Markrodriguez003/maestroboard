@@ -30,6 +30,9 @@ function Corkboard() {
   // TOTAL POSTS ALLOWS ON CORKBOARD PANEL
   const CORKBOARD_TOTAL_POSTS_ALLOWED = 9;
 
+  // GRABS REFERENCE OF ELEMENT ON TOP OF CORKBOARD
+  const corkboardTopRef = useRef(null);
+
   // SETS PAGINATION INDEX WHEN USER CLICKS ON PAGINATION TAB
   function handlePaginationIndex(currentIndex) {
     setPosts((prev) => (
@@ -38,6 +41,12 @@ function Corkboard() {
         paginationIndex: parseInt(currentIndex, 10)
       }
     ));
+
+
+    // SCROLLS TO TOP 
+    if (corkboardTopRef.current) {
+      corkboardTopRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
   }
 
   // SETS ACTIVE PAGINATED TAB
@@ -83,12 +92,11 @@ function Corkboard() {
             }
           ));
 
-          console.log(`INSIDE CORKBOARD::: ${JSON.stringify(response.data)}`)
+          // console.log(`INSIDE CORKBOARD::: ${JSON.stringify(response.data)}`)
 
           // SETS THE FIRST POSTS TO BOARD
           for (let i = 0; i < CORKBOARD_TOTAL_POSTS_ALLOWED; i++) {
             if (response.data[0] === undefined) { break; }
-            // console.log(`Posts[${i} --> ${JSON.stringify(response.data[i])}]`)
             firstLoadedPosts.push(response.data[i]);
           }
         })
@@ -117,17 +125,11 @@ function Corkboard() {
       // SETS THE BEGINNING MARKER FOR ARRAY OF GROUPED POST
       POST_GROUP_BEGIN = (posts.paginationIndex * CORKBOARD_TOTAL_POSTS_ALLOWED) - CORKBOARD_TOTAL_POSTS_ALLOWED;
 
-      // console.log(`POST ARRAY FOR PAGINATION: -> ${POST_GROUP_BEGIN} - ${POST_GROUP_END}`);
-
-      for (; POST_GROUP_BEGIN <= POST_GROUP_END; POST_GROUP_BEGIN++) {
-        // console.log(`POST:: ${JSON.stringify(posts.allEntries[POST_GROUP_BEGIN])}`);
-
-        if (POST_GROUP_BEGIN === posts.totalPosts - 1) { break; }
-
-        if (posts.allEntries[POST_GROUP_BEGIN] === undefined) { break; }
-
+      for (let i = POST_GROUP_BEGIN; i <= POST_GROUP_END; i++) {
+        if (i === posts.totalPosts) { break; }
+        if (posts.allEntries[i] === undefined) { break; }
         // PUSHES POST OBJECTS TO PAGE TAB 
-        POST_GROUP.push(posts.allEntries[POST_GROUP_BEGIN]);
+        POST_GROUP.push(posts.allEntries[i]);
       }
       setPosts((prev) => (
         {
@@ -137,7 +139,6 @@ function Corkboard() {
         }
       ));
     }
-
     setPaginatedPosts();
 
   }, [posts.allEntries, posts.paginationIndex, posts.totalPosts]);
@@ -160,15 +161,8 @@ function Corkboard() {
               {/* ********************************************************************** */}
               {/* CORKBOARD HEADER */}
               {/* ********************************************************************** */}
-              {/* <Container className="shadow-md">
-                <h4 className="display-4 corkBoard-title ">
-                  Community Board <br />
-                  <span className="lead">
-                    Search or post all your music needs here!
-                  </span>
-                </h4>
-              </Container> */}
-              <HeaderPanel>
+
+              <HeaderPanel >
                 <h1 style={{
                   color: "white",
                   textAlign: "center",
@@ -176,8 +170,9 @@ function Corkboard() {
                   borderRadius: "5px",
                   display: "inline-block",
                   padding: "1px"
+                  
                 }}
-                >Community Board |
+                ref={corkboardTopRef}>Community Board |
                 </h1>
                 <small style={{ color: "white", fontSize: "18px" }}>  Latest music related posts</small>
                 <hr style={{ color: "white", borderTop: "4px white solid" }} />
@@ -185,7 +180,7 @@ function Corkboard() {
               {/* ************************ */}
               {/* FILTER - SEARCH BUTTONS */}
               {/* ************************ */}
-              <Stack direction="horizontal" gap={3}>
+              <Stack direction="horizontal" gap={3} id="corkboard-top">
                 <Pagination className="ms-auto corkboard-pagination" size="md">
                   {postItems}
                 </Pagination>

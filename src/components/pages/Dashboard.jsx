@@ -109,18 +109,17 @@ function Dashboard(props) {
                 <br />
                 {/* MAIN PROFILE DATA TABS */}
                 <Row className="gap-2">
-                    <Col style={{ color: "white", fontSize: "40px", }} className="m-0 p-0 gap-5" lg={3} >
+                    <Col style={{ color: "white", fontSize: "40px", }} className="m-0 p-0 gap-5" lg={2} >
                         <Row className="w-100 m-0 p-0 mb-2 ">
                             <h1 style={{
+                                backgroundColor: SITE_COLORS.lightMain,
                                 color: "white",
                                 textAlign: "start",
-                                fontSize: "24px",
+                                fontSize: "18px",
                                 borderRadius: "5px",
                                 fontWeight: "100",
-                                backgroundColor: SITE_COLORS.lightMain,
                                 display: "inline",
-                                padding: "15px"
-
+                                padding: "12px"
                             }}
                             >
                                 <PinFill style={{ paddingBottom: "5px" }} />
@@ -133,12 +132,12 @@ function Dashboard(props) {
                             <h1 style={{
                                 color: "white",
                                 textAlign: "start",
-                                fontSize: "24px",
+                                fontSize: "18px",
                                 borderRadius: "5px",
                                 fontWeight: "100",
                                 backgroundColor: SITE_COLORS.secondary,
                                 display: "inline",
-                                padding: "15px"
+                                padding: "12px"
 
                             }}
                             >
@@ -148,14 +147,14 @@ function Dashboard(props) {
                         </Row>
                         <Row className="w-100 m-0 p-0 mb-2">
                             <h1 style={{
+                                backgroundColor: SITE_COLORS.alternateMain,
                                 color: "white",
                                 textAlign: "start",
-                                fontSize: "24px",
+                                fontSize: "18px",
                                 borderRadius: "5px",
                                 fontWeight: "100",
-                                backgroundColor: SITE_COLORS.alternateMain,
                                 display: "inline",
-                                padding: "15px"
+                                padding: "12px"
 
                             }}
                             >
@@ -166,14 +165,14 @@ function Dashboard(props) {
                         </Row>
                         <Row className="w-100 m-0 p-0 mb-2">
                             <h1 style={{
+                                backgroundColor: SITE_COLORS.alternateSecondary,
                                 color: "white",
                                 textAlign: "start",
-                                fontSize: "24px",
+                                fontSize: "18px",
                                 borderRadius: "5px",
                                 fontWeight: "100",
-                                backgroundColor: SITE_COLORS.alternateSecondary,
                                 display: "inline",
-                                padding: "15px"
+                                padding: "12px"
 
                             }}
                             >
@@ -188,7 +187,7 @@ function Dashboard(props) {
                     </Col>
 
                     {/* CAROUSEL */}
-                    <Col>
+                    <Col lg={4} >
                         <h1 style={{
                             color: "white",
                             textAlign: "start",
@@ -204,7 +203,7 @@ function Dashboard(props) {
                             <CardList style={{ paddingBottom: "5px" }} />
                             Latest Corkboard Posts:
                         </h1>
-                        <Col lg={7} className="mx-auto w-100" >
+                        <Col className="mx-auto w-100 " >
                             <Carousel className="p-0" >
                                 {
                                     data.posts.map((p, i) => (

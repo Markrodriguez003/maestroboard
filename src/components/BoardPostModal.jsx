@@ -59,12 +59,12 @@ function BoardPostModal() {
             }
             value={newPost.type}
           >
-            <option>Selling Instrument</option>
-            <option>Buying Instrument</option>
+            <option>Selling </option>
+            <option>Buying </option>
           </select>
           <br />
 
-          <small>Type of Instrument</small>
+          <small>Type of </small>
           <br />
           <select
             className="form-select"
@@ -72,17 +72,20 @@ function BoardPostModal() {
             onChange={(e) =>
               setNewPost(newPost, (newPost["instrument"] = e.target.value))
             }
-            value={newPost.instrument}
+            // value={newPost.instrument}
           >
-            <option>Guitar</option>
-            <option>Bass</option>
-            <option>Drums</option>
-            <option>Percussion</option>
-            <option>Synthesizer</option>
-            <option>Brass</option>
-            <option>Woodwinds</option>
-            <option>Microphones</option>
-            <option>Studio Equipment</option>
+            <option>Instrument - Guitar</option>
+            <option>Instrument - Bass</option>
+            <option>Instrument - Drums</option>
+            <option>Instrument - Percussion</option>
+            <option>Instrument - Synthesizer</option>
+            <option>Instrument - Brass</option>
+            <option>Instrument - Woodwinds</option>
+            <option>Instrument - Microphones</option>
+            <option>Instrument - Studio Equipment</option>
+            <option>Instrument - DJ Equipment</option>
+            <option>Band Personnel - Band Member</option>
+            <option>Service - Advertisement</option>
           </select>
 
           <div>
@@ -93,7 +96,6 @@ function BoardPostModal() {
                 onChange={(e) =>
                   setNewPost(newPost, (newPost["title"] = e.target.value))
                 }
-              // value={newPost.title}
               />
             </Form.Group>
           </div>
@@ -107,7 +109,6 @@ function BoardPostModal() {
                 onChange={(e) =>
                   setNewPost(newPost, (newPost["title"] = e.target.value))
                 }
-              // value={newPost.email}
               />
             </Form.Group>
           </div>
@@ -120,11 +121,9 @@ function BoardPostModal() {
                 onChange={(e) =>
                   setNewPost(newPost, (newPost["number"] = e.target.value))
                 }
-              // value={newPost.phone}
               />
             </Form.Group>
           </div>
-
           <div>
             <Form.Group controlId="formGrid.body">
               <Form.Label>Post Body</Form.Label>
@@ -134,7 +133,6 @@ function BoardPostModal() {
                 onChange={(e) =>
                   setNewPost(newPost, (newPost["pBody"] = e.target.value))
                 }
-              // value={newPost.pBody}
               />
             </Form.Group>
             <Form.Label>Price:</Form.Label>
@@ -144,7 +142,6 @@ function BoardPostModal() {
               onChange={(e) =>
                 setNewPost(newPost, (newPost["price"] = e.target.value))
               }
-            // value={newPost.price}
             />
             <Form.Group controlId="formGrid-trade">
               <Form.Check type="checkbox" label="...Or trade" />
@@ -156,7 +153,6 @@ function BoardPostModal() {
             {/* <Form.File id="browseImageControl" label="Load your post images" /> */}
           </div>
         </Form>
-
         <Button
           variant="danger"
           className="mx-auto text-center"
