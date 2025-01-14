@@ -57,14 +57,6 @@ const db = mongoose.connection;
 // * **********************************************************************************
 // * **********************************************************************************
 
-// * Creates a single new post
-// Post.create()
-//   .then(post => {
-//     console.log("INSERTED NEW POST::::: " + post);
-//   }).catch(err => {
-//     console.log("An Error has occured inserting a new post::::: " + err);
-//   })
-
 async function loadPosts() {
   await Post.insertMany(ex.examplePosts)
     .then(() => {
@@ -115,7 +107,7 @@ async function loadUsers() {
 // loadUsers();
 
 // Loads Articles
-// loadArticles();
+loadArticles();
 
 // ! DELETES
 // Deletes users
@@ -188,6 +180,8 @@ app.post("/api/insert-article", async (req, res) => {
   let newArticle = {
     title: req.body.title,
     subTitle: req.body.subTitle,
+    category: req.body.category,
+    subCategory: req.body.subCategory,
     author: req.body.author,
     type: req.body.articleType,
     body: req.body.body,
@@ -202,6 +196,7 @@ app.post("/api/insert-article", async (req, res) => {
   });
 });
 
+// LOADS TEST ARTICLES
 app.get("/api/loadArticles", function (req, res) {
   Article.find({})
     .then((articles) => {
@@ -256,23 +251,51 @@ app.post("/api/login", (req, res) => {
     });
 });
 
-// * Finds all posts by specific type / Selling%20Gear /Buying%20Gear
-app.get("/api/loadPosts/type/selling", function (req, res) {
-  Post.find({ type: "Selling Gear" }) // -1 means oldest post to earliest
-    .then((posts, err) => {
-      console.log("Posts made by: " + posts.length + " + posts");
-      res.json(posts.length);
-    });
+// * Finds all posts by a specific category type
+app.get("/api/loadPosts/type/:type", function (req, res) {
+  // CAPITALIZES THE LETTER OF CATEGORY TYPE
+  const searchTerm =
+    req.params.type[0].toUpperCase() + req.params.type.slice(1);
+  Post.find({
+    type: `${searchTerm} Gear`,
+  }).then((posts, err) => {
+    res.json(posts.length);
+  });
 });
 
-// * Finds all posts by specific type / Selling%20Gear /Buying%20Gear
-app.get("/api/loadPosts/type/buying", function (req, res) {
-  Post.find({ type: "Buying Gear" }) // -1 means oldest post to earliest
-    .then((posts, err) => {
-      console.log("Posts made by: " + posts.length + " + posts");
-      res.json(posts.length);
-    });
+// * Finds all articles by a specific category type / Selling%20Gear /Buying%20Gear
+app.get("/api/loadarticles/category/:category", function (req, res) {
+  let searchArticleTerm = req.params.category.replace(
+    /(^\w{1})|(\s+\w{1})/g,
+    (letter) => letter.toUpperCase()
+  );
+  Article.find({ category: `${searchArticleTerm}` }).then((articles, err) => {
+    console.log(`${searchArticleTerm} - ${articles.length} `);
+    res.json(articles.length);
+  });
 });
+
+// **********************************************************************************
+//  old notes
+// **********************************************************************************
+
+// * Finds all posts by specific type / Selling%20Gear /Buying%20Gear
+// app.get("/api/loadPosts/type/selling", function (req, res) {
+//   Post.find({ type: "Selling Gear" }) // -1 means oldest post to earliest
+//     .then((posts, err) => {
+//       console.log("Posts made by: " + posts.length + " + posts");
+//       res.json(posts.length);
+//     });
+// });
+
+// // * Finds all posts by specific type / Selling%20Gear /Buying%20Gear
+// app.get("/api/loadPosts/type/buying", function (req, res) {
+//   Post.find({ type: "Buying Gear" }) // -1 means oldest post to earliest
+//     .then((posts, err) => {
+//       console.log("Posts made by: " + posts.length + " + posts");
+//       res.json(posts.length);
+//     });
+// });
 
 // app.get("/api/login", function (req, res) {
 //   UserAccount.find({ username: "Admin" })

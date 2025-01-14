@@ -20,7 +20,7 @@ function NewsArticle(props) {
     const [lightBoxOpen, setLightBoxOpen] = useState(false);
 
     // Article Props
-    const { title, subject, author, date, body, link, image, caption, subTitle } = props.article;
+    const { title, author, category, subCategory, date, body, link, image, caption, subTitle } = props.article;
 
     return (
         <Container as={"article"} className={"p-4 mt-5 newsArticleStyling"} >
@@ -60,7 +60,7 @@ function NewsArticle(props) {
                 </Col>
                 <Col>
                     <Row className="justify-content-between align-content-end" sm={2} style={{ width: "100%" }}>
-                        <div style={{ color: "darkcyan" }}>{subject}</div>
+                        <div style={{ color: "darkcyan" }}>{category}: {subCategory}</div>
                         <div className="" style={{ color: "grey", fontSize: "14px" }}>Written by: {author} - {date}</div>
                     </Row>
                     <Row><br /></Row>

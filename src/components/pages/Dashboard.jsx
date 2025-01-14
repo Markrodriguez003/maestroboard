@@ -7,6 +7,9 @@ import PostBoardCard from "../PostBoardCard";
 import BoardPostModal from "../BoardPostModal";
 import ArticlePostModal from "../ArticlePostModal";
 
+// DATA
+import article_typesJSON from "../../data/articleTypes.json";
+
 // LIBRARIES
 import axios from "axios";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
@@ -39,6 +42,8 @@ function Dashboard(props) {
         buyingPosts: 0
     })
 
+    // GRABS ARTICLE TYPES TO POPULATE SELECT OPTION IN ARTICLE CREATION SELECTION 
+    const article_types = article_typesJSON[0].article_types;
 
     // DATA FOR DOUGHNUTS
     // CORKBOARD POSTS
@@ -135,33 +140,41 @@ function Dashboard(props) {
         }
 
         // GRABS ALL COMMUNITY POSTS WITH THE STYLE TAG "SELLING" FROM DB
-        async function grabSellingPosts() {
+        async function grabPostsType(type) {
+            let searchType = type.toString().toLowerCase()
             await axios
-                .get("http://localhost:3005/api/loadPosts/type/selling")
+                .get(`http://localhost:3005/api/loadPosts/type/${searchType}`)
                 .then((response) => {
                     setData((prev) => (
                         {
                             ...prev,
-                            sellingPosts: response.data
+                            [`${type}Posts`]: response.data
                         }
                     ))
                 })
                 .catch((err) => console.log(err));
         }
-        // GRABS ALL COMMUNITY POSTS WITH THE STYLE TAG "BUYING" FROM DB
-        async function grabBuyingPosts() {
+
+        // GRABS ALL COMMUNITY POSTS WITH THE STYLE TAG "SELLING" FROM DB
+        async function grabArticleType(type) {
+            let searchType = type.toString().toLowerCase();
+
             await axios
-                .get("http://localhost:3005/api/loadPosts/type/buying")
+                .get(`http://localhost:3005/api/loadarticles/category/${searchType}`)
                 .then((response) => {
+
+                    let objectName = searchType.split(' ').join('-')
+                    // console.log(`OBJECT TYPE:: ${objectName}`);
                     setData((prev) => (
                         {
                             ...prev,
-                            buyingPosts: response.data
+                            [`${objectName}-articles`]: response.data
                         }
                     ))
                 })
                 .catch((err) => console.log(err));
         }
+
 
         // GRABS ALL ARTICLES FROM DB
         async function grabUserLength() {
@@ -178,12 +191,17 @@ function Dashboard(props) {
                 .catch((err) => console.log(err));
         }
 
-        grabArticles();
+        // ! change this to promiseAll()
         grabPosts();
+        grabArticles();
         grabUserLength();
-        grabBuyingPosts();
-        grabSellingPosts();
+        grabPostsType("selling");
+        grabPostsType("buying");
 
+        for (let i = 0; i < article_types.length; i++) {
+            grabArticleType(article_types[i]);
+
+        }
     }, []);
 
     return (
@@ -414,7 +432,6 @@ function Dashboard(props) {
 
 
                         <div>
-
                             <h1 style={{
                                 color: "white",
                                 textAlign: "start",
@@ -424,12 +441,9 @@ function Dashboard(props) {
                                 backgroundColor: SITE_COLORS.secondary,
                                 padding: "12px",
                                 marginBottom: "20px"
-
-
-
                             }}
                             >
-                                <FileEarmarkPerson style={{ paddingBottom: "5px" }} />Buying Posts : {data.buyingPosts}
+                                <FileEarmarkPerson style={{ paddingBottom: "5px" }} />Buying Posts: {data.buyingPosts}
                             </h1>
 
                         </div>
@@ -474,7 +488,7 @@ function Dashboard(props) {
                         }}
                         >
                             <PinFill style={{ paddingBottom: "5px" }} />
-                            General: 5
+                            General: {data["general-articles"]}
                         </h1>
 
 
@@ -494,7 +508,7 @@ function Dashboard(props) {
 
                             }}
                             >
-                                <FileEarmarkPerson style={{ paddingBottom: "5px" }} />Events: 11
+                                <FileEarmarkPerson style={{ paddingBottom: "5px" }} />Events: {data["events-articles"]}
                             </h1>
 
                         </div>
@@ -514,7 +528,7 @@ function Dashboard(props) {
                             }}
                             >
                                 <PostcardFill style={{ paddingBottom: "5px" }} />
-                                Announcements: 8
+                                Announcements: {data["announcements-articles"]}
                             </h1>
 
                         </div>
@@ -535,7 +549,7 @@ function Dashboard(props) {
                             }}
                             >
                                 <CardList style={{ paddingBottom: "5px" }} />
-                                Electronic Music: 75
+                                Electronic Music: {data["electronic-music-articles"]}
                             </h1>
                         </div>
 
@@ -555,7 +569,7 @@ function Dashboard(props) {
                             }}
                             >
                                 <SpeakerFill style={{ paddingBottom: "5px" }} />
-                                Recording & Studio: 97
+                                Recording & Studio: {data["recording-&-studio-articles"]}
                             </h1>
                         </div>
                         <div>
@@ -574,7 +588,7 @@ function Dashboard(props) {
                             }}
                             >
                                 <FileEarmarkMusicFill style={{ paddingBottom: "5px" }} />
-                                Composition: 23
+                                Composition: {data["composition-articles"]}
                             </h1>
                         </div>
                     </Col>
@@ -582,6 +596,7 @@ function Dashboard(props) {
                 <br />
                 <br />
             </Container >
+
 
             <br />
             <br />

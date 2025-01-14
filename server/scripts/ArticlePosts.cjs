@@ -1,10 +1,9 @@
-// const img_arry_a = [A, B, C, D, E];
-
 exports.exampleArticles = [
   {
     title: " Arturia announces 3 Modulation plug-ins You’ll Actually Use",
     subTitle: "Modeled after classic effects! These plugins are great!",
-    subject: "Electronic Music: VSTs",
+    category: "Electronic Music",
+    subCategory: "VSTs",
     author: "Jeremy Frazen",
     date: "12/24/19",
     body: `
@@ -21,17 +20,12 @@ Nulla facilisi cras fermentum odio eu feugiat. Nulla at volutpat diam ut. Fermen
       "Universal Audio Releases Apollo Solo Audio Interfaces for Mac and Windows",
     subTitle:
       "UAD continues with their new pristine lineup of audio interfaces!",
-    subject: "Recording and Studio Gear: Interface",
+    category: "Recording & Studio",
+    subCategory: "Interface",
     author: "Jeremy Frazen",
     date: "12/26/19",
     body: `
-    Aenean et tortor at risus viverra. Lectus proin nibh nisl condimentum id Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nulla aliquet Orci phasellus egestas tellus rutru.porttitor lacus luctus. Aenean et tortor at risus viverra. Lectus
-    proin nibh nisl condimentum id venenatis. Senectus et netus et
-    malesuada fames. Convallis a cras semper auctor neque vitae
-    tempus. Orci phasellus egestas tellus rutrum tellus pellentesque
-    eu. Orci dapibus ultrices in iaculis nunc sed augue. Lobortis
-    feugiat vivamus at augue eget arcu. Arcu ac tortor dignissim
-    convallis aenean et tortor at
+    Aenean et tortor at risus viverra. Lectus proin nibh nisl condimentum id Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nulla aliquet Orci phasellus egestas tellus rutru.porttitor lacus luctus. Aenean et tortor at risus viverra. Lectus proin nibh nisl condimentum id venenatis. Senectus et netus et malesuada fames. Convallis a cras semper auctor neque vitae tempus. Orci phasellus egestas tellus rutrum tellus pellentesque eu. Orci dapibus ultrices in iaculis nunc sed augue. Lobortis feugiat vivamus at augue eget arcu. Arcu ac tortor dignissim convallis aenean et tortor at
     `,
     link: "Selling Gear",
     image: "Guitar",
@@ -40,11 +34,12 @@ Nulla facilisi cras fermentum odio eu feugiat. Nulla at volutpat diam ut. Fermen
   {
     title: "Cherry Audio release Filtomika plug-in",
     subTitle: "Emulation of classic synthesizers can only get better!",
-    subject: "Electronic Music: VSTs",
+    category: "Electronic Music",
+    subCategory: "VSTs",
     author: "Harry Dresden",
     date: "12/12/24",
     body: `
-   The latest addition to the Cherry Audio line-up is an effects plug-in rather than a software instrument, although it is still very much synth-related. Named Filtomika, the new release models the filter section of the Formanta Polivoks, a rare instrument that was originally released in the 1980s. 
+The latest addition to the Cherry Audio line-up is an effects plug-in rather than a software instrument, although it is still very much synth-related. Named Filtomika, the new release models the filter section of the Formanta Polivoks, a rare instrument that was originally released in the 1980s. 
 
 Filtomika is based on the expanded multi-mode filter featured in Cherry Audio’s award-winning Atomika virtual instrument, and employs circuit-modelled DSP designs by acclaimed developer Mark Barton. The company say that it shares the same radial, and often mysterious sonic results produced by Atomika, but has the flexibility of being paired up with any inputs source, adding an interesting twist to drums, vocals and guitars or, of course, other synthesizers. 
 
@@ -57,7 +52,8 @@ The GUI leaves little to explain to those who’ve encountered a filter before, 
   {
     title: "New gear: CyDrums: Drum synth from Sonicware",
     subTitle: "Take control over your drums with this hardware synth!",
-    subject: "Recording and Studio Gear: Synthesizers",
+    category: "Recording & Studio",
+    subCategory: "Synthesizers",
     author: "Barry D. Jupiter",
     date: "12/22/24",
     body: `
@@ -72,7 +68,8 @@ All of the sounds are created using a mixture of wavetables, noise and pulse sou
   {
     title: "Reason Studios Reason 13 - A interesting piece of DAW software! ",
     subTitle: "The DAW market has a new contender!",
-    subject: "Recording and Studio Gear: DAWs",
+    category: "Recording & Studio",
+    subCategory: "DAWs",
     author: "Troy Yosi",
     date: "12/28/24",
     body: `
@@ -85,7 +82,8 @@ Reason has settled into an upgrade cadence where every other year sees some kind
   {
     title: "IconDrum from GForce Software",
     subTitle: "The drum sounds from Icondrum's new drum software is amazing!",
-    subject: "Electronic Music: VSTs",
+    category: "Electronic Music",
+    subCategory: "VSTs",
     author: "Linda Linn",
     date: "12/18/24",
     body: `
@@ -100,7 +98,8 @@ IconDrum features 12 channels (Bass, Snare, Sidestick, Hi-Hat, Toms, Ride, Crash
   {
     title: "Pure Cherry expansion for DW Soundworks",
     subTitle: "New drum expansion libraries from Pure Cherry!",
-    subject: "Electronic Music: VSTs",
+    category: "Electronic Music",
+    subCategory: "VSTs",
     author: "Linda Linn",
     date: "12/18/24",
     body: `
@@ -115,7 +114,8 @@ As with the other releases in the DW Soundworks range, the latest expansion has 
   {
     title: "A free Thing from Acustica!",
     subTitle: "Free is always welcome! Acoustica with a free banger!",
-    subject: "Electronic Music: VSTs",
+    category: "Electronic Music",
+    subCategory: "VSTs",
     author: "Roger Dietz",
     date: "12/18/24",
     body: `
@@ -130,7 +130,8 @@ Designed for professionals and casual enthusiasts alike, TH2 promises to deliver
   {
     title: "Ferrofish launch Pulse 8 AE converter",
     subTitle: "A-D/D-A range gains eight-channel model",
-    subject: "Recording and Studio Gear: Audio  ",
+    category: "Recording & Studio",
+    subCategory: "Rack",
     author: "Roger Dietz",
     date: "12/18/24",
     body: `
@@ -148,7 +149,8 @@ The new unit is houses in a compact enclosure that looks very much like a scaled
     title: "Shure’s new MV7i Smart Microphone & Interface",
     subTitle:
       "USB mic/audio interface combo boasts second input channel, high gain and more!",
-    subject: "Recording and Studio Gear: Microphones  ",
+    category: "Recording & Studio",
+    subCategory: "Microphones",
     author: "Lorenz Piper",
     date: "12/18/24",
     body: `
@@ -165,7 +167,8 @@ As with the MV7+, the new mic has been inspired by Shure’s ever-popular SM7B, 
   {
     title: "VSL launch Duality Strings (FX)",
     subTitle: "Dual-ensemble string library collection expanded",
-    subject: "Electronic Music: VSTs",
+    category: "Electronic Music",
+    subCategory: "VSTs",
     author: "Jasper Cascadia",
     date: "12/18/24",
     body: `
@@ -182,7 +185,8 @@ In addition to Duality Strings, which contains all of the core articulations you
   {
     title: "Heritage Audio’s BritStrip now available virtually",
     subTitle: "Hardware EQ & compressor gains plug-in counterpart",
-    subject: "Electronic Music: VSTs",
+    category: "Electronic Music",
+    subCategory: "VSTs",
     author: "Jasper Cascadia",
     date: "12/18/24",
     body: `
@@ -203,7 +207,8 @@ The plug-in is available in two versions: a ‘full’ native version, and a ‘
   {
     title: "Electro-Harmonix introduce the 360+ Looper",
     subTitle: "Popular compact looper gets even smaller!",
-    subject: "Recording and Studio Gear: FX  ",
+    category: "Recording & Studio",
+    subCategory: "FX",
     author: "Jasper Cascadia",
     date: "12/18/24",
     body: `
@@ -221,7 +226,8 @@ Key features such as undo and redo functions remain, and there’s independent l
   {
     title: "Noise Makers announce Studio Verb plug-in",
     subTitle: "Supports multi-channel formats up to 9.1.6",
-    subject: "Electronic Music: VSTs",
+    category: "Electronic Music",
+    subCategory: "VSTs",
     author: "Jhon Norman",
     date: "12/18/24",
     body: `
@@ -239,7 +245,8 @@ A total of 15 channel layout formats are supported, ranging from the likes of mo
   {
     title: "Arturia update MiniFreak firmware",
     subTitle: "Eight new sound engines, additional sound banks & more",
-    subject: "Recording and Studio Gear: Synthesizers  ",
+    category: "Recording & Studio",
+    subCategory: "Synthesizers",
     author: "Tood Toddersson",
     date: "12/18/24",
     body: `
@@ -255,7 +262,8 @@ Alongside the new synthesis capabilities, the firmware update also includes vers
   {
     title: "Tracktion BioTek 3 now available",
     subTitle: "Powerful soft synth gets a significant upgrade",
-    subject: "Electronic Music: VSTs",
+    category: "Electronic Music",
+    subCategory: "VSTs",
     author: "Tood Toddersson",
     date: "12/18/24",
     body: `
@@ -276,7 +284,8 @@ Check out the video below to hear some of BioTek 3’s factory patches.
   {
     title: "Softube update Console 1 Mixing System",
     subTitle: "Module updates, MIDI fader mode & more",
-    subject: "Recording and Studio Gear: Controllers",
+    category: "Recording & Studio",
+    subCategory: "Midi Controllers",
     author: "Tood Toddersson",
     date: "12/18/24",
     body: `
@@ -295,7 +304,8 @@ We put the system to the test in SOS April 2024, you can check out our in-depth 
   {
     title: "Hamstead Soundworks announce the Redwing pedal",
     subTitle: "All-analogue modulation effect joins Hamstead line-up",
-    subject: "Recording and Studio Gear: FX",
+    category: "Recording & Studio",
+    subCategory: "FX",
     author: "John Johnson",
     date: "12/18/24",
     body: `

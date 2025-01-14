@@ -5,21 +5,19 @@ const ArticlesSchema = new Schema({
   title: {
     type: String,
     trim: true,
-    // required: "title is Required",
-    // required: true
   },
 
   subTitle: {
     type: String,
-    // trim: true,
-    // match: [/.+@.+\..+/, "Please enter a valid e-mail address"],
-    // required: true
   },
-  subject: {
+  category: {
     type: String,
-    trime: true,
+    // trime: true,
   },
-
+  subCategory: {
+    type: String,
+    // trime: true,
+  },
   author: {
     type: String,
     trim: true,
@@ -27,17 +25,14 @@ const ArticlesSchema = new Schema({
 
   date: {
     type: String,
-    // required: true
   },
 
   body: {
     type: String,
-    // required: true
   },
 
   link: {
     type: String,
-    // required: true
   },
 
   image: {
@@ -46,7 +41,7 @@ const ArticlesSchema = new Schema({
 
   caption: {
     type: String,
-  }
+  },
 
   //   ENTER FOREIGN KEY -> TABLE ASSOCIATION TO USER ACCOUNT
 });
