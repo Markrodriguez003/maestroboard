@@ -2,7 +2,11 @@
 // APP CSS
 import "./components/css/App.css";
 
-// SITE COMPONENTS
+// LIBS
+import { Cloudinary } from "@cloudinary/url-gen";
+// CLOUDINARY
+import { AdvancedImage } from '@cloudinary/react';
+import { fill } from "@cloudinary/url-gen/actions/resize";
 
 // PAGES
 import Login from "./components/pages/Login";
@@ -22,6 +26,43 @@ import Footer from "./components/ui/Footer";
 import BackgroundTexture from "./components/ui/BackgroundTexture"
 
 function App() {
+
+  /* 
+  
+  
+  
+  VITE_CLOUDINARY_NAME = dytbnvgzg
+  VITE_CLOUDINARY_API_KEY = 862698915265588
+  VITE_CLOUDINARY_API_SECRET = LdB05z3FBqSLQTVyx3iRxNW98YA
+  
+  */
+
+
+  // // Create a Cloudinary instance and set your cloud name.
+  // const cld = new Cloudinary({
+  //   cloud: {
+  //     // cloudName: import.meta.env.VITE_CLOUDINARY_NAME
+  //     cloudName: "dytbnvgzg",
+  //     apiKey: "862698915265588",
+  //     api_secret: "LdB05z3FBqSLQTVyx3iRxNW98YA",
+  //     secure: false
+  //   }
+  // });
+
+
+
+
+
+  // Instantiate a CloudinaryImage object for the image with the public ID, 'docs/models'.
+  // const myImage = cld.image('docs/models/Article-7_npfx0h');
+
+  // Resize to 250 x 250 pixels using the 'fill' crop mode.
+  // myImage.resize(fill().width(250).height(250));
+
+  // console.log(`myImage:::${myImage}`);
+
+
+
   return (
     <Router>
       <Header />
@@ -43,6 +84,7 @@ function App() {
 
       </Routes>
 
+      {/* <AdvancedImage cldImg={myImage} /> */}
       <Footer />
     </Router>
   );

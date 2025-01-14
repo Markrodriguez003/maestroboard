@@ -9,9 +9,13 @@ import ArticlePostModal from "../ArticlePostModal";
 
 // LIBRARIES
 import axios from "axios";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Doughnut } from 'react-chartjs-2';
+
+ChartJS.register(ArcElement, Tooltip, Legend);
 
 // ASSETS
-import { FileEarmarkPerson, FileEarmarkPlusFill, Tools, PinFill, PostcardFill, CardList, FilePerson } from "react-bootstrap-icons";
+import { FileEarmarkPerson, FileEarmarkPlusFill, SpeakerFill, FileEarmarkMusicFill, Tools, PinFill, PostcardFill, CardList, FilePerson } from "react-bootstrap-icons";
 import { SITE_COLORS } from "../css/site";
 
 // TEST IMAGES
@@ -30,8 +34,74 @@ function Dashboard(props) {
         articles: [],
         users: [],
         forum: [{ data: 0 }],
-        posts: []
+        posts: [],
+        sellingPosts: 0,
+        buyingPosts: 0
     })
+
+
+    // DATA FOR DOUGHNUTS
+    // CORKBOARD POSTS
+    const postsDataChart = {
+        labels: ['Selling Gear', 'Buying Gear'],
+        datasets: [
+            {
+                label: "# Posts Types",
+                data: [data.sellingPosts, data.buyingPosts],
+                backgroundColor: [
+                    SITE_COLORS.lightMain,
+                    SITE_COLORS.lightSecondary,
+                ],
+                borderColor: [
+                    SITE_COLORS.main,
+                    SITE_COLORS.secondary,
+                ],
+                borderWidth: 1,
+            },
+        ],
+    };
+
+    const options = {
+
+        plugins: {
+
+            legend: {
+                labels: {
+                    // boxWidth: 35,
+                    // boxHeight: 35,
+                    color: "#fff",
+
+                }
+            }
+        }
+    }
+    // ARTICLE POST DATA
+    const articlesDataChart = {
+        labels: ['General', 'Events', 'Announcements', 'Electronic Music', 'Recording and Studio', "Composition"],
+        datasets: [
+            {
+                label: "# Article Types",
+                data: [14, 8, 4, 42, 72],
+                backgroundColor: [
+                    SITE_COLORS.main,
+                    SITE_COLORS.lightSecondary,
+                    SITE_COLORS.lightMain,
+                    SITE_COLORS.alternateMain,
+                    SITE_COLORS.alternateSecondary,
+                    SITE_COLORS.secondary,
+                ],
+                borderColor: [
+                    SITE_COLORS.main,
+                    SITE_COLORS.lightSecondary,
+                    SITE_COLORS.lightMain,
+                    SITE_COLORS.alternateMain,
+                    SITE_COLORS.alternateSecondary,
+                    SITE_COLORS.secondary,
+                ],
+                borderWidth: 1,
+            },
+        ],
+    };
 
     useEffect(() => {
         // GRABS ALL ARTICLES FROM DB
@@ -64,6 +134,35 @@ function Dashboard(props) {
                 .catch((err) => console.log(err));
         }
 
+        // GRABS ALL COMMUNITY POSTS WITH THE STYLE TAG "SELLING" FROM DB
+        async function grabSellingPosts() {
+            await axios
+                .get("http://localhost:3005/api/loadPosts/type/selling")
+                .then((response) => {
+                    setData((prev) => (
+                        {
+                            ...prev,
+                            sellingPosts: response.data
+                        }
+                    ))
+                })
+                .catch((err) => console.log(err));
+        }
+        // GRABS ALL COMMUNITY POSTS WITH THE STYLE TAG "BUYING" FROM DB
+        async function grabBuyingPosts() {
+            await axios
+                .get("http://localhost:3005/api/loadPosts/type/buying")
+                .then((response) => {
+                    setData((prev) => (
+                        {
+                            ...prev,
+                            buyingPosts: response.data
+                        }
+                    ))
+                })
+                .catch((err) => console.log(err));
+        }
+
         // GRABS ALL ARTICLES FROM DB
         async function grabUserLength() {
             await axios
@@ -82,14 +181,14 @@ function Dashboard(props) {
         grabArticles();
         grabPosts();
         grabUserLength();
-
-        // console.log(`ARTICLES::: ${JSON.stringify(data.articles)}`)
+        grabBuyingPosts();
+        grabSellingPosts();
 
     }, []);
 
     return (
         <>
-            <Container className="w-100 p-4 mt-5 mb-5" style={{ backgroundColor: "rgba(0,0,0,0.7)" }}>
+            <Container className="w-100 p-4 mt-5 mb-5" style={{ backgroundColor: "black" }}>
                 {/* MAIN PROFILE HEADER */}
                 <Row className="w-100">
                     <Col style={{ color: "white", fontSize: "40px", }} className="p-0 m-0">
@@ -181,6 +280,8 @@ function Dashboard(props) {
                             </h1>
 
                         </Row>
+                        {/* <h1 className="text-center">Create</h1> */}
+                        <hr />
                         <Row className="w-100 m-0 p-0 mb-3">
                             <BoardPostModal />
 
@@ -282,9 +383,203 @@ function Dashboard(props) {
 
                 </Row>
                 {/* <Row className="gap-4">
-                <Col style={{ color: "white", fontSize: "40px", backgroundColor: "red" }}>1 of 4</Col>
+                    <Col style={{ color: "white", fontSize: "40px", backgroundColor: "red" }}>1 of 4</Col>
 
-            </Row> */}
+                </Row> */}
+
+                <br />
+                <hr style={{ color: "white" }} />
+                <br />
+
+                {/* ******************************************************************* */}
+                {/* BOTTOM HALF */}
+                {/* ******************************************************************* */}
+                <Row className="p-3 gap-2" style={{ backgroundColor: `black` }}>
+                    <Col className="p-0 m-0" lg={2} >
+                        <h5 style={{ color: "white" }}>Post. Data Infomation:</h5>
+                        <h1 style={{
+                            backgroundColor: SITE_COLORS.lightMain,
+                            color: "white",
+                            textAlign: "start",
+                            fontSize: "18px",
+                            borderRadius: "5px",
+                            fontWeight: "100",
+                            padding: "12px",
+                            marginBottom: "20px"
+                        }}
+                        >
+                            <PinFill style={{ paddingBottom: "5px" }} />
+                            Selling posts: {data.sellingPosts}
+                        </h1>
+
+
+                        <div>
+
+                            <h1 style={{
+                                color: "white",
+                                textAlign: "start",
+                                fontSize: "18px",
+                                borderRadius: "5px",
+                                fontWeight: "100",
+                                backgroundColor: SITE_COLORS.secondary,
+                                padding: "12px",
+                                marginBottom: "20px"
+
+
+
+                            }}
+                            >
+                                <FileEarmarkPerson style={{ paddingBottom: "5px" }} />Buying Posts : {data.buyingPosts}
+                            </h1>
+
+                        </div>
+
+                    </Col>
+                    <Col>
+                        <h5 style={{ color: "white" }} className="text-start">Community Board types:</h5>
+                        <Col style={{ marginLeft: "auto", marginRight: "auto" }} className="m-0 p-0" lg={3}>
+                            <Doughnut
+                                data={postsDataChart}
+                                width={"350px"}
+                                height={"350px"}
+                                options={options}
+
+                                // options={{ maintainAspectRatio: false }}
+                                style={{ transform: "scale(1)" }} className="m-0 p-0 mx-auto" />
+                        </Col>
+                    </Col>
+                    <Col>
+                        <h5 style={{ color: "white" }} className="text-start">Article types:</h5>
+                        <Col style={{ marginLeft: "auto", marginRight: "auto" }} className="m-0 p-0" lg={3}>
+                            <Doughnut
+                                data={articlesDataChart}
+                                width={"350px"}
+                                height={"350px"}
+                                // options={{ maintainAspectRatio: false }}
+                                options={options}
+                                style={{ transform: "scale(1)" }} className="m-0 p-0 mx-auto" />
+                        </Col>
+                    </Col>
+                    <Col className="p-0 m-0" lg={2} >
+                        <h5 style={{ color: "white" }}>Article Infomation:</h5>
+                        <h1 style={{
+                            backgroundColor: SITE_COLORS.lightMain,
+                            color: "white",
+                            textAlign: "start",
+                            fontSize: "18px",
+                            borderRadius: "5px",
+                            fontWeight: "100",
+                            padding: "12px",
+                            marginBottom: "20px"
+                        }}
+                        >
+                            <PinFill style={{ paddingBottom: "5px" }} />
+                            General: 5
+                        </h1>
+
+
+                        <div>
+
+                            <h1 style={{
+                                color: "white",
+                                textAlign: "start",
+                                fontSize: "18px",
+                                borderRadius: "5px",
+                                fontWeight: "100",
+                                backgroundColor: SITE_COLORS.secondary,
+                                padding: "12px",
+                                marginBottom: "20px"
+
+
+
+                            }}
+                            >
+                                <FileEarmarkPerson style={{ paddingBottom: "5px" }} />Events: 11
+                            </h1>
+
+                        </div>
+                        <div>
+
+                            <h1 style={{
+                                backgroundColor: SITE_COLORS.alternateMain,
+                                color: "white",
+                                textAlign: "start",
+                                fontSize: "18px",
+                                borderRadius: "5px",
+                                fontWeight: "100",
+                                padding: "12px",
+                                marginBottom: "20px"
+
+
+                            }}
+                            >
+                                <PostcardFill style={{ paddingBottom: "5px" }} />
+                                Announcements: 8
+                            </h1>
+
+                        </div>
+
+                        <div>
+
+                            <h1 style={{
+                                backgroundColor: SITE_COLORS.alternateSecondary,
+                                color: "white",
+                                textAlign: "start",
+                                fontSize: "18px",
+                                borderRadius: "5px",
+                                fontWeight: "100",
+                                padding: "12px",
+                                marginBottom: "20px"
+
+
+                            }}
+                            >
+                                <CardList style={{ paddingBottom: "5px" }} />
+                                Electronic Music: 75
+                            </h1>
+                        </div>
+
+                        <div>
+
+                            <h1 style={{
+                                backgroundColor: SITE_COLORS.lightMain,
+                                color: "white",
+                                textAlign: "start",
+                                fontSize: "16px",
+                                borderRadius: "5px",
+                                fontWeight: "100",
+                                padding: "12px",
+                                marginBottom: "20px"
+
+
+                            }}
+                            >
+                                <SpeakerFill style={{ paddingBottom: "5px" }} />
+                                Recording & Studio: 97
+                            </h1>
+                        </div>
+                        <div>
+
+                            <h1 style={{
+                                backgroundColor: SITE_COLORS.lightSecondary,
+                                color: "white",
+                                textAlign: "start",
+                                fontSize: "18px",
+                                borderRadius: "5px",
+                                fontWeight: "100",
+                                padding: "12px",
+                                marginBottom: "20px"
+
+
+                            }}
+                            >
+                                <FileEarmarkMusicFill style={{ paddingBottom: "5px" }} />
+                                Composition: 23
+                            </h1>
+                        </div>
+                    </Col>
+                </Row>
+                <br />
                 <br />
             </Container >
 

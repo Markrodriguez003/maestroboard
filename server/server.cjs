@@ -115,7 +115,7 @@ async function loadUsers() {
 // loadUsers();
 
 // Loads Articles
-loadArticles();
+// loadArticles();
 
 // ! DELETES
 // Deletes users
@@ -253,6 +253,24 @@ app.post("/api/login", (req, res) => {
     })
     .catch((err) => {
       res.status(401).json({ message: `Invalid credentials! :: ${err}` });
+    });
+});
+
+// * Finds all posts by specific type / Selling%20Gear /Buying%20Gear
+app.get("/api/loadPosts/type/selling", function (req, res) {
+  Post.find({ type: "Selling Gear" }) // -1 means oldest post to earliest
+    .then((posts, err) => {
+      console.log("Posts made by: " + posts.length + " + posts");
+      res.json(posts.length);
+    });
+});
+
+// * Finds all posts by specific type / Selling%20Gear /Buying%20Gear
+app.get("/api/loadPosts/type/buying", function (req, res) {
+  Post.find({ type: "Buying Gear" }) // -1 means oldest post to earliest
+    .then((posts, err) => {
+      console.log("Posts made by: " + posts.length + " + posts");
+      res.json(posts.length);
     });
 });
 

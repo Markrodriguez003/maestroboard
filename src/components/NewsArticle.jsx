@@ -91,7 +91,6 @@ function NewsArticle(props) {
                             {" "}
                             <ArrowRightCircle
                                 style={{ fontSize: "20px", color: "rgba(250,250,250,0.9)" }}
-
                             />{" "}
                             <small>Continue Reading {" "} </small>
                         </a>
