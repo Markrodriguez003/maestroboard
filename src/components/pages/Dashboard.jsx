@@ -500,6 +500,23 @@ function Dashboard(props) {
                                 fontSize: "18px",
                                 borderRadius: "5px",
                                 fontWeight: "100",
+                                backgroundColor: SITE_COLORS.main,
+                                padding: "12px",
+                                marginBottom: "20px"
+                            }}
+                            >
+                                <FileEarmarkPerson style={{ paddingBottom: "5px" }} />News: {data["news-articles"]}
+                            </h1>
+
+                        </div>
+                        <div>
+
+                            <h1 style={{
+                                color: "white",
+                                textAlign: "start",
+                                fontSize: "18px",
+                                borderRadius: "5px",
+                                fontWeight: "100",
                                 backgroundColor: SITE_COLORS.secondary,
                                 padding: "12px",
                                 marginBottom: "20px"
@@ -549,7 +566,43 @@ function Dashboard(props) {
                             }}
                             >
                                 <CardList style={{ paddingBottom: "5px" }} />
+                                Gear Review: {data["gear-review-articles"]}
+                            </h1>
+                        </div>
+                        <div>
+                            <h1 style={{
+                                backgroundColor: SITE_COLORS.alternateSecondary,
+                                color: "white",
+                                textAlign: "start",
+                                fontSize: "18px",
+                                borderRadius: "5px",
+                                fontWeight: "100",
+                                padding: "12px",
+                                marginBottom: "20px"
+
+
+                            }}
+                            >
+                                <CardList style={{ paddingBottom: "5px" }} />
                                 Electronic Music: {data["electronic-music-articles"]}
+                            </h1>
+                        </div>
+                        <div>
+                            <h1 style={{
+                                backgroundColor: SITE_COLORS.secondary,
+                                color: "white",
+                                textAlign: "start",
+                                fontSize: "18px",
+                                borderRadius: "5px",
+                                fontWeight: "100",
+                                padding: "12px",
+                                marginBottom: "20px"
+
+
+                            }}
+                            >
+                                <CardList style={{ paddingBottom: "5px" }} />
+                                Instruments: {data["instruments-articles"]}
                             </h1>
                         </div>
 

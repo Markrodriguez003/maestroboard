@@ -7,6 +7,8 @@ import { Cloudinary } from "@cloudinary/url-gen";
 // CLOUDINARY
 import { AdvancedImage } from '@cloudinary/react';
 import { fill } from "@cloudinary/url-gen/actions/resize";
+import axios from "axios";
+import { useState } from "react";
 
 // PAGES
 import Login from "./components/pages/Login";
@@ -38,34 +40,57 @@ function App() {
   */
 
 
-  // // Create a Cloudinary instance and set your cloud name.
-  // const cld = new Cloudinary({
-  //   cloud: {
-  //     // cloudName: import.meta.env.VITE_CLOUDINARY_NAME
-  //     cloudName: "dytbnvgzg",
-  //     apiKey: "862698915265588",
-  //     api_secret: "LdB05z3FBqSLQTVyx3iRxNW98YA",
-  //     secure: false
-  //   }
-  // });
+  // * Create a Cloudinary instance and set your cloud name.
+  const cld = new Cloudinary({
+    cloud: {
+      // cloudName: import.meta.env.VITE_CLOUDINARY_NAME
+      cloudName: "dytbnvgzg",
+      apiKey: "862698915265588",
+      api_secret: "LdB05z3FBqSLQTVyx3iRxNW98YA",
+      secure: false
+    }
+  });
 
 
+  const [image, setImage] = useState();
 
+  function UploadImages(files) {
+    console.log(image)
+    const formData = new FormData();
+    formData.append('file', image[0]);
+    formData.append('upload_preset', "ml_default");
+
+    axios.post("https://api.cloudinary.com/v1_1/dytbnvgzg/image/upload/", formData).then((response) => {
+      console.log(response)
+    }).catch((error) => {
+      console.log(`Failure to upload image ${error}`)
+    })
+
+  };
 
 
   // Instantiate a CloudinaryImage object for the image with the public ID, 'docs/models'.
-  // const myImage = cld.image('docs/models/Article-7_npfx0h');
+  //   const myImage = cld.image('/maestroboard/article-imgs/Article-7_npfx0h');
+
+  const myImage = cld.image('Logo1_-_Black_hvlovn');
 
   // Resize to 250 x 250 pixels using the 'fill' crop mode.
   // myImage.resize(fill().width(250).height(250));
 
-  // console.log(`myImage:::${myImage}`);
 
 
 
   return (
     <Router>
       <Header />
+      <div style={{ backgroundColor: "red", width: "500px", height: "500px", display: "flex", justifyContent: 'center', alignContent: "center" }}>
+        <input type="file"
+          onChange={(event) => {
+            // UploadImages(event.target.files)
+            setImage(event.target.files)
+          }} />
+        <button onClick={UploadImages}>Upload Image</button>
+      </div>
       <Routes>
         <Route path="/" element={<IntroSplashPage />}></Route>
         <Route path="/home" element={<IntroSplashPage />}></Route>
@@ -84,7 +109,7 @@ function App() {
 
       </Routes>
 
-      {/* <AdvancedImage cldImg={myImage} /> */}
+      <AdvancedImage cldImg={myImage} />
       <Footer />
     </Router>
   );
