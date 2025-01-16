@@ -26,7 +26,6 @@ import art15 from "../../assets/imgs/article-imgs/tracktion_biotek_3-rck6L30aXYx
 import art16 from "../../assets/imgs/article-imgs/softube_console_1_mkiii_update-lAbiWXNWCaZT.1BkrSgJ8dOOTsjQYBih.jpg";
 import art17 from "../../assets/imgs/article-imgs/hamstead_soundworks_redwing-1Z6d9c0kRf1n7lq.jlRWhmZyH579VAG6.jpg";
 const postImages = [art15, art16, art17];
-// 
 
 // CSS
 // import "../css/Login.css";
@@ -67,7 +66,6 @@ function Dashboard(props) {
     };
 
     const options = {
-
         plugins: {
 
             legend: {
@@ -198,6 +196,7 @@ function Dashboard(props) {
         grabPostsType("selling");
         grabPostsType("buying");
 
+        // Loops through each article type to call function to grab lengths 
         for (let i = 0; i < article_types.length; i++) {
             grabArticleType(article_types[i]);
 

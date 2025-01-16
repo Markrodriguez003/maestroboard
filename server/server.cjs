@@ -107,7 +107,7 @@ async function loadUsers() {
 // loadUsers();
 
 // Loads Articles
-loadArticles();
+// loadArticles();
 
 // ! DELETES
 // Deletes users
@@ -185,7 +185,9 @@ app.post("/api/insert-article", async (req, res) => {
     author: req.body.author,
     type: req.body.articleType,
     body: req.body.body,
-    // images: req.body.instrument,
+    public_images_id: req.body.public_images_id,
+    image_urls: req.body.image_urls,
+    secure_images_urls: req.body.secure_images_urls,
     caption: req.body.caption,
     link: req.body.link,
   };

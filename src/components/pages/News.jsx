@@ -1,18 +1,14 @@
 import { useState, useEffect } from "react";
-// import "./css/News.css";
 import axios from "axios";
 import { Row, Col, Carousel, Image, Container } from "react-bootstrap";
-
 
 // COMPONENTS
 import NewsArticle from "../NewsArticle";
 import HeaderPanel from "../ui/HeaderPanel";
 import QuickArticlesPanel from "../ui/QuickArticlesPanel";
 
-
 // TEST ARTICLES
 import testArticles from "../../../server/scripts/quickArticles.json";
-
 
 // TEST IMAGES
 import art0 from "../../assets/imgs/article-imgs/Article-6.png";
@@ -107,12 +103,8 @@ function News(props) {
             <Row lg={2} xs={1} sm={1} className="justify-content-start p-3">
               <Col lg={8} className="w-">
                 <Carousel className="mt-0" style={{ width: "100%" }}>
-                  {console.log(`Articles: ${JSON.stringify(articles)}`)}
-
                   {
                     articles.map(function (a, i) {
-
-
                       return (
                         <Carousel.Item style={{ textAlign: "center" }} key={`top-carousel-article-${i}`}>
                           <Image src={exampleImages[i]} width={"100%"} height={"550px"} className="mx-auto" style={{ objectFit: "cover" }} />

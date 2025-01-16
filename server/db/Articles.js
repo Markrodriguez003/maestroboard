@@ -35,13 +35,11 @@ const ArticlesSchema = new Schema({
     type: String,
   },
 
-  image: {
-    type: String,
-  },
+  public_images_id: [String],
+  image_urls: [String],
+  secure_images_urls: [String],
 
-  caption: {
-    type: String,
-  },
+  caption: String,
 
   //   ENTER FOREIGN KEY -> TABLE ASSOCIATION TO USER ACCOUNT
 });

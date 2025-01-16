@@ -8,7 +8,7 @@ const PostsSchema = new Schema({
     // required: "String is Required",
     // required: true
   },
-  
+
   email: {
     type: String,
     trim: true,
@@ -43,18 +43,19 @@ const PostsSchema = new Schema({
   },
 
   price: {
-    type: Number
+    type: Number,
   },
 
- images: Array,
+  public_images_id: Array,
+  image_urls: Array,
+  secure_images_urls: Array,
 
   date: {
     type: Date,
-    default: Date.now
+    default: Date.now,
   },
 
- //   ENTER FOREIGN KEY -> TABLE ASSOCIATION TO USER ACCOUNT
-
+  //   ENTER FOREIGN KEY -> TABLE ASSOCIATION TO USER ACCOUNT
 });
 
 // sconst Post = mongoose.model("Post", Posts);

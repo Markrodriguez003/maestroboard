@@ -4,11 +4,15 @@ import "./css/NewsArticle.css";
 import "yet-another-react-lightbox/styles.css";
 
 // COMPONENTS
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Row, Col, Container, Image } from "react-bootstrap";
 
 // LIBRARIES
 import Lightbox from "yet-another-react-lightbox";
+import { cld } from "../../server/scripts/imageRepository";
+// CLOUDINARY
+import { AdvancedImage } from '@cloudinary/react';
+import { fill } from "@cloudinary/url-gen/actions/resize";
 
 // ASSETS
 import { ArrowRightCircle } from "react-bootstrap-icons";
@@ -16,39 +20,79 @@ import defaultImage from "../assets/imgs/misc/missing-img.png";
 
 function NewsArticle(props) {
 
+
+    // useEffect(() => {
+    //     setImageGallery(tempGalleryArry);
+    //     console.log(imageGallery[0])
+
+    //     return () => {
+
+    //     };
+    // }, []);
+
     // Image Lightbox
     const [lightBoxOpen, setLightBoxOpen] = useState(false);
 
+    //  IMAGE LIGHTBOX GALLERY
+    const [imageGallery, setImageGallery] = useState([]);
+
     // Article Props
-    const { title, author, category, subCategory, date, body, link, image, caption, subTitle } = props.article;
+    const { title, author, category, subCategory, date, body, link, image, caption, subTitle, public_images_id, image_urls,
+        secure_images_urls, } = props.article;
+
+    // TEST
+    // console.log(`Article props: ${JSON.stringify(props.article)}`);
+    // console.log(`Prop keys: ${Object.keys(props.article)}`);
+
+    // GATHERS IMAGES INTO AN ARRAY FOR LIGHTBOX (USESTATE)
+    // const tempGalleryArry = undefined;
+    const tempGalleryArry = image_urls.map((image, i) => {
+        return {
+            src: `${image} `,
+            alt: `Article-image-${i}`,
+            width: "100%",
+            height: "100%",
+        }
+    })
+
+
+
+    // setImageGallery(tempGalleryArry);
+    console.log(`IMAGE GALLERY::: ${JSON.stringify(tempGalleryArry[0].src)}`)
+    // console.log(`IMAGE US GALLERY::: ${JSON.stringify(imageGallery)}`)
+
+
+    // THIS WORKS
+    // const articleImage = cld.image(props.article.public_images_id[0]);
+    /* <AdvancedImage cldImg={articleImage} /> */
 
     return (
         <Container as={"article"} className={"p-4 mt-5 newsArticleStyling"} >
             <Lightbox
                 open={lightBoxOpen}
                 close={() => setLightBoxOpen(false)}
-                slides={[
-                    {
-                        // src: `${props.artImage ? props.artImage : defaultImage}`,
-                        src: `${props.artImage !== undefined ? props.artImage : defaultImage}`,
-                        alt: "Article-image",
-                        width: "100%",
-                        height: "100%",
-                    }
-                ]}
+                slides={tempGalleryArry ? tempGalleryArry :
+                    [
+                        {
+                            src: `${defaultImage} `,
+                            alt: `Article-image-upload-error`,
+                            width: "100%",
+                            height: "100%",
+                        }
+                    ]}
                 plugins={[]}
             />
-            <Row xl={2} xxl={2} lg={2} md={2} sm={1} xs={1} className={props.rowInverse}>
+            <Row xl={2} xxl={2} lg={2} md={12} sm={1} xs={12} className={props.rowInverse}>
                 <Col>
                     <Row>
                         <Image
-                            src={props.artImage ? props.artImage : defaultImage}
+                            src={image_urls[0] ? image_urls[0] : defaultImage}
                             className="article-img-1"
                             alt="article image"
                             style={{ width: "100%", height: "375px", objectFit: "cover", cursor: "pointer" }}
                             onClick={() => setLightBoxOpen(true)}
                             onError={event => {
-                                console.log(`Image not loaded::: ${event.onerror}`)
+                                console.log(`Image not loaded::: ${event.onerror} `)
                                 event.target.src = { defaultImage }
                                 event.onerror = null
                             }}
