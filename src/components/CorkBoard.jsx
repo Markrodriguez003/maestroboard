@@ -8,14 +8,26 @@ import "./css/Corkboard.css";
 import axios from "axios";
 
 // COMPONENTS
-import BoardPostModal from "./BoardPostModal";
 import PostBoardCard from "./PostBoardCard";
 import LoadingSpinner from "./ui/LoadingSpinner";
-import { Container, Pagination, Stack } from "react-bootstrap";
+import { Pagination, Stack } from "react-bootstrap";
 import { IsComponentVisible } from "./ui/isComponentVisible";
 import HeaderPanel from "./ui/HeaderPanel";
 
+
+/*----------------------------------------------------------------------------
+|   ⚙️ Use: Corkboard container that pulls posts from DB and presents them  
+|   
+|   🔧 Todo: Filter Options | User customized corkboard 
+|
+|   📦 Returns: JSX component
+*----------------------------------------------------------------------------*/
+
+
 function Corkboard() {
+
+  // GRABS REFERENCE OF ELEMENT ON TOP OF CORKBOARD
+  const corkboardTopRef = useRef(null);
 
   // ALL POSTS FROM DB, SEPARATED PAGINATED POSTS, TOTAL POSTS, & PAGINATION TABS TO STATE 
   const [posts, setPosts] = useState({
@@ -29,9 +41,6 @@ function Corkboard() {
 
   // TOTAL POSTS ALLOWS ON CORKBOARD PANEL
   const CORKBOARD_TOTAL_POSTS_ALLOWED = 9;
-
-  // GRABS REFERENCE OF ELEMENT ON TOP OF CORKBOARD
-  const corkboardTopRef = useRef(null);
 
   // SETS PAGINATION INDEX WHEN USER CLICKS ON PAGINATION TAB
   function handlePaginationIndex(currentIndex) {
@@ -92,7 +101,7 @@ function Corkboard() {
             }
           ));
 
-          // console.log(`INSIDE CORKBOARD::: ${JSON.stringify(response.data)}`)
+          console.log(`INSIDE CORKBOARD::: ${JSON.stringify(response.data)}`)
 
           // SETS THE FIRST POSTS TO BOARD
           for (let i = 0; i < CORKBOARD_TOTAL_POSTS_ALLOWED; i++) {
@@ -170,9 +179,9 @@ function Corkboard() {
                   borderRadius: "5px",
                   display: "inline-block",
                   padding: "1px"
-                  
+
                 }}
-                ref={corkboardTopRef}>Community Board |
+                  ref={corkboardTopRef}>Community Board |
                 </h1>
                 <small style={{ color: "white", fontSize: "18px" }}>  Latest music related posts</small>
                 <hr style={{ color: "white", borderTop: "4px white solid" }} />
@@ -192,22 +201,41 @@ function Corkboard() {
             {posts.paginationEntries !== undefined ?
               <div className="corkboard-card-container">
                 {posts.paginationEntries?.map((p, i) => (
-                  <PostBoardCard
-                    key={`post-${p.title} - ${i}-${p._id}`}
-                    title={p.title}
-                    email={p.email}
-                    username={p.username}
-                    price={p.price}
-                    zip={p.zip}
-                    trade={p.trade}
-                    type={p.type}
-                    equipment={p.equipment}
-                    date={p.date}
-                    phone={p.phone}
-                    body={p.body}
-                    images={p.images}
-                  />
+                  <div key={`div ${i}`}>
+                    {/* {console.log(`POSTS::: ${JSON.stringify(posts.paginationEntries)}`)} */}
+                    {/* {console.log(`POST P: ${JSON.stringify(p)}`)} */}
+                    {/* <h1 key={`title ${i}`}>{fasf}</h1>
+                    <h1 key={`email ${i}`}>{p.email}</h1>
+                    <h1 key={`username ${i}`}>{p.username}</h1>
+                    <h1 key={`price ${i}`}>{p.price}</h1>
+                    <h1 key={`zip ${i}`}>{p.zip}</h1>
+                    <h1 key={`type ${i}`}>{p.type}</h1>
+                    <h1 key={`trade ${i}`}>{p.trade}</h1>
+                    <h1 key={`equipment ${i}`}>{p.equipment}</h1>
+                    <h1 key={`date ${i}`}>{p.date}</h1>
+                    <h1 key={`p[hone] ${i}`}>{p.phone}</h1>
+                    <h1 key={`p[fashone] ${i}`}>{p.body}</h1>
+                    <h1 key={`p[fassfashone] ${i}`}>{p.images}</h1> */}
+                  </div>
+
+                  // <PostBoardCard
+                  //   key={`post-${p.title} - ${i}-${p._id}`}
+                  //   title={p.title}
+                  //   email={p.email}
+                  //   username={p.username}
+                  //   price={p.price}
+                  //   zip={p.zip}
+                  //   trade={p.trade}
+                  //   type={p.type}
+                  //   equipment={p.equipment}
+                  //   date={p.date}
+                  //   phone={p.phone}
+                  //   body={p.body}
+                  //   images={p.images}
+                  // />
                 ))}
+                {/* <h1>POSTS!</h1> */}
+                {/* {console.log(`POSTS::: ${JSON.stringify(posts.paginationEntries)}`)} */}
               </div>
               :
               <div className="corkboard-card-container shadow-lg" style={{ height: "400px" }}>

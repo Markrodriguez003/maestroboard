@@ -114,7 +114,7 @@ async function loadUsers() {
 // deleteUsers();
 
 // Deletes Posts
-// deletePosts();
+// deletePosts(); 
 
 // Deletes Articles
 // deleteArticles();
@@ -167,6 +167,9 @@ app.post("/api/insertpost", async (req, res) => {
     title: req.body.title,
     body: req.body.pBody,
     price: req.body.price,
+    public_images_id: req.body.public_images_id,
+    image_urls: req.body.image_urls,
+    secure_images_urls: req.body.secure_images_urls,
   };
 
   await Post.create(newPost).then((result) => {

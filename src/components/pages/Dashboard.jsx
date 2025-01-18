@@ -202,7 +202,7 @@ function Dashboard(props) {
 
         // RUNNING FUNCTIONS THAT GRABS ALL ARTICLE & POST DATA FROM BACKEND
         // ! change this to promiseAll()
-        grabPosts();
+        // grabPosts();
         grabArticles();
         grabUserLength();
         grabPostsType("selling");

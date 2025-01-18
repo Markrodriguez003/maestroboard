@@ -129,7 +129,7 @@ function PostBoardCard(props) {
                       <Card style={{ width: "400px", height: "500px" }}>
 
 
-                        {props.images.length !== 0
+                        {props.images.length !== 0 || props.images !== undefined
                           ?
 
 

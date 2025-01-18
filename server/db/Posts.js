@@ -46,9 +46,9 @@ const PostsSchema = new Schema({
     type: Number,
   },
 
-  public_images_id: Array,
-  image_urls: Array,
-  secure_images_urls: Array,
+  public_images_id: [String],
+  image_urls: [String],
+  secure_images_urls: [String],
 
   date: {
     type: Date,

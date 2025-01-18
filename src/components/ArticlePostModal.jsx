@@ -6,7 +6,7 @@ import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 // import { Button, Modal, Form, Container, Row, Col } from "react-bootstrap";
 import { Button, Modal, Container, Form, Row, Col, Stack } from "react-bootstrap";
-import { NotificationToast, ToastContext } from "./ui/NotificationToast";
+import {ToastContext } from "./ui/NotificationToast";
 
 // LIBRARIES
 import imageUploader from "../../server/scripts/imageUploader";
@@ -362,8 +362,7 @@ function ArticlePostModal() {
                                 placeholder="..."
                                 name="link"
                                 // onChange={handleChange}
-                                {...register("link", { required: true })}
-
+                                {...register("link")}
                             />
                         </Form.Group>
                         <br />

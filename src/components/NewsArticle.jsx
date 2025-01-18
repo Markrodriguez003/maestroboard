@@ -46,7 +46,7 @@ function NewsArticle(props) {
 
 
     // setImageGallery(tempGalleryArry);
-    console.log(`IMAGE GALLERY::: ${JSON.stringify(tempGalleryArry[0].src)}`)
+    // console.log(`IMAGE GALLERY::: ${JSON.stringify(tempGalleryArry[0].src)}`)
     // console.log(`IMAGE US GALLERY::: ${JSON.stringify(imageGallery)}`)
 
 
@@ -74,7 +74,7 @@ function NewsArticle(props) {
                 <Col>
                     <Row>
                         <Image
-                            src={image_urls[0] ? image_urls[0] : defaultImage}
+                            src={image_urls[0] || image_urls[0] === undefined ? image_urls[0] : defaultImage}
                             className="article-img-1"
                             alt="article image"
                             style={{
@@ -83,9 +83,10 @@ function NewsArticle(props) {
                             }}
                             onClick={() => setLightBoxOpen(true)}
                             onError={event => {
+                                event.target.onerror = null
+                                event.target.src = defaultImage
                                 console.log(`Image not loaded::: ${event.onerror} `)
-                                event.target.src = { defaultImage }
-                                event.onerror = null
+
                             }}
                         />
                     </Row>
