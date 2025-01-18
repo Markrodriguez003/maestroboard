@@ -30,8 +30,19 @@ const postImages = [art15, art16, art17];
 // CSS
 // import "../css/Login.css";
 
+
+/*----------------------------------------------------------------------------
+|   ⚙️ Use: Admin dashboard page to edit/delete/insert/show articles & posts  
+|       as well as show article/post stats 
+|       
+|   🔧 Todo: Add dashboard for general users
+|
+|   📦 Returns: JSX component 
+*----------------------------------------------------------------------------*/
+
 function Dashboard(props) {
 
+    // STATE THAT WILL HOLD ARTICLE & POST DATA
     const [data, setData] = useState({
         articles: [],
         users: [],
@@ -189,6 +200,7 @@ function Dashboard(props) {
                 .catch((err) => console.log(err));
         }
 
+        // RUNNING FUNCTIONS THAT GRABS ALL ARTICLE & POST DATA FROM BACKEND
         // ! change this to promiseAll()
         grabPosts();
         grabArticles();

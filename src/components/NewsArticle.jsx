@@ -19,18 +19,6 @@ import { ArrowRightCircle } from "react-bootstrap-icons";
 import defaultImage from "../assets/imgs/misc/missing-img.png";
 
 function NewsArticle(props) {
-
-
-    // useEffect(() => {
-    //     setImageGallery(tempGalleryArry);
-    //     console.log(imageGallery[0])
-
-    //     return () => {
-
-    //     };
-    // }, []);
-
-    // Image Lightbox
     const [lightBoxOpen, setLightBoxOpen] = useState(false);
 
     //  IMAGE LIGHTBOX GALLERY
@@ -76,8 +64,8 @@ function NewsArticle(props) {
                         {
                             src: `${defaultImage} `,
                             alt: `Article-image-upload-error`,
-                            width: "100%",
-                            height: "100%",
+                            width: "350px",
+                            height: "350px",
                         }
                     ]}
                 plugins={[]}
@@ -89,7 +77,10 @@ function NewsArticle(props) {
                             src={image_urls[0] ? image_urls[0] : defaultImage}
                             className="article-img-1"
                             alt="article image"
-                            style={{ width: "100%", height: "375px", objectFit: "cover", cursor: "pointer" }}
+                            style={{
+                                width: "100%",
+                                height: "400px", objectFit: "cover", cursor: "pointer"
+                            }}
                             onClick={() => setLightBoxOpen(true)}
                             onError={event => {
                                 console.log(`Image not loaded::: ${event.onerror} `)
