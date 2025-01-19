@@ -49,13 +49,12 @@ function Corkboard() {
         ...prev,
         paginationIndex: parseInt(currentIndex, 10)
       }
+
     ));
-
-
-    // SCROLLS TO TOP 
-    if (corkboardTopRef.current) {
-      corkboardTopRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
+  }
+  // SCROLLS TO TOP 
+  if (corkboardTopRef.current) {
+    corkboardTopRef.current.scrollIntoView({ behavior: 'smooth' });
   }
 
   // SETS ACTIVE PAGINATED TAB
@@ -96,16 +95,17 @@ function Corkboard() {
               ...prev,
               allEntries: response.data,
               paginationTotal: PAGINATION_TABS,
-              totalPosts: (response.data.length),
+              totalPosts: response.data.length,
               paginationEntries: firstLoadedPosts
             }
           ));
 
-          console.log(`INSIDE CORKBOARD::: ${JSON.stringify(response.data)}`)
+          // console.log(`INSIDE CORKBOARD::: ${JSON.stringify(response.data)}`)
 
           // SETS THE FIRST POSTS TO BOARD
+
           for (let i = 0; i < CORKBOARD_TOTAL_POSTS_ALLOWED; i++) {
-            if (response.data[0] === undefined) { break; }
+            if (response.data[i] === undefined) { break; }
             firstLoadedPosts.push(response.data[i]);
           }
         })
@@ -198,44 +198,13 @@ function Corkboard() {
             {/* ********************************************************************** */}
             {/* CORKBOARD + POST CARDS*/}
             {/* ********************************************************************** */}
+            {/* {console.log(`POSTS::: ${posts.paginationEntries.length}`)} */}
             {posts.paginationEntries !== undefined ?
               <div className="corkboard-card-container">
                 {posts.paginationEntries?.map((p, i) => (
-                  <div key={`div ${i}`}>
-                    {/* {console.log(`POSTS::: ${JSON.stringify(posts.paginationEntries)}`)} */}
-                    {/* {console.log(`POST P: ${JSON.stringify(p)}`)} */}
-                    {/* <h1 key={`title ${i}`}>{fasf}</h1>
-                    <h1 key={`email ${i}`}>{p.email}</h1>
-                    <h1 key={`username ${i}`}>{p.username}</h1>
-                    <h1 key={`price ${i}`}>{p.price}</h1>
-                    <h1 key={`zip ${i}`}>{p.zip}</h1>
-                    <h1 key={`type ${i}`}>{p.type}</h1>
-                    <h1 key={`trade ${i}`}>{p.trade}</h1>
-                    <h1 key={`equipment ${i}`}>{p.equipment}</h1>
-                    <h1 key={`date ${i}`}>{p.date}</h1>
-                    <h1 key={`p[hone] ${i}`}>{p.phone}</h1>
-                    <h1 key={`p[fashone] ${i}`}>{p.body}</h1>
-                    <h1 key={`p[fassfashone] ${i}`}>{p.images}</h1> */}
-                  </div>
-
-                  // <PostBoardCard
-                  //   key={`post-${p.title} - ${i}-${p._id}`}
-                  //   title={p.title}
-                  //   email={p.email}
-                  //   username={p.username}
-                  //   price={p.price}
-                  //   zip={p.zip}
-                  //   trade={p.trade}
-                  //   type={p.type}
-                  //   equipment={p.equipment}
-                  //   date={p.date}
-                  //   phone={p.phone}
-                  //   body={p.body}
-                  //   images={p.images}
-                  // />
+                  <PostBoardCard {...p} key={`${p._id} - ${i}`}
+                  />
                 ))}
-                {/* <h1>POSTS!</h1> */}
-                {/* {console.log(`POSTS::: ${JSON.stringify(posts.paginationEntries)}`)} */}
               </div>
               :
               <div className="corkboard-card-container shadow-lg" style={{ height: "400px" }}>

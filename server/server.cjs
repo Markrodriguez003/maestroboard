@@ -114,7 +114,7 @@ async function loadUsers() {
 // deleteUsers();
 
 // Deletes Posts
-// deletePosts(); 
+// deletePosts();
 
 // Deletes Articles
 // deleteArticles();
@@ -158,10 +158,10 @@ app.get("/api/loadPosts", function (req, res) {
 // * Inserts new post
 app.post("/api/insertpost", async (req, res) => {
   let newPost = {
-    username: "test", // Fill user data with session
+    username: req.body.username,
     email: req.body.email,
     phone: req.body.phone,
-    zip: "333test333", // Fill user data with session
+    zip: req.body.zipcode,
     type: req.body.type,
     equipment: req.body.instrument,
     title: req.body.title,

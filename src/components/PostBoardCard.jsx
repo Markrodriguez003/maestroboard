@@ -3,10 +3,6 @@ import { useState, useEffect } from "react";
 // ? DESIGN EXAMPLES
 // ? https://freefrontend.com/css-paper-effects/
 
-// ? AWS CDN TUTS
-// ? https://aws.amazon.com/getting-started/hands-on/deliver-content-faster/ 
-
-
 // LIBRARIES
 import ReactCardFlip from "react-card-flip";
 import Lightbox from "yet-another-react-lightbox";
@@ -81,42 +77,45 @@ function PostBoardCard(props) {
   const [lightBoxOpen, setLightBoxOpen] = useState(false);
   const [postImages, setPostImages] = useState(false);
 
+  // LOADS POST IMAGES
+  const tempGalleryArry = props.image_urls.map((image, i) => {
+    return {
+      src: `${image} `,
+      alt: `Article-image-${i}`,
+      width: "100%",
+      height: "100%",
+    }
+  })
+
 
   // CHECKS TO SEE IF POSTBOARD CARD IS LOADED. PLACE LOADING CARD IN LIEU
   useEffect(() => {
     setIsPostCardLoaded(true);
   }, []);
 
-  // SETS POSTCARD CAROUSEL IMAGES
-  useEffect(() => {
 
-    let postImages = [];
-    async function setPostLightboxImages() {
-      for (let i = 0; i < props.images.length; i++) {
-
-        postImages.push({
-          src: props.images[i],
-          alt: `post-image-[${i}]`,
-          width: "90%",
-          height: "auto",
-        });
-      }
-      await setPostImages(postImages);
-    }
-
-    setPostLightboxImages();
-  }, []);
 
   return (
     <div>
       {isPostCardLoaded ?
         <div>
+
+
           <Lightbox
             open={lightBoxOpen}
             close={() => setLightBoxOpen(false)}
-            slides={postImages}
+            slides={tempGalleryArry ? tempGalleryArry :
+              [
+                {
+                  src: `${defaultImage} `,
+                  alt: `post-image-upload-error`,
+                  width: "350px",
+                  height: "350px",
+                }
+              ]}
             plugins={[Fullscreen, Thumbnails]}
           />
+
           <div className="container">
             <div className="row">
               <div className="card-container">
@@ -129,18 +128,18 @@ function PostBoardCard(props) {
                       <Card style={{ width: "400px", height: "500px" }}>
 
 
-                        {props.images.length !== 0 || props.images !== undefined
+                        {tempGalleryArry?.length !== 0 || tempGalleryArry !== undefined
                           ?
-
-
                           <Carousel interval={null}>
                             ({
-                              props.images.map(function (img, i) {
+                              tempGalleryArry?.map(function (img, i) {
                                 return (
                                   <Carousel.Item key={`${Math.floor(Math.random() * 100)}-cork-post-key-${img}-${Math.floor(Math.random() * 100)}`} onClick={() => setLightBoxOpen(true)} style={{ cursor: "pointer" }}>
                                     <div>
+                                      {console.log(`IMAGES::: ${JSON.stringify(img.src)}`)
+                                      }
                                       < Image
-                                        key={`image-${img} - ${i}`}
+                                        key={`image-${img.src} - ${i}`}
                                         className="d-block"
                                         style={{
                                           height: "300px",
@@ -149,9 +148,14 @@ function PostBoardCard(props) {
                                           backgroundColor: "rgba(0,0,0,0.2)"
                                         }}
                                         rounded
-                                        src={img}
-                                        // src={img !== undefined ? img : defaultImage}
+                                        src={img.src ? img.src : defaultImage}
                                         alt={`alt- post-slide - ${img}`}
+                                        onError={event => {
+                                          event.target.onerror = null
+                                          event.target.src = defaultImage
+                                          console.log(`Image not loaded::: ${event.onerror} `)
+
+                                        }}
                                       />
                                     </div>
                                   </ Carousel.Item>
@@ -178,35 +182,6 @@ function PostBoardCard(props) {
                           />
 
                         }
-
-
-
-                        {/* <Carousel interval={null}>
-                          ({
-                            props.images.map(function (img, i) {
-                              return (
-                                <Carousel.Item key={`${Math.floor(Math.random() * 100)}-cork-post-key-${img}-${Math.floor(Math.random() * 100)}`} onClick={() => setLightBoxOpen(true)} style={{ cursor: "pointer" }}>
-                                  <div>
-                                    < Image
-                                      key={`image-${img} - ${i}`}
-                                      className="d-block"
-                                      style={{
-                                        height: "300px",
-                                        width: "100%",
-                                        objectFit: "contain",
-                                        backgroundColor: "rgba(0,0,0,0.2)"
-                                      }}
-                                      rounded
-                                      src={img}
-                                      // src={img !== undefined ? img : defaultImage}
-                                      alt={`alt- post-slide - ${img}`}
-                                    />
-                                  </div>
-                                </ Carousel.Item>
-                              )
-                            })
-                          })
-                        </Carousel> */}
                         <div className="card-top-header">
                           <img
                             src={pushPinRand[Math.floor(Math.random() * 5)]}
