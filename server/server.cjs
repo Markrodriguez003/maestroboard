@@ -3,9 +3,10 @@ const express = require("express"); // Bringing in Express
 const mongoose = require("mongoose"); // Mongoose
 // const CP = require("cookie-parser");
 const app = express(); //Intializing  Express
-// require("dotenv").config();
+// USING ENV FILES IN SERVER
+require("dotenv").config();
 
-const jwt_key = process.env.JWT_KEY; // Setting jwt Key
+// USING CORS
 const cors = require("cors");
 
 // Loading middleware for body parsing / json / urlecoding / cors
@@ -41,9 +42,15 @@ const cookieParser = require("cookie-parser");
 
 // Connecting project to mongoose database.
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/maestroboard",
+  // process.env.MONGODB_URI || "mongodb://localhost/maestroboard",
+  process.env.MONGODB_URI ||
+    `mongodb+srv://ModulatorAdmin:${process.env.VITE_MONGODB_PASS}@cluster0.s0c84pg.mongodb.net/`,
   { useNewUrlParser: true, useUnifiedTopology: true }
 );
+
+// TEST
+ 
+// console.log(`Inside server ${process.env.VITE_MONGODB_PASS}`);
 
 // Assigning "db" to created mongoose link above
 const db = mongoose.connection;
@@ -139,7 +146,7 @@ db.once("open", function () {
 
 // * LOADS MAIN PAGE
 app.get("/", function (req, res) {
-  res.send("Hello!");
+  // res.send("Hello!");
 });
 
 app.get("/api/loadPosts", function (req, res) {
@@ -174,7 +181,7 @@ app.post("/api/insertpost", async (req, res) => {
   };
 
   await Post.create(newPost).then((result) => {
-    console.log(result);
+    // console.log(result);
     res.json({ response: result });
   });
 });
@@ -197,7 +204,7 @@ app.post("/api/insert-article", async (req, res) => {
   };
 
   await Article.create(newArticle).then((result) => {
-    console.log(result);
+    // console.log(result);
     res.json({ response: result });
   });
 });
@@ -206,9 +213,9 @@ app.post("/api/insert-article", async (req, res) => {
 app.get("/api/loadArticles", function (req, res) {
   Article.find({})
     .then((articles) => {
-      console.log(
-        "There are " + articles.length + " articles currently in the database."
-      );
+      // console.log(
+      //   "There are " + articles.length + " articles currently in the database."
+      // );
       res.json(articles);
     })
     .catch((err) => {
@@ -219,7 +226,7 @@ app.get("/api/loadArticles", function (req, res) {
 app.get("/api/load-user-count", function (req, res) {
   UserAccount.find({})
     .then((users) => {
-      console.log("There are " + users + " users currently in the database.");
+      // console.log("There are " + users + " users currently in the database.");
       res.json(users.length);
     })
     .catch((err) => {
@@ -262,9 +269,14 @@ app.get("/api/loadPosts/type/:type", function (req, res) {
   // CAPITALIZES THE LETTER OF CATEGORY TYPE
   const searchTerm =
     req.params.type[0].toUpperCase() + req.params.type.slice(1);
+
+  // TEST
+  console.log(`FINDING # OF ${searchTerm} Posts!`);
   Post.find({
-    type: `${searchTerm} Gear`,
+    // type: `${searchTerm} Gear`,
+    type: `${searchTerm}`,
   }).then((posts, err) => {
+    console.log(`# OF ${posts.length} Posts!`);
     res.json(posts.length);
   });
 });
@@ -276,7 +288,7 @@ app.get("/api/loadarticles/category/:category", function (req, res) {
     (letter) => letter.toUpperCase()
   );
   Article.find({ category: `${searchArticleTerm}` }).then((articles, err) => {
-    console.log(`${searchArticleTerm} - ${articles.length} `);
+    // console.log(`${searchArticleTerm} - ${articles.length} `);
     res.json(articles.length);
   });
 });
