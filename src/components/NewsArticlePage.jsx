@@ -1,35 +1,49 @@
-import { useState } from "react";
+// REACT
+import { useState, useEffect } from "react";
+
+// DESIGN
 import "./css/NewsArticle.css";
-import { Row, Col, Container, Image } from "react-bootstrap";
-import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 
+// COMPONENTS
+import { Row, Col, Container, Button, Image, Spinner } from "react-bootstrap";
+
+// LIBRARIES
+import Lightbox from "yet-another-react-lightbox";
+import axios from "axios";
+import { useParams } from 'react-router-dom';
+
+// ASSETS
+import { FileEarmarkExcelFill, Search } from "react-bootstrap-icons";
+import defaultImage from "../assets/imgs/misc/missing-img.png";
 
 // TEST IMAGE
 import art0 from "../assets/imgs/article-imgs/Article-6.png";
-import { BodyText } from "react-bootstrap-icons";
 
-// TEST ARTICLE
-let testArticle =
-{
-    title: " Arturia announces 3 Modulation plug-ins You’ll Actually Use",
-    subTitle: "Modeled after classic effects! These plugins are great!",
-    subject: "Electronic Music: VSTs",
-    author: "Jeremy Frazen",
-    date: "12/24/19",
-    body: `
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nulla aliquet lacus luctus. Aenean et tortor at risus viverra. Lectus proin nibh nisl condimentum id venenatis. Senectus et netus et malesuada fames. Convallis cras semper auctor neque vitae tempus. Orci phasellus egestas tellus rutrum tellus pellentesque eu. Orci dapibus ultrices in iaculis nunc sed augueLobortis feugiat vivamus at augue eget arcu. Arcu ac tortor dignissim convallis aenean et tortor at
+// LOADING PAGE TO SHOW WHEN FRONT END IS TRYING TO GRAB ARTICLE FROM DB
+function LoadingArticle() {
+    return (
+        <Container as={"article"} className={"p-5  w-100 shadow-lg text-light rounded text-center"} style={{ backgroundColor: "rgba(16, 41, 51, 1)" }}>
+            <Search style={{ fontSize: "150px" }} className="mb-4" />
+            <h1>Article is loading...</h1>
+            <br />
+            <Spinner style={{ color: "teal", fontSize: "25px", width: "50px", height: "50px" }} />
+        </Container >
+    )
+}
 
-Nulla facilisi cras fermentum odio eu feugiat. Nulla at volutpat diam ut. Fermentum dui faucibus in ornare quam viverra orci sagittis. Tincidunt semper quis lectus nulla at volutpat diam ut. . ra. Lectus proin nibh nisl condimentum id venenatis. Senectus et netus et malesuada fames. Convallis cras semper auctor neque vitae tempus. Orci phasellus egestas tellus rutrum tellus pellentesque eu. Orci dapibus ultrices in iaculis nunc sed augueLobortis feugiat vivamus at augue eget arcu. Arcu ac tortor dignissim convallis aen
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nulla aliquet lacus luctus. Aenean et tortor at risus viverra. Lectus proin nibh nisl condimentum id venenatis. Senectus et netus et malesuada fames. Convallis cras semper auctor neque vitae tempus. Orci phasellus egestas tellus rutrum tellus pellentesque eu. Orci dapibus ultrices in iaculis nunc sed augueLobortis feugiat vivamus at augue eget arcu. Arcu ac tortor dignissim convallis aenean et tortor at
-
-Nulla facilisi cras fermentum odio eu feugiat. Nulla at volutpat diam ut. Fermentumdio eu feugiat. Nulla at volutpaemper quis lectus nulla at volutpat diam ut. .dio eu feugiat. Nulla at volutpa dio eu feugiat. Nulla at volutpa
-      `,
-    link: "Selling Gear",
-    image: "Guitar",
-    caption: "Arturia VST taken from SoundOnSound",
-};
+// PAGE TO SHOW ERROR TRYING TO FIND ARTICLE
+function ErrorLoadingArticle() {
+    return (
+        <Container as={"article"} className={"p-5  w-100 shadow-lg text-light rounded text-center"} style={{ backgroundColor: "rgba(16, 41, 51, 1)" }}>
+            <FileEarmarkExcelFill style={{ fontSize: "150px" }} className="mb-4" />
+            <hr />
+            <h1>Article Cannot be found!</h1>
+            <br />
+            <Button className="mt-3" href="/home" >Go Back Home</Button>
+        </Container >
+    )
+}
 
 
 function NewsArticlePage(props) {
@@ -37,73 +51,130 @@ function NewsArticlePage(props) {
     // Image Lightbox
     const [lightBoxOpen, setLightBoxOpen] = useState(false);
 
-    // Article Props
-    const { title, subject, author, date, body, link, image, caption, subTitle } = testArticle;
+    // ARTICLE STATE
+    const [article, setArticle] = useState({});
+
+    // ARTICLE IMAGE GALLERY
+    const [articleImageGallery, setArticleImageGallery] = useState([]);
+
+    // ARTICLE LOADING STATE
+    const [articleLoadingState, setArticleLoadingState] = useState("loading");
+
+    // GRABS ID FROM URL
+    let params = useParams();
+    // console.log(`Article ID: ${_id}`)
+    console.log(`Article ID: ${JSON.stringify(params)}`)
+
+    {/* ********************************************************************** */ }
+    {/* GRABS ARTICLE FROM BACK-END via ID*/ }
+    {/* ********************************************************************** */ }
+    useEffect(() => {
+
+        // GRABS ALL ARTICLES FROM DB
+        async function grabArticle() {
+            await axios
+                // .get("http://localhost:3005/api/article/id/678ebacff4dfae792a419ace")
+                .get(`http://localhost:3005/api/article/id/${params.id}`)
+                .then(async (response) => {
+                    setArticleLoadingState("loading");
+                    console.log(`ARTICLE DATA: ${JSON.stringify(response.data.article)}`)
+                    setArticle(await response.data.article[0]);
+
+                    // GATHERS IMAGES INTO AN ARRAY FOR LIGHTBOX (USESTATE)
+                    const tempGalleryArry = response.data.article[0].image_urls.map((image, i) => {
+                        return {
+                            src: `${image} `,
+                            alt: `Article-image-${i}`,
+                            width: "100%",
+                            height: "100%",
+                        }
+                    })
+
+                    setArticleImageGallery(tempGalleryArry);
+
+                    setArticleLoadingState(("successful"));
+
+                })
+                .catch((err) => {
+                    console.log(`error ARTICLE DATA: ${JSON.stringify(err.status)}`)
+                    setArticleLoadingState("error")
+                }
+                );
+        }
+
+        grabArticle();
+    }, [])
 
     return (
         <Container as={"article"} className={"p-5 mt-5 w-100 shadow-lg rounded"} style={{ backgroundColor: "rgba(16, 41, 51, 1)" }}>
-            <Lightbox
-                open={lightBoxOpen}
-                close={() => setLightBoxOpen(false)}
-                slides={[
-                    {
-                        src: { art0 },
-                        alt: "Article-image",
-                        width: "100%",
-                        height: "100%",
-                    }
-                ]}
-                plugins={[]}
-            />
-            <Row className="justify-content-center">
-                <Col>
-                    <Row>
-                        <h2 style={{ color: "white", borderTop: "3px solid white", paddingTop: "6px" }}>{title} </h2>
-                    </Row>
-                    <Row>
-                        <h6 style={{ color: "grey", borderBottom: "1px solid white", paddingBottom: "12px" }}>{subTitle} </h6>
-                    </Row>
-                    <Row>
-                        <br />
-                    </Row>
-                    <Row>
-                        <Image
-                            src={art0}
-                            className="article-img-1"
-                            alt="article image"
-                            style={{ width: "100%", height: "500px", objectFit: "cover", cursor: "pointer" }}
-                            onClick={() => setLightBoxOpen(true)}
-                        />
-                    </Row>
-                    <Row className="justify-content-end align-content-end" sm={1} style={{ width: "100%" }}>
-                        <div style={{ color: "darkcyan" }}>{subject}</div>
-                    </Row>
+            {articleLoadingState === "successful" ?
+                <>
+                    <Lightbox
+                        open={lightBoxOpen}
+                        close={() => setLightBoxOpen(false)}
+                        slides={articleImageGallery ? articleImageGallery :
+                            [
+                                {
+                                    src: `${defaultImage} `,
+                                    alt: `Article-image-upload-error`,
+                                    width: "350px",
+                                    height: "350px",
+                                }
+                            ]}
+                        plugins={[]}
+                    />
+                    <Row className="justify-content-center">
+                        <Col>
+                            <Row>
+                                <h2 style={{ color: "white", borderTop: "3px solid white", paddingTop: "6px" }}>{article.title} </h2>
+                            </Row>
+                            <Row>
+                                <h6 style={{ color: "grey", borderBottom: "1px solid white", paddingBottom: "12px" }}>{article.subTitle} </h6>
+                            </Row>
+                            <Row>
+                                <br />
+                            </Row>
+                            <Row>
+                                <Image
+                                    src={article.image_urls[0]}
+                                    className="article-img-1"
+                                    alt="article image"
+                                    style={{ width: "100%", height: "500px", objectFit: "cover", cursor: "pointer" }}
+                                    onClick={() => setLightBoxOpen(true)}
+                                />
+                            </Row>
+                            <Row className="justify-content-end align-content-end" sm={1} style={{ width: "100%" }}>
+                                <div style={{ color: "darkcyan" }}>{article.category} : {article.subCategory}</div>
+                            </Row>
+                            <Row className="justify-content-start align-content-start" sm={2} style={{ width: "100%" }}>
+                                <div className="" style={{ color: "grey", fontSize: "14px" }}>Written by: {article.author} -Published on: {article.date}</div>
+                            </Row>
+                            <Row>
+                                <hr style={{ color: "white" }} className="mt-2 mb-0" />
+                            </Row>
 
-                    <Row>
-                        <hr style={{ color: "white" }} className="mt-2 mb-0" />
-                    </Row>
 
-                    <Row>
-                        <p style={{
-                            whiteSpace: "pre-wrap",
-                            width: "100%",
-                            color: "white",
-                            textAlign: "start",
-                            overflow: "hidden",
-                            textOverflow: "ellipsis",
-                        }}>
+                            <Row>
+                                <p style={{
+                                    whiteSpace: "pre-wrap",
+                                    width: "100%",
+                                    color: "white",
+                                    textAlign: "start",
+                                    overflow: "hidden",
+                                    textOverflow: "ellipsis",
+                                }}>
 
-                            {body}
-                        </p>
-                    </Row>
-                    <Row className="justify-content-start align-content-start" sm={2} style={{ width: "100%" }}>
-                        <div className="" style={{ color: "grey", fontSize: "14px" }}>Written by: {author} -Published on: {date}</div>
-                    </Row>
-
-                </Col>
-
-            </Row >
-
+                                    {article.body}
+                                </p>
+                            </Row>
+                        </Col>
+                    </Row >
+                </>
+                :
+                articleLoadingState === "loading" ? <LoadingArticle />
+                    :
+                    articleLoadingState === "error" ? <ErrorLoadingArticle /> : <ErrorLoadingArticle />
+            }
         </Container >
     );
 }

@@ -49,7 +49,7 @@ mongoose.connect(
 );
 
 // TEST
- 
+
 // console.log(`Inside server ${process.env.VITE_MONGODB_PASS}`);
 
 // Assigning "db" to created mongoose link above
@@ -279,6 +279,21 @@ app.get("/api/loadPosts/type/:type", function (req, res) {
     console.log(`# OF ${posts.length} Posts!`);
     res.json(posts.length);
   });
+});
+
+// * Finds all Articles by a specific ID
+app.get("/api/article/id/:id", function (req, res) {
+  console.log(`ID is `);
+  Article.find({
+    _id: `${req.params.id}`,
+  })
+    .then((article, err) => {
+      res.status(200).json({ article });
+    })
+    .catch((error) => {
+      console.log(`Error trying to find Article!`);
+      res.status(404).json(error);
+    });
 });
 
 // * Finds all articles by a specific category type / Selling%20Gear /Buying%20Gear

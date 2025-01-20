@@ -10,6 +10,8 @@ import { Row, Col, Container, Image } from "react-bootstrap";
 // LIBRARIES
 import Lightbox from "yet-another-react-lightbox";
 import { cld } from "../../server/scripts/imageRepository";
+import { Link } from "react-router-dom";
+
 // CLOUDINARY
 import { AdvancedImage } from '@cloudinary/react';
 import { fill } from "@cloudinary/url-gen/actions/resize";
@@ -26,14 +28,12 @@ function NewsArticle(props) {
 
     // Article Props
     const { title, author, category, subCategory, date, body, link, image, caption, subTitle, public_images_id, image_urls,
-        secure_images_urls, } = props.article;
+        secure_images_urls, _id } = props.article;
 
     // TEST
-    // console.log(`Article props: ${JSON.stringify(props.article)}`);
-    // console.log(`Prop keys: ${Object.keys(props.article)}`);
+    console.log(`Article props: ${JSON.stringify(props)}`);
 
     // GATHERS IMAGES INTO AN ARRAY FOR LIGHTBOX (USESTATE)
-    // const tempGalleryArry = undefined;
     const tempGalleryArry = image_urls.map((image, i) => {
         return {
             src: `${image} `,
@@ -42,17 +42,6 @@ function NewsArticle(props) {
             height: "100%",
         }
     })
-
-
-
-    // setImageGallery(tempGalleryArry);
-    // console.log(`IMAGE GALLERY::: ${JSON.stringify(tempGalleryArry[0].src)}`)
-    // console.log(`IMAGE US GALLERY::: ${JSON.stringify(imageGallery)}`)
-
-
-    // THIS WORKS
-    // const articleImage = cld.image(props.article.public_images_id[0]);
-    /* <AdvancedImage cldImg={articleImage} /> */
 
     return (
         <Container as={"article"} className={"p-4 mt-5 newsArticleStyling"} >
@@ -128,7 +117,9 @@ function NewsArticle(props) {
                             <ArrowRightCircle
                                 style={{ fontSize: "20px", color: "rgba(250,250,250,0.9)" }}
                             />{" "}
-                            <small>Continue Reading {" "} </small>
+                            <Link to={`/article/${_id}`}>
+                                <small>Continue Reading {" "} </small>
+                            </Link>
                         </a>
                     </Row>
                 </Col>

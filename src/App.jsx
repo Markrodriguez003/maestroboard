@@ -9,7 +9,7 @@ import { cld } from "../server/scripts/imageRepository";
 import { AdvancedImage } from '@cloudinary/react';
 // import { fill } from "@cloudinary/url-gen/actions/resize";
 // import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 // GLOBAL COMPONENT
 import { NotificationToast } from "./components/ui/NotificationToast";
@@ -31,7 +31,10 @@ import Footer from "./components/ui/Footer";
 import BackgroundTexture from "./components/ui/BackgroundTexture"
 
 function App() {
+  useEffect(() => {
+    
 
+  }, []);
 
   return (
     <Router>
@@ -50,7 +53,7 @@ function App() {
           <Route path="/home" element={<IntroSplashPage />}></Route>
           <Route path="/board" element={<CommunityBoard />}></Route>
           <Route path="/news" element={<News />}></Route>
-          <Route path="/article" element={<NewsArticlePage />}></Route>
+          <Route path="/article/:id" element={<NewsArticlePage />}></Route>
           <Route path="/forum" element={<Forum />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/signup" element={<SignUpForm />}></Route>

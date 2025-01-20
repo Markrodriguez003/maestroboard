@@ -202,7 +202,7 @@ function Dashboard(props) {
 
         // RUNNING FUNCTIONS THAT GRABS ALL ARTICLE & POST DATA FROM BACKEND
         // ! change this to promiseAll()
-        // grabPosts();
+        grabPosts();
         grabArticles();
         grabUserLength();
         grabPostsType("selling");
@@ -309,7 +309,6 @@ function Dashboard(props) {
                             </h1>
 
                         </Row>
-                        {/* <h1 className="text-center">Create</h1> */}
                         <hr />
                         <Row className="w-100 m-0 p-0 mb-3">
                             <BoardPostModal />
@@ -329,7 +328,6 @@ function Dashboard(props) {
                             borderRadius: "5px",
                             fontWeight: "100",
                             backgroundColor: SITE_COLORS.alternateSecondaryLight,
-                            // display: "inline-block",
                             padding: "15px",
 
                         }}
@@ -342,20 +340,9 @@ function Dashboard(props) {
                                 {
                                     data.posts.map((p, i) => (
                                         <Carousel.Item key={`dashboard-carousel-article-${i}`}>
-                                            <PostBoardCard
+                                            <PostBoardCard {...p}
                                                 key={`dashboard-post-${p.title} - ${i}-${p._id}`}
-                                                title={p.title}
-                                                email={p.email}
-                                                username={p.username}
-                                                price={p.price}
-                                                zip={p.zip}
-                                                trade={p.trade}
-                                                type={p.type}
-                                                equipment={p.equipment}
-                                                date={p.date}
-                                                phone={p.phone}
-                                                body={p.body}
-                                                images={p.images}
+
                                             />
                                         </Carousel.Item>
                                     ))
