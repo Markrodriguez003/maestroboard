@@ -42,7 +42,10 @@ function NotificationToast({ children }) {
                         autohide={true}
                         style={{ position: "fixed", bottom: "0px", right: "10px", zIndex: 9999999 }}
                     >
-                        <Toast.Header style={{ background: toast.error ? "red" : "green" }} className='text-light' >
+                        <Toast.Header style={{
+                            background: toast.error === "failure" ? "red" : toast.error === "warning" ? "yellow" : "green",
+                            color: toast.error === "failure" || toast.error === "successful" ? "red" : "black"
+                        }}>
                             <strong className="me-auto">{toast.header} </strong>
                             <small>{toast.small}</small>
                         </Toast.Header>

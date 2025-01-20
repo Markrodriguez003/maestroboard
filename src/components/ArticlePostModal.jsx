@@ -6,7 +6,7 @@ import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 // import { Button, Modal, Form, Container, Row, Col } from "react-bootstrap";
 import { Button, Modal, Container, Form, Row, Col, Stack } from "react-bootstrap";
-import {ToastContext } from "./ui/NotificationToast";
+import { ToastContext } from "./ui/NotificationToast";
 
 // LIBRARIES
 import imageUploader from "../../server/scripts/imageUploader";
@@ -37,8 +37,15 @@ import { SITE_COLORS } from "./css/site";
 
 function ArticlePostModal() {
 
+
+    // MAX POST BODY CHARACTERS
+    const MAX_TOTAL_POST_BODY_CHARACTERS = 2500;
+
+    // TOTAL POST BODY CHARACTERS FOR POST BODY CHARACTER MIN/MAX
+    const [totalCharacters, setTotalCharacters] = useState(0);
+
     // FORM VALIDATION STATE 
-    const { register, handleSubmit, setValue, formState: { errors } } = useForm();
+    const { register, handleSubmit, reset, setValue, formState: { errors } } = useForm();
 
     // HOLDS TOAST TOGGLE AND VALUE
     // CONTEXT SETTERS & GETTERS FOR NOTIFICATION TOAST 
@@ -149,6 +156,9 @@ function ArticlePostModal() {
                 // TURNS OFF SUBMISSION SPINNER 
                 setSubmitLoading(false);
 
+                // RESETS FORM
+                reset();
+
 
             } catch (error) {
                 console.log(`Error receiving image URLs/IDs : ${error}`);
@@ -215,6 +225,8 @@ function ArticlePostModal() {
         setSubmitLoading(true);
     };
 
+
+
     return (
         <>
 
@@ -247,10 +259,10 @@ function ArticlePostModal() {
                                 name="title"
                                 // onChange={handleChange}
                                 placeholder="Enter Article Title"
-                                {...register("title", { required: true })}
+                                {...register("title", { required: true, minLength: 12, maxLength: 30, })}
 
                             />
-                            {errors.title && <Form.Text className="text-danger" >This field is required</Form.Text>}
+                            {errors.title && <Form.Text className="text-danger" >This field is required. Min: 12, Max: 30</Form.Text>}
                         </Form.Group>
                         <Row>
                             <Col xs={12} sm={12} md={6} lg={6} xl={6} xxl={6}>
@@ -259,10 +271,9 @@ function ArticlePostModal() {
                                     <Form.Control
                                         placeholder="..."
                                         name="subTitle"
-                                        // onChange={handleChange}
-                                        {...register("subTitle", { required: true })}
+                                        {...register("subTitle", { required: true, minLength: 12, maxLength: 30, })}
                                     />
-                                    {errors.subTitle && <Form.Text className="text-danger" >This field is required</Form.Text>}
+                                    {errors.subTitle && <Form.Text className="text-danger" >This field is required. Min: 12, Max: 30</Form.Text>}
 
                                 </Form.Group>
                             </Col>
@@ -274,7 +285,6 @@ function ArticlePostModal() {
                                         className="form-select"
                                         aria-label="Default select article category"
                                         name="category"
-                                        // onChange={handleChange}
                                         {...register("category", { required: true })}
                                     >
                                         {article_categories.map(function (optionType, i) {
@@ -308,10 +318,9 @@ function ArticlePostModal() {
                                         type="author"
                                         placeholder="@"
                                         name="author"
-                                        // onChange={handleChange}
-                                        {...register("author", { required: true })}
+                                        {...register("author", { required: true, minLength: 5, maxLength: 65, pattern: /[a-z]/gi })}
                                     />
-                                    {errors.author && <Form.Text className="text-danger" >This field is required</Form.Text>}   
+                                    {errors.author && <Form.Text className="text-danger" >This field is required. Only characters. Min: 5, Max: 65</Form.Text>}
                                 </Form.Group>
                             </Col>
                         </Row>
@@ -336,41 +345,43 @@ function ArticlePostModal() {
                                         placeholder="..."
                                         name="caption"
                                         // onChange={handleChange}
-                                        {...register("caption", { required: true })}
+                                        {...register("caption", { required: false, minLength: 12, maxLength: 30 })}
                                     />
-                                    {errors.caption && <Form.Text className="text-danger" >Please insert an article image!</Form.Text>}
+                                    {errors.caption && <Form.Text className="text-danger" >Please insert an article image! Min: 12, Max: 30</Form.Text>}
 
                                 </Form.Group>
                             </Col>
                         </Row>
                         <Form.Group controlId="formGrid.body">
-                            <Form.Label className="mt-1">Article Body</Form.Label>
+                            <Row>
+                                <Col>
+                                    <Form.Label className="mt-1">Article Body</Form.Label>
+                                </Col>
+                                <Col>
+                                    <small>{totalCharacters} / {MAX_TOTAL_POST_BODY_CHARACTERS} Characters</small>
+                                </Col>
+
+                            </Row>
                             <Form.Control
                                 as="textarea"
                                 rows="4"
                                 name="body"
-                                // onChange={handleChange}
-                                {...register("body", { required: true })}
+                                {...register("body", { required: true, minLength: 35, maxLength: 2500 })}
+                                onChange={(e) => setTotalCharacters(e.target.value.length)}
 
                             />
-                            {errors.body && <Form.Text className="text-danger" >Please fill out this field!</Form.Text>}
+                            {errors.body && <Form.Text className="text-danger" >Please fill out this field! Min: 35, Max: 2500</Form.Text>}
 
-                        </Form.Group>
-                        <Form.Group controlId="">
-                            <Form.Label className="mt-1">Article Link:</Form.Label>
-                            <Form.Control
-                                placeholder="..."
-                                name="link"
-                                // onChange={handleChange}
-                                {...register("link")}
-                            />
                         </Form.Group>
                         <br />
                         <Stack direction="horizontal" className="justify-content-center gap-5 mb-4 text-lg-center mx-auto" >
                             <Button
                                 variant="danger"
                                 className="text-light p-2 m-0"
-                                onClick={() => setShow(false)}
+                                onClick={() => {
+                                    setTotalCharacters(0)
+                                    setShow(false)
+                                }}
                             >
                                 {" "}
                                 <BackspaceReverse className="mb-1" /> Cancel Article{" "}
@@ -387,6 +398,24 @@ function ArticlePostModal() {
                                     </>
                                     : <span> <Reply className="mb-1" /> Create Article </span>
                                 }
+                            </Button>
+                            <Button
+                                variant="warning"
+                                className="text-dark p-2 m-0"
+                                onClick={() => {
+                                    reset()
+                                    setTotalCharacters(0)
+                                    setToast((prevToast => ({
+                                        ...prevToast,
+                                        show: true,
+                                        header: "Form Resetted!",
+                                        message: `All form fields have been resetted.`,
+                                        error: "warning"
+                                    })))
+                                }}
+                            >
+                                {" "}
+                                <BackspaceReverse className="mb-1" /> Reset Form{" "}
                             </Button>
                         </Stack>
                     </Form>

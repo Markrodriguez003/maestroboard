@@ -95,6 +95,8 @@ function PostBoardCard(props) {
 
 
 
+  console.log(`ARTICLE PROPS::: ${JSON.stringify(props)}`);
+
   return (
     <div>
       {isPostCardLoaded ?
@@ -116,10 +118,11 @@ function PostBoardCard(props) {
             plugins={[Fullscreen, Thumbnails]}
           />
 
+
           <div className="container">
-            <div className="row">
-              <div className="card-container">
-                <div className="card-flip">
+            <div className="row" >
+              <div className="card-container" >
+                <div className="card-flip card-bottom-curl" style={{ width: "auto", backgroundColor: "rgba(0,0,0,0.4)" }}>
                   {/* ***************************** */}
                   {/* CARD FRONT */}
                   {/* ***************************** */}

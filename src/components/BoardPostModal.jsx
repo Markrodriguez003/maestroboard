@@ -31,7 +31,7 @@ import { SITE_COLORS } from "./css/site";
 function BoardPostModal() {
 
   // FORM VALIDATION STATE 
-  const { register, handleSubmit, setValue, formState: { errors } } = useForm();
+  const { register, handleSubmit, reset, setValue, formState: { errors } } = useForm();
 
   // HOLDS TOAST TOGGLE AND VALUE
   // CONTEXT SETTERS & GETTERS FOR NOTIFICATION TOAST 
@@ -49,6 +49,8 @@ function BoardPostModal() {
     price: "",
     trade: false, // Default
     link: "",
+    phone: "",
+    firm_price: false,
     public_images_id: [],
     image_urls: [],
     secure_images_urls: [],
@@ -69,6 +71,8 @@ function BoardPostModal() {
   //  PUSHES NEWLY CREATE ARTICLE TO DB
   useEffect(() => {
 
+
+
     // PUSHES ARTICLE TO DB
     async function CREATE_NEW_POST(newPost) {
       try {
@@ -80,7 +84,7 @@ function BoardPostModal() {
           show: true,
           header: "Post has been created!",
           message: "Refresh page to see Post populated on website!",
-          error: false
+          error: "successful"
         })))
       } catch (error) {
         console.log(`Here is the error inserting new post::: ${error}`);
@@ -89,7 +93,7 @@ function BoardPostModal() {
           show: true,
           header: "Article could not be created!",
           message: "Sorry about that! We ran into an issue on our end. Please try again later!",
-          error: true
+          error: "failure"
         })))
       }
     }
@@ -122,11 +126,12 @@ function BoardPostModal() {
                 show: true,
                 header: "Images could not be inserted!",
                 message: "Sorry about that! We ran into an issue on our end. Please try again later!",
-                error: true
+                error: "failure"
               })))
               return;
             })
         }
+
 
         // UPDATES IMAGE DATA URLS/IDS TO SERTARTICLE
         let finalizedPost = {
@@ -147,6 +152,9 @@ function BoardPostModal() {
         // TURNS OFF SUBMISSION SPINNER 
         setSubmitLoading(false);
 
+        // RESETS FORM
+        reset();
+
       } catch (error) {
         console.log(`Error receiving image URLs/IDs : ${error}`);
         setToast((prevToast => ({
@@ -154,7 +162,7 @@ function BoardPostModal() {
           show: true,
           header: "Images URLs could not be received!",
           message: "Sorry about that! We ran into an issue on our end. Please try again later!",
-          error: true
+          error: "failure"
         })))
       }
     }
@@ -190,7 +198,7 @@ function BoardPostModal() {
         show: true,
         header: "Max image cound reached!",
         message: `You attempted to upload more than 5 images. The max images allowed is ${MAXFILES}`,
-        error: true
+        error: "failure"
       })))
       return;
     }
@@ -207,11 +215,17 @@ function BoardPostModal() {
       }
     ))
 
-
     // SETS SUBMIT LOADER SPINNER WHICH IS TRIGGERS SIDE EFFECT OF  
     // GRABBING URL IMAGES AND UPLOADING ARTICLE TO DB
     setSubmitLoading(true);
   };
+
+
+  // MAX POST BODY CHARACTERS
+  const MAX_TOTAL_POST_BODY_CHARACTERS = 400;
+
+  // TOTAL POST BODY CHARACTERS FOR POST BODY CHARACTER MIN/MAX
+  const [totalCharacters, setTotalCharacters] = useState(0);
 
   return (
     <>
@@ -299,18 +313,16 @@ function BoardPostModal() {
               />
               {errors.title && <Form.Text className="text-danger" >This field is required</Form.Text>}
             </Form.Group>
-
-
             <Row>
               <Col xs={12} sm={12} md={6} lg={6} xl={6} xxl={6}>
                 <Form.Group controlId="">
                   <Form.Label className="mt-1">Contact Phone Number:</Form.Label>
                   <Form.Control
                     placeholder="..."
-                    name="number"
-                    {...register("number", { required: true })}
+                    name="Sonor S-Class Maple Drums"
+                    {...register("phone", { required: true, minLength: 10, maxLength: 10, pattern: /^\d+$/ })}
                   />
-                  {errors.number && <Form.Text className="text-danger" >This field is required</Form.Text>}
+                  {errors.phone && <Form.Text className="text-danger" >This field is required. 10 digits only please.</Form.Text>}
 
                 </Form.Group>
               </Col>
@@ -320,9 +332,9 @@ function BoardPostModal() {
                   <Form.Control
                     placeholder="..."
                     name="zipcode"
-                    {...register("zipcode", { required: true })}
+                    {...register("zipcode", { required: true, minLength: 5, maxLength: 5, pattern: /^\d+$/ }, { minLength: 5, maxLength: 5 })}
                   />
-                  {errors.zipcode && <Form.Text className="text-danger" >This field is required</Form.Text>}
+                  {errors.zipcode && <Form.Text className="text-danger" >This field is required. 5 Digits only please.</Form.Text>}
                 </Form.Group>
               </Col>
             </Row>
@@ -333,72 +345,96 @@ function BoardPostModal() {
                   <Form.Control
                     placeholder="..."
                     name="username"
-                    {...register("username", { required: true })}
+                    {...register("username", { required: true, minLength: 5, maxLength: 35 })}
                   />
-                  {errors.username && <Form.Text className="text-danger" >This field is required</Form.Text>}
+                  {errors.username && <Form.Text className="text-danger" >This field is required. Min: 5, Max: 35</Form.Text>}
 
                 </Form.Group>
               </Col>
+
+              <Col xs={12} sm={12} md={6} lg={6} xl={6} xxl={6}>
+                <Form.Group controlId="">
+                  <Form.Label className="mt-1">Email:</Form.Label>
+                  <Form.Control
+                    placeholder="..."
+                    name="email"
+                    {...register("email", { required: true, pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i })}
+                  />
+                  {errors.email && <Form.Text className="text-danger" >Please add valid email.</Form.Text>}
+
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row>
               <Col>
                 <Form.Group controlId="formGrid.images">
                   <Form.Group controlId="formFile">
                     <Form.Label className="mt-1">Upload Article Images</Form.Label>
                     <Form.Control type="file" multiple accept="image/*"
-                      // onChange={(event) => handleFileChange(event)}
                       {...register("images", { required: true })}
                     />
                     {errors.images && <Form.Text className="text-danger" >Please insert at least one post image!</Form.Text>}
                   </Form.Group>
                 </Form.Group>
               </Col>
-            </Row>
-            <Row>
               <Col xs={12} sm={12} md={6} lg={6} xl={6} xxl={6}>
                 <Form.Group controlId="">
                   <Form.Label className="mt-1">Price:</Form.Label>
                   <Form.Control
                     placeholder="..."
                     name="price"
-                    {...register("price", { required: true })}
+                    {...register("price", { required: true, minLength: 1, maxLength: 5, pattern: /^\d+$/ })}
                   />
-                  {errors.price && <Form.Text className="text-danger" >This field is required</Form.Text>}
+                  {errors.price && <Form.Text className="text-danger" >This field is required. No periods, or characters. Min: 1, Max: 5</Form.Text>}
 
                 </Form.Group>
               </Col>
+
+            </Row>
+            <Row>
               <Col>
                 <Form.Group controlId="formGrid.checkbox  ">
                   <br />
-                  <br />
                   <Form.Check
                     type="switch"
-                    id="custom-trade-switch"
+                    id="custom-trade-switch_trade"
                     label="Interested in a Trade?"
                     name="trade"
                     {...register("trade")}
                   />
                 </Form.Group>
               </Col>
-            </Row>
-            <Row>
+              <Col>
+                <Form.Group controlId="formGrid.checkbox  ">
+                  <br />
+                  <Form.Check
+                    type="switch"
+                    id="custom-trade-switch-firm_price"
+                    label="Firm Price / No Negotation?"
+                    name="firm_price"
+                    {...register("firm_price")}
+                  />
+                </Form.Group>
+              </Col>
               <Form.Group controlId="formGrid.body">
-                <Form.Label className="mt-1">Post Body</Form.Label>
+
+                <Row className="justify-content-between">
+                  <Col>
+
+                    <Form.Label className="mt-1">Post Body</Form.Label>
+                  </Col>
+                  <Col>
+                    <small style={{ color: "grey" }}> {totalCharacters} / {MAX_TOTAL_POST_BODY_CHARACTERS} Characters</small>
+                  </Col>
+                </Row>
                 <Form.Control
                   as="textarea"
                   rows="4"
                   name="pBody"
-                  {...register("pBody", { required: true })}
+                  {...register("pBody", { required: true, minLength: 10, maxLength: 400 })}
+                  onChange={(e) => setTotalCharacters(e.target.value.length)}
                 />
-                {errors.body && <Form.Text className="text-danger" >Please fill out this field!</Form.Text>}
-              </Form.Group>
-            </Row>
-            <Row>
-              <Form.Group controlId="">
-                <Form.Label className="mt-1">Article Link:</Form.Label>
-                <Form.Control
-                  placeholder="..."
-                  name="link"
-                  {...register("link")}
-                />
+                {errors.pBody && <Form.Text className="text-danger" >Please fill out this field! Follow min/max characters!</Form.Text>}
               </Form.Group>
             </Row>
             <br />
@@ -408,7 +444,10 @@ function BoardPostModal() {
               <Button
                 variant="danger"
                 className="text-light p-2 m-0"
-                onClick={() => setShow(false)}
+                onClick={() => {
+                  setTotalCharacters(0)
+                  setShow(false)
+                }}
               >
                 {" "}
                 <BackspaceReverse className="mb-1" /> Cancel Post{" "}
@@ -424,6 +463,24 @@ function BoardPostModal() {
                   </>
                   : <span> <Reply className="mb-1" /> Create Post </span>
                 }
+              </Button>
+              <Button
+                variant="warning"
+                className="text-light p-2 m-0"
+                onClick={() => {
+                  reset()
+                  setTotalCharacters(0)
+                  setToast((prevToast => ({
+                    ...prevToast,
+                    show: true,
+                    header: "Form Resetted!",
+                    message: `All form fields have been resetted.`,
+                    error: "warning"
+                  })))
+                }}
+              >
+                {" "}
+                <BackspaceReverse className="mb-1" /> Reset Form{" "}
               </Button>
             </Stack>
           </Form>

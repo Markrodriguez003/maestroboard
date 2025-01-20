@@ -11,7 +11,7 @@ const PostsSchema = new Schema({
 
   email: {
     type: String,
-    trim: true,
+    // trim: true,
     // match: [/.+@.+\..+/, "Please enter a valid e-mail address"],
     // required: true
   },
@@ -20,7 +20,7 @@ const PostsSchema = new Schema({
   },
 
   zip: {
-    type: String,
+    type: Number,
   },
 
   type: {
@@ -44,6 +44,9 @@ const PostsSchema = new Schema({
 
   price: {
     type: Number,
+  },
+  firm_price: {
+    type: String,
   },
 
   public_images_id: [String],
