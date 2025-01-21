@@ -1,7 +1,7 @@
 
 // COMPONENTS
 import { useState, useEffect } from "react";
-import { Row, Col, Card, Button, Image, Carousel, Container, Spinner, Toast } from "react-bootstrap";
+import { Row, Col, Card, Button, Image, Carousel, Tab, ListGroup, Container, Spinner, Toast } from "react-bootstrap";
 import HeaderPanel from "../ui/HeaderPanel";
 import PostBoardCard from "../PostBoardCard";
 import BoardPostModal from "../BoardPostModal";
@@ -18,7 +18,7 @@ import { Doughnut } from 'react-chartjs-2';
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 // ASSETS
-import { FileEarmarkPerson, FileEarmarkPlusFill, SpeakerFill, FileEarmarkMusicFill, Tools, PinFill, PostcardFill, CardList, FilePerson } from "react-bootstrap-icons";
+import { FileEarmarkPerson, FileEarmarkPlusFill, SpeakerFill, FileEarmarkMusicFill, Tools, PinFill, PencilSquare, PostcardFill, CardList, FilePerson, Scissors } from "react-bootstrap-icons";
 import { SITE_COLORS } from "../css/site";
 
 // TEST IMAGES
@@ -368,13 +368,13 @@ function Dashboard(props) {
                             <PostcardFill style={{ paddingBottom: "5px" }} />
                             Latest Articles:
                         </h1>
-                        <Col lg={7} className="mx-auto w-100" >
-                            <Carousel className="p-0" >
+                        <Col lg={7} md={4} className="mx-auto w-100" style={{ backgroundColor: "red" }} >
+                            <Carousel className="p-0" style={{ width: "600px" }} >
                                 {
                                     data.articles.map((p, i) => (
                                         <Carousel.Item key={`dashboard-carousel-article-${i}`}>
-                                            <Card style={{ backgroundColor: "rgba(0,0,0,0.7)", color: "white", height: "500px" }} className="w-100">
-                                                <Card.Img variant="top" src={art15} />
+                                            <Card style={{ backgroundColor: "rgba(150, 16, 16, 0.7)", color: "white", height: "500px" }} className="w-100">
+                                                <Card.Img variant="top" src={p.image_urls[0]} style={{ objectFit: "contain" }} />
                                                 <Card.Body>
                                                     <Card.Title>{p.title}</Card.Title>
                                                     <Card.Text style={{ color: "darkgrey" }}>
@@ -398,15 +398,24 @@ function Dashboard(props) {
                 <Row>
 
                 </Row>
-                {/* <Row className="gap-4">
-                    <Col style={{ color: "white", fontSize: "40px", backgroundColor: "red" }}>1 of 4</Col>
 
-                </Row> */}
 
                 <br />
                 <hr style={{ color: "white" }} />
                 <br />
-
+                <Col style={{ color: "white", fontSize: "40px", }} className="p-0 m-0">
+                    <HeaderPanel bgColor={SITE_COLORS.secondary} width="w-100">
+                        <h1 style={{
+                            color: "white",
+                            fontSize: "40px",
+                            borderRadius: "5px",
+                        }}
+                        >
+                            <Tools color="white" style={{ fontSize: "45px", paddingBottom: "12px" }} />
+                            Site Post & Article Metrics
+                        </h1>
+                    </HeaderPanel>
+                </Col>
                 {/* ******************************************************************* */}
                 {/* BOTTOM HALF */}
                 {/* ******************************************************************* */}
@@ -645,8 +654,111 @@ function Dashboard(props) {
                     </Col>
                 </Row>
                 <br />
+
+                {/* EDITING PANELS */}
+                <hr style={{ color: "white" }} />
+                <Col style={{ color: "white", fontSize: "40px", }} className="p-0 m-0">
+                    <HeaderPanel bgColor={SITE_COLORS.lightMain} width="w-100">
+                        <h1 style={{
+                            color: "white",
+                            fontSize: "40px",
+                            borderRadius: "5px",
+                        }}
+                        >
+                            <Scissors color="white" style={{ fontSize: "45px", paddingBottom: "12px" }} />
+                            Article Editing
+                        </h1>
+                    </HeaderPanel>
+                </Col>
                 <br />
+
+                {/* ARTICLE EDITS */}
+                <Row>
+                    <Col style={{ backgroundColor: SITE_COLORS.alternateSecondary, color: "black", overFlow: "scroll" }} variant="light" className="px-2 py-4 ">
+
+                        <Tab.Container id="list-group-tabs-articles" className="overflow-scroll" defaultActiveKey="#link1" style={{
+                            height: "300px",
+                            overflow: "hidden",
+                            overflowY: "auto"
+                        }} >
+                            <Row>
+                                <Col sm={4}>
+                                    <div style={{
+                                        display: "inline-block", width: "100%", height: "500px",
+                                        overflow: "hidden",
+                                        overflowY: "auto"
+                                    }} >
+                                        <ListGroup>
+                                            {
+                                                data.articles.map((p, i) => (
+                                                    <ListGroup.Item key={`article-tab-${i}`} action href={`#link${i}`} variant="dark" >
+                                                        <Row className="justify-content-between">
+                                                            <Col lg={10} md={10} sm={10}>
+                                                                <div>
+                                                                    {p.title} {" "}
+                                                                </div>
+                                                                <small>{p.date}</small>
+                                                            </Col>
+                                                            <Col className="float-end"
+                                                                style={{
+                                                                    backgroundColor: "rgba(0,0,0,0.2)",
+                                                                    zIndex: 99999,
+                                                                    marginLeft: "auto",
+                                                                    marginRight: "auto",
+                                                                    textAlign: "center"
+                                                                }}
+                                                                onClick={() => {
+                                                                    console.log(`Editing Article ${i}!`)
+                                                                }}>
+                                                                <PencilSquare style={{ fontSize: "20px", marginTop: "13px" }} alignmentBaseline="bottom" />
+                                                            </Col>
+                                                        </Row>
+                                                    </ListGroup.Item>
+                                                ))
+                                            }
+                                        </ListGroup>
+                                    </div>
+                                </Col>
+                                <Col sm={8}>
+                                    <Tab.Content>
+                                        <div style={{
+                                            display: "inline-block",
+                                            width: "100%",
+                                            height: "auto",
+                                            overflow: "hidden",
+                                            overflowY: "auto",
+                                            border: "white 4px solid"
+                                        }} >
+                                            {
+                                                data.articles.map((p, i) => (
+                                                    <Tab.Pane key={`article-tab-data-${i}`} eventKey={`#link${i}`} style={{ color: "white", zIndex:99999 }}>
+                                                        <Card style={{ backgroundColor: "transparent", color: "white", height: "29px" }} className="w-100">
+                                                            <Image src={p.image_urls[0]} style={{ objectFit: "fill", height: "500px" }} />
+                                                            <Card.Body>
+                                                                <Card.Title>{p.title}</Card.Title>
+                                                                <Card.Text style={{ color: "darkgrey" }}>
+                                                                    {p.subTitle}
+                                                                </Card.Text>
+                                                                <Card.Text>
+                                                                    {p.body}
+                                                                </Card.Text>
+                                                                <Button variant="primary" href="https://nhl.com" onClick={() => console.log("ARTICLE BTN CLICK!")}>Go to article</Button>
+                                                            </Card.Body>
+                                                        </Card>
+                                                    </Tab.Pane>
+
+                                                ))
+                                            }
+                                        </div>
+                                    </Tab.Content>
+                                </Col>
+                            </Row>
+                        </Tab.Container>
+                    </Col>
+                </Row>
             </Container >
+
+
 
 
             <br />
