@@ -1,3 +1,5 @@
+// SITE THEME COLORS
+
 export const SITE_COLORS = {
   main: "#102933",
   secondary: "#0D5735",
@@ -6,5 +8,6 @@ export const SITE_COLORS = {
   alternateMain: "rgb(128, 4, 91)",
   alternateSecondary: "rgb(43, 21, 62)",
   alternateSecondaryLight: "rgb(192, 4, 136)",
+  danger: "rgb(209, 0, 7)",
   transparent: "transparent",
 };

@@ -121,7 +121,7 @@ async function loadUsers() {
 // deleteUsers();
 
 // Deletes Posts
-// deletePosts();
+// deletePosts(); 
 
 // Deletes Articles
 // deleteArticles();
@@ -153,7 +153,7 @@ app.get("/api/loadPosts", function (req, res) {
   Post.find({})
     .then((posts) => {
       console.log(
-        "There are " + posts.length + " posts currently in the database."
+        // "There are " + posts.length + " posts currently in the database."
       );
       res.json(posts);
     })
@@ -269,14 +269,10 @@ app.get("/api/loadPosts/type/:type", function (req, res) {
   // CAPITALIZES THE LETTER OF CATEGORY TYPE
   const searchTerm =
     req.params.type[0].toUpperCase() + req.params.type.slice(1);
-
-  // TEST
-  console.log(`FINDING # OF ${searchTerm} Posts!`);
   Post.find({
     // type: `${searchTerm} Gear`,
     type: `${searchTerm}`,
   }).then((posts, err) => {
-    console.log(`# OF ${posts.length} Posts!`);
     res.json(posts.length);
   });
 });
@@ -296,12 +292,7 @@ app.get("/api/article/id/:id", function (req, res) {
 });
 
 // * SAVES AN ENTIRE ARTICLE
-
 app.put("/api/edit/article/id/:id", async function (req, res) {
-  console.log(`Params: ${JSON.stringify(req.params)} `);
-  console.log(`Params: ${JSON.stringify(req.body)} `);
-  console.log(`id: ${req.params.id} `);
-  console.log(`new object: ${req.params.newArticle} `);
   try {
     const updatedItem = await Article.findByIdAndUpdate(
       req.params.id,
@@ -309,6 +300,19 @@ app.put("/api/edit/article/id/:id", async function (req, res) {
       { new: true }
     );
     res.json(updatedItem);
+  } catch (err) {
+    res.status(500).json({ error: err });
+  }
+});
+
+// * DELETES AN ENTIRE ARTICLE
+app.delete("/api/delete/article/id/:id", async function (req, res) {
+  try {
+    const result = await Article.findByIdAndDelete(req.params.id);
+    console.log(
+      `ARTICLE IN THE BACKEND HAS BEEN DELETED:: ${JSON.stringify(result)}`
+    );
+    res.json(result);
   } catch (err) {
     res.status(500).json({ error: err });
   }

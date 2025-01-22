@@ -245,10 +245,10 @@ function ArticlePostModal(props) {
                                 type="text"
                                 name="title"
                                 placeholder="Enter Article Title"
-                                {...register("title", { required: true, minLength: 12, maxLength: 30, })}
+                                {...register("title", { required: true, minLength: 12, maxLength: 100, })}
 
                             />
-                            {errors.title && <Form.Text className="text-danger" >This field is required. Min: 12, Max: 30</Form.Text>}
+                            {errors.title && <Form.Text className="text-danger" >This field is required. Min: 12, Max: 100</Form.Text>}
                         </Form.Group>
                         <Row>
                             <Col xs={12} sm={12} md={6} lg={6} xl={6} xxl={6}>
@@ -257,9 +257,9 @@ function ArticlePostModal(props) {
                                     <Form.Control
                                         placeholder="..."
                                         name="subTitle"
-                                        {...register("subTitle", { required: true, minLength: 12, maxLength: 30, })}
+                                        {...register("subTitle", { required: true, minLength: 12, maxLength: 100, })}
                                     />
-                                    {errors.subTitle && <Form.Text className="text-danger" >This field is required. Min: 12, Max: 30</Form.Text>}
+                                    {errors.subTitle && <Form.Text className="text-danger" >This field is required. Min: 12, Max: 100</Form.Text>}
 
                                 </Form.Group>
                             </Col>
@@ -304,9 +304,9 @@ function ArticlePostModal(props) {
                                         type="author"
                                         placeholder="@"
                                         name="author"
-                                        {...register("author", { required: true, minLength: 5, maxLength: 65, pattern: /[a-z]/gi })}
+                                        {...register("author", { required: true, minLength: 5, maxLength: 100, pattern: /[a-z]/gi })}
                                     />
-                                    {errors.author && <Form.Text className="text-danger" >This field is required. Only characters. Min: 5, Max: 65</Form.Text>}
+                                    {errors.author && <Form.Text className="text-danger" >This field is required. Only characters. Min: 5, Max: 100</Form.Text>}
                                 </Form.Group>
                             </Col>
                         </Row>
@@ -331,9 +331,9 @@ function ArticlePostModal(props) {
                                         placeholder="..."
                                         name="caption"
                                         // onChange={handleChange}
-                                        {...register("caption", { required: false, minLength: 12, maxLength: 30 })}
+                                        {...register("caption", { required: false, minLength: 12, maxLength: 100 })}
                                     />
-                                    {errors.caption && <Form.Text className="text-danger" >Please insert an article image! Min: 12, Max: 30</Form.Text>}
+                                    {errors.caption && <Form.Text className="text-danger" >Please insert an article image! Min: 12, Max: 100</Form.Text>}
 
                                 </Form.Group>
                             </Col>
