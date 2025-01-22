@@ -283,7 +283,6 @@ app.get("/api/loadPosts/type/:type", function (req, res) {
 
 // * Finds all Articles by a specific ID
 app.get("/api/article/id/:id", function (req, res) {
-  console.log(`ID is `);
   Article.find({
     _id: `${req.params.id}`,
   })
@@ -295,6 +294,39 @@ app.get("/api/article/id/:id", function (req, res) {
       res.status(404).json(error);
     });
 });
+
+// * SAVES AN ENTIRE ARTICLE
+
+app.put("/api/edit/article/id/:id", async function (req, res) {
+  console.log(`Params: ${JSON.stringify(req.params)} `);
+  console.log(`Params: ${JSON.stringify(req.body)} `);
+  console.log(`id: ${req.params.id} `);
+  console.log(`new object: ${req.params.newArticle} `);
+  try {
+    const updatedItem = await Article.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    );
+    res.json(updatedItem);
+  } catch (err) {
+    res.status(500).json({ error: err });
+  }
+});
+
+// Article.findById(req.params.id).then((article) => {
+//   article = { ...req.params.newArticle };
+//   console.log(`ARTICLE FOUND! ${JSON.stringify(article)}`)
+// article
+//   .save()
+//   .then(() => {
+//     console.log(`Article was Updated! --> ${article}`);
+//   })
+//   .catch((err) => {
+//     console.error("Error updating user:", err);
+//   });
+// });
+// });
 
 // * Finds all articles by a specific category type / Selling%20Gear /Buying%20Gear
 app.get("/api/loadarticles/category/:category", function (req, res) {

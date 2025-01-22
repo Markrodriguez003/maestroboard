@@ -6,6 +6,7 @@ import HeaderPanel from "../ui/HeaderPanel";
 import PostBoardCard from "../PostBoardCard";
 import BoardPostModal from "../BoardPostModal";
 import ArticlePostModal from "../ArticlePostModal";
+import { Link } from "react-router-dom";
 
 // DATA
 import article_typesJSON from "../../data/articleTypes.json";
@@ -18,7 +19,7 @@ import { Doughnut } from 'react-chartjs-2';
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 // ASSETS
-import { FileEarmarkPerson, FileEarmarkPlusFill, SpeakerFill, FileEarmarkMusicFill, Tools, PinFill, PencilSquare, PostcardFill, CardList, FilePerson, Scissors } from "react-bootstrap-icons";
+import { FileEarmarkPerson, FileEarmarkPlusFill, Trash, SpeakerFill, FileEarmarkMusicFill, Tools, PinFill, PencilSquare, PostcardFill, CardList, FilePerson, Scissors } from "react-bootstrap-icons";
 import { SITE_COLORS } from "../css/site";
 
 // TEST IMAGES
@@ -315,7 +316,10 @@ function Dashboard(props) {
 
                         </Row>
                         <Row className="w-100 m-0 p-0 mb-2 btn-info">
-                            <ArticlePostModal />
+                            <ArticlePostModal>
+                                <Button size="md" className="text-light w-100 m-0"  >
+                                    Create an Article! </Button>
+                            </ArticlePostModal >
                         </Row>
                     </Col>
 
@@ -527,9 +531,6 @@ function Dashboard(props) {
                                 backgroundColor: SITE_COLORS.secondary,
                                 padding: "12px",
                                 marginBottom: "20px"
-
-
-
                             }}
                             >
                                 <FileEarmarkPerson style={{ paddingBottom: "5px" }} />Events: {data["events-articles"]}
@@ -548,17 +549,13 @@ function Dashboard(props) {
                                 padding: "12px",
                                 marginBottom: "20px"
 
-
                             }}
                             >
                                 <PostcardFill style={{ paddingBottom: "5px" }} />
                                 Announcements: {data["announcements-articles"]}
                             </h1>
-
                         </div>
-
                         <div>
-
                             <h1 style={{
                                 backgroundColor: SITE_COLORS.alternateSecondary,
                                 color: "white",
@@ -568,8 +565,6 @@ function Dashboard(props) {
                                 fontWeight: "100",
                                 padding: "12px",
                                 marginBottom: "20px"
-
-
                             }}
                             >
                                 <CardList style={{ paddingBottom: "5px" }} />
@@ -586,8 +581,6 @@ function Dashboard(props) {
                                 fontWeight: "100",
                                 padding: "12px",
                                 marginBottom: "20px"
-
-
                             }}
                             >
                                 <CardList style={{ paddingBottom: "5px" }} />
@@ -604,15 +597,12 @@ function Dashboard(props) {
                                 fontWeight: "100",
                                 padding: "12px",
                                 marginBottom: "20px"
-
-
                             }}
                             >
                                 <CardList style={{ paddingBottom: "5px" }} />
                                 Instruments: {data["instruments-articles"]}
                             </h1>
                         </div>
-
                         <div>
 
                             <h1 style={{
@@ -624,8 +614,6 @@ function Dashboard(props) {
                                 fontWeight: "100",
                                 padding: "12px",
                                 marginBottom: "20px"
-
-
                             }}
                             >
                                 <SpeakerFill style={{ paddingBottom: "5px" }} />
@@ -633,7 +621,6 @@ function Dashboard(props) {
                             </h1>
                         </div>
                         <div>
-
                             <h1 style={{
                                 backgroundColor: SITE_COLORS.lightSecondary,
                                 color: "white",
@@ -643,8 +630,6 @@ function Dashboard(props) {
                                 fontWeight: "100",
                                 padding: "12px",
                                 marginBottom: "20px"
-
-
                             }}
                             >
                                 <FileEarmarkMusicFill style={{ paddingBottom: "5px" }} />
@@ -699,19 +684,41 @@ function Dashboard(props) {
                                                                 </div>
                                                                 <small>{p.date}</small>
                                                             </Col>
-                                                            <Col className="float-end"
-                                                                style={{
-                                                                    backgroundColor: "rgba(0,0,0,0.2)",
-                                                                    zIndex: 99999,
-                                                                    marginLeft: "auto",
-                                                                    marginRight: "auto",
-                                                                    textAlign: "center"
-                                                                }}
-                                                                onClick={() => {
-                                                                    console.log(`Editing Article ${i}!`)
-                                                                }}>
-                                                                <PencilSquare style={{ fontSize: "20px", marginTop: "13px" }} alignmentBaseline="bottom" />
-                                                            </Col>
+                                                            <br />
+                                                            <br />
+                                                            <br />
+                                                            <Row>
+                                                                <Link to={`/edit/article/${p._id}`}>
+                                                                    <Col
+                                                                        style={{
+                                                                            backgroundColor: "rgb(129, 129, 129)",
+                                                                            color: "white",
+                                                                            zIndex: 99999,
+                                                                            textAlign: "center"
+                                                                        }}
+                                                                        onClick={() => {
+                                                                            console.log(`Editing Article ${i}!`)
+                                                                        }}
+                                                                    >
+                                                                        <PencilSquare style={{ fontSize: "20px", marginTop: "4px", marginBottom: "3px" }} alignmentBaseline="bottom" />
+                                                                    </Col>
+                                                                </Link>
+                                                                <br />
+                                                                <br />
+                                                                <Col
+                                                                    style={{
+                                                                        backgroundColor: "#c30202",
+
+                                                                        marginLeft: "auto",
+                                                                        marginRight: "auto",
+                                                                        textAlign: "center",
+                                                                    }}
+                                                                    onClick={() => {
+                                                                        console.log(`Deleting Article ${i}!`)
+                                                                    }}>
+                                                                    <Trash style={{ color: "white", fontSize: "20px", marginTop: "2px" }} alignmentBaseline="bottom" />
+                                                                </Col>
+                                                            </Row>
                                                         </Row>
                                                     </ListGroup.Item>
                                                 ))
@@ -724,29 +731,45 @@ function Dashboard(props) {
                                         <div style={{
                                             display: "inline-block",
                                             width: "100%",
-                                            height: "auto",
+                                            height: "500px",
                                             overflow: "hidden",
                                             overflowY: "auto",
-                                            border: "white 4px solid"
+
+                                            backgroundColor: "rgba(0,0,0,0.7)"
                                         }} >
                                             {
                                                 data.articles.map((p, i) => (
-                                                    <Tab.Pane key={`article-tab-data-${i}`} eventKey={`#link${i}`} style={{ color: "white", zIndex:99999 }}>
-                                                        <Card style={{ backgroundColor: "transparent", color: "white", height: "29px" }} className="w-100">
-                                                            <Image src={p.image_urls[0]} style={{ objectFit: "fill", height: "500px" }} />
-                                                            <Card.Body>
-                                                                <Card.Title>{p.title}</Card.Title>
-                                                                <Card.Text style={{ color: "darkgrey" }}>
-                                                                    {p.subTitle}
-                                                                </Card.Text>
-                                                                <Card.Text>
-                                                                    {p.body}
-                                                                </Card.Text>
-                                                                <Button variant="primary" href="https://nhl.com" onClick={() => console.log("ARTICLE BTN CLICK!")}>Go to article</Button>
-                                                            </Card.Body>
-                                                        </Card>
+                                                    <Tab.Pane key={`article-tab-data-${i}`} eventKey={`#link${i}`} style={{ color: "white", position: "relative" }}>
+                                                        <div style={{ position: "absolute", width: "100%", height: "auto" }}>
+                                                            <Card style={{ backgroundColor: "transparent", color: "white", height: "220px" }} className="w-auto">
+                                                                <Image src={p.image_urls[0]} style={{ objectFit: "fill", height: "500px", width: "auto" }} />
+                                                                <Card.Body className="m-0">
+                                                                    <Card.Text style={{ color: SITE_COLORS.lightMain }}>
+                                                                        {[p.category]} - {[p.subCategory]}
+                                                                    </Card.Text>
+                                                                    <Card.Title>{p.title}</Card.Title>
+                                                                    <Card.Text style={{ color: "darkgrey" }}>
+                                                                        {p.subTitle}
+                                                                    </Card.Text>
+                                                                    <hr />
+                                                                    <Card.Text>
+                                                                        {p.body}
+                                                                    </Card.Text>
+                                                                    <hr />
+                                                                    <Card.Text style={{ color: "grey" }}>
+                                                                        Written by: {[p.author]}
+                                                                    </Card.Text>
+                                                                    <Card.Text style={{ color: "grey" }}>
+                                                                        Published on: {[p.date]}
+                                                                    </Card.Text>
+                                                                    <Card.Text style={{ color: "grey" }}>
+                                                                        Article _id: {[p._id]}
+                                                                    </Card.Text>
+                                                                    {/* <Button variant="primary" onClick={() => console.log("ARTICLE BTN CLICK!")}>Go to article</Button> */}
+                                                                </Card.Body>
+                                                            </Card>
+                                                        </div>
                                                     </Tab.Pane>
-
                                                 ))
                                             }
                                         </div>

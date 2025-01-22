@@ -22,6 +22,7 @@ import PageNotFound from "./components/pages/PageNotFound";
 // ! change to home
 import IntroSplashPage from "./components/IntroSplashPage";
 import Dashboard from "./components/pages/Dashboard";
+import ArticleEdit from "./components/ui/ArticleEdit"
 
 import SignUpForm from "./components/SignUpForm";
 import NewsArticlePage from "./components/NewsArticlePage";
@@ -32,7 +33,7 @@ import BackgroundTexture from "./components/ui/BackgroundTexture"
 
 function App() {
   useEffect(() => {
-    
+
 
   }, []);
 
@@ -58,6 +59,7 @@ function App() {
           <Route path="/login" element={<Login />}></Route>
           <Route path="/signup" element={<SignUpForm />}></Route>
           <Route path="/dashboard" element={<Dashboard />}></Route>
+          <Route path="/edit/article/:id" element={<ArticleEdit />}></Route>
           <Route
             path="*"
             element={<PageNotFound />}

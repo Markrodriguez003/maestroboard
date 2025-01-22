@@ -31,7 +31,7 @@ function NewsArticle(props) {
         secure_images_urls, _id } = props.article;
 
     // TEST
-    console.log(`Article props: ${JSON.stringify(props)}`);
+    // console.log(`Article props: ${JSON.stringify(props)}`);
 
     // GATHERS IMAGES INTO AN ARRAY FOR LIGHTBOX (USESTATE)
     const tempGalleryArry = image_urls.map((image, i) => {
@@ -74,7 +74,7 @@ function NewsArticle(props) {
                             onError={event => {
                                 event.target.onerror = null
                                 event.target.src = defaultImage
-                                console.log(`Image not loaded::: ${event.onerror} `)
+                                // console.log(`Image not loaded::: ${event.onerror} `)
 
                             }}
                         />

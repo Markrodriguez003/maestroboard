@@ -1,56 +1,67 @@
-
-// REACT
 import { useState, useEffect, useContext } from "react";
 
 // COMPONENTS
 import axios from "axios";
-import { Button, Modal, Container, Form, Row, Col, Stack } from "react-bootstrap";
-import { ToastContext } from "./ui/NotificationToast";
+import { Button, Container, Form, Spinner, Row, Col, Stack } from "react-bootstrap";
+import { ToastContext } from "./NotificationToast";
 
 // LIBRARIES
-import imageUploader from "../../server/scripts/imageUploader";
+import imageUploader from "../../../server/scripts/imageUploader";
 import { useForm } from "react-hook-form";
+import { useParams, useNavigate } from "react-router";
 
 // ASSETS
-import { Reply, BackspaceReverse, FilePostFill, XCircleFill } from "react-bootstrap-icons"; // Importing Bootstrap Icon Components
+import { Reply, BackspaceReverse, FileEarmarkExcelFill, Search, FilePostFill, XCircleFill } from "react-bootstrap-icons"; // Importing Bootstrap Icon Components
 
 // DATA
-import article_types from "../data/articleTypes.json";
+import article_types from "../../data/articleTypes.json";
 
 // DESIGN CSS
-import { SITE_COLORS } from "./css/site";
+import { SITE_COLORS } from "../css/site";
 
-/*----------------------------------------------------------------------------
-|   ⚙️ Use: Modal form for creating a new article to push to the backend  
-|   
-|   🔧 Todo: More form options | Form checking | Article link creation
-|
-|   📦 Returns: JSX component
-*----------------------------------------------------------------------------*/
+// LOADING PAGE TO SHOW WHEN FRONT END IS TRYING TO GRAB ARTICLE FROM DB
+function LoadingArticle() {
+    return (
+        <Container as={"article"} className={"p-5  w-100 shadow-lg text-light rounded text-center"} style={{ backgroundColor: "rgba(16, 41, 51, 1)" }}>
+            <Search style={{ fontSize: "150px" }} className="mb-4" />
+            <h1>Article is loading...</h1>
+            <br />
+            <Spinner style={{ color: "teal", fontSize: "25px", width: "50px", height: "50px" }} />
+        </Container >
+    )
+}
 
-function ArticlePostModal(props) {
+// PAGE TO SHOW ERROR TRYING TO FIND ARTICLE
+function ErrorLoadingArticle() {
+    return (
+        <Container as={"article"} className={"p-5  w-100 shadow-lg text-light rounded text-center"} style={{ backgroundColor: "rgba(16, 41, 51, 1)" }}>
+            <FileEarmarkExcelFill style={{ fontSize: "150px" }} className="mb-4" />
+            <hr />
+            <h1>Article Cannot be found!</h1>
+            <br />
+            <Button className="mt-3" href="/home" >Go Back Home</Button>
+        </Container >
+    )
+}
 
-    // MAX POST BODY CHARACTERS
-    const MAX_TOTAL_POST_BODY_CHARACTERS = 2500;
+function ArticleEdit() {
 
-    // TOTAL POST BODY CHARACTERS FOR POST BODY CHARACTER MIN/MAX
-    const [totalCharacters, setTotalCharacters] = useState(0);
+    // ARTICLE STATE
+    const [article, setArticle] = useState({});
+
+    // ARTICLE IMAGE GALLERY
+    const [articleImageGallery, setArticleImageGallery] = useState([]);
+
+    // ARTICLE LOADING STATE
+    const [articleLoadingState, setArticleLoadingState] = useState("loading");
+
+    // GRABS STRING DATA FROM URL
+    const params = useParams();
 
     // FORM VALIDATION STATE 
     const { register, handleSubmit, reset, setValue, formState: { errors } } = useForm();
 
-    // HOLDS TOAST TOGGLE AND VALUE
-    // CONTEXT SETTERS & GETTERS FOR NOTIFICATION TOAST 
-    const { toast, setToast } = useContext(ToastContext);
-
-    // HANDLES SHOWING OF MODAL
-    const [show, setShow] = useState(false);
-
-    // HOLDS TEMPORARY IMAGE DATA ARRAY
-    const [tempImageArr, setTempImageArr] = useState([]);
-
-    // HOLDS LOADING STATE OF FORM SUBMITTION
-    const [submitLoading, setSubmitLoading] = useState(false);
+    // console.log(`UseForm ::${JSON.stringify(article)}`)
 
     // SETS NEW ARTICLE OBJECT
     let [newArticle, setNewArticle] = useState({
@@ -69,25 +80,88 @@ function ArticlePostModal(props) {
 
     });
 
+    // PULLS ARTICLE DATA FROM URL ID
+    useEffect(() => {
+
+        // GRABS ALL ARTICLES FROM DB
+        async function grabArticle() {
+            await axios
+                .get(`http://localhost:3005/api/article/id/${params.id}`)
+                .then(async (response) => {
+                    setArticleLoadingState("loading");
+                    setArticle(await response.data.article[0]);
+
+                    // GATHERS IMAGES INTO AN ARRAY FOR LIGHTBOX (USESTATE)
+                    const tempGalleryArry = response.data.article[0].image_urls.map((image, i) => {
+                        return {
+                            src: `${image} `,
+                            alt: `Article-image-${i}`,
+                            width: "100%",
+                            height: "100%",
+                        }
+                    })
+
+                    setArticleImageGallery(tempGalleryArry);
+
+                    setArticleLoadingState(("successful"));
+
+                })
+                .catch((err) => {
+                    console.log(`error ARTICLE DATA: ${JSON.stringify(err.status)}`)
+                    setArticleLoadingState("error")
+                }
+                );
+        }
+
+        grabArticle();
+    }, [])
+
+
+
+    // MAX POST BODY CHARACTERS
+    const MAX_TOTAL_POST_BODY_CHARACTERS = 2500;
+
+    // TOTAL POST BODY CHARACTERS FOR POST BODY CHARACTER MIN/MAX
+    const [totalCharacters, setTotalCharacters] = useState(0);
+
+    // HOLDS TOAST TOGGLE AND VALUE
+    // CONTEXT SETTERS & GETTERS FOR NOTIFICATION TOAST 
+    const { toast, setToast } = useContext(ToastContext);
+
+    // HANDLES SHOWING OF MODAL
+    const [show, setShow] = useState(false);
+
+    // HOLDS TEMPORARY IMAGE DATA ARRAY
+    const [tempImageArr, setTempImageArr] = useState([]);
+
+    // HOLDS LOADING STATE OF FORM SUBMITTION
+    const [submitLoading, setSubmitLoading] = useState(false);
+
     //  SIDE EFFECT THAT KICKS WHEN USER SUBMITS FORM.
     //  TAKES IMAGE FILES -> UPLOADS IT TO CLOUDINARY -> SAVES IMAGE URLS/ID TO NEW ARTICLE STATE
     //  PUSHES NEWLY CREATE ARTICLE TO DB
     useEffect(() => {
 
         // PUSHES ARTICLE TO DB
-        async function CREATE_NEW_ARTICLE(newArticle) {
+        async function UPDATE_ARTICLE(newArticle) {
+            console.log(`RESPONSE! ${JSON.stringify(params)}`)
+
             try {
-                const response = axios.post('http://localhost:3005/api/insert-article', newArticle);
+                // const response = axios.post('http://localhost:3005/api/insert-article', newArticle);
+                axios.put(`http://localhost:3005/api/edit/article/id/${params.id}`, newArticle).then((response) => {
+                    console.log(`RESPONSE! ${JSON.stringify(response)}`)
+                    console.log(`NEW ARTICLE! ${JSON.stringify(newArticle)}`)
+
+                })
                 // SETS TOAST OF SUBMITTED ARTICLE!
-                setToast((prevToast => ({
-                    ...prevToast,
-                    show: true,
-                    header: "Article has been created!",
-                    message: "Refresh page to see article populated on website!",
-                    error: false
-                })))
+                // setToast((prevToast => ({
+                //     ...prevToast,
+                //     show: true,
+                //     header: "Article has been created!",
+                //     message: "Refresh page to see article populated on website!",
+                //     error: false
+                // })))
             } catch (error) {
-                // console.log(`Here is the error inserting new post::: ${error}`);
                 setToast((prevToast => ({
                     ...prevToast,
                     show: true,
@@ -112,15 +186,11 @@ function ArticlePostModal(props) {
                 for (let i = 0; i < tempImageArr.length; i++) {
                     await imageUploader(tempImageArr[i])
                         .then((data) => {
-                            // console.log(`${i} - Public ID: ${data.publicID}`);
-                            // console.log(`${i} - Secure URL: ${data.secureURL}`);
-                            // console.log(`${i} - URL: ${data.url}`);
                             publicArry = [...publicArry, data.publicID];
                             urlArry = [...urlArry, data.url];
                             secureArry = [...secureArry, data.secureURL];
 
                         }).catch((error) => {
-                            // console.log(`Error updating state with images::${error}`)
                             setToast((prevToast => ({
                                 ...prevToast,
                                 show: true,
@@ -140,8 +210,7 @@ function ArticlePostModal(props) {
                 }
 
                 // PASSES ARTICLE WITH RESPECTATIVE POPULATED IMAGES TO FUNCTION INSERT DB 
-                await CREATE_NEW_ARTICLE(finalizedArticle);
-
+                await UPDATE_ARTICLE(finalizedArticle);
 
                 // CLOSES OUT MODAL
                 setShow(false);
@@ -154,7 +223,7 @@ function ArticlePostModal(props) {
 
 
             } catch (error) {
-                // console.log(`Error receiving image URLs/IDs : ${error}`);
+
                 setToast((prevToast => ({
                     ...prevToast,
                     show: true,
@@ -197,6 +266,8 @@ function ArticlePostModal(props) {
             return;
         }
 
+
+
         //*  IF ARTICLE IS COMPLETED CORRECTLY
         // IF MAX IMAGE FILES LIMIT NOT REACHS SETS FILES INTO A STATE TO BE USE ELSEWHERE
         setTempImageArr(data.images);
@@ -216,26 +287,12 @@ function ArticlePostModal(props) {
 
     return (
         <>
-            <div onClick={() => setShow(true)}>
+            <Container style={{ backgroundColor: SITE_COLORS.lightMain, color: "white" }} className="w-75" fluid>
 
-                {props.children}
-            </div>
-            <Modal
-                show={show}
-                onHide={() => setShow(false)}
-                backdrop="static"
-                keyboard={false}
-                size="lg"
-            >
-                <Container style={{ backgroundColor: SITE_COLORS.main, color: "white" }} className="" fluid>
-                    <span
-                        onClick={() => setShow(false)}
-                        style={{ display: "inline-block", right: "15px", top: "4px", fontSize: "30px", position: "absolute", cursor: "pointer" }}>
-                        <XCircleFill />
-                    </span>
+                {articleLoadingState === "successful" ?
                     <Form className="p-3 m-0 " onSubmit={handleSubmit(onSubmit)}>
                         <Stack>
-                            <h1 className="mt-0 text-center"><FilePostFill className="mb-3" /> {" "} Create an Article</h1>
+                            <h1 className="mt-0 text-center"><FilePostFill className="mb-3" /> {" "} Edit an Article</h1>
                             <small className="mx-auto" style={{ display: "block" }}> {" "} Fill out all form fields!</small>
                         </Stack>
                         <Form.Group>
@@ -246,6 +303,7 @@ function ArticlePostModal(props) {
                                 name="title"
                                 placeholder="Enter Article Title"
                                 {...register("title", { required: true, minLength: 12, maxLength: 30, })}
+                                defaultValue={article.title}
 
                             />
                             {errors.title && <Form.Text className="text-danger" >This field is required. Min: 12, Max: 30</Form.Text>}
@@ -258,6 +316,7 @@ function ArticlePostModal(props) {
                                         placeholder="..."
                                         name="subTitle"
                                         {...register("subTitle", { required: true, minLength: 12, maxLength: 30, })}
+                                        defaultValue={article.subTitle}
                                     />
                                     {errors.subTitle && <Form.Text className="text-danger" >This field is required. Min: 12, Max: 30</Form.Text>}
 
@@ -272,6 +331,7 @@ function ArticlePostModal(props) {
                                         aria-label="Default select article category"
                                         name="category"
                                         {...register("category", { required: true })}
+                                        defaultValue={article.category}
                                     >
                                         {article_categories.map(function (optionType, i) {
 
@@ -291,6 +351,7 @@ function ArticlePostModal(props) {
                                         name="subCategory"
                                         // onChange={handleChange}
                                         {...register("subCategory", { required: true })}
+                                        defaultValue={article.subCategory}
                                     />
                                     {errors.subCategory && <Form.Text className="text-danger" >This field is required</Form.Text>}
 
@@ -305,6 +366,7 @@ function ArticlePostModal(props) {
                                         placeholder="@"
                                         name="author"
                                         {...register("author", { required: true, minLength: 5, maxLength: 65, pattern: /[a-z]/gi })}
+                                        defaultValue={article.author}
                                     />
                                     {errors.author && <Form.Text className="text-danger" >This field is required. Only characters. Min: 5, Max: 65</Form.Text>}
                                 </Form.Group>
@@ -318,6 +380,7 @@ function ArticlePostModal(props) {
                                         <Form.Control type="file" multiple accept="image/*"
                                             // onChange={(event) => handleFileChange(event)}
                                             {...register("images", { required: true })}
+                                        // defaultValue={article.public_images_id}
                                         />
                                         {errors.images && <Form.Text className="text-danger" >Please insert an article image!</Form.Text>}
 
@@ -332,6 +395,7 @@ function ArticlePostModal(props) {
                                         name="caption"
                                         // onChange={handleChange}
                                         {...register("caption", { required: false, minLength: 12, maxLength: 30 })}
+                                        defaultValue={article.caption}
                                     />
                                     {errors.caption && <Form.Text className="text-danger" >Please insert an article image! Min: 12, Max: 30</Form.Text>}
 
@@ -354,6 +418,7 @@ function ArticlePostModal(props) {
                                 name="body"
                                 {...register("body", { required: true, minLength: 35, maxLength: 2500 })}
                                 onChange={(e) => setTotalCharacters(e.target.value.length)}
+                                defaultValue={article.body}
 
                             />
                             {errors.body && <Form.Text className="text-danger" >Please fill out this field! Min: 35, Max: 2500</Form.Text>}
@@ -405,11 +470,17 @@ function ArticlePostModal(props) {
                             </Button>
                         </Stack>
                     </Form>
-
-                </Container>
-            </Modal >
+                    :
+                    articleLoadingState === "loading" ? <LoadingArticle />
+                        :
+                        articleLoadingState ? <ErrorLoadingArticle /> : <ErrorLoadingArticle />}
+            </Container>
         </>
-    );
+    )
+
+
 }
 
-export default ArticlePostModal;
+export default ArticleEdit;
+
+

@@ -93,10 +93,6 @@ function PostBoardCard(props) {
     setIsPostCardLoaded(true);
   }, []);
 
-
-
-  console.log(`ARTICLE PROPS::: ${JSON.stringify(props)}`);
-
   return (
     <div>
       {isPostCardLoaded ?
@@ -139,8 +135,6 @@ function PostBoardCard(props) {
                                 return (
                                   <Carousel.Item key={`${Math.floor(Math.random() * 100)}-cork-post-key-${img}-${Math.floor(Math.random() * 100)}`} onClick={() => setLightBoxOpen(true)} style={{ cursor: "pointer" }}>
                                     <div>
-                                      {console.log(`IMAGES::: ${JSON.stringify(img.src)}`)
-                                      }
                                       < Image
                                         key={`image-${img.src} - ${i}`}
                                         className="d-block"
@@ -156,7 +150,7 @@ function PostBoardCard(props) {
                                         onError={event => {
                                           event.target.onerror = null
                                           event.target.src = defaultImage
-                                          console.log(`Image not loaded::: ${event.onerror} `)
+                                          // console.log(`Image not loaded::: ${event.onerror} `)
 
                                         }}
                                       />
