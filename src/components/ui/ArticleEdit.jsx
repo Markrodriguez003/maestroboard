@@ -1,3 +1,4 @@
+// REACT
 import { useState, useEffect, useContext } from "react";
 
 // COMPONENTS
@@ -5,6 +6,7 @@ import axios from "axios";
 import { Button, Container, Form, Spinner, Row, Col, Stack } from "react-bootstrap";
 import { ToastContext } from "./NotificationToast";
 import { ConfirmationContext } from "./ConfirmationModal";
+import LoadPageElement from "./LoadingPageElement";
 
 // LIBRARIES
 import imageUploader from "../../../server/scripts/imageUploader";
@@ -14,14 +16,13 @@ import { Navigate } from 'react-router-dom';
 import deleteArticle from "../../../server/scripts/deleteArticle";
 
 // ASSETS
-import { Reply, BackspaceReverse, FileEarmarkExcelFill, Search, FilePostFill, XCircleFill, Trash2Fill } from "react-bootstrap-icons"; // Importing Bootstrap Icon Components
-
+import { Reply, BackspaceReverse, FileEarmarkExcelFill, Search, FilePostFill, XCircleFill, Trash2Fill } from "react-bootstrap-icons";
 // DATA
 import article_types from "../../data/articleTypes.json";
 
 // DESIGN CSS
 import { SITE_COLORS } from "../css/site";
-import { trueColor } from "@cloudinary/url-gen/qualifiers/colorSpace";
+
 
 // ! move to component
 // LOADING PAGE TO SHOW WHEN FRONT END IS TRYING TO GRAB ARTICLE FROM DB
@@ -36,19 +37,7 @@ function LoadingArticle() {
     )
 }
 
-// ! move to component
-// PAGE TO SHOW ERROR TRYING TO FIND ARTICLE
-function ErrorLoadingArticle() {
-    return (
-        <Container as={"article"} className={"p-5  w-100 shadow-lg text-light rounded text-center"} style={{ backgroundColor: "rgba(16, 41, 51, 1)" }}>
-            <FileEarmarkExcelFill style={{ fontSize: "150px" }} className="mb-4" />
-            <hr />
-            <h1>Article Cannot be found!</h1>
-            <br />
-            <Button className="mt-3" href="/home" >Go Back Home</Button>
-        </Container >
-    )
-}
+
 
 
 
@@ -351,7 +340,7 @@ function ArticleEdit() {
             <Container style={{ backgroundColor: SITE_COLORS.lightMain, color: "white" }} className="w-75" fluid>
 
                 {articleLoadingState === "successful" ?
-                    <Form className="p-3 m-0 " onSubmit={handleSubmit(onSubmit)}>
+                    <Form className="p-3 m-0 mt-4 " onSubmit={handleSubmit(onSubmit)}>
                         <Stack>
                             <h1 className="mt-0 text-center"><FilePostFill className="mb-3" /> {" "} Edit an Article</h1>
                             <small className="mx-auto" style={{ display: "block" }}> {" "} Fill out all form fields!</small>
@@ -545,14 +534,40 @@ function ArticleEdit() {
                         </Stack>
                     </Form>
                     :
-                    articleLoadingState === "loading" ? <LoadingArticle />
+                    articleLoadingState === "loading" ?
+                        <LoadPageElement
+                            bgColor={SITE_COLORS.secondary}
+                            header="Loading article!"
+                            icon={<Search style={{ fontSize: "120px", marginLeft: "auto", marginRight: "auto" }} />}
+                            spinner={true}
+                        >
+                            <hr />
+                        </LoadPageElement>
                         :
                         articleLoadingState ?
-                            <>
+                            <LoadPageElement
+                                bgColor={SITE_COLORS.secondary}
+                                header="Error trying to find article!"
+                                icon={<FileEarmarkExcelFill style={{ fontSize: "120px", marginLeft: "auto", marginRight: "auto" }} />}
+                                spinner={false}
+                            >
+                                <hr />
+                                <p>Sorry about that! We could not find this article!</p>
+                                <Button onClick={() => { console.log('testing b utton') }}>Home</Button>
+                            </LoadPageElement>
+                            :
+                            <LoadPageElement
+                                bgColor={SITE_COLORS.secondary}
+                                header="Error trying to find article!"
+                                icon={<FileEarmarkExcelFill style={{ fontSize: "120px", marginLeft: "auto", marginRight: "auto" }} />}
+                                spinner={false}
+                            >
+                                <hr />
+                                <p>Sorry about that! We could not find this article!</p>
+                                <Button onClick={() => { console.log('testing b utton') }}>Home</Button>
+                            </LoadPageElement>
 
-                                <ErrorLoadingArticle />
-                            </>
-                            : <ErrorLoadingArticle />}
+                }
 
             </Container >
         </>
