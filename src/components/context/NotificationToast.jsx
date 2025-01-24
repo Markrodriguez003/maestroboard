@@ -14,10 +14,6 @@ import { Col, Row, Toast } from 'react-bootstrap';
 |   📦 Returns: JSX component
 *----------------------------------------------------------------------------*/
 
-
-
-// NOTES
-// https://kentcdodds.com/blog/how-to-use-react-context-effectively
 // CREATES CONTEXT TO PROVIDE TOAST TO ANY COMPONENT
 const ToastContext = createContext({});
 function NotificationToast({ children }) {

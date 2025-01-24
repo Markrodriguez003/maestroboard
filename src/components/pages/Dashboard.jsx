@@ -1,7 +1,7 @@
 
 // COMPONENTS
 import { useState, useEffect } from "react";
-import { Row, Col, Card, Button, Image, Carousel, Tab, ListGroup, Container, Spinner, Toast } from "react-bootstrap";
+import { Row, Col, Card, Button, Image, Carousel, Tab, ListGroup, Container, } from "react-bootstrap";
 import HeaderPanel from "../ui/HeaderPanel";
 import PostBoardCard from "../PostBoardCard";
 import BoardPostModal from "../BoardPostModal";
@@ -19,7 +19,7 @@ import { Doughnut } from 'react-chartjs-2';
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 // ASSETS
-import { FileEarmarkPerson, Trash, SpeakerFill, FileEarmarkMusicFill, Tools, PinFill, PencilSquare, PostcardFill, CardList, Scissors } from "react-bootstrap-icons";
+import { FileEarmarkPerson, SpeakerFill, FileEarmarkMusicFill, Tools, PinFill, PencilSquare, PostcardFill, CardList, Scissors } from "react-bootstrap-icons";
 import { SITE_COLORS } from "../css/site";
 
 // CSS
@@ -114,7 +114,6 @@ function Dashboard(props) {
                     SITE_COLORS.alternateMain,
                     SITE_COLORS.alternateSecondary,
                     "Olive",
-
                     "MediumSeaGreen",
                     "Violet"
 
@@ -218,7 +217,6 @@ function Dashboard(props) {
         // Loops through each article type to call function to grab lengths 
         for (let i = 0; i < article_types.length; i++) {
             grabArticleType(article_types[i]);
-
         }
     }, []);
 
@@ -384,7 +382,8 @@ function Dashboard(props) {
                                     data.articles.map((p, i) => (
                                         <Carousel.Item key={`dashboard-carousel-article-${i}`}>
                                             <Card style={{ backgroundColor: "rgba(150, 16, 16, 0.7)", color: "white", height: "500px" }} className="w-100">
-                                                <Card.Img variant="top" src={p.image_urls[0]} style={{ objectFit: "contain" }} />
+                                                <Card.Img variant="top" src={p.image_urls[0]}
+                                                    style={{ objectFit: "contain", width: "500px", height: "300px", marginLeft: "auto", marginRight: "auto" }} />
                                                 <Card.Body>
                                                     <Card.Title>{p.title}</Card.Title>
                                                     <Card.Text style={{ color: "darkgrey" }}>
@@ -396,7 +395,6 @@ function Dashboard(props) {
                                                     <Button variant="primary">Go to article</Button>
                                                 </Card.Body>
                                             </Card>
-
                                         </Carousel.Item>
                                     ))
                                 }
@@ -474,8 +472,6 @@ function Dashboard(props) {
                                 width={"350px"}
                                 height={"350px"}
                                 options={options}
-
-                                // options={{ maintainAspectRatio: false }}
                                 style={{ transform: "scale(1)" }} className="m-0 p-0 mx-auto" />
                         </Col>
                     </Col>
@@ -486,7 +482,6 @@ function Dashboard(props) {
                                 data={articlesDataChart}
                                 width={"350px"}
                                 height={"350px"}
-                                // options={{ maintainAspectRatio: false }}
                                 options={options}
                                 style={{ transform: "scale(1)" }} className="m-0 p-0 mx-auto" />
                         </Col>
@@ -665,7 +660,7 @@ function Dashboard(props) {
 
                 {/* ARTICLE EDITS */}
                 <Row>
-                    <Col style={{ backgroundColor: SITE_COLORS.alternateSecondary, color: "black", overFlow: "scroll" }} variant="light" className="px-2 py-4 ">
+                    <Col lg={12} md={12} sm={12} xs={12} xl={12} xxl={12} style={{ backgroundColor: SITE_COLORS.alternateSecondary, color: "black", overFlow: "scroll" }} variant="light" className="px-2 py-4 ">
 
                         <Tab.Container id="list-group-tabs-articles" className="overflow-scroll" defaultActiveKey="#link1" style={{
                             height: "300px",
@@ -677,24 +672,22 @@ function Dashboard(props) {
                                     <div style={{
                                         display: "inline-block", width: "100%", height: "500px",
                                         overflow: "hidden",
-                                        overflowY: "auto"
+                                        overflowY: "auto",
                                     }} >
                                         <ListGroup>
                                             {
                                                 data.articles.map((p, i) => (
-                                                    <ListGroup.Item key={`article-tab-${i}`} action href={`#link-${p._id}`} variant="dark" as={"div"} >
-                                                        <Row className="justify-content-between" as={"div"}>
+                                                    <ListGroup.Item key={`article-tab-${i}`} eventKey={`#tab-link-${p._id}`} action href={`#link-${p._id}`} variant="dark" as={"div"} >
+                                                        <Row className="justify-content-between" as={"div"} >
                                                             <Col lg={10} md={10} sm={10}>
-                                                                <div>
+                                                                <h6>
                                                                     {p.title} {" "}
-                                                                </div>
+                                                                </h6>
                                                                 <small>{p.date}</small>
                                                             </Col>
                                                             <br />
-                                                            <br />
-                                                            <br />
                                                             <Row>
-                                                                <Link to={`/edit/article/${p._id}`} >
+                                                                <Link to={`/edit/article/${p._id}`} style={{ textDecoration: "none" }}>
                                                                     <Col
                                                                         style={{
                                                                             backgroundColor: "rgb(129, 129, 129)",
@@ -702,28 +695,16 @@ function Dashboard(props) {
                                                                             zIndex: 99999,
                                                                             textAlign: "center"
                                                                         }}
+                                                                        className="mt-2 w-100"
                                                                         onClick={() => {
                                                                             console.log(`Editing Article ${i}!`)
                                                                         }}
+                                                                        as={"div"}
                                                                     >
-                                                                        <PencilSquare style={{ fontSize: "20px", marginTop: "4px", marginBottom: "3px" }} alignmentBaseline="bottom" />
+                                                                        <PencilSquare style={{ fontSize: "20px", marginTop: "4px", marginBottom: "10    px" }} alignmentBaseline="bottom" />
+                                                                        {" "}- Edit Article
                                                                     </Col>
                                                                 </Link>
-                                                                <br />
-                                                                <br />
-                                                                <Col
-                                                                    style={{
-                                                                        backgroundColor: "#c30202",
-
-                                                                        marginLeft: "auto",
-                                                                        marginRight: "auto",
-                                                                        textAlign: "center",
-                                                                    }}
-                                                                    onClick={() => {
-                                                                        console.log(`Deleting Article ${i}!`)
-                                                                    }}>
-                                                                    <Trash style={{ color: "white", fontSize: "20px", marginTop: "2px" }} alignmentBaseline="bottom" />
-                                                                </Col>
                                                             </Row>
                                                         </Row>
                                                     </ListGroup.Item>
@@ -748,7 +729,7 @@ function Dashboard(props) {
                                                     <Tab.Pane key={`article-tab-data-${i}`} eventKey={`#tab-link-${p._id}`} style={{ color: "white", position: "relative" }}>
                                                         <div style={{ position: "absolute", width: "100%", height: "auto" }}>
                                                             <Card style={{ backgroundColor: "transparent", color: "white", height: "220px" }} className="w-auto">
-                                                                <Image src={p.image_urls[0]} style={{ objectFit: "fill", height: "500px", width: "auto" }} />
+                                                                <Image src={p.image_urls[0]} style={{ objectFit: "fill", width: "65%", height: "auto", marginLeft: "auto", marginRight: "auto" }} />
                                                                 <Card.Body className="m-0">
                                                                     <Card.Text style={{ color: SITE_COLORS.lightMain }}>
                                                                         {[p.category]} - {[p.subCategory]}
@@ -771,7 +752,6 @@ function Dashboard(props) {
                                                                     <Card.Text style={{ color: "grey" }}>
                                                                         Article _id: {[p._id]}
                                                                     </Card.Text>
-                                                                    {/* <Button variant="primary" onClick={() => console.log("ARTICLE BTN CLICK!")}>Go to article</Button> */}
                                                                 </Card.Body>
                                                             </Card>
                                                         </div>
@@ -784,12 +764,11 @@ function Dashboard(props) {
                             </Row>
                         </Tab.Container>
                     </Col>
+                    <Col>
+
+                    </Col>
                 </Row>
             </Container >
-
-
-
-
             <br />
             <br />
             <br />

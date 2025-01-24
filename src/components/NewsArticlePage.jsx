@@ -7,46 +7,34 @@ import "yet-another-react-lightbox/styles.css";
 
 // COMPONENTS
 import { Row, Col, Container, Button, Image, Spinner } from "react-bootstrap";
+import LoadPageElement from "./ui/LoadingPageElement";
 
 // LIBRARIES
 import Lightbox from "yet-another-react-lightbox";
 import axios from "axios";
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 
 // ASSETS
 import { FileEarmarkExcelFill, Search } from "react-bootstrap-icons";
 import defaultImage from "../assets/imgs/misc/missing-img.png";
 
-// TEST IMAGE
-import art0 from "../assets/imgs/article-imgs/Article-6.png";
+// THEME DESIGN
+import { SITE_COLORS } from "./css/site";
 
-// LOADING PAGE TO SHOW WHEN FRONT END IS TRYING TO GRAB ARTICLE FROM DB
-function LoadingArticle() {
-    return (
-        <Container as={"article"} className={"p-5  w-100 shadow-lg text-light rounded text-center"} style={{ backgroundColor: "rgba(16, 41, 51, 1)" }}>
-            <Search style={{ fontSize: "150px" }} className="mb-4" />
-            <h1>Article is loading...</h1>
-            <br />
-            <Spinner style={{ color: "teal", fontSize: "25px", width: "50px", height: "50px" }} />
-        </Container >
-    )
-}
-
-// PAGE TO SHOW ERROR TRYING TO FIND ARTICLE
-function ErrorLoadingArticle() {
-    return (
-        <Container as={"article"} className={"p-5  w-100 shadow-lg text-light rounded text-center"} style={{ backgroundColor: "rgba(16, 41, 51, 1)" }}>
-            <FileEarmarkExcelFill style={{ fontSize: "150px" }} className="mb-4" />
-            <hr />
-            <h1>Article Cannot be found!</h1>
-            <br />
-            <Button className="mt-3" href="/home" >Go Back Home</Button>
-        </Container >
-    )
-}
 
 
 function NewsArticlePage(props) {
+
+    // MAKES SURE PAGE GOES TO TOP
+    const location = useLocation();
+
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: "smooth" // Optional for smooth scrolling
+        });
+    }, [location]);
 
     // Image Lightbox
     const [lightBoxOpen, setLightBoxOpen] = useState(false);
@@ -152,8 +140,6 @@ function NewsArticlePage(props) {
                             <Row>
                                 <hr style={{ color: "white" }} className="mt-2 mb-0" />
                             </Row>
-
-
                             <Row>
                                 <p style={{
                                     whiteSpace: "pre-wrap",
@@ -171,12 +157,43 @@ function NewsArticlePage(props) {
                     </Row >
                 </>
                 :
-                articleLoadingState === "loading" ? <LoadingArticle />
+                articleLoadingState === "loading" ?
+                    <LoadPageElement
+                        bgColor={SITE_COLORS.secondary}
+                        header="Loading article!"
+                        icon={<Search style={{ fontSize: "120px", marginLeft: "auto", marginRight: "auto" }} />}
+                        spinner={true}
+                    >
+                        <hr />
+                    </LoadPageElement>
                     :
-                    articleLoadingState === "error" ? <ErrorLoadingArticle /> : <ErrorLoadingArticle />
+                    articleLoadingState === "error" ?
+                        <LoadPageElement
+                            bgColor={SITE_COLORS.secondary}
+                            header="Error trying to find article!"
+                            icon={<FileEarmarkExcelFill style={{ fontSize: "120px", marginLeft: "auto", marginRight: "auto" }} />}
+                            spinner={false}
+                        >
+                            <hr />
+                            <p>Sorry about that! We could not find this article!</p>
+                            <Button onClick={() => { console.log('testing b utton') }}>Home</Button>
+                        </LoadPageElement>
+                        :
+                        <LoadPageElement
+                            bgColor={SITE_COLORS.secondary}
+                            header="Error trying to find article!"
+                            icon={<FileEarmarkExcelFill style={{ fontSize: "120px", marginLeft: "auto", marginRight: "auto" }} />}
+                            spinner={false}
+                        >
+                            <hr />
+                            <p>Sorry about that! We could not find this article!</p>
+                            <Button onClick={() => { console.log('testing b utton') }}>Home</Button>
+                        </LoadPageElement>
             }
         </Container >
     );
 }
 
 export default NewsArticlePage;
+
+

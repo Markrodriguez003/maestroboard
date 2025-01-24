@@ -7,7 +7,7 @@ import axios from "axios";
 import { Button, Modal, Container, Form, Row, Col, Stack, Toast } from "react-bootstrap";
 
 // CONTEXT
-import { ToastContext } from "./ui/NotificationToast";
+import { ToastContext } from "./context/NotificationToast";
 
 // LIBRARIES
 import imageUploader from "../../server/scripts/imageUploader";

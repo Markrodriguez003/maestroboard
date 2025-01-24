@@ -4,8 +4,8 @@ import { useState, useEffect, useContext } from "react";
 // COMPONENTS
 import axios from "axios";
 import { Button, Container, Form, Spinner, Row, Col, Stack } from "react-bootstrap";
-import { ToastContext } from "./NotificationToast";
-import { ConfirmationContext } from "./ConfirmationModal";
+import { ToastContext } from "../context/NotificationToast";
+import { ConfirmationContext } from "../context/ConfirmationModal";
 import LoadPageElement from "./LoadingPageElement";
 
 // LIBRARIES
@@ -14,6 +14,9 @@ import { useForm } from "react-hook-form";
 import { useParams, useNavigate } from "react-router";
 import { Navigate } from 'react-router-dom';
 import deleteArticle from "../../../server/scripts/deleteArticle";
+import { useLocation } from "react-router-dom";
+
+
 
 // ASSETS
 import { Reply, BackspaceReverse, FileEarmarkExcelFill, Search, FilePostFill, XCircleFill, Trash2Fill } from "react-bootstrap-icons";
@@ -37,10 +40,6 @@ function LoadingArticle() {
     )
 }
 
-
-
-
-
 /*----------------------------------------------------------------------------
 |   ⚙️ Use: Form to edit & delete article via URL params mongoDB id 
 |   
@@ -51,6 +50,17 @@ function LoadingArticle() {
 
 
 function ArticleEdit() {
+
+    // MAKES SURE PAGE GOES TO TOP
+    const location = useLocation();
+
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: "smooth" // Optional for smooth scrolling
+        });
+    }, [location]);
 
     // HANDLES NOTIFICATION MODAL CONTEXT
     const Confirmation = useContext(ConfirmationContext);
@@ -338,7 +348,6 @@ function ArticleEdit() {
     return (
         <>
             <Container style={{ backgroundColor: SITE_COLORS.lightMain, color: "white" }} className="w-75" fluid>
-
                 {articleLoadingState === "successful" ?
                     <Form className="p-3 m-0 mt-4 " onSubmit={handleSubmit(onSubmit)}>
                         <Stack>
@@ -346,7 +355,6 @@ function ArticleEdit() {
                             <small className="mx-auto" style={{ display: "block" }}> {" "} Fill out all form fields!</small>
                         </Stack>
                         <Form.Group>
-
                             <Form.Label className="mt-1">Title:</Form.Label>
                             <Form.Control
                                 type="text"
@@ -354,7 +362,6 @@ function ArticleEdit() {
                                 placeholder="Enter Article Title"
                                 {...register("title", { required: true, minLength: 12, maxLength: 30, })}
                                 defaultValue={article.title}
-
                             />
                             {errors.title && <Form.Text className="text-danger" >This field is required. Min: 12, Max: 30</Form.Text>}
                         </Form.Group>
@@ -369,7 +376,6 @@ function ArticleEdit() {
                                         defaultValue={article.subTitle}
                                     />
                                     {errors.subTitle && <Form.Text className="text-danger" >This field is required. Min: 12, Max: 30</Form.Text>}
-
                                 </Form.Group>
                             </Col>
                             <Col>
@@ -476,17 +482,7 @@ function ArticleEdit() {
                         </Form.Group>
                         <br />
                         <Stack direction="horizontal" className="justify-content-center gap-5 mb-4 text-lg-center mx-auto" >
-                            <Button
-                                variant="danger"
-                                className="text-light p-2 m-0"
-                                onClick={() => {
-                                    setTotalCharacters(0)
-                                    setShow(false)
-                                }}
-                            >
-                                {" "}
-                                <BackspaceReverse className="mb-1" /> Cancel Article{" "}
-                            </Button>
+
                             <Button
                                 className="text-light p-2 m-0"
                                 // onClick={() => setSubmitLoading(true)}
@@ -500,30 +496,13 @@ function ArticleEdit() {
                                     : <span> <Reply className="mb-1" /> Create Article </span>
                                 }
                             </Button>
-                            <Button
-                                variant="warning"
-                                className="text-dark p-2 m-0"
-                                onClick={() => {
-                                    reset()
-                                    setTotalCharacters(0)
-                                    Notification.setToast((prevToast => ({
-                                        ...prevToast,
-                                        show: true,
-                                        header: "Form Resetted!",
-                                        message: `All form fields have been resetted.`,
-                                        error: "warning"
-                                    })))
-                                }}
-                            >
-                                {" "}
-                                <BackspaceReverse className="mb-1" /> Reset Form{" "}
-                            </Button>
+
                             <Button
                                 variant="danger"
                                 className="text-light p-2 m-0"
                                 onClick={() => {
                                     Confirmation.setOptions((prev) => ({
-                                        ...prev, bgColor: SITE_COLORS.danger
+                                        ...prev, bgColor: SITE_COLORS.danger, header: "Delete article?"
                                     }))
                                     Confirmation.setShow(true)
                                 }}

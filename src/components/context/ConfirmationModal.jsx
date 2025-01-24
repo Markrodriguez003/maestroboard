@@ -1,14 +1,8 @@
 // REACT
-import { useState, useEffect, createContext } from "react";
+import { useState, createContext } from "react";
 
 // COMPONENTS
-import { Button, Container, Form, Spinner, Row, Col, Modal, Stack } from "react-bootstrap";
-
-// LIBRARIES
-import { useParams, useNavigate } from "react-router";
-
-// ASSETS
-import { Reply, BackspaceReverse, FileEarmarkExcelFill, Search, FilePostFill, XCircleFill, Trash2Fill } from "react-bootstrap-icons"; // Importing Bootstrap Icon Components
+import { Button, Container, Modal,  } from "react-bootstrap";
 
 // DESIGN CSS
 import { SITE_COLORS } from "../css/site";
@@ -39,7 +33,9 @@ function ConfirmationModal({ header, body, children, bgColor }) {
     // HANDLES MODAL OPTIONS (BACKGROUND COLOR, ECT)
     const [options, setOptions] = useState({
         bgColor: SITE_COLORS.main,
-        color: "white"
+        color: "white",
+        header: "",
+        body: ""
     })
 
     // HANDLE OPENING & CLOSING OF  MODAL
@@ -62,9 +58,9 @@ function ConfirmationModal({ header, body, children, bgColor }) {
             <Container style={{ backgroundColor: SITE_COLORS.lightMain, color: "white" }} className="w-75" fluid>
                 <Modal show={show} centered onHide={() => setShow(false)}>
                     <Modal.Header closeButton style={{ backgroundColor: `${options.bgColor}`, color: "white" }}>
-                        <Modal.Title>Confirm Action: {header}</Modal.Title>
+                        <Modal.Title>Confirm Action: {options.header}</Modal.Title>
                     </Modal.Header>
-                    <Modal.Body >Are you sure you want to perform this action?</Modal.Body>
+                    <Modal.Body >Are you sure you want to perform this action?  {options.body}</Modal.Body>
                     <Modal.Footer>
                         <Button variant="primary" onClick={() => {
                             setChoice(true)

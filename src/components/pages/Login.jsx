@@ -18,7 +18,6 @@ function Login(props) {
   const [form, setForm] = useState({});
 
   // Handles button spinner: submit (true), initial(false),
-  // const [formLoading, setFormLoading] = useState(false);
   const [formActionResults, setFormActionResults] = useState({
     loading: false,
     errors: false,

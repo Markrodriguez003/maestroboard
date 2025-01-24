@@ -10,8 +10,8 @@ import { AdvancedImage } from '@cloudinary/react';
 import { useState, useEffect } from "react";
 
 // CONTEXT
-import { NotificationToast } from "./components/ui/NotificationToast";
-import { ConfirmationModal } from "./components/ui/ConfirmationModal";
+import { NotificationToast } from "./components/context/NotificationToast";
+import { ConfirmationModal } from "./components/context/ConfirmationModal";
 
 // PAGES
 import Login from "./components/pages/Login";
