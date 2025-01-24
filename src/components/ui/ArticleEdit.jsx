@@ -2,14 +2,16 @@ import { useState, useEffect, useContext } from "react";
 
 // COMPONENTS
 import axios from "axios";
-import { Button, Container, Form, Spinner, Row, Col, Modal, Stack } from "react-bootstrap";
+import { Button, Container, Form, Spinner, Row, Col, Stack } from "react-bootstrap";
 import { ToastContext } from "./NotificationToast";
+import { ConfirmationContext } from "./ConfirmationModal";
 
 // LIBRARIES
 import imageUploader from "../../../server/scripts/imageUploader";
 import { useForm } from "react-hook-form";
 import { useParams, useNavigate } from "react-router";
 import { Navigate } from 'react-router-dom';
+import deleteArticle from "../../../server/scripts/deleteArticle";
 
 // ASSETS
 import { Reply, BackspaceReverse, FileEarmarkExcelFill, Search, FilePostFill, XCircleFill, Trash2Fill } from "react-bootstrap-icons"; // Importing Bootstrap Icon Components
@@ -19,6 +21,7 @@ import article_types from "../../data/articleTypes.json";
 
 // DESIGN CSS
 import { SITE_COLORS } from "../css/site";
+import { trueColor } from "@cloudinary/url-gen/qualifiers/colorSpace";
 
 // ! move to component
 // LOADING PAGE TO SHOW WHEN FRONT END IS TRYING TO GRAB ARTICLE FROM DB
@@ -47,15 +50,25 @@ function ErrorLoadingArticle() {
     )
 }
 
+
+
+/*----------------------------------------------------------------------------
+|   ⚙️ Use: Form to edit & delete article via URL params mongoDB id 
+|   
+|   🔧 Todo:
+|
+|   📦 Returns: JSX component
+*----------------------------------------------------------------------------*/
+
+
 function ArticleEdit() {
 
-    // ! MOVE TO SEPARATE COMPONENT
-    // MODAL CONFIRMATION
-    const [confirmationShow, setConfirmationShow] = useState(false);
+    // HANDLES NOTIFICATION MODAL CONTEXT
+    const Confirmation = useContext(ConfirmationContext);
 
-    const handleConfirmationClose = () => setConfirmationShow(false);
-    const handleConfirmationShow = () => setConfirmationShow(true);
-
+    // HOLDS TOAST TOGGLE AND VALUE
+    // CONTEXT SETTERS & GETTERS FOR NOTIFICATION TOAST 
+    const Notification = useContext(ToastContext);
 
     // NAVIGATE
     let navigate = useNavigate();
@@ -74,8 +87,6 @@ function ArticleEdit() {
 
     // FORM VALIDATION STATE 
     const { register, handleSubmit, reset, setValue, formState: { errors } } = useForm();
-
-    // console.log(`UseForm ::${JSON.stringify(article)}`)
 
     // SETS NEW ARTICLE OBJECT
     let [newArticle, setNewArticle] = useState({
@@ -136,10 +147,6 @@ function ArticleEdit() {
     // TOTAL POST BODY CHARACTERS FOR POST BODY CHARACTER MIN/MAX
     const [totalCharacters, setTotalCharacters] = useState(0);
 
-    // HOLDS TOAST TOGGLE AND VALUE
-    // CONTEXT SETTERS & GETTERS FOR NOTIFICATION TOAST 
-    const { toast, setToast } = useContext(ToastContext);
-
     // HANDLES SHOWING OF MODAL
     const [show, setShow] = useState(false);
 
@@ -156,8 +163,7 @@ function ArticleEdit() {
 
         // PUSHES ARTICLE TO DB
         async function UPDATE_ARTICLE(newArticle) {
-            console.log(`RESPONSE! ${JSON.stringify(params)}`)
-
+            // console.log(`RESPONSE! ${JSON.stringify(params)}`)
             try {
                 // const response = axios.post('http://localhost:3005/api/insert-article', newArticle);
                 axios.put(`http://localhost:3005/api/edit/article/id/${params.id}`, newArticle).then((response) => {
@@ -166,7 +172,7 @@ function ArticleEdit() {
 
                 })
                 // SETS TOAST OF SUBMITTED ARTICLE!
-                setToast((prevToast => ({
+                Notification.setToast((prevToast => ({
                     ...prevToast,
                     show: true,
                     header: "Article has been created!",
@@ -174,7 +180,7 @@ function ArticleEdit() {
                     error: false
                 })))
             } catch (error) {
-                setToast((prevToast => ({
+                Notification.setToast((prevToast => ({
                     ...prevToast,
                     show: true,
                     header: "Article could not be created!",
@@ -203,7 +209,7 @@ function ArticleEdit() {
                             secureArry = [...secureArry, data.secureURL];
 
                         }).catch((error) => {
-                            setToast((prevToast => ({
+                            Notification.setToast((prevToast => ({
                                 ...prevToast,
                                 show: true,
                                 header: "Images could not be inserted!",
@@ -233,7 +239,7 @@ function ArticleEdit() {
                 // RESETS FORM
                 reset();
 
-                setToast((prevToast => ({
+                Notification.setToast((prevToast => ({
                     ...prevToast,
                     show: true,
                     header: "Article Edited!",
@@ -245,7 +251,7 @@ function ArticleEdit() {
 
             } catch (error) {
 
-                setToast((prevToast => ({
+                Notification.setToast((prevToast => ({
                     ...prevToast,
                     show: true,
                     header: "Images URLs could not be received!",
@@ -277,7 +283,7 @@ function ArticleEdit() {
             setValue('files', '');
 
             // DISPLAY ERROR MSG
-            setToast((prevToast => ({
+            Notification.setToast((prevToast => ({
                 ...prevToast,
                 show: true,
                 header: "Max image cound reached!",
@@ -306,54 +312,44 @@ function ArticleEdit() {
         setSubmitLoading(true);
     };
 
-
-    // ! MOVE WITH SEPARATE DELETE ARTICLE COMPONENT BELOW
-    const [deleteConfirmation, setDeleteConfirmation] = useState(false);
-    // ! MOVE TO SEPARATE COMPONENT
     useEffect(() => {
-        async function deleteArticle() {
-            await axios
-                .delete(`http://localhost:3005/api/delete/article/id/${params.id}`)
-                .then(async (response) => {
-                    console.log(`Article has been deleted: ${response}`)
-                }).catch((error) => {
-                    console.log(`We could not delete article! : ${error}`)
-                })
-            reset()
-            setTotalCharacters(0)
-            setToast((prevToast => ({
-                ...prevToast,
-                show: true,
-                header: "Article Deleted!",
-                message: `The article has been removed from the database!`,
-                error: "successful"
-            })));
-            navigate('/dashboard', { replace: true });
+        async function deletingArticle() {
+            try {
+                const result = await deleteArticle(params.id);
+                // console.log(JSON.stringify(result))
+                reset()
+                setTotalCharacters(0)
+                Notification.setToast((prevToast => ({
+                    ...prevToast,
+                    show: true,
+                    header: "Article Deleted!",
+                    message: `The article has been removed from the database!`,
+                    error: "successful"
+                })))
+                navigate('/dashboard', { replace: true });
+            } catch (error) {
+                // console.log(`Error: ${error}`)
+                Notification.setToast((prevToast => ({
+                    ...prevToast,
+                    show: true,
+                    header: "Article Cannot be Deleted!",
+                    message: `The article has not been removed from the database! We encountered an error! Please try again! -  ${error}`,
+                    error: true
+                })));
+            }
+
+            // IF USER CONFIRMS DELETION OF ARTICLE VIA CONFIRMATION MODAL
         }
-        if (deleteConfirmation) {
-            deleteArticle();
+        if (Confirmation.choice) {
+            deletingArticle();
         }
-    }, [deleteConfirmation])
+    }, [Confirmation.choice])
+
 
     return (
         <>
             <Container style={{ backgroundColor: SITE_COLORS.lightMain, color: "white" }} className="w-75" fluid>
-                <Modal show={confirmationShow} centered onHide={handleConfirmationClose}>
-                    <Modal.Header closeButton style={{ backgroundColor: `${SITE_COLORS.danger}`, color: "white" }}>
-                        <Modal.Title>Confirm Action: Delete Article</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body >Are you sure you want to perform this action?</Modal.Body>
-                    <Modal.Footer>
-                        <Button variant="primary" onClick={() => {
-                            setDeleteConfirmation(true)
-                        }}>
-                            Confirm
-                        </Button>
-                        <Button variant="danger" onClick={handleConfirmationClose}>
-                            Cancel
-                        </Button>
-                    </Modal.Footer>
-                </Modal>
+
                 {articleLoadingState === "successful" ?
                     <Form className="p-3 m-0 " onSubmit={handleSubmit(onSubmit)}>
                         <Stack>
@@ -521,7 +517,7 @@ function ArticleEdit() {
                                 onClick={() => {
                                     reset()
                                     setTotalCharacters(0)
-                                    setToast((prevToast => ({
+                                    Notification.setToast((prevToast => ({
                                         ...prevToast,
                                         show: true,
                                         header: "Form Resetted!",
@@ -537,7 +533,10 @@ function ArticleEdit() {
                                 variant="danger"
                                 className="text-light p-2 m-0"
                                 onClick={() => {
-                                    handleConfirmationShow(true)
+                                    Confirmation.setOptions((prev) => ({
+                                        ...prev, bgColor: SITE_COLORS.danger
+                                    }))
+                                    Confirmation.setShow(true)
                                 }}
                             >
                                 {" "}
@@ -548,8 +547,14 @@ function ArticleEdit() {
                     :
                     articleLoadingState === "loading" ? <LoadingArticle />
                         :
-                        articleLoadingState ? <ErrorLoadingArticle /> : <ErrorLoadingArticle />}
-            </Container>
+                        articleLoadingState ?
+                            <>
+
+                                <ErrorLoadingArticle />
+                            </>
+                            : <ErrorLoadingArticle />}
+
+            </Container >
         </>
     )
 

@@ -19,14 +19,8 @@ import { Doughnut } from 'react-chartjs-2';
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 // ASSETS
-import { FileEarmarkPerson, FileEarmarkPlusFill, Trash, SpeakerFill, FileEarmarkMusicFill, Tools, PinFill, PencilSquare, PostcardFill, CardList, FilePerson, Scissors } from "react-bootstrap-icons";
+import { FileEarmarkPerson, Trash, SpeakerFill, FileEarmarkMusicFill, Tools, PinFill, PencilSquare, PostcardFill, CardList, Scissors } from "react-bootstrap-icons";
 import { SITE_COLORS } from "../css/site";
-
-// TEST IMAGES
-import art15 from "../../assets/imgs/article-imgs/tracktion_biotek_3-rck6L30aXYxytjFU216BJV8Bx8VkSlq7.jpg";
-import art16 from "../../assets/imgs/article-imgs/softube_console_1_mkiii_update-lAbiWXNWCaZT.1BkrSgJ8dOOTsjQYBih.jpg";
-import art17 from "../../assets/imgs/article-imgs/hamstead_soundworks_redwing-1Z6d9c0kRf1n7lq.jlRWhmZyH579VAG6.jpg";
-const postImages = [art15, art16, art17];
 
 // CSS
 // import "../css/Login.css";
@@ -92,26 +86,38 @@ function Dashboard(props) {
     }
     // ARTICLE POST DATA
     const articlesDataChart = {
-        labels: ['General', 'Events', 'Announcements', 'Electronic Music', 'Recording and Studio', "Composition"],
+        labels: ['General', 'News', 'Events', 'Announcements', 'Gear Reviews', 'Electronic Music', 'Instruments', 'Recording and Studio', "Composition"],
         datasets: [
             {
                 label: "# Article Types",
-                data: [14, 8, 4, 42, 72],
+                data: [data["general-articles"], data["news-articles"], data["events-articles"], data["announcements-articles"], data["gear-review-articles"], data["electronic-music-articles"], data["instruments-articles"], data["recording-&-studio-articles"], data["composition-articles"]
+                ],
                 backgroundColor: [
                     SITE_COLORS.main,
                     SITE_COLORS.lightSecondary,
+                    "darkorange",
                     SITE_COLORS.lightMain,
+                    "fireBrick",
                     SITE_COLORS.alternateMain,
                     SITE_COLORS.alternateSecondary,
-                    SITE_COLORS.secondary,
+                    "Olive",
+                    "MediumSeaGreen",
+                    "Violet"
+
                 ],
                 borderColor: [
                     SITE_COLORS.main,
                     SITE_COLORS.lightSecondary,
+                    "darkorange",
                     SITE_COLORS.lightMain,
+                    "fireBrick",
                     SITE_COLORS.alternateMain,
                     SITE_COLORS.alternateSecondary,
-                    SITE_COLORS.secondary,
+                    "Olive",
+
+                    "MediumSeaGreen",
+                    "Violet"
+
                 ],
                 borderWidth: 1,
             },
@@ -676,8 +682,8 @@ function Dashboard(props) {
                                         <ListGroup>
                                             {
                                                 data.articles.map((p, i) => (
-                                                    <ListGroup.Item key={`article-tab-${i}`} action href={`#link${i}`} variant="dark" >
-                                                        <Row className="justify-content-between">
+                                                    <ListGroup.Item key={`article-tab-${i}`} action href={`#link-${p._id}`} variant="dark" as={"div"} >
+                                                        <Row className="justify-content-between" as={"div"}>
                                                             <Col lg={10} md={10} sm={10}>
                                                                 <div>
                                                                     {p.title} {" "}
@@ -688,7 +694,7 @@ function Dashboard(props) {
                                                             <br />
                                                             <br />
                                                             <Row>
-                                                                <Link to={`/edit/article/${p._id}`}>
+                                                                <Link to={`/edit/article/${p._id}`} >
                                                                     <Col
                                                                         style={{
                                                                             backgroundColor: "rgb(129, 129, 129)",
@@ -739,7 +745,7 @@ function Dashboard(props) {
                                         }} >
                                             {
                                                 data.articles.map((p, i) => (
-                                                    <Tab.Pane key={`article-tab-data-${i}`} eventKey={`#link${i}`} style={{ color: "white", position: "relative" }}>
+                                                    <Tab.Pane key={`article-tab-data-${i}`} eventKey={`#tab-link-${p._id}`} style={{ color: "white", position: "relative" }}>
                                                         <div style={{ position: "absolute", width: "100%", height: "auto" }}>
                                                             <Card style={{ backgroundColor: "transparent", color: "white", height: "220px" }} className="w-auto">
                                                                 <Image src={p.image_urls[0]} style={{ objectFit: "fill", height: "500px", width: "auto" }} />

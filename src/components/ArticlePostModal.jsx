@@ -5,7 +5,7 @@ import { useState, useEffect, useContext } from "react";
 // COMPONENTS
 import axios from "axios";
 import { Button, Modal, Container, Form, Row, Col, Stack } from "react-bootstrap";
-import { ToastContext } from "./ui/NotificationToast";
+import { ToastContext, NotificationToast } from "./ui/NotificationToast";
 
 // LIBRARIES
 import imageUploader from "../../server/scripts/imageUploader";
@@ -41,7 +41,7 @@ function ArticlePostModal(props) {
 
     // HOLDS TOAST TOGGLE AND VALUE
     // CONTEXT SETTERS & GETTERS FOR NOTIFICATION TOAST 
-    const { toast, setToast } = useContext(ToastContext);
+    const ToastNotificationContext = useContext(ToastContext);
 
     // HANDLES SHOWING OF MODAL
     const [show, setShow] = useState(false);
@@ -79,7 +79,7 @@ function ArticlePostModal(props) {
             try {
                 const response = axios.post('http://localhost:3005/api/insert-article', newArticle);
                 // SETS TOAST OF SUBMITTED ARTICLE!
-                setToast((prevToast => ({
+                ToastNotificationContext.setToast((prevToast => ({
                     ...prevToast,
                     show: true,
                     header: "Article has been created!",
@@ -88,7 +88,7 @@ function ArticlePostModal(props) {
                 })))
             } catch (error) {
                 // console.log(`Here is the error inserting new post::: ${error}`);
-                setToast((prevToast => ({
+                ToastNotificationContext.setToast((prevToast => ({
                     ...prevToast,
                     show: true,
                     header: "Article could not be created!",
@@ -121,7 +121,7 @@ function ArticlePostModal(props) {
 
                         }).catch((error) => {
                             // console.log(`Error updating state with images::${error}`)
-                            setToast((prevToast => ({
+                            ToastNotificationContext.setToast((prevToast => ({
                                 ...prevToast,
                                 show: true,
                                 header: "Images could not be inserted!",
@@ -155,7 +155,7 @@ function ArticlePostModal(props) {
 
             } catch (error) {
                 // console.log(`Error receiving image URLs/IDs : ${error}`);
-                setToast((prevToast => ({
+                ToastNotificationContext.setToast((prevToast => ({
                     ...prevToast,
                     show: true,
                     header: "Images URLs could not be received!",
@@ -187,7 +187,7 @@ function ArticlePostModal(props) {
             setValue('files', '');
 
             // DISPLAY ERROR MSG
-            setToast((prevToast => ({
+            ToastNotificationContext.setToast((prevToast => ({
                 ...prevToast,
                 show: true,
                 header: "Max image cound reached!",
@@ -213,6 +213,7 @@ function ArticlePostModal(props) {
         // GRABBING URL IMAGES AND UPLOADING ARTICLE TO DB
         setSubmitLoading(true);
     };
+
 
     return (
         <>
@@ -391,7 +392,7 @@ function ArticlePostModal(props) {
                                 onClick={() => {
                                     reset()
                                     setTotalCharacters(0)
-                                    setToast((prevToast => ({
+                                    ToastNotificationContext.setToast((prevToast => ({
                                         ...prevToast,
                                         show: true,
                                         header: "Form Resetted!",

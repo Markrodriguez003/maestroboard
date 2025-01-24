@@ -5,10 +5,6 @@ import { useState, createContext } from 'react';
 // COMPONENTS
 import { Col, Row, Toast } from 'react-bootstrap';
 
-// CONTEXT
-// import { ToastContext } from './ToastContext';
-
-
 /*----------------------------------------------------------------------------
 |   ⚙️ Use: Notification Toast Context + Notification Toast for general use  
 |       Error = Red toast | Success = Green toast  
@@ -17,17 +13,17 @@ import { Col, Row, Toast } from 'react-bootstrap';
 |
 |   📦 Returns: JSX component
 *----------------------------------------------------------------------------*/
-// CREATES CONTEXT TO PROVIDE TOAST TO ANY COMPONENT
-// show -> true/false: this will trigger toast
-// toggleToast -> function(): this will hold logic to open/close toast
-// export const ToastContext = createContext({ show: false, toggleToast: () => { } });
-const ToastContext = createContext();
 
+
+
+// NOTES
+// https://kentcdodds.com/blog/how-to-use-react-context-effectively
+// CREATES CONTEXT TO PROVIDE TOAST TO ANY COMPONENT
+const ToastContext = createContext({});
 function NotificationToast({ children }) {
 
     // HANDLES SHOWING MODAL
     const [toast, setToast] = useState({ show: false, message: "", header: "", small: "", error: false });
-
 
     return (
         <ToastContext.Provider value={{ toast, setToast }}>
