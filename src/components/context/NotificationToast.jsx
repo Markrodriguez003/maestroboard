@@ -20,7 +20,7 @@ const ToastContext = createContext({});
 function NotificationToast({ children }) {
 
     // HANDLES SHOWING MODAL
-    const [toast, setToast] = useState({ show: true, message: "", header: "", small: "", error: false });
+    const [toast, setToast] = useState({ show: false, message: "", header: "", small: "", error: false });
 
     return (
         <ToastContext.Provider value={{ toast, setToast }}>

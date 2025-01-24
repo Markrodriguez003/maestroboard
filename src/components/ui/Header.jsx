@@ -1,7 +1,7 @@
 
 // COMPONENTS
-import { Image, Nav, Navbar, Row, Col } from "react-bootstrap";
-import { PersonFillLock, Newspaper } from "react-bootstrap-icons";
+import { Nav, Navbar, Container } from "react-bootstrap";
+import { PersonFillLock, Newspaper, PinAngleFill, CardChecklist } from "react-bootstrap-icons";
 import MainLogo from "./MainLogo";
 
 // ASSETS
@@ -12,47 +12,31 @@ import "../css/Header.css";
 
 function Header() {
   return (
-
-    <Navbar
-      collapseOnSelect
-      expand="lg"
-      className="p-2 mb-1 justify-content-lg-between justify-content-md-between justify-content-sm-center justify-content-xl-between "
-      style={{
-        backgroundColor: SITE_COLORS.main,
-        boxShadow: "0px 2px 53px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0)"
-      }}
-    >
-      <Row>
-        <Col >
-          <Row>
-            <Navbar.Brand href="/home" >
-              <MainLogo />
-            </Navbar.Brand>
-          </Row>
-        </Col>
-      </Row>
-      <Row sm={12} md={12} className="m-0 p-0" >
-        <Col className="justify-content-lg-center justify-content-md-between justify-content-sm-center text-center m-0 p-0" >
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" className=" mt-2" style={{ backgroundColor: "teal", color: "teal" }} />
-          <Navbar.Collapse className="m-0 p-0" id="responsive-navbar-nav header-menu-start">
-            <Nav className="m-0 p-0 gap-2" >
-              <Nav.Link href="/board" className="header-list-item " >
-                Community Board
-              </Nav.Link>
-              <Nav.Link href="/news" className="header-list-item" >
-                News
-              </Nav.Link>
-              <Nav.Link href="/forum" className="header-list-item">
-                Forum
-              </Nav.Link>
-              <Nav.Link eventKey={2} href="/login" className="header-list-item">
-                <PersonFillLock style={{ verticalAlign: "center" }} /> Admin Log in
-              </Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
-        </Col>
-      </Row >
+    <Navbar bg="dark" expand="lg" variant="dark" className="bg-body-tertiary p-0 m-0 d-flex  " >
+      <Container style={{ backgroundColor: SITE_COLORS.main }} className="d-flex p-2 " fluid>
+        <Navbar.Brand href="#home" className="pb-3">  <MainLogo /></Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse className="justify-content-xxl-end justify-content-xl-end justify-content-lg-start justify-content-md-start justify-content-sm-start justify-content-xs-start  " >
+          <Nav className="">
+            <Nav.Link href="/board" className="header-list-item " >
+              <PinAngleFill style={{ verticalAlign: "center", paddingBottom: "5px", fontSize: "20px" }} /> {" "}
+              Community Board
+            </Nav.Link>
+            <Nav.Link href="/news" className="header-list-item" >
+              <Newspaper style={{ verticalAlign: "center", paddingBottom: "5px", fontSize: "20px" }} /> {" "} News
+            </Nav.Link>
+            <Nav.Link href="/forum" className="header-list-item">
+              <CardChecklist style={{ verticalAlign: "center", paddingBottom: "5px", fontSize: "20px" }} /> {" "}
+              Forum
+            </Nav.Link>
+            <Nav.Link eventKey={2} href="/login" className="header-list-item">
+              <PersonFillLock style={{ verticalAlign: "center", paddingBottom: "5px", fontSize: "20px" }} /> Admin Log in
+            </Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
     </Navbar >
+
 
   );
 }

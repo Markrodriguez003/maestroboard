@@ -167,3 +167,8 @@
   font-size: 18px;
   /* margin-right: 54px; */
 }
+
+.navbar-light .navbar-toggler-icon {
+  background-color: teal !important;
+  color: red;
+}

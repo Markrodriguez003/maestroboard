@@ -678,7 +678,7 @@ function Dashboard(props) {
                                             {
                                                 data.articles.map((p, i) => (
                                                     <ListGroup.Item key={`article-tab-${i}`} eventKey={`#tab-link-${p._id}`} action href={`#link-${p._id}`} variant="dark" as={"div"} >
-                                                        <Row className="justify-content-between" as={"div"} >
+                                                        <Row className="justify-content-between" as={"div"} style={{cursor:"pointer"}} >
                                                             <Col lg={10} md={10} sm={10}>
                                                                 <h6>
                                                                     {p.title} {" "}
@@ -693,7 +693,7 @@ function Dashboard(props) {
                                                                             backgroundColor: "rgb(129, 129, 129)",
                                                                             color: "white",
                                                                             zIndex: 99999,
-                                                                            textAlign: "center"
+                                                                            textAlign: "center",
                                                                         }}
                                                                         className="mt-2 w-100"
                                                                         onClick={() => {
@@ -701,7 +701,7 @@ function Dashboard(props) {
                                                                         }}
                                                                         as={"div"}
                                                                     >
-                                                                        <PencilSquare style={{ fontSize: "20px", marginTop: "4px", marginBottom: "10    px" }} alignmentBaseline="bottom" />
+                                                                        <PencilSquare style={{ fontSize: "20px", marginTop: "4px", marginBottom: "6px" }} alignmentBaseline="bottom" />
                                                                         {" "}- Edit Article
                                                                     </Col>
                                                                 </Link>
