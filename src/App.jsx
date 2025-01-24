@@ -2,13 +2,6 @@
 // APP CSS
 import "./components/css/App.css";
 
-// LIBS
-import { cld } from "../server/scripts/imageRepository";
-
-// CLOUDINARY
-import { AdvancedImage } from '@cloudinary/react';
-import { useState, useEffect } from "react";
-
 // CONTEXT
 import { NotificationToast } from "./components/context/NotificationToast";
 import { ConfirmationModal } from "./components/context/ConfirmationModal";
@@ -27,7 +20,7 @@ import ArticleEdit from "./components/ui/ArticleEdit"
 import SignUpForm from "./components/SignUpForm";
 import NewsArticlePage from "./components/NewsArticlePage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Header from "./components/Header";
+import Header from "./components/ui/Header";
 import Footer from "./components/ui/Footer";
 
 function App() {
@@ -35,8 +28,6 @@ function App() {
   return (
 
     <NotificationToast>
-
-
       < Router >
         < Header />
         <Routes>
