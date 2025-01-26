@@ -1,10 +1,13 @@
 const express = require("express"); // Bringing in Express
+const helmet = require("helmet");
 // const path = require("path"); // Bringing in Path
 const mongoose = require("mongoose"); // Mongoose
 // const CP = require("cookie-parser");
 const app = express(); //Intializing  Express
 // USING ENV FILES IN SERVER
 require("dotenv").config();
+
+const jwt = require("jsonwebtoken");
 
 // USING CORS
 const cors = require("cors");
@@ -15,6 +18,7 @@ app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
+app.use(helmet());
 // app.use(cookieParser()); // TODO Pass a secret here?
 
 //  Creating Port
@@ -47,10 +51,6 @@ mongoose.connect(
     `mongodb+srv://ModulatorAdmin:${process.env.VITE_MONGODB_PASS}@cluster0.s0c84pg.mongodb.net/`,
   { useNewUrlParser: true, useUnifiedTopology: true }
 );
-
-// TEST
-
-// console.log(`Inside server ${process.env.VITE_MONGODB_PASS}`);
 
 // Assigning "db" to created mongoose link above
 const db = mongoose.connection;
@@ -121,7 +121,7 @@ async function loadUsers() {
 // deleteUsers();
 
 // Deletes Posts
-// deletePosts(); 
+// deletePosts();
 
 // Deletes Articles
 // deleteArticles();
@@ -152,9 +152,10 @@ app.get("/", function (req, res) {
 app.get("/api/loadPosts", function (req, res) {
   Post.find({})
     .then((posts) => {
-      console.log(
+      console
+        .log
         // "There are " + posts.length + " posts currently in the database."
-      );
+        ();
       res.json(posts);
     })
     .catch((err) => {
@@ -234,34 +235,86 @@ app.get("/api/load-user-count", function (req, res) {
     });
 });
 
+// LOG IN ROUTE FOR USERS
 // ? https://www.geeksforgeeks.org/how-to-send-basic-auth-with-axios-in-react-node/#
-
+// ? https://www.geeksforgeeks.org/how-to-create-and-verify-jwts-with-node-js/
 app.post("/api/login", (req, res) => {
   const { email, password } = req.body;
   let e = email;
   let p = password;
 
+  // JWT OPTIONS FOR GENERATING TOKEN
+  const JWT_OPTIONS = {
+    expiresIn: "1h",
+  };
+
   UserAccount.find({ email: e })
     .then((users) => {
-      let foundAccountEmail = users[0].email;
-      let foundAccountPassword = users[0].password;
+      const foundAccountEmail = users[0].email;
+      const foundAccountPassword = users[0].password;
+      const foundAccountID = users[0]._id;
 
       if (
         foundAccountEmail !== undefined &&
         foundAccountEmail === "admin@admin.com" &&
-        p === users[0].password
+        p === foundAccountPassword
       ) {
+        // MB's JWT SECRET KEY
+        const SECRET_KEY = process.env.VITE_JWT_SECRET_KEY;
+
+        // PAYLOAD FOR JWT
+        const PAYLOAD = {
+          // USER'S EMAIL
+          id: foundAccountID,
+          // USER'S ID
+          email: foundAccountEmail,
+          // WILL DETERMINE IF USER SIGNING IN IS AN ADMIN OR USER
+          isAdmin: true,
+        };
+
+        // CREATES UNIQUE JWT TOKEN USING PAYLOAD + MB JWT_SECRET_KEY
+        const token = jwt.sign(PAYLOAD, SECRET_KEY, JWT_OPTIONS);
+
         res.status(200).json({
           message: `Signed in!`,
           status: "successful",
+          token: token,
         });
       } else {
+        console.log(
+          "Cannot secure create user session! Please try again later!"
+        );
         res.status(401).json({ message: "Invalid credentials!", status: 401 });
       }
     })
     .catch((err) => {
       res.status(401).json({ message: `Invalid credentials! :: ${err}` });
     });
+});
+
+// https://medium.com/dataseries/public-claims-and-how-to-validate-a-jwt-1d6c81823826
+app.get("/api/auth", (req, res) => {
+  // GRABS TOKEN FROM THE FRONTEND
+  const authorizationToken = req.headers["authorization"].split(" ")[1];
+  if (authorizationToken) {
+    const verifyToken = jwt.verify(
+      authorizationToken,
+      process.env.VITE_JWT_SECRET_KEY
+    );
+
+    res.json({
+      login: true,
+      adminLogin: true,
+      data: verifyToken,
+    });
+  } else {
+    console.log(`fhuh??`);
+    res.json({
+      login: false,
+      adminLogin: false,
+      data: { error: "Error!" },
+    });
+  }
 });
 
 // * Finds all posts by a specific category type
@@ -317,20 +370,6 @@ app.delete("/api/delete/article/id/:id", async function (req, res) {
     res.status(500).json({ error: err });
   }
 });
-
-// Article.findById(req.params.id).then((article) => {
-//   article = { ...req.params.newArticle };
-//   console.log(`ARTICLE FOUND! ${JSON.stringify(article)}`)
-// article
-//   .save()
-//   .then(() => {
-//     console.log(`Article was Updated! --> ${article}`);
-//   })
-//   .catch((err) => {
-//     console.error("Error updating user:", err);
-//   });
-// });
-// });
 
 // * Finds all articles by a specific category type / Selling%20Gear /Buying%20Gear
 app.get("/api/loadarticles/category/:category", function (req, res) {

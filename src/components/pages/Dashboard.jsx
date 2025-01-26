@@ -7,6 +7,8 @@ import PostBoardCard from "../PostBoardCard";
 import BoardPostModal from "../BoardPostModal";
 import ArticlePostModal from "../ArticlePostModal";
 import { Link } from "react-router-dom";
+import PageNotFound from "./PageNotFound";
+import LoadingPageElement from "../ui/LoadingPageElement";
 
 // DATA
 import article_typesJSON from "../../data/articleTypes.json";
@@ -19,7 +21,7 @@ import { Doughnut } from 'react-chartjs-2';
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 // ASSETS
-import { FileEarmarkPerson, SpeakerFill, FileEarmarkMusicFill, Tools, PinFill, PencilSquare, PostcardFill, CardList, Scissors } from "react-bootstrap-icons";
+import { FileEarmarkPerson, SpeakerFill, FileEarmarkMusicFill, DatabaseGear, Tools, PinFill, PencilSquare, PostcardFill, CardList, Scissors } from "react-bootstrap-icons";
 import { SITE_COLORS } from "../css/site";
 
 // CSS
@@ -36,6 +38,47 @@ import { SITE_COLORS } from "../css/site";
 *----------------------------------------------------------------------------*/
 
 function Dashboard(props) {
+
+
+    // HOLDS TRIGGER FOR AUTHENTICATED USER
+    const [isAuthenticatedUser, setIsAuthenticatedUser] = useState(null);
+
+    // GRABBING SESSION MEMORY TO CHECK TO SEE IF USER IS SIGNED IN
+    // VIA TOKEN DATA
+
+    useEffect(() => {
+        function getSessionToken() {
+            const tokenString = sessionStorage.getItem('token');
+            const userToken = JSON.parse(tokenString);
+            return userToken;
+        };
+
+        async function authenticateUser() {
+            const token = getSessionToken();
+
+            const config = {
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    "Data": "Custom-Data"
+                }
+            }
+
+            await axios
+                .get("http://localhost:3005/api/auth", config)
+                .then((response) => {
+                    console.log(`Response! --> ${JSON.stringify(response.data.adminLogin)}`);
+                    setIsAuthenticatedUser(true);
+                })
+                .catch((err) => {
+                    setIsAuthenticatedUser(false);
+                    console.log(`Error verfiying user! --> ${err}`)
+
+                });
+        }
+
+        authenticateUser();
+    }, [])
+
 
     // STATE THAT WILL HOLD ARTICLE & POST DATA
     const [data, setData] = useState({
@@ -222,7 +265,8 @@ function Dashboard(props) {
 
     return (
         <>
-            <Container className="w-100 p-4 mt-5 mb-5" style={{ backgroundColor: "black" }}>
+
+            {isAuthenticatedUser ? <Container className="w-100 p-4 mt-5 mb-5" style={{ backgroundColor: "black" }}>
                 {/* MAIN PROFILE HEADER */}
                 <Row className="w-100">
                     <Col style={{ color: "white", fontSize: "40px", }} className="p-0 m-0">
@@ -234,7 +278,7 @@ function Dashboard(props) {
                             }}
                             >
                                 <Tools color="white" style={{ fontSize: "45px", paddingBottom: "12px" }} />
-                                Profile Dashboard
+                                Admin Dashboard
                             </h1>
                         </HeaderPanel>
                     </Col>
@@ -343,8 +387,8 @@ function Dashboard(props) {
                             <CardList style={{ paddingBottom: "5px" }} />
                             Latest Corkboard Posts:
                         </h1>
-                        <Col className="mx-auto w-100 " >
-                            <Carousel className="p-0" >
+                        <Col className="mx-auto w-100 justify-content-center" >
+                            <Carousel className="p-0 " >
                                 {
                                     data.posts.map((p, i) => (
                                         <Carousel.Item key={`dashboard-carousel-article-${i}`}>
@@ -678,7 +722,7 @@ function Dashboard(props) {
                                             {
                                                 data.articles.map((p, i) => (
                                                     <ListGroup.Item key={`article-tab-${i}`} eventKey={`#tab-link-${p._id}`} action href={`#link-${p._id}`} variant="dark" as={"div"} >
-                                                        <Row className="justify-content-between" as={"div"} style={{cursor:"pointer"}} >
+                                                        <Row className="justify-content-between" as={"div"} style={{ cursor: "pointer" }} >
                                                             <Col lg={10} md={10} sm={10}>
                                                                 <h6>
                                                                     {p.title} {" "}
@@ -769,6 +813,19 @@ function Dashboard(props) {
                     </Col>
                 </Row>
             </Container >
+                : isAuthenticatedUser === null
+                    ? <LoadingPageElement
+                        header={"Loading Dashboard"}
+                        icon={<DatabaseGear fontSize={"120px"} />}
+                        spinner
+                    >
+                        <hr />
+                        <br />
+                        <p>Loading in metric data! Please give us a moment!</p>
+                    </LoadingPageElement >
+                    : <PageNotFound />
+            }
+
             <br />
             <br />
             <br />

@@ -5,6 +5,7 @@ import { Row, Col, Form, Button, Container, Spinner, Toast } from "react-bootstr
 
 // LIBRARIES
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 
 // ASSETS
 import { PersonFillLock } from "react-bootstrap-icons";
@@ -12,7 +13,30 @@ import { PersonFillLock } from "react-bootstrap-icons";
 // CSS
 import "../css/Login.css";
 
+
+/*----------------------------------------------------------------------------
+|   ⚙️ Use: Login page for users/admins to sign in (using session storage to)
+|       hold generated JWT logged in tokens
+| 
+|   🔧 Todo: Add dashboard for general users
+|
+|   📦 Returns: JSX component 
+*----------------------------------------------------------------------------*/
+
+
+// ? NOTES
+// https://dev.to/rigalpatel001/securing-web-storage-localstorage-and-sessionstorage-best-practices-f00
+// https://blog.logrocket.com/using-helmet-node-js-secure-application/
+
 function Login(props) {
+
+  // Used to navigate to another page
+  const navigate = useNavigate();
+
+  // Sets up login authentication tokens to session storage
+  function setSessionToken(userToken) {
+    sessionStorage.setItem('token', JSON.stringify(userToken));
+  }
 
   // Sets field values to form object )
   const [form, setForm] = useState({});
@@ -47,8 +71,15 @@ function Login(props) {
           status: "successful"
         }
       ));
-      console.log(`Inside response message! --> ${JSON.stringify(response.data.message)}`)
-      console.log(`Inside response message! -- > ${JSON.stringify(response.data.status)} `)
+
+      if (response.status === 200) {
+        // sets user login token to session storage
+        setSessionToken(response.data.token);
+        navigate('/dashboard');
+        // console.log(`Inside response message! --> ${JSON.stringify(response.data.token)}`);
+
+      }
+
     } catch (error) {
       setFormActionResults(prev => (
         {
@@ -59,7 +90,7 @@ function Login(props) {
           status: "failure"
         }
       ));
-      console.error('Error logging in:', error.status);
+      console.error('Error logging in:', JSON.stringify(error));
     }
   }
 
