@@ -16,6 +16,10 @@ import corkboardPaper_1 from "../assets/imgs/post-imgs/scratchpad5.png";
 import corkboardPaper_2 from "../assets/imgs/post-imgs/notecard3.png";
 import corkboardPaper_3 from "../assets/imgs/post-imgs/notecard5.png";
 import pushPin_1 from "../assets/imgs/post-imgs/notecard1.png";
+import pushPin_2 from "../assets/imgs/post-imgs/push-pin2.png";
+import pushPin_3 from "../assets/imgs/post-imgs/push-pin3.png";
+import artPost from "../assets/imgs/post-imgs/post-it-dude.png";
+import artPost2 from "../assets/imgs/post-imgs/post-it-notes.png";
 import { HouseGearFill, MusicNoteBeamed, MusicNote } from "react-bootstrap-icons";
 
 
@@ -27,6 +31,14 @@ function IntroSplashPage() {
       <br />
       <div className="corkboard-card-container">
         <br />
+        <div style={{ position: "relative" }}>
+          <Image src={pushPin_2} style={{ display: "inline", position: "absolute", width: "40px", left: "-50px" }} />
+          <Image src={pushPin_3} style={{ display: "inline", position: "absolute", width: "40px", left: "-90px", top: "20px" }} />
+          <Image src={pushPin_1} style={{ display: "inline", position: "absolute", width: "40px", left: "-50px", top: "40px" }} />
+        </div>
+        <div>
+          <Image src={artPost} style={{ width: "320px" }} />
+        </div>
         <Row className="my-4">
           <Col>
             <InfoPanel bgColor={SITE_COLORS.secondary}>
@@ -35,11 +47,13 @@ function IntroSplashPage() {
                   <MusicNote style={{ fontSize: "60px" }} />
                   <MusicNoteBeamed style={{ fontSize: "60px" }} />
                   <MusicNote style={{ fontSize: "60px" }} />
+
                 </Col>
 
               </Row>
-              <h1 className="display-4 p-2" >Welcome to Maestroboard!</h1>
-              <p className="lead">Check our posts! </p>
+              <h1 className="display-2 p-2" >Welcome to Maestroboard!</h1>
+              <p className="lead">Check our community posts, articles and forum! </p>
+              <Button>About</Button>
             </InfoPanel>
           </Col>
         </Row>
@@ -146,14 +160,19 @@ function IntroSplashPage() {
             </InfoPanel >
           </Col>
         </Row>
+
+        <div>
+          <Image src={artPost2} style={{ width: "320px" }} />
+        </div>
         <br />
 
         {/* ****************************************************************************************** */}
         {/* ADVERTS */}
         {/* ****************************************************************************************** */}
-        {/* <IntroInfoBlock /> */}
       </div >
 
+      <br />
+      <IntroInfoBlock />
       <br />
       <InfoPanel bgColor={SITE_COLORS.secondary} width="50" rounded="rounded-5">
         <HouseGearFill style={{ fontSize: "120px" }} />
