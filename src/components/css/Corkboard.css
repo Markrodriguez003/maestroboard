@@ -1,51 +1,9 @@
-.board {
-  display: block;
-  z-index: -1;
-  /* width: 1600px; */
-  width: 95%;
-  height: auto;
-  /* padding-top: 180px; */
-  margin-top: 12px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 48px;
-  border: rgb(95, 89, 89) 7.2px solid;
+/* The animation code */
+@keyframes corkboardTransistion {
+  from {transform: translateX(-5000px);}
+  to {transform: translateX(0px);}
 }
 
-.user-board-accordion {
-  background-color: rgb(80, 78, 78) (107, 84, 84);
-}
-
-/* custom board for user */
-.my-Board {
-  display: block;
-  z-index: -1;
-  /* width: 1600px; */
-  width: 800px;
-  height: auto;
-  /* padding-top: 180px; */
-  margin-top: 12px;
-  margin-left: auto;
-  margin-right: auto;
-  border: rgb(67, 64, 64) 7.2px solid;
-}
-
-.corkBoard-title {
-  color: white;
-  background-color: rgb(10, 71, 71);
-  /* margin-left: 32px; */
-  /* margin-right: 32px; */
-  margin-bottom: 30px;
-  /* padding: 12px; */
-  /* letter-spacing: 2.2px; */
-  text-align: center;
-  /* width: 75%; */
-}
-/* .cardFix{
-    margin-left: 3500px;
-    margin-right:3500px;
-    padding: 2120px !important;
-} */
 .corkboard-card-container {
   position: relative;
   display: flex;
@@ -57,6 +15,8 @@
   margin-right: auto;
   margin-left: auto;
   gap: 20px;
+  /* transform: translateX(-5000px); */
+  animation: corkboardTransistion 1.1s ease-in-out;
 
   background-image: url("../../assets//imgs/corkboards/User-Corkboard-0.jpg");
   background-color: rgb(90, 88, 88);
@@ -64,50 +24,8 @@
   border: rgb(87, 83, 83) 8px solid;
 }
 
-.boardCard {
-  /* background-color: purple; */
-  width: 100%;
-  /* width:250%; */
-  /* background-color: red; */
-}
-
-.individualCard {
-  /* background-color: RED; */
-  /* width:100%; */
-  flex: 0 0 6.666667% !important;
-  max-width: 36.666667% !important;
-  /* margin-left: 900px !important; */
-}
-
-.carousel-container {
-  /* margin-right: -600px; */
-}
-
-/* ************************ */
-/* MEDIA QUERIES */
-/* ************************ */
-
 @media only screen and (min-width: 500px) {
   .corkboard-title {
     color: red;
-    /* text-align: center !important;
-      font-size: 8px !important; */
   }
-}
-
-/* Pagination styling */
-
-.corkboard-pagination {
-  margin-right: 40px;
-}
-
-
-/* .page-item.active.page-link{ */
-  /* color:white !important; */
-  /* background-color: teal !important; */
-/* } */
-.page-link {
-  color:white !important;
-  background-color: teal !important;
-  cursor: pointer;
 }
