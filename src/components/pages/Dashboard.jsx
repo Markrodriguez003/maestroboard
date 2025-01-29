@@ -1,6 +1,6 @@
 
 // COMPONENTS
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Row, Col, Card, Button, Image, Carousel, Tab, ListGroup, Container, } from "react-bootstrap";
 import HeaderPanel from "../ui/HeaderPanel";
 import PostBoardCard from "../PostBoardCard";
@@ -38,6 +38,16 @@ import { SITE_COLORS } from "../css/site";
 *----------------------------------------------------------------------------*/
 
 function Dashboard(props) {
+
+    // GRABS REFERENCE OF ELEMENT ON TOP OF CORKBOARD
+    const articleTopRef = useRef(null);
+
+    // SCROLLS TO TOP OF ARTICLE ONCE ARTICLE CHANGES
+    function scrollArticleToTop() {
+        if (articleTopRef.current) {
+            articleTopRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
 
 
     // HOLDS TRIGGER FOR AUTHENTICATED USER
@@ -450,8 +460,6 @@ function Dashboard(props) {
                 <Row>
 
                 </Row>
-
-
                 <br />
                 <hr style={{ color: "white" }} />
                 <br />
@@ -722,7 +730,9 @@ function Dashboard(props) {
                                             {
                                                 data.articles.map((p, i) => (
                                                     <ListGroup.Item key={`article-tab-${i}`} eventKey={`#tab-link-${p._id}`} action href={`#link-${p._id}`} variant="dark" as={"div"} >
-                                                        <Row className="justify-content-between" as={"div"} style={{ cursor: "pointer" }} >
+                                                        <Row className="justify-content-between" as={"div"} style={{ cursor: "pointer" }} onClick={() => {
+                                                            scrollArticleToTop();
+                                                        }}>
                                                             <Col lg={10} md={10} sm={10}>
                                                                 <h6>
                                                                     {p.title} {" "}
@@ -740,9 +750,6 @@ function Dashboard(props) {
                                                                             textAlign: "center",
                                                                         }}
                                                                         className="mt-2 w-100"
-                                                                        onClick={() => {
-                                                                            console.log(`Editing Article ${i}!`)
-                                                                        }}
                                                                         as={"div"}
                                                                     >
                                                                         <PencilSquare style={{ fontSize: "20px", marginTop: "4px", marginBottom: "6px" }} alignmentBaseline="bottom" />
@@ -770,12 +777,12 @@ function Dashboard(props) {
                                         }} >
                                             {
                                                 data.articles.map((p, i) => (
-                                                    <Tab.Pane key={`article-tab-data-${i}`} eventKey={`#tab-link-${p._id}`} style={{ color: "white", position: "relative" }}>
-                                                        <div style={{ position: "absolute", width: "100%", height: "auto" }}>
+                                                    <Tab.Pane key={`article-tab-data-${i}`} eventKey={`#tab-link-${p._id}`} style={{ color: "white", position: "relative" }} >
+                                                        <div style={{ position: "absolute", width: "100%", height: "auto"}} ref={articleTopRef}>
                                                             <Card style={{ backgroundColor: "transparent", color: "white", height: "220px" }} className="w-auto">
-                                                                <Image src={p.image_urls[0]} style={{ objectFit: "fill", width: "65%", height: "auto", marginLeft: "auto", marginRight: "auto" }} />
+                                                                <Image src={p.image_urls[0]} style={{ objectFit: "fill", width: "65%", height: "auto", marginLeft: "auto", marginRight: "auto",  }} />
                                                                 <Card.Body className="m-0">
-                                                                    <Card.Text style={{ color: SITE_COLORS.lightMain }}>
+                                                                    <Card.Text style={{ color: SITE_COLORS.lightMain, }}>
                                                                         {[p.category]} - {[p.subCategory]}
                                                                     </Card.Text>
                                                                     <Card.Title>{p.title}</Card.Title>
@@ -783,7 +790,7 @@ function Dashboard(props) {
                                                                         {p.subTitle}
                                                                     </Card.Text>
                                                                     <hr />
-                                                                    <Card.Text>
+                                                                    <Card.Text className="h-auto" >
                                                                         {p.body}
                                                                     </Card.Text>
                                                                     <hr />

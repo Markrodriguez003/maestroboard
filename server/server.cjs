@@ -7,6 +7,21 @@ const app = express(); //Intializing  Express
 // USING ENV FILES IN SERVER
 require("dotenv").config();
 
+// CLOUDINARY
+const cloudinary = require("cloudinary").v2;
+
+// CLOUDINARY ADMIN CONFIG
+cloudinary.config({
+  cloud_name: "dytbnvgzg",
+  api_key: process.env.VITE_CLOUDINARY_API_KEY,
+  api_secret: process.env.VITE_CLOUDINARY_API_SECRET,
+  secure: false,
+  // signature_algorithm: 'sha256'
+});
+
+// WORKS
+// console.log(cloudinary.config());
+
 const jwt = require("jsonwebtoken");
 
 // USING CORS
@@ -63,6 +78,9 @@ const db = mongoose.connection;
 //
 // * **********************************************************************************
 // * **********************************************************************************
+
+// console.log(`API KEY --> ${process.env.VITE_CLOUDINARY_API_KEY}`);
+// console.log(`API SECRET --> ${process.env.VITE_CLOUDINARY_API_SECRET}`);
 
 async function loadPosts() {
   await Post.insertMany(ex.examplePosts)
@@ -358,20 +376,137 @@ app.put("/api/edit/article/id/:id", async function (req, res) {
   }
 });
 
-// * DELETES AN ENTIRE ARTICLE
+// * DELETES AN ENTIRE ARTICLE + IMAGES ASSOCIATED IN CLOUDINARY
+// ? NOTES https://support.cloudinary.com/hc/en-us/articles/203465641-How-can-I-delete-an-image-via-the-API-Programmable-Media
+// ? https://stackoverflow.com/questions/57247914/how-can-i-remove-an-image-in-a-custom-folder-in-cloudinary-by-nodejs
+
+async function deleteImages(image_id_array) {
+  // TESTING
+  console.log(`Images to be deleted! --> ${JSON.stringify(image_id_array)}  `);
+
+  // DELETING IMAGES ASSOCIATED WITH ARTICLE
+  cloudinary.api.delete_resources(image_id_array, (error, result) => {
+    if (error) {
+      console.error("Error deleting resources:", error);
+    } else {
+      console.log("Resources deleted successfully:", result);
+    }
+  });
+}
+
 app.delete("/api/delete/article/id/:id", async function (req, res) {
-  try {
-    const result = await Article.findByIdAndDelete(req.params.id);
-    console.log(
-      `ARTICLE IN THE BACKEND HAS BEEN DELETED:: ${JSON.stringify(result)}`
-    );
-    res.json(result);
-  } catch (err) {
-    res.status(500).json({ error: err });
-  }
+  // FIND ARTICLE FROM DB AND GRAB ASSETS
+  await Article.findById(req.params.id)
+    .then((result) => {
+      try {
+        // CHECKS TO SEE IF ARTICLE HAS IMAGES
+        if (result.public_images_id || result.public_images_id.length === 0) {
+          // CALLS FUNCTION TO DELETE IMAGES
+          deleteImages(result.public_images_id);
+        }
+        Article.findByIdAndDelete(req.params.id)
+          .then((result) => {
+            console.log(
+              `ARTICLE IN THE BACKEND HAS BEEN DELETED:: ${JSON.stringify(
+                result
+              )}`
+            );
+            res.json(result);
+          })
+          .catch((error) => {
+            console.log(
+              `ARTICLE COULD NOT BE DELETED:: ${JSON.stringify(error)}`
+            );
+          });
+      } catch (error) {
+        console.log(`error: ${error}`);
+      }
+    })
+    .catch((error) => {
+      console.log(`ARTICLE COULD NOT BE FOUND!:: ${JSON.stringify(error)}`);
+    });
 });
 
+// app.delete("/api/delete/article/id/:id", async function (req, res) {
+//   try {
+//     // FINDS ARTICLE IMAGE BY PULLING ARTICLE VIA MDB _ID
+//     // const productImageURL = await Article.findById(req.params.id);
+
+//     // if (productImageURL?.public_images_id) {
+//     //   console.log(`PUBLIC ID --> ${productImageURL}`);
+//     //   cloudinary.api.delete_resources(
+//     //     productImageURL.public_images_id,
+//     //     function (result) {
+//     //       console.log(`DID IMAGE DELETE? ${result}`);
+//     //     }
+//     //   );
+//     // } else {
+//     //   console.log(`NO IMAGES CAN BE FOUND!`);
+//     // }
+
+//     // ? WORKS
+//     // await Article.findByIdAndDelete(req.params.id)
+//     //   .then((result) => {
+//     //     console.log(
+//     //       `ARTICLE IN THE BACKEND HAS BEEN DELETED:: ${JSON.stringify(result)}`
+//     //     );
+//     //     res.json(result);
+//     //   })
+//     //   .catch((error) => {
+//     //     console.log(`ARTICLE COULD NOT BE DELETED:: ${JSON.stringify(error)}`);
+//     //   });
+
+//     await Article.findById(req.params.id)
+//       .then((result) => {
+//         console.log(
+//           `ARTICLE FOUND!:: ${JSON.stringify(result.public_images_id[0])}`
+//         );
+
+//         // cloudinary.api.delete_resources(
+//         //   result.public_images_id,
+//         //   function (result) {
+//         //     console.log(`DID IMAGE DELETE? ${result}`);
+//         //   }
+//         // );
+//         // cloudinary.uploader.destroy(result.public_images_id[0], function (result) {
+//         //   console.log(`DID IMAGE DELETE? ${result}`);
+//         // });
+
+//         // cloudinary.v2.uploader
+//         //   // .destroy(`image/${result.public_images_id[0]}`)
+//         //   .destroy(`resources/${result.public_images_id[0]}`, {
+//         //     invalidate: true,
+//         //   })
+//         //   .then((result) => console.log(`IMAGE DELETED::: ${result}`))
+//         //   .catch((error) =>
+//         //     console.log(`IMAGE COULD NOT BE DELETED::: ${error}`)
+//         //   );
+
+//         // cloudinary.v2.uploader.destroy(
+//         //   result.public_images_id[0],
+//         //   function (error, result) {
+//         //     console.log(result, error);
+//         //   }
+//         // );
+//         if (result.public_images_id) {
+//           deleteImage(result.public_images_id[0]);
+//         }
+
+//         res.status(200).json(result);
+//       })
+//       .catch((error) => {
+//         console.log(`ARTICLE COULD NOT BE FOUND!:: ${JSON.stringify(error)}`);
+//       });
+
+//     // *************
+//     // * TOP TRY
+//   } catch (err) {
+//     res.status(500).json({ error: err });
+//   }
+// });
+
 // * Finds all articles by a specific category type / Selling%20Gear /Buying%20Gear
+
 app.get("/api/loadarticles/category/:category", function (req, res) {
   let searchArticleTerm = req.params.category.replace(
     /(^\w{1})|(\s+\w{1})/g,

@@ -8,10 +8,14 @@ async function imageUploader(files) {
   formData.append("file", files);
   formData.append("upload_preset", "ml_default");
 
+  // ! ADD TAGS?
+  // cloudinary.uploader.upload('pizza.jpg', { tags: 'basic_sample' }, function (err, image) {
   let { data } = await axios.post(
     "https://api.cloudinary.com/v1_1/dytbnvgzg/image/upload/",
     formData
   );
+
+  console.log(`IMAGE DATA:: ${JSON.stringify(data)}`);
   // HANDLES ERROR HANDLING
   if (data === undefined) {
     return;
@@ -22,6 +26,7 @@ async function imageUploader(files) {
     publicID: data.public_id,
     secureURL: data.secure_url,
     url: data.url,
+    // signature: data.signature,
   };
 }
 

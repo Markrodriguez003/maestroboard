@@ -22,8 +22,6 @@ function Footer() {
   };
 
 
-
-
   return (
 
     <Navbar

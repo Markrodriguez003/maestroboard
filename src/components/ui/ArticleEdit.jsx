@@ -25,6 +25,7 @@ import article_types from "../../data/articleTypes.json";
 
 // DESIGN CSS
 import { SITE_COLORS } from "../css/site";
+import deleteImage from "../../../server/scripts/deleteImage";
 
 
 // ! move to component
@@ -315,9 +316,12 @@ function ArticleEdit() {
         async function deletingArticle() {
             try {
                 const result = await deleteArticle(params.id);
-                // console.log(JSON.stringify(result))
+                console.log(JSON.stringify(result))
                 reset()
-                setTotalCharacters(0)
+                setTotalCharacters(0);
+                console.log(`ARTICLE IMAGES DELETION: --> ${JSON.stringify(article)}`)
+                // deleteImage(article.public_images_id);
+
                 Notification.setToast((prevToast => ({
                     ...prevToast,
                     show: true,

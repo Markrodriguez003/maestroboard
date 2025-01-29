@@ -10,8 +10,9 @@ import { useNavigate } from 'react-router-dom';
 // ASSETS
 import { PersonFillLock } from "react-bootstrap-icons";
 
-// CSS
+// SITE THEMES +  DESIGN
 import "../css/Login.css";
+import { SITE_COLORS } from "../css/site";
 
 
 /*----------------------------------------------------------------------------
@@ -27,6 +28,7 @@ import "../css/Login.css";
 // ? NOTES
 // https://dev.to/rigalpatel001/securing-web-storage-localstorage-and-sessionstorage-best-practices-f00
 // https://blog.logrocket.com/using-helmet-node-js-secure-application/
+// https://www.invicti.com/blog/web-security/http-security-headers/
 
 function Login(props) {
 
@@ -110,7 +112,7 @@ function Login(props) {
   return (
 
     <>
-      <Container className="col-11 col-lg-5 col-md-7 p-1 mt-4 pb-5 rounded-4 h-100" style={{ backgroundColor: "rgba(0,0,0,0.85)" }}>
+      <Container className="col-11 col-lg-5 col-md-7 p-1 mt-4 pb-5 rounded-4 h-100 shadow-lg" style={{ backgroundColor: SITE_COLORS.main }}>
         <Row className="text-center mx-auto" >
           <Col className="mt-3" >
             <PersonFillLock style={{ color: "white", fontSize: "70px", }} />
