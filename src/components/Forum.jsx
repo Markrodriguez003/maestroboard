@@ -23,9 +23,19 @@ function Forum() {
       </Pagination.Item>
     );
   }
+
+
+  /*-----------------------------------------------------------------------------------
+|   ⚙️ Use: Music gear forum (similar to HFBoards)
+| 
+|   🔧 Todo: Add actual forum capabilities (npm library?) 
+|
+|   📦 Returns: JSX component 
+*------------------------------------------------------------------------------------*/
+
   return (
     <div>
-      <Card className="forum-container">
+      <Card className="forum-container mt-5">
         <Card.Header className="display-4 forum-header">
           <CardHeading /> MaestroBoard Forums
         </Card.Header>

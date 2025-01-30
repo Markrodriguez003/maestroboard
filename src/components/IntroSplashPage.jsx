@@ -23,6 +23,14 @@ import artPost2 from "../assets/imgs/post-imgs/post-it-notes.png";
 import { HouseGearFill, MusicNoteBeamed, MusicNote } from "react-bootstrap-icons";
 
 
+/*----------------------------------------------------------------------------
+|   ⚙️ Use: The main splash/hero component for the Home page
+|        
+|   🔧 Todo: 
+|
+|   📦 Returns: JSX component 
+*----------------------------------------------------------------------------*/
+
 function IntroSplashPage() {
   return (
     <>
@@ -47,9 +55,7 @@ function IntroSplashPage() {
                   <MusicNote style={{ fontSize: "60px" }} />
                   <MusicNoteBeamed style={{ fontSize: "60px" }} />
                   <MusicNote style={{ fontSize: "60px" }} />
-
                 </Col>
-
               </Row>
               <h1 className="display-2 p-2" >Welcome to Maestroboard!</h1>
               <p className="lead">Check our community posts, articles and forum! </p>
@@ -171,15 +177,7 @@ function IntroSplashPage() {
         {/* ****************************************************************************************** */}
       </div >
 
-      <br />
-      <IntroInfoBlock />
-      <br />
-      <InfoPanel bgColor={SITE_COLORS.secondary} width="50" rounded="rounded-5">
-        <HouseGearFill style={{ fontSize: "120px" }} />
-        <h1 className="display-5" >This site is getting better!</h1>
-        <hr />
-        <p className="w-75 text-start mx-auto lead" >This Site is undergoing updates! Since this site is growing to accomodate all of our users, we will be changing our layours and functionality as it continues. Currently, at the moment the only access is given to the site admin, but stick around as we will be pushing out updates for users to have their own accounts! That's right! Posting community posts, forum posts, gear review scoring and community driven articles! </p>
-      </InfoPanel >
+
     </>
 
   );

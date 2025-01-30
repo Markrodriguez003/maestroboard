@@ -1,24 +1,26 @@
-
-
-// ASSETS
-import { FileEarmarkExcelFill } from "react-bootstrap-icons"
-
 // COMPONENTS
 import { Row, Button, Container, } from "react-bootstrap";
 
 // ASSETS
+import { FileEarmarkExcelFill } from "react-bootstrap-icons"
 import { PersonFillLock } from "react-bootstrap-icons";
 
 // CSS
 import { SITE_COLORS } from "../css/site";
-// import "../css/Login.css";
+
+/*----------------------------------------------------------------------------
+|   ⚙️ Use: A general "404 - Page not found" page. 
+|                     
+|   🔧 Todo: Make this more modular to add text/components as children to 
+|             customize specific error page scenarios     
+|             (log in token expired, article not found, page not found, ect).          
+| 
+|   📦 Returns: JSX component 
+*----------------------------------------------------------------------------*/
 
 function PageNotFound(props) {
 
-
-
     return (
-
         <>
             <Container className="col-11 col-lg-5 col-md-7 p-5 mt-4 pb-5 rounded-4 shadow-lg" style={{ backgroundColor: SITE_COLORS.main }}>
 
@@ -36,9 +38,7 @@ function PageNotFound(props) {
             <br />
             <br />
             <br />
-
         </>
-
     );
 }
 

@@ -15,14 +15,14 @@ import "../css/Login.css";
 import { SITE_COLORS } from "../css/site";
 
 
-/*----------------------------------------------------------------------------
+/*-----------------------------------------------------------------------------------
 |   ⚙️ Use: Login page for users/admins to sign in (using session storage to)
 |       hold generated JWT logged in tokens
 | 
-|   🔧 Todo: Add dashboard for general users
+|   🔧 Todo: Add dashboard for general users | change header icon for login/logged in 
 |
 |   📦 Returns: JSX component 
-*----------------------------------------------------------------------------*/
+*------------------------------------------------------------------------------------*/
 
 
 // ? NOTES

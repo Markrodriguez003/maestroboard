@@ -54,6 +54,15 @@ const exampleImages = [
   art17,
 ]
 
+
+/*----------------------------------------------------------------------------
+|   ⚙️ Use: News page that will show news articles and announcements
+|                  
+|   🔧 Todo: Search / filter options for pulling articles
+|
+|   📦 Returns: JSX component 
+*----------------------------------------------------------------------------*/
+
 function News(props) {
 
   const [articles, setArticles] = useState(undefined);

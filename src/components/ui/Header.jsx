@@ -1,7 +1,7 @@
 
 // COMPONENTS
 import { Nav, Navbar, Container } from "react-bootstrap";
-import { PersonFillLock, Newspaper, PinAngleFill, CardChecklist } from "react-bootstrap-icons";
+import { PersonFillLock, Newspaper, PatchQuestionFill, PinAngleFill, CardChecklist } from "react-bootstrap-icons";
 import MainLogo from "./MainLogo";
 
 // ASSETS
@@ -18,6 +18,10 @@ function Header() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse className="justify-content-xxl-end justify-content-xl-end justify-content-lg-start justify-content-md-start justify-content-sm-start justify-content-xs-start  " >
           <Nav className="">
+            <Nav.Link href="/about" className="header-list-item " >
+              <PatchQuestionFill style={{ verticalAlign: "center", paddingBottom: "5px", fontSize: "20px" }} /> {" "}
+              About
+            </Nav.Link>
             <Nav.Link href="/board" className="header-list-item " >
               <PinAngleFill style={{ verticalAlign: "center", paddingBottom: "5px", fontSize: "20px" }} /> {" "}
               Community Board
