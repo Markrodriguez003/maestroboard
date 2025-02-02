@@ -471,20 +471,17 @@ app.get("/api/articles/id/date/:sort", function (req, res) {
 
 // * Finds all posts and returns all article base info (ID, DATE, TITLE, SUBTITLE) by ascending date ordered
 app.get("/api/articles/base-info", function (req, res) {
-  Article.find({})
-    .sort() // -1 means oldest post to earliest
-    .then((posts, err) => {
-      // Grabs all article IDs
-      const article_ids = posts.map(
-        (id) => id._id,
-        id.date,
-        id.title,
-        id.subTitle
-      );
+  Article.find({}).then((posts, err) => {
+    const article_info = posts.map((article) => ({
+      _id: article._id,
+      date: article.date,
+      title: article.title,
+      subTitle: article.subTitle,
+    }));
 
-      // and sends it back
-      res.json(article_ids);
-    });
+    // and sends it back
+    res.json(article_info);
+  });
 });
 
 // **********************************************************************************

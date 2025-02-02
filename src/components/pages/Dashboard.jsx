@@ -1,7 +1,7 @@
 
 // COMPONENTS
 import { useState, useEffect, useRef } from "react";
-import { Row, Col, Card, Button, Image, Carousel, Tab, ListGroup, Container, } from "react-bootstrap";
+import { Row, Col, Card, Button, Image, Carousel, Tab, ListGroup, Container, Spinner } from "react-bootstrap";
 import HeaderPanel from "../ui/HeaderPanel";
 import PostBoardCard from "../PostBoardCard";
 import BoardPostModal from "../BoardPostModal";
@@ -78,7 +78,7 @@ function Dashboard(props) {
             await axios
                 .get("http://localhost:3005/api/auth", config)
                 .then((response) => {
-                    console.log(`Response! --> ${JSON.stringify(response.data.adminLogin)}`);
+                    // console.log(`Response! --> ${JSON.stringify(response.data.adminLogin)}`);
                     setIsAuthenticatedUser(true);
                 })
                 .catch((err) => {
@@ -96,6 +96,7 @@ function Dashboard(props) {
     const [data, setData] = useState({
         articles: [],
         users: [],
+        selectedArticle: {},
         forum: [{ data: 0 }],
         posts: [],
         sellingPosts: 0,
@@ -182,11 +183,13 @@ function Dashboard(props) {
 
 
     useEffect(() => {
-        // GRABS ALL ARTICLES FROM DB
+        // GRABS ALL ARTICLES BASE INFO (_id, title, subTitle,) FROM DB
         async function grabArticles() {
             await axios
-                .get("http://localhost:3005/api/loadArticles")
+                .get("http://localhost:3005/api/articles/base-info")
                 .then((response) => {
+                    // console.log(`POST INFO::: ${JSON.stringify(response)}`)
+
                     setData((prev) => (
                         {
                             ...prev,
@@ -277,6 +280,42 @@ function Dashboard(props) {
             grabArticleType(article_types[i]);
         }
     }, []);
+
+
+
+    // const [selectedArticle, setSelectedArticle] = useState({});
+
+    // WHEN USER CLICKS ON INDIVIDUAL ARTICLE THIS FUNCTION WILL CALL UP THAT ARTICLE TO PRESENT 
+    async function grabIndividualArticle(id) {
+        setData((prev) => (
+            {
+                ...prev,
+                selectedArticle: {}
+            }
+        ))
+
+        await axios
+            .get(`http://localhost:3005/api/article/id/${id}`)
+            .then((response) => {
+                // console.log(`INDIVIDUAL ARTICLE:: ${JSON.stringify(response.data.article[0])}`)
+                setData((prev) => (
+                    {
+                        ...prev,
+                        selectedArticle: response.data.article[0]
+                    }
+                ))
+
+            })
+            .catch((err) => console.log(err));
+
+    }
+
+
+
+    // useEffect(() => {
+    //     // console.log(`ARTICLE:::: ${JSON.stringify(data.selectedArticle[0])}`)
+
+    // }, [data.selectedArticle])
 
     return (
         <>
@@ -436,7 +475,7 @@ function Dashboard(props) {
                             Latest Articles:
                         </h1>
                         <Col lg={7} md={4} className="mx-auto w-100" style={{ backgroundColor: "red" }} >
-                            <Carousel className="p-0" style={{ width: "600px" }} >
+                            {/* <Carousel className="p-0" style={{ width: "600px" }} >
                                 {
                                     data.articles.map((p, i) => (
                                         <Carousel.Item key={`dashboard-carousel-article-${i}`}>
@@ -444,7 +483,6 @@ function Dashboard(props) {
                                                 <Card.Img variant="top" src={p.image_urls[0]}
                                                     style={{ objectFit: "contain", width: "500px", height: "300px", marginLeft: "auto", marginRight: "auto" }} />
                                                 <Card.Body>
-                                                    {/* <Card.Title>{p.title}</Card.Title> */}
                                                     <Card.Title>{p.title}</Card.Title>
                                                     <Card.Text style={{ color: "darkgrey" }}>
                                                         {p.subTitle}
@@ -458,7 +496,7 @@ function Dashboard(props) {
                                         </Carousel.Item>
                                     ))
                                 }
-                            </Carousel>
+                            </Carousel> */}
                         </Col>
                     </Col>
                 </Row>
@@ -752,6 +790,7 @@ function Dashboard(props) {
                                                         <ListGroup.Item key={`article-tab-${i}`} eventKey={`#tab-link-${p._id}`} action href={`#link-${p._id}`} variant="dark" as={"div"} >
                                                             <Row className="justify-content-between" as={"div"} style={{ cursor: "pointer" }} onClick={() => {
                                                                 scrollArticleToTop();
+                                                                grabIndividualArticle(p._id)
                                                             }}>
                                                                 <Col lg={10} md={10} sm={10}>
                                                                     <h6>
@@ -796,38 +835,44 @@ function Dashboard(props) {
                                             backgroundColor: "rgba(0,0,0,0.7)"
                                         }} >
                                             {
-                                                data.articles.map((p, i) => (
-                                                    <Tab.Pane key={`article-tab-data-${i}`} eventKey={`#tab-link-${p._id}`} style={{ color: "white", position: "relative" }} >
-                                                        <div style={{ position: "absolute", width: "100%", height: "auto" }} ref={articleTopRef}>
-                                                            <Card style={{ backgroundColor: "transparent", color: "white", height: "220px" }} className="w-auto">
-                                                                <Image src={p.image_urls[0]} style={{ objectFit: "fill", width: "65%", height: "auto", marginLeft: "auto", marginRight: "auto", }} />
-                                                                <Card.Body className="m-0">
-                                                                    <Card.Text style={{ color: SITE_COLORS.lightMain, }}>
-                                                                        {[p.category]} - {[p.subCategory]}
-                                                                    </Card.Text>
-                                                                    <Card.Title>{p.title}</Card.Title>
-                                                                    <Card.Text style={{ color: "darkgrey" }}>
-                                                                        {p.subTitle}
-                                                                    </Card.Text>
-                                                                    <hr />
-                                                                    <Card.Text className="h-auto" >
-                                                                        {p.body}
-                                                                    </Card.Text>
-                                                                    <hr />
-                                                                    <Card.Text style={{ color: "grey" }}>
-                                                                        Written by: {[p.author]}
-                                                                    </Card.Text>
-                                                                    <Card.Text style={{ color: "grey" }}>
-                                                                        Published on: {[p.date]}
-                                                                    </Card.Text>
-                                                                    <Card.Text style={{ color: "grey" }}>
-                                                                        Article _id: {[p._id]}
-                                                                    </Card.Text>
-                                                                </Card.Body>
-                                                            </Card>
-                                                        </div>
-                                                    </Tab.Pane>
-                                                ))
+                                                Object.keys(data.selectedArticle).length === 0 ?
+                                                    <div className="text-center mt-5 pt-5">
+                                                        <Spinner animation="border" role="status" color="white" variant="primary" style={{ width: "100px", height: "100px", fontSize: "50px" }} className="">
+                                                            <span className="visually-hidden">Loading...</span>
+                                                        </Spinner>
+                                                    </div>
+
+                                                    :
+
+                                                    <div style={{ width: "100%", height: "auto" }} ref={articleTopRef}>
+                                                        <Card style={{ backgroundColor: "transparent", color: "white", height: "220px" }} className="w-auto">
+                                                            <Image src={data.selectedArticle.image_urls} style={{ objectFit: "fill", width: "65%", height: "auto", marginLeft: "auto", marginRight: "auto", }} />
+                                                            <Card.Body className="m-0">
+                                                                <Card.Text style={{ color: SITE_COLORS.lightMain, }}>
+                                                                    {[data.selectedArticle.category]} - {[data.selectedArticle.subCategory]}
+                                                                </Card.Text>
+                                                                <Card.Title>{data.selectedArticle.title}</Card.Title>
+                                                                <Card.Text style={{ color: "darkgrey" }}>
+                                                                    {data.selectedArticle.subTitle}
+                                                                </Card.Text>
+                                                                <hr />
+                                                                <Card.Text className="h-auto" >
+                                                                    {data.selectedArticle.body}
+                                                                    asfasfasfasfasfs
+                                                                </Card.Text>
+                                                                <hr />
+                                                                <Card.Text style={{ color: "grey" }}>
+                                                                    Written by: {data.selectedArticle.author}
+                                                                </Card.Text>
+                                                                <Card.Text style={{ color: "grey" }}>
+                                                                    Published on: {data.selectedArticle.date}
+                                                                </Card.Text>
+                                                                <Card.Text style={{ color: "grey" }}>
+                                                                    Article _id: {data.selectedArticle._id}
+                                                                </Card.Text>
+                                                            </Card.Body>
+                                                        </Card>
+                                                    </div>
                                             }
                                         </div>
                                     </Tab.Content>
@@ -862,3 +907,61 @@ function Dashboard(props) {
 }
 
 export default Dashboard;
+
+
+
+/*
+
+
+
+ {
+                                                        data.articles.map((p, i) => (
+                                                            <Tab.Pane key={`article-tab-data-${i}`} eventKey={`#tab-link-${p._id}`} style={{ color: "white", position: "relative" }} >
+                                                                <div style={{ position: "absolute", width: "100%", height: "auto" }} ref={articleTopRef}>
+                                                                    <Card style={{ backgroundColor: "transparent", color: "white", height: "220px" }} className="w-auto">
+                                                                        <Image src={p.image_urls[0]} style={{ objectFit: "fill", width: "65%", height: "auto", marginLeft: "auto", marginRight: "auto", }} />
+                                                                        <Card.Body className="m-0">
+                                                                            <Card.Text style={{ color: SITE_COLORS.lightMain, }}>
+                                                                                {[p.category]} - {[p.subCategory]}
+                                                                            </Card.Text>
+                                                                            <Card.Title>{p.title}</Card.Title>
+                                                                            <Card.Text style={{ color: "darkgrey" }}>
+                                                                                {p.subTitle}
+                                                                            </Card.Text>
+                                                                            <hr />
+                                                                            <Card.Text className="h-auto" >
+                                                                                {p.body}
+                                                                            </Card.Text>
+                                                                            <hr />
+                                                                            <Card.Text style={{ color: "grey" }}>
+                                                                                Written by: {[p.author]}
+                                                                            </Card.Text>
+                                                                            <Card.Text style={{ color: "grey" }}>
+                                                                                Published on: {[p.date]}
+                                                                            </Card.Text>
+                                                                            <Card.Text style={{ color: "grey" }}>
+                                                                                Article _id: {[p._id]}
+                                                                            </Card.Text>
+                                                                        </Card.Body>
+                                                                    </Card>
+                                                                </div>
+                                                            </Tab.Pane>
+                                                        ))
+                                                    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*/
