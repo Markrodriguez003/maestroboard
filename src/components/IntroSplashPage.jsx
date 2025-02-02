@@ -1,4 +1,8 @@
 
+
+//  NOTES
+// ? https://codepen.io/binarykiwi/pen/BbOoPy
+
 import "./css/IntroSplashPage.css";
 import { ArrowRightCircle } from "react-bootstrap-icons";
 import { Row, Col, Figure, Stack, Image, Button } from "react-bootstrap";
@@ -58,8 +62,12 @@ function IntroSplashPage() {
                 </Col>
               </Row>
               <h1 className="display-2 p-2" >Welcome to Maestroboard!</h1>
-              <p className="lead">Check our community posts, articles and forum! </p>
-              <Button>About</Button>
+              <p className="lead w-75 mx-auto">This is the premier place for music gear heads and musicians!
+                Check our community posts, articles and forum! </p>
+              <Stack direction="horizontal" className="gap-2 justify-content-center">
+                <Button>About</Button>
+                <Button>Log-in</Button>
+              </Stack>
             </InfoPanel>
           </Col>
         </Row>
@@ -106,12 +114,14 @@ function IntroSplashPage() {
           <Col xl={7} lg={7} md={12} sm={12} xs={12}>
             <InfoPanel bgColor={SITE_COLORS.alternateMain}>
 
-              <h1 className="display-4">Live post uploads to our community board</h1>
-              <h3 className="lead">Total posts: 241,923 </h3>
-              <h3 className="lead">Total buying gear posts: 41,145 </h3>
-              <h3 className="lead">Total selling gear posts: 100,224 </h3>
+              <h1 className="display-4">Latest music gear articles!</h1>
+              <h3 className="lead">Total articles: 92 </h3>
+              <h3 className="lead">Gear Reviews: 24 </h3>
+              <h3 className="lead">Music & Composition: 12 </h3>
+              <h3 className="lead">General News: 19 </h3>
+              <h3 className="lead">Studio & Recording: 9 </h3>
 
-              <Button variant="info" href="/board" className="mt-2">Browse our Community Board!</Button>
+              <Button variant="info" href="/board" className="mt-2">Check out the news`!</Button>
             </InfoPanel >
           </Col>
           <Col xl={4} lg={4} md={4} sm={12} xs={12} style={{ rotate: "10deg" }} className="mt-5">

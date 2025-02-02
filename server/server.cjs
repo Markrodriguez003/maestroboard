@@ -167,6 +167,7 @@ app.get("/", function (req, res) {
   // res.send("Hello!");
 });
 
+// LOADS TEST POSTS
 app.get("/api/loadPosts", function (req, res) {
   Post.find({})
     .then((posts) => {
@@ -178,6 +179,20 @@ app.get("/api/loadPosts", function (req, res) {
     })
     .catch((err) => {
       console.log("posts cannot be loaded from the db!");
+    });
+});
+
+// LOADS TEST ARTICLES
+app.get("/api/loadArticles", function (req, res) {
+  Article.find({})
+    .then((articles) => {
+      // console.log(
+      //   "There are " + articles.length + " articles currently in the database."
+      // );
+      res.json(articles);
+    })
+    .catch((err) => {
+      console.log("articles cannot be loaded from the db!");
     });
 });
 
@@ -228,20 +243,7 @@ app.post("/api/insert-article", async (req, res) => {
   });
 });
 
-// LOADS TEST ARTICLES
-app.get("/api/loadArticles", function (req, res) {
-  Article.find({})
-    .then((articles) => {
-      // console.log(
-      //   "There are " + articles.length + " articles currently in the database."
-      // );
-      res.json(articles);
-    })
-    .catch((err) => {
-      console.log("articles cannot be loaded from the db!");
-    });
-});
-
+// GRABS THE AMOUNT OF USERS IN DB
 app.get("/api/load-user-count", function (req, res) {
   UserAccount.find({})
     .then((users) => {
@@ -266,6 +268,7 @@ app.post("/api/login", (req, res) => {
     expiresIn: "1h",
   };
 
+  // FINDS USER IN DB
   UserAccount.find({ email: e })
     .then((users) => {
       const foundAccountEmail = users[0].email;
@@ -348,7 +351,7 @@ app.get("/api/loadPosts/type/:type", function (req, res) {
   });
 });
 
-// * Finds all Articles by a specific ID
+// * Finds Article by a specific ID
 app.get("/api/article/id/:id", function (req, res) {
   Article.find({
     _id: `${req.params.id}`,
@@ -427,84 +430,6 @@ app.delete("/api/delete/article/id/:id", async function (req, res) {
     });
 });
 
-// app.delete("/api/delete/article/id/:id", async function (req, res) {
-//   try {
-//     // FINDS ARTICLE IMAGE BY PULLING ARTICLE VIA MDB _ID
-//     // const productImageURL = await Article.findById(req.params.id);
-
-//     // if (productImageURL?.public_images_id) {
-//     //   console.log(`PUBLIC ID --> ${productImageURL}`);
-//     //   cloudinary.api.delete_resources(
-//     //     productImageURL.public_images_id,
-//     //     function (result) {
-//     //       console.log(`DID IMAGE DELETE? ${result}`);
-//     //     }
-//     //   );
-//     // } else {
-//     //   console.log(`NO IMAGES CAN BE FOUND!`);
-//     // }
-
-//     // ? WORKS
-//     // await Article.findByIdAndDelete(req.params.id)
-//     //   .then((result) => {
-//     //     console.log(
-//     //       `ARTICLE IN THE BACKEND HAS BEEN DELETED:: ${JSON.stringify(result)}`
-//     //     );
-//     //     res.json(result);
-//     //   })
-//     //   .catch((error) => {
-//     //     console.log(`ARTICLE COULD NOT BE DELETED:: ${JSON.stringify(error)}`);
-//     //   });
-
-//     await Article.findById(req.params.id)
-//       .then((result) => {
-//         console.log(
-//           `ARTICLE FOUND!:: ${JSON.stringify(result.public_images_id[0])}`
-//         );
-
-//         // cloudinary.api.delete_resources(
-//         //   result.public_images_id,
-//         //   function (result) {
-//         //     console.log(`DID IMAGE DELETE? ${result}`);
-//         //   }
-//         // );
-//         // cloudinary.uploader.destroy(result.public_images_id[0], function (result) {
-//         //   console.log(`DID IMAGE DELETE? ${result}`);
-//         // });
-
-//         // cloudinary.v2.uploader
-//         //   // .destroy(`image/${result.public_images_id[0]}`)
-//         //   .destroy(`resources/${result.public_images_id[0]}`, {
-//         //     invalidate: true,
-//         //   })
-//         //   .then((result) => console.log(`IMAGE DELETED::: ${result}`))
-//         //   .catch((error) =>
-//         //     console.log(`IMAGE COULD NOT BE DELETED::: ${error}`)
-//         //   );
-
-//         // cloudinary.v2.uploader.destroy(
-//         //   result.public_images_id[0],
-//         //   function (error, result) {
-//         //     console.log(result, error);
-//         //   }
-//         // );
-//         if (result.public_images_id) {
-//           deleteImage(result.public_images_id[0]);
-//         }
-
-//         res.status(200).json(result);
-//       })
-//       .catch((error) => {
-//         console.log(`ARTICLE COULD NOT BE FOUND!:: ${JSON.stringify(error)}`);
-//       });
-
-//     // *************
-//     // * TOP TRY
-//   } catch (err) {
-//     res.status(500).json({ error: err });
-//   }
-// });
-
 // * Finds all articles by a specific category type / Selling%20Gear /Buying%20Gear
 
 app.get("/api/loadarticles/category/:category", function (req, res) {
@@ -516,6 +441,50 @@ app.get("/api/loadarticles/category/:category", function (req, res) {
     // console.log(`${searchArticleTerm} - ${articles.length} `);
     res.json(articles.length);
   });
+});
+
+// * Finds all posts and returns it by ascending date ordered
+app.get("/api/articles/date/:sort", function (req, res) {
+  let sort_type = req.params.sort.toLowerCase() === "latest" ? -1 : 1;
+
+  Article.find({})
+    .sort({ date: sort_type }) // -1 means oldest post to earliest
+    .then((posts, err) => {
+      res.json(posts);
+    });
+});
+
+// * Finds all posts and returns all article IDs by ascending date ordered
+app.get("/api/articles/id/date/:sort", function (req, res) {
+  let sort_type = req.params.sort.toLowerCase() === "latest" ? -1 : 1;
+
+  Article.find({})
+    .sort({ date: sort_type }) // -1 means oldest post to earliest
+    .then((posts, err) => {
+      // Grabs all article IDs
+      const article_ids = posts.map((id) => id._id);
+
+      // and sends it back
+      res.json(article_ids);
+    });
+});
+
+// * Finds all posts and returns all article base info (ID, DATE, TITLE, SUBTITLE) by ascending date ordered
+app.get("/api/articles/base-info", function (req, res) {
+  Article.find({})
+    .sort() // -1 means oldest post to earliest
+    .then((posts, err) => {
+      // Grabs all article IDs
+      const article_ids = posts.map(
+        (id) => id._id,
+        id.date,
+        id.title,
+        id.subTitle
+      );
+
+      // and sends it back
+      res.json(article_ids);
+    });
 });
 
 // **********************************************************************************

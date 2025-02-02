@@ -21,7 +21,7 @@ import { Doughnut } from 'react-chartjs-2';
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 // ASSETS
-import { FileEarmarkPerson, SpeakerFill, FileEarmarkMusicFill, DatabaseGear, Tools, PinFill, PencilSquare, PostcardFill, CardList, Scissors } from "react-bootstrap-icons";
+import { FileEarmarkPerson, SpeakerFill, FileEarmarkMusicFill, DatabaseGear, Tools, PinFill, PencilSquare, PostcardFill, CardList, Scissors, Filter } from "react-bootstrap-icons";
 import { SITE_COLORS } from "../css/site";
 
 // CSS
@@ -42,6 +42,9 @@ function Dashboard(props) {
     // GRABS REFERENCE OF ELEMENT ON TOP OF CORKBOARD
     const articleTopRef = useRef(null);
 
+    // FILTER BUTTON STATE
+    const [filterLatestArticle, setFilterLatestArticle] = useState(true);
+
     // SCROLLS TO TOP OF ARTICLE ONCE ARTICLE CHANGES
     function scrollArticleToTop() {
         if (articleTopRef.current) {
@@ -55,7 +58,6 @@ function Dashboard(props) {
 
     // GRABBING SESSION MEMORY TO CHECK TO SEE IF USER IS SIGNED IN
     // VIA TOKEN DATA
-
     useEffect(() => {
         function getSessionToken() {
             const tokenString = sessionStorage.getItem('token');
@@ -175,6 +177,9 @@ function Dashboard(props) {
             },
         ],
     };
+
+
+
 
     useEffect(() => {
         // GRABS ALL ARTICLES FROM DB
@@ -439,6 +444,7 @@ function Dashboard(props) {
                                                 <Card.Img variant="top" src={p.image_urls[0]}
                                                     style={{ objectFit: "contain", width: "500px", height: "300px", marginLeft: "auto", marginRight: "auto" }} />
                                                 <Card.Body>
+                                                    {/* <Card.Title>{p.title}</Card.Title> */}
                                                     <Card.Title>{p.title}</Card.Title>
                                                     <Card.Text style={{ color: "darkgrey" }}>
                                                         {p.subTitle}
@@ -713,6 +719,13 @@ function Dashboard(props) {
                 {/* ARTICLE EDITS */}
                 <Row>
                     <Col lg={12} md={12} sm={12} xs={12} xl={12} xxl={12} style={{ backgroundColor: SITE_COLORS.alternateSecondary, color: "black", overFlow: "scroll" }} variant="light" className="px-2 py-4 ">
+                        <Button
+                            className="mb-2"
+                            onClick={() => setFilterLatestArticle((prev) => !prev)}
+                        >
+                            <Filter style={{ transform: filterLatestArticle ? "rotate(0deg) " : "rotate(180deg)", marginBottom: "4px", fontSize: "20px" }} />
+                            Filter: Date - {filterLatestArticle ? "Latest to Oldest" : "Oldest to Latest"}
+                        </Button>
 
                         <Tab.Container id="list-group-tabs-articles" className="overflow-scroll" defaultActiveKey="#link1" style={{
                             height: "300px",
@@ -726,40 +739,47 @@ function Dashboard(props) {
                                         overflow: "hidden",
                                         overflowY: "auto",
                                     }} >
+                                        {/* HERE IS THE SECTION IN WHICH THE FILTER SORTS OBJECTS BY LATEST AND BY OLDEST ARTICLES */}
                                         <ListGroup>
                                             {
-                                                data.articles.map((p, i) => (
-                                                    <ListGroup.Item key={`article-tab-${i}`} eventKey={`#tab-link-${p._id}`} action href={`#link-${p._id}`} variant="dark" as={"div"} >
-                                                        <Row className="justify-content-between" as={"div"} style={{ cursor: "pointer" }} onClick={() => {
-                                                            scrollArticleToTop();
-                                                        }}>
-                                                            <Col lg={10} md={10} sm={10}>
-                                                                <h6>
-                                                                    {p.title} {" "}
-                                                                </h6>
-                                                                <small>{p.date}</small>
-                                                            </Col>
-                                                            <br />
-                                                            <Row>
-                                                                <Link to={`/edit/article/${p._id}`} style={{ textDecoration: "none" }}>
-                                                                    <Col
-                                                                        style={{
-                                                                            backgroundColor: "rgb(129, 129, 129)",
-                                                                            color: "white",
-                                                                            zIndex: 99999,
-                                                                            textAlign: "center",
-                                                                        }}
-                                                                        className="mt-2 w-100"
-                                                                        as={"div"}
-                                                                    >
-                                                                        <PencilSquare style={{ fontSize: "20px", marginTop: "4px", marginBottom: "6px" }} alignmentBaseline="bottom" />
-                                                                        {" "}- Edit Article
-                                                                    </Col>
-                                                                </Link>
+
+                                                // Sort by date (ascending)
+                                                data.articles.sort(
+                                                    (a, b) =>
+                                                        filterLatestArticle ? new Date(b.date) - new Date(a.date) : new Date(a.date) - new Date(b.date)
+                                                )
+                                                    .map((p, i) => (
+                                                        <ListGroup.Item key={`article-tab-${i}`} eventKey={`#tab-link-${p._id}`} action href={`#link-${p._id}`} variant="dark" as={"div"} >
+                                                            <Row className="justify-content-between" as={"div"} style={{ cursor: "pointer" }} onClick={() => {
+                                                                scrollArticleToTop();
+                                                            }}>
+                                                                <Col lg={10} md={10} sm={10}>
+                                                                    <h6>
+                                                                        {p.title} {" "}
+                                                                    </h6>
+                                                                    <small>{p.date}</small>
+                                                                </Col>
+                                                                <br />
+                                                                <Row>
+                                                                    <Link to={`/edit/article/${p._id}`} style={{ textDecoration: "none" }}>
+                                                                        <Col
+                                                                            style={{
+                                                                                backgroundColor: "rgb(129, 129, 129)",
+                                                                                color: "white",
+                                                                                zIndex: 99999,
+                                                                                textAlign: "center",
+                                                                            }}
+                                                                            className="mt-2 w-100"
+                                                                            as={"div"}
+                                                                        >
+                                                                            <PencilSquare style={{ fontSize: "20px", marginTop: "4px", marginBottom: "6px" }} alignmentBaseline="bottom" />
+                                                                            {" "}- Edit Article
+                                                                        </Col>
+                                                                    </Link>
+                                                                </Row>
                                                             </Row>
-                                                        </Row>
-                                                    </ListGroup.Item>
-                                                ))
+                                                        </ListGroup.Item>
+                                                    ))
                                             }
                                         </ListGroup>
                                     </div>
@@ -778,9 +798,9 @@ function Dashboard(props) {
                                             {
                                                 data.articles.map((p, i) => (
                                                     <Tab.Pane key={`article-tab-data-${i}`} eventKey={`#tab-link-${p._id}`} style={{ color: "white", position: "relative" }} >
-                                                        <div style={{ position: "absolute", width: "100%", height: "auto"}} ref={articleTopRef}>
+                                                        <div style={{ position: "absolute", width: "100%", height: "auto" }} ref={articleTopRef}>
                                                             <Card style={{ backgroundColor: "transparent", color: "white", height: "220px" }} className="w-auto">
-                                                                <Image src={p.image_urls[0]} style={{ objectFit: "fill", width: "65%", height: "auto", marginLeft: "auto", marginRight: "auto",  }} />
+                                                                <Image src={p.image_urls[0]} style={{ objectFit: "fill", width: "65%", height: "auto", marginLeft: "auto", marginRight: "auto", }} />
                                                                 <Card.Body className="m-0">
                                                                     <Card.Text style={{ color: SITE_COLORS.lightMain, }}>
                                                                         {[p.category]} - {[p.subCategory]}
