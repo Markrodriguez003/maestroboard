@@ -28,7 +28,7 @@ const PostsSchema = new Schema({
     // required: true
   },
 
-  equipment: {
+  subType: {
     type: String,
     // required: true
   },

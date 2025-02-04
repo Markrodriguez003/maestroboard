@@ -182,13 +182,37 @@ app.get("/api/loadPosts", function (req, res) {
     });
 });
 
-// LOADS TEST ARTICLES
+// LOADS ALL ARTICLES
 app.get("/api/loadArticles", function (req, res) {
   Article.find({})
     .then((articles) => {
       // console.log(
       //   "There are " + articles.length + " articles currently in the database."
       // );
+      res.json(articles);
+    })
+    .catch((err) => {
+      console.log("articles cannot be loaded from the db!");
+    });
+});
+
+ 
+// LOADS A SPECIFIC AMOUNT OF POSTS
+app.get("/api/loadPosts/:count", function (req, res) {
+  Post.find({})
+    .limit(req.params.count)
+    .then((posts) => {
+      res.json(posts);
+    })
+    .catch((err) => {
+      console.log("posts cannot be loaded from the db!");
+    });
+});
+// LOADS A SPECIFIC AMOUNT OF ARTICLES
+app.get("/api/loadArticles/:count", function (req, res) {
+  Article.find({})
+    .limit(req.params.count)
+    .then((articles) => {
       res.json(articles);
     })
     .catch((err) => {
@@ -204,7 +228,7 @@ app.post("/api/insertpost", async (req, res) => {
     phone: req.body.phone,
     zip: req.body.zipcode,
     type: req.body.type,
-    equipment: req.body.instrument,
+    subType: req.body.subType,
     title: req.body.title,
     body: req.body.pBody,
     price: req.body.price,
@@ -344,7 +368,6 @@ app.get("/api/loadPosts/type/:type", function (req, res) {
   const searchTerm =
     req.params.type[0].toUpperCase() + req.params.type.slice(1);
   Post.find({
-    // type: `${searchTerm} Gear`,
     type: `${searchTerm}`,
   }).then((posts, err) => {
     res.json(posts.length);
@@ -443,7 +466,7 @@ app.get("/api/loadarticles/category/:category", function (req, res) {
   });
 });
 
-// * Finds all posts and returns it by ascending date ordered
+// * Finds all articles and returns it by ascending date ordered
 app.get("/api/articles/date/:sort", function (req, res) {
   let sort_type = req.params.sort.toLowerCase() === "latest" ? -1 : 1;
 
@@ -471,8 +494,8 @@ app.get("/api/articles/id/date/:sort", function (req, res) {
 
 // * Finds all posts and returns all article base info (ID, DATE, TITLE, SUBTITLE) by ascending date ordered
 app.get("/api/articles/base-info", function (req, res) {
-  Article.find({}).then((posts, err) => {
-    const article_info = posts.map((article) => ({
+  Article.find({}).then((articles, err) => {
+    const article_info = articles.map((article) => ({
       _id: article._id,
       date: article.date,
       title: article.title,
@@ -482,6 +505,36 @@ app.get("/api/articles/base-info", function (req, res) {
     // and sends it back
     res.json(article_info);
   });
+});
+
+// * Finds all posts and returns all article base info (ID, DATE, TITLE, SUBTITLE) by ascending date ordered
+app.get("/api/posts/base-info", function (req, res) {
+  Post.find({}).then((posts, err) => {
+    const post_info = posts.map((post) => ({
+      _id: post._id,
+      date: post.date,
+      type: post.type,
+      title: post.title,
+      username: post.username,
+      email: post.email,
+    }));
+    // and sends it back
+    res.json(post_info);
+  });
+});
+
+// * Finds Posts by a specific ID
+app.get("/api/posts/id/:id", function (req, res) {
+  Post.find({
+    _id: `${req.params.id}`,
+  })
+    .then((post, err) => {
+      res.status(200).json({ post });
+    })
+    .catch((error) => {
+      console.log(`Error trying to find Post!`);
+      res.status(404).json(error);
+    });
 });
 
 // **********************************************************************************

@@ -1,0 +1,1700 @@
+[
+  {
+    "_id": {
+      "$oid": "6791443fc9c94179a91e4519"
+    },
+    "title": "EHX Pico Looper FX Pedal",
+    "subTitle": "Small footprint - but big sonic possibilities",
+    "category": "Gear Review",
+    "subCategory": "FX - Pedal - Looper",
+    "author": "John Philips",
+    "body": "Building on the simplicity of our Nano Looper 360, this Pico-sized 360+ Looper pedal is packed with musical features to keep you jamming without missing a beat! With 6 minutes of loop recording time with unlimited overdubs over 11 loop memory banks, the 360+ also features an OVERDUB control which sets the level of playback of previously recorded loops while overdub new loops, making it possible to create ever-changing loops and ambient sounds scapes.\n\nUndo-Redo allows for quickly taking out the last overdub to change texture on the fly or fix a pesky mistake. Programmable Overdub/Playback order lets you change which mode the looper enters after recording the initial loop. Adjustable fadeout time from 1-10 seconds applies a musical fade to your loop when you stop the loop. DRY and LOOP levels are independently adjustable for a precision blend of layers.",
+    "link": "",
+    "public_images_id": [
+      "ehx_pico_360_looper-rFLWiQqGq7BTFISnWlnRqJm4_br75Srs_ekzj4n"
+    ],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737573438/ehx_pico_360_looper-rFLWiQqGq7BTFISnWlnRqJm4_br75Srs_ekzj4n.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737573438/ehx_pico_360_looper-rFLWiQqGq7BTFISnWlnRqJm4_br75Srs_ekzj4n.jpg"
+    ],
+    "caption": "",
+    "date": {
+      "$date": "2025-01-22T19:17:19.032Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6791450dc9c94179a91e4546"
+    },
+    "title": "SoftTube Console MKII - Update! (12.2.3)",
+    "subTitle": "Module updates, MIDI fader mode & more",
+    "category": "Announcements",
+    "subCategory": "Midi Controller - Update",
+    "author": "Bobby Riggs",
+    "body": "The latest iteration of Softube’s Console 1 system brought some significant improvements to what was already a powerful system, with a new premium build and look complemented by more in-depth processing capabilities and enhanced hands-on control. The company have just announced the launch of the latest software update, which delivers a range of improvements and user-requested features. What’s more, Console 1 Fader MkIII is now back in stock and available for purchase.\n\nWith the latest software installed, Console 1 MkIII users will be able to insert a new MIDI CC module into the unit’s Shape, EQ or Compressor sections. The tool makes it possible to take control of third-party plug-ins that don’t integrate directly with the system, greatly extending the range of tools that can be controlled using the system’s hardware encoders. Similar functionality has been added to the Console 1 Fader MkIII, which now boasts a Fader MIDI Controller Mode that makes it possible to take control of orchestral libraries, drawbar-based software instruments, or any other software with MIDI-mappable faders. \n\nAdditionally, Console 1 now supports the UADx SSL G Bus Compressor plug-in, and provides Nuendo users with VST3 DAW control.\n",
+    "link": "",
+    "public_images_id": [
+      "softube_console_1_mkiii_update-lAbiWXNWCaZT.1BkrSgJ8dOOTsjQYBih_1_a9l4dm"
+    ],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737573644/softube_console_1_mkiii_update-lAbiWXNWCaZT.1BkrSgJ8dOOTsjQYBih_1_a9l4dm.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737573644/softube_console_1_mkiii_update-lAbiWXNWCaZT.1BkrSgJ8dOOTsjQYBih_1_a9l4dm.jpg"
+    ],
+    "caption": "SOS Music Site",
+    "date": {
+      "$date": "2025-01-22T19:20:45.369Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6791459ec9c94179a91e4548"
+    },
+    "title": "Sonicware CyDrums is a \"next-gen digital drum synth\" that promises four-dimensional sound",
+    "subTitle": "CyDrums is a whole lot of drum machine for only $399",
+    "category": "Gear Review",
+    "subCategory": "Synthesizers - Drum Machines",
+    "author": "John Hitchsok",
+    "body": "CyDrums is a drum synth and sequencer built around a dual-oscillator wavetable synthesis engine equipped with 64 proprietary wavetables. Though it arrives with 520 preset sounds and 128 drum kits, there's plenty of scope for designing your own patches.\n\nThe synth is kitted out with 22 preset \"sound structures\", each geared towards producing a specific kind of drum sound. Many of the usual suspects - bass drum, snare drum, rim shot, tom, cymbal, clap, open hi-hat and closed hi-hat - offer multiple variations, and there's also a conventional, non-percussion synth structure onboard for adding melodies and basslines to your grooves.\n\nCyDrums can be programmed via an 8-track, 128-step sequencer which can store up to 128 patterns per project. Based on the workflow of the Lofi-12 XT, the sequencer is capable of polyrhythmic, randomized and probabilty-based sequencing, along with Elektron-style parameter locking, and is equipped with a handful of performance modes that include VariSpeed, a timestretching device that emulates tape machine playback.",
+    "link": "",
+    "public_images_id": [
+      "sonicware_cydrums-zarNCId1V3mndGsHKl2qxggf2yTkPlHz_a1ze24"
+    ],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737573789/sonicware_cydrums-zarNCId1V3mndGsHKl2qxggf2yTkPlHz_a1ze24.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737573789/sonicware_cydrums-zarNCId1V3mndGsHKl2qxggf2yTkPlHz_a1ze24.jpg"
+    ],
+    "caption": "",
+    "date": {
+      "$date": "2025-01-22T19:23:10.023Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "67914605c9c94179a91e454a"
+    },
+    "title": "Ferrofish Pulse 8 ADAT",
+    "subTitle": "Essential Connectivity. Exceptional quality.",
+    "category": "Recording & Studio",
+    "subCategory": "ADAT Interface",
+    "author": "Bobby Riggs",
+    "body": "The Ferrofish Pulse8 AE is a compact and versatile powerhouse that delivers 8×8 balanced analog I/O alongside comprehensive ADAT connectivity up to 192kHz and a compact AD/DA converter designed for seamless integration into studio or live setups. The Pulse8 AE offers full visual control via its vibrant front-panel display, simplifying real-time monitoring and configuration. Built to accommodate professional workflows, its robust clocking options and compatibility with standard studio connections make it an essential tool for engineers seeking reliable performance in a flexible, space-saving form factor.",
+    "link": "",
+    "public_images_id": [
+      "ferrofish-pulse-8-ae-lifestyle_shot01-K4f..DPWtq2sGQZvoCd72StfAdOb3AX9_aalqhl"
+    ],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737573892/ferrofish-pulse-8-ae-lifestyle_shot01-K4f..DPWtq2sGQZvoCd72StfAdOb3AX9_aalqhl.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737573892/ferrofish-pulse-8-ae-lifestyle_shot01-K4f..DPWtq2sGQZvoCd72StfAdOb3AX9_aalqhl.jpg"
+    ],
+    "caption": "",
+    "date": {
+      "$date": "2025-01-22T19:24:53.257Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "67914668c9c94179a91e454c"
+    },
+    "title": "Top microphones for recording guitar!",
+    "subTitle": "Each microphone has its purpose! Find out why!",
+    "category": "Recording & Studio",
+    "subCategory": "Microphones",
+    "author": "John Philips",
+    "body": "If you’re searching for the best microphones for recording guitar, we can only assume that you’re looking to record yourself playing, whether that’s at home or in the studio. Recording the guitar brings with it a special set of considerations, and there are certain tricks required to ensure your instrument sounds as good as it possibly can. \n\nChief among these is choosing the microphones that you can afford, and happily you don’t have to spend a fortune to take home a great guitar mic. In this guide we’ll outline the top-rated microphones for recording guitars, across a range of different applications and recording situations.\n\nFrom carefully placed condenser microphones charged with picking up every nuance of your acoustic guitar, to tough dynamic mics which can withstand the full force of a raging amp cabinet and electric guitar, we have options for everything and then some. \n\nAsk any guitarist about a microphone for recording and, as quick as the synapses fire, they’ll likely declare that the Shure SM57 is the best microphone for recording guitar. There are many reasons why it’s still regarded as a top-rated guitar mic, and it’s rare that people regret stocking at least one in their arsenal of recording gear. \n\nhere are, however, different options for different scenarios. We’d advocate doubling up, particularly for electric guitar amps, and combining a dynamic mic like the Shure SM57 with a more sensitive condenser. \n\nElsewhere, the Aston Spirit impresses us every time we use it, making it easy to recommend, while the impressive results and versatility from the AKG C414 XLII make it one of the best microphones for recording guitar in any studio.",
+    "link": "",
+    "public_images_id": ["5_my8vnw"],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737573992/5_my8vnw.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737573992/5_my8vnw.jpg"
+    ],
+    "caption": "",
+    "date": {
+      "$date": "2025-01-22T19:26:32.594Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "679146dac9c94179a91e454e"
+    },
+    "title": "Arranging Strings: Writing String phrases for beginners",
+    "subTitle": "Subtle to loud string movements can excite any composition!",
+    "category": "Composition",
+    "subCategory": "Orchestral : Strings",
+    "author": "Frank Glass",
+    "body": "The addition of dynamics meant that the MIDI arrangement now had all its essential musical ingredients, so I could move on to the next phase and turn it into playable parts for the players. This requires a basic knowledge of the individual instruments of the strings family: if you're new to the game, please take a look at the 'Home On The Range' box, which shows the playable ranges of the violin, viola, cello and standard four‑string double bass. You'll notice that the instruments' ranges overlap considerably: the viola (pitched a fifth lower than a violin) can play quite high up in the violin range, to good effect, while all four instruments are capable of covering the G3-G4 register.\n\nWhen creating sampled demos, it's all too easy to lose the plot and end up writing an impossibly low part for an instrument (I've done it myself, and had to be corrected by my copyist!). As well as keeping a watchful eye on their lower limits, you should avoid writing extremely high in an instrument's register unless there's a compelling musical reason to do so: the violin's stratospheric top notes, for example, are hard to play accurately, so it's best not to write extended loud passages in its highest octave. On the other hand, the strings' extreme low register can have a wonderfully, rich, throaty quality, but you should bear in mind that bottom notes (such as the low C2 on a cello) can't be played with vibrato because they fall on an open string.",
+    "link": "",
+    "public_images_id": [
+      "vsl_duality_strings_fx-.cy.Viyobd9Q8RpRi.rBwglDVpgQs2qq_wm3ai1"
+    ],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737574105/vsl_duality_strings_fx-.cy.Viyobd9Q8RpRi.rBwglDVpgQs2qq_wm3ai1.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737574105/vsl_duality_strings_fx-.cy.Viyobd9Q8RpRi.rBwglDVpgQs2qq_wm3ai1.jpg"
+    ],
+    "caption": "",
+    "date": {
+      "$date": "2025-01-22T19:28:26.393Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "679147dbc9c94179a91e455f"
+    },
+    "title": "Noise Maker Studio Reverb - Make space in your music",
+    "subTitle": "Huge Convolution reverb!",
+    "category": "Electronic Music",
+    "subCategory": "VST - Reverb",
+    "author": "Charles Vladistok",
+    "body": "Multichannel convolution reverb for immersive loudspeaker setups (5.1, 7.1.4 and more). Studio Verb contains 53 SRIRs (spatial room impulse responses) measured in a wide variety of acoustic spaces : concert halls, studio, living rooms, churches, outdoors... SRIRs have been carefully selected and pre-processed for spatial accuracy and envelopment.\n\nStudio Verb is the natural evolution of Ambi Verb HD. Our existing ambisonic impulses have been spatially processed to handle immersive loudspeaker setups with accuracy and naturalness. New spatial impulses have been added to the collection, leading to a wide diversity of acoustic spaces.\n\n$249.00",
+    "link": "",
+    "public_images_id": [
+      "noise_makers_studio_verb-_f0mRUoqFz2ji2ierL8k7t6j_XFJl8BM_pir9sq"
+    ],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737574363/noise_makers_studio_verb-_f0mRUoqFz2ji2ierL8k7t6j_XFJl8BM_pir9sq.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737574363/noise_makers_studio_verb-_f0mRUoqFz2ji2ierL8k7t6j_XFJl8BM_pir9sq.jpg"
+    ],
+    "caption": "",
+    "date": {
+      "$date": "2025-01-22T19:32:43.541Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "67914861c9c94179a91e4561"
+    },
+    "title": "Heritage EQ/Preamp Strip - BritStrip",
+    "subTitle": "An exapanded 73 Style EQ stripe with lots of warmth!",
+    "category": "Electronic Music",
+    "subCategory": "VST: EQ",
+    "author": "Poppy Lefray",
+    "body": " Introducing the Heritage Audio BritStrip plugin, now available in native form. A true recreation of Heritage Audio’s very own BritStrip CONSOLE CHANNEL STRIP, a modern classic in thousands of studios around the World.\n\nThe BritStrip combines an expanded 73 style equalizer and the famous diode bridge compressor from Heritage Audio’s popular SUCCESSOR.\n \nThe Class-A high-pass filter, lets you remove any excess low end without affecting the quality of the rest of the signal.\nThe high and low shelves also include a bell mode making them very useful for defining your sounds.\n\nA SUCCESSOR-LIKE COMPRESSOR\n\nThis powerful diode bridge modeled compressor design is perfect to use for tracking, providing a thick, solid, punchy sound, with thorough dynamic control, a “BLEND” function that permits getting the perfect balance between the original signal and the compressed signal as well as its sidechain filter allowing you to focus the compression on specific frequencies. This gives you plenty of tracking potential, as you can give instruments that “record-ready” vibe as performers monitor – so they can hear a finished “real-time feel” as they perform.\nThe BritStrip allows for flexible internal routing.\nEqualizing pre-compression makes the compression detector more sensitive to the boosted frequencies and less sensitive to those cut. Inversely, equalizing post compression makes the detector insensitive to the EQ settings.\n\n2 VERSIONS DEPENDING ON YOUR NEEDS\n\nWe just can’t stay still, can we? When we first designed the BritStrip plugin it was the perfect match for our i73 PRO line of interfaces as it pairs seamlessly with its 73 style analog preamps. But once people started to take the native plugin for a spin, they saw the potential the BritStrip has on its own. So the only question left was… Is the BritStrip a BritStrip without Heritage Audio’s signature 73 style preamp? The answer is…we don’t know…you tell us!\n\nSo in order not to have to answer this question, we have, for the first time ever, modeled our praised 73 style preamp into a second version of the BritStrip so you can decide wether you want to use the current lighter BritStrip without the preamp or the full version with our signature 73 style preamp modeled to perfection.",
+    "link": "",
+    "public_images_id": [
+      "heritage_audio_britstrip-S0QZft37xbhlqBFNJGgNn0DlQ9LmeCYi_sq0cm1"
+    ],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737574497/heritage_audio_britstrip-S0QZft37xbhlqBFNJGgNn0DlQ9LmeCYi_sq0cm1.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737574497/heritage_audio_britstrip-S0QZft37xbhlqBFNJGgNn0DlQ9LmeCYi_sq0cm1.jpg"
+    ],
+    "caption": "",
+    "date": {
+      "$date": "2025-01-22T19:34:57.770Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "679148d9c9c94179a91e4563"
+    },
+    "title": "Arturia MiniFreak's new update expands to sampling and grandular synthesis!!",
+    "subTitle": "The mighty gets mightier",
+    "category": "News",
+    "subCategory": "Synthesizers",
+    "author": "Mark Rodriguez",
+    "body": "Free update 3.0\nNew Granular Engines, Sounds, and More\nDive deep into the world of granular synthesis with 7 new granular engines and 1 classic sample engine.\n\nThis free update delivers a significant array of new sonic possibilities and stability improvements for existing MiniFreak hardware and software users. With new granular sound engines, meticulously crafted samples and an expansive sound bank - shape, and transform your sounds in entirely new ways.",
+    "link": "",
+    "public_images_id": [
+      "arturia_minifreak_update-SUJg_hvE3.61xEorshylhFt7pBmbuN0w_dcq7tt"
+    ],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737574616/arturia_minifreak_update-SUJg_hvE3.61xEorshylhFt7pBmbuN0w_dcq7tt.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737574616/arturia_minifreak_update-SUJg_hvE3.61xEorshylhFt7pBmbuN0w_dcq7tt.jpg"
+    ],
+    "caption": "",
+    "date": {
+      "$date": "2025-01-22T19:36:57.119Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "67914a09c9c94179a91e4566"
+    },
+    "title": "Enter to win free tickets to any show anywhere in the world!",
+    "subTitle": "What are you waiting for?!? Sign up for our contest!",
+    "category": "Events",
+    "subCategory": "Contest",
+    "author": "MaestroBoard - Staff",
+    "body": "Sign up to win free concert tickets! Not only are you going to your favorite band's show, but you can also choose where in the world to watch it! Wanna see Rammstein in Germany? Perhaps watch Opeth in Milwaukee? Sign up and try to win!\n\n* The entire Hotel & ticket fees are paid for by Maestroboard. Contest winner is responsible with any other outside fees that may incur. ",
+    "link": "",
+    "public_images_id": ["Article-8_a9pj6k"],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737574920/Article-8_a9pj6k.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737574920/Article-8_a9pj6k.jpg"
+    ],
+    "caption": "",
+    "date": {
+      "$date": "2025-01-22T19:42:01.495Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "67914a95c9c94179a91e4568"
+    },
+    "title": "Shure MV-7I - A new microphone for podcasts and studio heads alike!",
+    "subTitle": "The new gold standard for versatility",
+    "category": "Gear Review",
+    "subCategory": "Microphones",
+    "author": "Mark Rodriguez",
+    "body": "Shure’s newest mic, the MV7i, is not only a, high-quality XLR and USB-C mic, but the $349 price tag also includes a wonderfully versatile audio interface. Naming this one of the best microphones could be a no-brainer.\n\nMost decent audio interfaces hover around $100-$200, so a studio-quality microphone and an audio interface for only $70 more than a Shure MV7+ — which I gave 4* — is a wonderful price. Given the unbeatable audio finesse of the MV7+ mic included in this package, this would be perfect for musicians, podcasters, and content creators who need professional-quality recording.\n\nNot only does the MV7i sound great, it also comes loaded with the excellent Motiv Mix app. Shure’s companion app has a range of customization controls, including studio effects like reverb and noise cancellation. Is this kit worth $349, though? \n\nYes it is! This microphone sounds better than it's Shure predecessor!. Get it! It's worth it! ",
+    "link": "",
+    "public_images_id": ["shure_mv7i-QBocPxIf61AupuKTF1yVbCJsl691_CtL_e4vbba"],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737575060/shure_mv7i-QBocPxIf61AupuKTF1yVbCJsl691_CtL_e4vbba.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737575060/shure_mv7i-QBocPxIf61AupuKTF1yVbCJsl691_CtL_e4vbba.jpg"
+    ],
+    "caption": "",
+    "date": {
+      "$date": "2025-01-22T19:44:21.493Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "67914b4ac9c94179a91e456b"
+    },
+    "title": "Native Instruments Announces NKS Support for AKAI, Novation, Nektar, KORG & M-Audio",
+    "subTitle": "NI continues its stellar support!",
+    "category": "News",
+    "subCategory": "Midi Controllers",
+    "author": "Poppy Lefray",
+    "body": "Many keyboard controllers from AKAI Professional, Novation, Nektar, KORG, and M-Audio will soon support the Native Instruments NKS standard. At NAMM 2025, the developer announced the NKS Hardware Partner Program.\n\nNKS Support for 3rd-Party Keyboard Controllers\nIf you own a current keyboard controller from AKAI Professional, Novation, Nektar, KORG, or M-Audio, or are thinking about getting one, you could soon benefit from Native Instruments NKS support. The standard, which was first rolled out about a decade ago, enables intuitive control of many plugins and software instruments by NI and many 3rd-party developers. With compatible plugins and a supported controller, you no longer need to manually assign the knobs and faders. Pre-configured mappings make short work of what used to be a tedious task.\n\nUntil now, you needed a Native Instruments controller to make full use of the standard. The new NKS Hardware Partner Program, which Native Instruments announced today, brings support to many controllers from the aforementioned manufacturers.\n\nThe AKAI MPK Mini series controllers (MPK Mini MK3, Mini Play Mk3, Mini Plus) are among the first to be supported through the program. Native Instruments announced an extended collaboration with AKAI Professional today, which also includes exclusive content for the MPC series.\n\nKomplete 15 Select Included\nAs an added bonus, owners of NKS-compatible keyboard controllers will receive a free license for Native Instruments Komplete 15 Select. You can choose from the Beats, Band, or Electronic editions, each of which includes a different selection of software instruments and effects. Vouchers for Komplete 15 Select will be available from the manufacturers of the keyboards once NKS support is available.",
+    "link": "",
+    "public_images_id": ["native-instruments-nks-partner-770x425_1_ilznxc"],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737575242/native-instruments-nks-partner-770x425_1_ilznxc.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737575242/native-instruments-nks-partner-770x425_1_ilznxc.jpg"
+    ],
+    "caption": "NKS Hardware Partner Program",
+    "date": {
+      "$date": "2025-01-22T19:47:22.991Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "67914c04c9c94179a91e456d"
+    },
+    "title": "The GS1000: MOOER’s Latest Cutting-Edge Answer to Amp Simulation Hardware",
+    "subTitle": "Cheap Amp sim in a compact size!",
+    "category": "News",
+    "subCategory": "Amp Sims",
+    "author": "Bobby Riggs",
+    "body": "In 2025, MOOER has announced that it will be set to release its latest multi-effects pedal, the GS1000 Intelligent Amp Profiling Processor, an augmented intelligent amp profiling processor. Built on MOOER’s advanced third-generation digital platform, the GS1000 introduces groundbreaking MNRS 2.0 technology, allowing guitarists around the world to emulate their favourite gear with immense precision–specifically, for distortion pedals, preamps, amplifier heads, and cabinets. With this innovation, guitarists can fully capture the essence of their favorite guitar gear without owning the physical hardware, enabling them to carry their favorite tones wherever they go. Users are even able to use third-party IRs for cabinets of their choice, further enhancing the flexibility of this feature. It’s unforgettable how much MOOER’s multi-effects pedals have impressed audiences so far, primarily thanks to their robust tone libraries. However, even still, the GS1000 continues to build upon this with storage for up to 120 sampling profiles, along with continued integration with the MOOER Cloud app. Essentially, this cloud integration facilitates infinite upload and download possibilities, giving users access to a global community of shared tones, widely expanding the number of accessible tones. More still, the GS1000’s previously mentioned third-party IR cabinet simulations support up to 2048 sample points, guaranteeing studio-grade tonal accuracy across the board.",
+    "link": "",
+    "public_images_id": ["GS1000Li-03-copy_xpkvew"],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737575428/GS1000Li-03-copy_xpkvew.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737575428/GS1000Li-03-copy_xpkvew.jpg"
+    ],
+    "caption": "",
+    "date": {
+      "$date": "2025-01-22T19:50:28.843Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "67914c63c9c94179a91e456f"
+    },
+    "title": "IK Multimedia Announces TONEX Cab, Setting the New Standard in FRFR Powered Guitar Cabinets",
+    "subTitle": "More options! What is not to like!?",
+    "category": "News",
+    "subCategory": "Amp Sims",
+    "author": "Bobby Riggs",
+    "body": "IK Multimedia announces TONEX Cab, the next step in its relentless pursuit of tonal perfection for studio and stage. Born from the same innovative drive that introduced the world’s most advanced AI-based amp modeling, TONEX Cab ensures that every nuance of modern rigs shines onstage. It sets the new standard for FRFR powered cabinets for authentic amp tones, delivering unmatched realism to TONEX Tone Models or any other professional amp modeler or capture system.\n\nFinally, Amp-in-the-room Tone and Feel\n\nThanks to its unique DSP algorithms, TONEX Cab’s exclusive AMP TONE control stands apart from any other FRFR in the market today, allowing players to dial in the perfect amount of real amp feel and response to any room or venue.\n\nIt achieves this through advanced algorithmic control over the custom high-wattage Celestion 12” guitar speaker and 1” high-performance compression driver. Together, they deliver the optimal resonance and sound dispersion players expect from a real cab. Combined with a wood cabinet, this creates a playing experience that feels alive and responsive, where every note blooms and sustains just like a traditional amp. \n\nUltra-portable and Powerful\n\nTONEX Cab is the most compact 12” powered cab in its class, leaving extra room in the car to pack two for stereo or to travel lighter. Despite its minimal size, the TONEX Cab delivers true 350 W RMS / 700 W Peak Class-D power. Its unique DSP control provides true-amp sound at any volume, reaching an astonishing 132 dB Max SPL for low-end punch and clarity at any volume. With larger venues, the XLR output can link multiple cabs for even more volume and sound dispersion.\n\nAmplify Any Rig Anywhere\n\nTONEX Cab is the perfect companion for amplifying the tonal richness, dynamics and feel of TONEX Tone Models and other digital amp sims. It adds muscle, articulation, and a rich multi-dimensional sound to make playing live an electrifying and immersive experience.\n\nIts onboard IR loader lets players connect analog preamps directly to the cab or save DSP power by removing the modeler’s IR block. Precision drivers also work perfectly with acoustic guitars and other audio instruments, ensuring that time-based effects shine with studio-quality clarity and detail.",
+    "link": "",
+    "public_images_id": ["ton1-max-768x512_jcj1gb"],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737575522/ton1-max-768x512_jcj1gb.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737575522/ton1-max-768x512_jcj1gb.jpg"
+    ],
+    "caption": "",
+    "date": {
+      "$date": "2025-01-22T19:52:03.170Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "67914d7bc9c94179a91e4571"
+    },
+    "title": "Beyond The Music: Essential Skills & Qualities for a Sustainable Music Career",
+    "subTitle": "Award-winning composer Steve Luck reflects on his journey ",
+    "category": "Composition",
+    "subCategory": "Educational",
+    "author": "John Philips",
+    "body": "My career as a self-employed musician began in Newcastle in 1990, after completing a music degree, which followed O-Level and A-Level Music at school and piano lessons starting at age eight.\n\nAs a teenager, I became obsessed with music, and without any other subject capturing my interest as intensely, I fell into studying music further and contemplating a career in it. It seemed like a cool idea - and in many ways, I was right. But the truth is that while a career in music is fulfilling, it’s not an easy path.\n\nMy roles have included private piano teacher, band member, songwriter, session musician, and more\nIn 1990, I found myself asking, “What do you actually do if you have a music degree?”\n\nThe answer started with enrolling in the Enterprise Allowance Scheme, a government program that provided £40 per week for two years to those wishing to become self-employed. This visionary initiative bought time to dream, plan, and develop a business.\n\nI began teaching private piano lessons to neighbourhood kids; something I’ve loved doing and continue to do today. Since then, I’ve developed a ‘portfolio’ music career.\n\nOver the years, my roles have included private piano teacher, band member, songwriter, band leader, wedding pianist, accompanist, session musician, college lecturer, recording engineer, studio owner, media composer, gig promoter, producer, founder of a composer network, and now a self-releasing solo artist and promoter of a concert series.\n\nThroughout this period, I’ve faced numerous challenges that could have led me to quit and get a ‘proper job.’ I must acknowledge how lucky I’ve been, particularly with the support of my family, friends, and especially my wife, without whom my career wouldn’t have been possible.\n\n",
+    "link": "",
+    "public_images_id": ["Steve-Luck-feature_a4tz1u"],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737575802/Steve-Luck-feature_a4tz1u.png"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737575802/Steve-Luck-feature_a4tz1u.png"
+    ],
+    "caption": "",
+    "date": {
+      "$date": "2025-01-22T19:56:43.253Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "67914df7c9c94179a91e4573"
+    },
+    "title": "Reason 13 - A different, modular DAW to create your electronic masterpieces!",
+    "subTitle": "Modularity in it's finest!",
+    "category": "Electronic Music",
+    "subCategory": "DAW",
+    "author": "John Hitchsock",
+    "body": "Reason Studios has released Reason 13, a major upgrade of its modular DAW and rack plugin with new synths, effects, and more, new 13.1 update.\n\nAt Superbooth 2024, Reason Studios introduced the newest version of its modular DAW and rack plugin, Reason, featuring a new synthesizer, echo processor, and additional enhancements.\n\nShortly before the end of the year, there is now a free update with new functionalities and devices.\n\n",
+    "link": "",
+    "public_images_id": [
+      "ReasonStudiosReason13_01-PCQEOqvQcRmoHW4.vaAbh2bBWaPic.G._z9uw1g"
+    ],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737575927/ReasonStudiosReason13_01-PCQEOqvQcRmoHW4.vaAbh2bBWaPic.G._z9uw1g.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737575927/ReasonStudiosReason13_01-PCQEOqvQcRmoHW4.vaAbh2bBWaPic.G._z9uw1g.jpg"
+    ],
+    "caption": "",
+    "date": {
+      "$date": "2025-01-22T19:58:47.894Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "67914e82c9c94179a91e4575"
+    },
+    "title": "Cherry Audio's Atomika is a Soviet inspired, lush sounding synth!",
+    "subTitle": "A stellar emulation of a classic, not well known Soviet synth!",
+    "category": "Electronic Music",
+    "subCategory": "VST",
+    "author": "John Philips",
+    "body": "herry Audio, a leading innovator in music software development, is excited to announce the release of Atomika. This highly anticipated virtual instrument pays tribute to the legendary Polivoks synthesizer, manufactured in the former Soviet Union from 1982 to 1990. Cherry Audio’s Atomika faithfully recreates the unique character of the Polivoks while adding new filter options, full polyphony, an arpeggiator, integrated studio-quality effects, and more. Designed in collaboration with award-winning DSP developer Mark Barton — who recently made waves in producer Anthony Marinelli’s “Why Modern Digital Synthesis Is More Analog Than Analog” YouTube video — Atomika is a faithful emulation of the original duophonic analog synthesizer. The synthesizer retains the iconic Polivoks filter and adds new controls and expanded filter modes, including highpass, notch, and peak responses. This updated version is provisioned with state-of-the-art software features tailored to meet the needs of modern music production.\n\nAtomika elevates its capabilities with enhanced polyphony, expanding from duophonic to a robust 16-voice polyphony. It adds unison oscillator stacking, an expanded LFO with more waveforms, and comprehensive performance controls, including velocity, tracking, aftertouch, and pitch and mod wheel response. These enhancements ensure that Atomika not only captures the essence of the original but also provides modern conveniences and an intuitive user interface.\n\nAnother standout feature is Atomika’s second panel, which includes a versatile arpeggiator and four studio-quality effects — Phasor, Flange/Chorus, Echo, and Reverb — with a dedicated effects LFO for expanded parameter modulation. The stunning 3D user interface is immersive and customizable, with the options to display panel labels in the original classic text and a \"hide keyboard\" feature to maximize workspace.",
+    "link": "",
+    "public_images_id": ["ca-news-atomika-release_olxhqi"],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737576065/ca-news-atomika-release_olxhqi.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737576065/ca-news-atomika-release_olxhqi.jpg"
+    ],
+    "caption": "",
+    "date": {
+      "$date": "2025-01-22T20:01:06.411Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "67914edcc9c94179a91e4577"
+    },
+    "title": "DW Soundworks Pure Cherry Drum library expansion pack",
+    "subTitle": "DW Collector's Cherry shells, which produce crisp attack, midrange tone & balanced sustain.",
+    "category": "Electronic Music",
+    "subCategory": "VST: Drums",
+    "author": "Mark Rodriguez",
+    "body": "DW Soundworks' puts the most authentic drum sounds in the hands of beat creators everywhere. This revolutionary software is a virtual instrument that equips drummers, multi-instrumentalists, and producers with a sonic canvas to find just the right drum sound. This platform offers an expandable library of samples and effects with countless controls to produce a drum sound to your exact taste. The DW Collector's Pure Cherry expansion pack for DW Soundworks features sounds from Collector's Series Cherry drums. These drum samples have a bright attack, musical tone with rich midrange, and balanced sustain. This brighter alternative to Maple is suited for up-tempo and dynamic styles like fusion, funk, gospel, and pop - or just a great way to find a new sound. All DW Soundworks samples are recorded straight from the factory at the highest level of audio fidelity. DW's collection of outboard gear includes best-in-class microphones, high-quality microphone preamplifiers (mic preamps), a variety of compressors and equalizers, and other tools that capture the genuine tonality of drums as they were meant to sound for an authentic audio experience. This library of samples will continue to grow, and as your sound evolves, DW Soundworks expansion packs will be available to accommodate your changing tastes. *",
+    "link": "",
+    "public_images_id": [
+      "dw_soundworks_pure_cherry-h9x72Z7Ge1ztQJch1lAtKS_NHwcFNxnT_rvqmdc"
+    ],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737576155/dw_soundworks_pure_cherry-h9x72Z7Ge1ztQJch1lAtKS_NHwcFNxnT_rvqmdc.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737576155/dw_soundworks_pure_cherry-h9x72Z7Ge1ztQJch1lAtKS_NHwcFNxnT_rvqmdc.jpg"
+    ],
+    "caption": "",
+    "date": {
+      "$date": "2025-01-22T20:02:36.101Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "67914f49c9c94179a91e4579"
+    },
+    "title": "Musicians’ Union Cautious on Government AI Consultation",
+    "subTitle": "The MU was invited to respond to a government consultation on a proposed exception.",
+    "category": "News",
+    "subCategory": "Legal",
+    "author": "Johann Parker",
+    "body": "Last year, the music industry faced down a government-proposed exception to UK copyright law. The law would have allowed the unrestricted use of musical recordings and compositions to train generative Artificial Intelligence (AI) systems, without any requirement for consent from, or payment to, the original creators.\n\nToday sees the launch of a new government consultation on a revamped AI training exception.\n\nDoes the proposal this time include the safeguards required, or are we looking at yet another fight to protect the future of the UK music industry and its talented composers and musicians? Generative AI services are popping up everywhere across the creative industries, allowing users to create AI-generated music, art, photographs, and stories with the input of a few keywords.\n\nThese services have been trained on millions of human creations scraped from the internet, mostly without the knowledge of the original creator and no intention of sharing the revenue generated.\n\nThere is currently no requirement for AI tech firms to be transparent about which works they have used to train their systems, and no requirement for clear labelling of the AI-generated output.\n\nAll calls from industry to-date for the government (mostly the previous Tory government) to publicly state that copyright has been breached in the training of generative AI systems have gone completely unanswered.",
+    "link": "",
+    "public_images_id": ["AI-consultation-news_rv_1536w_h0nsw8"],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737576264/AI-consultation-news_rv_1536w_h0nsw8.png"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737576264/AI-consultation-news_rv_1536w_h0nsw8.png"
+    ],
+    "caption": "",
+    "date": {
+      "$date": "2025-01-22T20:04:25.201Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "67914faec9c94179a91e4589"
+    },
+    "title": "New Specimen Agreement Launched for Composers Working in TV",
+    "subTitle": "A new agreement and reference notes have been created",
+    "category": "News",
+    "subCategory": "Legal",
+    "author": "Johann Parker",
+    "body": "As part of the Fair Score campaign, The MU and the Ivors Academy have created a new specimen commissioning agreement for TV, accompanied by explanatory notes.\n\nThis resource will help composers understand what a comprehensive commissioning agreement looks like, leading to more effective negotiations and fairer deals.\n\nAs media composers work at all levels of the industry, the agreement will prove useful for those being commissioned by both small independent production companies and also global broadcasters. Three years ago the MU and the Ivors Academy launched a campaign (initially called Composers Against Buyouts) in order to raise awareness about, and to tackle, unfair royalty buyouts in media commissioning contracts.\n\nAs our work in this space developed, we became increasingly aware of other problems in the commissioning process, including a general lack of transparency, package deals incorporating low fees, coercion, and in some cases a complete lack of contracts or confirmation of agreed terms.\n\nIn addition to our efforts behind the scenes, we have identified the growing need to provide resources for composers to ensure that they feel equipped and empowered to negotiate fair deals, which involves understanding the expected clauses within an agreement, and the appropriate terminology.\n\nIn order to help composers understand what a comprehensive commissioning agreement looks like, we have worked with lawyers to draw up a specimen agreement for use within the TV commissioning process.\n\nThe agreement is accompanied by a notes document to provide additional information in relation to the clauses and information within.\n\n",
+    "link": "",
+    "public_images_id": ["Fair-Score-Agreement-news-size_rv_1536w_awnjqv"],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737576365/Fair-Score-Agreement-news-size_rv_1536w_awnjqv.png"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737576365/Fair-Score-Agreement-news-size_rv_1536w_awnjqv.png"
+    ],
+    "caption": "MU UK website",
+    "date": {
+      "$date": "2025-01-22T20:06:06.196Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6791500cc9c94179a91e458b"
+    },
+    "title": "Hamstead Soundworks - Red Wing Pedal",
+    "subTitle": "Analog stero modulator ",
+    "category": "Gear Review",
+    "subCategory": "FX - Modulation",
+    "author": "Bobby Riggs",
+    "body": "Modulation Elevation\nBucket Brigade Devices have been at the heart of our favourite modulation effects since the first compact pedals and studio units were introduced almost half a century ago. Repeatedly responsible for era-defining sounds across genres, they are perhaps even more beloved now than ever for their inimitable sonic characteristics.\n\nCollaborating with Dan and Mick of ‘That Pedal Show’, we embarked on a journey to create a pedal capable of authentically harnessing those classic sounds. And we didn't stop there, uncovering a whole world of new and inspiring ways to interact with these wonderful devices in the stereo field.\n\nThe result is Redwing, 100% analogue and built without compromise, offering the most dynamic and glorious array of stereo modulation effects. From high-fidelity Flanging, lush Chorusing, and smooth Vibrato to bonkers Ring Modulation and so much more - all driven by our ‘Signature’ waveform generation.",
+    "link": "",
+    "public_images_id": [
+      "hamstead_soundworks_redwing-1Z6d9c0kRf1n7lq.jlRWhmZyH579VAG6_oeqboa"
+    ],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737576460/hamstead_soundworks_redwing-1Z6d9c0kRf1n7lq.jlRWhmZyH579VAG6_oeqboa.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737576460/hamstead_soundworks_redwing-1Z6d9c0kRf1n7lq.jlRWhmZyH579VAG6_oeqboa.jpg"
+    ],
+    "caption": "",
+    "date": {
+      "$date": "2025-01-22T20:07:40.656Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6791505fc9c94179a91e458d"
+    },
+    "title": "Taylor Gold Label 814e Collection: An Old Soul With a New Recipe",
+    "subTitle": "New Series of Beautiful Guitars With Traditional Elements",
+    "category": "Instruments",
+    "subCategory": "Guitars - Acoustic",
+    "author": "Mark Rodriguez",
+    "body": "The new Taylor Gold Label 814e Collection brings us beautiful guitars with traditional elements, new ideas and a beautiful look. Just in time for NAMM 2025, Taylor has come up with something truly delicious. These guitars make you want to pick them up and play them. Find out why.\n\nThe New Taylor Gold Label 814e Collection\nThe Taylor Gold Label 814e features a new body shape called the Super Auditorium. Slightly larger than Taylor’s famous Grand Auditorium shape, it offers tremendous sonic power coupled with traditional warmth and richness.\n\nThe 814e and 814e SB feature Honduras rosewood back and sides and a torrefied Sitka spruce top.\nThe 814e Koa and 814e Koa SB are also available with Hawaiian Koa back and sides. This option not only gives the guitar a different look, but also affects the sound, offering a different tonality. V-Class Bracing: Taking Tone to the Next Level\nInside the Taylor Gold Label 814e, a new version of V-Class bracing provides longer sustain, more volume and near-perfect intonation throughout the entire neck. This innovative system maximizes tonal dynamics.\n\nA new long tenon neck joint further improves overall resonance and tone transmission. The result? Super-precise adjustability that lets you set up your guitar exactly the way you want it.",
+    "link": "",
+    "public_images_id": [
+      "taylor-gold-label-collection-teaser-2-770x425_cxy9q3"
+    ],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737576542/taylor-gold-label-collection-teaser-2-770x425_cxy9q3.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737576542/taylor-gold-label-collection-teaser-2-770x425_cxy9q3.jpg"
+    ],
+    "caption": "",
+    "date": {
+      "$date": "2025-01-22T20:09:03.307Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6791509dc9c94179a91e458f"
+    },
+    "title": "Harrison Audio 32Classic MS Mix Strip: Not Your Average Channel Strip",
+    "subTitle": "A versatile channel strip for tracking and mixing.",
+    "category": "Recording & Studio",
+    "subCategory": "Mixing Strip",
+    "author": "Bobby Riggs",
+    "body": "The Harrison Audio 32Classic MS Mix Strip is a channel strip with a transformer-coupled mic pre, a monster EQ section, and flexible routing.\n\nHarrison Audio’s heritage is rooted in the classic 32C recording consoles that Bruce Swedien famously used in the recording of Michael Jackson’s Thriller album. Today, with the weight of SSL behind the company, Harrison is looking to deliver solutions for modern recording workflows.\n\nHarrison Audio 32Classic MS Mix Strip\nStarting from the input stage, the 32Classic MS uses a Jensen JT-MB-CPCA transformer in the preamp design, which has both mic and line inputs with independent gain controls. When recording, the mic preamp offers up to 70 dB of gain with what the manufacturer describes as “full low-end, open mid-range, and super-smooth natural highs.“",
+    "link": "",
+    "public_images_id": ["harrison-32classic-ms-ft-770x425_xbwwbb"],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737576604/harrison-32classic-ms-ft-770x425_xbwwbb.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737576604/harrison-32classic-ms-ft-770x425_xbwwbb.jpg"
+    ],
+    "caption": "",
+    "date": {
+      "$date": "2025-01-22T20:10:05.076Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "679150d9c9c94179a91e4591"
+    },
+    "title": "Mooer MMT100 and MMT 100 FR: High Gain, Floyd Rose, Rock Hard",
+    "subTitle": "Beautiful colors, coil-split, and more!",
+    "category": "Instruments",
+    "subCategory": "Guitars - Electric",
+    "author": "John Hitchsock",
+    "body": "MMT100: Less Blues, More Gain\nIf you’re more on the metal side of guitar music, these new models from Mooer could be the thing. The MMT100 is futuristic, furiously loud, and frankly, a badass high-gain guitar. At least on paper. Both models, the MMT100 and MMT100 FR, come with a high-quality American alder body, roasted maple neck, rosewood fingerboard, and 24 silver nickel frets. And, if you’re the bend-y, hammer-y kind of player, who need absolute stability in tuning, the FR model includes a Floyd Rose bridge, namely the Floyd Rose FRTS5000 tremolo system, a locking nut, and MTN-3 tuning pegs. It’s not the easiest to re-string, but these bridges make accidental de-tuning much less likely. So bend it like Buckethead! The 12-inch, bolt-on neck 8 (Standard C-shape neck with satin finish) houses a dual-action steel truss rod, and you get white shell dot inlays. Neat!\n\nCrazy Colors and an HS Setup\nThe MMT 100 comes in three colors: Pearl Black, Pearl White, and Iron Grey. That black one, what mean, lean kind of guitar! And the grey one… I’d have to see it in person and look at it from different angles to get a better impression of the color, but it does have a vibe. I’m just not sure which one.",
+    "link": "",
+    "public_images_id": ["MooerMMT100-770x425_rdp5af"],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737576664/MooerMMT100-770x425_rdp5af.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737576664/MooerMMT100-770x425_rdp5af.jpg"
+    ],
+    "caption": "",
+    "date": {
+      "$date": "2025-01-22T20:11:05.384Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "67915131c9c94179a91e4593"
+    },
+    "title": "Orange Baby Amps and O Tone 40: A Solid-State Affair",
+    "subTitle": "Dual-Channel, Tour-ready!",
+    "category": "Gear Review",
+    "subCategory": "Amps - Guitar",
+    "author": "John Hitchsock",
+    "body": "Orange is introducing three Baby amps that pack the punch we’ve come to love from Orange but at a much more compact form factor. The amp maker is also releasing the O Tone 40, a solid-state combo amp.\n\nOrange Baby Amps: Tour Baby 100, Gain Baby 100, and Dual Baby 100\nThe three new Baby amps from Orange can be viewed as evolutions of the amp maker’s famed Pedal Baby 100*. Each amp is lightweight (3 kilograms) and comes with a 100-watts, twin-channel, Class A/B, solid-state amp known from the Pedal Baby The Tour Baby 100 comes with a clean channel and a dirty channel. A VCO Compressor is built-in on the clean channel, and a two-band EQ. Once you switch to the dirty channel, it’s a point-of-break-up affair. Besides a three-band EQ, and controls for Presence and Gain, you get two volume dials. Besides the master volume, you get a second one. That setting can be accessed with the included foot switch, so no need for a boost pedal! Said footswitch also changes between the two channels. The Gain Baby 100 has the same clean channel as the Tour Baby 100 and the same foot switch functionality. However, the dirty channel is a different affair. For it, you get four stages of saturation, which can go from subtle warming into massive overdriven sounds and everything in between. There is also a dedicated Tight Switch that, when engaged, boosts the upper mids at lower gain levels.",
+    "link": "",
+    "public_images_id": ["Orange_Gain_Baby_100_Teaser-770x425_ltfaiw"],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737576752/Orange_Gain_Baby_100_Teaser-770x425_ltfaiw.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737576752/Orange_Gain_Baby_100_Teaser-770x425_ltfaiw.jpg"
+    ],
+    "caption": "",
+    "date": {
+      "$date": "2025-01-22T20:12:33.338Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "67915171c9c94179a91e4595"
+    },
+    "title": "Cordoba Fusion 12 Exotic Top: Nylon-Strung Guitars with Style & Tone",
+    "subTitle": "Beautiful Exotic Wood Finishes",
+    "category": "Instruments",
+    "subCategory": "Guitars - Acoustic - Nylon",
+    "author": "Johann Parker",
+    "body": "The Cordoba Fusion 12 Exotic Top 6-String Acoustic Guitar Natural is the perfect choice for those who want to combine traditional sound with modern design. Featuring a solid spruce top for a warm and resonant sound, this guitar stands out both sonically and visually with its striking exotic wood finishes.\n\nCordoba Fusion 12 Exotic Top\nThese look delicious. Cordoba has always made very tasteful guitars. The new Fusion 12 Exotic Top Series is no exception. Let’s take a closer look. The Fusion 12’s soft cutaway design not only gives you access to higher registers, but also ensures an optimal playing experience. The Fusion’s modern neck profile ensures a comfortable and effortless playing experience, while the elegant wood finishes are a real eye-catcher.\n\nExceptional Sound From High-Quality Electronics Thanks to the integrated Fishman Presys Blend preamp, the Fusion 12 delivers high-quality amplified sound. The system combines a piezo pickup with a small internal microphone. The Blend control lets you choose the perfect combination of pickup and microphone sound. dditional bass, midrange, and treble controls give you the flexibility to further shape your sound. A notch filter and phase switch help minimize feedback in any playing situation. A built-in tuner is also included.",
+    "link": "",
+    "public_images_id": ["cordoba-fusion-12-teaser-770x425_ukch3d"],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737576816/cordoba-fusion-12-teaser-770x425_ukch3d.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737576816/cordoba-fusion-12-teaser-770x425_ukch3d.jpg"
+    ],
+    "caption": "",
+    "date": {
+      "$date": "2025-01-22T20:13:37.052Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "67915212c9c94179a91e4597"
+    },
+    "title": "RdPiano, MixComp, Crunchrr: Free Plugins of the Week",
+    "subTitle": "Free is always nice!",
+    "category": "Electronic Music",
+    "subCategory": "VSTs",
+    "author": "John Philips",
+    "body": "Remember those iconic digital pianos of the 80s? Let RdPiano take you back in time! This new free plugin faithfully emulates the legendary Roland MKS-20 module and other pianos of the SA synthesis era. Our other freebies of the week are a versatile bus compressor by HoRNet Plugins and a digital degrader by blepfx. The FM pianos of the Yamaha DX7 and its siblings were all over the 80s. But the decade brought about some other iconic digital pianos, as well, most notably the Roland MKS-20, RD-1000, and Rhodes MK-80 (Rhodes was a Roland brand back then). Just listen to the sounds in the above demo video and you’ll know which sounds I’m talking about. Sadly, there aren’t many sample libraries or software instruments that emulate these classics. RdPiano by Italian developer Giulio Zausa a.k.a. giulioz is new free plugin that faithfully emulates these classics, down to the mainboard and CPU used in several models. He even analyzed the silicon structure of the custom chips used in these instruments to accurately recreate their sound. The result sounds pretty amazing!",
+    "link": "",
+    "public_images_id": ["giulioz-rdpiano-1536x848_cjv2nj"],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737576978/giulioz-rdpiano-1536x848_cjv2nj.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737576978/giulioz-rdpiano-1536x848_cjv2nj.jpg"
+    ],
+    "caption": "",
+    "date": {
+      "$date": "2025-01-22T20:16:18.786Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6791529ec9c94179a91e45a7"
+    },
+    "title": "Maetroboard site changes coming soon! Stayed tuned!",
+    "subTitle": "Lots of changes coming!",
+    "category": "General",
+    "subCategory": "Site",
+    "author": "Bobby Riggs",
+    "body": "Site changes will be announced shortly. Keep your eyes out in our forums for UI/UX changes. We are still at work making user accounts and customization priority! Thanks for being patient and see you soon!",
+    "link": "",
+    "public_images_id": [
+      "Exciting_Changes_to_the_Elle_Company_Website_And_Why_We_Made_Them___Elle_Company_unyzr3"
+    ],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737577117/Exciting_Changes_to_the_Elle_Company_Website_And_Why_We_Made_Them___Elle_Company_unyzr3.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737577117/Exciting_Changes_to_the_Elle_Company_Website_And_Why_We_Made_Them___Elle_Company_unyzr3.jpg"
+    ],
+    "caption": "",
+    "date": {
+      "$date": "2025-01-22T20:18:38.353Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "67915321c9c94179a91e45a9"
+    },
+    "title": "Guide to General Audio Recording",
+    "subTitle": "Start here on your mixing journey!",
+    "category": "Recording & Studio",
+    "subCategory": "Educational",
+    "author": "Bobby Riggs",
+    "body": "If you’ve decided that you want to get into home recording, you might already be overwhelmed with questions. There’s a lot to learn, after all. Luckily, the barrier to entry is lower than it’s ever been, with music recording equipment and software becoming cheaper and easier to use than ever before.\n\nThere is a lot of information out there already, but it’s easy to get confused. That’s why I’ve put together this beginner’s guide to help demystify the process of home recording, and get you on your way to turning your ideas and songs into solid recordings that you’ll be proud to listen to and share with the world. If you’re getting started from scratch, one of the first things you’ll want to know is how much money it will cost. This will depend based on your goals, but if you already have a halfway decent computer or laptop then you can expect to pay around $300 for a basic setup with one decent microphone and everything you need to record your first track.\n\nThere are a few things to think about when considering cost. For example: how many tracks do you need to record at the same time?\n\nIt’s not uncommon to use 6-8 microphones to record a full drum kit. Not only will you need the microphones, stands, and cables, but you’ll need to have an audio interface that has enough inputs to hook everything up.\n\nDon’t think you need to go out and buy a dozen mics just to start recording. You can always start with one or two and slowly build a collection from there. You can even do a great job of recording drums with 2-4 microphones, but more on that later..\n\nHow Much Time Will it Take?\nLearning to record audio can have a steep learning curve, but if you keep at it then you’ll quickly find that it’s just a matter of learning a lot of small steps. Learning the overall process can be done rather quickly, but this is a subject where there’s always more to learn. The good news is that it gets easier over time, and once you know how the basics work, then you can focus on one thing at a time.",
+    "link": "",
+    "public_images_id": ["1_x7dthd"],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737577248/1_x7dthd.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737577248/1_x7dthd.jpg"
+    ],
+    "caption": "",
+    "date": {
+      "$date": "2025-01-22T20:20:49.043Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6791539ac9c94179a91e45c8"
+    },
+    "title": "THING is a synthesizer suite, offering polysynth power and analog-inspired sounds!",
+    "subTitle": "Crafting lush pads, powerful basses or searing leads ",
+    "category": "Electronic Music",
+    "subCategory": "VSTs - Synthesizers",
+    "author": "Johann Parker",
+    "body": "The legendary 80s synth sound, modernized\nThe THING suite offers an unparalleled and faithful emulation of one of the most iconic analog synthesizers of the 1980s, preserving its legendary character and sound. This virtual instrument captures the legendary warmth, depth and character that defined countless hits, bringing its timeless sound into the modern era. With meticulously crafted sound modeling, THING allows you to infuse your tracks with the beautiful essence of the original hardware, offering the best sonic authenticity and versatility for producers and musicians alike. THING is a synthesizer suite, offering polysynth power and analog-inspired sound modeling. Inspired by and faithfully recreate the essence of one of the most iconic synthesizers of the 1980s, it delivers legendary classic tones with modern features and flexible sound design, from massive pads to huge basses and searing leads. Available in VST3, AU, and AAX formats, ensuring integration with all major DAWs.",
+    "link": "",
+    "public_images_id": [
+      "acustica_thing_th2-XoCqxvfulcyTbOSNFTxmm5ho4Uh4WaV._djyuof"
+    ],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737577370/acustica_thing_th2-XoCqxvfulcyTbOSNFTxmm5ho4Uh4WaV._djyuof.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737577370/acustica_thing_th2-XoCqxvfulcyTbOSNFTxmm5ho4Uh4WaV._djyuof.jpg"
+    ],
+    "caption": "",
+    "date": {
+      "$date": "2025-01-22T20:22:50.691Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "67915463cac748f5b20bfcfd"
+    },
+    "title": "he GForce IconDrum pays homage to the legendary Linn drum machine!",
+    "subTitle": "The Icon reborn; Inspiring, Immediate, Impactful.",
+    "category": "Electronic Music",
+    "subCategory": "VSTs - Drum Machines",
+    "author": "Mark Rodriguez",
+    "body": "Like the Oberheim DMX drum machine, the original Linn hardware has left an indelible mark on the soundscape of popular music, crafting the rhythmic foundation of timeless tracks across a spectrum of genres. \n\nFrom the unmistakable pulse of Prince’s “1999” and Michael Jackson’s “Thriller” to the iconic beat driving The Human League’s “Fascination”, the LinnDrum defined an era. Its rhythms laid the foundation for a-ha’s “Take On Me,” Madonna’s “Lucky Star,” and Billy Idol’s “Eyes Without a Face,” shaping the unmistakable sound of the ’80s. Even Peter Gabriel’s “Sledgehammer” and Stevie Nicks’ “Stand Back” owe their groove to this iconic drum machine.\n\nWe’ve included all the original sounds, maintaining their unique character that propelled these classic tracks. The IconDrum also offers many alternatives, expanding the classic sound set to inspire both nostalgic recreations and fresh, innovative productions.. \n\nAuthentic Sound—Immerse yourself in the vibe of old-school drum sounds, recreated and refined for pristine clarity without losing their classic digital warmth. The IconDrum brings you a rich library of 100 authentic sounds, each carrying the soul of the original machine.\nLimitless Creativity—Aligned with its innovative feature set, the IconDrum’s sleek and user-friendly interface invites everyone, from beginners to experienced producers, to engage, experiment, and create sounds that are timeless and span a multitude of musical styles.",
+    "link": "",
+    "public_images_id": [
+      "gforce_icondrum-VbBqP7q2fhho0u4Owuy8ogyQcWb0dJbu_oof60d"
+    ],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737577570/gforce_icondrum-VbBqP7q2fhho0u4Owuy8ogyQcWb0dJbu_oof60d.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737577570/gforce_icondrum-VbBqP7q2fhho0u4Owuy8ogyQcWb0dJbu_oof60d.jpg"
+    ],
+    "caption": "Gforce Software",
+    "date": {
+      "$date": "2025-01-22T20:26:11.328Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "679154a7cac748f5b20bfcff"
+    },
+    "title": "Learning to Negotiate as a Matter of Give and Take",
+    "subTitle": "For most freelance musicians, negotiating doesn’t come naturally.",
+    "category": "General",
+    "subCategory": "Educational",
+    "author": "Katie Nichols",
+    "body": "It’s fair to assume that most musicians, writers and composers didn’t choose their career based on a love of negotiation. But unless you have a full-time manager negotiating fees, royalties, contracts and terms and conditions, it’s a fundamental part of being a freelance musician.\n\n“It’s probably the worst bit of my job,” confesses orchestral composer, arranger and violinist Fiona Brice, who has worked with major artists including Placebo and John Grant, as well as the BBC Philharmonic and Royal Northern Sinfonia. From booking your first gig, to refining contracts with a record label, to agreeing the terms of usage for a composition, the world of negotiation embraces a broad spectrum, and it affects everyone who works in the industry.\n\nNegotiation skills are essential for musicians\nKelly Wood, MU National Organiser Live, Theatre & Music Writers, says that it’s important that musicians get to grips with the skill of negotiation. In support of the MU Fair Score campaign, Kelly ran a workshop for composers. “We advise members to expect to have those conversations,” she says. “Do they know how to negotiate? Part of the process is to get musicians to recognise that it’s another role they need to learn.”\n\nNick Harris runs NERD Label Services, a label management company whose client list includes Tricky’s False Idols, R&S Records and Maceo Plex’s Ellum/Lone Romantic labels. He agrees that becoming an astute negotiator is an unavoidable truth for artists. “Nowadays we all wear many caps, but the one not everybody wants to wear and the one that is probably the most boring is also the most important, and that is understanding your rights as an artist and negotiating.\n\n\"It’s important that artists have a good grasp – not just on how to negotiate deals – but on the mechanics of how the business of the music industry works, and how a record label functions. How money is generated and how expenses are recouped.”",
+    "link": "",
+    "public_images_id": ["Timo-Baker-in-home-studio_mpdysp"],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737577639/Timo-Baker-in-home-studio_mpdysp.png"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737577639/Timo-Baker-in-home-studio_mpdysp.png"
+    ],
+    "caption": "",
+    "date": {
+      "$date": "2025-01-22T20:27:19.743Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "67915528cac748f5b20bfd01"
+    },
+    "title": "Viscount Legend One: More than an Organ",
+    "subTitle": "he new Viscount Legend One is an all-in-one solution for players who need a high-quality organ",
+    "category": "Gear Review",
+    "subCategory": "Synthesizers - Organ",
+    "author": "Jeannie Fronseca",
+    "body": "The Legend One offers the manufacturer’s renowned organ simulation and a wide selection of “bread and butter sounds” in a single portable instrument., The stage keyboard is available in two sizes. While both models have waterfall keys, the 61-key version features an unweighted action for those who mostly play organ. The larger model, on the other hand, has semi-weighted keys, making this keyboard an all-rounder for those who often play piano and other sounds.\n\n10/10",
+    "link": "",
+    "public_images_id": ["viscount-legend-one-lead-770x425_m0ukcm"],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737577767/viscount-legend-one-lead-770x425_m0ukcm.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737577767/viscount-legend-one-lead-770x425_m0ukcm.jpg"
+    ],
+    "caption": "",
+    "date": {
+      "$date": "2025-01-22T20:29:28.147Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6791556dcac748f5b20bfd03"
+    },
+    "title": "Neve 88C: Console-grade Compression for Your Home Studio",
+    "subTitle": "Fast modern compression in a compact desktop format.",
+    "category": "Gear Review",
+    "subCategory": "Hardware - Compressor",
+    "author": "Johann Parker",
+    "body": "The Neve 88C is a versatile dual VCA compressor created in a convenient desktop format, ideal for tracking and mixing in any studio.\n\nAs one of the most trusted names in audio recording, Neve has drawn from its extensive background in studio and broadcast technology in the development of the new 88C.\n\nNeve 88C\nThe 88C takes the utility of the dynamics section from the 88R channel strips and makes the workhorse available, so you can call on it whenever you need high-quality compression in your recording and mixing workflow. The 88C is designed to pair seamlessly with the 88M two-channel mic preamp and audio interface, allowing you to easily bring compression into your signal path going into your DAW. From tracking vocals and guitars to shaping your mix bus, the 88C ensures the best results for your projects.\n\nWith its dual-channel design, the 88C can function in linked stereo mode as well as dual-mono mode. So you can even run the two compressors in series, allowing one to catch transients, while the other adds subtle warmth and character.\n\nUsing a VCA feed-forward design, the 88C is equipped with Adaptive Attack (with a Fast Attack mode) which focusses on transients, while the Automatic Anti-Breathe Technology compensates for any sudden drops in level. Meanwhile, compression ratios run from 1:1 to brick wall limiting, giving you options for a range of different applications.",
+    "link": "",
+    "public_images_id": ["ams-neve-88c-ft-770x425_zhridj"],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737577836/ams-neve-88c-ft-770x425_zhridj.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737577836/ams-neve-88c-ft-770x425_zhridj.jpg"
+    ],
+    "caption": "",
+    "date": {
+      "$date": "2025-01-22T20:30:37.066Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "679155b9cac748f5b20bfd22"
+    },
+    "title": "The Best Workstation Keyboards under $2500",
+    "subTitle": "Workstations for the studio and stage.",
+    "category": "Recording & Studio",
+    "subCategory": "Synthesizers",
+    "author": "John Hitchsock",
+    "body": "If you’ve got keyboard skills, or even if you don’t, workstations provide an amazing set of tools for creating music. To help you navigate this process, we’ve selected some of the best workstation keyboards under $2500.\n\nWorkstations became extremely popular in the late 1990s and early 2000s, when producers like Timbaland and Scott Storch dominated the charts with the sounds from workstations from Yamaha and Korg.\n\nAs music moved into the button-bashing phase, the keyboard-driven production style waned in popularity. It’s still, however, a very effective way to get a unique and dynamic feel into the core of your tracks.\n\nChoosing the Best Workstation Keyboards under $2500\nWith the overall sound engine quality as a priority, we’ve selected keyboards based on sound creation and synthesis capabilities, arrangement and production features, as well as live performance functionality.\n\nThe Best Workstation Keyboards: Yamaha MODX8+\nThe flagship MODX8+ is an 88-key GHS (Graded Hammer Standard) synth workstation keyboard with Yamaha’s advanced Motion control synthesis engine.",
+    "link": "",
+    "public_images_id": ["roland-fantom-08-ft-770x425_i6abq7"],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737577913/roland-fantom-08-ft-770x425_i6abq7.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737577913/roland-fantom-08-ft-770x425_i6abq7.jpg"
+    ],
+    "caption": "",
+    "date": {
+      "$date": "2025-01-22T20:31:53.734Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6791563acac748f5b20bfd33"
+    },
+    "title": "Spotify Streaming Report 2024 Reveals: 50 Million Songs With No Listeners",
+    "subTitle": "The Dark Side of Streaming Congestion",
+    "category": "News",
+    "subCategory": "Music  Streaming",
+    "author": "Jeannie Fronseca",
+    "body": "The world of Spotify streaming and other music platforms is increasingly dominated by numbers and statistics that reveal a profound structural problem: the incredible amount of tracks uploaded, most of which are hardly ever listened to. According to Luminate’s annual report, a total of 202 million individual tracks were available on audio streaming services in 2024. Of these, 93.2 million tracks were played no more than ten times in a year. This figure illustrates an unprecedented saturation of platforms, exacerbated by easy access to production tools and the ability to upload directly. But what does the future hold? Spotify Streaming 2024: The Truth Behind the Numbers\nThe ever-growing flood of new music is further fuelled by cheap or free tools and AI-powered production software. On average, around 99,000 new tracks will still be uploaded per day in 2024, a slight decrease from 103,500 uploads per day (!) the year before. Nevertheless, the problem remains: around 87 per cent of all tracks on streaming platforms receive fewer than 1,000 plays per year. At the same time, according to Chartmetric, only a small percentage of artists reach a significant number of listeners. Only 5.31 per cent of Spotify artists had more than 1,000 monthly listeners, while 86 per cent had fewer than ten. This development has led to an intense debate within the music industry. Some are calling for songs that do not exceed a certain number of listeners to be removed from the royalty pool. Spotify already introduced this practice at the beginning of 2024, excluding tracks that are played less than 1,000 times a year from distribution. However, critics argue that these tracks still account for a significant proportion of total streams when taken together. On the other hand, it shows that the huge amount of content on the platforms not only reduces the visibility of individual works, but also dilutes the overall value of the offering.",
+    "link": "",
+    "public_images_id": ["Spotify-Streaming-Report-2024-Teaser-770x425_yf9ral"],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737578042/Spotify-Streaming-Report-2024-Teaser-770x425_yf9ral.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737578042/Spotify-Streaming-Report-2024-Teaser-770x425_yf9ral.jpg"
+    ],
+    "caption": "",
+    "date": {
+      "$date": "2025-01-22T20:34:02.687Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "67915676cac748f5b20bfd35"
+    },
+    "title": "Audient iD48: A New Flagship 8-channel Audio Interface",
+    "subTitle": "The new flagship of Audient's iD series interfaces.",
+    "category": "Recording & Studio",
+    "subCategory": "Audio Interfaces",
+    "author": "Bobby Riggs",
+    "body": "The Audient iD48 is a new 24 x 32 rack-mountable USB-C audio interface built to meet pro standards, with 8 Audient console mic preamps.\n\nNow that native processing technology has raced ahead, audio interfaces with onboard DSP systems don’t carry quite the same weight as they once did. This opens up the market for new industry standards, with manufacturers like Audient ready to take up the mantle.\n\nAudient iD48\nThe iD48 is everything a home studio owner could want, with all the connectivity standards used by producers and engineers in pro studios and live sound situations. Its sleek, minimalist design makes it a sight to behold, with its textured metal front panel and understated looks.\n\nLike the rest of the iD interface range, the iD48 is equipped with Audient’s mic pres from the ASP8024-HE recording console, with its high-quality op-amp circuitry. The iD48 gives you eight individually controlled preamps, with the potential to add another 16 via S/PDIF, ADAT, or SMUX.\n\nThe front panel is purposefully sparse and free from the monster LED screens we often see on rackmount interfaces. Instead, there is an assignable metering section, with quick access buttons for talkback and switching to your second pair of studio monitors.\n\nIf you’re planning to use a patchbay, or another signal routing system like a summing mixer, the iD48 is equipped with D-Sub connections for its main I/O. This covers analogue-to-digital inputs, line outputs, and insert sends/returns.",
+    "link": "",
+    "public_images_id": ["audient-id48-ft-770x425_n2lpsn"],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737578102/audient-id48-ft-770x425_n2lpsn.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737578102/audient-id48-ft-770x425_n2lpsn.jpg"
+    ],
+    "caption": "",
+    "date": {
+      "$date": "2025-01-22T20:35:02.927Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "679156d7cac748f5b20bfd38"
+    },
+    "title": "Walrus Audio Qi Etherealizer: More Ambient than Hologram?",
+    "subTitle": "Chorus, Delay, Reverb and Granular Glitch in one",
+    "category": "Gear Review",
+    "subCategory": "FX - Multi",
+    "author": "Jeannie Fronseca",
+    "body": "First, something for the reasonable and dedicated musicians – the Canvas Rehearsal. Now, Walrus Audio presents the Qi Etherealizer, an ambient dream machine stuffed with DSP.\n\nQi Etheralizer: From Small to Big\nCombining chorus, delay, granular effects, and reverb, the Qi Etherealizer offers a creative playground for endless sonic adventures. Creating lush, evolving sounds from just a single note is a breeze. Cascading delays, fluttering, glitch-y granular effects – parallel or serial – it’s all there. \n\nBut the pedal also excels when you need just a hint of chorus or a bit of slap delay. The Qi Etherealizer offers lots of flexibility and inspiration at the touch of a button. And every parameter setting can be saved and recalled in 127 preset slots—plenty to explore!\n\nFunctionality\nThe Walrus Qi Etherealizer (pronounced “chee ethereal-izer”) debuts Walrus Audio’s new proprietary DSP, MDSP, which is powered by an ARM-based Cortex M7 processor. Walrus claims MDSP is setting a new standard in high-fidelity audio and innovative design”. Judging from the press release, the platform will be the basis of many Walrus Audio pedals to come! To dial in your desired effect, the pedal includes 12 controls: three each for the chorus, delay, and grain effects, a single dry/wet knob for the reverb (“Space), a tone control and a global dry/wet knob. The tone knob includes a low-pass filter to keep those piercing high frequencies at bay.\n\nThe Grain effect offers two different modes that the dedicated button can activate: Grain Cloud for more traditional glitch sounds and Phrase Sample, which creates rhythmic grain effects akin to those found in the Microcom Hologram or Chase Bliss Mood. Depending on the mode, the X control either sets the speed of the grains (Grain Cloud) or the delay of the chopped signal (Phrase Sample). The Playback dial changes between five different modes of how the created grains are played back:\n\nx1 is normal speed\nx2 equals double speed and +1 octave\nx .5 equals half speed and -1 octave\nRev is reverse playback\nRNDM randomly combines the four other modes.\nChorus and Delay\nFor the delay you get controls for its speed (time) and intensity (feedback), plus a button to switch between quarter notes, dotted eighth notes or eighth notes. In comparison, you get two modes for the Chorus effect: tri-chorus.",
+    "link": "",
+    "public_images_id": ["WalrusAudioQiEtherealizer_02-770x425_qlcakw"],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737578199/WalrusAudioQiEtherealizer_02-770x425_qlcakw.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737578199/WalrusAudioQiEtherealizer_02-770x425_qlcakw.jpg"
+    ],
+    "caption": "Walrus Audio",
+    "date": {
+      "$date": "2025-01-22T20:36:39.735Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "67915747cac748f5b20bfd3a"
+    },
+    "title": "Twisted Electrons TWISTfm: Now Ready to Order",
+    "subTitle": "Twisted Electrons TWISTfm is an 8-voice polyphonic FM synthesizer based on YMF262 Sound Blaster ",
+    "category": "Announcements",
+    "subCategory": "Synthesizers -",
+    "author": "John Hitchsock",
+    "body": "The manufacturer unveiled the first prototype of the new TWISTfm at Superbooth 24 (see below). Several months later, the synth is now finally ready and you can order yours* for $1022 / £1015 / €1189. Twisted Electrons expects to ship the synth by the end of January. Twisted Electrons TWISTfm: Polyphonic FM Synth With Sound Blaster Chips\n[17 May 2024] Twisted Electrons is showcasing a prototype of the upcoming TWISTfm synthesizer at Superbooth 24. Once again, the chiptune experts have reached deep into the vintage computing bag of tricks and dug out a couple of YMF262/OPL3 FM chips from the Sound Blaster era. \n\nWhile these chips are also in the manufacturer’s Blast Beats FM groovebox (read our review here), they’re configured differently in the TWISTfm. Blast Beats offers six drum tracks and four monophonic or duophonic synth instruments, whereas the new TWISTfm uses two chips to create 8-voice polyphonic FM sounds.",
+    "link": "",
+    "public_images_id": ["twisted-electrons-twistfm-main-770x425_ltqwsb"],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737578310/twisted-electrons-twistfm-main-770x425_ltqwsb.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737578310/twisted-electrons-twistfm-main-770x425_ltqwsb.jpg"
+    ],
+    "caption": "",
+    "date": {
+      "$date": "2025-01-22T20:38:31.127Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "67915789cac748f5b20bfd3c"
+    },
+    "title": "Heritage Audio O.H.M Amp: An Impedance-matching Headphone Amplifier",
+    "subTitle": "Meet your new favourite headphones amplifier.",
+    "category": "Gear Review",
+    "subCategory": "Headphone Amp",
+    "author": "Jeannie Fronseca",
+    "body": "The Heritage Audio O.H.M Amp can match your favourite headphones for optimal performance for music production, mixing, or listening.\n\nHeritage Audio has developed a knack for coming up with useful gadgets that become essential items in your studio. If you use headphones for beat production and mixing or you’re part of the headphones subreddit communities, the O.H.M Amp is an exciting prospect.\n\nHeritage Audio O.H.M Amp\nBesides the classic Heritage Audio styling, the first thing you’ll notice about the O.H.M Amp is the range of inputs available. You can choose between Bluetooth devices, balanced, or unbalanced inputs which makes it possible to interface with virtually any professional or consumer device you can think of.\n\naturally, the core functionality of the O.H.M Amp is centered around its impedance selector. With the six modes (Ohm, 32Ω, 50Ω, 80Ω, 250Ω, and 600Ω), you can match up the O.H.M Amp with your favourite pair of headphones. This includes Bluetooth headphones, closed-back headphones, and open-back studio headphones, as well as in-ears.\n\nTo assure the best signal quality, the Bluetooth receiver system uses a Burr-Brown digital conversion stage, so you’ll even get the most out of your AirPods. On the front panel, there are separate minijack and standard stereo jack inputs, while the rear panel has a range of connectivity options.\n\nThere are balanced XLR combo inputs for pro audio devices and unbalanced RCA inputs for Hi-Fi. Meanwhile, there is also a handy pair of TRS Thru outputs for bridging devices in the same signal path. Overall, Heritage Audio has hit a home run with the Ohm Amp and this is bound to catch on with both studio and audiophile listeners.\n\nPricing and Availability\nThe Heritage Audio O.H.M Amp is currently available for order from Thomann and will arrive in the coming months.",
+    "link": "",
+    "public_images_id": ["heritage-audio-ohm-amp-ft-770x425_ndkw62"],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737578377/heritage-audio-ohm-amp-ft-770x425_ndkw62.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737578377/heritage-audio-ohm-amp-ft-770x425_ndkw62.jpg"
+    ],
+    "caption": "Thomann Music",
+    "date": {
+      "$date": "2025-01-22T20:39:37.979Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "679157e4cac748f5b20bfd4d"
+    },
+    "title": "Focal Utopia Main: 2 Ultra High-end Passive Monitoring Systems",
+    "subTitle": "4 decades of speaker design ingenuity comes together in the Utopia passive mains.",
+    "category": "Recording & Studio",
+    "subCategory": "Audio Monitors",
+    "author": "Jeannie Fronseca",
+    "body": "Introducing the Focal Utopia Main series, with two passive monitoring systems, each with a pair of powerful custom mono-block amplifiers.\n\nNew passive monitoring systems are unusual in 2025, let alone in the upper echelons of the market. When I first saw the Utopia Main systems, I was immediately reminded of the classic Tannoy 215 DMT main monitors that were the standard in the pro studios of yesteryear.\n\nFocal Utopia Main\nThe Utopia Main series has two options which we’ll discuss briefly, including the versatile 112 that can switch between vertical and horizontal configurations, and the installation-friendly 212.\n\nFocal Utopia Main 112\nThe Utopia Main 112 is a 3-way passive monitor with a 13-inch high excursion subwoofer, a 5-inch midrange driver, and a 1.5-inch beryllium tweeter. Created as a pro studio mains system, the 112 promises incredibly high accuracy reproduction with ultra-low distortion levels, even in high SPL monitoring situations. To shift the speaker positioning from vertical to horizontal, the plate containing the midrange and high-frequency drivers can be rotated in 90-degree steps. In addition, the MDF speaker enclosures have been constructed with reinforced bracing to reduce the chance of resonance considerably.\n\nEach matched 112 pair includes two Class-H current-mode amplifiers with separate outputs for the tweeters, as well as for the woofer and midrange drivers",
+    "link": "",
+    "public_images_id": ["focal-utopia-main-212-ft-770x425_wecocv"],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737578468/focal-utopia-main-212-ft-770x425_wecocv.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737578468/focal-utopia-main-212-ft-770x425_wecocv.jpg"
+    ],
+    "caption": "",
+    "date": {
+      "$date": "2025-01-22T20:41:08.979Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "67915816cac748f5b20bfd4f"
+    },
+    "title": "PUNCH: A New Take on Dynamics With Zynaptiq’s Perfect Transient Shaper!",
+    "subTitle": "Dynamic Control for Every Sound",
+    "category": "Electronic Music",
+    "subCategory": "Transient Shaper",
+    "author": "Johann Parker",
+    "body": "Zynaptiq’s new PUNCH plugin is a dynamic tool designed specifically for precise sound shaping and dynamic contouring – an advanced transient shaper. It combines advanced algorithms with intelligent design to add organic punch and musical precision to both individual tracks and complex mixes. All with the developer’s signature quality – very exciting!\n\nADVERTISEMENT\n\nMore Contour With PUNCH\nThe aim of PUNCH is to create a sonic presence for individual sounds, tracks, groups or entire mixes, from subtle accentuation to assertive compression effects. The innovative technology of this new plugin sets it apart from conventional transient shapers. It delivers convincing results even when other tools reach their limits with highly compressed audio material.\n\nAt the heart of PUNCH is the use of several advanced algorithms called CRYSTAL and SMOOTH, which are based on up to one hundred (!) precisely configured filter bands. These allow you to finely control the attack and release times, creating both crisp transients and smooth dynamic transitions.",
+    "link": "",
+    "public_images_id": ["Zynaptiq-PUNCH-01-770x425_vkkdxs"],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737578517/Zynaptiq-PUNCH-01-770x425_vkkdxs.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737578517/Zynaptiq-PUNCH-01-770x425_vkkdxs.jpg"
+    ],
+    "caption": "Zynaptiq Site",
+    "date": {
+      "$date": "2025-01-22T20:41:58.444Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6791584fcac748f5b20bfd51"
+    },
+    "title": "resør 3300: High-end Rotary Mixer for DJs and Sound Enthusiasts",
+    "subTitle": "High End DJ Tool",
+    "category": "Electronic Music",
+    "subCategory": "VSTs - DJ",
+    "author": "Katie Nichols",
+    "body": "The resør 3300 from the Berlin-based hardware manufacturer resør electronics represents a new generation of high-end rotary mixers with an exclusive combination of technical sophistication and sonic precision. With a fully discrete Class A master isolator, a 3-band equaliser per channel and four phono/line preamps, the mixer offers impressive sound design with maximum control. Every detail has been considered to ensure optimum results with both analogue and digital sources.\n\nSound Control at the Highest Level: resør 3300\nSix months in the making, the resør 3300’s master isolator is a discrete Class A circuit with 24 dB/octave filters and a full crossover. This isolator allows not only precise sound processing, but also a boost of up to +12 dB, making it a versatile tool in the mix. With 28 BJT and 32 FET transistors, the Isolator delivers exceptional performance in terms of both sonic dynamics and frequency balance. Together with a newly designed 3-band equaliser, the mixer offers even more sound shaping options: the equaliser has an optimised frequency response, low noise and a wide bandwidth that can shape the sound subtly or strongly.\n\nMore Than Just a Mixer – a Class of its Own\nThe combination of equaliser and isolator not only offers sophisticated control, but also remarkable headroom across all frequency ranges. Complex mixes can be refined with precision and subtlety. Hi-Fi phono and line inputs are available for each of the four channels. The phono preamplifiers offer 44 dB of gain and, especially when used with turntables, deliver outstanding dynamics and frequency range.",
+    "link": "",
+    "public_images_id": ["resor-electronics-resor-3300-01-770x425_rl3pbo"],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737578575/resor-electronics-resor-3300-01-770x425_rl3pbo.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737578575/resor-electronics-resor-3300-01-770x425_rl3pbo.jpg"
+    ],
+    "caption": "",
+    "date": {
+      "$date": "2025-01-22T20:42:55.997Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "679158e2cac748f5b20bfd61"
+    },
+    "title": "Cherokee Country Songs Agalisiga ‘Chuj’ Mackey is Reviving Language& Culture",
+    "subTitle": "Tune into the Cherokee inspired sound",
+    "category": "News",
+    "subCategory": "Article",
+    "author": "Johann Parker",
+    "body": "Singer/songwriter Agalisiga Mackey, or “Chuj” as he’s known, cuts quite the country figure. With his long hair tucked under a wide-brimmed hat, he’s strumming through three chords and the truth, voice cresting in a delicate yodel, as he covers Hank Williams’ “I’m So Lonesome I Could Cry.” But there’s a catch: Mackey’s singing in Cherokee. \n\nMackey, from Oklahoma, is the only artist writing and performing country music in the ancient Cherokee language, which is so endangered that only 2,000 native speakers remain. He didn’t grow up speaking Cherokee, but he’s dedicated his life to learning it, and teaches it to children in a language immersion school. He’s part of a vanguard of young Native musicians who are using songwriting to revitalize nearly lost Indigenous languages. \n\nOn his debut album, Nasgino Inage Nidayulenvi (It Started In the Woods), out now on non-profit label Horton Records, Chuj’s original songs speak to traditional themes like the Cherokee reverence for nature, but also include murder ballads and love songs inspired by his love for country music. Chuj also covers Williams and Bob Dylan, the latter of which was a difficult task to translate since the Cherokee language doesn’t treat metaphor the same way as Dylan does. Chuj’s voice sounds old before its time, a soft twang cutting through it that could come from either the Cherokee language or his own Oklahoma accent. The songs are taken from his experiences growing up Cherokee, and his hopes for strengthening a language that few speak fluently. \n\nAgalisiga “Chuj” Mackey grew up in a family that loved country music, from Waylon and Willie on his mom’s side to Bob Wills and Hank Williams from his dad (though his dad played in metal bands). He listened to many genres of music, but never thought he’d be writing his own songs, let alone in Cherokee. Credit that to the vision of family friend and noted Tulsa Cherokee filmmaker/photographer Jeremy Charles. Inspired by how New Zealand’s Māori use songs and music videos to support the language, Charles got the idea to put together a compilation album with Cherokee singers singing in the Cherokee language. Prior to this, most music making for the Cherokee was done in English.\n ",
+    "link": "",
+    "public_images_id": ["Agalisiga_3513_pd9sjh"],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737578721/Agalisiga_3513_pd9sjh.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737578721/Agalisiga_3513_pd9sjh.jpg"
+    ],
+    "caption": "",
+    "date": {
+      "$date": "2025-01-22T20:45:22.468Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "67915959cac748f5b20bfd63"
+    },
+    "title": "The future of sound?  AI and composing",
+    "subTitle": "Music composition class explores the intersection of AI and art",
+    "category": "Composition",
+    "subCategory": "AI",
+    "author": "Jeannie Fronseca",
+    "body": "The Friday night jam session took place as part of a semester-long collaboration between an Emory live electronic music composition class and an improvisatory dance class at Spelman College.\n\nThe joint class is one of three this semester in Emory’s Arts and Social Justice Fellows (ASJ) program, which is celebrating its fifth year. The program is a partnership of Emory College of Arts and Sciences, Emory Arts and the Emory Center for Ethics that brings artists into classrooms to reimagine an existing course, exploring creative approaches to address the issues that surface within class conversations.\n\nThis fall’s courses culminated in a live student showcase featuring all three classes at The Supermarket, an event space in Poncey-Highland.\n\n Adam Mirza, assistant professor in composition in Emory’s Department of Music, has taught a more straightforward version of his Live Electronic Music class for several semesters.\n“Usually, it’s a small group of undergraduate students learning to compose experimental electronic music that they can play live, with laptops and maybe a few synthesizers,” he says.\n\nBut in addition to recording and editing samples and programming their own musical instruments, students in this semester’s ASJ version of the class are also working with the dance class at Spelman and experimenting with AI, the social justice topic theme that both classes are taking on.\n\n“We’ve been throwing stuff at them and they’re just going with it,” Mirza says.\n\nThe “we” includes ASJ Fellow Kacie Luaders, an Atlanta podcast and sound artist, who is co-teaching with Mirza and T. Lang, an associate dancer professor at Spelman. AI as creative opportunity\n\n“I feel like I am a reflection of [the dancer’s] movements,” says Ella Ferguson, a sophomore who enjoys deejaying in her spare time.\n\nLuaders, who has used AI in her creative work, says she hopes to bring a sense of optimism to students, so that they view the technology as a tool rather than a threat.\n“When GPTs and generative AI first came out, my first thought wasn’t, ‘Oh, no; they’re going to steal our jobs! They’re going to steal humanity!’” she says. “My first thought was, ‘How can I use this to make cool stuff?’”",
+    "link": "",
+    "public_images_id": ["story_main_zj04iq"],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737578840/story_main_zj04iq.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737578840/story_main_zj04iq.jpg"
+    ],
+    "caption": "Emory University",
+    "date": {
+      "$date": "2025-01-22T20:47:21.551Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "67926bf34d671eb1f39940dd"
+    },
+    "title": "Polyend launch Step drum machine",
+    "subTitle": "Pedal-based programmable rhythm machine",
+    "category": "Instruments",
+    "subCategory": "Drum Machine Pedal",
+    "author": "Haggar Blairs",
+    "body": "Polyend, the company behind the recently reviewed Tracker+ (SOS Jan 2025) and Play+ (SOS Apr 2024) grooveboxes, have launched their latest creation: Step, said to be the world’s first fully programmable drum machine in a compact guitar pedal format. Designed to bring rhythm creation to musicians of all backgrounds, Step offers integration with MIDI-enabled gear and performance features in an intuitive design ideal for both live and studio use.\n\nThis fully programmable device provides over 350 preset rhythms, 200 drum kits, and the flexibility to design complex beats from scratch. Musicians can loop 16-step patterns or chain them into 16-pattern songs, all controlled via a straightforward and accessible interface.\n\nThe 4-track drum machine offers multi-layered rhythms, with customisable parameters such as swing and tempo. Users can assign up to 16 punch-in effects per song and save up to 1000 songs for playback.\n\nStep’s robust and compact design fits conveniently on a pedalboard, making it a versatile tool for live performance or practice. Stomp switches allow for pattern changes, song transitions, and punch-in effects like delays, repeaters, and rearrangers. MIDI input/output ensures smooth synchronisation with other gear, from loopers to other Polyend grooveboxes. Step probability, velocity control, and instant humanisation add expressive dynamics or precise machine rhythms as required.",
+    "link": "",
+    "public_images_id": ["step_front-ZJFNGr_dwTv.YiBrZy9ab2qUPS8AgaXN_pmlo9x"],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737649138/step_front-ZJFNGr_dwTv.YiBrZy9ab2qUPS8AgaXN_pmlo9x.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737649138/step_front-ZJFNGr_dwTv.YiBrZy9ab2qUPS8AgaXN_pmlo9x.jpg"
+    ],
+    "caption": "SOS Music Site",
+    "date": {
+      "$date": "2025-01-23T16:18:59.091Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "67926c444d671eb1f39940df"
+    },
+    "title": "Ear Trumpet Labs introduce Wanda microphone",
+    "subTitle": "Stylish large-diaphragm condenser",
+    "category": "Announcements",
+    "subCategory": "Microphones",
+    "author": "John Hitchsock",
+    "body": "outique microphone manufacturer Ear Trumpet Labs have introduced Wanda, a stand-mounted condenser microphone. Combining design inspired by 1940s and 1950s aesthetics with modern audio performance, Wanda is said to be suited to both live and studio applications.\n\nThe Wanda microphone features a stylish all-brass construction, inspired by the designs of the 1940s and 1950s.\nThe Wanda microphone features a stylish all-brass construction, inspired by the designs of the 1940s and 1950s.\nWanda features a large 26 mm diaphragm condenser capsule and a cardioid polar pattern with a wide sweet spot extending up to 12 inches across. Capable of handling high sound pressure levels, Wanda is said to be equally suited for vocalists, brass and string instruments, as well high-SPL percussive sources like snare drums or kick drums. An integrated multilayer pop filter ensures clean, plosive‑free audio even in close‑mic settings.\n\nEngineered with a rugged all‑brass construction, Ear Trumpet Labs describe this as a road‑ready mic ideal for live performances, yet refined enough for the fidelity of studio recording. The pivoting stand mount is built directly into the microphone for easy positioning on a stand without requiring additional clips. Wanda boasts an output impedance below 50 Ohms, a noise floor of just 14 dBA and compatibility with +24V to +48V phantom power systems.\n\nAs with all Ear Trumpet Labs microphones, Wanda is handcrafted in their Oregon workshop.",
+    "link": "",
+    "public_images_id": [
+      "ear_trumpet_labs_wanda-1VjXv7NJF6tdNQvc9eFHRPytG0Ck9KEF_ogm8ug"
+    ],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737649219/ear_trumpet_labs_wanda-1VjXv7NJF6tdNQvc9eFHRPytG0Ck9KEF_ogm8ug.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737649219/ear_trumpet_labs_wanda-1VjXv7NJF6tdNQvc9eFHRPytG0Ck9KEF_ogm8ug.jpg"
+    ],
+    "caption": "SOS Music Site",
+    "date": {
+      "$date": "2025-01-23T16:20:20.546Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "67926d1c4d671eb1f39940ef"
+    },
+    "title": "Erica Synths launch Perkons Voice module",
+    "subTitle": "PERKONS HD-01 sounds for Eurorack",
+    "category": "Announcements",
+    "subCategory": "Modular ",
+    "author": "Johann Parker",
+    "body": "Erica Synths have unveiled the Perkons Voice, a 14HP Eurorack module that adapts the percussion engine of the PERKONS HD-01 (read the SOS review!) drum machine for modular systems. The module combines a digital sound engine with an analogue multimode filter and overdrive, delivering a wide range of tonal possibilities.\n\nPerkons Voice features 13 sound generation algorithms, providing traditional percussion hits through to more experimental sounds. Users can save and recall up to 99 presets, offering convenience for both live performance and studio work. A \"Rompler\" engine enables users to replace onboard samples, further expanding the module’s sonic versatility.\n\nFor precise control, the module includes configurable Tune and Patch CV inputs calibrated to 1V/oct, making it capable of melodic and pitch-specific applications. Its 4-voice poly overlap mode allows for blending multiple notes in dynamic and creative ways, as well as a drone mode for developing and evolving soundscapes.\n\nPrice & Availability\nErica Synths estimate availability from 28 January 2025, priced at €280.",
+    "link": "",
+    "public_images_id": [
+      "perkonsvoice-blackbg-fullres-6AMA0.x0p.IwZ2EQErmUqxjLv96NlAN2_ajya0h"
+    ],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737649435/perkonsvoice-blackbg-fullres-6AMA0.x0p.IwZ2EQErmUqxjLv96NlAN2_ajya0h.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737649435/perkonsvoice-blackbg-fullres-6AMA0.x0p.IwZ2EQErmUqxjLv96NlAN2_ajya0h.jpg"
+    ],
+    "caption": "",
+    "date": {
+      "$date": "2025-01-23T16:23:56.425Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "67926d6b4d671eb1f39940f1"
+    },
+    "title": "KIT Plugins BB F66 & BB F67",
+    "subTitle": "Compressor Plug-ins",
+    "category": "Electronic Music",
+    "subCategory": "VSTs - Compressor",
+    "author": "Mark Rodriguez",
+    "body": "There are now quite a few plug‑ins that emulate the famous Fairchild 660 and 670 compressors but, as with their other recent creations, KIT Plugins have based theirs on specific units in John McBride’s Blackbird Studios in Nashville — in this case, they’ve modelled the units used for, amongst other things, Martina McBride’s vocals. Authorisation is via iLok Cloud or iLok 2/3 dongles (computer hardware authorisation isn’t permitted), and all the usual plug‑in formats for Mac and Windows hosts are supported, but for 64‑bit systems only. Curiously, the download for my Mac‑based system was pretty large (almost 1GB), though the installed plug‑in takes up only about a third of that space. Other than that, installation was hassle free.\n\nTwo separate plug‑ins are installed: the BB F66 (a 660 emulation) and the BB F67 (a 670 emulation), and with both channels always ‘in view’ for the latter you’re never in any doubt as to which you’ve loaded. Starting with the ‘single‑channel’ BB F66, this can be used as a mono, stereo or mono‑to‑stereo plug‑in. All the anticipated Fairchild controls are there, with continuously variable input gain and threshold knobs joined by a five‑position time‑constant switch, a virtual moving‑coil meter that can be set to display the input or output level or gain reduction, and an on/off switch. Despite the vintage look, there are nods to modernity here: a panel at the bottom hosts controls for a 0‑500 Hz side‑chain filter, a wet/dry blend facility and up to ±20dB of make‑up gain. At the top, you have separate, clean (ie. proudly digital and not modelling any hardware) input and output level controls, along with buttons for undo/redo and A/B comparison, as well as a generously stocked preset menu, with settings created by various famous names. The GUI is resizeable to small, medium or large, with medium being the default. ",
+    "link": "",
+    "public_images_id": [
+      "kit_plugins_bbf66_bbf67_01-AtVHsdg0of5c.5Fyw7jMoTyvSNwzeAAE_dycvmv"
+    ],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737649514/kit_plugins_bbf66_bbf67_01-AtVHsdg0of5c.5Fyw7jMoTyvSNwzeAAE_dycvmv.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737649514/kit_plugins_bbf66_bbf67_01-AtVHsdg0of5c.5Fyw7jMoTyvSNwzeAAE_dycvmv.jpg"
+    ],
+    "caption": "SOS Music Site",
+    "date": {
+      "$date": "2025-01-23T16:25:15.294Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "67926da94d671eb1f39940f3"
+    },
+    "title": "Overloud announce refreshed THU v2",
+    "subTitle": "Next generation of guitar amp simulator",
+    "category": "Announcements",
+    "subCategory": "Guitar Sim",
+    "author": "Jeannie Fronseca",
+    "body": "Overloud have unveiled THU v2, the latest version of its flagship guitar amp simulation software. This upgraded release introduces a completely redesigned interface shared across the entire THU range, designed to make its modelling, capturing and impulse response processing more accessible and intuitive.\n\nAlready known for hosting the largest collection of amps, cabinets, and effects in a single plug-in, the THU platform has continuously evolved with features such as Fluid IR technology for hyper-realistic cabinet tones and Fluid Capturing technology, which combines the precision of modelling with the authenticity of amp capturing. THU Premium (reviewed in SOS July 2024) also includes sought-after models like the Centuria and MOD3000, along with monthly signature patches and packs that recreate the iconic tones of legendary bands and musicians.\n\nRedesigned Interface\nTHU v2 brings a modernised interface designed to enhance creativity. The sleek layout includes updated graphics to visually represent each model. Improved window organisation and multi-row model arrangements reduce scrolling, ensuring quick navigation and a clear overview of the signal chain. Drag-and-drop functionality and a unified panel for rigs and IRs streamline workflow, while a favourites tagging system makes accessing frequently used presets and models effortless.",
+    "link": "",
+    "public_images_id": [
+      "overloud_thu_v2-02MDpRTFKsW06f51ojLDPQdztCNMGl8__e1ddnn"
+    ],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737649576/overloud_thu_v2-02MDpRTFKsW06f51ojLDPQdztCNMGl8__e1ddnn.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737649576/overloud_thu_v2-02MDpRTFKsW06f51ojLDPQdztCNMGl8__e1ddnn.jpg"
+    ],
+    "caption": "SOS Music Site",
+    "date": {
+      "$date": "2025-01-23T16:26:17.318Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "67926e094d671eb1f3994103"
+    },
+    "title": "Crane Song Solaris",
+    "subTitle": "Stereo D-A Converter",
+    "category": "Gear Review",
+    "subCategory": "Converter",
+    "author": "Frank Glass",
+    "body": "Crane Song’s founder Dave Hill has long been regarded as one of the gurus of pro audio design. I met him at an AES convention 20 years ago, and fondly remember him very vividly explaining the design flaws of the original UREI 1176 compressor — and then ending the private lecture with the words, “I guess that’s why people love it so much.” To me, Dave is all about designing ‘perfect’ outboard, which means placing equal importance on impressive technical specifications and pleasing sound. His designs have been proven to deliver both of these time and time again, which is why I got very excited at the prospect of his new Solaris converter arriving at my studio!\n\nOverview\nThe Solaris is instantly recognisable as a Crane Song product, due to the mint-green plastic knobs and Dave’s signature printed at the right-hand end of the front panel. (Its appearance might put off some hi-fi enthusiasts, but they don’t know what they’re missing out on!) The front panel contains a power switch, mute button, source-selection knob, display, gain knob, headphone gain knob and a headphone jack; both the main gain and the headphone gain controls are actually stepped attenuators. The display shows the input source, sample rate, and gain settings for the main and headphone outputs, and to the right there’s a small but informative level meter.\n\nOn the back, there are input connections for S/PDIF, AES3, Toslink and USB. Male XLRs provide the main outputs, with adjustable gain, and a pair of fixed-level secondary outputs. The main outputs are controlled by the gain knob (again, a stepped attenutor), and can output a maximum level of +24dBu, while the limit of the fixed outputs is +18dBu. Power cycling while pressing the mute button brings up a setup menu, making it possible to engage a 6dB pad on the main output, or to change the gain display so that instead of showing attenuation from 0 down to -60 dB, the display matches that of the Crane Song Avocet monitor controller, ranging from +12 down to -48 dB. The USB input is class compliant, so can be used with Mac computers without a separate driver installation, and a CEntrance universal ASIO driver is available for Windows (7 and later) machines.",
+    "link": "",
+    "public_images_id": [
+      "cranesong_solaris_01-8Lo9TxjNhSKvfQ7o4TevpXHul7d6cQV0_c8pgmz"
+    ],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737649672/cranesong_solaris_01-8Lo9TxjNhSKvfQ7o4TevpXHul7d6cQV0_c8pgmz.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737649672/cranesong_solaris_01-8Lo9TxjNhSKvfQ7o4TevpXHul7d6cQV0_c8pgmz.jpg"
+    ],
+    "caption": "",
+    "date": {
+      "$date": "2025-01-23T16:27:53.315Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "67926e684d671eb1f3994105"
+    },
+    "title": "Soyuz 011 FET",
+    "subTitle": "Small-diaphragm Capacitor Microphone",
+    "category": "Gear Review",
+    "subCategory": "Microphones",
+    "author": "Frank Glass",
+    "body": "Although they’re competitively priced for hand‑built microphones, Soyuz’s flagship valve and solid‑state models nevertheless occupy a price range that is out of reach for many of us. Some of their newer releases, however, suggest a decision to offer more accessible options. The subject of this review is one such: a miniature mic to sit alongside their well‑regarded 013 series of small‑diaphragm valve and FET capacitor microphones.\n\nAudio examples for the Soyuz 011 FET can be found here.\n\nOut Of The Wood\nA pair of 011 FET mics were sent to me for review and, as a long‑time SOS reviewer, I struggle to recall a more aesthetically pleasing package arriving at my studio. These are small but classy‑looking mics, and they come in a beautifully understated wooden case that houses the mics, ‑10dB pad attachments, and functional mic mounts. A case doesn’t matter that much, of course, but when you have other mics that are well over 50 years old, it feels reassuring when a modern company puts out a product with the same kind of longevity in mind.\n\nThe 011 ships in a wooden box, along with a mic clip and screw‑on ‑10dB pad attachment.\nThe 011 ships in a wooden box, along with a mic clip and screw‑on ‑10dB pad attachment.\n\nAs I hinted at earlier, the 011 FET is somewhat related to the more upmarket 013 FET, but there are some significant differences that are worth a little investigation. Aficionados of pencil mics often lament the discontinuation of Neumann’s transformer‑balanced KM84 in favour of the transformerless KM184. Although the ‘vintage is better’ mantra can be tiresome, there’s no doubt that the 184 — whilst still being a very good mic — has a different character and can produce subjectively brighter, less forgiving results in some recording situations.\n\nI mention this as the KM84 is often seen as a reference point for small‑diaphragm capacitor mics, and in one key way the 013 and the 011 reviewed...",
+    "link": "",
+    "public_images_id": [
+      "Soyuz_011_01-Z97c561_.2HKiYmhawQTkwNLmwiok7Aj_gple8u"
+    ],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737649767/Soyuz_011_01-Z97c561_.2HKiYmhawQTkwNLmwiok7Aj_gple8u.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737649767/Soyuz_011_01-Z97c561_.2HKiYmhawQTkwNLmwiok7Aj_gple8u.jpg"
+    ],
+    "caption": "",
+    "date": {
+      "$date": "2025-01-23T16:29:28.386Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "67926ec84d671eb1f3994107"
+    },
+    "title": "Drum Mic Sets - How They Work and Which To use",
+    "subTitle": "Spotlight Round-up and Introduction",
+    "category": "General",
+    "subCategory": "Educational",
+    "author": "Johann Parker",
+    "body": "Capturing a good drum sound can be a challenge, and with the high SPLs and potentially awkward mic positions involved, a set of dedicated mics can make a lot of sense. So, in this month’s Spotlight, we round up a variety of all‑in‑one mic bundles designed to capture a whole drum kit in all its glory. A bonus to investing in such a set is that in addition to their obvious use, the models included often come in handy for other sources, too — kick mics tend to work well on bass amps, for example, and a good pair of small‑diapragm capacitors can do far more than simply sitting above a drum kit! \n\nThe AKG line‑up includes three Drum Set packages: Session, Concert and Premium. Session combines a P2 kick mic with four P4s designed for snare and tom duties, while overheads are taken care of by a pair of P17s. Concert then relies on a D112 MkII and four D40s for kick, snare and toms respectively, and includes a pair of C430s for overheads. The flagship Premium set includes a D12 VR kick‑drum mic along with four D40s, but adds a C451 B that can be used as a dedicated hi‑hat mic, plus a matched stereo pair of C214 overheads. All three kits come supplied in a hard carry case with an assortment of mounting hardware.",
+    "link": "",
+    "public_images_id": [
+      "spotlight_drum_set_mics-Ye2bsJgvRwBE4UZgga_HYPeKInRU42Rm_jvfuun"
+    ],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737649863/spotlight_drum_set_mics-Ye2bsJgvRwBE4UZgga_HYPeKInRU42Rm_jvfuun.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737649863/spotlight_drum_set_mics-Ye2bsJgvRwBE4UZgga_HYPeKInRU42Rm_jvfuun.jpg"
+    ],
+    "caption": "SOS Music Site",
+    "date": {
+      "$date": "2025-01-23T16:31:04.072Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "67926efc4d671eb1f3994109"
+    },
+    "title": "Soyuz 013 Ambisonic",
+    "subTitle": "Ambisonic Microphone",
+    "category": "Gear Review",
+    "subCategory": "Microphones",
+    "author": "Johann Parker",
+    "body": "Will Soyuz’s beautifully crafted four‑capsule mic help turn Ambisonics from a niche interest to a mainstream studio technology?\n\nThe brainchild of pioneering mathematicians Michael Gerzon and Peter Craven, Ambisonics extends the idea of Mid‑Sides stereo into three dimensions. And given how much popular confusion there is about Mid‑Sides stereo, it’s hardly surprising that Ambisonics is widely misunderstood. In particular, I think many people view it as something that’s only relevant if you’re working in surround — but nothing could be further from the truth. An Ambisonic signal simply describes the 3D soundfield at a particular point in space, and the beauty of it is that this soundfield can be mapped onto any playback system you like, from a mono speaker to a vast Atmos array.\n\nFormats such as Dolby Atmos are ‘spatial’ in the sense that they generate a three‑dimensional soundscape on playback. In practice, this is typically manufactured by panning mono and stereo sources around a speaker array. Ambisonics, by contrast, is a spatial recording format, and an Ambisonic microphone is designed to capture the 3D soundfield that impinges on it.\n\nThe Age Of Ambisonics\nIn conjunction with Ken Farrer at Calrec, Gerzon and Craven created the first commercial Ambisonic mic, the Soundfield, back in the late ’70s. Now part of the Rode group, Soundfield still make high‑end Ambisonic mics such as the ST450 MkII and SPS200, and were instrumental in the design of the impressive Rode NT‑SF1 back in 2018. All Soundfield mics are first‑order Ambisonic mics, which employ four cardioid or subcardioid capsules in a tetrahedral array. The same is true of models such as the Sennheiser Ambeo, Brahma Studio 4 and Core Sound Tetramic, and you can now buy second‑order Ambisonic mics with eight capsules such as the Voyage Audio Spatial Mic, Core Sound Octomic and Brahma Studio 8. In principle, a second‑order mic offers sharper localisation and thus the potential for greater realism, at the expense of greater complexity and cost.\n\nBefore anything useful can be done with the raw sound from the capsules of any Ambisonic mic, it must be processed. In the analogue domain, closely matched gain settings are used to preamplify each capsule’s output by exactly the same amount. ",
+    "link": "",
+    "public_images_id": ["Soyuz_02-zdmWvehCI3h5lBmOdBXUzXu9dbYu1nsd_hkcntx"],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737649915/Soyuz_02-zdmWvehCI3h5lBmOdBXUzXu9dbYu1nsd_hkcntx.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737649915/Soyuz_02-zdmWvehCI3h5lBmOdBXUzXu9dbYu1nsd_hkcntx.jpg"
+    ],
+    "caption": "SOS Music Site",
+    "date": {
+      "$date": "2025-01-23T16:31:56.307Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "67926f324d671eb1f399410b"
+    },
+    "title": "Roland SPD-SX Pro",
+    "subTitle": "Sampling Drum Pad",
+    "category": "Gear Review",
+    "subCategory": "Drum Pads",
+    "author": "John Philips",
+    "body": "Is Roland’s SPD‑SX Pro the best percussion pad you can buy?\n\nI’m a long‑time user of the Roland SPD sample pad range, having owned the original SPD‑S and, more recently, the SPD‑SX, which I also reviewed in SOS October 2012. Ten years on from the launch of the latter, Roland have released the SPD‑SX Pro — “the ultimate sampling pad for the most demanding gigs”.\n\nLooking at the feature list, it’s clear to me that Roland have been listening to user feedback, and also keeping an eye on the competition, as the new device bears more than a passing resemblance to the Alesis Strike MultiPad, which I reviewed in 2019. Featuring 32GB of sample memory, a large 4.3‑inch LCD screen, more trigger inputs and audio outputs than its predecessor, customisable pad LEDs and a host of new ‘under the hood’ additions and enhancements (including over 1500 new sounds and samples), the new SPD‑SX Pro carries a hefty price tag of a fraction under $1200. The SPD‑SX Pro isn’t a replacement for the SPD‑SX, and both products (plus the SPD‑SX SE) will sit side by side in the Roland catalogue, potentially addressing the needs of different users. What we’re here to find out is whether this Pro variant lives up to Roland’s claim that it’s the “ultimate sampling pad”.\n\nOut Of The Box\nThe physical dimensions of the Pro, and its pad sizes, are more or less identical to those of the SPD‑SX, but Roland have given the control section of the unit more front‑panel real‑estate by removing the plastic surround that runs between the older unit’s pads and control section. This helps to accommodate the new 4.3‑inch colour LCD and facilitates a more spacious layout for the knobs and buttons. Although the pad sizes are identical, the pads themselves have had an upgrade in terms of sensitivity and crosstalk reduction (and, of course, their LEDs), with the top‑row ‘shoulder pads’, in particular, benefiting from a revised sensor structure and physical redesign. Slightly slimmer, the shoulder pads now sit higher than those on the SPD‑SX, which should make them easier to play when the unit is mounted at an angle. I’ve never had an issue with the shoulder pads on the SPD‑SX, but that may be because I tend to use them more for enabling clicks or backing tracks than for anything requiring subtle dynamics.",
+    "link": "",
+    "public_images_id": [
+      "RolandSPDSXPro_01-FMI_jm39BUwdO1KyYaloQYx9.9nbZm9R_jrwl4x"
+    ],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737649969/RolandSPDSXPro_01-FMI_jm39BUwdO1KyYaloQYx9.9nbZm9R_jrwl4x.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737649969/RolandSPDSXPro_01-FMI_jm39BUwdO1KyYaloQYx9.9nbZm9R_jrwl4x.jpg"
+    ],
+    "caption": "",
+    "date": {
+      "$date": "2025-01-23T16:32:50.755Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "67926f834d671eb1f399410d"
+    },
+    "title": "The Yamaha NS10 Story",
+    "subTitle": "How A Hi-fi Speaker Conquered The Studio World",
+    "category": "General",
+    "subCategory": "Article",
+    "author": "John Hitchsock",
+    "body": "Love or hate the Yamaha NS10, this unassuming little speaker has found a place in the studios of many of the world's top producers. We trace its history, and investigate why a monitor whose sound has been described as \"horrible\" became an industry standard.\n\nWhat is it about the Yamaha NS10? If any piece of pro audio hardware deserves that over-used term \"industry standard\" it has to be the NS10. In a professional audio world continually seduced by the next big thing, where plug-ins can provide a near instantaneous GAS (Gear Acquisition Syndrome) fix, where products live or die thanks to their quantity of bells and whistles, and where the number of contemporary nearfield monitors that could apparently do the job of an NS10 is almost beyond count... the venerable, tired old Yamaha is the one piece of kit that still appears in almost every photograph of a smiling engineer posed at his desk.\n\nYou don't have to hang around long in the SOS Forum for a thread to appear that features the Yamaha NS10. Even in threads that begin with some other monitor subject, the NS10 seems to possess a gravitational influence that inexorably results in discussion of its merits, or otherwise. Few subjects excite so much passionate opinion and, as is the way with passionate opinions, you don't find many in the middle ground: nobody says they \"quite like\" or \"slightly dislike\" the NS10; it's a definite case of love or hate, as evidenced by the SOS Forum quotes I've included in the 'Love 'Em Or Hate 'Em?' box. Within that context of polarised opinion, the NS10 generates a phenomenon that at first glance seems a little odd. You find those that, in professional terms can't live without it but often don't particularly enjoy listening to it, and, similarly, those that refuse to give it studio room but are often happy to admit that professionally it does a job.\n\nSo what's going on? Not only should the NS10 by rights be nothing but a small footnote in the history of recorded music, but also there is precious little consensus or understanding about why we respond to it in the way we do, and why it's still found in almost every studio. That's where this feature comes in — so if you've ever wondered why you're still using NS10s, even though you don't particularly enjoy the way they sound.\n\n ",
+    "link": "",
+    "public_images_id": [
+      "yamahans1001-35_2nNDVKnwtfZ5zdkfzj9djTfoqlYXq_emplqw"
+    ],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737650051/yamahans1001-35_2nNDVKnwtfZ5zdkfzj9djTfoqlYXq_emplqw.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737650051/yamahans1001-35_2nNDVKnwtfZ5zdkfzj9djTfoqlYXq_emplqw.jpg"
+    ],
+    "caption": "SOS Music Site",
+    "date": {
+      "$date": "2025-01-23T16:34:11.867Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "67926fc94d671eb1f399410f"
+    },
+    "title": "Loudspeaker Design Cookbook",
+    "subTitle": "How to design audio loudspeakers",
+    "category": "General",
+    "subCategory": "Educational",
+    "author": "Jeannie Fronseca",
+    "body": "In print for almost half a century, the eighth edition of Vance Dickason’s loudspeaker bible is as relevant as ever.\n\nLoudspeaker Design Cookbook\nVance Dickason’s Loudspeaker Design Cookbook (ISBN 9798549209930) is as much an institution as it is simply a dense volume on the theory and practice of speaker design. I say that not only because, with its eighth edition, it’s been around now for 46 years, but because it is and always has been truly unique. There are quite a few books on speaker design out there, but no other is quite like Vance Dickason’s.\n\nAlong with his very long‑term commitment to writing about speaker design and engineering, Vance has a parallel career as a speaker design consultant working across pretty much every sector where speakers are present — from simple consumer electronics products, through in‑car audio to the highest of high‑end hi‑fi. He’s also the editor of Voice Coil, the loudspeaker designer’s trade magazine (I bet you didn’t know we speaker geeks have our own monthly magazine). Vance, perhaps as much as anybody else in the speaker design world, has earned the right to author the definitive book on the subject.\n\nWhile I’d wager that the majority of Loudspeaker Design Cookbook readers fall into the ‘amateur speaker‑building hobbyist’ category and probably live in the US (where speaker building as a hobby is rather more popular than it is in the UK), I’d also wager that if you were to glance along the reference bookshelf in pretty much any professional speaker R&D office you’d find a copy of LDC. And the reason for that goes back to to a word I used up in the first sentence: dense. ",
+    "link": "",
+    "public_images_id": ["LDC_0923-EnSdp7YHmWCqkbzOGAeZq3dBNEFk728H_l6zpfi"],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737650120/LDC_0923-EnSdp7YHmWCqkbzOGAeZq3dBNEFk728H_l6zpfi.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737650120/LDC_0923-EnSdp7YHmWCqkbzOGAeZq3dBNEFk728H_l6zpfi.jpg"
+    ],
+    "caption": "",
+    "date": {
+      "$date": "2025-01-23T16:35:21.748Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "679270384d671eb1f3994111"
+    },
+    "title": "Classical Recording: A Practical Guide In The Decca Tradition",
+    "subTitle": "Recording Classical music should not be complicated!",
+    "category": "General",
+    "subCategory": "Educational",
+    "author": "Jeffrey Philips",
+    "body": "Over the years, I must have read a small library’s worth of books on music recording techniques in general, with many concerning the specific approaches typically employed for classical music, in all its forms. However, this new 410‑page tome published by Routledge at the end of 2020 has established an impressive new high‑bar in the genre. Indeed, I forecast that it will quickly become ‘the’ standard reference work for students of all levels.\n\nIts three co‑authors, Caroline Haigh, John Dunkerley, and Mark Rogers, all gained considerable experience working with Decca (hence the book’s subtitle), with over 70 years between them at that great institution. Haigh worked mostly in post‑production roles at Decca over 18 years, while Dunkerley’s 50‑year recording career won him 15 Grammys, and Rogers, also a Grammy‑winner, started his career at Decca, EMI and Warner before becoming a freelance producer/engineer, working with many high‑end clients, including the Royal Opera House and Covent Garden. All three also lecture on the University of Surrey’s Tonmeister, the UK’s premier sound‑recording course. So these are three very experienced high‑end practitioners of the art, who have also developed abilities to explain techniques and concepts in ways which are easy to comprehend.\n\nThe book is divided logically into three sections: Before Recording, Recording, and After the Recording Session, with two chapters in the first, three in the last, and fourteen in the middle. Plenty of (black and white) photographs and diagrams accompany the text throughout. The first section considers the recording venue acoustics, what to be aware of and to look for, and pragmatic ways of coping with less‑than‑ideal situations. It then goes on to explore the importance of building a good rapport with those responsible for the venue, the required equipment, and the practicalities of safely rigging mics and cables, communications between control room and recording floor, and how to run a session and optimise the workflow — all with lots of real‑world experience underpinning the suggestions and guidance.",
+    "link": "",
+    "public_images_id": [
+      "classical_recording_decca_book_01-7UOu4Gyff9VuRP_r4W17oLTUoLUZdVxg_jadoqu"
+    ],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737650232/classical_recording_decca_book_01-7UOu4Gyff9VuRP_r4W17oLTUoLUZdVxg_jadoqu.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737650232/classical_recording_decca_book_01-7UOu4Gyff9VuRP_r4W17oLTUoLUZdVxg_jadoqu.jpg"
+    ],
+    "caption": "SOS Music Site",
+    "date": {
+      "$date": "2025-01-23T16:37:12.998Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "679270934d671eb1f3994113"
+    },
+    "title": "Roland : Inspire The Music for the Future",
+    "subTitle": "50 Years Of Roland History",
+    "category": "General",
+    "subCategory": "Article",
+    "author": "Johann Parker",
+    "body": "Bjooks take on one of the largest and most respected brands in music technology.\n\nWhatever your musical persuasion, or your use of music technology, be it as a consumer, producer, performer, hobbyist or professional, there is a very good chance that at some point, you have either used or lusted after something made by Roland.\n\nThis book is almost certainly the definitive document of Ikutaro Kakehashi’s legacy covering, as it does, almost every aspect of his company and its rich and diverse history. It is divided into sections that explore every facet of Roland’s product lines over the last half century. Drum machines, electronic drums and percussion, guitars, keys, synths and studio gear each have their own chapter, wrapped up at the end with a look back at Kakehashi‑san’s own story and that of his successors.\n\nDeep Dive\nAs you might expect from a Bjooks publication, this isn’t necessarily a tome that is designed to be read linearly, from beginning to end. I found myself immediately searching for the articles dedicated to the Roland gear I know and love, but then being sidetracked by other stuff. It’s akin to researching something on Wikipedia where one link leads to another and soon you’ve fallen down an information rabbit hole!\n\nNearly 70 artists were interviewed for their unique spin on the Roland legacy, spanning the likes of Thomas Dolby to DJ Jazzy Jeff, Peaches to Jean‑Michel Jarre and Nandi Bushel to the late, great and deeply-missed Don Lewis. The book’s foreword is by legendary production duo Jimmy Jam and Terry Lewis and the entire publication was made with the full support of the Roland Corporation.",
+    "link": "",
+    "public_images_id": [
+      "InspireTheMusic_01-qqjLrbaqmeA_lzkmeCc6ZhIB9dZ9DwLx_wh97a6"
+    ],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737650322/InspireTheMusic_01-qqjLrbaqmeA_lzkmeCc6ZhIB9dZ9DwLx_wh97a6.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737650322/InspireTheMusic_01-qqjLrbaqmeA_lzkmeCc6ZhIB9dZ9DwLx_wh97a6.jpg"
+    ],
+    "caption": "SOS Music Site",
+    "date": {
+      "$date": "2025-01-23T16:38:43.477Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "67929f684d671eb1f39943ed"
+    },
+    "title": "Telegrapher showcase Rhino monitors",
+    "subTitle": "Four-way main reference monitors",
+    "category": "Announcements",
+    "subCategory": "Audio Monitors",
+    "author": "Jeannie Fronseca",
+    "body": "Telegrapher have announced they will be showcasing their new flagship four-way main reference monitor Rhino at the NAMM Show 2025. This joins their impressive line-up of handcrafted analogue speakers, including the Elephant, Fox and recently reviewed Gorilla monitors (SOS Oct 2024).\n\nThe Rhino is designed for the highest fidelity in critical mixing and mastering applications. Using state-of-the-art engineering, this innovative four-way reference monitor features a dedicated upper bass driver designed to enhance warmth and tonal fullness while maintaining a clinically flat frequency response. The speaker houses a lower bass woofer measuring 12.5 inches (32 cm), an upper bass woofer at seven inches (18 cm) alongside a mid-driver and tweeter, powered by two integrated 500 watt Class-D amplifiers. The specifications state an impressive frequency response range of 20 Hz to 20 kHz.\n\nEmre Telci, Telegrapher’s CTO: Every aspect of its acoustical design was meticulously engineered to achieve natural, uncoloured sound reproduction.\n\nAll Telegrapher products are handcrafted in Istanbul and utilise pure analogue circuit designs. The custom-designed sealed cabinets are said to minimise diffraction and enhance bass clarity, outperforming traditional ported systems.\n\nTelegrapher will be demonstrating the Rhino at the NAMM Show 2025, visit Booth #16119 to hear them in action.\n\ntelegrapher.com",
+    "link": "",
+    "public_images_id": [
+      "telegrapher_rhino_monitors-M54ZwXlkCddHS1Rd7kZ_S7xL2JzkCHe9_s1upbu"
+    ],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737662311/telegrapher_rhino_monitors-M54ZwXlkCddHS1Rd7kZ_S7xL2JzkCHe9_s1upbu.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737662311/telegrapher_rhino_monitors-M54ZwXlkCddHS1Rd7kZ_S7xL2JzkCHe9_s1upbu.jpg"
+    ],
+    "caption": "Telegrapher.com",
+    "date": {
+      "$date": "2025-01-23T19:58:32.871Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "67929fd04d671eb1f399441b"
+    },
+    "title": "Sonical’s CosmOS platform",
+    "subTitle": "“An operating system for the ear”",
+    "category": "News",
+    "subCategory": "Audio Earphones",
+    "author": "Jeannie Fronseca",
+    "body": "Described as “an operating system for the ear”, CosmOS is a platform developed by Sonical that has been designed to provide users with in-depth control over and customisation of their headphones and earphones. It’s capable of facilitating everything from EQ profiles and built-in hearing protection features to support for high-quality wireless audio, and importantly, enables the use of third-party applications and plug-ins so that its features aren’t tied to a particular piece of gear or hardware platform.\n\nIn September 2024, the company announced the launch of CosmOS Certified, a programme that allows third-party manufacturers to develop their own applications and plug-ins that run on the platform. The company’s aim is to make devices ‘appable’, allowing developers to integrate new technologies and features into existing products while kitting end users out with the tools to personalise their equipment and configure it to suit their specific needs. At present, over 100 companies are involved in developing CosmOS-powered tools.\n\nAt its core, CosmOS is designed so that we can help others, help others.  No-one is as smart as everyone, meaning no single company can invent and build all the diverse applications and features that need to come together for the next wave of ear-worn computing. Instead, we must bring together experts across a vast range of proficiencies to ensure the end user always has access to the latest technology.  They can then select and download new features into their device whenever they need it.” - Gary Spittle, CEO, Sonical\nRemora PRO\nOne of the first products to take advantage of Sonical’s technology is already being developed by Remora, an audio start-up company who are leading the charge on removing cables from professional and high-end consumer audio applications. Their all-new hardware platform, Remora PRO, relies on both CosmOS and Sonical’s Headphone 3.0 platforms to deliver high-quality 24-bit/96kHz audio via an Ultra-Wideband (UWB) wireless connection, promising unparalleled lossless audio with sub-5ms latency figures. Importantly, users are provided with a wide range of configuration through a downloadable CosmOS plug-in, allowing them to personalise the device’s performance to suit their needs. ",
+    "link": "",
+    "public_images_id": [
+      "sonical_cosmos-n.NceMIijHixETfdWUoID7MfQ7IgTHv3_gep7ho"
+    ],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737662415/sonical_cosmos-n.NceMIijHixETfdWUoID7MfQ7IgTHv3_gep7ho.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737662415/sonical_cosmos-n.NceMIijHixETfdWUoID7MfQ7IgTHv3_gep7ho.jpg"
+    ],
+    "caption": "SOS Music Site",
+    "date": {
+      "$date": "2025-01-23T20:00:16.286Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6792b09d7d2636a3125788f5"
+    },
+    "title": "Tchad Blake, Matt Engstrom & Dan Korneff: Recreating The Shure Level-Loc",
+    "subTitle": "The Next Level",
+    "category": "General",
+    "subCategory": "Educational",
+    "author": "Jeffrey Philips",
+    "body": "To mark the company’s 100th anniversary, Shure have teamed up with Black Lion Audio and Korneff Audio to reissue the infamous ‘secret weapon’ that powers many of Tchad Blake’s greatest recordings.\n\n“I was working with Tom Waits on his album Bone Machine,” recalls producer and engineer Tchad Blake. “He wanted to go to a flea market one day while we were working. And when we got there, we said ‘We’re going to split up and go just look for something.’ We liked to do that. We would to go places and find one little thing that you could use on a session. I went looking around and ended up with a microphone from a submarine, and the Level-Loc. I paid $5 for each of those things. I just got the Level-Loc ’cause I liked the name. I had no idea what it was.\n\n“When I took it back to the studio, I plugged it in on the desk and ran something through it from an aux and it just made one little cap sound and then nothing and: shit, I think I just blew it up. Tom just said, ‘I know a TV repair man up in Santa Rosa, just up the road.’ I don't remember what he said I blew, but he had to replace something and he didn't have the right things, and he had to improvise. And he said: be careful, because this is a mic-level in. We used it that day plugging a microphone into it, and it just sounded amazing, and I've used it on every record I've recorded since. In mixing, I bought some of the Shure step-down inline pads so I could plug it in off the desk without worrying about it. So it's been such a part of my life and my sound.\n\n“I’ve got a few things that just changed the way I did things in the studio, and they're all a bit different, but they all have to do with distortion of a kind. In 2010, I pretty much went to just mixing, and it was really difficult to use the hardware in Pro Tools with the way things were going, revisions, people calling up a month later wanting something. I could record all the stuff I was doing, but it was unwieldy. So, I ended up going with plug-ins that were similar, just finding something that sounded kind of like a Level-Loc or the other thing I used, which was a Spectrasonics 610. The Sansamp was another one of my big things. Pro Tools was on to that one and the guy actually made a pretty good one for Pro Tools, but the Level-Loc has never been there.”\n",
+    "link": "",
+    "public_images_id": [
+      "korneff-audio-level-loc-header-software_front-jXHymXjXnW4Ue01Jrea2pV3uyggVn0AH_aln0rt"
+    ],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737666716/korneff-audio-level-loc-header-software_front-jXHymXjXnW4Ue01Jrea2pV3uyggVn0AH_aln0rt.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737666716/korneff-audio-level-loc-header-software_front-jXHymXjXnW4Ue01Jrea2pV3uyggVn0AH_aln0rt.jpg"
+    ],
+    "caption": "",
+    "date": {
+      "$date": "2025-01-23T21:11:57.935Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6792b1257d2636a3125788f7"
+    },
+    "title": "Roland P-6 - Sampler",
+    "subTitle": "Creative Sampler",
+    "category": "Instruments",
+    "subCategory": "Hardware: Sampler",
+    "author": "John Hitchsock",
+    "body": "The Roland P‑6 is a pocket‑sized sampling powerhouse.\n\nIt’s easy to criticise Roland for milking their classics in multiple form factors, but when it comes to the Aira Compact range I don’t hear anyone complaining. They’re fun, affordable and ridiculously portable.\n\nSo far we’ve seen a drum and bassline machine (T‑8), mono and polysynths (S‑1 and J‑6) and a voice transformer (E‑4). It made sense that some kind of sampler should be next and the P‑6 takes its inspiration from the Roland/Boss SP range of workstations, in particular the 303/404. As with the others in the Aira Compact series, it’s designed to get quick results in its own way, rather than to simply miniaturise a vintage instrument.\n\nBig Picture\nLike the 303/404, the P‑6 parks samples in pad slots across a number of banks, in this case six pads and eight pages. True to the simplicity of the original SPs there’s no separate sample pool or library: the samples that are loaded in the pad slots are what you have to work with until they’re overwritten. Samples are triggered from the pads, though the P‑6 lacks velocity sensitivity. It does have something even the latest 404 doesn’t: dedicated step sequence buttons. This makes sense as the device is too tiny for finger drumming.\n\nWhile there’s no project structure, there are 64 pattern slots which share the palette of 48 sounds in memory. And like the 404, effects play a major role. As well as reverb and delay send effects, there’s a suite of performance effects designed to be punched in and tweaked on the fly.\n\nLike other samplers of this type, there’s a chromatic mode (called Keyboard mode) for playing a sample melodically. Incredibly, this is polyphonic, a major win over devices like the otherwise more sophisticated Digitakt. What’s more, one sample per pattern can be played using a granular engine. The P‑6 pairs really well with a MIDI keyboard. Depending on the MIDI channel you can have all 48 sounds spread across the keyboard, play the focused pad chromatically, or play the granular sampler.",
+    "link": "",
+    "public_images_id": ["RolandP6_01-W_PCgDPJSBnVAEanN6iFeEwvQgSdWqNc_vgamyq"],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737666852/RolandP6_01-W_PCgDPJSBnVAEanN6iFeEwvQgSdWqNc_vgamyq.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737666852/RolandP6_01-W_PCgDPJSBnVAEanN6iFeEwvQgSdWqNc_vgamyq.jpg"
+    ],
+    "caption": "",
+    "date": {
+      "$date": "2025-01-23T21:14:13.255Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6792bb9e7d2636a3125788fa"
+    },
+    "title": "Tackling Noisy Guitar Recordings",
+    "subTitle": "Clean Up Your Axe!",
+    "category": "General",
+    "subCategory": "Educational",
+    "author": "Jeannie Fronseca",
+    "body": "Are buzzes, hums and hisses ruining your guitar recordings? Here’s how to keep the noise to a minimum.\n\nFor as long as we’ve had electric guitars, guitarists have had to grapple with unwanted noise making its way into the guitar sound. When playing electric guitar in live performance, hum, buzz, fizz and hiss are certainly not ideal, but you may still feel that a little of it is acceptable. But recorded performances will be heard over and over again, so such noises are likely to be much more irritating. This article takes you through the main causes of electric guitar noise, offers some solutions, and should also help you make the best of things and manage expectations in those situations where at least a little noise is inevitable.\n\nGuitar MOT\nA cheap multimeter allows you to check that there’s a zero‑resistance path between the guitar’s hardware and its output jack.\nA cheap multimeter allows you to check that there’s a zero‑resistance path between the guitar’s hardware and its output jack.\nLots of clever plug‑ins attempt to address noise after the fact, but they can’t take care of everything and the more you ask them to do, the greater the side‑effects. In short, the best results always come from eliminating or minimising annoying noises before you record. There are several potential issues that can cause and exacerbate noise problems, and some are more obvious than others, but the best place to start is probably the guitar itself.\n\nThe first thing to check is that there’s a zero‑resistance path between the guitar’s hardware and its output jack. To check this, use a multimeter set to Ohms, plug in your regular guitar cable and measure the resistance between the strings and the barrel of the jack plug at the amp end of your lead. The meter should read very close to 0Ω. By the way, checking in this way rules out problems with the guitar lead, which is helpful — if there’s a problem, change the lead; if it goes away there’s your issue, if it doesn’t, the problem is with the guitar...",
+    "link": "",
+    "public_images_id": [
+      "nixing_guitar_noise_01-bAaRglDD_gfqi3dJkJ8wHT88ShuSKydP_up9ylp"
+    ],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737669533/nixing_guitar_noise_01-bAaRglDD_gfqi3dJkJ8wHT88ShuSKydP_up9ylp.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737669533/nixing_guitar_noise_01-bAaRglDD_gfqi3dJkJ8wHT88ShuSKydP_up9ylp.jpg"
+    ],
+    "caption": "",
+    "date": {
+      "$date": "2025-01-23T21:58:54.437Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "67958a9714141386640f7012"
+    },
+    "title": "Shure unveil Nexadyne instrument mics",
+    "subTitle": "Shure expand dual-capsule dynamic mic line-up",
+    "category": "Announcements",
+    "subCategory": "Microphones",
+    "author": "Jeannie Fronseca",
+    "body": "Shure have expanded their Nexadyne series with three dynamic instrument microphones, each designed to bring renewed clarity and precision for backline and studio applications. Debuting at NAMM 2025, the Nexadyne 2 kick drum microphone, Nexadyne 5 guitar amp microphone and Nexadyne 6 tom/snare microphone bring Shure’s patented Revonic Dual-Engine Transducer Technology to instrument recording. Read the SOS review of the vocal version of the Nexadyne from July 2024 for a deeper look at the technology underpinning the range's design.\n\nThe Revonic technology is the feature that sets these microphones apart from others, using dual calibrated transducers instead of the traditional single design. This innovation ensures natural, authentic sound capture with minimal noise pickup and less reliance on EQ corrections. The result is a range of microphones that deliver clear, accurate and balanced output, empowering performers and audio engineers alike.\n\nEngineered with durability and stage-friendly functionality, the Nexadyne series combines compact, low-profile designs with robust reliability to withstand the demands of touring and live performance.",
+    "link": "",
+    "public_images_id": [
+      "nexadyne_family_natural_bkgd_hr-SsO02QiNmplm4ctqEcsROn.rae3R_V7k_kdbbek"
+    ],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737853590/nexadyne_family_natural_bkgd_hr-SsO02QiNmplm4ctqEcsROn.rae3R_V7k_kdbbek.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737853590/nexadyne_family_natural_bkgd_hr-SsO02QiNmplm4ctqEcsROn.rae3R_V7k_kdbbek.jpg"
+    ],
+    "caption": "",
+    "date": {
+      "$date": "2025-01-26T01:06:31.325Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "67958ae114141386640f7014"
+    },
+    "title": "Roland release V-STAGE professional keyboards",
+    "subTitle": "Packed with four sound engines",
+    "category": "Announcements",
+    "subCategory": "Synthesizers",
+    "author": "Johann Parker",
+    "body": "Roland have launched V‑STAGE keyboards, a line-up comprising two models in the form of the V‑STAGE 88 and V‑STAGE 76. These keyboards feature four independent sound engines, from acoustic and electric pianos to organs and synthesizers.\n\nThe Acoustic Piano section is driven by Roland’s renowned V-Piano technology, offering concert grand, upright and felt-treated piano sounds designed to capture every nuance of an acoustic instrument. The Electric Piano engine, powered by SuperNATURAL technology, includes expertly crafted tine, reed, and clavinet sounds, complete with onboard tremolo, amp simulation and a unique Sound Lift feature for cutting through dense mixes.\n\nFor organ enthusiasts, the Organ section features Roland’s latest Virtual Tone Wheel engine alongside transistor and pipe organ models, complete with harmonic bar controls, rotary effects, and customizable mic placement. The Synthesizer section, powered by the ZEN-Core engine, offers over 400 onboard tones and access to Roland Cloud’s Model Expansions for legendary sounds like the JUPITER-8 and JUNO-106.\n\nThe V-STAGE interface is built for live performance, featuring an ergonomic layout with a sleek color LCD, clearly labeled controls, and real-time sound-shaping tools. A Total Effects section, Master EQ and compression options allow players to refine their sound for any venue, while 512 Scene memories and a Scene Chain function make for easy switching between complex setups.\n\nConnectivity is another key feature of the V-STAGE series. Balanced outputs, an XLR microphone input, stereo line input and USB-C audio/MIDI compatibili",
+    "link": "",
+    "public_images_id": [
+      "image_vstage-eE7CsW4XRLExQW3SdJhcpM1asyYtykJE_oxvrhy"
+    ],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737853665/image_vstage-eE7CsW4XRLExQW3SdJhcpM1asyYtykJE_oxvrhy.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737853665/image_vstage-eE7CsW4XRLExQW3SdJhcpM1asyYtykJE_oxvrhy.jpg"
+    ],
+    "caption": "",
+    "date": {
+      "$date": "2025-01-26T01:07:45.404Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "67958b1c14141386640f7016"
+    },
+    "title": "Creative Ways To Manipulate DAW Effects",
+    "subTitle": "Get weird with FX VSTs!",
+    "category": "General",
+    "subCategory": "Educational",
+    "author": "John Philips",
+    "body": "Presenter: Paul White - Biog\nPaul White initially trained in electronics at the Royal Radar Establishment in Malvern then went on to work with Malvern Instruments, a company specialising in laser analysis equipment, before moving into technical writing.\n\nHe joined the Sound On Sound team in 1991 where he became Editor In Chief, a position he held for two decades before becoming Executive Editor in 2020. Paul has written more than 20 recording and music technology textbooks, the latest being The Producer’s Manual.\n\nHaving established his own multitrack home studio in the 1980s Paul has worked with many notable names, including guitarists Bert Jansch and Gordon Giltrap.\n\nHe’s played in various bands over the years and currently collaborates with Malvern musician Mark Soden, under the name of Cydonia Collective.\n\nPaul still performs live claiming that he has suffered for his music, so he doesn’t see why everyone else shouldn’t too!\n\nAbout the Recording & Mixing podcast channel\nOn this popular channel you’ll find shows packed with hints and tips about getting the most out of the recording, mixing and mastering process.",
+    "link": "",
+    "public_images_id": [
+      "pw_header_620x300-ycCnb9sWCRh99h65IVhCGQHvSuBAl3_C_gzcog9"
+    ],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737853724/pw_header_620x300-ycCnb9sWCRh99h65IVhCGQHvSuBAl3_C_gzcog9.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737853724/pw_header_620x300-ycCnb9sWCRh99h65IVhCGQHvSuBAl3_C_gzcog9.jpg"
+    ],
+    "caption": "",
+    "date": {
+      "$date": "2025-01-26T01:08:44.844Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "67958b6714141386640f7018"
+    },
+    "title": "ADAM Audio D3V",
+    "subTitle": "Active Monitors",
+    "category": "Gear Review",
+    "subCategory": "Audio Monitors",
+    "author": "Mark Rodriguez",
+    "body": " Berlin‑based ADAM Audio are on a roll, their new D3V active desktop monitor system being the third active monitor to be launched by the company in as many years. The D3V is designed to address the needs of musicians, producers, engineers, podcasters, vloggers, influencers and the like whose workflows are primarily desktop‑based, often using laptop computers. ADAM already have a presence amongst this user group, courtesy of their highly regarded T5V and A4V active monitors. However, the D3V’s specific focus on desktop monitoring, combined with a wallet‑friendly price, make it an attractive choice not only for those creators whose specialist needs it directly addresses, but also for computer users in general who want to listen to high‑quality streaming audio.\n \nIt wasn’t until I’d taken the two D3V monitors out of their packaging that I realised just how compact the enclosures are, at 240mm high (including the stand), 115mm wide and 150mm deep. Aesthetically, the D3V follows ADAM’s signature paradigm of angled front baffle edges, and is available as standard in either black or white.\n\nThe D3V cabinets are moulded from PC‑ABS, a polycarbonate and acrylonitrile butadiene‑styrene blend that is commonly used in the automotive and consumer electronics industries because of its high strength, stiffness and heat and impact resistance. I didn’t test the D3V for any of those qualities, but both enclosures felt solid and inert, as I’d expect of a monitor cabinet. The moulding process has allowed ADAM’s designers not only to soften the angularity of the front baffle’s edges, but also to curve the surfaces of the enclosure, creating, to my eyes, an attractive appearance overall. Moulded into the bottom of each enclosure is a 3/8‑inch microphone stand thread together with a tapered tongue and groove slot, which accepts the supplied 15‑degree‑angled padded monitor supports. Also included is an external power supply with the stiffest, best‑fitting connector that I’ve ever come across; a four‑way cable to connect the left and right speakers; a USB‑C to USB‑C cable with a USB‑A adaptor for connection to a computer; and six stick‑on pads (three for each speaker) for mounting the D3V directly onto the surface of your desk.\n\n ",
+    "link": "",
+    "public_images_id": ["ADAM_D3V_01-TNfBzv.5_p1knDwJCyfXT.C3OFZawcQf_mplife"],
+    "image_urls": [
+      "http://res.cloudinary.com/dytbnvgzg/image/upload/v1737853798/ADAM_D3V_01-TNfBzv.5_p1knDwJCyfXT.C3OFZawcQf_mplife.jpg"
+    ],
+    "secure_images_urls": [
+      "https://res.cloudinary.com/dytbnvgzg/image/upload/v1737853798/ADAM_D3V_01-TNfBzv.5_p1knDwJCyfXT.C3OFZawcQf_mplife.jpg"
+    ],
+    "caption": "",
+    "date": {
+      "$date": "2025-01-26T01:09:59.125Z"
+    },
+    "__v": 0
+  }
+]

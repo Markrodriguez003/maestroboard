@@ -1,0 +1,30 @@
+[
+  {
+    "post_types": ["Buying", "Selling", "Advertisement", "Community"],
+    "post_sub_types_instruments": [
+      "Instrument-Guitar",
+      "Instrument-Bass",
+      "Instrument-Drums",
+      "Instrument-Percussion",
+      "Instrument-Synthesizer",
+      "Instrument-Brass",
+      "Instrument-Woodwinds",
+      "Instrument-Microphones",
+      "Instrument-Studio-Equipment",
+      "Instrument-DJ-Equipment",
+      "Instrument-Misc."
+    ],
+    "post_sub_types_community": [
+      "Band Personnel-Seeking",
+      "Band Personnel-Available",
+      "Lost-&-Found"
+    ],
+    "post_sub_types_advertisements": [
+      "Promotion",
+      "Show/Events",
+      "Service",
+      "Gig - Seeking",
+      "Gig - Available"
+    ]
+  }
+]

@@ -18,6 +18,7 @@ import axios from "axios";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 
+// REGISTERING THE TYPE OF CHARTS & CHART ELEMENTS NEEDED
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 // ASSETS
@@ -25,8 +26,7 @@ import { FileEarmarkPerson, SpeakerFill, FileEarmarkMusicFill, DatabaseGear, Too
 import { SITE_COLORS } from "../css/site";
 
 // CSS
-// import "../css/Login.css";
-
+import "../css/Dashboard.css";
 
 /*----------------------------------------------------------------------------
 |   ⚙️ Use: Admin dashboard page to edit/delete/insert/show articles & posts  
@@ -41,9 +41,11 @@ function Dashboard(props) {
 
     // GRABS REFERENCE OF ELEMENT ON TOP OF CORKBOARD
     const articleTopRef = useRef(null);
+    const postTopRef = useRef(null);
 
     // FILTER BUTTON STATE
     const [filterLatestArticle, setFilterLatestArticle] = useState(true);
+    const [filterLatestPost, setFilterLatestPost] = useState(true);
 
     // SCROLLS TO TOP OF ARTICLE ONCE ARTICLE CHANGES
     function scrollArticleToTop() {
@@ -52,6 +54,12 @@ function Dashboard(props) {
         }
     };
 
+    // SCROLLS TO TOP OF POST ONCE POST CHANGES
+    function scrollPostToTop() {
+        if (postTopRef.current) {
+            postTopRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
 
     // HOLDS TRIGGER FOR AUTHENTICATED USER
     const [isAuthenticatedUser, setIsAuthenticatedUser] = useState(null);
@@ -78,7 +86,6 @@ function Dashboard(props) {
             await axios
                 .get("http://localhost:3005/api/auth", config)
                 .then((response) => {
-                    // console.log(`Response! --> ${JSON.stringify(response.data.adminLogin)}`);
                     setIsAuthenticatedUser(true);
                 })
                 .catch((err) => {
@@ -91,14 +98,16 @@ function Dashboard(props) {
         authenticateUser();
     }, [])
 
-
     // STATE THAT WILL HOLD ARTICLE & POST DATA
     const [data, setData] = useState({
         articles: [],
         users: [],
         selectedArticle: {},
+        selectedPosts: {},
         forum: [{ data: 0 }],
         posts: [],
+        latestPosts: [],
+        latestArticles: [],
         sellingPosts: 0,
         buyingPosts: 0
     })
@@ -109,18 +118,22 @@ function Dashboard(props) {
     // DATA FOR DOUGHNUTS
     // CORKBOARD POSTS
     const postsDataChart = {
-        labels: ['Selling Gear', 'Buying Gear'],
+        labels: ['Selling Gear', 'Buying Gear', 'Advertisements', 'Community'],
         datasets: [
             {
                 label: "# Posts Types",
-                data: [data.sellingPosts, data.buyingPosts],
+                data: [data.sellingPosts, data.buyingPosts, data.advertismentPosts, data.communityPosts],
                 backgroundColor: [
                     SITE_COLORS.lightMain,
                     SITE_COLORS.lightSecondary,
+                    SITE_COLORS.alternateMain,
+                    SITE_COLORS.alternateSecondary
                 ],
                 borderColor: [
                     SITE_COLORS.main,
                     SITE_COLORS.secondary,
+                    SITE_COLORS.alternateMain,
+                    SITE_COLORS.alternateSecondary
                 ],
                 borderWidth: 1,
             },
@@ -180,16 +193,16 @@ function Dashboard(props) {
     };
 
 
-
+    // AMOUNT OF LATEST ARTICLES / POSTS REQUESTED
+    const REQUESTED_ELEMENTS = 5;
 
     useEffect(() => {
+
         // GRABS ALL ARTICLES BASE INFO (_id, title, subTitle,) FROM DB
         async function grabArticles() {
             await axios
                 .get("http://localhost:3005/api/articles/base-info")
                 .then((response) => {
-                    // console.log(`POST INFO::: ${JSON.stringify(response)}`)
-
                     setData((prev) => (
                         {
                             ...prev,
@@ -200,15 +213,45 @@ function Dashboard(props) {
                 .catch((err) => console.log(err));
         }
 
-        // GRABS ALL COMMUNITY POSTS FROM DB
+        // GRABS LATEST ARTICLES (5) ARTICLES FROM DB
+        async function grabLatestArticles() {
+            await axios
+                .get(`http://localhost:3005/api/loadArticles/${REQUESTED_ELEMENTS}`)
+                .then((response) => {
+                    setData((prev) => (
+                        {
+                            ...prev,
+                            latestArticles: response.data
+                        }
+                    ))
+                })
+                .catch((err) => console.log(err));
+        }
+
+        // GRABS ALL COMMUNITY POSTS BASE INFO FROM DB
         async function grabPosts() {
             await axios
-                .get("http://localhost:3005/api/loadPosts")
+                .get("http://localhost:3005/api/posts/base-info")
                 .then((response) => {
                     setData((prev) => (
                         {
                             ...prev,
                             posts: response.data
+                        }
+                    ))
+                })
+                .catch((err) => console.log(err));
+        }
+
+        // GRABS LATEST ARTICLES (5) ARTICLES FROM DB
+        async function grabLatestPosts() {
+            await axios
+                .get(`http://localhost:3005/api/loadPosts/${REQUESTED_ELEMENTS}`)
+                .then((response) => {
+                    setData((prev) => (
+                        {
+                            ...prev,
+                            latestPosts: response.data
                         }
                     ))
                 })
@@ -268,12 +311,15 @@ function Dashboard(props) {
         }
 
         // RUNNING FUNCTIONS THAT GRABS ALL ARTICLE & POST DATA FROM BACKEND
-        // ! change this to promiseAll()
         grabPosts();
         grabArticles();
         grabUserLength();
         grabPostsType("selling");
         grabPostsType("buying");
+        grabPostsType("advertisement");
+        grabPostsType("community");
+        grabLatestPosts();
+        grabLatestArticles();
 
         // Loops through each article type to call function to grab lengths 
         for (let i = 0; i < article_types.length; i++) {
@@ -281,9 +327,6 @@ function Dashboard(props) {
         }
     }, []);
 
-
-
-    // const [selectedArticle, setSelectedArticle] = useState({});
 
     // WHEN USER CLICKS ON INDIVIDUAL ARTICLE THIS FUNCTION WILL CALL UP THAT ARTICLE TO PRESENT 
     async function grabIndividualArticle(id) {
@@ -297,7 +340,6 @@ function Dashboard(props) {
         await axios
             .get(`http://localhost:3005/api/article/id/${id}`)
             .then((response) => {
-                // console.log(`INDIVIDUAL ARTICLE:: ${JSON.stringify(response.data.article[0])}`)
                 setData((prev) => (
                     {
                         ...prev,
@@ -307,19 +349,35 @@ function Dashboard(props) {
 
             })
             .catch((err) => console.log(err));
-
     }
 
 
+    // WHEN USER CLICKS ON INDIVIDUAL POST THIS FUNCTION WILL CALL UP THAT POST TO PRESENT 
+    async function grabIndividualPost(id) {
+        setData((prev) => (
+            {
+                ...prev,
+                selectedPosts: {}
+            }
+        ))
 
-    // useEffect(() => {
-    //     // console.log(`ARTICLE:::: ${JSON.stringify(data.selectedArticle[0])}`)
+        await axios
+            .get(`http://localhost:3005/api/posts/id/${id}`)
+            .then((response) => {
+                setData((prev) => (
+                    {
+                        ...prev,
+                        selectedPosts: response.data.post[0]
+                    }
+                ))
 
-    // }, [data.selectedArticle])
+            })
+            .catch((err) => console.log(err));
+
+    }
 
     return (
         <>
-
             {isAuthenticatedUser ? <Container className="w-100 p-4 mt-5 mb-5" style={{ backgroundColor: "black" }}>
                 {/* MAIN PROFILE HEADER */}
                 <Row className="w-100">
@@ -331,7 +389,7 @@ function Dashboard(props) {
                                 borderRadius: "5px",
                             }}
                             >
-                                <Tools color="white" style={{ fontSize: "45px", paddingBottom: "12px" }} />
+                                <Tools color="white" className="dashboard-header-panel-icon" />
                                 Admin Dashboard
                             </h1>
                         </HeaderPanel>
@@ -342,15 +400,8 @@ function Dashboard(props) {
                 <Row className="gap-2">
                     <Col style={{ color: "white", fontSize: "40px", }} className="m-0 p-0 gap-5" lg={2} >
                         <Row className="w-100 m-0 p-0 mb-2 ">
-                            <h1 style={{
+                            <h1 className="legend-panel" style={{
                                 backgroundColor: SITE_COLORS.lightMain,
-                                color: "white",
-                                textAlign: "start",
-                                fontSize: "18px",
-                                borderRadius: "5px",
-                                fontWeight: "100",
-                                display: "inline",
-                                padding: "12px"
                             }}
                             >
                                 <PinFill style={{ paddingBottom: "5px" }} />
@@ -360,16 +411,8 @@ function Dashboard(props) {
                         </Row>
 
                         <Row className="w-100 m-0 p-0 mb-2">
-                            <h1 style={{
-                                color: "white",
-                                textAlign: "start",
-                                fontSize: "18px",
-                                borderRadius: "5px",
-                                fontWeight: "100",
+                            <h1 className="legend-panel" style={{
                                 backgroundColor: SITE_COLORS.secondary,
-                                display: "inline",
-                                padding: "12px"
-
                             }}
                             >
                                 <FileEarmarkPerson style={{ paddingBottom: "5px" }} />Users : {data.users}
@@ -377,16 +420,8 @@ function Dashboard(props) {
 
                         </Row>
                         <Row className="w-100 m-0 p-0 mb-2">
-                            <h1 style={{
+                            <h1 className="legend-panel" style={{
                                 backgroundColor: SITE_COLORS.alternateMain,
-                                color: "white",
-                                textAlign: "start",
-                                fontSize: "18px",
-                                borderRadius: "5px",
-                                fontWeight: "100",
-                                display: "inline",
-                                padding: "12px"
-
                             }}
                             >
                                 <PostcardFill style={{ paddingBottom: "5px" }} />
@@ -395,16 +430,8 @@ function Dashboard(props) {
 
                         </Row>
                         <Row className="w-100 m-0 p-0 mb-2">
-                            <h1 style={{
+                            <h1 className="legend-panel" style={{
                                 backgroundColor: SITE_COLORS.alternateSecondary,
-                                color: "white",
-                                textAlign: "start",
-                                fontSize: "18px",
-                                borderRadius: "5px",
-                                fontWeight: "100",
-                                display: "inline",
-                                padding: "12px"
-
                             }}
                             >
                                 <CardList style={{ paddingBottom: "5px" }} />
@@ -415,11 +442,10 @@ function Dashboard(props) {
                         <hr />
                         <Row className="w-100 m-0 p-0 mb-3">
                             <BoardPostModal />
-
                         </Row>
                         <Row className="w-100 m-0 p-0 mb-2 btn-info">
                             <ArticlePostModal>
-                                <Button size="md" className="text-light w-100 m-0"  >
+                                <Button size="sm" className="text-light w-100 m-0"  >
                                     Create an Article! </Button>
                             </ArticlePostModal >
                         </Row>
@@ -444,7 +470,7 @@ function Dashboard(props) {
                         <Col className="mx-auto w-100 justify-content-center" >
                             <Carousel className="p-0 " >
                                 {
-                                    data.posts.map((p, i) => (
+                                    data.latestPosts.map((p, i) => (
                                         <Carousel.Item key={`dashboard-carousel-article-${i}`}>
                                             <PostBoardCard {...p}
                                                 key={`dashboard-post-${p.title} - ${i}-${p._id}`}
@@ -458,7 +484,9 @@ function Dashboard(props) {
                     </Col>
 
 
+                    {/* ************************************************************************************************ */}
                     {/* ARTICLES PANEL */}
+                    {/* ************************************************************************************************ */}
                     <Col>
                         <h1 style={{
                             color: "white",
@@ -467,7 +495,6 @@ function Dashboard(props) {
                             borderRadius: "5px",
                             fontWeight: "100",
                             backgroundColor: SITE_COLORS.alternateSecondary,
-                            // display: "inline-block",
                             padding: "15px",
                         }}
                         >
@@ -475,9 +502,9 @@ function Dashboard(props) {
                             Latest Articles:
                         </h1>
                         <Col lg={7} md={4} className="mx-auto w-100" style={{ backgroundColor: "red" }} >
-                            {/* <Carousel className="p-0" style={{ width: "600px" }} >
+                            <Carousel className="p-0" style={{ width: "600px" }} >
                                 {
-                                    data.articles.map((p, i) => (
+                                    data.latestArticles.map((p, i) => (
                                         <Carousel.Item key={`dashboard-carousel-article-${i}`}>
                                             <Card style={{ backgroundColor: "rgba(150, 16, 16, 0.7)", color: "white", height: "500px" }} className="w-100">
                                                 <Card.Img variant="top" src={p.image_urls[0]}
@@ -496,104 +523,81 @@ function Dashboard(props) {
                                         </Carousel.Item>
                                     ))
                                 }
-                            </Carousel> */}
+                            </Carousel>
                         </Col>
                     </Col>
                 </Row>
-                <br />
-                <Row>
 
-                </Row>
-                <br />
-                <hr style={{ color: "white" }} />
-                <br />
-                <Col style={{ color: "white", fontSize: "40px", }} className="p-0 m-0">
-                    <HeaderPanel bgColor={SITE_COLORS.secondary} width="w-100">
-                        <h1 style={{
-                            color: "white",
-                            fontSize: "40px",
-                            borderRadius: "5px",
-                        }}
-                        >
-                            <Tools color="white" style={{ fontSize: "45px", paddingBottom: "12px" }} />
-                            Site Post & Article Metrics
-                        </h1>
-                    </HeaderPanel>
-                </Col>
+
                 {/* ******************************************************************* */}
                 {/* BOTTOM HALF */}
                 {/* ******************************************************************* */}
-                <Row className="p-3 gap-2" style={{ backgroundColor: `black` }}>
+                <br />
+                <Col style={{ color: "white", fontSize: "40px", }} className="p-0 m-0">
+                    <HeaderPanel bgColor={SITE_COLORS.secondary} width="w-100">
+                        <h1 className="dashboard-header-panel"
+                        >
+                            <Tools color="white" className="dashboard-header-panel-icon" />
+                            Post & Article Metrics
+                        </h1>
+                    </HeaderPanel>
+                </Col>
+
+                {/* POST INFORMATION LEGEND PANELS */}
+                <Row className="p-3 gap-2 justify-content-start">
                     <Col className="p-0 m-0" lg={2} >
-                        <h5 style={{ color: "white" }}>Post. Data Infomation:</h5>
-                        <h1 style={{
+                        <h5 style={{ color: "white" }}>Post Data Infomation:</h5>
+                        <h1 className="legend-panel" style={{
                             backgroundColor: SITE_COLORS.lightMain,
-                            color: "white",
-                            textAlign: "start",
-                            fontSize: "18px",
-                            borderRadius: "5px",
-                            fontWeight: "100",
-                            padding: "12px",
-                            marginBottom: "20px"
                         }}
                         >
                             <PinFill style={{ paddingBottom: "5px" }} />
                             Selling posts: {data.sellingPosts}
                         </h1>
-
-
                         <div>
-                            <h1 style={{
-                                color: "white",
-                                textAlign: "start",
-                                fontSize: "18px",
-                                borderRadius: "5px",
-                                fontWeight: "100",
+                            <h1 className="legend-panel" style={{
                                 backgroundColor: SITE_COLORS.secondary,
-                                padding: "12px",
-                                marginBottom: "20px"
                             }}
                             >
                                 <FileEarmarkPerson style={{ paddingBottom: "5px" }} />Buying Posts: {data.buyingPosts}
                             </h1>
 
                         </div>
+                        <h1 className="legend-panel" style={{
+                            backgroundColor: SITE_COLORS.alternateMain,
+                        }}
+                        >
+                            <PinFill style={{ paddingBottom: "5px" }} />
+                            Advertisement posts: {data.advertismentPosts}
+                        </h1>
+                        <div>
+                            <h1 className="legend-panel" style={{
+                                backgroundColor: SITE_COLORS.alternateSecondary,
+                            }}
+                            >
+                                <FileEarmarkPerson style={{ paddingBottom: "5px" }} />Community Posts: {data.communityPosts}
+                            </h1>
+                        </div>
+                    </Col>
 
+                    {/* POST DOUGHNUT */}
+                    <Col className="m-0 p-0" lg={3}>
+                        <h5 style={{ color: "white" }} className="text-center">Community Board types:</h5>
+                        <Doughnut
+                            data={postsDataChart}
+                            width={"250px"}
+                            height={"250px"}
+                            options={options}
+                            style={{ transform: "scale(1)" }} className="w-100 m-0 p-0 mx-auto" />
                     </Col>
-                    <Col>
-                        <h5 style={{ color: "white" }} className="text-start">Community Board types:</h5>
-                        <Col style={{ marginLeft: "auto", marginRight: "auto" }} className="m-0 p-0" lg={3}>
-                            <Doughnut
-                                data={postsDataChart}
-                                width={"350px"}
-                                height={"350px"}
-                                options={options}
-                                style={{ transform: "scale(1)" }} className="m-0 p-0 mx-auto" />
-                        </Col>
-                    </Col>
-                    <Col>
-                        <h5 style={{ color: "white" }} className="text-start">Article types:</h5>
-                        <Col style={{ marginLeft: "auto", marginRight: "auto" }} className="m-0 p-0" lg={3}>
-                            <Doughnut
-                                data={articlesDataChart}
-                                width={"350px"}
-                                height={"350px"}
-                                options={options}
-                                style={{ transform: "scale(1)" }} className="m-0 p-0 mx-auto" />
-                        </Col>
-                    </Col>
-                    <Col className="p-0 m-0" lg={2} >
+
+                    <Col className="" lg={2} >
                         <h5 style={{ color: "white" }}>Article Infomation:</h5>
                         <h1 style={{
                             backgroundColor: SITE_COLORS.lightMain,
-                            color: "white",
-                            textAlign: "start",
-                            fontSize: "18px",
-                            borderRadius: "5px",
-                            fontWeight: "100",
-                            padding: "12px",
-                            marginBottom: "20px"
+
                         }}
+                            className="legend-panel"
                         >
                             <PinFill style={{ paddingBottom: "5px" }} />
                             General: {data["general-articles"]}
@@ -601,33 +605,16 @@ function Dashboard(props) {
 
 
                         <div>
-
-                            <h1 style={{
-                                color: "white",
-                                textAlign: "start",
-                                fontSize: "18px",
-                                borderRadius: "5px",
-                                fontWeight: "100",
+                            <h1 className="legend-panel" style={{
                                 backgroundColor: SITE_COLORS.main,
-                                padding: "12px",
-                                marginBottom: "20px"
                             }}
                             >
                                 <FileEarmarkPerson style={{ paddingBottom: "5px" }} />News: {data["news-articles"]}
                             </h1>
-
                         </div>
                         <div>
-
-                            <h1 style={{
-                                color: "white",
-                                textAlign: "start",
-                                fontSize: "18px",
-                                borderRadius: "5px",
-                                fontWeight: "100",
+                            <h1 className="legend-panel" style={{
                                 backgroundColor: SITE_COLORS.secondary,
-                                padding: "12px",
-                                marginBottom: "20px"
                             }}
                             >
                                 <FileEarmarkPerson style={{ paddingBottom: "5px" }} />Events: {data["events-articles"]}
@@ -635,17 +622,8 @@ function Dashboard(props) {
 
                         </div>
                         <div>
-
-                            <h1 style={{
+                            <h1 className="legend-panel" style={{
                                 backgroundColor: SITE_COLORS.alternateMain,
-                                color: "white",
-                                textAlign: "start",
-                                fontSize: "18px",
-                                borderRadius: "5px",
-                                fontWeight: "100",
-                                padding: "12px",
-                                marginBottom: "20px"
-
                             }}
                             >
                                 <PostcardFill style={{ paddingBottom: "5px" }} />
@@ -653,15 +631,9 @@ function Dashboard(props) {
                             </h1>
                         </div>
                         <div>
-                            <h1 style={{
+                            <h1 className="legend-panel" style={{
                                 backgroundColor: SITE_COLORS.alternateSecondary,
-                                color: "white",
-                                textAlign: "start",
-                                fontSize: "18px",
-                                borderRadius: "5px",
-                                fontWeight: "100",
-                                padding: "12px",
-                                marginBottom: "20px"
+
                             }}
                             >
                                 <CardList style={{ paddingBottom: "5px" }} />
@@ -669,15 +641,9 @@ function Dashboard(props) {
                             </h1>
                         </div>
                         <div>
-                            <h1 style={{
+                            <h1 className="legend-panel" style={{
                                 backgroundColor: SITE_COLORS.alternateSecondary,
-                                color: "white",
-                                textAlign: "start",
-                                fontSize: "18px",
-                                borderRadius: "5px",
-                                fontWeight: "100",
-                                padding: "12px",
-                                marginBottom: "20px"
+
                             }}
                             >
                                 <CardList style={{ paddingBottom: "5px" }} />
@@ -685,15 +651,9 @@ function Dashboard(props) {
                             </h1>
                         </div>
                         <div>
-                            <h1 style={{
+                            <h1 className="legend-panel" style={{
                                 backgroundColor: SITE_COLORS.secondary,
-                                color: "white",
-                                textAlign: "start",
-                                fontSize: "18px",
-                                borderRadius: "5px",
-                                fontWeight: "100",
-                                padding: "12px",
-                                marginBottom: "20px"
+
                             }}
                             >
                                 <CardList style={{ paddingBottom: "5px" }} />
@@ -702,15 +662,9 @@ function Dashboard(props) {
                         </div>
                         <div>
 
-                            <h1 style={{
+                            <h1 className="legend-panel" style={{
                                 backgroundColor: SITE_COLORS.lightMain,
-                                color: "white",
-                                textAlign: "start",
-                                fontSize: "16px",
-                                borderRadius: "5px",
-                                fontWeight: "100",
-                                padding: "12px",
-                                marginBottom: "20px"
+
                             }}
                             >
                                 <SpeakerFill style={{ paddingBottom: "5px" }} />
@@ -718,15 +672,9 @@ function Dashboard(props) {
                             </h1>
                         </div>
                         <div>
-                            <h1 style={{
+                            <h1 className="legend-panel" style={{
                                 backgroundColor: SITE_COLORS.lightSecondary,
-                                color: "white",
-                                textAlign: "start",
-                                fontSize: "18px",
-                                borderRadius: "5px",
-                                fontWeight: "100",
-                                padding: "12px",
-                                marginBottom: "20px"
+
                             }}
                             >
                                 <FileEarmarkMusicFill style={{ paddingBottom: "5px" }} />
@@ -734,9 +682,18 @@ function Dashboard(props) {
                             </h1>
                         </div>
                     </Col>
+                    <Col style={{ marginLeft: "auto", marginRight: "auto" }} className="m-0 p-0" lg={3}>
+                        <h5 style={{ color: "white" }} className="text-start">Article types:</h5>
+
+                        <Doughnut
+                            data={articlesDataChart}
+                            width={"250px"}
+                            height={"250px"}
+                            options={options}
+                            style={{ transform: "scale(1)" }} className="w-100 m-0 p-0 mx-auto" />
+                    </Col>
                 </Row>
                 <br />
-
                 {/* EDITING PANELS */}
                 <hr style={{ color: "white" }} />
                 <Col style={{ color: "white", fontSize: "40px", }} className="p-0 m-0">
@@ -825,15 +782,7 @@ function Dashboard(props) {
                                 </Col>
                                 <Col sm={8}>
                                     <Tab.Content>
-                                        <div style={{
-                                            display: "inline-block",
-                                            width: "100%",
-                                            height: "500px",
-                                            overflow: "hidden",
-                                            overflowY: "auto",
-
-                                            backgroundColor: "rgba(0,0,0,0.7)"
-                                        }} >
+                                        <div className="show-side-panel" >
                                             {
                                                 Object.keys(data.selectedArticle).length === 0 ?
                                                     <div className="text-center mt-5 pt-5">
@@ -841,9 +790,7 @@ function Dashboard(props) {
                                                             <span className="visually-hidden">Loading...</span>
                                                         </Spinner>
                                                     </div>
-
                                                     :
-
                                                     <div style={{ width: "100%", height: "auto" }} ref={articleTopRef}>
                                                         <Card style={{ backgroundColor: "transparent", color: "white", height: "220px" }} className="w-auto">
                                                             <Image src={data.selectedArticle.image_urls} style={{ objectFit: "fill", width: "65%", height: "auto", marginLeft: "auto", marginRight: "auto", }} />
@@ -858,7 +805,7 @@ function Dashboard(props) {
                                                                 <hr />
                                                                 <Card.Text className="h-auto" >
                                                                     {data.selectedArticle.body}
-                                                                    asfasfasfasfasfs
+
                                                                 </Card.Text>
                                                                 <hr />
                                                                 <Card.Text style={{ color: "grey" }}>
@@ -877,6 +824,151 @@ function Dashboard(props) {
                                         </div>
                                     </Tab.Content>
                                 </Col>
+                            </Row>
+                        </Tab.Container>
+                    </Col>
+                    <Col>
+                    </Col>
+                </Row>
+
+                {/* POST EDITNG */}
+                <hr style={{ color: "white" }} />
+                <Col style={{ color: "white", fontSize: "40px", }} className="p-0 m-0">
+                    <HeaderPanel bgColor={SITE_COLORS.alternateSecondary} width="w-100">
+                        <h1 style={{
+                            color: "white",
+                            fontSize: "40px",
+                            borderRadius: "5px",
+                        }}
+                        >
+                            <PinFill color="white" style={{ fontSize: "45px", paddingBottom: "12px" }} />
+                            Corkboard Post Editing
+                        </h1>
+                    </HeaderPanel>
+                </Col>
+                <br />
+                <Row>
+                    <Col lg={12} md={12} sm={12} xs={12} xl={12} xxl={12} style={{ backgroundColor: SITE_COLORS.lightMain, color: "black", overFlow: "scroll" }} variant="light" className="px-2 py-4 ">
+                        <Tab.Container id="list-group-tabs-articles" className="overflow-scroll"
+                            style={{
+                                height: "300px",
+                                overflow: "hidden",
+                                overflowY: "auto"
+                            }} >
+                            <Row>
+                                <Col sm={8}>
+                                    <Tab.Content>
+                                        <div className="show-side-panel" >
+                                            {
+                                                Object.keys(data.selectedPosts).length === 0 ?
+                                                    <div className="text-center mt-5 pt-5">
+                                                        <Spinner animation="border" role="status" color="white" variant="primary" style={{ width: "100px", height: "100px", fontSize: "50px" }} className="">
+                                                            <span className="visually-hidden">Loading...</span>
+                                                        </Spinner>
+                                                    </div>
+                                                    :
+                                                    <div style={{ width: "100%", height: "auto" }} ref={postTopRef}>
+                                                        <Card style={{ backgroundColor: "transparent", color: "white", height: "220px" }} className="w-auto">
+                                                            <Image src={data.selectedPosts.image_urls[0]} style={{ objectFit: "fill", width: "65%", height: "auto", marginLeft: "auto", marginRight: "auto", }} />
+                                                            <Card.Body className="m-0">
+                                                                <Card.Text style={{ color: SITE_COLORS.lightMain, }}>
+                                                                    {[data.selectedPosts.type]} - {[data.selectedPosts.subType]}
+                                                                </Card.Text>
+                                                                <Card.Title>{data.selectedPosts.title}</Card.Title>
+
+                                                                <hr />
+                                                                <Card.Text className="h-auto" >
+                                                                    {data.selectedPosts.body}
+                                                                </Card.Text>
+                                                                <hr />
+                                                                <Card.Text style={{ color: "darkgrey" }}>
+                                                                    <strong>Username:</strong> {data.selectedPosts.username}
+                                                                </Card.Text>
+                                                                <Card.Text style={{ color: "darkgrey" }}>
+                                                                    <strong>Email:</strong> {data.selectedPosts.email}
+                                                                </Card.Text>
+                                                                <Card.Text style={{ color: "grey" }}>
+                                                                    <strong>Posted by:</strong> {data.selectedPosts.username}
+                                                                </Card.Text>
+                                                                <Card.Text style={{ color: "grey" }}>
+                                                                    <strong>Published on: </strong>{data.selectedPosts.date}
+                                                                </Card.Text>
+                                                                <Card.Text style={{ color: "grey" }}>
+                                                                    <strong>Post _id: </strong>{data.selectedPosts._id}
+                                                                </Card.Text>
+                                                            </Card.Body>
+                                                        </Card>
+                                                    </div>
+                                            }
+                                        </div>
+                                    </Tab.Content>
+                                </Col>
+                                <Col sm={4}>
+                                    <Button
+                                        className="mb-2"
+                                        onClick={() => setFilterLatestPost((prev) => !prev)}
+                                    >
+                                        <Filter style={{ transform: filterLatestPost ? "rotate(0deg) " : "rotate(180deg)", marginBottom: "4px", fontSize: "20px" }} />
+                                        Filter: Date - {filterLatestPost ? "Latest to Oldest" : "Oldest to Latest"}
+                                    </Button>
+                                    <div style={{
+                                        display: "inline-block", width: "100%", height: "500px",
+                                        overflow: "hidden",
+                                        overflowY: "auto",
+                                    }} >
+                                        {/* HERE IS THE SECTION IN WHICH THE FILTER SORTS OBJECTS BY LATEST AND BY OLDEST ARTICLES */}
+                                        <ListGroup>
+                                            {
+
+                                                // Sort by date (ascending)
+                                                data.posts.sort(
+                                                    (a, b) =>
+                                                        filterLatestPost ? new Date(b.date) - new Date(a.date) : new Date(a.date) - new Date(b.date)
+                                                )
+                                                    .map((p, i) => (
+                                                        <ListGroup.Item key={`post-tab-${i}`} eventKey={`#tab-link-${p._id}`} action href={`#link-${p._id}`} variant="dark" as={"div"} >
+                                                            <Row className="justify-content-between" as={"div"} style={{ cursor: "pointer" }} onClick={() => {
+                                                                scrollPostToTop();
+                                                                grabIndividualPost(p._id)
+                                                            }}>
+                                                                <Col lg={10} md={10} sm={10}>
+                                                                    <h6>
+                                                                        {p.title} {" "}
+                                                                    </h6>
+                                                                    <h6>
+                                                                        {p.username} {" "}
+                                                                    </h6>
+                                                                    <h6>
+                                                                        {p.email} {" "}
+                                                                    </h6>
+                                                                    <small>{p.date}</small>
+                                                                </Col>
+                                                                <br />
+                                                                <Row>
+                                                                    <Link to={`/edit/post/${p._id}`} style={{ textDecoration: "none" }}>
+                                                                        <Col
+                                                                            style={{
+                                                                                backgroundColor: "rgb(129, 129, 129)",
+                                                                                color: "white",
+                                                                                zIndex: 99999,
+                                                                                textAlign: "center",
+                                                                            }}
+                                                                            className="mt-2 w-100"
+                                                                            as={"div"}
+                                                                        >
+                                                                            <PencilSquare style={{ fontSize: "20px", marginTop: "4px", marginBottom: "6px" }} alignmentBaseline="bottom" />
+                                                                            {" "}- Edit Post
+                                                                        </Col>
+                                                                    </Link>
+                                                                </Row>
+                                                            </Row>
+                                                        </ListGroup.Item>
+                                                    ))
+                                            }
+                                        </ListGroup>
+                                    </div>
+                                </Col>
+
                             </Row>
                         </Tab.Container>
                     </Col>
@@ -909,59 +1001,3 @@ function Dashboard(props) {
 export default Dashboard;
 
 
-
-/*
-
-
-
- {
-                                                        data.articles.map((p, i) => (
-                                                            <Tab.Pane key={`article-tab-data-${i}`} eventKey={`#tab-link-${p._id}`} style={{ color: "white", position: "relative" }} >
-                                                                <div style={{ position: "absolute", width: "100%", height: "auto" }} ref={articleTopRef}>
-                                                                    <Card style={{ backgroundColor: "transparent", color: "white", height: "220px" }} className="w-auto">
-                                                                        <Image src={p.image_urls[0]} style={{ objectFit: "fill", width: "65%", height: "auto", marginLeft: "auto", marginRight: "auto", }} />
-                                                                        <Card.Body className="m-0">
-                                                                            <Card.Text style={{ color: SITE_COLORS.lightMain, }}>
-                                                                                {[p.category]} - {[p.subCategory]}
-                                                                            </Card.Text>
-                                                                            <Card.Title>{p.title}</Card.Title>
-                                                                            <Card.Text style={{ color: "darkgrey" }}>
-                                                                                {p.subTitle}
-                                                                            </Card.Text>
-                                                                            <hr />
-                                                                            <Card.Text className="h-auto" >
-                                                                                {p.body}
-                                                                            </Card.Text>
-                                                                            <hr />
-                                                                            <Card.Text style={{ color: "grey" }}>
-                                                                                Written by: {[p.author]}
-                                                                            </Card.Text>
-                                                                            <Card.Text style={{ color: "grey" }}>
-                                                                                Published on: {[p.date]}
-                                                                            </Card.Text>
-                                                                            <Card.Text style={{ color: "grey" }}>
-                                                                                Article _id: {[p._id]}
-                                                                            </Card.Text>
-                                                                        </Card.Body>
-                                                                    </Card>
-                                                                </div>
-                                                            </Tab.Pane>
-                                                        ))
-                                                    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-*/
