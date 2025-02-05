@@ -45,8 +45,13 @@ const PostsSchema = new Schema({
   price: {
     type: Number,
   },
+
   firm_price: {
-    type: String,
+    type: Boolean,
+  },
+
+  trade: {
+    type: Boolean,
   },
 
   public_images_id: [String],

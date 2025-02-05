@@ -184,7 +184,7 @@ function PostPage(props) {
                                 <div className="" style={{ color: "grey", fontSize: "14px" }}><strong>Zipcode:</strong> {post.zip}  </div>
                             </Row>
                             <Row className="justify-content-start align-content-start mb-2" sm={2} style={{ width: "100%" }}>
-                                <div style={{ color: "grey", fontSize: "14px" }}><strong>Published on: </strong>{post.date}</div>
+                                <div style={{ color: "grey", fontSize: "14px" }}><strong>Published on: </strong>{post.date.slice(0, 4) + post.date.slice(4, 8) + post.date.slice(8, 10)}</div>
                             </Row>
                             <Row className="justify-content-start align-content-start mb-2" sm={2} style={{ width: "100%" }}>
                                 <div style={{ color: "grey", fontSize: "14px" }}><strong>Post ID:</strong> {post._id}</div>

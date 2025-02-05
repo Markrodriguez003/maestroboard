@@ -86,7 +86,8 @@ function NewsArticle(props) {
                 <Col>
                     <Row className="justify-content-between align-content-end" sm={2} style={{ width: "100%" }}>
                         <div style={{ color: "darkcyan" }}>{category}: {subCategory}</div>
-                        <div className="" style={{ color: "grey", fontSize: "14px" }}>Written by: {author} - {date}</div>
+                        <div className="" style={{ color: "grey", fontSize: "14px" }}>Written by: {author} </div>
+                        <div className="" style={{ color: "grey", fontSize: "14px" }}>Published on: {date.slice(0, 4) + date.slice(4, 8) + date.slice(8, 10)}</div>
                     </Row>
                     <Row><br /></Row>
                     <Row>

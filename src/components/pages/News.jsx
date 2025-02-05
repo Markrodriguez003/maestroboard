@@ -1,8 +1,14 @@
+// REACT
 import { useState, useEffect } from "react";
+
+// LIBRARIES
 import axios from "axios";
-import { Row, Col, Carousel, Image, Container } from "react-bootstrap";
+
+// DESIGN
+import { Newspaper } from "react-bootstrap-icons";
 
 // COMPONENTS
+import { Row, Col, Carousel, Image, Container, Stack } from "react-bootstrap";
 import NewsArticle from "../NewsArticle";
 import HeaderPanel from "../ui/HeaderPanel";
 import QuickArticlesPanel from "../ui/QuickArticlesPanel";
@@ -94,20 +100,7 @@ function News(props) {
         <div>
           <br />
           <br />
-          <HeaderPanel>
-            <h1 style={{
-              color: "white",
-              textAlign: "center",
-              fontSize: "55px",
-              borderRadius: "5px",
-              display: "inline-block",
-              padding: "1px",
-            }}
-            >NEWS |
-            </h1>
-            <small style={{ color: "white", fontSize: "18px" }}>  Latest music gear articles</small>
-            <hr style={{ color: "white", borderTop: "4px white solid" }} />
-          </HeaderPanel>
+
           <Container fluid>
             <Row lg={2} xs={1} sm={1} className="justify-content-start p-3">
               <Col lg={8} className="w-">

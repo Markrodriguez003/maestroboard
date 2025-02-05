@@ -1,5 +1,6 @@
 body {
-  background-image: url("./assets/imgs/background-textures/bg-pattern-c.png");
-  /* background-color: rgb(19, 72, 72); */
-  /* background-blend-mode: hard-light; */
+   background-image: url("./assets/imgs/background-textures/bg-pattern-c.png");
+   /* background-image: url("./assets/imgs/background-textures/bg-pattern-c.png");
+  background-color: rgb(0, 0, 0);
+  background-blend-mode: screen; */
 }

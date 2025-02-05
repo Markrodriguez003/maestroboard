@@ -170,14 +170,10 @@ function BoardPostModal() {
 
     // LISTES FOR FORM SUBMISSION TO TRIGGER LOADING OF IMAGES TO ARTICLE STATE
     if (submitLoading === true) {
-      // SUBMIT ARTICLE DATA TO CHECKS THEN BACKEND
+      // SUBMIT POST DATA TO CHECKS THEN BACKEND
       postFormSubmit();
     }
   }, [submitLoading]);
-
-
-  // GRABS ARTICLE TYPES TO POPULATE SELECT OPTION IN ARTICLE CREATION SELECTION 
-  // const article_categories = article_types[0].article_types;
 
   // FORM SUBMIT HANDLER
   const onSubmit = (data) => {
@@ -299,20 +295,6 @@ function BoardPostModal() {
                             : postSubType === "Advertisement" ? FORM_OPTIONS.post_sub_types_advertisements.map((option, index) => (<option key={`${option}-${index}`}>{option}</option>))
                               : <option>Nothing here</option>
                       }
-
-                      {/* <option>Any</option>
-                    <option>Instrument - Guitar</option>
-                    <option>Instrument - Bass</option>
-                    <option>Instrument - Drums</option>
-                    <option>Instrument - Percussion</option>
-                    <option>Instrument - Synthesizer</option>
-                    <option>Instrument - Brass</option>
-                    <option>Instrument - Woodwinds</option>
-                    <option>Instrument - Microphones</option>
-                    <option>Instrument - Studio Equipment</option>
-                    <option>Instrument - DJ Equipment</option>
-                    <option>Band Personnel - Band Member</option>
-                    <option>Service - Advertisement</option> */}
                     </select>
                     {errors.instrument && <Form.Text className="text-danger" >This field is required</Form.Text>}
                   </Form.Group>

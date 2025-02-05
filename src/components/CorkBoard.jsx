@@ -7,6 +7,9 @@ import "./css/Corkboard.css";
 // LIBRARIES
 import axios from "axios";
 
+// ASSETS
+import { PinAngleFill } from "react-bootstrap-icons";
+
 // COMPONENTS
 import PostBoardCard from "./PostBoardCard";
 import LoadingSpinner from "./ui/LoadingSpinner";
@@ -167,25 +170,7 @@ function Corkboard() {
           </div>
           : <div>
             <div>
-              {/* ********************************************************************** */}
-              {/* CORKBOARD HEADER */}
-              {/* ********************************************************************** */}
 
-              <HeaderPanel >
-                <h1 style={{
-                  color: "white",
-                  textAlign: "center",
-                  fontSize: "55px",
-                  borderRadius: "5px",
-                  display: "inline-block",
-                  padding: "1px"
-
-                }}
-                  ref={corkboardTopRef}>Community Board |
-                </h1>
-                <small style={{ color: "white", fontSize: "18px" }}>  Latest music related posts</small>
-                <hr style={{ color: "white", borderTop: "4px white solid" }} />
-              </HeaderPanel>
               {/* ************************ */}
               {/* FILTER - SEARCH BUTTONS */}
               {/* ************************ */}

@@ -965,6 +965,7 @@ function Dashboard(props) {
                                                                 <br />
                                                                 <Row>
                                                                     <Link to={`/edit/post/${p._id}`} style={{ textDecoration: "none" }}>
+
                                                                         <Col
                                                                             style={{
                                                                                 backgroundColor: "rgb(129, 129, 129)",

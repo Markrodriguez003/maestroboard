@@ -26,6 +26,7 @@ import PostPage from "./components/PostPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/ui/Header";
 import Footer from "./components/ui/Footer";
+import PostEdit from "./components/ui/PostEdit";
 
 function App() {
 
@@ -50,6 +51,12 @@ function App() {
           <Route path="/edit/article/:id" element={
             <ConfirmationModal>
               <ArticleEdit />
+            </ConfirmationModal>
+
+          }></Route>
+          <Route path="/edit/post/:id" element={
+            <ConfirmationModal>
+              <PostEdit />
             </ConfirmationModal>
 
           }></Route>

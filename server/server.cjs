@@ -196,7 +196,6 @@ app.get("/api/loadArticles", function (req, res) {
     });
 });
 
- 
 // LOADS A SPECIFIC AMOUNT OF POSTS
 app.get("/api/loadPosts/:count", function (req, res) {
   Post.find({})
@@ -233,6 +232,7 @@ app.post("/api/insertpost", async (req, res) => {
     body: req.body.pBody,
     price: req.body.price,
     firm_price: req.body.firm_price,
+    trade: req.body.trade,
     public_images_id: req.body.public_images_id,
     image_urls: req.body.image_urls,
     secure_images_urls: req.body.secure_images_urls,
@@ -396,6 +396,18 @@ app.put("/api/edit/article/id/:id", async function (req, res) {
       req.body,
       { new: true }
     );
+    res.json(updatedItem);
+  } catch (err) {
+    res.status(500).json({ error: err });
+  }
+});
+
+// * SAVES AN ENTIRE POST
+app.put("/api/edit/post/id/:id", async function (req, res) {
+  try {
+    const updatedItem = await Post.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
     res.json(updatedItem);
   } catch (err) {
     res.status(500).json({ error: err });
