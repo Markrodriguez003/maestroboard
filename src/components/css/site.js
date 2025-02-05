@@ -11,4 +11,5 @@ export const SITE_COLORS = {
   alternateSecondaryLight: "rgb(192, 4, 136)",
   danger: "rgb(209, 0, 7)",
   transparent: "transparent",
+  main_grey: "rgb(129, 129, 129)",
 };

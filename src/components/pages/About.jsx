@@ -1,6 +1,6 @@
 
 // COMPONENTS
-import { Button, Container, Stack, Row, Col } from "react-bootstrap";
+import { Button, Container, Stack, Row, Col, Image } from "react-bootstrap";
 import InfoPanel from "../ui/InfoPanel";
 
 // DESIGN & THEMES
@@ -8,7 +8,9 @@ import { SITE_COLORS } from "../css/site";
 
 // ASSETS
 import { HouseGearFill, MusicNoteBeamed, Newspaper, MusicNote, Tools, PostcardHeartFill, Postcard } from "react-bootstrap-icons";
-
+import about_corkboard from "../../assets/imgs/about/community-board.png"
+import about_articles from "../../assets/imgs/about/articles.png"
+import about_technology from "../../assets/imgs/about/technology-1283624_640.jpg"
 
 /*----------------------------------------------------------------------------
 |   ⚙️ Use: About page that explains the purpose, history of the site & 
@@ -25,27 +27,19 @@ function About() {
             {/* **************************************************************************** */}
             {/* ABOUT US HEADER */}
             {/* **************************************************************************** */}
-            <Container className="mt-5" fluid> 
-                {/* <InfoPanel bgColor={SITE_COLORS.main_2} color="white" width="50">
-                    <Stack direction="vertical">
-                        <PatchQuestionFill style={{ fontSize: "90px" }} className="mx-auto" />
-                        <h1 className="display-2" > About Us</h1>
-                    </Stack>
-                </InfoPanel> */}
+            <Container className="mt-5" fluid>
                 <br />
                 {/* **************************************************************************** */}
                 {/* ABOUT US TEXT */}
                 {/* **************************************************************************** */}
-                <InfoPanel bgColor={SITE_COLORS.alternateMain} color="white" width="100" rounded="rounded-5">
-                    <div className="p-0 w-100 mx-auto text-start">
+                <InfoPanel bgColor={SITE_COLORS.alternateMain} color="white" width="75" rounded="rounded-5">
+                    <div className="p-0 mx-auto text-start">
                         <Stack>
                             <h1 className="display-2 text-center" >About Us <MusicNoteBeamed style={{ fontSize: "75px" }} className="" /> </h1>
                             <hr />
-                            <p>
-                                Imagine you are walking towards the back of a music shop & you see a corkboard.
-                                You see adverts of bands looking for band members, flyers for concert shows and posts for used gear!
-                                The purpose of this website is to give users the ability to see music related community posts, news articles &
-                                post of our forum!
+                            <p className="w-75 mx-auto lead">
+                                Imagine you are walking towards the back of a music shop & you see a community corkboard. You see adverts of bands looking for band members, flyers for concert shows and posts for used gear. The purpose of this website is to give users the ability to see music related community posts, news articles &
+                                post of our forum! Remember to always chase your muse!
                             </p>
                         </Stack>
                     </div>
@@ -56,10 +50,8 @@ function About() {
                 {/* **************************************************************************** */}
                 <InfoPanel rounded="rounded-5">
                     <Row>
-                        <Col style={{ backgroundColor: SITE_COLORS.alternateSecondary }}>
-                            <p style={{ color: "white" }}>
-                                Corkboard
-                            </p>
+                        <Col>
+                            <Image src={about_corkboard} width={"100%"} />
                         </Col>
                         {/* //! MOVE TO JSON AND USE IT AS DROPDOWN OPTION AND UL LIST ITEMS BELOW */}
                         <Col xl={6} lg={6} md={12} sm={12} xs={12}>
@@ -137,10 +129,8 @@ function About() {
                                 </Stack>
                             </div>
                         </Col>
-                        <Col style={{ backgroundColor: SITE_COLORS.alternateSecondary }}>
-                            <p style={{ color: "white" }}>
-                                News Articles
-                            </p>
+                        <Col>
+                            <Image src={about_articles} width={"100%"} height={"500px"} style={{ objectFit: "cover" }} />
                         </Col>
                     </Row>
                 </InfoPanel>
@@ -151,10 +141,8 @@ function About() {
                 <br />
                 <InfoPanel rounded="rounded-5">
                     <Row>
-                        <Col style={{ backgroundColor: SITE_COLORS.alternateSecondary }}>
-                            <p style={{ color: "white" }}>
-                                Corkboard
-                            </p>
+                        <Col>
+                            <Image src={about_technology} width={"100%"} height={"500px"} style={{ objectFit: "cover" }} />
                         </Col>
                         {/* //! MOVE TO JSON AND USE IT AS DROPDOWN OPTION AND UL LIST ITEMS BELOW */}
                         <Col xl={6} lg={6} md={12} sm={12} xs={12}>

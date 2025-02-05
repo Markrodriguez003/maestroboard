@@ -22,7 +22,7 @@ import { Doughnut } from 'react-chartjs-2';
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 // ASSETS
-import { FileEarmarkPerson, SpeakerFill, FileEarmarkMusicFill, DatabaseGear, Tools, PinFill, PencilSquare, PostcardFill, CardList, Scissors, Filter } from "react-bootstrap-icons";
+import { FileEarmarkPerson, SpeakerFill, FileEarmarkMusicFill, DatabaseGear, Tools, PinFill, PencilSquare, PostcardFill, CardList, Scissors, Newspaper, Filter } from "react-bootstrap-icons";
 import { SITE_COLORS } from "../css/site";
 
 // CSS
@@ -773,6 +773,25 @@ function Dashboard(props) {
                                                                         </Col>
                                                                     </Link>
                                                                 </Row>
+                                                                <br />
+                                                                <br />
+                                                                <Row>
+                                                                    <Link to={`/article/${p._id}`} style={{ textDecoration: "none" }}>
+                                                                        <Col
+                                                                            style={{
+                                                                                backgroundColor: SITE_COLORS.lightMain,
+                                                                                color: "white",
+                                                                                zIndex: 99999,
+                                                                                textAlign: "center",
+                                                                            }}
+                                                                            className="mt-2 w-100"
+                                                                            as={"div"}
+                                                                        >
+                                                                            <Newspaper style={{ fontSize: "20px", marginTop: "4px", marginBottom: "6px" }} alignmentBaseline="bottom" />
+                                                                            {" "}- Go to Article
+                                                                        </Col>
+                                                                    </Link>
+                                                                </Row>
                                                             </Row>
                                                         </ListGroup.Item>
                                                     ))
@@ -958,6 +977,23 @@ function Dashboard(props) {
                                                                         >
                                                                             <PencilSquare style={{ fontSize: "20px", marginTop: "4px", marginBottom: "6px" }} alignmentBaseline="bottom" />
                                                                             {" "}- Edit Post
+                                                                        </Col>
+                                                                    </Link>
+                                                                </Row>
+                                                                <Row>
+                                                                    <Link to={`/post/${p._id}`} style={{ textDecoration: "none" }}>
+                                                                        <Col
+                                                                            style={{
+                                                                                backgroundColor: SITE_COLORS.lightSecondary,
+                                                                                color: "white",
+                                                                                zIndex: 99999,
+                                                                                textAlign: "center",
+                                                                            }}
+                                                                            className="mt-2 w-100"
+                                                                            as={"div"}
+                                                                        >
+                                                                            <PostcardFill style={{ fontSize: "20px", marginTop: "4px", marginBottom: "6px" }} alignmentBaseline="bottom" />
+                                                                            {" "}- Go to Post
                                                                         </Col>
                                                                     </Link>
                                                                 </Row>

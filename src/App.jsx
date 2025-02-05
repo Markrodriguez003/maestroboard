@@ -22,6 +22,7 @@ import ArticleEdit from "./components/ui/ArticleEdit"
 
 import SignUpForm from "./components/SignUpForm";
 import NewsArticlePage from "./components/NewsArticlePage";
+import PostPage from "./components/PostPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/ui/Header";
 import Footer from "./components/ui/Footer";
@@ -41,13 +42,13 @@ function App() {
           <Route path="/news" element={<News />}></Route>
           <Route path="/about" element={<About />}></Route>
           <Route path="/article/:id" element={<NewsArticlePage />}></Route>
+          <Route path="/post/:id" element={<PostPage />}></Route>
           <Route path="/forum" element={<Forum />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/signup" element={<SignUpForm />}></Route>
           <Route path="/dashboard" element={<Dashboard />}></Route>
           <Route path="/edit/article/:id" element={
             <ConfirmationModal>
-
               <ArticleEdit />
             </ConfirmationModal>
 

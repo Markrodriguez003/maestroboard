@@ -44,7 +44,9 @@ import {
   At,
   TelephoneFill,
   Mailbox2,
+  EnvelopeAtFill
 } from "react-bootstrap-icons";
+import { SITE_COLORS } from "./css/site";
 
 function PostBoardCard(props) {
   const [isFlipped, setIsFlipped] = useState(false);
@@ -268,7 +270,7 @@ function PostBoardCard(props) {
                           {/* User Post input */}
                           <Row className="card-header-user-input">
                             <Col>{props.username}</Col>
-                            <Col>{props.date}</Col>
+                            <Col>{props.date.slice(0, 4) + props.date.slice(4, 8) + props.date.slice(8, 10)}</Col>
                             <Col>{props.zip}</Col>
                           </Row>
                         </div>
@@ -329,7 +331,7 @@ function PostBoardCard(props) {
                         {/* User Post input */}
                         <Row className="card-header-user-input">
                           <Col>{props.username}</Col>
-                          <Col>{props.date}</Col>
+                          <Col>{props.date.slice(0, 4) + props.date.slice(4, 8) + props.date.slice(8, 10)}</Col>
                           <Col>{props.zip}</Col>
                         </Row>
                       </div>
@@ -345,8 +347,8 @@ function PostBoardCard(props) {
                         </Card.Title>
                         <ListGroup className="p-0">
                           <ListGroup.Item style={{ color: "black" }}>
-                            <span className="font-weight-bold contact-text">
-                              <At />
+                            <span className="font-weight-bold contact-text" style={{ color: SITE_COLORS.main }}>
+                              <EnvelopeAtFill />
                               Email:
                             </span>
 
@@ -359,7 +361,12 @@ function PostBoardCard(props) {
                             <span className="font-weight-bold contact-text">
                               <TelephoneFill /> Number:
                             </span>
-                            <span className="contact-text"> {props.phone}</span>
+                            <span className="contact-text">
+                              {
+                                '(' + props.phone.slice(0, 3) + ') ' + props.phone.slice(3, 6) + '-' + props.phone.slice(6, 11)}
+
+
+                            </span>
                           </ListGroup.Item>
                           <ListGroup.Item>
                             {/* <CardReplyModal /> */}

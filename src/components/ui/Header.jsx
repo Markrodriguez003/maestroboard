@@ -18,10 +18,6 @@ function Header() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse className="justify-content-xxl-end justify-content-xl-end justify-content-lg-start justify-content-md-start justify-content-sm-start justify-content-xs-start  " >
           <Nav className="">
-            <Nav.Link href="/about" className="header-list-item " >
-              <PatchQuestionFill style={{ verticalAlign: "center", paddingBottom: "5px", fontSize: "20px" }} /> {" "}
-              About
-            </Nav.Link>
             <Nav.Link href="/board" className="header-list-item " >
               <PinAngleFill style={{ verticalAlign: "center", paddingBottom: "5px", fontSize: "20px" }} /> {" "}
               Community Board
@@ -32,6 +28,10 @@ function Header() {
             <Nav.Link href="/forum" className="header-list-item">
               <CardChecklist style={{ verticalAlign: "center", paddingBottom: "5px", fontSize: "20px" }} /> {" "}
               Forum
+            </Nav.Link>
+            <Nav.Link href="/about" className="header-list-item " >
+              <PatchQuestionFill style={{ verticalAlign: "center", paddingBottom: "5px", fontSize: "20px" }} /> {" "}
+              About
             </Nav.Link>
             <Nav.Link eventKey={2} href="/login" className="header-list-item">
               <PersonFillLock style={{ verticalAlign: "center", paddingBottom: "5px", fontSize: "20px" }} /> Admin Log in
