@@ -81,7 +81,7 @@ function News(props) {
     // GRABS ALL ARTICLES FROM DB
     async function grabArticles() {
       await axios
-        .get("http://localhost:3005/api/loadArticles")
+        .get("http://localhost:3005/api/articles/fetch-all")
         .then(async (response) => {
           setArticles(await response.data);
         })

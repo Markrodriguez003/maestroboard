@@ -25,7 +25,7 @@ import article_types from "../../data/articleTypes.json";
 
 // DESIGN CSS
 import { SITE_COLORS } from "../css/site";
-import deleteImage from "../../../server/scripts/deleteImage";
+// import deleteImage from "../../../server/scripts/deleteImage";
 
 
 // ! move to component
@@ -108,10 +108,10 @@ function ArticleEdit() {
     // PULLS ARTICLE DATA FROM URL ID
     useEffect(() => {
 
-        // GRABS ALL ARTICLES FROM DB
+        // GRABS ALL ARTICLE FROM DB
         async function grabArticle() {
             await axios
-                .get(`http://localhost:3005/api/article/id/${params.id}`)
+                .get(`http://localhost:3005/api/articles/id/${params.id}`)
                 .then(async (response) => {
                     setArticleLoadingState("loading");
                     setArticle(await response.data.article[0]);
@@ -165,8 +165,7 @@ function ArticleEdit() {
         async function UPDATE_ARTICLE(newArticle) {
             // console.log(`RESPONSE! ${JSON.stringify(params)}`)
             try {
-                // const response = axios.post('http://localhost:3005/api/insert-article', newArticle);
-                axios.put(`http://localhost:3005/api/edit/article/id/${params.id}`, newArticle).then((response) => {
+                axios.put(`http://localhost:3005/api/articles/edit/id/${params.id}`, newArticle).then((response) => {
                     console.log(`RESPONSE! ${JSON.stringify(response)}`)
                     console.log(`NEW ARTICLE! ${JSON.stringify(newArticle)}`)
 
@@ -320,7 +319,6 @@ function ArticleEdit() {
                 reset()
                 setTotalCharacters(0);
                 console.log(`ARTICLE IMAGES DELETION: --> ${JSON.stringify(article)}`)
-                // deleteImage(article.public_images_id);
 
                 Notification.setToast((prevToast => ({
                     ...prevToast,
@@ -497,7 +495,7 @@ function ArticleEdit() {
                                         <span className="spinner-border spinner-border-sm " role="status" aria-hidden="true"></span>
                                         {" "} Submitting...
                                     </>
-                                    : <span> <Reply className="mb-1" /> Create Article </span>
+                                    : <span> <Reply className="mb-1" /> Update Article </span>
                                 }
                             </Button>
 

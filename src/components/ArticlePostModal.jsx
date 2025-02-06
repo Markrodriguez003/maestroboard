@@ -77,7 +77,7 @@ function ArticlePostModal(props) {
         // PUSHES ARTICLE TO DB
         async function CREATE_NEW_ARTICLE(newArticle) {
             try {
-                const response = axios.post('http://localhost:3005/api/insert-article', newArticle);
+                const response = axios.post('http://localhost:3005/api/articles/insert', newArticle);
                 // SETS TOAST OF SUBMITTED ARTICLE!
                 ToastNotificationContext.setToast((prevToast => ({
                     ...prevToast,

@@ -27,7 +27,7 @@ const FORM_OPTIONS = post_types[0];
 
 // DESIGN CSS
 import { SITE_COLORS } from "../css/site";
-import deleteImage from "../../../server/scripts/deleteImage";
+// import deleteImage from "../../../server/scripts/deleteImage";
 
 
 // ! move to component
@@ -175,7 +175,7 @@ function PostEdit() {
             // console.log(`RESPONSE! ${JSON.stringify(params)}`)
             try {
 
-                axios.put(`http://localhost:3005/api/edit/post/id/${params.id}`, newPost).then((response) => {
+                axios.put(`http://localhost:3005/api/posts/edit/id/${params.id}`, newPost).then((response) => {
                     console.log(`RESPONSE! ${JSON.stringify(response)}`)
                     console.log(`NEW POST! ${JSON.stringify(newPost)}`)
 
@@ -327,8 +327,6 @@ function PostEdit() {
                 reset()
                 setTotalCharacters(0);
                 console.log(`POST IMAGES DELETION: --> ${JSON.stringify(post)}`)
-                deleteImage(post.public_images_id);
-
                 Notification.setToast((prevToast => ({
                     ...prevToast,
                     show: true,
@@ -528,8 +526,8 @@ function PostEdit() {
                                         label="Interested in a Trade?"
                                         name="trade"
                                         {...register("trade")}
-                                        // defaultValue={post.trade}
-                                        // checked={post.trade}
+                                    // defaultValue={post.trade}
+                                    // checked={post.trade}
 
                                     />
                                 </Form.Group>
@@ -543,8 +541,8 @@ function PostEdit() {
                                         label="Firm Price / No Negotation?"
                                         name="firm_price"
                                         {...register("firm_price")}
-                                        // defaultValue={post.firm_price}
-                                        // checked={post.firm_price}
+                                    // defaultValue={post.firm_price}
+                                    // checked={post.firm_price}
                                     />
                                 </Form.Group>
                             </Col>
@@ -595,6 +593,19 @@ function PostEdit() {
                                     })))
                                 }} />
                                 Cancel Post{" "}
+                            </Button>
+                            <Button
+                                variant="danger"
+                                className="text-light p-2 m-0"
+                                onClick={() => {
+                                    Confirmation.setOptions((prev) => ({
+                                        ...prev, bgColor: SITE_COLORS.danger, header: "Delete article?"
+                                    }))
+                                    Confirmation.setShow(true)
+                                }}
+                            >
+                                {" "}
+                                <Trash2Fill className="mb-1" /> Delete article{" "}
                             </Button>
                             <Button
                                 className="text-light p-2 m-0"

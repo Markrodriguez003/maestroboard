@@ -1,31 +1,25 @@
-const express = require("express"); // Bringing in Express
+// LIBRARIES
+const express = require("express");
 const helmet = require("helmet");
-// const path = require("path"); // Bringing in Path
-const mongoose = require("mongoose"); // Mongoose
-// const CP = require("cookie-parser");
-const app = express(); //Intializing  Express
-// USING ENV FILES IN SERVER
+const path = require("path");
+const mongoose = require("mongoose");
+const app = express();
 require("dotenv").config();
-
-// CLOUDINARY
-const cloudinary = require("cloudinary").v2;
-
-// CLOUDINARY ADMIN CONFIG
-cloudinary.config({
-  cloud_name: "dytbnvgzg",
-  api_key: process.env.VITE_CLOUDINARY_API_KEY,
-  api_secret: process.env.VITE_CLOUDINARY_API_SECRET,
-  secure: false,
-  // signature_algorithm: 'sha256'
-});
-
-// WORKS
-// console.log(cloudinary.config());
-
+const cookieParser = require("cookie-parser");
 const jwt = require("jsonwebtoken");
-
-// USING CORS
 const cors = require("cors");
+
+// // CLOUDINARY
+// const cloudinary = require("cloudinary").v2;
+
+// // CLOUDINARY ADMIN CONFIG
+// cloudinary.config({
+//   cloud_name: "dytbnvgzg",
+//   api_key: process.env.VITE_CLOUDINARY_API_KEY,
+//   api_secret: process.env.VITE_CLOUDINARY_API_SECRET,
+//   secure: false,
+//   // signature_algorithm: 'sha256'
+// });
 
 // Loading middleware for body parsing / json / urlecoding / cors
 const bodyParser = require("body-parser");
@@ -34,30 +28,37 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.use(helmet());
-// app.use(cookieParser()); // TODO Pass a secret here?
-
-//  Creating Port
-const PORT = process.env.PORT || 3005;
 
 // Express Middleware to handle JSON
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Serve up static assets (usually on heroku)
+//  BACKEND PORT HANDLING
+const PORT = process.env.PORT || 3005;
+
+// Serve up static assets
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-// Bringing in example posts array AS an object. { [{},{},{},{}] }
+// POST, USER & ARTICLE EXAMPLE OBJECTS
 const ex = require("./scripts/ExamplePosts.cjs");
 const ar = require("./scripts/ArticlePosts.cjs");
 const us = require("./scripts/ExampleUsers.cjs");
 
-// Bringing in POST schema model
+// MONGODB MODELS
 const Post = require("./db/Posts.js");
 const Article = require("./db/Articles");
 const UserAccount = require("./db/UserAccount");
-const cookieParser = require("cookie-parser");
+
+// BRINGING IN API ENDPOINT ROUTER (Articles, Users, Posts)
+const articles = require("./Routes/articles.cjs");
+// const users = require("./Routes/user.cjs");
+const posts = require("./Routes/posts.cjs");
+
+// API ENPOINT ROUTES
+app.use("/api/articles", articles);
+app.use("/api/posts", posts);
 
 // Connecting project to mongoose database.
 mongoose.connect(
@@ -69,18 +70,6 @@ mongoose.connect(
 
 // Assigning "db" to created mongoose link above
 const db = mongoose.connection;
-
-// This will handle API GET requests
-// require("../controller/API_Get_Routes.js")(app);
-
-// This will handle API POST requests
-// require("../controller/API_Post_Routes.js")(app);
-//
-// * **********************************************************************************
-// * **********************************************************************************
-
-// console.log(`API KEY --> ${process.env.VITE_CLOUDINARY_API_KEY}`);
-// console.log(`API SECRET --> ${process.env.VITE_CLOUDINARY_API_SECRET}`);
 
 async function loadPosts() {
   await Post.insertMany(ex.examplePosts)
@@ -150,122 +139,8 @@ db.once("open", function () {
   console.log("DB connected");
 });
 
-// app.use(express.static(__dirname + '/src/imgs'));
-
-// Send every request to the React app
-// Define any API routes before this runs
-// app.get("*", function(req, res) {
-//   res.sendFile(path.join(__dirname, "./public/index.html"));
-// });
-
-// * EXPRESS ROUTING
-// * **********************************************************************************
-//  * BASIC ROUTES
-
-// * LOADS MAIN PAGE
-app.get("/", function (req, res) {
-  // res.send("Hello!");
-});
-
-// LOADS TEST POSTS
-app.get("/api/loadPosts", function (req, res) {
-  Post.find({})
-    .then((posts) => {
-      console
-        .log
-        // "There are " + posts.length + " posts currently in the database."
-        ();
-      res.json(posts);
-    })
-    .catch((err) => {
-      console.log("posts cannot be loaded from the db!");
-    });
-});
-
-// LOADS ALL ARTICLES
-app.get("/api/loadArticles", function (req, res) {
-  Article.find({})
-    .then((articles) => {
-      // console.log(
-      //   "There are " + articles.length + " articles currently in the database."
-      // );
-      res.json(articles);
-    })
-    .catch((err) => {
-      console.log("articles cannot be loaded from the db!");
-    });
-});
-
-// LOADS A SPECIFIC AMOUNT OF POSTS
-app.get("/api/loadPosts/:count", function (req, res) {
-  Post.find({})
-    .limit(req.params.count)
-    .then((posts) => {
-      res.json(posts);
-    })
-    .catch((err) => {
-      console.log("posts cannot be loaded from the db!");
-    });
-});
-// LOADS A SPECIFIC AMOUNT OF ARTICLES
-app.get("/api/loadArticles/:count", function (req, res) {
-  Article.find({})
-    .limit(req.params.count)
-    .then((articles) => {
-      res.json(articles);
-    })
-    .catch((err) => {
-      console.log("articles cannot be loaded from the db!");
-    });
-});
-
-// * Inserts new post
-app.post("/api/insertpost", async (req, res) => {
-  let newPost = {
-    username: req.body.username,
-    email: req.body.email,
-    phone: req.body.phone,
-    zip: req.body.zipcode,
-    type: req.body.type,
-    subType: req.body.subType,
-    title: req.body.title,
-    body: req.body.pBody,
-    price: req.body.price,
-    firm_price: req.body.firm_price,
-    trade: req.body.trade,
-    public_images_id: req.body.public_images_id,
-    image_urls: req.body.image_urls,
-    secure_images_urls: req.body.secure_images_urls,
-  };
-
-  await Post.create(newPost).then((result) => {
-    // console.log(result);
-    res.json({ response: result });
-  });
-});
-
-// * Inserts new article
-app.post("/api/insert-article", async (req, res) => {
-  let newArticle = {
-    title: req.body.title,
-    subTitle: req.body.subTitle,
-    category: req.body.category,
-    subCategory: req.body.subCategory,
-    author: req.body.author,
-    type: req.body.articleType,
-    body: req.body.body,
-    public_images_id: req.body.public_images_id,
-    image_urls: req.body.image_urls,
-    secure_images_urls: req.body.secure_images_urls,
-    caption: req.body.caption,
-    link: req.body.link,
-  };
-
-  await Article.create(newArticle).then((result) => {
-    // console.log(result);
-    res.json({ response: result });
-  });
-});
+// * LOADS MAIN HOME PAGE
+app.get("/", function (req, res) {});
 
 // GRABS THE AMOUNT OF USERS IN DB
 app.get("/api/load-user-count", function (req, res) {
@@ -362,58 +237,6 @@ app.get("/api/auth", (req, res) => {
   }
 });
 
-// * Finds all posts by a specific category type
-app.get("/api/loadPosts/type/:type", function (req, res) {
-  // CAPITALIZES THE LETTER OF CATEGORY TYPE
-  const searchTerm =
-    req.params.type[0].toUpperCase() + req.params.type.slice(1);
-  Post.find({
-    type: `${searchTerm}`,
-  }).then((posts, err) => {
-    res.json(posts.length);
-  });
-});
-
-// * Finds Article by a specific ID
-app.get("/api/article/id/:id", function (req, res) {
-  Article.find({
-    _id: `${req.params.id}`,
-  })
-    .then((article, err) => {
-      res.status(200).json({ article });
-    })
-    .catch((error) => {
-      console.log(`Error trying to find Article!`);
-      res.status(404).json(error);
-    });
-});
-
-// * SAVES AN ENTIRE ARTICLE
-app.put("/api/edit/article/id/:id", async function (req, res) {
-  try {
-    const updatedItem = await Article.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      { new: true }
-    );
-    res.json(updatedItem);
-  } catch (err) {
-    res.status(500).json({ error: err });
-  }
-});
-
-// * SAVES AN ENTIRE POST
-app.put("/api/edit/post/id/:id", async function (req, res) {
-  try {
-    const updatedItem = await Post.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-    });
-    res.json(updatedItem);
-  } catch (err) {
-    res.status(500).json({ error: err });
-  }
-});
-
 // * DELETES AN ENTIRE ARTICLE + IMAGES ASSOCIATED IN CLOUDINARY
 // ? NOTES https://support.cloudinary.com/hc/en-us/articles/203465641-How-can-I-delete-an-image-via-the-API-Programmable-Media
 // ? https://stackoverflow.com/questions/57247914/how-can-i-remove-an-image-in-a-custom-folder-in-cloudinary-by-nodejs
@@ -432,122 +255,122 @@ async function deleteImages(image_id_array) {
   });
 }
 
-app.delete("/api/delete/article/id/:id", async function (req, res) {
-  // FIND ARTICLE FROM DB AND GRAB ASSETS
-  await Article.findById(req.params.id)
-    .then((result) => {
-      try {
-        // CHECKS TO SEE IF ARTICLE HAS IMAGES
-        if (result.public_images_id || result.public_images_id.length === 0) {
-          // CALLS FUNCTION TO DELETE IMAGES
-          deleteImages(result.public_images_id);
-        }
-        Article.findByIdAndDelete(req.params.id)
-          .then((result) => {
-            console.log(
-              `ARTICLE IN THE BACKEND HAS BEEN DELETED:: ${JSON.stringify(
-                result
-              )}`
-            );
-            res.json(result);
-          })
-          .catch((error) => {
-            console.log(
-              `ARTICLE COULD NOT BE DELETED:: ${JSON.stringify(error)}`
-            );
-          });
-      } catch (error) {
-        console.log(`error: ${error}`);
-      }
-    })
-    .catch((error) => {
-      console.log(`ARTICLE COULD NOT BE FOUND!:: ${JSON.stringify(error)}`);
-    });
-});
+// app.delete("/api/delete/article/id/:id", async function (req, res) {
+//   // FIND ARTICLE FROM DB AND GRAB ASSETS
+//   await Article.findById(req.params.id)
+//     .then((result) => {
+//       try {
+//         // CHECKS TO SEE IF ARTICLE HAS IMAGES
+//         if (result.public_images_id || result.public_images_id.length === 0) {
+//           // CALLS FUNCTION TO DELETE IMAGES
+//           deleteImages(result.public_images_id);
+//         }
+//         Article.findByIdAndDelete(req.params.id)
+//           .then((result) => {
+//             console.log(
+//               `ARTICLE IN THE BACKEND HAS BEEN DELETED:: ${JSON.stringify(
+//                 result
+//               )}`
+//             );
+//             res.json(result);
+//           })
+//           .catch((error) => {
+//             console.log(
+//               `ARTICLE COULD NOT BE DELETED:: ${JSON.stringify(error)}`
+//             );
+//           });
+//       } catch (error) {
+//         console.log(`error: ${error}`);
+//       }
+//     })
+//     .catch((error) => {
+//       console.log(`ARTICLE COULD NOT BE FOUND!:: ${JSON.stringify(error)}`);
+//     });
+// });
 
-// * Finds all articles by a specific category type / Selling%20Gear /Buying%20Gear
+// // * Finds all articles by a specific category type / Selling%20Gear /Buying%20Gear
 
-app.get("/api/loadarticles/category/:category", function (req, res) {
-  let searchArticleTerm = req.params.category.replace(
-    /(^\w{1})|(\s+\w{1})/g,
-    (letter) => letter.toUpperCase()
-  );
-  Article.find({ category: `${searchArticleTerm}` }).then((articles, err) => {
-    // console.log(`${searchArticleTerm} - ${articles.length} `);
-    res.json(articles.length);
-  });
-});
+// app.get("/api/loadarticles/category/:category", function (req, res) {
+//   let searchArticleTerm = req.params.category.replace(
+//     /(^\w{1})|(\s+\w{1})/g,
+//     (letter) => letter.toUpperCase()
+//   );
+//   Article.find({ category: `${searchArticleTerm}` }).then((articles, err) => {
+//     // console.log(`${searchArticleTerm} - ${articles.length} `);
+//     res.json(articles.length);
+//   });
+// });
 
-// * Finds all articles and returns it by ascending date ordered
-app.get("/api/articles/date/:sort", function (req, res) {
-  let sort_type = req.params.sort.toLowerCase() === "latest" ? -1 : 1;
+// // * Finds all articles and returns it by ascending date ordered
+// app.get("/api/articles/date/:sort", function (req, res) {
+//   let sort_type = req.params.sort.toLowerCase() === "latest" ? -1 : 1;
 
-  Article.find({})
-    .sort({ date: sort_type }) // -1 means oldest post to earliest
-    .then((posts, err) => {
-      res.json(posts);
-    });
-});
+//   Article.find({})
+//     .sort({ date: sort_type }) // -1 means oldest post to earliest
+//     .then((posts, err) => {
+//       res.json(posts);
+//     });
+// });
 
-// * Finds all posts and returns all article IDs by ascending date ordered
-app.get("/api/articles/id/date/:sort", function (req, res) {
-  let sort_type = req.params.sort.toLowerCase() === "latest" ? -1 : 1;
+// // * Finds all posts and returns all article IDs by ascending date ordered
+// app.get("/api/articles/id/date/:sort", function (req, res) {
+//   let sort_type = req.params.sort.toLowerCase() === "latest" ? -1 : 1;
 
-  Article.find({})
-    .sort({ date: sort_type }) // -1 means oldest post to earliest
-    .then((posts, err) => {
-      // Grabs all article IDs
-      const article_ids = posts.map((id) => id._id);
+//   Article.find({})
+//     .sort({ date: sort_type }) // -1 means oldest post to earliest
+//     .then((posts, err) => {
+//       // Grabs all article IDs
+//       const article_ids = posts.map((id) => id._id);
 
-      // and sends it back
-      res.json(article_ids);
-    });
-});
+//       // and sends it back
+//       res.json(article_ids);
+//     });
+// });
 
-// * Finds all posts and returns all article base info (ID, DATE, TITLE, SUBTITLE) by ascending date ordered
-app.get("/api/articles/base-info", function (req, res) {
-  Article.find({}).then((articles, err) => {
-    const article_info = articles.map((article) => ({
-      _id: article._id,
-      date: article.date,
-      title: article.title,
-      subTitle: article.subTitle,
-    }));
+// // * Finds all posts and returns all article base info (ID, DATE, TITLE, SUBTITLE) by ascending date ordered
+// app.get("/api/articles/base-info", function (req, res) {
+//   Article.find({}).then((articles, err) => {
+//     const article_info = articles.map((article) => ({
+//       _id: article._id,
+//       date: article.date,
+//       title: article.title,
+//       subTitle: article.subTitle,
+//     }));
 
-    // and sends it back
-    res.json(article_info);
-  });
-});
+//     // and sends it back
+//     res.json(article_info);
+//   });
+// });
 
-// * Finds all posts and returns all article base info (ID, DATE, TITLE, SUBTITLE) by ascending date ordered
-app.get("/api/posts/base-info", function (req, res) {
-  Post.find({}).then((posts, err) => {
-    const post_info = posts.map((post) => ({
-      _id: post._id,
-      date: post.date,
-      type: post.type,
-      title: post.title,
-      username: post.username,
-      email: post.email,
-    }));
-    // and sends it back
-    res.json(post_info);
-  });
-});
+// // * Finds all posts and returns all article base info (ID, DATE, TITLE, SUBTITLE) by ascending date ordered
+// app.get("/api/posts/base-info", function (req, res) {
+//   Post.find({}).then((posts, err) => {
+//     const post_info = posts.map((post) => ({
+//       _id: post._id,
+//       date: post.date,
+//       type: post.type,
+//       title: post.title,
+//       username: post.username,
+//       email: post.email,
+//     }));
+//     // and sends it back
+//     res.json(post_info);
+//   });
+// });
 
 // * Finds Posts by a specific ID
-app.get("/api/posts/id/:id", function (req, res) {
-  Post.find({
-    _id: `${req.params.id}`,
-  })
-    .then((post, err) => {
-      res.status(200).json({ post });
-    })
-    .catch((error) => {
-      console.log(`Error trying to find Post!`);
-      res.status(404).json(error);
-    });
-});
+// app.get("/api/posts/id/:id", function (req, res) {
+//   Post.find({
+//     _id: `${req.params.id}`,
+//   })
+//     .then((post, err) => {
+//       res.status(200).json({ post });
+//     })
+//     .catch((error) => {
+//       console.log(`Error trying to find Post!`);
+//       res.status(404).json(error);
+//     });
+// });
 
 // **********************************************************************************
 //  old notes
@@ -580,84 +403,6 @@ app.get("/api/posts/id/:id", function (req, res) {
 //       console.log("users cannot be received from the db!");
 //     });
 // });
-
-// // * **********************************************************************************
-// // * ROUTES RELATED TO BOARD/POSTS
-// // * Finds and returns all posts in db
-
-// app.get("/api/loadPosts", function (req, res) {
-//   Post.find({})
-//     .then((posts) => {
-//       console.log("There are " + posts.length + " posts currently in the database.");
-//       res.json(posts);
-//     })
-// });
-
-// // * Finds all posts and returns it by descending date ordered
-// app.get("/api/loadPosts/date/desc", function (req, res) {
-//   Post.find({ }).sort({date: -1}) // -1 means oldest post to earliest
-//     .then((posts,err) => {
-//       console.log("There are " + posts.length + " posts currently in the database.");
-//       console.log("Posts: " + posts);
-//       res.json(posts);
-//     })
-// });
-
-// // * Finds all posts and returns it by ascending date ordered
-// app.get("/api/loadPosts/date/asc", function (req, res) {
-//   Post.find({ }).sort({date: 1}) // -1 means oldest post to earliest
-//     .then((posts,err) => {
-//       console.log("There are " + posts.length + " posts currently in the database.");
-//       console.log("Posts: " + posts);
-//       res.json(posts);
-//     })
-// });
-
-// //  ! FIGURE OUT HOW TO MAKE USERNAMES SEARCHABLE BY LOWERCASE, PERHAPS IT NEEDS TO BE DONE DURING DB POST INSERTION
-// // * Finds all posts by specific username
-// app.get("/api/loadPosts/username/:username", function (req, res) {
-//   Post.find({username: req.params.username }) // -1 means oldest post to earliest
-//     .then((posts,err) => {
-//       console.log("Posts made by: " + req.params.username + " + posts");
-//       res.json(posts);
-//     })
-// });
-
-// // * Finds all posts by specific type / Selling%20Gear /Buying%20Gear
-// app.get("/api/loadPosts/type/:type", function (req, res) {
-//   Post.find({type: req.params.type }) // -1 means oldest post to earliest
-//     .then((posts,err) => {
-//       console.log("Posts made by: " + req.params.type + " + posts");
-//       res.json(posts);
-//     })
-// });
-
-// // * Finds all posts by specific Zipcode
-// app.get("/api/loadPosts/zip/:zip", function (req, res) {
-//   Post.find({zip: req.params.zip }) // -1 means oldest post to earliest
-//     .then((posts,err) => {
-//       console.log("Posts made by: " + req.params.zip + " + posts");
-//       res.json(posts);
-//     })
-// });
-
-// // * Finds all posts by asc price
-// app.get("/api/loadPosts/price/asc", function (req, res) {
-//   Post.find({}).sort({price: 1}) // -1 means least expensive gear price to most expensive price
-//     .then((posts,err) => {
-//       res.json(posts);
-//     })
-// });
-
-// // * Finds all posts by desc price
-// app.get("/api/loadPosts/price/desc", function (req, res) {
-//   Post.find({}).sort({price: -1}) // -1 means most expensive gear price to lowest price
-//     .then((posts,err) => {
-//       res.json(posts);
-//     })
-// });
-
-// * **********************************************************************************
 
 // Listens to port (3003) for route inputs
 app.listen(PORT, function () {

@@ -62,7 +62,7 @@ function NewsArticlePage(props) {
         async function grabArticle() {
             await axios
                 // .get("http://localhost:3005/api/article/id/678ebacff4dfae792a419ace")
-                .get(`http://localhost:3005/api/article/id/${params.id}`)
+                .get(`http://localhost:3005/api/articles/id/${params.id}`)
                 .then(async (response) => {
                     setArticleLoadingState("loading");
                     console.log(`ARTICLE DATA: ${JSON.stringify(response.data.article)}`)
@@ -135,7 +135,7 @@ function NewsArticlePage(props) {
                                 <div style={{ color: "darkcyan" }}>{article.category} : {article.subCategory}</div>
                             </Row>
                             <Row className="justify-content-start align-content-start" sm={2} style={{ width: "100%" }}>
-                                <div className="" style={{ color: "grey", fontSize: "14px" }}>Written by: {article.author} -Published on: {article.date}</div>
+                                <div className="" style={{ color: "grey", fontSize: "14px" }}>Written by: {article.author} -Published on: {article.date.slice(0, 4) + article.date.slice(4, 8) + article.date.slice(8, 10)}</div>
                             </Row>
                             <Row>
                                 <hr style={{ color: "white" }} className="mt-2 mb-0" />

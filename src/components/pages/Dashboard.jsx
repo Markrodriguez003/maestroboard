@@ -73,8 +73,14 @@ function Dashboard(props) {
             return userToken;
         };
 
+
+
         async function authenticateUser() {
             const token = getSessionToken();
+
+            if (!token || token === null) {
+                return;
+            }
 
             const config = {
                 headers: {
@@ -86,10 +92,10 @@ function Dashboard(props) {
             await axios
                 .get("http://localhost:3005/api/auth", config)
                 .then((response) => {
-                    setIsAuthenticatedUser(true);
+                    setIsAuthenticatedUser(() => true);
                 })
                 .catch((err) => {
-                    setIsAuthenticatedUser(false);
+                    setIsAuthenticatedUser(() => false);
                     console.log(`Error verfiying user! --> ${err}`)
 
                 });
@@ -201,7 +207,7 @@ function Dashboard(props) {
         // GRABS ALL ARTICLES BASE INFO (_id, title, subTitle,) FROM DB
         async function grabArticles() {
             await axios
-                .get("http://localhost:3005/api/articles/base-info")
+                .get("http://localhost:3005/api/articles/fetch-all/base-info")
                 .then((response) => {
                     setData((prev) => (
                         {
@@ -216,7 +222,7 @@ function Dashboard(props) {
         // GRABS LATEST ARTICLES (5) ARTICLES FROM DB
         async function grabLatestArticles() {
             await axios
-                .get(`http://localhost:3005/api/loadArticles/${REQUESTED_ELEMENTS}`)
+                .get(`http://localhost:3005/api/articles/fetch-all/limit/${REQUESTED_ELEMENTS}`)
                 .then((response) => {
                     setData((prev) => (
                         {
@@ -231,7 +237,7 @@ function Dashboard(props) {
         // GRABS ALL COMMUNITY POSTS BASE INFO FROM DB
         async function grabPosts() {
             await axios
-                .get("http://localhost:3005/api/posts/base-info")
+                .get("http://localhost:3005/api/posts/fetch-all/base-info")
                 .then((response) => {
                     setData((prev) => (
                         {
@@ -246,7 +252,7 @@ function Dashboard(props) {
         // GRABS LATEST ARTICLES (5) ARTICLES FROM DB
         async function grabLatestPosts() {
             await axios
-                .get(`http://localhost:3005/api/loadPosts/${REQUESTED_ELEMENTS}`)
+                .get(`http://localhost:3005/api/posts/fetch-all/limit/${REQUESTED_ELEMENTS}`)
                 .then((response) => {
                     setData((prev) => (
                         {
@@ -262,7 +268,7 @@ function Dashboard(props) {
         async function grabPostsType(type) {
             let searchType = type.toString().toLowerCase()
             await axios
-                .get(`http://localhost:3005/api/loadPosts/type/${searchType}`)
+                .get(`http://localhost:3005/api/posts/fetch-all/type/${searchType}`)
                 .then((response) => {
                     setData((prev) => (
                         {
@@ -279,7 +285,7 @@ function Dashboard(props) {
             let searchType = type.toString().toLowerCase();
 
             await axios
-                .get(`http://localhost:3005/api/loadarticles/category/${searchType}`)
+                .get(`http://localhost:3005/api/articles/fetch-all/category/${searchType}`)
                 .then((response) => {
 
                     let objectName = searchType.split(' ').join('-')
@@ -338,7 +344,7 @@ function Dashboard(props) {
         ))
 
         await axios
-            .get(`http://localhost:3005/api/article/id/${id}`)
+            .get(`http://localhost:3005/api/articles/id/${id}`)
             .then((response) => {
                 setData((prev) => (
                     {
@@ -753,7 +759,7 @@ function Dashboard(props) {
                                                                     <h6>
                                                                         {p.title} {" "}
                                                                     </h6>
-                                                                    <small>{p.date}</small>
+                                                                    <small>{p.date.slice(0, 4) + p.date.slice(4, 8) + p.date.slice(8, 10)}</small>
                                                                 </Col>
                                                                 <br />
                                                                 <Row>
@@ -831,7 +837,8 @@ function Dashboard(props) {
                                                                     Written by: {data.selectedArticle.author}
                                                                 </Card.Text>
                                                                 <Card.Text style={{ color: "grey" }}>
-                                                                    Published on: {data.selectedArticle.date}
+                                                                    Published on: {
+                                                                        data.selectedArticle.date.slice(0, 4) + data.selectedArticle.date.slice(4, 8) + data.selectedArticle.date.slice(8, 10)}
                                                                 </Card.Text>
                                                                 <Card.Text style={{ color: "grey" }}>
                                                                     Article _id: {data.selectedArticle._id}
@@ -910,7 +917,9 @@ function Dashboard(props) {
                                                                     <strong>Posted by:</strong> {data.selectedPosts.username}
                                                                 </Card.Text>
                                                                 <Card.Text style={{ color: "grey" }}>
-                                                                    <strong>Published on: </strong>{data.selectedPosts.date}
+                                                                    <strong>Published on: </strong>{
+                                                                        data.selectedPosts.date.slice(0, 4) + data.selectedPosts.date.slice(4, 8) + data.selectedPosts.date.slice(8, 10)
+                                                                    }
                                                                 </Card.Text>
                                                                 <Card.Text style={{ color: "grey" }}>
                                                                     <strong>Post _id: </strong>{data.selectedPosts._id}
@@ -960,7 +969,12 @@ function Dashboard(props) {
                                                                     <h6>
                                                                         {p.email} {" "}
                                                                     </h6>
-                                                                    <small>{p.date}</small>
+                                                                    <small>{
+                                                                        p.date.slice(0, 4) +
+                                                                        p.date.slice(4, 8) +
+                                                                        p.date.slice(8, 10)
+
+                                                                    }</small>
                                                                 </Col>
                                                                 <br />
                                                                 <Row>
