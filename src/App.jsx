@@ -15,12 +15,15 @@ import PageNotFound from "./components/pages/PageNotFound";
 import About from "./components/pages/About";
 
 
+// WIP
+// import SignUpForm from "./components/SignUpForm";
+
+
 // ! change to home
 import IntroSplashPage from "./components/IntroSplashPage";
 import Dashboard from "./components/pages/Dashboard";
 import ArticleEdit from "./components/ui/ArticleEdit"
 
-import SignUpForm from "./components/SignUpForm";
 import NewsArticlePage from "./components/NewsArticlePage";
 import PostPage from "./components/PostPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -37,6 +40,10 @@ function App() {
         < Header />
         <Routes>
 
+          {/* wip */}
+          {/* ************************************************* */}
+          {/* <Route path="/sign-up" element={<SignUpForm />}></Route> */}
+          {/* ************************************************* */}
           <Route path="/" element={<IntroSplashPage />}></Route>
           <Route path="/home" element={<IntroSplashPage />}></Route>
           <Route path="/board" element={<CommunityBoard />}></Route>
@@ -46,7 +53,6 @@ function App() {
           <Route path="/post/:id" element={<PostPage />}></Route>
           <Route path="/forum" element={<Forum />}></Route>
           <Route path="/login" element={<Login />}></Route>
-          <Route path="/signup" element={<SignUpForm />}></Route>
           <Route path="/dashboard" element={<Dashboard />}></Route>
           <Route path="/edit/article/:id" element={
             <ConfirmationModal>

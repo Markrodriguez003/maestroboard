@@ -17,9 +17,11 @@ import "yet-another-react-lightbox/plugins/thumbnails.css";
 
 // COMPONENTS
 import { Card, Badge, ListGroup, Row, Col, Button, Carousel, Image } from "react-bootstrap";
-import CardReplyModal from "./CardReplyModal";
 import ReportPostModal from "./ReportPostModal";
 import LoadingPostCard from "./ui/LoadingPostCard";
+
+// LIBRARY
+import { dateTransform } from "../utils/dateTransform";
 
 // ASSETS
 import pushPinA from "../assets/imgs/post-imgs/push-pin1.png";
@@ -28,7 +30,6 @@ import pushPinC from "../assets/imgs/post-imgs/push-pin3.png";
 import pushPinD from "../assets/imgs/post-imgs/push-pin4.png";
 import pushPinE from "../assets/imgs/post-imgs/push-pin5.png";
 import pushPinF from "../assets/imgs/post-imgs/push-pin6.png";
-
 import defaultImage from "../assets/imgs/misc/missing-img.png";
 
 import {
@@ -48,6 +49,15 @@ import {
 } from "react-bootstrap-icons";
 import { SITE_COLORS } from "./css/site";
 
+
+/*----------------------------------------------------------------------------
+|   ⚙️ Use: A advert post for community postcard 
+|                     
+|   🔧 Todo: Add customization to card (tape, pushpin different colors, ect)               
+| 
+|   📦 Returns: JSX component 
+*----------------------------------------------------------------------------*/
+
 function PostBoardCard(props) {
   const [isFlipped, setIsFlipped] = useState(false);
   const [revealUnderCard, setRevealUnderCard] = useState({});
@@ -63,6 +73,12 @@ function PostBoardCard(props) {
     pushPinF,
   ];
 
+  // GRABBING PROP VALUES
+  const { title, body, price, email, zip, username, phone, type, subType, firm_price, trade, public_images_id } = props;
+
+  // TRANSFORMS DATE STRING TO BECOME MORE READBABLE.
+  console.log(`date:::: ${props.date}`)
+  const date = dateTransform(props.date, true);
 
   // LOGIC
   function flipUnderCard() {
@@ -99,8 +115,6 @@ function PostBoardCard(props) {
     <div>
       {isPostCardLoaded ?
         <div>
-
-
           <Lightbox
             open={lightBoxOpen}
             close={() => setLightBoxOpen(false)}
@@ -117,205 +131,137 @@ function PostBoardCard(props) {
           />
 
 
-          <div className="container">
-            <div className="row" >
-              <div className="card-container" >
-                <div className="card-flip card-bottom-curl" style={{ width: "auto", backgroundColor: "rgba(0,0,0,0.4)" }}>
-                  {/* ***************************** */}
-                  {/* CARD FRONT */}
-                  {/* ***************************** */}
-                  <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
-                    <div className="card front">
-                      <Card style={{ width: "400px", height: "500px" }}>
-
-
-                        {tempGalleryArry?.length !== 0 || tempGalleryArry !== undefined
-                          ?
-                          <Carousel interval={null}>
-                            ({
-                              tempGalleryArry?.map(function (img, i) {
-                                return (
-                                  <Carousel.Item key={`${Math.floor(Math.random() * 100)}-cork-post-key-${img}-${Math.floor(Math.random() * 100)}`} onClick={() => setLightBoxOpen(true)} style={{ cursor: "pointer" }}>
-                                    <div>
-                                      < Image
-                                        key={`image-${img.src} - ${i}`}
-                                        className="d-block"
-                                        style={{
-                                          height: "300px",
-                                          width: "100%",
-                                          objectFit: "contain",
-                                          backgroundColor: "rgba(0,0,0,0.2)"
-                                        }}
-                                        rounded
-                                        src={img.src ? img.src : defaultImage}
-                                        alt={`alt- post-slide - ${img}`}
-                                        onError={event => {
-                                          event.target.onerror = null
-                                          event.target.src = defaultImage
-                                          // console.log(`Image not loaded::: ${event.onerror} `)
-
-                                        }}
-                                      />
-                                    </div>
-                                  </ Carousel.Item>
-                                )
-                              })
+          <div className="row" >
+            <div className="card-container" >
+              <div className="card-flip card-bottom-curl" style={{ width: "auto", backgroundColor: "rgba(0,0,0,0.4)" }}>
+                {/* ***************************** */}
+                {/* CARD FRONT */}
+                {/* ***************************** */}
+                <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
+                  <div className="card front">
+                    <Card style={{ width: "400px", height: "500px" }}>
+                      {tempGalleryArry?.length !== 0 || tempGalleryArry !== undefined
+                        ?
+                        <Carousel interval={null}>
+                          ({
+                            tempGalleryArry?.map(function (img, i) {
+                              return (
+                                <Carousel.Item key={`${Math.floor(Math.random() * 100)}-cork-post-key-${img}-${Math.floor(Math.random() * 100)}`} onClick={() => setLightBoxOpen(true)} style={{ cursor: "pointer" }}>
+                                  <div>
+                                    < Image
+                                      key={`image-${img.src} - ${i}`}
+                                      className="d-block"
+                                      style={{
+                                        height: "300px",
+                                        width: "100%",
+                                        objectFit: "contain",
+                                        backgroundColor: "rgba(0,0,0,0.2)"
+                                      }}
+                                      rounded
+                                      src={img.src ? img.src : defaultImage}
+                                      alt={`alt- post-slide - ${img}`}
+                                      onError={event => {
+                                        event.target.onerror = null
+                                        event.target.src = defaultImage
+                                      }}
+                                    />
+                                  </div>
+                                </ Carousel.Item>
+                              )
                             })
-                          </Carousel>
+                          })
+                        </Carousel>
+                        :
+                        < Image
+                          key={`image-==`}
+                          className="d-block"
+                          style={{
+                            height: "300px",
+                            width: "100%",
+                            objectFit: "contain",
+                            backgroundColor: "rgba(0,0,0,0.2)"
+                          }}
+                          rounded
+                          src={defaultImage}
+                          alt={`alt- post-slide`}
 
+                        />
 
-                          :
-                          < Image
-                            key={`image-==`}
-                            className="d-block"
-                            style={{
-                              height: "300px",
-                              width: "100%",
-                              objectFit: "contain",
-                              backgroundColor: "rgba(0,0,0,0.2)"
-                            }}
-                            rounded
-                            src={defaultImage}
-                            alt={`alt- post-slide`}
-
-                          />
-
-                        }
-                        <div className="card-top-header">
-                          <img
-                            src={pushPinRand[Math.floor(Math.random() * 5)]}
-                            alt="pushpin"
-                            className="pushPin"
-                          // style={{ transform: "scaleX(-1)" }}
-                          ></img>
-                        </div>
-                        <Row
-                          className="mx-auto"
-                          style={{ fontSize: "16px", color: "white", height: "450px" }}
-                        >
+                      }
+                      <div className="card-top-header">
+                        <img
+                          src={pushPinRand[Math.floor(Math.random() * 5)]}
+                          alt="pushpin"
+                          className="pushPin"
+                        // style={{ transform: "scaleX(-1)" }}
+                        ></img>
+                      </div>
+                      <Row
+                        className="mx-auto"
+                        style={{ fontSize: "16px", color: "white", height: "450px" }}
+                      >
+                        <Col>
+                          <Badge bg="success" style={{ fontSize: "16px" }}>
+                            {" "}
+                            <CashStack style={{ marginBottom: "3.25px" }} /> $
+                            {price} {trade}
+                          </Badge>
+                        </Col>
+                        <Col className="vr">
+                        </Col>
+                        <Col className="vr">
+                        </Col>
+                        <Col className="vr">
+                        </Col>
+                        <Col className="vr">
+                        </Col>
+                        <Col className="vr">
+                        </Col>
+                        <Col>
+                          <Badge bg="info" style={{ fontSize: "16px" }}>
+                            {" "}
+                            <Gem style={{ marginBottom: "3.25px" }} /> {type}
+                          </Badge>
+                        </Col>
+                      </Row>
+                      <br />
+                      <Card.Body>
+                        <Card.Title className="post-title-text text-center mx-auto">
+                          {title}
+                        </Card.Title>
+                      </Card.Body>
+                      <Card.Footer className="text-muted" >
+                        <Row className="text-center mb-5">
+                          <Col className="">
+                            <Button
+                              className="btn btn-info btn-sm btn-block"
+                              onClick={handleClick}
+                            >
+                              <InfoSquareFill /> Info
+                            </Button>
+                          </Col>
                           <Col>
-                            <Badge bg="success" style={{ fontSize: "16px" }}>
-                              {" "}
-                              <CashStack style={{ marginBottom: "3.25px" }} /> $
-                              {props.price} {props.trade}
-                            </Badge>
-                          </Col>
-                          <Col className="vr">
-                          </Col>
-                          <Col className="vr">
-                          </Col>
-                          <Col className="vr">
-                          </Col>
-                          <Col className="vr">
-                          </Col>
-                          <Col className="vr">
-                          </Col>
-                          <Col>
-                            <Badge bg="info" style={{ fontSize: "16px" }}>
-                              {" "}
-                              <Gem style={{ marginBottom: "3.25px" }} /> {props.type}
-                            </Badge>
+                            <Button
+                              variant="success"
+                              className="btn btn-sm btn-block"
+                              onClick={flipUnderCard}
+                            >
+                              <ChatDotsFill style={{ marginBottom: "3.65px" }} />{" "}
+                              Contact
+                            </Button>
                           </Col>
                         </Row>
-                        <br />
-                        <Card.Body>
-                          <Card.Title className="post-title-text text-center mx-auto">
-                            {props.title}
-                          </Card.Title>
-                        </Card.Body>
-                        <Card.Footer className="text-muted" >
-                          <Row className="text-center mb-5">
-                            <Col className="">
-                              <Button
-                                className="btn btn-info btn-sm btn-block"
-                                onClick={handleClick}
-                              >
-                                <InfoSquareFill /> Info
-                              </Button>
-                            </Col>
-                            <Col>
-                              <Button
-                                variant="success"
-                                className="btn btn-sm btn-block"
-                                onClick={flipUnderCard}
-                              >
-                                <ChatDotsFill style={{ marginBottom: "3.65px" }} />{" "}
-                                Contact
-                              </Button>
-                            </Col>
-                          </Row>
-                        </Card.Footer>
-                      </Card>
-                    </div>
-                    {/* ***************************** */}
-                    {/* CARD BACK */}
-                    {/* ***************************** */}
-
-                    <div className=" card back">
-                      <Card style={{ width: "400px", height: "500px" }}>
-                        <div className="card-top-header">
-                          <TrashFill className="delete-icon" />
-                          <Row className="card-header-labels">
-                            <Col>
-                              <People /> Posted By:
-                            </Col>
-                            <Col>
-                              {" "}
-                              <CalendarEvent /> Date Posted:
-                            </Col>
-                            <Col>
-                              <GeoAlt /> Zipcode:
-                            </Col>
-                          </Row>
-                          {/* User Post input */}
-                          <Row className="card-header-user-input">
-                            <Col>{props.username}</Col>
-                            <Col>{props.date.slice(0, 4) + props.date.slice(4, 8) + props.date.slice(8, 10)}</Col>
-                            <Col>{props.zip}</Col>
-                          </Row>
-                        </div>
-                        <Card.Body className="table-text">
-                          <Card.Title className="info-card-title">
-                            {props.title}{" "}
-                          </Card.Title>
-                          <p className="info-card-body">{props.body}</p>
-                        </Card.Body>
-                        <Card.Body>
-                          <Card.Body>
-                            <Col className="text-center">
-                              <Button
-                                size="lg"
-                                className="btn-info"
-                                onClick={handleClick}
-                              >
-                                <ArrowLeftCircleFill
-                                  style={{ marginBottom: "3.65px" }}
-                                />{" "}
-                                Back
-                              </Button>
-                            </Col>
-                            <ReportPostModal />
-                          </Card.Body>
-                        </Card.Body>
-                      </Card>
-                    </div>
-                  </ReactCardFlip>
-
-                  {/* UNDER CARD */}
+                      </Card.Footer>
+                    </Card>
+                  </div>
+                  {/* ***************************** */}
+                  {/* CARD BACK */}
                   {/* ***************************** */}
 
-                  <div className="under-card" style={revealUnderCard}>
-                    <Card
-                      style={{
-                        width: "400px",
-                        height: "500px",
-                        backgroundColor: "darkcyan",
-                        color: "white",
-                      }}
-                    >
+                  <div className=" card back">
+                    <Card style={{ width: "400px", height: "500px" }}>
                       <div className="card-top-header">
-                        <br />
-                        <br />
+                        <TrashFill className="delete-icon" />
                         <Row className="card-header-labels">
                           <Col>
                             <People /> Posted By:
@@ -330,57 +276,24 @@ function PostBoardCard(props) {
                         </Row>
                         {/* User Post input */}
                         <Row className="card-header-user-input">
-                          <Col>{props.username}</Col>
-                          <Col>{props.date.slice(0, 4) + props.date.slice(4, 8) + props.date.slice(8, 10)}</Col>
-                          <Col>{props.zip}</Col>
+                          <Col>{username}</Col>
+                          <Col>{date}</Col>
+                          <Col>{zip}</Col>
                         </Row>
                       </div>
-                      <Card.Body>
-                        <Card.Title className="text-center">
-                          {" "}
-                          <h3>
-                            {" "}
-                            <Mailbox2
-                              style={{ marginBottom: "6px", marginRight: "5px" }}
-                            /> Contact {" "}
-                          </h3>
+                      <Card.Body className="table-text">
+                        <Card.Title className="info-card-title">
+                          {title}{" "}
                         </Card.Title>
-                        <ListGroup className="p-0">
-                          <ListGroup.Item style={{ color: "black" }}>
-                            <span className="font-weight-bold contact-text" style={{ color: SITE_COLORS.main }}>
-                              <EnvelopeAtFill />
-                              Email:
-                            </span>
-
-                            <span className="contact-text">
-                              {" "}
-                              <a href={"mailTo" + props.email}>{props.email}</a>
-                            </span>
-                          </ListGroup.Item>
-                          <ListGroup.Item style={{ color: "black" }}>
-                            <span className="font-weight-bold contact-text">
-                              <TelephoneFill /> Number:
-                            </span>
-                            <span className="contact-text">
-                              {
-                                '(' + props.phone.slice(0, 3) + ') ' + props.phone.slice(3, 6) + '-' + props.phone.slice(6, 11)}
-
-
-                            </span>
-                          </ListGroup.Item>
-                          <ListGroup.Item>
-                            {/* <CardReplyModal /> */}
-                          </ListGroup.Item>
-                        </ListGroup>
+                        <p className="info-card-body">{body}</p>
                       </Card.Body>
-
                       <Card.Body>
-                        <Row className="text-center ">
+                        <Card.Body>
                           <Col className="text-center">
                             <Button
                               size="lg"
                               className="btn-info"
-                              onClick={flipUnderCardBack}
+                              onClick={handleClick}
                             >
                               <ArrowLeftCircleFill
                                 style={{ marginBottom: "3.65px" }}
@@ -388,16 +301,111 @@ function PostBoardCard(props) {
                               Back
                             </Button>
                           </Col>
-                        </Row>
-                        <ReportPostModal />
+                          <ReportPostModal />
+                        </Card.Body>
                       </Card.Body>
                     </Card>
                   </div>
+                </ReactCardFlip>
+
+                {/* UNDER CARD */}
+                {/* ***************************** */}
+
+                <div className="under-card" style={revealUnderCard}>
+                  <Card
+                    style={{
+                      width: "400px",
+                      height: "500px",
+                      backgroundColor: "darkcyan",
+                      color: "white",
+                    }}
+                  >
+                    <div className="card-top-header">
+                      <br />
+                      <br />
+                      <Row className="card-header-labels">
+                        <Col>
+                          <People /> Posted By:
+                        </Col>
+                        <Col>
+                          {" "}
+                          <CalendarEvent /> Date Posted:
+                        </Col>
+                        <Col>
+                          <GeoAlt /> Zipcode:
+                        </Col>
+                      </Row>
+                      {/* User Post input */}
+                      <Row className="card-header-user-input">
+                        <Col>{username}</Col>
+                        <Col>{date}</Col>
+                        <Col>{zip}</Col>
+                      </Row>
+                    </div>
+                    <Card.Body>
+                      <Card.Title className="text-center">
+                        {" "}
+                        <h3>
+                          {" "}
+                          <Mailbox2
+                            style={{ marginBottom: "6px", marginRight: "5px" }}
+                          /> Contact {" "}
+                        </h3>
+                      </Card.Title>
+                      <ListGroup className="p-0">
+                        <ListGroup.Item style={{ color: "black" }}>
+                          <span className="font-weight-bold contact-text" style={{ color: SITE_COLORS.main }}>
+                            <EnvelopeAtFill />
+                            Email:
+                          </span>
+
+                          <span className="contact-text">
+                            {" "}
+                            <a href={"mailTo" + email}>{email}</a>
+                          </span>
+                        </ListGroup.Item>
+                        <ListGroup.Item style={{ color: "black" }}>
+                          <span className="font-weight-bold contact-text">
+                            <TelephoneFill /> Number:
+                          </span>
+                          <span className="contact-text">
+                            {
+                              '(' + phone.slice(0, 3) + ') ' + phone.slice(3, 6) + '-' + phone.slice(6, 11)}
+
+
+                          </span>
+                        </ListGroup.Item>
+                        <ListGroup.Item>
+                          {/* !!! REPLACE WITH MODAL */}
+                          {/* <CardReplyModal /> */}
+                        </ListGroup.Item>
+                      </ListGroup>
+                    </Card.Body>
+
+                    <Card.Body>
+                      <Row className="text-center ">
+                        <Col className="text-center">
+                          <Button
+                            size="lg"
+                            className="btn-info"
+                            onClick={flipUnderCardBack}
+                          >
+                            <ArrowLeftCircleFill
+                              style={{ marginBottom: "3.65px" }}
+                            />{" "}
+                            Back
+                          </Button>
+                        </Col>
+                      </Row>
+                      <ReportPostModal />
+                    </Card.Body>
+                  </Card>
                 </div>
               </div>
             </div>
-          </div >
+          </div>
         </div >
+
         : <LoadingPostCard />
       }
     </div >

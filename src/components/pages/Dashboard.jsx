@@ -205,7 +205,7 @@ function Dashboard(props) {
     useEffect(() => {
 
         // GRABS ALL ARTICLES BASE INFO (_id, title, subTitle,) FROM DB
-        async function grabArticles() {
+        async function fetchArticles() {
             await axios
                 .get("http://localhost:3005/api/articles/fetch-all/base-info")
                 .then((response) => {
@@ -220,7 +220,7 @@ function Dashboard(props) {
         }
 
         // GRABS LATEST ARTICLES (5) ARTICLES FROM DB
-        async function grabLatestArticles() {
+        async function fetchLatestArticles() {
             await axios
                 .get(`http://localhost:3005/api/articles/fetch-all/limit/${REQUESTED_ELEMENTS}`)
                 .then((response) => {
@@ -235,7 +235,7 @@ function Dashboard(props) {
         }
 
         // GRABS ALL COMMUNITY POSTS BASE INFO FROM DB
-        async function grabPosts() {
+        async function fetchPosts() {
             await axios
                 .get("http://localhost:3005/api/posts/fetch-all/base-info")
                 .then((response) => {
@@ -250,7 +250,7 @@ function Dashboard(props) {
         }
 
         // GRABS LATEST ARTICLES (5) ARTICLES FROM DB
-        async function grabLatestPosts() {
+        async function fetchLatestPosts() {
             await axios
                 .get(`http://localhost:3005/api/posts/fetch-all/limit/${REQUESTED_ELEMENTS}`)
                 .then((response) => {
@@ -265,7 +265,7 @@ function Dashboard(props) {
         }
 
         // GRABS ALL COMMUNITY POSTS WITH THE STYLE TAG "SELLING" FROM DB
-        async function grabPostsType(type) {
+        async function fetchPostsType(type) {
             let searchType = type.toString().toLowerCase()
             await axios
                 .get(`http://localhost:3005/api/posts/fetch-all/type/${searchType}`)
@@ -281,7 +281,7 @@ function Dashboard(props) {
         }
 
         // GRABS ALL COMMUNITY POSTS WITH THE STYLE TAG "SELLING" FROM DB
-        async function grabArticleType(type) {
+        async function fetchArticleType(type) {
             let searchType = type.toString().toLowerCase();
 
             await axios
@@ -302,7 +302,7 @@ function Dashboard(props) {
 
 
         // GRABS ALL ARTICLES FROM DB
-        async function grabUserLength() {
+        async function fetchUserLength() {
             await axios
                 .get("http://localhost:3005/api/load-user-count")
                 .then((response) => {
@@ -317,25 +317,25 @@ function Dashboard(props) {
         }
 
         // RUNNING FUNCTIONS THAT GRABS ALL ARTICLE & POST DATA FROM BACKEND
-        grabPosts();
-        grabArticles();
-        grabUserLength();
-        grabPostsType("selling");
-        grabPostsType("buying");
-        grabPostsType("advertisement");
-        grabPostsType("community");
-        grabLatestPosts();
-        grabLatestArticles();
+        fetchPosts();
+        fetchArticles();
+        fetchUserLength();
+        fetchPostsType("selling");
+        fetchPostsType("buying");
+        fetchPostsType("advertisement");
+        fetchPostsType("community");
+        fetchLatestPosts();
+        fetchLatestArticles();
 
         // Loops through each article type to call function to grab lengths 
         for (let i = 0; i < article_types.length; i++) {
-            grabArticleType(article_types[i]);
+            fetchArticleType(article_types[i]);
         }
     }, []);
 
 
     // WHEN USER CLICKS ON INDIVIDUAL ARTICLE THIS FUNCTION WILL CALL UP THAT ARTICLE TO PRESENT 
-    async function grabIndividualArticle(id) {
+    async function fetchIndividualArticle(id) {
         setData((prev) => (
             {
                 ...prev,
@@ -359,7 +359,7 @@ function Dashboard(props) {
 
 
     // WHEN USER CLICKS ON INDIVIDUAL POST THIS FUNCTION WILL CALL UP THAT POST TO PRESENT 
-    async function grabIndividualPost(id) {
+    async function fetchIndividualPost(id) {
         setData((prev) => (
             {
                 ...prev,
@@ -591,11 +591,12 @@ function Dashboard(props) {
                         <h5 style={{ color: "white" }} className="text-center">Community Board types:</h5>
                         <Doughnut
                             data={postsDataChart}
-                            width={"250px"}
-                            height={"250px"}
+                            width={"150px"}
+                            height={"150px"}
                             options={options}
                             style={{ transform: "scale(1)" }} className="w-100 m-0 p-0 mx-auto" />
                     </Col>
+
 
                     <Col className="" lg={2} >
                         <h5 style={{ color: "white" }}>Article Infomation:</h5>
@@ -753,7 +754,7 @@ function Dashboard(props) {
                                                         <ListGroup.Item key={`article-tab-${i}`} eventKey={`#tab-link-${p._id}`} action href={`#link-${p._id}`} variant="dark" as={"div"} >
                                                             <Row className="justify-content-between" as={"div"} style={{ cursor: "pointer" }} onClick={() => {
                                                                 scrollArticleToTop();
-                                                                grabIndividualArticle(p._id)
+                                                                fetchIndividualArticle(p._id)
                                                             }}>
                                                                 <Col lg={10} md={10} sm={10}>
                                                                     <h6>
@@ -957,7 +958,7 @@ function Dashboard(props) {
                                                         <ListGroup.Item key={`post-tab-${i}`} eventKey={`#tab-link-${p._id}`} action href={`#link-${p._id}`} variant="dark" as={"div"} >
                                                             <Row className="justify-content-between" as={"div"} style={{ cursor: "pointer" }} onClick={() => {
                                                                 scrollPostToTop();
-                                                                grabIndividualPost(p._id)
+                                                                fetchIndividualPost(p._id)
                                                             }}>
                                                                 <Col lg={10} md={10} sm={10}>
                                                                     <h6>

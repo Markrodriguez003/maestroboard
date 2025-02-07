@@ -83,7 +83,7 @@ function Corkboard() {
     // GRABS ALL POSTS FROM DB
     async function grabPosts() {
       await axios
-        .get("http://localhost:3005/api/loadPosts")
+        .get("http://localhost:3005/api/posts/fetch-all")
         .then((response) => {
 
           // HOW MANY PAGINATION TABS NEEDED

@@ -1,9 +1,12 @@
+// REACT
 import { useState } from "react";
-import "./css/SignupForm.css";
 
-// import { PersonCircle } from "react-bootstrap-icons"; // Importing Bootstrap Icon Components
-
+// COMPONENTS
 import { Row, Col } from "react-bootstrap";
+
+// THEMES & CSS
+import "./css/SignupForm.css";
+import { SITE_COLORS } from "./css/site";
 
 function SignUpForm() {
   let [userInfo, setUserInfo] = useState({
@@ -25,6 +28,9 @@ function SignUpForm() {
       .catch(err => { console.log("An error has occurred:::: " + err) })
   }
 
+
+
+
   function formAccSubmit(e) {
     e.preventDefault();
     console.log(userInfo);
@@ -36,12 +42,12 @@ function SignUpForm() {
 
   return (
 
-    <div className="sign-up-container">
-      <section className="cover" >
+    <div className="sign-up-container" >
+      <section className="cover"  >
         <div className="cover-caption">
-          <div className="container">
-            <div className="row text-white formContainer">
-              <div className="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form form-main-container">
+          <div className="container" >
+            <div className="row text-white formContainer" >
+              <div className="w-75 col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form form-main-container" style={{ backgroundColor: SITE_COLORS.main }}>
                 <div className="create-acct-smiley mb-1"><svg width="5em" height="5em" viewBox="0 0 16 16" class="bi bi-person-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                   <path d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z" />
                   <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
@@ -165,7 +171,7 @@ function SignUpForm() {
                       />
                     </div>
 
-                    <SuccessfullyCreatedUserModal />
+                    {/* <SuccessfullyCreatedUserModal /> */}
 
 
                     {/* <button
