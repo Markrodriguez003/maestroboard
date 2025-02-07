@@ -11,6 +11,7 @@ import { Row, Col, Container, Image } from "react-bootstrap";
 import Lightbox from "yet-another-react-lightbox";
 import { cld } from "../../server/scripts/imageRepository";
 import { Link } from "react-router-dom";
+import { dateTransform } from "../utils/dateTransform";
 
 // CLOUDINARY
 import { AdvancedImage } from '@cloudinary/react';
@@ -27,11 +28,12 @@ function NewsArticle(props) {
     const [imageGallery, setImageGallery] = useState([]);
 
     // Article Props
-    const { title, author, category, subCategory, date, body, link, image, caption, subTitle, public_images_id, image_urls,
+    const { title, author, category, subCategory, body, link, image, caption, subTitle, public_images_id, image_urls,
         secure_images_urls, _id } = props.article;
 
-    // TEST
-    // console.log(`Article props: ${JSON.stringify(props)}`);
+    // FORMATES NEW ARTICLE DATE
+    const date = dateTransform(props.article.date, false);
+
 
     // GATHERS IMAGES INTO AN ARRAY FOR LIGHTBOX (USESTATE)
     const tempGalleryArry = image_urls.map((image, i) => {
@@ -87,7 +89,7 @@ function NewsArticle(props) {
                     <Row className="justify-content-between align-content-end" sm={2} style={{ width: "100%" }}>
                         <div style={{ color: "darkcyan" }}>{category}: {subCategory}</div>
                         <div className="" style={{ color: "grey", fontSize: "14px" }}>Written by: {author} </div>
-                        <div className="" style={{ color: "grey", fontSize: "14px" }}>Published on: {date.slice(0, 4) + date.slice(4, 8) + date.slice(8, 10)}</div>
+                        <div className="" style={{ color: "grey", fontSize: "14px" }}>Published on: {date}</div>
                     </Row>
                     <Row><br /></Row>
                     <Row>

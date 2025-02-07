@@ -13,6 +13,7 @@ import LoadPageElement from "./ui/LoadingPageElement";
 import Lightbox from "yet-another-react-lightbox";
 import axios from "axios";
 import { useParams, useLocation } from 'react-router-dom';
+import { dateTransform } from "../utils/dateTransform";
 
 // ASSETS
 import { FileEarmarkExcelFill, Search } from "react-bootstrap-icons";
@@ -61,7 +62,6 @@ function NewsArticlePage(props) {
         // GRABS ALL ARTICLES FROM DB
         async function grabArticle() {
             await axios
-                // .get("http://localhost:3005/api/article/id/678ebacff4dfae792a419ace")
                 .get(`http://localhost:3005/api/articles/id/${params.id}`)
                 .then(async (response) => {
                     setArticleLoadingState("loading");
@@ -79,7 +79,6 @@ function NewsArticlePage(props) {
                     })
 
                     setArticleImageGallery(tempGalleryArry);
-
                     setArticleLoadingState(("successful"));
 
                 })
@@ -135,7 +134,7 @@ function NewsArticlePage(props) {
                                 <div style={{ color: "darkcyan" }}>{article.category} : {article.subCategory}</div>
                             </Row>
                             <Row className="justify-content-start align-content-start" sm={2} style={{ width: "100%" }}>
-                                <div className="" style={{ color: "grey", fontSize: "14px" }}>Written by: {article.author} -Published on: {article.date.slice(0, 4) + article.date.slice(4, 8) + article.date.slice(8, 10)}</div>
+                                <div className="" style={{ color: "grey", fontSize: "14px" }}>Written by: {article.author} -Published on: {dateTransform(article.date, false)}</div>
                             </Row>
                             <Row>
                                 <hr style={{ color: "white" }} className="mt-2 mb-0" />

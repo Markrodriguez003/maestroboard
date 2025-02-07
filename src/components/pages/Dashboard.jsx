@@ -1,7 +1,7 @@
 
 // COMPONENTS
 import { useState, useEffect, useRef } from "react";
-import { Row, Col, Card, Button, Image, Carousel, Tab, ListGroup, Container, Spinner } from "react-bootstrap";
+import { Row, Col, Card, Button, Image, Carousel, Tab, Stack, ListGroup, Container, Spinner } from "react-bootstrap";
 import HeaderPanel from "../ui/HeaderPanel";
 import PostBoardCard from "../PostBoardCard";
 import BoardPostModal from "../BoardPostModal";
@@ -17,6 +17,7 @@ import article_typesJSON from "../../data/articleTypes.json";
 import axios from "axios";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
+import { dateTransform } from "../../utils/dateTransform";
 
 // REGISTERING THE TYPE OF CHARTS & CHART ELEMENTS NEEDED
 ChartJS.register(ArcElement, Tooltip, Legend);
@@ -387,19 +388,16 @@ function Dashboard(props) {
             {isAuthenticatedUser ? <Container className="w-100 p-4 mt-5 mb-5" style={{ backgroundColor: "black" }}>
                 {/* MAIN PROFILE HEADER */}
                 <Row className="w-100">
-                    <Col style={{ color: "white", fontSize: "40px", }} className="p-0 m-0">
-                        <HeaderPanel bgColor={SITE_COLORS.main} width="w-100">
-                            <h1 style={{
-                                color: "white",
-                                fontSize: "40px",
-                                borderRadius: "5px",
-                            }}
-                            >
-                                <Tools color="white" className="dashboard-header-panel-icon" />
-                                Admin Dashboard
-                            </h1>
-                        </HeaderPanel>
-                    </Col>
+                    <HeaderPanel bgColor={SITE_COLORS.main} width="w-100">
+                        <h1 style={{
+                            color: "white",
+                            fontSize: "50px",
+                        }}
+                        >
+                            <Tools color="white" className="dashboard-header-panel-icon" />
+                            Admin Dashboard
+                        </h1>
+                    </HeaderPanel>
                 </Row>
                 <br />
                 {/* MAIN PROFILE DATA TABS */}
@@ -446,7 +444,7 @@ function Dashboard(props) {
 
                         </Row>
                         <hr />
-                        <Row className="w-100 m-0 p-0 mb-3">
+                        <Row className="w-100 m-0 p-0 mb-3 ">
                             <BoardPostModal />
                         </Row>
                         <Row className="w-100 m-0 p-0 mb-2 btn-info">
@@ -458,30 +456,47 @@ function Dashboard(props) {
                     </Col>
 
                     {/* CAROUSEL */}
-                    <Col lg={4} >
+
+                    <Col xl={4} lg={4} md={12} sm={12} xs={12}>
                         <h1 style={{
                             color: "white",
                             textAlign: "start",
                             fontSize: "24px",
                             borderRadius: "5px",
                             fontWeight: "100",
-                            backgroundColor: SITE_COLORS.alternateSecondaryLight,
+                            backgroundColor: SITE_COLORS.alternateMain,
                             padding: "15px",
-
                         }}
                         >
-                            <CardList style={{ paddingBottom: "5px" }} />
-                            Latest Corkboard Posts:
+                            <PostcardFill style={{ paddingBottom: "5px" }} />
+                            Latest Posts:
                         </h1>
-                        <Col className="mx-auto w-100 justify-content-center" >
-                            <Carousel className="p-0 " >
+                        <Col className="w-100" >
+                            <Carousel className="p-0 w-100" indicators={false} >
+
                                 {
                                     data.latestPosts.map((p, i) => (
                                         <Carousel.Item key={`dashboard-carousel-article-${i}`}>
-                                            <PostBoardCard {...p}
-                                                key={`dashboard-post-${p.title} - ${i}-${p._id}`}
-
-                                            />
+                                            <Card style={{ backgroundColor: SITE_COLORS.alternateMain, color: "white", height: "500px" }} className="w-100 text-center">
+                                                <Card.Img variant="top" src={p.image_urls[0]} className="w-100 h-50 mx-auto object-fit-cover" />
+                                                <Card.Body>
+                                                    <Card.Title>{p.title}</Card.Title>
+                                                    <hr />
+                                                    <Card.Text style={{ color: "white", fontSize: "12px" }}>
+                                                        Date: {dateTransform(p.date)} {" - "}
+                                                        Username: {p.username}
+                                                        <br />
+                                                        Post-Type: {p.type}
+                                                        <br />
+                                                        Post-Sub-Type: {p.subType}
+                                                        <br />
+                                                        Price: ${p.price}
+                                                    </Card.Text>
+                                                    <Link to={`/post/${p._id}`} rel="noopener noreferrer"  target="_blank">
+                                                        <Button variant="primary">Go to post</Button>
+                                                    </Link>
+                                                </Card.Body>
+                                            </Card>
                                         </Carousel.Item>
                                     ))
                                 }
@@ -493,7 +508,7 @@ function Dashboard(props) {
                     {/* ************************************************************************************************ */}
                     {/* ARTICLES PANEL */}
                     {/* ************************************************************************************************ */}
-                    <Col>
+                    <Col xl={5} lg={5} md={12} sm={12} xs={12}>
                         <h1 style={{
                             color: "white",
                             textAlign: "start",
@@ -507,23 +522,30 @@ function Dashboard(props) {
                             <PostcardFill style={{ paddingBottom: "5px" }} />
                             Latest Articles:
                         </h1>
-                        <Col lg={7} md={4} className="mx-auto w-100" style={{ backgroundColor: "red" }} >
-                            <Carousel className="p-0" style={{ width: "600px" }} >
+                        <Col className="w-100" style={{ backgroundColor: "red" }} >
+                            <Carousel className="p-0 w-100" indicators={false} >
                                 {
                                     data.latestArticles.map((p, i) => (
                                         <Carousel.Item key={`dashboard-carousel-article-${i}`}>
-                                            <Card style={{ backgroundColor: "rgba(150, 16, 16, 0.7)", color: "white", height: "500px" }} className="w-100">
-                                                <Card.Img variant="top" src={p.image_urls[0]}
-                                                    style={{ objectFit: "contain", width: "500px", height: "300px", marginLeft: "auto", marginRight: "auto" }} />
+                                            <Card style={{ backgroundColor: SITE_COLORS.alternateSecondary, color: "white", height: "500px" }} className="w-100 text-center">
+                                                <Card.Img variant="top" src={p.image_urls[0]} className="w-100 h-50 mx-auto object-fit-cover" />
                                                 <Card.Body>
                                                     <Card.Title>{p.title}</Card.Title>
                                                     <Card.Text style={{ color: "darkgrey" }}>
                                                         {p.subTitle}
                                                     </Card.Text>
-                                                    <Card.Text>
-                                                        {p.body}
+                                                    <hr />
+                                                    <Card.Text style={{ color: "darkgrey", fontSize: "12px" }}>
+                                                        Date: {dateTransform(p.date)} {" - "}
+                                                        Author: {p.author}
+                                                        <br />
+                                                        Article Type: {p.category}
+                                                        <br />
+                                                        Article Sub-Type: {p.subCategory}
                                                     </Card.Text>
-                                                    <Button variant="primary">Go to article</Button>
+                                                    <Link to={`/article/${p._id}`} rel="noopener noreferrer"  target="_blank">
+                                                        <Button variant="primary">Go to article</Button>
+                                                    </Link>
                                                 </Card.Body>
                                             </Card>
                                         </Carousel.Item>
@@ -550,8 +572,8 @@ function Dashboard(props) {
                 </Col>
 
                 {/* POST INFORMATION LEGEND PANELS */}
-                <Row className="p-3 gap-2 justify-content-start">
-                    <Col className="p-0 m-0" lg={2} >
+                <Row className="p-3 gap-2 justify-content-center">
+                    <Col className="p-0 m-0" lg={3} >
                         <h5 style={{ color: "white" }}>Post Data Infomation:</h5>
                         <h1 className="legend-panel" style={{
                             backgroundColor: SITE_COLORS.lightMain,
@@ -587,7 +609,7 @@ function Dashboard(props) {
                     </Col>
 
                     {/* POST DOUGHNUT */}
-                    <Col className="m-0 p-0" lg={3}>
+                    <Col className="m-0 p-0" lg={6}>
                         <h5 style={{ color: "white" }} className="text-center">Community Board types:</h5>
                         <Doughnut
                             data={postsDataChart}
@@ -597,8 +619,10 @@ function Dashboard(props) {
                             style={{ transform: "scale(1)" }} className="w-100 m-0 p-0 mx-auto" />
                     </Col>
 
+                </Row>
+                <Row className="justify-content-center">
 
-                    <Col className="" lg={2} >
+                    <Col className="" lg={3} >
                         <h5 style={{ color: "white" }}>Article Infomation:</h5>
                         <h1 style={{
                             backgroundColor: SITE_COLORS.lightMain,
@@ -689,7 +713,7 @@ function Dashboard(props) {
                             </h1>
                         </div>
                     </Col>
-                    <Col style={{ marginLeft: "auto", marginRight: "auto" }} className="m-0 p-0" lg={3}>
+                    <Col style={{ marginLeft: "auto", marginRight: "auto" }} className="m-0 p-0" lg={6}>
                         <h5 style={{ color: "white" }} className="text-start">Article types:</h5>
 
                         <Doughnut
@@ -735,7 +759,7 @@ function Dashboard(props) {
                             overflowY: "auto"
                         }} >
                             <Row>
-                                <Col sm={4}>
+                                <Col sm={12} xs={12} md={4} lg={4}>
                                     <div style={{
                                         display: "inline-block", width: "100%", height: "500px",
                                         overflow: "hidden",
@@ -760,7 +784,7 @@ function Dashboard(props) {
                                                                     <h6>
                                                                         {p.title} {" "}
                                                                     </h6>
-                                                                    <small>{p.date.slice(0, 4) + p.date.slice(4, 8) + p.date.slice(8, 10)}</small>
+                                                                    <small>{dateTransform(p.date, false)}</small>
                                                                 </Col>
                                                                 <br />
                                                                 <Row>
@@ -806,7 +830,7 @@ function Dashboard(props) {
                                         </ListGroup>
                                     </div>
                                 </Col>
-                                <Col sm={8}>
+                                <Col sm={12} md={8} lg={8}>
                                     <Tab.Content>
                                         <div className="show-side-panel" >
                                             {
@@ -819,7 +843,8 @@ function Dashboard(props) {
                                                     :
                                                     <div style={{ width: "100%", height: "auto" }} ref={articleTopRef}>
                                                         <Card style={{ backgroundColor: "transparent", color: "white", height: "220px" }} className="w-auto">
-                                                            <Image src={data.selectedArticle.image_urls} style={{ objectFit: "fill", width: "65%", height: "auto", marginLeft: "auto", marginRight: "auto", }} />
+                                                            <Image src={data.selectedArticle.image_urls}
+                                                                className="w-50 h-100 object-fit-fill mx-auto" />
                                                             <Card.Body className="m-0">
                                                                 <Card.Text style={{ color: SITE_COLORS.lightMain, }}>
                                                                     {[data.selectedArticle.category]} - {[data.selectedArticle.subCategory]}
@@ -838,8 +863,7 @@ function Dashboard(props) {
                                                                     Written by: {data.selectedArticle.author}
                                                                 </Card.Text>
                                                                 <Card.Text style={{ color: "grey" }}>
-                                                                    Published on: {
-                                                                        data.selectedArticle.date.slice(0, 4) + data.selectedArticle.date.slice(4, 8) + data.selectedArticle.date.slice(8, 10)}
+                                                                    Published on: {dateTransform(data.selectedArticle.date, false)}
                                                                 </Card.Text>
                                                                 <Card.Text style={{ color: "grey" }}>
                                                                     Article _id: {data.selectedArticle._id}
@@ -883,7 +907,7 @@ function Dashboard(props) {
                                 overflowY: "auto"
                             }} >
                             <Row>
-                                <Col sm={8}>
+                                <Col sm={12} md={8} lg={8}>
                                     <Tab.Content>
                                         <div className="show-side-panel" >
                                             {
@@ -896,7 +920,8 @@ function Dashboard(props) {
                                                     :
                                                     <div style={{ width: "100%", height: "auto" }} ref={postTopRef}>
                                                         <Card style={{ backgroundColor: "transparent", color: "white", height: "220px" }} className="w-auto">
-                                                            <Image src={data.selectedPosts.image_urls[0]} style={{ objectFit: "fill", width: "65%", height: "auto", marginLeft: "auto", marginRight: "auto", }} />
+                                                            <Image src={data.selectedPosts.image_urls[0]}
+                                                                className="w-50 h-100 object-fit-cover mx-auto" />
                                                             <Card.Body className="m-0">
                                                                 <Card.Text style={{ color: SITE_COLORS.lightMain, }}>
                                                                     {[data.selectedPosts.type]} - {[data.selectedPosts.subType]}
@@ -932,7 +957,7 @@ function Dashboard(props) {
                                         </div>
                                     </Tab.Content>
                                 </Col>
-                                <Col sm={4}>
+                                <Col sm={12} xs={12} md={4} lg={4}>
                                     <Button
                                         className="mb-2"
                                         onClick={() => setFilterLatestPost((prev) => !prev)}
