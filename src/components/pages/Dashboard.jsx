@@ -94,7 +94,7 @@ function Dashboard(props) {
             }
 
             await axios
-                .get("http://localhost:3005/api/auth", config)
+                .get("http://localhost:3005/api/auth/user", config)
                 .then((response) => {
                     setIsAuthenticatedUser(() => true);
                 })

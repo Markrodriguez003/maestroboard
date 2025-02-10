@@ -51,7 +51,7 @@ function Home() {
                     bgColor={SITE_COLORS.lightSecondary}
                     color="white"
                     headerIcon={<PostcardFill style={{ paddingBottom: "5px" }} />}
-                    body={["title", "type", "username", "date", "price",]}
+                    body={["title", "subTitle", "category", "author", "date",]}
                 />
             </Container>
         </>
