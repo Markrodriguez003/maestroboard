@@ -7,6 +7,7 @@ import { NotificationToast } from "./components/context/NotificationToast";
 import { ConfirmationModal } from "./components/context/ConfirmationModal";
 
 // PAGES
+import Home from "./components/pages/Home";
 import Login from "./components/pages/Login";
 import News from "./components/pages/News";
 import CommunityBoard from "./components/pages/CommunityBoard";
@@ -18,9 +19,6 @@ import About from "./components/pages/About";
 // WIP
 // import SignUpForm from "./components/SignUpForm";
 
-
-// ! change to home
-import IntroSplashPage from "./components/IntroSplashPage";
 import Dashboard from "./components/pages/Dashboard";
 import ArticleEdit from "./components/ui/ArticleEdit"
 
@@ -44,8 +42,8 @@ function App() {
           {/* ************************************************* */}
           {/* <Route path="/sign-up" element={<SignUpForm />}></Route> */}
           {/* ************************************************* */}
-          <Route path="/" element={<IntroSplashPage />}></Route>
-          <Route path="/home" element={<IntroSplashPage />}></Route>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/home" element={<Home />}></Route>
           <Route path="/board" element={<CommunityBoard />}></Route>
           <Route path="/news" element={<News />}></Route>
           <Route path="/about" element={<About />}></Route>

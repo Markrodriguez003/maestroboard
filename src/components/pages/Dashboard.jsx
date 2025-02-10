@@ -9,6 +9,7 @@ import ArticlePostModal from "../ArticlePostModal";
 import { Link } from "react-router-dom";
 import PageNotFound from "./PageNotFound";
 import LoadingPageElement from "../ui/LoadingPageElement";
+import LatestItemDisplay from "../LatestItemDisplay";
 
 // DATA
 import article_typesJSON from "../../data/articleTypes.json";
@@ -17,6 +18,8 @@ import article_typesJSON from "../../data/articleTypes.json";
 import axios from "axios";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
+
+// UTIL
 import { dateTransform } from "../../utils/dateTransform";
 
 // REGISTERING THE TYPE OF CHARTS & CHART ELEMENTS NEEDED
@@ -455,104 +458,42 @@ function Dashboard(props) {
                         </Row>
                     </Col>
 
-                    {/* CAROUSEL */}
+                    {/* ************************************************************************************************ */}
+                    {/* LATEST ELEMENTS CAROUSEL */}
+                    {/* ************************************************************************************************ */}
+
+                    {/* ************************************************************************************************ */}
+                    {/* LATEST POST PANEL */}
+                    {/* ************************************************************************************************ */}
 
                     <Col xl={4} lg={4} md={12} sm={12} xs={12}>
-                        <h1 style={{
-                            color: "white",
-                            textAlign: "start",
-                            fontSize: "24px",
-                            borderRadius: "5px",
-                            fontWeight: "100",
-                            backgroundColor: SITE_COLORS.alternateMain,
-                            padding: "15px",
-                        }}
-                        >
-                            <PostcardFill style={{ paddingBottom: "5px" }} />
-                            Latest Posts:
-                        </h1>
-                        <Col className="w-100" >
-                            <Carousel className="p-0 w-100" indicators={false} >
+                        <LatestItemDisplay
+                            fetchType="posts"
+                            fetchCount="5"
+                            bgColor={SITE_COLORS.lightMain}
+                            color="white"
+                            header="Latest Posts:"
+                            headerIcon={<PostcardFill style={{ paddingBottom: "5px" }} />}
+                            body={["title", "type", "username", "date", "price"]}
 
-                                {
-                                    data.latestPosts.map((p, i) => (
-                                        <Carousel.Item key={`dashboard-carousel-article-${i}`}>
-                                            <Card style={{ backgroundColor: SITE_COLORS.alternateMain, color: "white", height: "500px" }} className="w-100 text-center">
-                                                <Card.Img variant="top" src={p.image_urls[0]} className="w-100 h-50 mx-auto object-fit-cover" />
-                                                <Card.Body>
-                                                    <Card.Title>{p.title}</Card.Title>
-                                                    <hr />
-                                                    <Card.Text style={{ color: "white", fontSize: "12px" }}>
-                                                        Date: {dateTransform(p.date)} {" - "}
-                                                        Username: {p.username}
-                                                        <br />
-                                                        Post-Type: {p.type}
-                                                        <br />
-                                                        Post-Sub-Type: {p.subType}
-                                                        <br />
-                                                        Price: ${p.price}
-                                                    </Card.Text>
-                                                    <Link to={`/post/${p._id}`} rel="noopener noreferrer" target="_blank">
-                                                        <Button variant="primary">Go to post</Button>
-                                                    </Link>
-                                                </Card.Body>
-                                            </Card>
-                                        </Carousel.Item>
-                                    ))
-                                }
-                            </Carousel>
-                        </Col>
+                        />
+
                     </Col>
 
 
                     {/* ************************************************************************************************ */}
-                    {/* ARTICLES PANEL */}
+                    {/* LATEST ARTICLES PANEL */}
                     {/* ************************************************************************************************ */}
                     <Col xl={5} lg={5} md={12} sm={12} xs={12}>
-                        <h1 style={{
-                            color: "white",
-                            textAlign: "start",
-                            fontSize: "24px",
-                            borderRadius: "5px",
-                            fontWeight: "100",
-                            backgroundColor: SITE_COLORS.alternateSecondary,
-                            padding: "15px",
-                        }}
-                        >
-                            <PostcardFill style={{ paddingBottom: "5px" }} />
-                            Latest Articles:
-                        </h1>
-                        <Col className="w-100" style={{ backgroundColor: "red" }} >
-                            <Carousel className="p-0 w-100" indicators={false} >
-                                {
-                                    data.latestArticles.map((p, i) => (
-                                        <Carousel.Item key={`dashboard-carousel-article-${i}`}>
-                                            <Card style={{ backgroundColor: SITE_COLORS.alternateSecondary, color: "white", height: "500px" }} className="w-100 text-center">
-                                                <Card.Img variant="top" src={p.image_urls[0]} className="w-100 h-50 mx-auto object-fit-cover" />
-                                                <Card.Body>
-                                                    <Card.Title>{p.title}</Card.Title>
-                                                    <Card.Text style={{ color: "darkgrey" }}>
-                                                        {p.subTitle}
-                                                    </Card.Text>
-                                                    <hr />
-                                                    <Card.Text style={{ color: "darkgrey", fontSize: "12px" }}>
-                                                        Date: {dateTransform(p.date)} {" - "}
-                                                        Author: {p.author}
-                                                        <br />
-                                                        Article Type: {p.category}
-                                                        <br />
-                                                        Article Sub-Type: {p.subCategory}
-                                                    </Card.Text>
-                                                    <Link to={`/article/${p._id}`} rel="noopener noreferrer" target="_blank">
-                                                        <Button variant="primary">Go to article</Button>
-                                                    </Link>
-                                                </Card.Body>
-                                            </Card>
-                                        </Carousel.Item>
-                                    ))
-                                }
-                            </Carousel>
-                        </Col>
+                        <LatestItemDisplay
+                            fetchType="articles"
+                            fetchCount="5"
+                            bgColor={SITE_COLORS.alternateSecondary}
+                            color="white"
+                            header="Latest Aricles:"
+                            headerIcon={<PostcardFill style={{ paddingBottom: "5px" }} />}
+                            body={["subTitle", "author", "date", "category", "subCategory"]}
+                        />
                     </Col>
                 </Row>
 
