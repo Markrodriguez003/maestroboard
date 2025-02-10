@@ -70,7 +70,7 @@ function NewsArticle(props) {
                             alt="article image"
                             style={{
                                 width: "100%",
-                                height: "400px", objectFit: "cover", cursor: "pointer"
+                                height: "500px", objectFit: "cover", cursor: "pointer"
                             }}
                             onClick={() => setLightBoxOpen(true)}
                             onError={event => {
@@ -111,7 +111,7 @@ function NewsArticle(props) {
                             overflow: "hidden",
                             textOverflow: "ellipsis",
                         }}>
-                            {body.length <= 750 ? body : body.substring(0, 550)}
+                            {body.length <= 750 ? body : body.substring(0, 650)}
                         </p>
                     </Row>
                     <Row className="float-right">

@@ -16,7 +16,8 @@ import "yet-another-react-lightbox/plugins/captions.css";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
 
 // COMPONENTS
-import { Card, Badge, ListGroup, Row, Col, Button, Carousel, Image } from "react-bootstrap";
+import { Card, Badge, ListGroup, Row, Col, Button, Stack, Carousel, Image } from "react-bootstrap";
+import { Link } from "react-router";
 import ReportPostModal from "./ReportPostModal";
 import LoadingPostCard from "./ui/LoadingPostCard";
 
@@ -31,6 +32,7 @@ import pushPinD from "../assets/imgs/post-imgs/push-pin4.png";
 import pushPinE from "../assets/imgs/post-imgs/push-pin5.png";
 import pushPinF from "../assets/imgs/post-imgs/push-pin6.png";
 import defaultImage from "../assets/imgs/misc/missing-img.png";
+import cardTexture from "../assets/imgs/card-textures/background-1921589_640.jpg";
 
 import {
   ArrowLeftCircleFill,
@@ -60,7 +62,7 @@ import { SITE_COLORS } from "./css/site";
 
 function PostBoardCard(props) {
   const [isFlipped, setIsFlipped] = useState(false);
-  const [revealUnderCard, setRevealUnderCard] = useState({});
+  const [revealUnderCard, setRevealUnderCard] = useState(false);
   const [isPostCardLoaded, setIsPostCardLoaded] = useState(false);
 
   // chooses randomized push pin
@@ -74,25 +76,29 @@ function PostBoardCard(props) {
   ];
 
   // GRABBING PROP VALUES
-  const { title, body, price, email, zip, username, phone, type, subType, firm_price, trade, public_images_id } = props;
+  const { title, body, price, email, zip, username, phone, type, subType, firm_price, _id, trade, public_images_id } = props;
 
   // TRANSFORMS DATE STRING TO BECOME MORE READBABLE.
-  console.log(`date:::: ${props.date}`)
   const date = dateTransform(props.date, true);
 
   // LOGIC
-  function flipUnderCard() {
-    setRevealUnderCard({ top: "0" });
-  }
-  function flipUnderCardBack() {
-    setRevealUnderCard({ top: "500px" });
+  function handleUnderCardClick() {
+    setRevealUnderCard(!revealUnderCard);
   }
 
-  const handleClick = () => {
-    setIsFlipped(!isFlipped);
+
+  function handleFlipClick() {
+    setIsFlipped((prev) => !prev);
   };
 
-  const [lightBoxOpen, setLightBoxOpen] = useState(false);
+
+  const [lightBox, setLightBox] = useState(false);
+
+  function handleLightbox() {
+    console.log(`LIGHTBOX!`);
+    setLightBox((prev) => !prev)
+  }
+
   const [postImages, setPostImages] = useState(false);
 
   // LOADS POST IMAGES
@@ -112,308 +118,234 @@ function PostBoardCard(props) {
   }, []);
 
   return (
-    <div>
+    <>
+      <Lightbox
+        open={lightBox}
+        close={() => setLightBox(false)}
+        slides={tempGalleryArry ? tempGalleryArry :
+          [
+            {
+              src: `${defaultImage} `,
+              alt: `post-image-upload-error`,
+              width: "350px",
+              height: "350px",
+            }
+          ]}
+        plugins={[Fullscreen, Thumbnails]}
+      />
+
       {isPostCardLoaded ?
-        <div>
-          <Lightbox
-            open={lightBoxOpen}
-            close={() => setLightBoxOpen(false)}
-            slides={tempGalleryArry ? tempGalleryArry :
-              [
-                {
-                  src: `${defaultImage} `,
-                  alt: `post-image-upload-error`,
-                  width: "350px",
-                  height: "350px",
-                }
-              ]}
-            plugins={[Fullscreen, Thumbnails]}
-          />
+        <div className="card-container">
+
+          <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
+            <Card className="postCard shadow-lg">
+
+              {/* **************************************************************************************** */}
+              {/* FRONT CARD */}
+              {/* **************************************************************************************** */}
+
+              {tempGalleryArry?.length !== 0 || tempGalleryArry !== undefined
+                ?
+                <Carousel interval={null}>
+                  ({
+                    tempGalleryArry?.map(function (img, i) {
+                      return (
+                        <Carousel.Item key={`${Math.floor(Math.random() * 100)}-cork-post-key-${img}-${Math.floor(Math.random() * 100)}`} style={{ cursor: "pointer" }} onClick={handleLightbox}>
+                          <>
+                            < Image
+                              key={`image-${img.src} - ${i}`}
+                              className="d-block"
+                              style={{
+                                height: "350px",
+                                width: "100%",
+                                objectFit: "cover",
+                                backgroundColor: "rgba(0, 115, 123, 0.521)"
+                              }}
+                              rounded
+                              src={img.src ? img.src : defaultImage}
+                              alt={`alt- post-slide - ${img}`}
+                              onError={event => {
+                                event.target.onerror = null
+                                event.target.src = defaultImage
+                              }}
+                            />
+                          </>
+                        </ Carousel.Item>
+                      )
+                    })
+                  })
+                </Carousel>
+                :
+                < Image
+                  key={`image-==`}
+                  className="d-block"
+                  style={{
+                    height: "300px",
+                    width: "100%",
+                    objectFit: "contain",
+                    backgroundColor: "rgba(0,0,0,0.2)"
+                  }}
+                  rounded
+                  src={defaultImage}
+                  alt={`alt- post-slide`}
+                />
+              }
+              <Card.Body>
+
+                <Badge bg="success" style={{ position: "absolute", top: "0", right: "0", fontSize: "20px" }} className="p-2 mx-0">
+                  ${price} {trade}
+                </Badge>
+                <Stack direction="horizontal" className="mb-2 justify-content-center">
+                  <Badge bg="primary" style={{ fontSize: "12px" }} className="p-2 mx-1">
+                    {type}
+                  </Badge>
+                  <Badge bg="primary" style={{ fontSize: "12px" }} className="p-2 mx-1">
+                    {firm_price ? "Firm Price" : "Price Negotiable"}
+                  </Badge>
+                  <Badge bg="primary" style={{ fontSize: "12px" }} className="p-2 mx-1">
+                    {trade ? "Open to trades" : "No Trades"}
+                  </Badge>
+                </Stack>
+                <hr />
+                <Card.Title className="text-center mt-3" style={{ fontSize: "24px" }}>{title}</Card.Title>
+              </Card.Body>
+              <Card.Footer className="text-center" style={{ backgroundColor: SITE_COLORS.lightMain }}>
+                <Button size="sm" onClick={handleFlipClick} variant="primary" className="mx-2" >More Info</Button>
+                <Link to={`/post/${_id}`}>
+                  <Button size="sm" variant="secondary" className="mx-2">Go to post</Button>
+                </Link>
+                <Button onClick={handleUnderCardClick} size="sm" variant="success" className="mx-2">Contact</Button>
+              </Card.Footer>
+
+            </Card >
+
+            {/************************************************************************************************** */}
+            {/* BACK CARD */}
+            {/************************************************************************************************** */}
+
+            <Card className="postCard shadow-lg">
+              <Card.Header style={{ color: "white", backgroundColor: SITE_COLORS.lightMain }}>
+                <Card.Title className="mt-3" style={{ fontWeight: "bold", fontSize: "18px" }}>{title}</Card.Title>
+              </Card.Header>
+              <Card.Body>
+                <Stack direction="vertical" style={{ fontSize: "14px" }}>
+                  <span><strong>Posted by:</strong> {username}</span>
+                  <span><strong>Date posted:</strong> {dateTransform(date)}</span>
+                  <span><strong>Zipcode:</strong> {zip}</span>
+                </Stack>
+
+                <br />
+                <Stack direction="horizontal">
+                  <Badge bg="success" style={{ fontSize: "12px" }} className="p-2 mx-1">
+                    {price == "0" ? "" : `$${price}`}
+                  </Badge>
+                  <Badge bg="primary" style={{ fontSize: "12px" }} className="p-2 mx-1">
+                    {type}
+                  </Badge>
+                  <Badge bg="primary" style={{ fontSize: "12px" }} className="p-2 mx-1">
+                    {firm_price ? "Firm Price" : "Price Negotiable"}
+                  </Badge>
+                  <Badge bg="primary" style={{ fontSize: "12px" }} className="p-2 mx-1">
+                    {trade ? "Open to trades" : "No Trades"}
+                  </Badge>
+                </Stack>
+                <br />
+                <Card.Text style={{ border: "2px dotted black", fontSize: "16.5px" }} className="p-3">
+                  {body}
+                </Card.Text>
 
 
-          <div className="row" >
-            <div className="card-container" >
-              <div className="card-flip card-bottom-curl" style={{ width: "auto", backgroundColor: "rgba(0,0,0,0.4)" }}>
-                {/* ***************************** */}
-                {/* CARD FRONT */}
-                {/* ***************************** */}
-                <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
-                  <div className="card front">
-                    <Card style={{ width: "400px", height: "500px" }}>
-                      {tempGalleryArry?.length !== 0 || tempGalleryArry !== undefined
-                        ?
-                        <Carousel interval={null}>
-                          ({
-                            tempGalleryArry?.map(function (img, i) {
-                              return (
-                                <Carousel.Item key={`${Math.floor(Math.random() * 100)}-cork-post-key-${img}-${Math.floor(Math.random() * 100)}`} onClick={() => setLightBoxOpen(true)} style={{ cursor: "pointer" }}>
-                                  <div>
-                                    < Image
-                                      key={`image-${img.src} - ${i}`}
-                                      className="d-block"
-                                      style={{
-                                        height: "300px",
-                                        width: "100%",
-                                        objectFit: "contain",
-                                        backgroundColor: "rgba(0,0,0,0.2)"
-                                      }}
-                                      rounded
-                                      src={img.src ? img.src : defaultImage}
-                                      alt={`alt- post-slide - ${img}`}
-                                      onError={event => {
-                                        event.target.onerror = null
-                                        event.target.src = defaultImage
-                                      }}
-                                    />
-                                  </div>
-                                </ Carousel.Item>
-                              )
-                            })
-                          })
-                        </Carousel>
-                        :
-                        < Image
-                          key={`image-==`}
-                          className="d-block"
-                          style={{
-                            height: "300px",
-                            width: "100%",
-                            objectFit: "contain",
-                            backgroundColor: "rgba(0,0,0,0.2)"
-                          }}
-                          rounded
-                          src={defaultImage}
-                          alt={`alt- post-slide`}
+              </Card.Body>
+              <Card.Footer style={{ backgroundColor: SITE_COLORS.lightMain }} className="text-center">
+                <Button size="sm" onClick={handleFlipClick} variant="primary" className="mx-2">Go Back</Button>
+                <Button size="sm" onClick={handleUnderCardClick} variant="success" className="mx-2">Contact</Button>
+                <Button size="sm" variant="danger" className="mx-2">Report</Button>
+              </Card.Footer>
+            </Card>
 
-                        />
+          </ReactCardFlip >
+          {/************************************************************************************************** */}
+          {/* UNDER CARD */}
+          {/************************************************************************************************** */}
 
-                      }
-                      <div className="card-top-header">
-                        <img
-                          src={pushPinRand[Math.floor(Math.random() * 5)]}
-                          alt="pushpin"
-                          className="pushPin"
-                        // style={{ transform: "scaleX(-1)" }}
-                        ></img>
-                      </div>
-                      <Row
-                        className="mx-auto"
-                        style={{ fontSize: "16px", color: "white", height: "450px" }}
-                      >
-                        <Col>
-                          <Badge bg="success" style={{ fontSize: "16px" }}>
-                            {" "}
-                            <CashStack style={{ marginBottom: "3.25px" }} /> $
-                            {price} {trade}
-                          </Badge>
-                        </Col>
-                        <Col className="vr">
-                        </Col>
-                        <Col className="vr">
-                        </Col>
-                        <Col className="vr">
-                        </Col>
-                        <Col className="vr">
-                        </Col>
-                        <Col className="vr">
-                        </Col>
-                        <Col>
-                          <Badge bg="info" style={{ fontSize: "16px" }}>
-                            {" "}
-                            <Gem style={{ marginBottom: "3.25px" }} /> {type}
-                          </Badge>
-                        </Col>
-                      </Row>
-                      <br />
-                      <Card.Body>
-                        <Card.Title className="post-title-text text-center mx-auto">
-                          {title}
-                        </Card.Title>
-                      </Card.Body>
-                      <Card.Footer className="text-muted" >
-                        <Row className="text-center mb-5">
-                          <Col className="">
-                            <Button
-                              className="btn btn-info btn-sm btn-block"
-                              onClick={handleClick}
-                            >
-                              <InfoSquareFill /> Info
-                            </Button>
-                          </Col>
-                          <Col>
-                            <Button
-                              variant="success"
-                              className="btn btn-sm btn-block"
-                              onClick={flipUnderCard}
-                            >
-                              <ChatDotsFill style={{ marginBottom: "3.65px" }} />{" "}
-                              Contact
-                            </Button>
-                          </Col>
-                        </Row>
-                      </Card.Footer>
-                    </Card>
-                  </div>
-                  {/* ***************************** */}
-                  {/* CARD BACK */}
-                  {/* ***************************** */}
-
-                  <div className=" card back">
-                    <Card style={{ width: "400px", height: "500px" }}>
-                      <div className="card-top-header">
-                        <TrashFill className="delete-icon" />
-                        <Row className="card-header-labels">
-                          <Col>
-                            <People /> Posted By:
-                          </Col>
-                          <Col>
-                            {" "}
-                            <CalendarEvent /> Date Posted:
-                          </Col>
-                          <Col>
-                            <GeoAlt /> Zipcode:
-                          </Col>
-                        </Row>
-                        {/* User Post input */}
-                        <Row className="card-header-user-input">
-                          <Col>{username}</Col>
-                          <Col>{date}</Col>
-                          <Col>{zip}</Col>
-                        </Row>
-                      </div>
-                      <Card.Body className="table-text">
-                        <Card.Title className="info-card-title">
-                          {title}{" "}
-                        </Card.Title>
-                        <p className="info-card-body">{body}</p>
-                      </Card.Body>
-                      <Card.Body>
-                        <Card.Body>
-                          <Col className="text-center">
-                            <Button
-                              size="lg"
-                              className="btn-info"
-                              onClick={handleClick}
-                            >
-                              <ArrowLeftCircleFill
-                                style={{ marginBottom: "3.65px" }}
-                              />{" "}
-                              Back
-                            </Button>
-                          </Col>
-                          <ReportPostModal />
-                        </Card.Body>
-                      </Card.Body>
-                    </Card>
-                  </div>
-                </ReactCardFlip>
-
-                {/* UNDER CARD */}
-                {/* ***************************** */}
-
-                <div className="under-card" style={revealUnderCard}>
-                  <Card
-                    style={{
-                      width: "400px",
-                      height: "500px",
-                      backgroundColor: "darkcyan",
-                      color: "white",
-                    }}
-                  >
-                    <div className="card-top-header">
-                      <br />
-                      <br />
-                      <Row className="card-header-labels">
-                        <Col>
-                          <People /> Posted By:
-                        </Col>
-                        <Col>
-                          {" "}
-                          <CalendarEvent /> Date Posted:
-                        </Col>
-                        <Col>
-                          <GeoAlt /> Zipcode:
-                        </Col>
-                      </Row>
-                      {/* User Post input */}
-                      <Row className="card-header-user-input">
-                        <Col>{username}</Col>
-                        <Col>{date}</Col>
-                        <Col>{zip}</Col>
-                      </Row>
-                    </div>
-                    <Card.Body>
-                      <Card.Title className="text-center">
-                        {" "}
-                        <h3>
-                          {" "}
-                          <Mailbox2
-                            style={{ marginBottom: "6px", marginRight: "5px" }}
-                          /> Contact {" "}
-                        </h3>
-                      </Card.Title>
-                      <ListGroup className="p-0">
-                        <ListGroup.Item style={{ color: "black" }}>
-                          <span className="font-weight-bold contact-text" style={{ color: SITE_COLORS.main }}>
-                            <EnvelopeAtFill />
-                            Email:
-                          </span>
-
-                          <span className="contact-text">
-                            {" "}
-                            <a href={"mailTo" + email}>{email}</a>
-                          </span>
-                        </ListGroup.Item>
-                        <ListGroup.Item style={{ color: "black" }}>
-                          <span className="font-weight-bold contact-text">
-                            <TelephoneFill /> Number:
-                          </span>
-                          <span className="contact-text">
-                            {
-                              '(' + phone.slice(0, 3) + ') ' + phone.slice(3, 6) + '-' + phone.slice(6, 11)}
-
-
-                          </span>
-                        </ListGroup.Item>
-                        <ListGroup.Item>
-                          {/* !!! REPLACE WITH MODAL */}
-                          {/* <CardReplyModal /> */}
-                        </ListGroup.Item>
-                      </ListGroup>
-                    </Card.Body>
-
-                    <Card.Body>
-                      <Row className="text-center ">
-                        <Col className="text-center">
-                          <Button
-                            size="lg"
-                            className="btn-info"
-                            onClick={flipUnderCardBack}
-                          >
-                            <ArrowLeftCircleFill
-                              style={{ marginBottom: "3.65px" }}
-                            />{" "}
-                            Back
-                          </Button>
-                        </Col>
-                      </Row>
-                      <ReportPostModal />
-                    </Card.Body>
-                  </Card>
-                </div>
-              </div>
-            </div>
+          <div className="under-card" style={{ top: revealUnderCard ? "0px" : "600px" }}>
+            <Card className="postCard shadow-lg" >
+              <Card.Header style={{ color: "white", backgroundColor: SITE_COLORS.secondary }} >
+                <Card.Title className="mt-3" style={{ fontWeight: "bold", fontSize: "18px" }}>{title}</Card.Title>
+              </Card.Header>
+              <Card.Body>
+                <Card.Title className="text-center">
+                  {" "}
+                  <h1>
+                    {" "}
+                    <Mailbox2
+                      style={{ marginBottom: "11.5px", marginRight: "7px", fontSize: "48px" }}
+                    /> Contact {" "}
+                  </h1>
+                </Card.Title>
+                <hr />
+                <ListGroup className="p-0">
+                  <Stack direction="horizontal" className="justify-content-center mb-4">
+                    <Badge bg="primary" style={{ fontSize: "12px" }} className="p-2 mx-1">
+                      {price == "0" ? "" : `$${price}`}
+                    </Badge>
+                    <Badge bg="primary" style={{ fontSize: "12px" }} className="p-2 mx-1">
+                      {type}
+                    </Badge>
+                    <Badge bg="primary" style={{ fontSize: "12px" }} className="p-2 mx-1">
+                      {firm_price ? "Firm Price" : "Price Negotiable"}
+                    </Badge>
+                    <Badge bg="primary" style={{ fontSize: "12px" }} className="p-2 mx-1">
+                      {trade ? "Open to trades" : "No Trades"}
+                    </Badge>
+                  </Stack>
+                  <ListGroup.Item style={{ color: "black" }}>
+                    <span className="font-weight-bold contact-text" style={{ color: SITE_COLORS.main }}>
+                      <strong>Username:</strong> {username}
+                    </span>
+                  </ListGroup.Item>
+                  <ListGroup.Item style={{ color: "black" }}>
+                    <span className="font-weight-bold contact-text" style={{ color: SITE_COLORS.main }}>
+                      <strong>Email:</strong> {email}
+                    </span>
+                  </ListGroup.Item>
+                  <ListGroup.Item style={{ color: "black" }}>
+                    <span className="font-weight-bold contact-text" style={{ color: SITE_COLORS.main }}>
+                      <strong>Number:</strong>         {
+                        '(' + phone.slice(0, 3) + ') ' + phone.slice(3, 6) + '-' + phone.slice(6, 11)}
+                    </span>
+                  </ListGroup.Item>
+                  <ListGroup.Item style={{ color: "black" }}>
+                    <span className="font-weight-bold contact-text" style={{ color: SITE_COLORS.main }}>
+                      <strong>Post Id:</strong>{" "} {_id}
+                    </span>
+                  </ListGroup.Item>
+                </ListGroup>
+              </Card.Body>
+              <Card.Footer style={{ backgroundColor: SITE_COLORS.secondary }} className="text-center">
+                <Button size="sm" onClick={handleUnderCardClick} variant="primary" className="mx-2">Go Back</Button>
+                <Button size="sm" variant="danger" className="mx-2">Report</Button>
+              </Card.Footer>
+            </Card >
           </div>
-        </div >
+        </div>
+
 
         : <LoadingPostCard />
       }
-    </div >
+
+
+    </ >
 
   );
 }
 
 export default PostBoardCard;
+
+
+
+
+
 
 
 

@@ -129,7 +129,7 @@ function Dashboard(props) {
         datasets: [
             {
                 label: "# Posts Types",
-                data: [data.sellingPosts, data.buyingPosts, data.advertismentPosts, data.communityPosts],
+                data: [data.sellingPosts, data.buyingPosts, data.advertisementPosts, data.communityPosts],
                 backgroundColor: [
                     SITE_COLORS.lightMain,
                     SITE_COLORS.lightSecondary,
@@ -492,7 +492,7 @@ function Dashboard(props) {
                                                         <br />
                                                         Price: ${p.price}
                                                     </Card.Text>
-                                                    <Link to={`/post/${p._id}`} rel="noopener noreferrer"  target="_blank">
+                                                    <Link to={`/post/${p._id}`} rel="noopener noreferrer" target="_blank">
                                                         <Button variant="primary">Go to post</Button>
                                                     </Link>
                                                 </Card.Body>
@@ -543,7 +543,7 @@ function Dashboard(props) {
                                                         <br />
                                                         Article Sub-Type: {p.subCategory}
                                                     </Card.Text>
-                                                    <Link to={`/article/${p._id}`} rel="noopener noreferrer"  target="_blank">
+                                                    <Link to={`/article/${p._id}`} rel="noopener noreferrer" target="_blank">
                                                         <Button variant="primary">Go to article</Button>
                                                     </Link>
                                                 </Card.Body>
@@ -596,7 +596,7 @@ function Dashboard(props) {
                         }}
                         >
                             <PinFill style={{ paddingBottom: "5px" }} />
-                            Advertisement posts: {data.advertismentPosts}
+                            Advertisement posts: {data.advertisementPosts}
                         </h1>
                         <div>
                             <h1 className="legend-panel" style={{

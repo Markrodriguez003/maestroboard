@@ -6,7 +6,6 @@ import {
   FormControl,
 } from "react-bootstrap";
 
-const accountLogo = "";
 function ReplyForm() {
   return (
     <div>

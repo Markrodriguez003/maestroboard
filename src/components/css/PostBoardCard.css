@@ -1,143 +1,18 @@
-.card-top-header {
-  text-align: center;
-  padding-top: 2px;
-  margin-bottom: 10px;
-}
+.postCard {
+  border: none;
+  width: 26rem;
+  height: 36rem;
+  /* background-color: rgba(255, 255, 255, 0.734); */
+  /* background-blend-mode: soft-light; */
 
-.delete-icon {
-  display: inline;
-  position: absolute;
-  color: red;
-  width: 30px;
-  height: 30px;
-  padding: 5px;
-  bottom: 2px;
-  right: 2px;
-  cursor: pointer;
-  background-color: rgba(255, 255, 255, 1);
-  border-radius: 50%;
-}
-.pushPin {
-  display: inline;
-  position: absolute;
-  width: 35px;
-  height: auto;
-  top: -2px;
-}
+  /* background-image: url("../../assets/imgscard-textures/watercolor-paper-texture.jpg" ) !important; */
 
-.card-header-labels {
-  font-size: 10px;
-  font-weight: bold;
-}
+  /* background-image: url("../../assets/imgs/card-textures/shiny-gold-textured-paper-background.jpg"); */
+  /* background-image: url("../../assets/imgs/card-textures/recycled-paper-sheet.jpg"); */
 
-.card-header-user-input {
-  font-size: 10px;
-  margin-left: auto;
-  text-align: center;
-  font-style: italic;
+  /* background-image: url("../../assets/imgs/card-textures/squared-paper-texture.jpg"); */
+  /* background-size: contain; */
 }
-
-.post-title-text {
-  margin-top: -16px !important;
-  font-size: 21.5px !important;
-}
-.post-quickBody-text {
-  font-size: 13px;
-}
-
-.info-card-text {
-  font-size: 12px;
-  border-radius: 75% !important;
-}
-
-.info-card-title {
-  font-size: 18px !important;
-}
-
-.info-card-body {
-  font-size: 16px !important;
-  border: purple 1px dotted;
-  padding: 3px;
-}
-
-.table-text {
-  font-size: 12px !important;
-}
-
-.card-badge {
-  font-size: 14px !important;
-  color: white;
-}
-.card-contact-btn {
-  padding: 255px;
-  margin-right: 300px !important;
-  /* margin-top: -3px; */
-}
-
-.contact-text {
-  font-size: 14px;
-}
-
-/* ************************** */
-/* Boostrap Carousel arrow styling + arrow bar*/
-
-/* ************************** */
-
-/* FIXES BOOTSTRAP CAROUSEL */
-.carousel-inner:not(.carousel-item)::after {
-  display: none !important;
-}
-
-.carousel-inner > div {
-  /* display: none !important; */
-  /* color: red !important; */
-  background-color: grey !important;
-}
-.carousel-controls {
-  color: white !important;
-  background-color: white !important;
-}
-.carousel-control-next:hover {
-  transition: 0.2s ease-in-out;
-  background-color: rgba(0, 0, 0, 1) !important;
-}
-
-.carousel-control-prev {
-  /* display: none;
-  background-color: red; */
-}
-
-.carousel-control-prev:hover {
-  transition: 0.2s ease-in-out;
-  background-color: rgba(0, 0, 0, 1) !important;
-  /* display: none !important; */
-}
-
-.carousel-control-prev-icon:hover {
-  transition: 0.2s ease-in-out;
-  color: white !important;
-  /* width: 4rem !important; */
-  /* height: 4rem !important; */
-  /* display: none !important; */
-}
-
-.carousel-control-next-icon:hover {
-  transition: 0.2s ease-in-out;
-  color: white !important;
-  /* width: 4rem !important; */
-  /* height: 4rem !important; */
-  /* display: none !important; */
-}
-
-/* .carousel .slide .carousel-indicators {
-  transition: 0.2s ease-in-out;
-  color: white !important;
-  display: none !important;
-} */
-
-/* ************************** */
-/* CSS CARD ANIMATIONS */
-/* ************************** */
 .card-container {
   /* background-color: rgba(0, 0, 0, 0.3); */
   display: inline;
@@ -151,10 +26,10 @@
 
 .under-card {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  width: 26rem;
+  height: 36rem;
   /* left: 7px; */
-  top: 500px; /* ! FIX MEASUREMENT (PX/REM) */
+  /* top: 600px;   */
   -moz-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
@@ -162,8 +37,13 @@
   /* background-color: "red"; */
 }
 
-@media only screen and (max-width: 600px) {
-  body {
-    background-color: lightblue;
+@media only screen and (max-width: 375px) {
+  .postCard {
+    width: 100%;
+    height: 36rem;
+  }
+  .under-card {
+    width: 100%;
+    height: 36rem;
   }
 }

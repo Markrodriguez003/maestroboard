@@ -1,7 +1,11 @@
 /* The animation code */
 @keyframes corkboardTransistion {
-  from {transform: translateX(-5000px);}
-  to {transform: translateX(0px);}
+  from {
+    transform: translateX(-5000px);
+  }
+  to {
+    transform: translateX(0px);
+  }
 }
 
 .corkboard-card-container {
@@ -24,8 +28,12 @@
   border: rgb(87, 83, 83) 8px solid;
 }
 
-@media only screen and (min-width: 500px) {
-  .corkboard-title {
-    color: red;
+@media only screen and (max-width: 475px) {
+  .corkboard-card-container {
+    background-image: none;
+    background-color: transparent;
+    border: none;
+    width: 100%;
+    padding: 0px;
   }
 }

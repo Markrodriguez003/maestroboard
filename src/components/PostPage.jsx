@@ -123,9 +123,9 @@ function PostPage(props) {
                         >
                             <Image
                                 src={post.image_urls[0]}
-                                className="p-0 m-0 object-fit-contain"
+                                className="p-0 m-0 object-fit-cover"
                                 alt="post image"
-                                style={{ cursor: "pointer", width: "550px", height: "550px", }}
+                                style={{ cursor: "pointer", width: "auto", height: "auto", }}
                                 onClick={() => setLightBoxOpen(true)}
                             />
                         </Col>
@@ -147,8 +147,16 @@ function PostPage(props) {
                             <Row className="w-100 justify-content-end align-content-end mb-2" sm={1} >
                                 <div style={{ color: "darkcyan" }}><strong>{post.type} </strong> : {post.subType}</div>
                             </Row>
-                            <Row className="justify-content-end align-content-end text-light" sm={1} style={{ backgroundColor: SITE_COLORS.secondary, display: "inline", marginLeft: "2px" }}>
-                                <div style={{ display: "inline" }}><strong>${post.price} </strong></div>
+                            <Row>
+                                <Col className="justify-content-end align-content-end text-light w-auto" sm={12} md={12} lg={12} xs={12} style={{ backgroundColor: SITE_COLORS.secondary, display: "inline", marginLeft: "2px" }}>
+                                    <div ><strong>${post.price} </strong></div>
+                                </Col>
+                                <Col className="justify-content-end align-content-end text-light w-auto" sm={12} md={12} lg={12} xs={12} style={{ backgroundColor: SITE_COLORS.alternateSecondaryLight, display: "inline", width: "auto", marginLeft: "2px" }}>
+                                    <div  ><strong>{post.firm_price ? "Negotiable" : "Not Negotiable"} </strong></div>
+                                </Col>
+                                <Col className="justify-content-end align-content-end text-light w-auto" sm={12} md={12} lg={12} xs={12} style={{ backgroundColor: SITE_COLORS.lightMain, display: "inline", width: "auto", marginLeft: "2px" }}>
+                                    <div ><strong>{post.trade ? "Trades accepted" : "No trades"} </strong></div>
+                                </Col>
                             </Row>
 
                             <Row>

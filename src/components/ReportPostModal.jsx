@@ -14,11 +14,11 @@ function CardReplyModal() {
   const handleShow = () => setShow(true);
 
   return (
-    <div className="d-block text-center ">
+    <div className="d-block text-end ">
       <Button
         variant="danger"
-        size="lg"
-        className="mt-4 p-2"
+        size="sm"
+        className=""
         onClick={handleShow}
       >
         {" "}

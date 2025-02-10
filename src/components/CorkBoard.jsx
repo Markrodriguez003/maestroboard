@@ -43,7 +43,7 @@ function Corkboard() {
   });
 
   // TOTAL POSTS ALLOWS ON CORKBOARD PANEL
-  const CORKBOARD_TOTAL_POSTS_ALLOWED = 9;
+  const CORKBOARD_TOTAL_POSTS_ALLOWED = 12;
 
   // SETS PAGINATION INDEX WHEN USER CLICKS ON PAGINATION TAB
   function handlePaginationIndex(currentIndex) {
