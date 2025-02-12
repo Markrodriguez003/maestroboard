@@ -156,6 +156,23 @@ function ArticleEdit() {
     // HOLDS LOADING STATE OF FORM SUBMITTION
     const [submitLoading, setSubmitLoading] = useState(false);
 
+    // GRABBING SESSION MEMORY TO CHECK TO SEE IF USER IS SIGNED IN
+    // VIA TOKEN DATA
+    function getSessionToken() {
+        const tokenString = sessionStorage.getItem('token');
+        const userToken = JSON.parse(tokenString);
+
+        return userToken;
+    };
+
+    const token = getSessionToken();
+    const config = {
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            "Data": "Custom-Data"
+        }
+    }
+
     //  SIDE EFFECT THAT KICKS WHEN USER SUBMITS FORM.
     //  TAKES IMAGE FILES -> UPLOADS IT TO CLOUDINARY -> SAVES IMAGE URLS/ID TO NEW ARTICLE STATE
     //  PUSHES NEWLY CREATE ARTICLE TO DB
@@ -165,7 +182,7 @@ function ArticleEdit() {
         async function UPDATE_ARTICLE(newArticle) {
             // console.log(`RESPONSE! ${JSON.stringify(params)}`)
             try {
-                axios.put(`http://localhost:3005/api/articles/edit/id/${params.id}`, newArticle).then((response) => {
+                axios.put(`http://localhost:3005/api/articles/edit/id/${params.id}`, newArticle, config).then((response) => {
                     console.log(`RESPONSE! ${JSON.stringify(response)}`)
                     console.log(`NEW ARTICLE! ${JSON.stringify(newArticle)}`)
 

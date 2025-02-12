@@ -19,6 +19,7 @@ import About from "./components/pages/About";
 // WIP
 // import SignUpForm from "./components/SignUpForm";
 
+import ProtectedRoutes from "./utils/ProtectedRoutes";
 import Dashboard from "./components/pages/Dashboard";
 import ArticleEdit from "./components/ui/ArticleEdit"
 
@@ -42,37 +43,29 @@ function App() {
           {/* ************************************************* */}
           {/* <Route path="/sign-up" element={<SignUpForm />}></Route> */}
           {/* ************************************************* */}
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/home" element={<Home />}></Route>
-          <Route path="/board" element={<CommunityBoard />}></Route>
-          <Route path="/news" element={<News />}></Route>
-          <Route path="/about" element={<About />}></Route>
-          <Route path="/article/:id" element={<NewsArticlePage />}></Route>
-          <Route path="/post/:id" element={<PostPage />}></Route>
-          <Route path="/forum" element={<Forum />}></Route>
-          <Route path="/login" element={<Login />}></Route>
-          <Route path="/dashboard" element={<Dashboard />}></Route>
-          <Route path="/edit/article/:id" element={
-            <ConfirmationModal>
-              <ArticleEdit />
-            </ConfirmationModal>
+          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/board" element={<CommunityBoard />} />
+          <Route path="/news" element={<News />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/article/:id" element={<NewsArticlePage />} />
+          <Route path="/post/:id" element={<PostPage />} />
+          <Route path="/forum" element={<Forum />} />
+          <Route path="/login" element={<Login />} />
 
-          }></Route>
-          <Route path="/edit/post/:id" element={
-            <ConfirmationModal>
-              <PostEdit />
-            </ConfirmationModal>
+          <Route element={<ProtectedRoutes />}>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/edit/article/:id" element={<ConfirmationModal><ArticleEdit /></ConfirmationModal>} />
+            <Route path="/edit/post/:id" element={<ConfirmationModal><PostEdit /></ConfirmationModal>} />
+          </Route>
 
-          }></Route>
-          <Route
-            path="*"
-            element={<PageNotFound />}
-          />
+
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
         <Footer />
       </Router >
 
-    </NotificationToast>
+    </NotificationToast >
   );
 }
 

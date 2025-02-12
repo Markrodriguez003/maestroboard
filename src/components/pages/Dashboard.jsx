@@ -43,6 +43,26 @@ import "../css/Dashboard.css";
 
 function Dashboard(props) {
 
+
+
+    // GRABBING SESSION MEMORY TO CHECK TO SEE IF USER IS SIGNED IN
+    // VIA TOKEN DATA
+    function getSessionToken() {
+        const tokenString = sessionStorage.getItem('token');
+        const userToken = JSON.parse(tokenString);
+
+        return userToken;
+    };
+
+    const token = getSessionToken();
+    const config = {
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            "Data": "Custom-Data"
+        }
+    }
+
+
     // GRABS REFERENCE OF ELEMENT ON TOP OF CORKBOARD
     const articleTopRef = useRef(null);
     const postTopRef = useRef(null);
@@ -65,49 +85,6 @@ function Dashboard(props) {
         }
     };
 
-    // HOLDS TRIGGER FOR AUTHENTICATED USER
-    const [isAuthenticatedUser, setIsAuthenticatedUser] = useState(null);
-
-    // GRABBING SESSION MEMORY TO CHECK TO SEE IF USER IS SIGNED IN
-    // VIA TOKEN DATA
-    useEffect(() => {
-        function getSessionToken() {
-            const tokenString = sessionStorage.getItem('token');
-            const userToken = JSON.parse(tokenString);
-            return userToken;
-        };
-
-
-
-        async function authenticateUser() {
-            const token = getSessionToken();
-
-            if (!token || token === null) {
-                return;
-            }
-
-            const config = {
-                headers: {
-                    'Authorization': `Bearer ${token}`,
-                    "Data": "Custom-Data"
-                }
-            }
-
-            await axios
-                .get("http://localhost:3005/api/auth/user", config)
-                .then((response) => {
-                    setIsAuthenticatedUser(() => true);
-                })
-                .catch((err) => {
-                    setIsAuthenticatedUser(() => false);
-                    console.log(`Error verfiying user! --> ${err}`)
-
-                });
-        }
-
-        authenticateUser();
-    }, [])
-
     // STATE THAT WILL HOLD ARTICLE & POST DATA
     const [data, setData] = useState({
         articles: [],
@@ -119,7 +96,8 @@ function Dashboard(props) {
         latestPosts: [],
         latestArticles: [],
         sellingPosts: 0,
-        buyingPosts: 0
+        buyingPosts: 0,
+        test: []
     })
 
     // GRABS ARTICLE TYPES TO POPULATE SELECT OPTION IN ARTICLE CREATION SELECTION 
@@ -205,7 +183,6 @@ function Dashboard(props) {
 
     // AMOUNT OF LATEST ARTICLES / POSTS REQUESTED
     const REQUESTED_ELEMENTS = 5;
-
     useEffect(() => {
 
         // GRABS ALL ARTICLES BASE INFO (_id, title, subTitle,) FROM DB
@@ -320,7 +297,28 @@ function Dashboard(props) {
                 .catch((err) => console.log(err));
         }
 
+
+        // TEST
+        // WHEN USER CLICKS ON INDIVIDUAL ARTICLE THIS FUNCTION WILL CALL UP THAT ARTICLE TO PRESENT 
+        async function test() {
+            await axios
+                .get(`http://localhost:3005/api/articles/fetch-all`, config)
+                .then((response) => {
+                    // console.log(`REPONSE THE FUCK!:: ${JSON.stringify(response)}`)
+                    setData((prev) => (
+                        {
+                            ...prev,
+                            test: response
+                        }
+                    ))
+
+                })
+                .catch((err) => console.log(err));
+        }
+
+
         // RUNNING FUNCTIONS THAT GRABS ALL ARTICLE & POST DATA FROM BACKEND
+        test();
         fetchPosts();
         fetchArticles();
         fetchUserLength();
@@ -335,6 +333,8 @@ function Dashboard(props) {
         for (let i = 0; i < article_types.length; i++) {
             fetchArticleType(article_types[i]);
         }
+
+
     }, []);
 
 
@@ -388,7 +388,14 @@ function Dashboard(props) {
 
     return (
         <>
-            {isAuthenticatedUser ? <Container className="w-100 p-4 mt-5 mb-5" style={{ backgroundColor: "black" }}>
+            <Container className="w-100 p-4 mt-5 mb-5" style={{ backgroundColor: "black" }}>
+
+
+                {
+                    // console.log(`TEST:::: ${JSON.stringify(data.test)}`)
+
+
+                }
                 {/* MAIN PROFILE HEADER */}
                 <Row className="w-100">
                     <HeaderPanel bgColor={SITE_COLORS.main} width="w-100">
@@ -995,18 +1002,7 @@ function Dashboard(props) {
                     </Col>
                 </Row>
             </Container >
-                : isAuthenticatedUser === null
-                    ? <LoadingPageElement
-                        header={"Loading Dashboard"}
-                        icon={<DatabaseGear fontSize={"120px"} />}
-                        spinner
-                    >
-                        <hr />
-                        <br />
-                        <p>Loading in metric data! Please give us a moment!</p>
-                    </LoadingPageElement >
-                    : <PageNotFound />
-            }
+
 
             <br />
             <br />

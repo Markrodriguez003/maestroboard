@@ -206,7 +206,7 @@ app.post("/api/login", (req, res) => {
         console.log(
           "Cannot secure create user session! Please try again later!"
         );
-        res.status(401).json({ message: "Invalid credentials!", status: 401 });
+        res.status(401).json({ message: "Invalid credentials!" });
       }
     })
     .catch((err) => {

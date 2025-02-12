@@ -5,24 +5,29 @@
 const jwt = require("jsonwebtoken");
 
 //************************************************************** */
-// AUTHENTICATES ROUTE SO NO API OR WEBPAGE CAN BE CALLED WITHOUT
-// PROPER AUTHENTICATION CHECK PASS
+// AUTHENTICATES SESSION TOKEN FOR ACCESSING CERTAIN ADMIN PAGES
 //************************************************************** */
 const authenticate = async (req, res, next) => {
-  // GRABS TOKEN FROM THE FRONTEND
-  const authorizationToken = req.headers["authorization"].split(" ")[1];
+  const authorizationToken = req.headers["authorization"]
+    ? req.headers["authorization"].split(" ")[1]
+    : null;
+
   if (authorizationToken) {
-    const verifyToken = await jwt.verify(
+    const verifyToken = jwt.verify(
       authorizationToken,
       process.env.VITE_JWT_SECRET_KEY
     );
 
-    res.json({
-      login: true,
-      adminLogin: true,
-      data: verifyToken,
-    });
-    // next();
+    if (verifyToken.isAdmin) {
+      res.json({
+        login: true,
+        adminLogin: true,
+        // data: verifyToken,
+        acceptable: true,
+      });
+
+      next();
+    }
   } else {
     res.json({
       login: false,
@@ -33,8 +38,32 @@ const authenticate = async (req, res, next) => {
 };
 
 //************************************************************** */
+// AUTHETICATION FOR EXPRESS API ROUTES
+//************************************************************** */
+const authenticateAPI = async (req, res, next) => {
+  const authorizationToken = req.headers["authorization"]
+    ? req.headers["authorization"].split(" ")[1]
+    : null;
+
+  if (authorizationToken) {
+    const verifyToken = jwt.verify(
+      authorizationToken,
+      process.env.VITE_JWT_SECRET_KEY
+    );
+
+    if (verifyToken.isAdmin === true) {
+      res.status(200);
+      next();
+    } else {
+      res.status(400);
+    }
+  }
+};
+
+//************************************************************** */
 // EXPORTS
 //************************************************************** */
 module.exports = {
   authenticate,
+  authenticateAPI,
 };

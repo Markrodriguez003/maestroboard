@@ -33,6 +33,7 @@ function PageNotFound(props) {
                     <p>Please check the URL as the page may have moved </p>
                     {/* <br /> */}
                     <Button className="mt-3" href="/home" >Go Back Home</Button>
+                    <Button className="mt-3" href="/login" >Log-in</Button>
                 </Row>
             </Container >
             <br />

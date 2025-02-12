@@ -74,6 +74,30 @@ function News(props) {
   const [articles, setArticles] = useState(undefined);
 
   {/* ********************************************************************** */ }
+  {/* GRABS SESSION TOKEN FOR AUTHENTICATION*/ }
+  {/* ********************************************************************** */ }
+
+
+
+  // GRABBING SESSION MEMORY TO CHECK TO SEE IF USER IS SIGNED IN
+  // VIA TOKEN DATA
+  function getSessionToken() {
+    const tokenString = sessionStorage.getItem('token');
+    const userToken = JSON.parse(tokenString);
+
+    return userToken;
+  };
+
+  const token = getSessionToken();
+  const config = {
+    headers: {
+      'Authorization': `Bearer ${token}`,
+      "Data": "Custom-Data"
+    }
+  }
+
+
+  {/* ********************************************************************** */ }
   {/* GRABS ARTICLES FROM BACK-END*/ }
   {/* ********************************************************************** */ }
   useEffect(() => {
@@ -81,7 +105,7 @@ function News(props) {
     // GRABS ALL ARTICLES FROM DB
     async function grabArticles() {
       await axios
-        .get("http://localhost:3005/api/articles/fetch-all")
+        .get("http://localhost:3005/api/articles/fetch-all", config)
         .then(async (response) => {
           setArticles(await response.data);
         })

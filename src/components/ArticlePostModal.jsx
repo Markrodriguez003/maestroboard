@@ -69,6 +69,25 @@ function ArticlePostModal(props) {
 
     });
 
+
+
+    // GRABBING SESSION MEMORY TO CHECK TO SEE IF USER IS SIGNED IN
+    // VIA TOKEN DATA
+    function getSessionToken() {
+        const tokenString = sessionStorage.getItem('token');
+        const userToken = JSON.parse(tokenString);
+
+        return userToken;
+    };
+
+    const token = getSessionToken();
+    const config = {
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            "Data": "Custom-Data"
+        }
+    }
+
     //  SIDE EFFECT THAT KICKS WHEN USER SUBMITS FORM.
     //  TAKES IMAGE FILES -> UPLOADS IT TO CLOUDINARY -> SAVES IMAGE URLS/ID TO NEW ARTICLE STATE
     //  PUSHES NEWLY CREATE ARTICLE TO DB
@@ -77,7 +96,10 @@ function ArticlePostModal(props) {
         // PUSHES ARTICLE TO DB
         async function CREATE_NEW_ARTICLE(newArticle) {
             try {
-                const response = axios.post('http://localhost:3005/api/articles/insert', newArticle);
+                const response = axios.post('http://localhost:3005/api/articles/insert',
+                    newArticle,
+                    config
+                );
                 // SETS TOAST OF SUBMITTED ARTICLE!
                 ToastNotificationContext.setToast((prevToast => ({
                     ...prevToast,

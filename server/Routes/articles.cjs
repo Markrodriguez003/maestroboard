@@ -9,6 +9,12 @@ let router = express.Router();
 // ARTICLE DB SCHEMA
 const Article = require("../db/Articles");
 
+// AUTHENTICATATION MIDDLEWARE
+const {
+  authenticate,
+  authenticateAPI,
+} = require("../controller/authController.cjs");
+
 // CONTROLLER FOR ROUTE LOGIC
 const articleController = require("../controller/articleController.cjs");
 
@@ -17,7 +23,8 @@ module.exports = router;
 //************************************************************** */
 // LOADS ALL ARTICLES FROM DB
 //************************************************************** */
-router.get("/fetch-all", articleController.fetchAllArticles);
+router.get("/fetch-all", authenticateAPI, articleController.fetchAllArticles);
+// router.get("/fetch-all", articleController.fetchAllArticles);
 //************************************************************** */
 // LOADS A TOTAL AMOUNT OF ARTICLES FROM DB
 //************************************************************** */
@@ -52,11 +59,15 @@ router.get("/fetch-all/base-info", articleController.fetchAllArticleBaseInfo);
 //************************************************************** */
 // INSERTS NEW ARTICLE TO DB
 //************************************************************** */
-router.post("/insert", async (req, res) => articleController.insertArticle);
+router.post("/insert", authenticateAPI, articleController.insertArticle);
 //************************************************************** */
 // UPDATES NEWLY EDITED ARTICLE BY ID
 //************************************************************** */
-router.put("/edit/id/:id", articleController.insertEditedArticle);
+router.put(
+  "/edit/id/:id",
+  authenticateAPI,
+  articleController.insertEditedArticle
+);
 
 //************************************************************** */
 // DELETES ARTICLE BY ID FROM DB

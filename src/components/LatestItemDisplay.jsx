@@ -29,7 +29,6 @@ function LatestItemDisplay(props) {
 
     const { fetchType, fetchCount, header, headerIcon, bgColor, color, body } = props;
 
-    console.log(`body: ${JSON.stringify(body)}`);
 
     // GETTER/SETTER FOR LATEST TYPE OF ELEMENT 
     const [latestElements, setLatestElements] = useState({ data: null, result: null })

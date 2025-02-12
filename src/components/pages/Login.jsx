@@ -68,17 +68,21 @@ function Login(props) {
       setFormActionResults(prev => (
         {
           ...prev,
-          loading: false,
-          popup: true,
-          status: "successful"
+          loading: true,
         }
       ));
-
       if (response.status === 200) {
+        setFormActionResults(prev => (
+          {
+            ...prev,
+            loading: false,
+            popup: true,
+            status: "successful"
+          }
+        ));
         // sets user login token to session storage
         setSessionToken(response.data.token);
         navigate('/dashboard');
-        // console.log(`Inside response message! --> ${JSON.stringify(response.data.token)}`);
 
       }
 
