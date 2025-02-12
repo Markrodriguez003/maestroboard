@@ -1,8 +1,9 @@
 import axios from "axios";
 
-async function deleteArticle(props) {
+async function deleteArticle(id, auth) {
+ 
   await axios
-    .delete(`http://localhost:3005/api/articles/delete/id/${props}`)
+    .delete(`http://localhost:3005/api/articles/delete/id/${id}`, auth)
     .then(async (res) => {
       res.json({ response: res });
     })

@@ -30,6 +30,25 @@ import { SITE_COLORS } from "../css/site";
 // import deleteImage from "../../../server/scripts/deleteImage";
 
 
+// GRABBING SESSION MEMORY TO CHECK TO SEE IF USER IS SIGNED IN
+// VIA TOKEN DATA
+function getSessionToken() {
+    const tokenString = sessionStorage.getItem('token');
+    const userToken = JSON.parse(tokenString);
+
+    return userToken;
+};
+
+const token = getSessionToken();
+const config = {
+    headers: {
+        'Authorization': `Bearer ${token}`,
+        "Data": "Custom-Data"
+    }
+}
+
+
+
 // ! move to component
 // LOADING PAGE TO SHOW WHEN FRONT END IS TRYING TO GRAB POST FROM DB
 function LoadingArticle() {
@@ -175,7 +194,7 @@ function PostEdit() {
             // console.log(`RESPONSE! ${JSON.stringify(params)}`)
             try {
 
-                axios.put(`http://localhost:3005/api/posts/edit/id/${params.id}`, newPost).then((response) => {
+                axios.put(`http://localhost:3005/api/posts/edit/id/${params.id}`, newPost, config).then((response) => {
                     console.log(`RESPONSE! ${JSON.stringify(response)}`)
                     console.log(`NEW POST! ${JSON.stringify(newPost)}`)
 
@@ -322,7 +341,7 @@ function PostEdit() {
     useEffect(() => {
         async function deletingPost() {
             try {
-                const result = await deletePost(params.id);
+                const result = await deletePost(params.id, config);
                 console.log(JSON.stringify(result))
                 reset()
                 setTotalCharacters(0);

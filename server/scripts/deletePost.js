@@ -1,8 +1,8 @@
 import axios from "axios";
 
-async function deletePost(props) {
+async function deletePost(id, auth) {
   await axios
-    .delete(`http://localhost:3005/api/posts/delete/id/${props}`)
+    .delete(`http://localhost:3005/api/posts/delete/id/${id}`, auth)
     .then(async (res) => {
       res.json({ response: res });
     })

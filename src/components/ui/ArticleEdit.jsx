@@ -183,9 +183,6 @@ function ArticleEdit() {
             // console.log(`RESPONSE! ${JSON.stringify(params)}`)
             try {
                 axios.put(`http://localhost:3005/api/articles/edit/id/${params.id}`, newArticle, config).then((response) => {
-                    console.log(`RESPONSE! ${JSON.stringify(response)}`)
-                    console.log(`NEW ARTICLE! ${JSON.stringify(newArticle)}`)
-
                 })
                 // SETS TOAST OF SUBMITTED ARTICLE!
                 Notification.setToast((prevToast => ({
@@ -331,7 +328,7 @@ function ArticleEdit() {
     useEffect(() => {
         async function deletingArticle() {
             try {
-                const result = await deleteArticle(params.id);
+                const result = await deleteArticle(params.id, config);
                 console.log(JSON.stringify(result))
                 reset()
                 setTotalCharacters(0);

@@ -10,6 +10,12 @@ let router = express.Router();
 // CONTROLLER FOR ROUTE LOGIC
 let postController = require("../controller/postController.cjs");
 
+// AUTHENTICATATION MIDDLEWARE
+const {
+  authenticate,
+  authenticateAPI,
+} = require("../controller/authController.cjs");
+
 module.exports = router;
 
 //************************************************************** */
@@ -36,13 +42,13 @@ router.get("/id/:id", postController.fetchPostById);
 //************************************************************** */
 // INSERTS A NEW POST TO DB
 //************************************************************** */
-router.post("/insert", postController.insertPost);
+router.post("/insert", authenticateAPI, postController.insertPost);
 //************************************************************** */
 // INSERTS A NEWLY EDITED POST TO DB
 //************************************************************** */
-router.put("/edit/id/:id", postController.insertEditedPost);
+router.put("/edit/id/:id", authenticateAPI, postController.insertEditedPost);
 
 //************************************************************** */
 // DELETES POST BY ID FROM DB
 //************************************************************** */
-router.delete("/delete/id/:id", postController.deletePost);
+router.delete("/delete/id/:id", authenticateAPI, postController.deletePost);

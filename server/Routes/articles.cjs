@@ -72,4 +72,8 @@ router.put(
 //************************************************************** */
 // DELETES ARTICLE BY ID FROM DB
 //************************************************************** */
-router.delete("/delete/id/:id", articleController.deleteArticleById);
+router.delete(
+  "/delete/id/:id",
+  authenticateAPI,
+  articleController.deleteArticleById
+);

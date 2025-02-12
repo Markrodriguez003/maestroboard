@@ -63,6 +63,24 @@ function BoardPostModal() {
     caption: "",
   });
 
+  // GRABBING SESSION MEMORY TO CHECK TO SEE IF USER IS SIGNED IN
+  // VIA TOKEN DATA
+  function getSessionToken() {
+    const tokenString = sessionStorage.getItem('token');
+    const userToken = JSON.parse(tokenString);
+
+    return userToken;
+  };
+
+  const token = getSessionToken();
+  const config = {
+    headers: {
+      'Authorization': `Bearer ${token}`,
+      "Data": "Custom-Data"
+    }
+  }
+
+
   // HANDLES SHOWING OF MODAL
   const [show, setShow] = useState(false);
 
@@ -81,7 +99,7 @@ function BoardPostModal() {
     async function CREATE_NEW_POST(newPost) {
       try {
         const response = await axios.post('http://localhost:3005/api/posts/insert',
-          newPost);
+          newPost, config);
         // SETS TOAST OF SUBMITTED ARTICLE!
         ToastNotificationContext.setToast((prevToast => ({
           ...prevToast,
