@@ -18,7 +18,7 @@ cloudinary.config({
 // * DELETES AN ENTIRE ARTICLE + IMAGES ASSOCIATED IN CLOUDINARY
 async function deleteImages(image_id_array) {
   // TESTING
-  // console.log(`Images to be deleted! --> ${JSON.stringify(image_id_array)}  `);
+  console.log(`Images to be deleted! --> ${JSON.stringify(image_id_array)}  `);
 
   // DELETING IMAGES ASSOCIATED WITH ARTICLE
   cloudinary.api.delete_resources(image_id_array, (error, result) => {
@@ -31,31 +31,3 @@ async function deleteImages(image_id_array) {
 }
 
 module.exports = deleteImages;
-// export default deleteImages;
-
-// OLD CODE
-// import axios from "axios";
-// import { Cloudinary } from "@cloudinary/url-gen";
-// async function deleteImage(images) {
-//   console.log(`Images to be deleted! --> ${images}`);
-
-//   const cloudName = "dytbnvgzg";
-//   const apiKey = import.meta.env.VITE_CLOUDINARY_API_KEY;
-//   const api_secret = import.meta.env.VITE_CLOUDINARY_API_SECRET;
-//   const timestamp = new Date().getTime();
-//   // const signature = generateHash(generateSignature(images, api_secret));
-
-//   axios
-//     .post(`https://api.cloudinary.com/v1_1/${cloudName}/image/destroy`, {
-//       public_id: images,
-//       // signature: signature,
-//       api_key: apiKey,
-//       timestamp: timestamp,
-//     })
-//     .then((response) => {
-//       console.log("Image deleted from cloudinary: ", response);
-//     })
-//     .catch((error) => {
-//       console.error("Unable to delete image: ", error);
-//     });
-// }

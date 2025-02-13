@@ -23,8 +23,12 @@ module.exports = router;
 //************************************************************** */
 // LOADS ALL ARTICLES FROM DB
 //************************************************************** */
-router.get("/fetch-all", authenticateAPI, articleController.fetchAllArticles);
-// router.get("/fetch-all", articleController.fetchAllArticles);
+router.get("/fetch-all", articleController.fetchAllArticles);
+//************************************************************** */
+//************************************************************** */
+// LOADS ARTICLES BY LIMIT / CURSOR - PAGINATION
+//************************************************************** */
+router.get("/fetch", articleController.fetchBatchedArticles);
 //************************************************************** */
 // LOADS A TOTAL AMOUNT OF ARTICLES FROM DB
 //************************************************************** */

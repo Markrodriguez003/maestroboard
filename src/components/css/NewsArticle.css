@@ -8,6 +8,17 @@
   }
 }
 
+.continue-reading * {
+  text-decoration: none;
+  color:white;
+  transition: 2.2s ease-in;
+}
+.continue-reading *:hover {
+  text-decoration: underline;
+  color:white;
+ 
+}
+
 .newsArticleStyling {
   background-color: rgba(16, 41, 51, 1);
   animation: fadeInAnimation ease 0.5s;

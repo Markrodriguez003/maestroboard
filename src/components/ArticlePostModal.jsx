@@ -8,6 +8,7 @@ import { Button, Modal, Container, Form, Row, Col, Stack } from "react-bootstrap
 import { ToastContext, NotificationToast } from "./context/NotificationToast";
 
 // LIBRARIES
+// import {deleteImages} from "../../server/scripts/deleteImages.cjs";
 import imageUploader from "../../server/scripts/imageUploader";
 import { useForm } from "react-hook-form";
 
@@ -109,7 +110,10 @@ function ArticlePostModal(props) {
                     error: false
                 })))
             } catch (error) {
-                // console.log(`Here is the error inserting new post::: ${error}`);
+
+                // DELETES IMAGES THAT WERE INITIALLY INSERTED
+                // deleteImages(newArticle.public_images_id)
+                // BOUNCEBACK
                 ToastNotificationContext.setToast((prevToast => ({
                     ...prevToast,
                     show: true,
@@ -134,15 +138,11 @@ function ArticlePostModal(props) {
                 for (let i = 0; i < tempImageArr.length; i++) {
                     await imageUploader(tempImageArr[i])
                         .then((data) => {
-                            // console.log(`${i} - Public ID: ${data.publicID}`);
-                            // console.log(`${i} - Secure URL: ${data.secureURL}`);
-                            // console.log(`${i} - URL: ${data.url}`);
                             publicArry = [...publicArry, data.publicID];
                             urlArry = [...urlArry, data.url];
                             secureArry = [...secureArry, data.secureURL];
 
                         }).catch((error) => {
-                            // console.log(`Error updating state with images::${error}`)
                             ToastNotificationContext.setToast((prevToast => ({
                                 ...prevToast,
                                 show: true,
@@ -220,7 +220,7 @@ function ArticlePostModal(props) {
         }
 
         //*  IF ARTICLE IS COMPLETED CORRECTLY
-        // IF MAX IMAGE FILES LIMIT NOT REACHS SETS FILES INTO A STATE TO BE USE ELSEWHERE
+        // IF MAX IMAGE FILES LIMIT NOT REACH SETS FILES INTO A STATE TO BE USE ELSEWHERE
         setTempImageArr(data.images);
 
         // UPDATE ARTICLE STATE

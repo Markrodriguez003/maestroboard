@@ -1,5 +1,5 @@
 // REACT
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense, lazy } from "react";
 
 // LIBRARIES
 import axios from "axios";
@@ -8,10 +8,11 @@ import axios from "axios";
 import { Newspaper } from "react-bootstrap-icons";
 
 // COMPONENTS
-import { Row, Col, Carousel, Image, Container, Stack } from "react-bootstrap";
-import NewsArticle from "../NewsArticle";
+import { Row, Col, Carousel, Image, Container, Stack, Button } from "react-bootstrap";
+// import NewsArticle from "../NewsArticle";
 import HeaderPanel from "../ui/HeaderPanel";
 import QuickArticlesPanel from "../ui/QuickArticlesPanel";
+const NewsArticle = lazy(() => import('../NewsArticle'));
 
 // TEST ARTICLES
 import testArticles from "../../../server/scripts/quickArticles.json";
@@ -71,60 +72,46 @@ const exampleImages = [
 
 function News(props) {
 
-  const [articles, setArticles] = useState(undefined);
 
-  {/* ********************************************************************** */ }
-  {/* GRABS SESSION TOKEN FOR AUTHENTICATION*/ }
-  {/* ********************************************************************** */ }
+  const ARTICLE_PAGINATION_LIMIT = 12;
 
-
-
-  // GRABBING SESSION MEMORY TO CHECK TO SEE IF USER IS SIGNED IN
-  // VIA TOKEN DATA
-  function getSessionToken() {
-    const tokenString = sessionStorage.getItem('token');
-    const userToken = JSON.parse(tokenString);
-
-    return userToken;
-  };
-
-  const token = getSessionToken();
-  const config = {
-    headers: {
-      'Authorization': `Bearer ${token}`,
-      "Data": "Custom-Data"
-    }
-  }
+  const [articles, setArticles] = useState([]);
+  const [nextCursor, setNextCursor] = useState(null);
+  const [loading, setLoading] = useState(false);
 
 
   {/* ********************************************************************** */ }
   {/* GRABS ARTICLES FROM BACK-END*/ }
   {/* ********************************************************************** */ }
-  useEffect(() => {
 
-    // GRABS ALL ARTICLES FROM DB
-    async function grabArticles() {
-      await axios
-        .get("http://localhost:3005/api/articles/fetch-all", config)
-        .then(async (response) => {
-          setArticles(await response.data);
-        })
-        .catch((err) => console.log(err));
+  const fetchArticles = async (cursor) => {
+    setLoading(true);
+    try {
+      const response = await axios.get(`http://localhost:3005/api/articles/fetch?limit=${ARTICLE_PAGINATION_LIMIT}${cursor ? `&cursor=${cursor}` : ''}`);
+      setArticles(prevItems => [...prevItems, ...response.data.data]);
+      setNextCursor(response.data.nextCursor);
+    } catch (error) {
+      console.error('Error fetching articles!:', error);
+    } finally {
+      setLoading(false);
     }
+  };
 
-    grabArticles();
-    // pullArticles;
-
+  useEffect(() => {
+    fetchArticles();
   }, []);
 
+  const loadMore = () => {
+    if (nextCursor) {
+      fetchArticles(nextCursor);
+    }
+  };
   return (
     <>
+
       {articles !== undefined
         ?
         <div>
-          <br />
-          <br />
-
           <Container fluid>
             <Row lg={2} xs={1} sm={1} className="justify-content-start p-3">
               <Col lg={8} className="w-">
@@ -142,7 +129,6 @@ function News(props) {
                       )
                     })
                   }
-
                 </Carousel >
               </Col>
 
@@ -153,21 +139,28 @@ function News(props) {
           </Container>
 
           <hr style={{ color: "white" }} />
-
-          {
-            articles.map(function (a, i) {
-              return (
-                < NewsArticle key={`${articles.title} - ${i}`} article={articles[i]} rowInverse={i % 2 === 1 ? "flex-row-reverse" : "flex-row"} artImage={exampleImages[i]} />
-              )
-            })
-          }
+          <Suspense fallback={<LoadingSpinner type="grow" title="Loading Article" />}>
+            {
+              articles.map(function (a, i) {
+                return (
+                  < NewsArticle key={`${articles.title} - ${i}`} article={articles[i]} rowInverse={i % 2 === 1 ? "flex-row-reverse" : "flex-row"} artImage={exampleImages[i]} />
+                )
+              })
+            }
+          </Suspense>
+          <div>
+            {loading && <p>Loading...</p>}
+            {nextCursor && !loading && (
+              <div className="mx-auto text-center mt-4">
+                <Button variant="secondary" onClick={loadMore}>Load More Articles</Button>
+              </div>
+            )}
+          </div>
         </div>
         :
         <div style={{ marginBottom: "500px", marginTop: "150px" }}>
           <LoadingSpinner type="grow" title="Loading News" />
         </div>
-
-
       }
     </>
   );

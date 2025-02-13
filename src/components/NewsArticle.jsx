@@ -28,8 +28,7 @@ function NewsArticle(props) {
     const [imageGallery, setImageGallery] = useState([]);
 
     // Article Props
-    const { title, author, category, subCategory, body, link, image, caption, subTitle, public_images_id, image_urls,
-        secure_images_urls, _id } = props.article;
+    const { title, author, category, subCategory, body, caption, subTitle, image_urls, _id } = props.article;
 
     // FORMATES NEW ARTICLE DATE
     const date = dateTransform(props.article.date, false);
@@ -61,8 +60,8 @@ function NewsArticle(props) {
                     ]}
                 plugins={[]}
             />
-            <Row xl={2} xxl={2} lg={2} md={12} sm={1} xs={12} className={props.rowInverse}>
-                <Col>
+            <Row className={props.rowInverse}>
+                <Col xl={5} xxl={5} lg={5} md={12} sm={12} xs={12}>
                     <Row>
                         <Image
                             src={image_urls[0] || image_urls[0] === undefined ? image_urls[0] : defaultImage}
@@ -76,8 +75,6 @@ function NewsArticle(props) {
                             onError={event => {
                                 event.target.onerror = null
                                 event.target.src = defaultImage
-                                // console.log(`Image not loaded::: ${event.onerror} `)
-
                             }}
                         />
                     </Row>
@@ -85,12 +82,13 @@ function NewsArticle(props) {
                         <caption style={{ color: "grey", textDecoration: "italic", display: "inline-block" }}>Image taken from {caption}</caption>
                     </Row>
                 </Col>
-                <Col>
-                    <Row className="justify-content-between align-content-end" sm={2} style={{ width: "100%" }}>
+                <Col xl={7} xxl={7} lg={7} md={12} sm={12} xs={12}>
+
+                    <Col className="justify-content-between align-content-end" sm={2} style={{ width: "100%" }}>
                         <div style={{ color: "darkcyan" }}>{category}: {subCategory}</div>
                         <div className="" style={{ color: "grey", fontSize: "14px" }}>Written by: {author} </div>
                         <div className="" style={{ color: "grey", fontSize: "14px" }}>Published on: {date}</div>
-                    </Row>
+                    </Col>
                     <Row><br /></Row>
                     <Row>
                         <h3 style={{ color: "white" }}>{title} </h3>
@@ -114,16 +112,16 @@ function NewsArticle(props) {
                             {body.length <= 750 ? body : body.substring(0, 650)}
                         </p>
                     </Row>
-                    <Row className="float-right">
-                        <a href="#" className="continue-reading float-end">
-                            {" "}
-                            <ArrowRightCircle
-                                style={{ fontSize: "20px", color: "rgba(250,250,250,0.9)" }}
-                            />{" "}
-                            <Link to={`/article/${_id}`}>
-                                <small>Continue Reading {" "} </small>
-                            </Link>
-                        </a>
+                    <Row className="float-start">
+                        <Link to={`/article/${_id}`}>
+                            <a href="#" className="lead continue-reading float-start" style={{ textDecoration: "none" }}>
+                                {" "}
+                                <ArrowRightCircle
+                                    style={{ fontSize: "20px", color: "rgba(250,250,250,0.9)" }}
+                                />{" "}
+                                <small className="mr-2">Continue Reading {" "} </small>
+                            </a>
+                        </Link>
                     </Row>
                 </Col>
             </Row >

@@ -80,7 +80,6 @@ function BoardPostModal() {
     }
   }
 
-
   // HANDLES SHOWING OF MODAL
   const [show, setShow] = useState(false);
 

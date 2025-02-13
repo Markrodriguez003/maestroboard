@@ -32,7 +32,7 @@ import pushPinD from "../assets/imgs/post-imgs/push-pin4.png";
 import pushPinE from "../assets/imgs/post-imgs/push-pin5.png";
 import pushPinF from "../assets/imgs/post-imgs/push-pin6.png";
 import defaultImage from "../assets/imgs/misc/missing-img.png";
-import cardTexture from "../assets/imgs/card-textures/background-1921589_640.jpg";
+// import cardTexture from "../assets/imgs/card-textures/background-1921589_640.jpg";
 
 import {
   ArrowLeftCircleFill,
@@ -140,6 +140,8 @@ function PostBoardCard(props) {
           <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
             <Card className="postCard shadow-lg">
 
+
+
               {/* **************************************************************************************** */}
               {/* FRONT CARD */}
               {/* **************************************************************************************** */}
@@ -191,7 +193,12 @@ function PostBoardCard(props) {
                 />
               }
               <Card.Body>
+                <img
+                  src={pushPinRand[Math.floor(Math.random() * 5)]}
+                  alt="pushpin"
+                  className="pushPin"
 
+                ></img>
                 <Badge bg="success" style={{ position: "absolute", top: "0", right: "0", fontSize: "20px" }} className="p-2 mx-0">
                   ${price} {trade}
                 </Badge>

@@ -20,6 +20,36 @@ const fetchAllArticles = (req, res) => {
 };
 
 //************************************************************** */
+// LOADS ALL ARTICLES FROM DB
+// GET --> api/articles/fetch-all
+//************************************************************** */
+const fetchBatchedArticles = async (req, res) => {
+  const DEFAULT_BATCH_LIMIT = 12;
+
+  const limit = parseInt(req.query.limit) || DEFAULT_BATCH_LIMIT;
+  const cursor = req.query.cursor;
+  const query = cursor ? { _id: { $lt: cursor } } : {};
+
+  await Article.find(query)
+    .sort({ _id: -1 })
+    .limit(limit)
+    .then((articles) => {
+      articles.map((a, i) => console.log(`${i}: ${a._id}`));
+      const nextCursor =
+        articles.length === limit ? articles[articles.length - 1]._id : null;
+      res.status(200).json({
+        data: articles,
+        nextCursor: nextCursor,
+      });
+    })
+    .catch((err) => {
+      res
+        .status(500)
+        .json({ message: `Issue batching posts -> ${err.message}` });
+    });
+};
+
+//************************************************************** */
 // LOADS A TOTAL AMOUNT OF ARTICLES FROM DB
 // GET --> api/articles/fetch-all/limit/:count
 //************************************************************** */
@@ -174,18 +204,9 @@ const deleteArticleById = async (req, res) => {
         }
         Article.findByIdAndDelete(req.params.id)
           .then((result) => {
-            console.log(
-              `ARTICLE IN THE BACKEND HAS BEEN DELETED:: ${JSON.stringify(
-                result
-              )}`
-            );
             res.json(result);
           })
-          .catch((error) => {
-            console.log(
-              `ARTICLE COULD NOT BE DELETED:: ${JSON.stringify(error)}`
-            );
-          });
+          .catch((error) => {});
       } catch (error) {
         console.log(`error: ${error}`);
       }
@@ -200,6 +221,7 @@ const deleteArticleById = async (req, res) => {
 // ****************************************************************************
 module.exports = {
   fetchAllArticles,
+  fetchBatchedArticles,
   fetchArticlesByLimit,
   fetchArticleById,
   fetchAllArticlesCategories,
