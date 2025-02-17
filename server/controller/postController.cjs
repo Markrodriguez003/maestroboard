@@ -56,8 +56,9 @@ const fetchBatchedPosts = async (req, res) => {
   const DEFAULT_BATCH_LIMIT = 4;
   const DEFAULT_PAGE = 1;
 
-  console.log(`LIMIT: ${req.query.limit}`);
-  console.log(`PAGE: ${req.query.page}`);
+  // console.log(`LIMIT: ${req.query.limit}`);
+  // console.log(`PAGE: ${req.query.page}`);
+  // console.log(`SORT: ${req.query.sort}`);
 
   // SENDS TOTAL POST AMOUNT
   const postsTotalCount = await Post.countDocuments({});
@@ -68,8 +69,13 @@ const fetchBatchedPosts = async (req, res) => {
   // GRABS PAGE INDEX TO DETERMINE WHERE IN DB COLLECTION TO PULL POSTS FROM
   const page = parseInt(req.query.page) || DEFAULT_PAGE;
 
+  // GRABS SORT ORDER OF POSTS
+  const sort = req.query.sort === "1" ? 1 : -1;
+
+  console.log(`SORTing: ${sort}`);
+
   await Post.find({})
-    .sort({ _id: -1 }) // NEWEST TO OLDEST
+    .sort({ _id: sort }) // NEWEST TO OLDEST
     .skip(limit * page - limit)
     .limit(limit)
     .then((posts) => {
@@ -80,7 +86,7 @@ const fetchBatchedPosts = async (req, res) => {
       }
       res.status(200).json({
         posts: posts,
-        totalCount: postsTotalCount
+        totalCount: postsTotalCount,
       });
     })
     .catch((err) => {

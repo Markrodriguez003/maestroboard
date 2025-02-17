@@ -48,8 +48,6 @@ import { SITE_COLORS } from "./css/site";
 
 function Corkboard() {
 
-  // FILTERING OPTIONS
-  const [filterLatestPosts, setFilterLatestPosts] = useState(true);
 
   // PAGINATION TRIGGERS
   const [paginationTrigger, setPaginationTrigger] = useState(false);
@@ -57,10 +55,11 @@ function Corkboard() {
   // PAGINATION TRIGGERS
   const [currentPage, setCurrentPage] = useState(1);
 
+  // HANDLES POST SORT FILTER STATE
+  const [filterPosts, setFilterPosts] = useState(true);
+
   // POST LOADING STATTE
   const [loading, setLoading] = useState(true);
-
-
 
   // LIMIT TO # OF POSTS 
   const POST_PAGINATION_LIMIT = 9;
@@ -71,6 +70,7 @@ function Corkboard() {
   const [posts, setPosts] = useState({
     fetchedPosts: [],
     totalPostCount: 0,
+    sort: -1
 
   });
 
@@ -79,14 +79,15 @@ function Corkboard() {
   {/* ********************************************************************** */ }
 
 
-  const fetchData = useCallback(async (page = 1) => {
+  const fetchData = useCallback(async (page = 1, sort = -1) => {
     console.log(`PAGE -> ${page}`)
     try {
-      const response = await axios.get(`http://localhost:3005/api/posts/fetch?limit=${POST_PAGINATION_LIMIT}&page=${page}`);
+      const response = await axios.get(`http://localhost:3005/api/posts/fetch?limit=${POST_PAGINATION_LIMIT}&page=${page}&sort=${sort}`);
       setPosts((prev) => ({
+        ...prev,
         fetchedPosts: [...response.data.posts],
-        loading: false,
-        totalPostCount: response.data.totalCount
+        totalPostCount: response.data.totalCount,
+
       }));
     } catch (error) {
       // TODO: ERROR STATE HANDLING TO FRONTEND
@@ -95,14 +96,46 @@ function Corkboard() {
   }, []);
 
   useEffect(() => {
-    console.log(`POSTS TOTAL COUNT: ${posts.totalPostCount}`)
+    console.log(`********************************`)
+    // console.log(`POSTS TOTAL COUNT: ${posts.totalPostCount}`)
     console.log(`CURRENT PAGE: ${currentPage}`)
-  }, [posts.totalPostCount, currentPage])
+    console.log(`FILTER BUTTON STATE : ${filterPosts}`)
+    console.log(`SORTING : ${posts.sort}`)
+  }, [posts.totalPostCount, currentPage, posts.sort, filterPosts])
 
   // INITIAL FETCH OF POSTS
   useEffect(() => {
-    fetchData(currentPage);
-  }, [fetchData, currentPage]);
+    fetchData(currentPage, posts.sort);
+  }, [fetchData, currentPage, posts.sort]);
+
+
+  // CHECKS SEARCH FILTER FOR SORTING
+  useEffect(() => {
+
+    if (filterPosts) {
+      setPosts(prev => ({
+        ...prev,
+        sort: -1
+      }))
+      setCurrentPage(1);
+      fetchData(currentPage)
+
+
+    } else if (filterPosts == false) {
+      setPosts(prev => ({
+        ...prev,
+        sort: 1
+      }))
+
+      setCurrentPage(1);
+      fetchData(currentPage)
+    }
+
+    // setPosts(prev => ({
+    //   ...prev,
+    //   filterLatestPosts: null
+    // }))
+  }, [filterPosts])
 
   useEffect(() => {
     function nextPosts() {
@@ -172,10 +205,10 @@ function Corkboard() {
               <Stack direction="horizontal" gap={1} className="justify-content-between" >
                 <Button
                   className="mb-2"
-                  onClick={() => setFilterLatestPosts((prev) => !prev)}
+                  onClick={() => setFilterPosts(prev => !prev)}
                 >
-                  <Filter style={{ transform: filterLatestPosts ? "rotate(0deg) " : "rotate(180deg)", marginBottom: "4px", fontSize: "20px" }} />
-                  Filter: Date - {filterLatestPosts ? "Latest to Oldest" : "Oldest to Latest"}
+                  <Filter style={{ transform: posts.filterLatestPosts ? "rotate(0deg) " : "rotate(180deg)", marginBottom: "4px", fontSize: "20px" }} />
+                  Filtered by: Date - {filterPosts ? "Latest to Oldest" : "Oldest to Latest"}
                 </Button>
                 <div className="text-light text-bg-primary p-2">
                   There are {posts.totalPostCount} posts!
@@ -185,7 +218,6 @@ function Corkboard() {
                     <ArrowLeftSquare size={"29px"}
                       onClick={() =>
                         setPaginationTrigger(false)
-
                       }
                     />
                   </Button>
