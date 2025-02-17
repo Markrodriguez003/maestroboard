@@ -61,9 +61,7 @@ function LatestItemDisplay(props) {
                     ?
                     <>
                         <Col direction="vertical" className="justify-content-center mx-auto w-100 shadow-lg">
-
-                            <div className="mx-start">
-
+                            <div className="mx-start"  >
                                 <h1 style={{
                                     color: color,
                                     textAlign: "start",
@@ -105,22 +103,6 @@ function LatestItemDisplay(props) {
 
                                                             )}
 
-
-
-
-
-
-
-
-
-                                                            {/* Username: {p.title}  {" - "}
-                                                            Date: {dateTransform(p.date)}
-                                                            <br />
-                                                            Post-Type: {p.type}
-                                                            <br />
-                                                            Post-Sub-Type: {p.subType}
-                                                            <br />
-                                                            Price: ${p.price} */}
                                                         </Card.Text>
                                                         <Link to={`/post/${p._id}`} rel="noopener noreferrer" target="_blank">
                                                             <Button variant="primary">Go to post</Button>

@@ -11,6 +11,7 @@ import { HouseGearFill, MusicNoteBeamed, Newspaper, MusicNote, Tools, PostcardHe
 import about_corkboard from "../../assets/imgs/about/community-board.png"
 import about_articles from "../../assets/imgs/about/articles.png"
 import about_technology from "../../assets/imgs/about/technology-1283624_640.jpg"
+import about_wavey from "../../assets/imgs/about/vaporwave-9944_512.gif"
 
 /*----------------------------------------------------------------------------
 |   ⚙️ Use: About page that explains the purpose, history of the site & 
@@ -34,14 +35,20 @@ function About() {
                 {/* **************************************************************************** */}
                 <InfoPanel bgColor={SITE_COLORS.alternateMain} color="white" width="75" rounded="rounded-5">
                     <div className="p-0 mx-auto text-start">
-                        <Stack>
-                            <h1 className="display-2 text-center" >About Us <MusicNoteBeamed style={{ fontSize: "75px" }} className="" /> </h1>
-                            <hr />
-                            <p className="w-75 mx-auto lead">
-                                Imagine you are walking towards the back of a music shop & you see a community corkboard. You see adverts of bands looking for band members, flyers for concert shows and posts for used gear. The purpose of this website is to give users the ability to see music related community posts, news articles &
-                                post of our forum! Remember to always chase your muse!
-                            </p>
-                        </Stack>
+                        <Row>
+                            <Col xl={5} xxl={5} md={5} sm={12} xs={12}>
+                                <Image src={about_wavey} className="mx-auto" style={{ width: "425px" }} />
+                            </Col>
+                            <Col lg={12} xl={5} xxl={7} md={12} sm={12} xs={12} className="my-auto">
+                                <h1 className="display-2 text-center" >About Us <MusicNoteBeamed style={{ fontSize: "75px" }} className="" /> </h1>
+                                <hr />
+                                <p className="w-75 mx-auto lead">
+                                    Imagine you are walking towards the back of a music shop & you see a community corkboard. You see adverts of bands looking for band members, flyers for concert shows and posts for used gear. The purpose of this website is to give users the ability to see music related community posts, news articles &
+                                    post of our forum! Remember to always chase your muse!
+                                </p>
+                                <hr />
+                            </Col>
+                        </Row>
                     </div>
                 </InfoPanel>
                 <br />

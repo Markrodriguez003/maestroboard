@@ -208,7 +208,8 @@ function Dashboard(props) {
                     setData((prev) => (
                         {
                             ...prev,
-                            latestArticles: response.data
+                            latestArticles: response.data,
+
                         }
                     ))
                 })
@@ -763,7 +764,7 @@ function Dashboard(props) {
                                                                                 zIndex: 99999,
                                                                                 textAlign: "center",
                                                                             }}
-                                                                            className="mt-2 w-100"
+                                                                            className="mt-2 mb-2 w-100"
                                                                             as={"div"}
                                                                         >
                                                                             <Newspaper style={{ fontSize: "20px", marginTop: "4px", marginBottom: "6px" }} alignmentBaseline="bottom" />
@@ -784,6 +785,8 @@ function Dashboard(props) {
                                             {
                                                 Object.keys(data.selectedArticle).length === 0 ?
                                                     <div className="text-center mt-5 pt-5">
+                                                        <small className="text-light">Click on specific tab to load article</small>
+                                                        <h1 className="text-light pb-4"> Loading Article</h1>
                                                         <Spinner animation="border" role="status" color="white" variant="primary" style={{ width: "100px", height: "100px", fontSize: "50px" }} className="">
                                                             <span className="visually-hidden">Loading...</span>
                                                         </Spinner>
@@ -861,6 +864,8 @@ function Dashboard(props) {
                                             {
                                                 Object.keys(data.selectedPosts).length === 0 ?
                                                     <div className="text-center mt-5 pt-5">
+                                                        <small className="text-light">Click on specific tab to load post</small>
+                                                        <h1 className="text-light pb-4"> Loading Post</h1>
                                                         <Spinner animation="border" role="status" color="white" variant="primary" style={{ width: "100px", height: "100px", fontSize: "50px" }} className="">
                                                             <span className="visually-hidden">Loading...</span>
                                                         </Spinner>
@@ -978,7 +983,7 @@ function Dashboard(props) {
                                                                                 zIndex: 99999,
                                                                                 textAlign: "center",
                                                                             }}
-                                                                            className="mt-2 w-100"
+                                                                            className="mt-2 mb-2 w-100"
                                                                             as={"div"}
                                                                         >
                                                                             <PostcardFill style={{ fontSize: "20px", marginTop: "4px", marginBottom: "6px" }} alignmentBaseline="bottom" />

@@ -71,12 +71,16 @@ const exampleImages = [
 *----------------------------------------------------------------------------*/
 
 function News(props) {
-
-
+  // # OF ARTICLES TO PULL
   const ARTICLE_PAGINATION_LIMIT = 12;
 
+  // HOLDS PULLED ARTICLES
   const [articles, setArticles] = useState([]);
+
+  // HOLDS NEXT ARTICLE ID PLACE TO PULL NEW SET OF ARTICLES FROM DB
   const [nextCursor, setNextCursor] = useState(null);
+
+  // SETS PULLED ARTICLES STATE
   const [loading, setLoading] = useState(false);
 
 

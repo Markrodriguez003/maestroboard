@@ -6,7 +6,7 @@ const deleteImages = require("../scripts/deleteImages.cjs");
 const Post = require("../db/Posts");
 
 //************************************************************** */
-// LOADS ALL ARTICLES FROM DB
+// LOADS ALL POSTS FROM DB
 // GET --> api/posts/fetch-all
 //************************************************************** */
 const fetchAllPosts = (req, res) => {
@@ -18,9 +18,81 @@ const fetchAllPosts = (req, res) => {
       console.log("posts cannot be loaded from the db!");
     });
 };
+
 //************************************************************** */
-// LOADS A SPECIFIC AMOUNT OF POSTS BY COUNT FROM DB
-// GET --> api/posts/fetch-all/limit/:count
+// FETCHES TOTAL AMOUNT OF POSTS IN DB
+// GET --> api/posts/fetch-total-count
+//************************************************************** */
+const fetchAllPostsTotalCount = async (req, res) => {
+  //  GRABS THE TOTAL AMOUNT OF POSTS TO SEND TO FRONTEND
+  await Post.countDocuments({})
+    .then((total) => res.status(200).json({ totalCount: total }))
+    .catch((err) =>
+      res
+        .status(500)
+        .json({ errorMsg: `Cannot fetch total post count! ${err}` })
+    );
+};
+
+//************************************************************** */
+// LOADS ALL POST FROM DB BY BATCHES FOR PAGINATION METHODS
+// GET --> api/posts/fetch-all
+//************************************************************** */
+
+//  PAGE ID :
+//  1 --> "" (loads all)
+//  2 --> 67a689b958dd2affe9acbff4
+//  3 --> 67a6855f58dd2affe9acbfdc
+//  4 --> 67a67f7558dd2affe9acbfc4
+//  5 --> null (won't load)
+
+// NEXT CURSOR POSTS ID :
+//  1 --> 67a689b958dd2affe9acbff4
+//  2 --> 67a6855f58dd2affe9acbfdc
+//  3 --> 67a67f7558dd2affe9acbfc4
+//  4 --> null
+
+const fetchBatchedPosts = async (req, res) => {
+  const DEFAULT_BATCH_LIMIT = 4;
+  const DEFAULT_PAGE = 1;
+
+  console.log(`LIMIT: ${req.query.limit}`);
+  console.log(`PAGE: ${req.query.page}`);
+
+  // SENDS TOTAL POST AMOUNT
+  const postsTotalCount = await Post.countDocuments({});
+
+  // SETS THE TOTAL FETCHED POSTS SIZE TO PUSH TO FRONTEND
+  const limit = parseInt(req.query.limit) || DEFAULT_BATCH_LIMIT;
+
+  // GRABS PAGE INDEX TO DETERMINE WHERE IN DB COLLECTION TO PULL POSTS FROM
+  const page = parseInt(req.query.page) || DEFAULT_PAGE;
+
+  await Post.find({})
+    .sort({ _id: -1 }) // NEWEST TO OLDEST
+    .skip(limit * page - limit)
+    .limit(limit)
+    .then((posts) => {
+      if (posts.length === 0) {
+        res
+          .status(500)
+          .json({ message: `There are no posts! -> ${err.message}` });
+      }
+      res.status(200).json({
+        posts: posts,
+        totalCount: postsTotalCount
+      });
+    })
+    .catch((err) => {
+      res
+        .status(500)
+        .json({ message: `Issue batching posts -> ${err.message}` });
+    });
+};
+
+//************************************************************** */
+// FETCHES TOTAL AMOUNT OF POSTS IN DB
+// GET --> api/posts/fetch-total-count/
 //************************************************************** */
 const fetchAllPostsByCount = (req, res) => {
   Post.find({})
@@ -160,7 +232,9 @@ const deletePost = async (req, res) => {
 // EXPORTS
 //************************************************************** */
 module.exports = {
+  fetchAllPostsTotalCount,
   fetchAllPosts,
+  fetchBatchedPosts,
   fetchAllPostsByCount,
   fetchAllPostsTypeAmount,
   fetchAllPostBaseInfo,

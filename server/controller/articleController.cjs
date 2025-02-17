@@ -45,7 +45,7 @@ const fetchBatchedArticles = async (req, res) => {
     .catch((err) => {
       res
         .status(500)
-        .json({ message: `Issue batching posts -> ${err.message}` });
+        .json({ message: `Issue batching articles -> ${err.message}` });
     });
 };
 

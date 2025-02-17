@@ -1,5 +1,5 @@
 // REACT
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 
 // CSS
 import "./css/Corkboard.css";
@@ -8,15 +8,14 @@ import "./css/Corkboard.css";
 import axios from "axios";
 
 // ASSETS
-import { PinAngleFill } from "react-bootstrap-icons";
+import { PinAngleFill, Filter, ArrowLeftSquare, ArrowRightSquare } from "react-bootstrap-icons";
+import pushPin from "../assets/imgs/post-imgs/push-pin2.png"
 
 // COMPONENTS
 import PostBoardCard from "./PostBoardCard";
 import LoadingSpinner from "./ui/LoadingSpinner";
-import { Pagination, Stack } from "react-bootstrap";
-import { IsComponentVisible } from "./ui/isComponentVisible";
-import HeaderPanel from "./ui/HeaderPanel";
-
+import { Container, Stack, Button, Image } from "react-bootstrap";
+import { SITE_COLORS } from "./css/site";
 
 /*----------------------------------------------------------------------------
 |   ⚙️ Use: Corkboard container that pulls posts from DB and presents them  
@@ -25,168 +24,193 @@ import HeaderPanel from "./ui/HeaderPanel";
 |
 |   📦 Returns: JSX component
 *----------------------------------------------------------------------------*/
+//  PAGE ID :
+//  1 --> "" (loads all)
+//  2 --> 67a689b958dd2affe9acbff4
+//  3 --> 67a6855f58dd2affe9acbfdc
+//  4 --> 67a67f7558dd2affe9acbfc4
+//  5 --> null (won't load)
 
+// PAGE : SPECIFIC ARTICLE : ID : Cursor for page : INDEX PLACE IN POSTS TOTAL TO TAG TO PREVIOUS
+// 1    : DRUMMING LESSONS : 67abc7acbc47c8561ebeb4ff : 67abc7acbc47c8561ebeb4ff -> Page 1 -> 1  : NULL
+// 2    : Roland MC-505    : 67a689b958dd2affe9acbff4 : 67abc7acbc47c8561ebeb4ff -> Page 2 -> 1  : NULL
+// 3    : Retro Accordion  : 67a6855f58dd2affe9acbfdc : 67a689b958dd2affe9acbff4 -> Page 3 -> 2  : 9
+// 4    : Vox Bass         : 67a67f7558dd2affe9acbfc4 : 67a6855f58dd2affe9acbfdc -> Page 4 -> 3  : 18
+
+// NEXT CURSOR POSTS ID :
+//  1 --> 67a689b958dd2affe9acbff4
+//  2 --> 67a6855f58dd2affe9acbfdc
+//  3 --> 67a67f7558dd2affe9acbfc4
+//  4 --> null
+
+// ? NOTES
+// ? https://legacy.reactjs.org/docs/hooks-faq.html#:~:text=It%20is%20only%20safe%20to,or%20values%20derived%20from%20them.
 
 function Corkboard() {
 
-  // GRABS REFERENCE OF ELEMENT ON TOP OF CORKBOARD
-  const corkboardTopRef = useRef(null);
+  // FILTERING OPTIONS
+  const [filterLatestPosts, setFilterLatestPosts] = useState(true);
 
-  // ALL POSTS FROM DB, SEPARATED PAGINATED POSTS, TOTAL POSTS, & PAGINATION TABS TO STATE 
+  // PAGINATION TRIGGERS
+  const [paginationTrigger, setPaginationTrigger] = useState(false);
+
+  // PAGINATION TRIGGERS
+  const [currentPage, setCurrentPage] = useState(1);
+
+  // POST LOADING STATTE
+  const [loading, setLoading] = useState(true);
+
+
+
+  // LIMIT TO # OF POSTS 
+  const POST_PAGINATION_LIMIT = 9;
+
+  // POSTS OBJECT
+  // HOLDS FETCHED POSTS, PREVIOUS AND CURRENT DB ID CURSOR, TOTAL PAGES, 
+  // LOADING STATE AND FILTERED LATEST POSTS
   const [posts, setPosts] = useState({
-    totalPosts: 0,
-    allEntries: [],
-    paginationEntries: [],
-    paginationTotal: 0,
-    paginationIndex: 1,
-    loading: false
+    fetchedPosts: [],
+    totalPostCount: 0,
+
   });
 
-  // TOTAL POSTS ALLOWS ON CORKBOARD PANEL
-  const CORKBOARD_TOTAL_POSTS_ALLOWED = 12;
-
-  // SETS PAGINATION INDEX WHEN USER CLICKS ON PAGINATION TAB
-  function handlePaginationIndex(currentIndex) {
-    setPosts((prev) => (
-      {
-        ...prev,
-        paginationIndex: parseInt(currentIndex, 10)
-      }
-
-    ));
-  }
-  // SCROLLS TO TOP 
-  if (corkboardTopRef.current) {
-    corkboardTopRef.current.scrollIntoView({ behavior: 'smooth' });
-  }
-
-  // SETS ACTIVE PAGINATED TAB
-  let active = 1;
-
-  // INTIATED PAGINATED TABS VARIABLE 
-  let postItems = [];
-
-  // SETS AMOUNT OF PAGINATION # TABS
-  for (let i = 1; i <= posts.paginationTotal; i++) {
-    postItems.push(
-      <Pagination.Item key={i} active={i === active} onClick={(e) => handlePaginationIndex(e.target.innerText)}>
-        {i}
-      </Pagination.Item >,
-    );
-  }
-
   {/* ********************************************************************** */ }
-  {/* GRABS POSTS FROM BACK-END*/ }
+  {/* GRABS ARTICLES FROM BACK-END BY PASSING / SAVING ARTICLE ID CURSOR*/ }
   {/* ********************************************************************** */ }
+
+
+  const fetchData = useCallback(async (page = 1) => {
+    console.log(`PAGE -> ${page}`)
+    try {
+      const response = await axios.get(`http://localhost:3005/api/posts/fetch?limit=${POST_PAGINATION_LIMIT}&page=${page}`);
+      setPosts((prev) => ({
+        fetchedPosts: [...response.data.posts],
+        loading: false,
+        totalPostCount: response.data.totalCount
+      }));
+    } catch (error) {
+      // TODO: ERROR STATE HANDLING TO FRONTEND
+      console.log(`An error has occured! -> ${error}`)
+    }
+  }, []);
+
   useEffect(() => {
+    console.log(`POSTS TOTAL COUNT: ${posts.totalPostCount}`)
+    console.log(`CURRENT PAGE: ${currentPage}`)
+  }, [posts.totalPostCount, currentPage])
 
-    // GRABS ALL POSTS FROM DB
-    async function grabPosts() {
-      await axios
-        .get("http://localhost:3005/api/posts/fetch-all")
-        .then((response) => {
+  // INITIAL FETCH OF POSTS
+  useEffect(() => {
+    fetchData(currentPage);
+  }, [fetchData, currentPage]);
 
-          // HOW MANY PAGINATION TABS NEEDED
-          let PAGINATION_TABS = Math.ceil(response.data.length / CORKBOARD_TOTAL_POSTS_ALLOWED);
+  useEffect(() => {
+    function nextPosts() {
+      if (currentPage < Math.ceil(posts.totalPostCount / POST_PAGINATION_LIMIT)) {
 
-          // TEMPORARY ARRAY OF POSTS
-          let firstLoadedPosts = [];
+        setCurrentPage(prev => (prev + 1)),
 
-          // SETTING 
           setPosts((prev) => (
             {
               ...prev,
-              allEntries: response.data,
-              paginationTotal: PAGINATION_TABS,
-              totalPosts: response.data.length,
-              paginationEntries: firstLoadedPosts
+              loading: true,
+              fetchedPosts: [],
             }
-          ));
+          ))
 
-          // console.log(`INSIDE CORKBOARD::: ${JSON.stringify(response.data)}`)
-
-          // SETS THE FIRST POSTS TO BOARD
-
-          for (let i = 0; i < CORKBOARD_TOTAL_POSTS_ALLOWED; i++) {
-            if (response.data[i] === undefined) { break; }
-            firstLoadedPosts.push(response.data[i]);
-          }
-        })
-        .catch((err) => console.log(err));
-    }
-    grabPosts();
-
-  }, []);
-
-
-  {/* ********************************************************************** */ }
-  {/* SETS INDEX AND GROUPS POSTS ACCORIDNG TO ALLOWED POST LIMIT PER CORKBOARD PANEL*/ }
-  {/* ********************************************************************** */ }
-
-  useEffect(() => {
-
-    // GRABS ALL POSTS FROM DB
-    async function setPaginatedPosts() {
-      const POST_GROUP = [];
-      let POST_GROUP_BEGIN;
-      let POST_GROUP_END;
-
-      // SETS THE ENDING MARKER FOR ARRAY OF GROUPED POST
-      POST_GROUP_END = (posts.paginationIndex * CORKBOARD_TOTAL_POSTS_ALLOWED) - 1;
-
-      // SETS THE BEGINNING MARKER FOR ARRAY OF GROUPED POST
-      POST_GROUP_BEGIN = (posts.paginationIndex * CORKBOARD_TOTAL_POSTS_ALLOWED) - CORKBOARD_TOTAL_POSTS_ALLOWED;
-
-      for (let i = POST_GROUP_BEGIN; i <= POST_GROUP_END; i++) {
-        if (i === posts.totalPosts) { break; }
-        if (posts.allEntries[i] === undefined) { break; }
-        // PUSHES POST OBJECTS TO PAGE TAB 
-        POST_GROUP.push(posts.allEntries[i]);
+        fetchData(currentPage);
       }
-      setPosts((prev) => (
-        {
-          ...prev,
-          paginationEntries: POST_GROUP
-
-        }
-      ));
     }
-    setPaginatedPosts();
 
-  }, [posts.allEntries, posts.paginationIndex, posts.totalPosts]);
+    function previousPosts() {
+      if (currentPage > 1) {
 
-  // BRINGING IN INTERSECTION OBSERVER
-  // const ref = useRef();
-  // const isVisible = IsComponentVisible(ref);
+        setCurrentPage(prev => (prev - 1)),
+          console.log(`PREVIOUS! ${currentPage}`)
+
+        setPosts((prev) => (
+          {
+            ...prev,
+            loading: true,
+            fetchedPosts: [],
+          }
+        ))
+        fetchData(currentPage);
+      }
+    }
+
+
+    if (paginationTrigger === true) {
+      nextPosts();
+    } else if (paginationTrigger === false) {
+      previousPosts();
+    }
+
+    setPaginationTrigger(null)
+
+  }, [paginationTrigger, currentPage, fetchData, posts.totalPostCount, posts.fetchedPosts])
 
   return (
     <>
       {
-        posts.totalPosts === 0
+        posts.fetchedPosts.length === 0
           ?
           <div className="corkboard-card-container shadow-lg" style={{ height: "550px" }} >
-            <LoadingSpinner title="Loading Posts">
-            </LoadingSpinner>
+            <div style={{ backgroundColor: SITE_COLORS.main, position: "relative" }} className="p-5">
+              <Image src={pushPin} style={{ width: "35px", position: "absolute", top: "-15px", left: "50%" }} />
+              <LoadingSpinner title="Loading Posts">
+              </LoadingSpinner>
+            </div>
           </div>
           : <div>
-            <div>
 
-              {/* ************************ */}
-              {/* FILTER - SEARCH BUTTONS */}
-              {/* ************************ */}
-              <Stack direction="horizontal" gap={3} id="corkboard-top">
-                <Pagination className="ms-auto corkboard-pagination" size="md">
-                  {postItems}
-                </Pagination>
+            {/* ************************ */}
+            {/* FILTER - SEARCH BUTTONS */}
+            {/* ************************ */}
+            <Container>
+
+              <Stack direction="horizontal" gap={1} className="justify-content-between" >
+                <Button
+                  className="mb-2"
+                  onClick={() => setFilterLatestPosts((prev) => !prev)}
+                >
+                  <Filter style={{ transform: filterLatestPosts ? "rotate(0deg) " : "rotate(180deg)", marginBottom: "4px", fontSize: "20px" }} />
+                  Filter: Date - {filterLatestPosts ? "Latest to Oldest" : "Oldest to Latest"}
+                </Button>
+                <div className="text-light text-bg-primary p-2">
+                  There are {posts.totalPostCount} posts!
+                </div>
+                <div className="px-4 py-2 float-end">
+                  <Button className="p-1 m-0">
+                    <ArrowLeftSquare size={"29px"}
+                      onClick={() =>
+                        setPaginationTrigger(false)
+
+                      }
+                    />
+                  </Button>
+                  <span style={{ backgroundColor: "white", padding: "4px 12px" }}>{currentPage} of {Math.ceil(posts.totalPostCount / POST_PAGINATION_LIMIT)}</span>
+
+                  <Button className="p-1 m-0">
+                    <ArrowRightSquare size={"29px"}
+                      onClick={() =>
+                        setPaginationTrigger(true)
+
+                      }
+                    />
+                  </Button>
+
+                </div>
               </Stack>
-            </div>
+            </Container>
+
             {/* ********************************************************************** */}
             {/* CORKBOARD + POST CARDS*/}
             {/* ********************************************************************** */}
-            {/* {console.log(`POSTS::: ${posts.paginationEntries.length}`)} */}
-            {posts.paginationEntries !== undefined ?
+            {posts.fetchedPosts.length !== undefined ?
               <div className="corkboard-card-container">
-                {posts.paginationEntries?.map((p, i) => (
+
+                {posts.fetchedPosts.map((p, i) => (
                   <PostBoardCard {...p} key={`${p._id} - ${i}`}
                   />
                 ))}
@@ -199,19 +223,9 @@ function Corkboard() {
                 </Stack>
               </div>
             }
-            <Stack direction="horizontal" gap={3} className="mt-2">
-              <Pagination className="ms-auto corkboard-pagination" size="md">
-                {postItems}
-              </Pagination>
-            </Stack>
+
           </div >
       }
-
-
-      {/* <div ref={ref}>
-        <p>{isVisible ? console.log('is visible!') : console.log('is Not visible!')}</p>
-      </div> */}
-
     </>
   );
 }
