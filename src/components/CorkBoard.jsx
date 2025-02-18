@@ -8,13 +8,13 @@ import "./css/Corkboard.css";
 import axios from "axios";
 
 // ASSETS
-import { PinAngleFill, Filter, ArrowLeftSquare, ArrowRightSquare } from "react-bootstrap-icons";
+import { PinAngleFill, Filter, ArrowLeftSquare, ArrowRightSquare, FileEarmarkXFill } from "react-bootstrap-icons";
 import pushPin from "../assets/imgs/post-imgs/push-pin2.png"
 
 // COMPONENTS
 import PostBoardCard from "./PostBoardCard";
 import LoadingSpinner from "./ui/LoadingSpinner";
-import { Container, Stack, Button, Image } from "react-bootstrap";
+import { Stack, Button, Image, Row, Col, ButtonGroup } from "react-bootstrap";
 import { SITE_COLORS } from "./css/site";
 
 /*----------------------------------------------------------------------------
@@ -24,27 +24,7 @@ import { SITE_COLORS } from "./css/site";
 |
 |   📦 Returns: JSX component
 *----------------------------------------------------------------------------*/
-//  PAGE ID :
-//  1 --> "" (loads all)
-//  2 --> 67a689b958dd2affe9acbff4
-//  3 --> 67a6855f58dd2affe9acbfdc
-//  4 --> 67a67f7558dd2affe9acbfc4
-//  5 --> null (won't load)
 
-// PAGE : SPECIFIC ARTICLE : ID : Cursor for page : INDEX PLACE IN POSTS TOTAL TO TAG TO PREVIOUS
-// 1    : DRUMMING LESSONS : 67abc7acbc47c8561ebeb4ff : 67abc7acbc47c8561ebeb4ff -> Page 1 -> 1  : NULL
-// 2    : Roland MC-505    : 67a689b958dd2affe9acbff4 : 67abc7acbc47c8561ebeb4ff -> Page 2 -> 1  : NULL
-// 3    : Retro Accordion  : 67a6855f58dd2affe9acbfdc : 67a689b958dd2affe9acbff4 -> Page 3 -> 2  : 9
-// 4    : Vox Bass         : 67a67f7558dd2affe9acbfc4 : 67a6855f58dd2affe9acbfdc -> Page 4 -> 3  : 18
-
-// NEXT CURSOR POSTS ID :
-//  1 --> 67a689b958dd2affe9acbff4
-//  2 --> 67a6855f58dd2affe9acbfdc
-//  3 --> 67a67f7558dd2affe9acbfc4
-//  4 --> null
-
-// ? NOTES
-// ? https://legacy.reactjs.org/docs/hooks-faq.html#:~:text=It%20is%20only%20safe%20to,or%20values%20derived%20from%20them.
 
 function Corkboard() {
 
@@ -70,38 +50,36 @@ function Corkboard() {
   const [posts, setPosts] = useState({
     fetchedPosts: [],
     totalPostCount: 0,
-    sort: -1
+    sort: -1,
+    loading: true
 
   });
 
-  {/* ********************************************************************** */ }
-  {/* GRABS ARTICLES FROM BACK-END BY PASSING / SAVING ARTICLE ID CURSOR*/ }
-  {/* ********************************************************************** */ }
+  // FUNCTION TO PUSH PAGE TO TOP
+  function scrollToTop() {
+    window.scrollTo(0, 0);
+  };
 
-
+  {/* ********************************************************************** */ }
+  {/* FETCHES POSTS FROM BACK-END BY PASSING PAGE + SORT TYPE*/ }
+  {/* ********************************************************************** */ }
   const fetchData = useCallback(async (page = 1, sort = -1) => {
-    console.log(`PAGE -> ${page}`)
+    scrollToTop();
     try {
+      setLoading(true);
       const response = await axios.get(`http://localhost:3005/api/posts/fetch?limit=${POST_PAGINATION_LIMIT}&page=${page}&sort=${sort}`);
       setPosts((prev) => ({
         ...prev,
         fetchedPosts: [...response.data.posts],
         totalPostCount: response.data.totalCount,
-
       }));
+      setLoading(false);
     } catch (error) {
-      // TODO: ERROR STATE HANDLING TO FRONTEND
+      // TODO: ERROR STATE HANDLING TO FRONTEND;
+      setLoading(false);
       console.log(`An error has occured! -> ${error}`)
     }
   }, []);
-
-  useEffect(() => {
-    console.log(`********************************`)
-    // console.log(`POSTS TOTAL COUNT: ${posts.totalPostCount}`)
-    console.log(`CURRENT PAGE: ${currentPage}`)
-    console.log(`FILTER BUTTON STATE : ${filterPosts}`)
-    console.log(`SORTING : ${posts.sort}`)
-  }, [posts.totalPostCount, currentPage, posts.sort, filterPosts])
 
   // INITIAL FETCH OF POSTS
   useEffect(() => {
@@ -118,7 +96,8 @@ function Corkboard() {
         sort: -1
       }))
       setCurrentPage(1);
-      fetchData(currentPage)
+      fetchData(currentPage);
+
 
 
     } else if (filterPosts == false) {
@@ -131,10 +110,6 @@ function Corkboard() {
       fetchData(currentPage)
     }
 
-    // setPosts(prev => ({
-    //   ...prev,
-    //   filterLatestPosts: null
-    // }))
   }, [filterPosts])
 
   useEffect(() => {
@@ -159,15 +134,14 @@ function Corkboard() {
       if (currentPage > 1) {
 
         setCurrentPage(prev => (prev - 1)),
-          console.log(`PREVIOUS! ${currentPage}`)
 
-        setPosts((prev) => (
-          {
-            ...prev,
-            loading: true,
-            fetchedPosts: [],
-          }
-        ))
+          setPosts((prev) => (
+            {
+              ...prev,
+              loading: true,
+              fetchedPosts: [],
+            }
+          ))
         fetchData(currentPage);
       }
     }
@@ -186,7 +160,7 @@ function Corkboard() {
   return (
     <>
       {
-        posts.fetchedPosts.length === 0
+        loading
           ?
           <div className="corkboard-card-container shadow-lg" style={{ height: "550px" }} >
             <div style={{ backgroundColor: SITE_COLORS.main, position: "relative" }} className="p-5">
@@ -195,68 +169,99 @@ function Corkboard() {
               </LoadingSpinner>
             </div>
           </div>
-          : <div>
-
-            {/* ************************ */}
-            {/* FILTER - SEARCH BUTTONS */}
-            {/* ************************ */}
-            <Container>
-
-              <Stack direction="horizontal" gap={1} className="justify-content-between" >
-                <Button
-                  className="mb-2"
-                  onClick={() => setFilterPosts(prev => !prev)}
-                >
-                  <Filter style={{ transform: posts.filterLatestPosts ? "rotate(0deg) " : "rotate(180deg)", marginBottom: "4px", fontSize: "20px" }} />
-                  Filtered by: Date - {filterPosts ? "Latest to Oldest" : "Oldest to Latest"}
-                </Button>
-                <div className="text-light text-bg-primary p-2">
-                  There are {posts.totalPostCount} posts!
+          : posts.fetchedPosts.length === 0
+            ?
+            <div className="corkboard-card-container shadow-lg" style={{ height: "550px" }} >
+              <div style={{ backgroundColor: SITE_COLORS.main, position: "relative" }} className="p-5 text-center">
+                <Image src={pushPin} style={{ width: "35px", position: "absolute", top: "-15px", left: "50%" }} />
+                <div className="mx-auto text-center mb-2">
+                  <FileEarmarkXFill size={"128px"} className="text-light" />
                 </div>
-                <div className="px-4 py-2 float-end">
-                  <Button className="p-1 m-0">
-                    <ArrowLeftSquare size={"29px"}
-                      onClick={() =>
-                        setPaginationTrigger(false)
-                      }
-                    />
-                  </Button>
-                  <span style={{ backgroundColor: "white", padding: "4px 12px" }}>{currentPage} of {Math.ceil(posts.totalPostCount / POST_PAGINATION_LIMIT)}</span>
-
-                  <Button className="p-1 m-0">
-                    <ArrowRightSquare size={"29px"}
-                      onClick={() =>
-                        setPaginationTrigger(true)
-
-                      }
-                    />
-                  </Button>
-
-                </div>
-              </Stack>
-            </Container>
-
-            {/* ********************************************************************** */}
-            {/* CORKBOARD + POST CARDS*/}
-            {/* ********************************************************************** */}
-            {posts.fetchedPosts.length !== undefined ?
-              <div className="corkboard-card-container">
-
-                {posts.fetchedPosts.map((p, i) => (
-                  <PostBoardCard {...p} key={`${p._id} - ${i}`}
-                  />
-                ))}
+                <h1 className="text-light">Could not fetch posts! </h1>
+                <h1 className="text-light">Please try again later!</h1>
               </div>
-              :
-              <div className="corkboard-card-container shadow-lg" style={{ height: "400px" }}>
-                <Stack gap={3} className="col-md-5 mx-auto">
-                  <h1 className="p-2" style={{ color: "white", fontSize: "40px" }}> Posterboard is empty!</h1>
-                  <small className="p-2" style={{ color: "white" }}> Come back later!</small>
-                </Stack>
-              </div>
-            }
+            </div> : <div>
 
-          </div >
+              {/* ************************ */}
+              {/* FILTER - SEARCH BUTTONS */}
+              {/* ************************ */}
+
+              <Row className="align-items-center justify-content-center mx-auto" >
+                <Col xxl={4} xl={4} lg={4} md={4} sm={4} xs={12} className="text-center mx-auto" >
+                  <Button
+                    className="mb-2"
+                    size="sm"
+                    onClick={() => setFilterPosts(prev => !prev)}
+                  >
+                    <Filter style={{ transform: posts.filterLatestPosts ? "rotate(0deg) " : "rotate(180deg)", marginBottom: "4px", fontSize: "20px" }} />
+                    {filterPosts ? "Latest to Oldest" : "Oldest to Latest"}
+                  </Button>
+                </Col>
+
+                <Col xxl={4} xl={4} lg={4} md={4} sm={4} xs={12} className="text-center mx-auto">
+                  <Button className="mb-2 pb-2" size="sm">
+                    <PinAngleFill className="mb-1" />
+                    {" "} Total Posts: {posts.totalPostCount} posts
+                  </Button>
+                </Col>
+
+                <Col xxl={4} xl={4} lg={4} md={4} sm={4} xs={12} className="text-center mx-auto">
+                  <ButtonGroup size="sm" className="mb-2">
+                    <Button onClick={() => setPaginationTrigger(false)} > <ArrowLeftSquare size={"30px"} /></Button>
+                    <Button variant="light">  {currentPage} of {Math.ceil(posts.totalPostCount / POST_PAGINATION_LIMIT)}</Button>
+                    <Button onClick={() => setPaginationTrigger(true)} > <ArrowRightSquare size={"30px"} /></Button>
+                  </ButtonGroup>
+                </Col>
+              </Row >
+
+              {/* ********************************************************************** */}
+              {/* CORKBOARD + POST CARDS*/}
+              {/* ********************************************************************** */}
+              {
+                posts.fetchedPosts.length !== undefined ?
+                  <div className="corkboard-card-container">
+
+                    {posts.fetchedPosts.map((p, i) => (
+                      <PostBoardCard {...p} key={`${p._id} - ${i}`}
+                      />
+                    ))}
+                  </div>
+                  :
+                  <div className="corkboard-card-container shadow-lg" style={{ height: "400px" }}>
+                    <Stack gap={3} className="col-md-5 mx-auto">
+                      <h1 className="p-2" style={{ color: "white", fontSize: "40px" }}> Posterboard is empty!</h1>
+                      <small className="p-2" style={{ color: "white" }}> Come back later!</small>
+                    </Stack>
+                  </div>
+              }
+              <Row className="align-items-center justify-content-center mx-auto" >
+                <Col xxl={4} xl={4} lg={4} md={4} sm={4} xs={12} className="text-center mx-auto" >
+                  <Button
+                    className="mb-2"
+                    size="sm"
+                    onClick={() => setFilterPosts(prev => !prev)}
+                  >
+                    <Filter style={{ transform: posts.filterLatestPosts ? "rotate(0deg) " : "rotate(180deg)", marginBottom: "4px", fontSize: "20px" }} />
+                    {filterPosts ? "Latest to Oldest" : "Oldest to Latest"}
+                  </Button>
+                </Col>
+
+                <Col xxl={4} xl={4} lg={4} md={4} sm={4} xs={12} className="text-center mx-auto">
+                  <Button className="mb-2 pb-2" size="sm">
+                    <PinAngleFill className="mb-1" />
+                    {" "} Total Posts: {posts.totalPostCount} posts
+                  </Button>
+                </Col>
+
+                <Col xxl={4} xl={4} lg={4} md={4} sm={4} xs={12} className="text-center mx-auto">
+                  <ButtonGroup size="sm" className="mb-2">
+                    <Button onClick={() => setPaginationTrigger(false)} > <ArrowLeftSquare size={"30px"} /></Button>
+                    <Button variant="light">  {currentPage} of {Math.ceil(posts.totalPostCount / POST_PAGINATION_LIMIT)}</Button>
+                    <Button onClick={() => setPaginationTrigger(true)} > <ArrowRightSquare size={"30px"} /></Button>
+                  </ButtonGroup>
+                </Col>
+              </Row >
+            </div >
       }
     </>
   );

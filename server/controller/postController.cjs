@@ -72,8 +72,6 @@ const fetchBatchedPosts = async (req, res) => {
   // GRABS SORT ORDER OF POSTS
   const sort = req.query.sort === "1" ? 1 : -1;
 
-  console.log(`SORTing: ${sort}`);
-
   await Post.find({})
     .sort({ _id: sort }) // NEWEST TO OLDEST
     .skip(limit * page - limit)
