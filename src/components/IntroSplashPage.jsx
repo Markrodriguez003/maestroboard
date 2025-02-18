@@ -4,12 +4,8 @@
 // ? https://codepen.io/binarykiwi/pen/BbOoPy
 
 import "./css/IntroSplashPage.css";
-import { ArrowRightCircle } from "react-bootstrap-icons";
-import { Row, Col, Figure, Stack, Image, Button } from "react-bootstrap";
-import IntroInfoBlock from "./IntroInfoBlock";
-import PostCounter from "./PostCounter";
-import ForumPostCounter from "./ForumPostCounter";
-import HeaderPanel from "./ui/HeaderPanel";
+import { Row, Col, Stack, Image, Button } from "react-bootstrap";
+
 import InfoPanel from "./ui/InfoPanel"
 
 // DESIGN & THEMES
@@ -24,7 +20,7 @@ import pushPin_2 from "../assets/imgs/post-imgs/push-pin2.png";
 import pushPin_3 from "../assets/imgs/post-imgs/push-pin3.png";
 import artPost from "../assets/imgs/post-imgs/post-it-dude.png";
 import artPost2 from "../assets/imgs/post-imgs/post-it-notes.png";
-import { HouseGearFill, MusicNoteBeamed, MusicNote } from "react-bootstrap-icons";
+import { MusicNoteBeamed, MusicNote } from "react-bootstrap-icons";
 
 
 /*----------------------------------------------------------------------------
@@ -43,13 +39,13 @@ function IntroSplashPage() {
       <br />
       <div className="corkboard-card-container">
         <br />
-        <div style={{ position: "relative" }}>
+        <div style={{ position: "relative" }} className="d-xxl-block d-xl-block d-lg-block d-md-block d-sm-none d-xs-none d-none">
           <Image src={pushPin_2} style={{ display: "inline", position: "absolute", width: "40px", left: "-50px" }} />
           <Image src={pushPin_3} style={{ display: "inline", position: "absolute", width: "40px", left: "-90px", top: "20px" }} />
           <Image src={pushPin_1} style={{ display: "inline", position: "absolute", width: "40px", left: "-50px", top: "40px" }} />
         </div>
         <div>
-          <Image src={artPost} style={{ width: "320px" }} />
+          <Image src={artPost} style={{ width: "320px" }} className="d-xxl-block d-xl-block d-lg-block d-md-block d-sm-none d-xs-none d-none" />
         </div>
         <Row className="my-4">
           <Col>
@@ -76,7 +72,7 @@ function IntroSplashPage() {
         {/* CORKBOARD POSTS */}
         {/* ****************************************************************************************** */}
         <Row className="gap-5 justify-content-center" style={{ padding: "0px" }} direction="horizontal">
-          <Col xl={4} lg={4} md={4} sm={12} xs={12} style={{ rotate: "-10deg" }} className="mt-5">
+          <Col xl={4} lg={4} md={4} sm={12} xs={12} style={{ rotate: "-10deg" }} className="mt-5 ">
             <div style={{ position: "relative", display: "inline", }}>
               <Image src={pushPin_1} style={{ position: "absolute", display: "inline", width: "35px", right: "10px", top: "-100px" }} />
               <Image src={corkboardPaper_2} style={{ width: "400px", height: "250px" }} />

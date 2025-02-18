@@ -43,8 +43,8 @@ function LatestItemDisplay(props) {
                     setLatestElements({ data: response.data, result: true })
                 })
                 .catch((err) =>
-                    setLatestElements({ data: null, result: false }),
-                    console.log(err));
+                    setLatestElements({ data: null, result: false, error: err }),
+                );
         }
 
 
@@ -60,7 +60,7 @@ function LatestItemDisplay(props) {
                 latestElements.result
                     ?
                     <>
-                        <Col direction="vertical" className="justify-content-center mx-auto w-100 shadow-lg">
+                        <Col direction="vertical" as={"div"} className="justify-content-center mx-auto w-100 shadow-lg">
                             <div className="mx-start"  >
                                 <h1 style={{
                                     color: color,
@@ -78,7 +78,7 @@ function LatestItemDisplay(props) {
                                     {header}
                                 </h1 >
                             </div>
-                            <Col>
+                            <Col as={"div"}>
                                 <Carousel className="p-0 w-100" indicators={false} >
 
                                     {
@@ -89,7 +89,7 @@ function LatestItemDisplay(props) {
                                                     <Card.Body>
                                                         <Card.Title>{p.title}</Card.Title>
                                                         <hr />
-                                                        <Card.Text style={{ color: color, fontSize: "12px" }}>
+                                                        <Card.Text style={{ color: color, fontSize: "12px" }} as={"div"}>
 
                                                             {body.map((field, index) =>
 

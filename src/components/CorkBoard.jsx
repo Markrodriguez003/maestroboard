@@ -25,7 +25,6 @@ import { SITE_COLORS } from "./css/site";
 |   📦 Returns: JSX component
 *----------------------------------------------------------------------------*/
 
-
 function Corkboard() {
 
 

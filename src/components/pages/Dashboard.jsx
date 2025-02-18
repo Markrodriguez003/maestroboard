@@ -1,9 +1,9 @@
 
 // COMPONENTS
 import { useState, useEffect, useRef } from "react";
-import { Row, Col, Card, Button, Image, Carousel, Tab, Stack, ListGroup, Container, Spinner } from "react-bootstrap";
+import { Row, Col, Card, Button, Image, Tab, ListGroup, Container, Spinner } from "react-bootstrap";
 import HeaderPanel from "../ui/HeaderPanel";
-import PostBoardCard from "../PostBoardCard";
+ 
 import BoardPostModal from "../BoardPostModal";
 import ArticlePostModal from "../ArticlePostModal";
 import { Link } from "react-router-dom";
@@ -26,7 +26,7 @@ import { dateTransform } from "../../utils/dateTransform";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 // ASSETS
-import { FileEarmarkPerson, SpeakerFill, FileEarmarkMusicFill, DatabaseGear, Tools, PinFill, PencilSquare, PostcardFill, CardList, Scissors, Newspaper, Filter } from "react-bootstrap-icons";
+import { FileEarmarkPerson, SpeakerFill, FileEarmarkMusicFill, Tools, PinFill, PencilSquare, PostcardFill, CardList, Scissors, Newspaper, Filter } from "react-bootstrap-icons";
 import { SITE_COLORS } from "../css/site";
 
 // CSS

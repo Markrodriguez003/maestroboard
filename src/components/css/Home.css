@@ -1,0 +1,9 @@
+.ad-1 {
+  width: 65%;
+}
+
+@media screen and (max-width: 1080px) {
+  .ad-1 {
+    width: 100%;
+  }
+}
