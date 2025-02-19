@@ -97,8 +97,6 @@ function Corkboard() {
       setCurrentPage(1);
       fetchData(currentPage);
 
-
-
     } else if (filterPosts == false) {
       setPosts(prev => ({
         ...prev,

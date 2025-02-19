@@ -1,20 +1,24 @@
 
 // REACT
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 
 // COMPONENTS
-import { Nav, Navbar, Container } from "react-bootstrap";
+import { Nav, Navbar, Container, NavDropdown } from "react-bootstrap";
 
 // LIBRARY
 import axios from "axios";
 
+// CONTEXT
+import { isLoggedInContext } from "../context/LoggedInContext";
+
 // ASSETS
-import { PersonFillLock, Newspaper, PatchQuestionFill, PinAngleFill, CardChecklist } from "react-bootstrap-icons";
+import { PersonFillLock, Newspaper, PatchQuestionFill, PinAngleFill, CardChecklist, LayoutSidebarReverse, DatabaseFill, DatabaseFillGear } from "react-bootstrap-icons";
 import MainLogo from "./MainLogo";
 import { SITE_COLORS } from "../css/site";
 
 // CSS
 import "../css/Header.css";
+import { useFormState } from "react-hook-form";
 
 
 /*----------------------------------------------------------------------------
@@ -25,62 +29,49 @@ import "../css/Header.css";
 |   📦 Returns: JSX component
 *----------------------------------------------------------------------------*/
 
-
-// TOGGLES IF USER IS SIGNED IN. EITHER DISPLAY SIGN IN OR SIGNED IN NAV LINKS / ICONS
-
 function Header() {
 
+  // GETS SESSION LOG IN STATUS
+  let sessionLoginStatus = sessionStorage.getItem('isLoggedIn');
 
-  // HOLDS TRIGGER FOR AUTHENTICATED USER
-  const [isAuthenticatedUser, setIsAuthenticatedUser] = useState(false);
 
-  // GRABBING SESSION MEMORY TO CHECK TO SEE IF USER IS SIGNED IN
-  // VIA TOKEN DATA
-  useEffect(() => {
-    function getSessionToken() {
-      const tokenString = sessionStorage.getItem('token');
-      const userToken = JSON.parse(tokenString);
-      return userToken;
-    };
 
-    async function authenticateUser() {
-      const token = getSessionToken();
+  // TRIGGERS HEADER ITEMS
+  const [status, setStatus] = useState(JSON.parse(sessionLoginStatus));
 
-      if (!token || token === null) {
-        setIsAuthenticatedUser(false);
-        return;
-      }
-
-      const config = {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          "Data": "Custom-Data"
-        }
-      }
-
-      await axios
-        .get("http://localhost:3005/api/auth", config)
-        .then((response) => {
-          setIsAuthenticatedUser(true);
-
-        })
-        .catch((err) => {
-          setIsAuthenticatedUser(false);
-          console.log(`Error verfiying user! --> ${err}`)
-
-        });
-    }
-
-    if (!isAuthenticatedUser) {
-      authenticateUser();
-    }
-  }, [])
 
   // useEffect(() => {
-  //   console.log(`Is user logged in?: ${isAuthenticatedUser}`)
-  //   // if (isAuthenticatedUser) { window.location.reload(); }
+  //   // function setInitialSessionStatus() {
+  //   //   let sessionLoginStatus = sessionStorage.getItem('isLoggedIn');
+  //   //   console.log(`Start of Getting session login status---> ${sessionLoginStatus} `)
+  //   //   setStatus(sessionLoginStatus);
+  //   //   console.log(`Setting initial session login status---> ${status} `)
+  //   // }
 
-  // }, [isAuthenticatedUser])
+  //   // setInitialSessionStatus();
+
+  //   console.log("?!!?!?!?!?!?!?!??!?!?!?!?!?!?")
+  // }, []);
+
+
+
+
+  // THIS WORKS!
+  // useEffect(() => {
+  //   console.log(`Status: ${status}`)
+  // }, [status])
+
+  // LISTENS TO CHANGES
+  // useEffect(() => {
+  //   function sessionListener() {
+  //     let x = sessionStorage.getItem('isLoggedIn');
+  //     console.log(`INITIAL STATUS --> ${x}`)
+  //     console.log('The session has changed!');
+  //   }
+
+  //   window.addEventListener('storage', sessionListener)
+  //   return () => window.removeEventListener('storage', sessionListener)
+  // },)
 
   return (
     <Navbar bg="dark" expand="lg" variant="dark" className="bg-body-tertiary p-0 m-0 d-flex  " >
@@ -104,17 +95,26 @@ function Header() {
               <PatchQuestionFill style={{ verticalAlign: "center", paddingBottom: "5px", fontSize: "20px" }} /> {" "}
               About
             </Nav.Link>
-            <Nav.Link eventKey={2} href={isAuthenticatedUser ? "/dashboard" : "/login"}>
-              <PersonFillLock style={{ verticalAlign: "center", paddingBottom: "5px", fontSize: "20px" }} />
-              {isAuthenticatedUser ? "Admin Dashboard" : "Admin Login"}
-            </Nav.Link>
 
+            <Nav.Link href="/about" className="header-list-item " >
+              About
+            </Nav.Link>
+            <NavDropdown title={status === true ? "Admin Dashboard" : "Admin Login"} id="navbarScrollingDropdown">
+              <NavDropdown.Item href="#log-in-out" style={{ backgroundColor: "transparent !important", background: "transparent" }}>
+                <Nav.Link eventKey={2} href={"/dashboard"} style={{ display: status === true ? "inline" : "none", backgroundColor: "transparent !important" }}>
+                  <DatabaseFillGear style={{ verticalAlign: "center", paddingBottom: "5px", fontSize: "20px" }} />
+                  Dashboard
+                </Nav.Link>
+                <Nav.Link eventKey={2} href={status === true ? "/log-out" : "/login"} style={{ backgroundColor: "transparent !important" }}>
+                  <PersonFillLock style={{ verticalAlign: "center", paddingBottom: "5px", fontSize: "20px" }} />
+                  {status === true ? "Log out" : "Log in"}
+                </Nav.Link>
+              </NavDropdown.Item>
+            </NavDropdown>
           </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar >
-
-
   );
 }
 

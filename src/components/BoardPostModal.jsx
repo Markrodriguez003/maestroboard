@@ -108,7 +108,7 @@ function BoardPostModal() {
           error: "successful"
         })))
       } catch (error) {
-        console.log(`Here is the error inserting new post::: ${error}`);
+        // console.log(`Here is the error inserting new post::: ${error}`);
         ToastNotificationContext.setToast((prevToast => ({
           ...prevToast,
           show: true,
@@ -138,7 +138,7 @@ function BoardPostModal() {
               secureArry = [...secureArry, data.secureURL];
 
             }).catch((error) => {
-              console.log(`Error updating state with images::${error}`)
+              // console.log(`Error updating state with images::${error}`)
               ToastNotificationContext.setToast((prevToast => ({
                 ...prevToast,
                 show: true,
@@ -235,9 +235,9 @@ function BoardPostModal() {
   // CHECKS TO SEE WHAT POST TYPE USER IS USING FOR POST FORM
   const [postSubType, setPostSubType] = useState("");
 
-  useEffect(() => {
-    console.log(`TYPE::: ${postSubType}`)
-  }, [postSubType])
+  // useEffect(() => {
+  //   console.log(`TYPE::: ${postSubType}`)
+  // }, [postSubType])
 
   // MAX POST BODY CHARACTERS
   const MAX_TOTAL_POST_BODY_CHARACTERS = 400;

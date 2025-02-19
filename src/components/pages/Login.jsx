@@ -1,11 +1,14 @@
 
 // COMPONENTS
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Row, Col, Form, Button, Container, Spinner, Toast } from "react-bootstrap";
 
 // LIBRARIES
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
+
+// CONTEXT
+import { isLoggedInContext } from "../context/LoggedInContext";
 
 // ASSETS
 import { PersonFillLock } from "react-bootstrap-icons";
@@ -32,12 +35,19 @@ import { SITE_COLORS } from "../css/site";
 
 function Login(props) {
 
+
+
+
   // Used to navigate to another page
   const navigate = useNavigate();
 
+  // Used to set/get user logged in status 
+  const isLoggedIn = useContext(isLoggedInContext);
+
   // Sets up login authentication tokens to session storage
-  function setSessionToken(userToken) {
+  function setSessionToken(userToken, userIsLoggedIn) {
     sessionStorage.setItem('token', JSON.stringify(userToken));
+    sessionStorage.setItem('isLoggedIn', JSON.stringify(userIsLoggedIn));
   }
 
   // Sets field values to form object )
@@ -80,13 +90,18 @@ function Login(props) {
             status: "successful"
           }
         ));
+        // sets logged in status context 
+        isLoggedIn.setStatus(true);
         // sets user login token to session storage
-        setSessionToken(response.data.token);
+        setSessionToken(response.data.token, true);
         navigate('/dashboard');
+        window.location.reload();
 
       }
 
     } catch (error) {
+      isLoggedIn.setStatus(false);
+      setSessionToken(null, false);
       setFormActionResults(prev => (
         {
           ...prev,

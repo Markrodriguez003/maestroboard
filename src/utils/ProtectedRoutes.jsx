@@ -25,7 +25,7 @@ import LoadingSpinner from "../components/ui/LoadingSpinner";
 function ProtectedRoutes() {
 
 
-    console.log("INSIDE PROTECTED ROUTE!")
+    // console.log("INSIDE PROTECTED ROUTE!")
     // HOLDS TRIGGER FOR AUTHENTICATED USER
     const [isAuthenticatedUser, setIsAuthenticatedUser] = useState(null);
 
@@ -47,7 +47,7 @@ function ProtectedRoutes() {
             const token = getSessionToken();
 
             if (!token || token === null) {
-                console.log(`TOKEN IS EMPTY!`)
+                // console.log(`TOKEN IS EMPTY!`)
                 setIsAuthenticatedUser(false);
                 return;
             }
@@ -62,7 +62,7 @@ function ProtectedRoutes() {
             await axios
                 .get("http://localhost:3005/api/auth/user", config)
                 .then((response) => {
-                    console.log(`Response inside auth route::${JSON.stringify(response.data.adminLogin)} + ${JSON.stringify(response.data.login)}`)
+                    // console.log(`Response inside auth route::${JSON.stringify(response.data.adminLogin)} + ${JSON.stringify(response.data.login)}`)
 
                     if (response.data.login && response.data.adminLogin) {
                         setIsAuthenticatedUser(true);

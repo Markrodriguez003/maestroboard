@@ -5,6 +5,7 @@ import "./components/css/App.css";
 // CONTEXT
 import { NotificationToast } from "./components/context/NotificationToast";
 import { ConfirmationModal } from "./components/context/ConfirmationModal";
+import { LoggedInContext } from "./components/context/LoggedInContext";
 
 // PAGES
 import Home from "./components/pages/Home";
@@ -29,6 +30,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/ui/Header";
 import Footer from "./components/ui/Footer";
 import PostEdit from "./components/ui/PostEdit";
+import Logout from "./components/Logout";
 
 function App() {
 
@@ -36,33 +38,37 @@ function App() {
 
     <NotificationToast>
       < Router >
-        < Header />
-        <Routes>
+        <LoggedInContext>
+          < Header />
+          <Routes>
 
-          {/* wip */}
-          {/* ************************************************* */}
-          {/* <Route path="/sign-up" element={<SignUpForm />}></Route> */}
-          {/* ************************************************* */}
-          <Route path="/" element={<Home />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/board" element={<CommunityBoard />} />
-          <Route path="/news" element={<News />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/article/:id" element={<NewsArticlePage />} />
-          <Route path="/post/:id" element={<PostPage />} />
-          <Route path="/forum" element={<Forum />} />
-          <Route path="/login" element={<Login />} />
+            {/* wip */}
+            {/* ************************************************* */}
+            {/* <Route path="/sign-up" element={<SignUpForm />}></Route> */}
+            {/* ************************************************* */}
+            <Route path="/" element={<Home />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/board" element={<CommunityBoard />} />
+            <Route path="/news" element={<News />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/article/:id" element={<NewsArticlePage />} />
+            <Route path="/post/:id" element={<PostPage />} />
+            <Route path="/forum" element={<Forum />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/log-out" element={<Logout />} />
 
-          <Route element={<ProtectedRoutes />}>
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/edit/article/:id" element={<ConfirmationModal><ArticleEdit /></ConfirmationModal>} />
-            <Route path="/edit/post/:id" element={<ConfirmationModal><PostEdit /></ConfirmationModal>} />
-          </Route>
+            {/* PROTTECTED ROUTES */}
+            <Route element={<ProtectedRoutes />}>
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/edit/article/:id" element={<ConfirmationModal><ArticleEdit /></ConfirmationModal>} />
+              <Route path="/edit/post/:id" element={<ConfirmationModal><PostEdit /></ConfirmationModal>} />
+            </Route>
 
-
-          <Route path="*" element={<PageNotFound />} />
-        </Routes>
-        <Footer />
+            {/* ERROR PAGES */}
+            <Route path="*" element={<PageNotFound />} />
+          </Routes>
+          <Footer />
+        </LoggedInContext>
       </Router >
 
     </NotificationToast >

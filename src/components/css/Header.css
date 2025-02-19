@@ -97,6 +97,18 @@
 .header-list-item:hover {
   color: white;
 }
+
+div.dropdown-menu.show {
+  background-color: #025555;
+  border: white 1px solid;
+  color: white;
+  padding: 0;
+  margin: 0;
+}
+
+div.dropdown-menu.show * {
+  color: white;
+}
 .main-header {
   background: #102933;
   background: -moz-linear-gradient(left, #102933 0%, #102933 50%, #102933 100%);

@@ -43,8 +43,6 @@ import "../css/Dashboard.css";
 
 function Dashboard(props) {
 
-
-
     // GRABBING SESSION MEMORY TO CHECK TO SEE IF USER IS SIGNED IN
     // VIA TOKEN DATA
     function getSessionToken() {
