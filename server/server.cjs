@@ -160,9 +160,10 @@ app.get("/api/load-user-count", function (req, res) {
 // ? https://www.geeksforgeeks.org/how-to-send-basic-auth-with-axios-in-react-node/#
 // ? https://www.geeksforgeeks.org/how-to-create-and-verify-jwts-with-node-js/
 app.post("/api/login", (req, res) => {
-  const { email, password } = req.body;
+  const { email, password, gToken } = req.body;
   let e = email;
   let p = password;
+  let g = gToken;
 
   // JWT OPTIONS FOR GENERATING TOKEN
   const JWT_OPTIONS = {
@@ -181,9 +182,13 @@ app.post("/api/login", (req, res) => {
         foundAccountEmail === "admin@admin.com" &&
         p === foundAccountPassword
       ) {
+
+
+          
+
+
         // MB's JWT SECRET KEY
         const SECRET_KEY = process.env.VITE_JWT_SECRET_KEY;
-
         // PAYLOAD FOR JWT
         const PAYLOAD = {
           // USER'S EMAIL

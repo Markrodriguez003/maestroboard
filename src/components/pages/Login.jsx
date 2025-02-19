@@ -1,11 +1,12 @@
 
 // COMPONENTS
-import { useState, useContext } from "react";
+import { useState, useContext, useRef } from "react";
 import { Row, Col, Form, Button, Container, Spinner, Toast } from "react-bootstrap";
 
 // LIBRARIES
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
+import ReCAPTCHA from "react-google-recaptcha";
 
 // CONTEXT
 import { isLoggedInContext } from "../context/LoggedInContext";
@@ -36,7 +37,8 @@ import { SITE_COLORS } from "../css/site";
 function Login(props) {
 
 
-
+  // REF FOR recaptcha
+  const recaptchaRef = useRef(null);
 
   // Used to navigate to another page
   const navigate = useNavigate();
@@ -73,8 +75,16 @@ function Login(props) {
   // Makes API Fetch request to pass and check status to see is user credentials are valid.
   async function LOGIN_USER_AUTH(userChk) {
     try {
-      const response = await axios.post('http://localhost:3005/api/login',
-        { email: userChk.email, password: userChk.password });
+      const gToken = recaptchaRef.current.getValue();
+      const config = {
+        headers: {
+          'g-captcha': `${gToken}`,
+        }
+      }
+
+      // const response = await axios.post('http://localhost:3005/api/login',
+      const response = await axios.post('http://localhost:3005/api/auth/login',
+        { email: userChk.email, password: userChk.password, captchaToken: gToken }, config);
       setFormActionResults(prev => (
         {
           ...prev,
@@ -92,6 +102,7 @@ function Login(props) {
         ));
         // sets logged in status context 
         isLoggedIn.setStatus(true);
+        recaptchaRef.current.reset();
         // sets user login token to session storage
         setSessionToken(response.data.token, true);
         navigate('/dashboard');
@@ -111,6 +122,7 @@ function Login(props) {
           status: "failure"
         }
       ));
+      recaptchaRef.current.reset();
       console.error('Error logging in:', JSON.stringify(error));
     }
   }
@@ -158,6 +170,12 @@ function Login(props) {
               onChange={(e) => setField('password', e.target.value)}
             />
           </Form.Group>
+          <Form.Group>
+            <ReCAPTCHA
+              ref={recaptchaRef}
+              sitekey={import.meta.env.VITE_GOOGLE_CAPTCHA_SITE_KEY} theme="dark" />
+          </Form.Group>
+          <br />
           {/* <Form.Group className="mb-3" controlId="formBasicCheckbox">
           <Form.Check type="checkbox" label="Check me out" />
           </Form.Group> */}
