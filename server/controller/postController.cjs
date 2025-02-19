@@ -39,26 +39,9 @@ const fetchAllPostsTotalCount = async (req, res) => {
 // GET --> api/posts/fetch-all
 //************************************************************** */
 
-//  PAGE ID :
-//  1 --> "" (loads all)
-//  2 --> 67a689b958dd2affe9acbff4
-//  3 --> 67a6855f58dd2affe9acbfdc
-//  4 --> 67a67f7558dd2affe9acbfc4
-//  5 --> null (won't load)
-
-// NEXT CURSOR POSTS ID :
-//  1 --> 67a689b958dd2affe9acbff4
-//  2 --> 67a6855f58dd2affe9acbfdc
-//  3 --> 67a67f7558dd2affe9acbfc4
-//  4 --> null
-
 const fetchBatchedPosts = async (req, res) => {
   const DEFAULT_BATCH_LIMIT = 4;
   const DEFAULT_PAGE = 1;
-
-  // console.log(`LIMIT: ${req.query.limit}`);
-  // console.log(`PAGE: ${req.query.page}`);
-  // console.log(`SORT: ${req.query.sort}`);
 
   // SENDS TOTAL POST AMOUNT
   const postsTotalCount = await Post.countDocuments({});
@@ -181,7 +164,6 @@ const insertPost = async (req, res) => {
   };
 
   await Post.create(newPost).then((result) => {
-    // console.log(result);
     res.json({ response: result });
   });
 };
@@ -215,9 +197,6 @@ const deletePost = async (req, res) => {
         }
         Post.findByIdAndDelete(req.params.id)
           .then((result) => {
-            console.log(
-              `POST IN THE BACKEND HAS BEEN DELETED:: ${JSON.stringify(result)}`
-            );
             res.json(result);
           })
           .catch((error) => {

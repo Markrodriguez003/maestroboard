@@ -9,18 +9,6 @@ const cookieParser = require("cookie-parser");
 const jwt = require("jsonwebtoken");
 const cors = require("cors");
 
-// // CLOUDINARY
-// const cloudinary = require("cloudinary").v2;
-
-// // CLOUDINARY ADMIN CONFIG
-// cloudinary.config({
-//   cloud_name: "dytbnvgzg",
-//   api_key: process.env.VITE_CLOUDINARY_API_KEY,
-//   api_secret: process.env.VITE_CLOUDINARY_API_SECRET,
-//   secure: false,
-//   // signature_algorithm: 'sha256'
-// });
-
 // Loading middleware for body parsing / json / urlecoding / cors
 const bodyParser = require("body-parser");
 app.use(express.json());
@@ -56,11 +44,13 @@ const articles = require("./Routes/articles.cjs");
 // const users = require("./Routes/user.cjs");
 const posts = require("./Routes/posts.cjs");
 const auth = require("./Routes/auth.cjs");
+const users = require("./Routes/users.cjs");
 
 // API ENPOINT ROUTES
 app.use("/api/articles", articles);
 app.use("/api/posts", posts);
 app.use("/api/auth", auth);
+app.use("/api/users", users);
 
 // Connecting project to mongoose database.
 mongoose.connect(
@@ -73,6 +63,9 @@ mongoose.connect(
 // Assigning "db" to created mongoose link above
 const db = mongoose.connection;
 
+// ************************************************************************
+//  UTILITY DATABASE FUNCTIONS
+// ************************************************************************
 async function loadPosts() {
   await Post.insertMany(ex.examplePosts)
     .then(() => {
@@ -115,7 +108,6 @@ async function loadUsers() {
     });
 }
 
-// * LOADS
 // Loads Posts
 // loadPosts();
 
@@ -153,69 +145,6 @@ app.get("/api/load-user-count", function (req, res) {
     })
     .catch((err) => {
       console.log("articles cannot be loaded from the db!");
-    });
-});
-
-// LOG IN ROUTE FOR USERS
-// ? https://www.geeksforgeeks.org/how-to-send-basic-auth-with-axios-in-react-node/#
-// ? https://www.geeksforgeeks.org/how-to-create-and-verify-jwts-with-node-js/
-app.post("/api/login", (req, res) => {
-  const { email, password, gToken } = req.body;
-  let e = email;
-  let p = password;
-  let g = gToken;
-
-  // JWT OPTIONS FOR GENERATING TOKEN
-  const JWT_OPTIONS = {
-    expiresIn: "1h",
-  };
-
-  // FINDS USER IN DB
-  UserAccount.find({ email: e })
-    .then((users) => {
-      const foundAccountEmail = users[0].email;
-      const foundAccountPassword = users[0].password;
-      const foundAccountID = users[0]._id;
-
-      if (
-        foundAccountEmail !== undefined &&
-        foundAccountEmail === "admin@admin.com" &&
-        p === foundAccountPassword
-      ) {
-
-
-          
-
-
-        // MB's JWT SECRET KEY
-        const SECRET_KEY = process.env.VITE_JWT_SECRET_KEY;
-        // PAYLOAD FOR JWT
-        const PAYLOAD = {
-          // USER'S EMAIL
-          id: foundAccountID,
-          // USER'S ID
-          email: foundAccountEmail,
-          // WILL DETERMINE IF USER SIGNING IN IS AN ADMIN OR USER
-          isAdmin: true,
-        };
-
-        // CREATES UNIQUE JWT TOKEN USING PAYLOAD + MB JWT_SECRET_KEY
-        const token = jwt.sign(PAYLOAD, SECRET_KEY, JWT_OPTIONS);
-
-        res.status(200).json({
-          message: `Signed in!`,
-          status: "successful",
-          token: token,
-        });
-      } else {
-        console.log(
-          "Cannot secure create user session! Please try again later!"
-        );
-        res.status(401).json({ message: "Invalid credentials!" });
-      }
-    })
-    .catch((err) => {
-      res.status(401).json({ message: `Invalid credentials! :: ${err}` });
     });
 });
 

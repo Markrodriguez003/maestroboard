@@ -176,9 +176,6 @@ function Login(props) {
               sitekey={import.meta.env.VITE_GOOGLE_CAPTCHA_SITE_KEY} theme="dark" />
           </Form.Group>
           <br />
-          {/* <Form.Group className="mb-3" controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="Check me out" />
-          </Form.Group> */}
           <Button
             type="submit"
             onSubmit={formSubmit}
@@ -196,7 +193,7 @@ function Login(props) {
             <Toast.Header style={{ backgroundColor: "red", color: "white" }}>
               <strong className="me-auto">Invalid Credentials!</strong>
             </Toast.Header>
-            <Toast.Body>Check your form fields!</Toast.Body>
+            <Toast.Body>Check your form fields & Make sure you verify with Google captcha! </Toast.Body>
           </Toast>
           :
           formActionResults.status === "successful" ?

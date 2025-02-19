@@ -109,7 +109,6 @@ const authenticateCaptcha = async (req, res, next) => {
 
   const SECRET_CATPCHA_KEY = process.env.VITE_GOOGLE_CAPTCHA_SECRET_KEY;
 
-  // console.log(`G-TOKEN!!!! ${TOKEN}`);
   try {
     // Sending secret key and response token to Google Recaptcha API for authentication.
     const response = await axios.post(
