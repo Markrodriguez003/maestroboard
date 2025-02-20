@@ -108,45 +108,24 @@ async function loadUsers() {
     });
 }
 
-// Loads Posts
 // loadPosts();
-
-// Loads Users
 // loadUsers();
-
-// Loads Articles
 // loadArticles();
 
+// ! ********************************************************
 // ! DELETES
-// Deletes users
+// ! ********************************************************
+
 // deleteUsers();
-
-// Deletes Posts
 // deletePosts();
-
-// Deletes Articles
 // deleteArticles();
 
-// * Testing connection to db
 db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", function () {
   console.log("DB connected");
 });
 
-// * LOADS MAIN HOME PAGE
 app.get("/", function (req, res) {});
-
-// GRABS THE AMOUNT OF USERS IN DB
-app.get("/api/load-user-count", function (req, res) {
-  UserAccount.find({})
-    .then((users) => {
-      // console.log("There are " + users + " users currently in the database.");
-      res.json(users.length);
-    })
-    .catch((err) => {
-      console.log("articles cannot be loaded from the db!");
-    });
-});
 
 // Listens to port (3003) for route inputs
 app.listen(PORT, function () {

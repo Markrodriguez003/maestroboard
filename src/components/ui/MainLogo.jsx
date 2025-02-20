@@ -13,6 +13,17 @@ import { useNavigate } from 'react-router-dom';
 // CSS
 import "../css/MainLogo.css";
 
+
+/*----------------------------------------------------------------------------
+|   ⚙️ Use: Logo panel + brand title for main logo 
+|   
+|   🔧 Todo: Add customizable color schemes & animation of conductor(?)
+|      (on hover - music notes fly out?)
+|
+|   📦 Returns: JSX component
+*----------------------------------------------------------------------------*/
+
+
 function MainLogo() {
 
     const navigate = useNavigate();
@@ -36,9 +47,6 @@ function MainLogo() {
                 </small>
             </Col>
         </Row>
-
-
-
     );
 }
 

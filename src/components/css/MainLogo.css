@@ -9,6 +9,7 @@
 .brand-logo-img {
   height: 95px;
   width: auto;
+  /* background-color: pink; */
 }
 
 .brand-title-small {
@@ -16,4 +17,17 @@
   color: white;
   padding-top: -50px;
   margin-left: 3px;
+}
+
+/* MEDIA QUERIES */
+
+@media screen and (max-width: 480px) {
+  .brand-logo-title {
+    /* margin: 0px 10px -15px 0px; */
+    font-size: 1.5rem;
+  }
+  .brand-title-small {
+    margin: 0px 0px 0px 3px;
+    font-size: 0.5rem;
+  }
 }
