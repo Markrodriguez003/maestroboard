@@ -1,3 +1,7 @@
+html, body{ 
+  min-width:100%;
+}
+
 body {
   background-image: url("./assets/imgs/background-textures/bg-pattern-c.png");
 }

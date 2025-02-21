@@ -30,18 +30,24 @@ import { SITE_COLORS } from "../css/site";
 function Home() {
     return (
         <>
-
+            {/* *************************************************************** */}
+            {/* CORKBOARD */}
+            {/* *************************************************************** */}
             <IntroSplashPage />
             <br />
+            {/* *************************************************************** */}
+            {/* ADVERT */}
+            {/* *************************************************************** */}
             <div className="w-100 mb-4 text-center">
                 <Link to={"https://harleybenton.com/newcomer/"} target="_blank">
                     <Image src={ad_1} className="ad-1" />
                 </Link>
-
             </div>
-
+            {/* *************************************************************** */}
+            {/* LATEST POSTS + ARTICLES */}
+            {/* *************************************************************** */}
             {/* LARGER MONITOR SIZES */}
-            <Row className="justify-content-center">
+            {/* <Row className="justify-content-center m-0 p-0">
                 <Col className="w-25 d-sm-none d-xs-none d-lg-block d-md-none d-xl-block d-xxl-block d-none" lg={5} xl={5} xxl={5} md={12} sm={12} xs={12}>
                     <LatestItemDisplay
                         header="Latest Posts"
@@ -65,11 +71,11 @@ function Home() {
                         body={["title", "subTitle", "category", "author", "date",]}
                     />
                 </Col>
-            </Row >
+            </Row > */}
 
             {/* MOBILE */}
-            <Row className="justify-content-center">
-                <Col className="w-75 d-sm-block d-xs-block d-lg-none d-md-block d-xl-none d-xxl-none d-block" sm={12} xs={12}>
+            {/* <Row className="justify-content-center m-0 p-0">
+                <Col className="w-100 d-sm-block d-xs-block d-lg-none d-md-block d-xl-none d-xxl-none d-block" sm={12} xs={12}>
                     <LatestItemDisplay
                         header="Latest Posts"
                         fetchType="Posts"
@@ -81,7 +87,7 @@ function Home() {
                     />
                 </Col>
 
-                <Col className="w-75 d-sm-block d-xs-block d-lg-none d-md-block d-xl-none d-xxl-none d-block" md={12} sm={12} xs={12}>
+                <Col className="w-100  d-sm-block d-xs-block d-lg-none d-md-block d-xl-none d-xxl-none d-block" md={12} sm={12} xs={12}>
                     <LatestItemDisplay
                         header="Latest Articles"
                         fetchType="Articles"
@@ -92,7 +98,7 @@ function Home() {
                         body={["title", "subTitle", "category", "author", "date",]}
                     />
                 </Col>
-            </Row >
+            </Row > */}
         </>
 
     );

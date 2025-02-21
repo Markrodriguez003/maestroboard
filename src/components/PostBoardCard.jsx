@@ -61,7 +61,7 @@ import { SITE_COLORS } from "./css/site";
 *----------------------------------------------------------------------------*/
 
 function PostBoardCard(props) {
-  const [isFlipped, setIsFlipped] = useState(false);
+  // const [isFlipped, setIsFlipped] = useState(false);
   const [revealUnderCard, setRevealUnderCard] = useState(false);
   const [isPostCardLoaded, setIsPostCardLoaded] = useState(false);
 
@@ -87,9 +87,9 @@ function PostBoardCard(props) {
   }
 
 
-  function handleFlipClick() {
-    setIsFlipped((prev) => !prev);
-  };
+  // function handleFlipClick() {
+  //   setIsFlipped((prev) => !prev);
+  // };
 
 
   const [lightBox, setLightBox] = useState(false);
@@ -112,10 +112,19 @@ function PostBoardCard(props) {
   })
 
 
+  // https://www.geeksforgeeks.org/design-a-flip-card-effect-using-reactjs/#approach-1-using-css-styling
+
   // CHECKS TO SEE IF POSTBOARD CARD IS LOADED. PLACE LOADING CARD IN LIEU
   useEffect(() => {
     setIsPostCardLoaded(true);
   }, []);
+
+
+  const [isFlipped, setFlipped] = useState(false);
+
+  const handleFlip = () => {
+    setFlipped(!isFlipped);
+  };
 
   return (
     <>
@@ -135,146 +144,10 @@ function PostBoardCard(props) {
       />
 
       {isPostCardLoaded ?
-        <div className="card-container">
-
-          <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
-            <Card className="postCard shadow-lg">
-
-
-
-              {/* **************************************************************************************** */}
-              {/* FRONT CARD */}
-              {/* **************************************************************************************** */}
-
-              {tempGalleryArry?.length !== 0 || tempGalleryArry !== undefined
-                ?
-                <Carousel interval={null}>
-                  ({
-                    tempGalleryArry?.map(function (img, i) {
-                      return (
-                        <Carousel.Item key={`${Math.floor(Math.random() * 100)}-cork-post-key-${img}-${Math.floor(Math.random() * 100)}`} style={{ cursor: "pointer" }} onClick={handleLightbox}>
-                          <>
-                            < Image
-                              key={`image-${img.src} - ${i}`}
-                              className="d-block"
-                              style={{
-                                height: "350px",
-                                width: "100%",
-                                objectFit: "cover",
-                                backgroundColor: "rgba(0, 115, 123, 0.521)"
-                              }}
-                              rounded
-                              src={img.src ? img.src : defaultImage}
-                              alt={`alt- post-slide - ${img}`}
-                              onError={event => {
-                                event.target.onerror = null
-                                event.target.src = defaultImage
-                              }}
-                            />
-                          </>
-                        </ Carousel.Item>
-                      )
-                    })
-                  })
-                </Carousel>
-                :
-                < Image
-                  key={`image-==`}
-                  className="d-block"
-                  style={{
-                    height: "300px",
-                    width: "100%",
-                    objectFit: "contain",
-                    backgroundColor: "rgba(0,0,0,0.2)"
-                  }}
-                  rounded
-                  src={defaultImage}
-                  alt={`alt- post-slide`}
-                />
-              }
-              <Card.Body>
-                <img
-                  src={pushPinRand[Math.floor(Math.random() * 5)]}
-                  alt="pushpin"
-                  className="pushPin"
-
-                ></img>
-                <Badge bg="success" style={{ position: "absolute", top: "0", right: "0", fontSize: "20px" }} className="p-2 mx-0">
-                  ${price} {trade}
-                </Badge>
-                <Stack direction="horizontal" className="mb-2 justify-content-center">
-                  <Badge bg="primary" style={{ fontSize: "12px" }} className="p-2 mx-1">
-                    {type}
-                  </Badge>
-                  <Badge bg="primary" style={{ fontSize: "12px" }} className="p-2 mx-1">
-                    {firm_price ? "Firm Price" : "Price Negotiable"}
-                  </Badge>
-                  <Badge bg="primary" style={{ fontSize: "12px" }} className="p-2 mx-1">
-                    {trade ? "Open to trades" : "No Trades"}
-                  </Badge>
-                </Stack>
-                <hr />
-                <Card.Title className="text-center mt-3" style={{ fontSize: "24px" }}>{title}</Card.Title>
-              </Card.Body>
-              <Card.Footer className="text-center" style={{ backgroundColor: SITE_COLORS.lightMain }}>
-                <Button size="sm" onClick={handleFlipClick} variant="primary" className="mx-2" >More Info</Button>
-                <Link to={`/post/${_id}`}>
-                  <Button size="sm" variant="secondary" className="mx-2">Go to post</Button>
-                </Link>
-                <Button onClick={handleUnderCardClick} size="sm" variant="success" className="mx-2">Contact</Button>
-              </Card.Footer>
-
-            </Card >
-
-            {/************************************************************************************************** */}
-            {/* BACK CARD */}
-            {/************************************************************************************************** */}
-
-            <Card className="postCard shadow-lg">
-              <Card.Header style={{ color: "white", backgroundColor: SITE_COLORS.lightMain }}>
-                <Card.Title className="mt-3" style={{ fontWeight: "bold", fontSize: "18px" }}>{title}</Card.Title>
-              </Card.Header>
-              <Card.Body>
-                <Stack direction="vertical" style={{ fontSize: "14px" }}>
-                  <span><strong>Posted by:</strong> {username}</span>
-                  <span><strong>Date posted:</strong> {dateTransform(date)}</span>
-                  <span><strong>Zipcode:</strong> {zip}</span>
-                </Stack>
-
-                <br />
-                <Stack direction="horizontal">
-                  <Badge bg="success" style={{ fontSize: "12px" }} className="p-2 mx-1">
-                    {price == "0" ? "" : `$${price}`}
-                  </Badge>
-                  <Badge bg="primary" style={{ fontSize: "12px" }} className="p-2 mx-1">
-                    {type}
-                  </Badge>
-                  <Badge bg="primary" style={{ fontSize: "12px" }} className="p-2 mx-1">
-                    {firm_price ? "Firm Price" : "Price Negotiable"}
-                  </Badge>
-                  <Badge bg="primary" style={{ fontSize: "12px" }} className="p-2 mx-1">
-                    {trade ? "Open to trades" : "No Trades"}
-                  </Badge>
-                </Stack>
-                <br />
-                <Card.Text style={{ border: "2px dotted black", fontSize: "16.5px" }} className="p-3">
-                  {body}
-                </Card.Text>
-
-
-              </Card.Body>
-              <Card.Footer style={{ backgroundColor: SITE_COLORS.lightMain }} className="text-center">
-                <Button size="sm" onClick={handleFlipClick} variant="primary" className="mx-2">Go Back</Button>
-                <Button size="sm" onClick={handleUnderCardClick} variant="success" className="mx-2">Contact</Button>
-                <Button size="sm" variant="danger" className="mx-2">Report</Button>
-              </Card.Footer>
-            </Card>
-
-          </ReactCardFlip >
-          {/************************************************************************************************** */}
+        <div style={{ display: "block", position: "relative", height: "100%", overflow: 'hidden', }}>
+          {/* **************************************************** */}
           {/* UNDER CARD */}
-          {/************************************************************************************************** */}
-
+          {/* **************************************************** */}
           <div className="under-card" style={{ top: revealUnderCard ? "0px" : "600px" }}>
             <Card className="postCard shadow-lg" >
               <Card.Header style={{ color: "white", backgroundColor: SITE_COLORS.secondary }} >
@@ -335,15 +208,150 @@ function PostBoardCard(props) {
               </Card.Footer>
             </Card >
           </div>
-        </div>
+          <div className="card-container"  >
 
 
+            <div className={`flip-card ${isFlipped ? "flipped" : ""}`}>
+              <div className="flip-card-inner">
+
+                {/* ************************************************** */}
+                {/* FRONT OF CARD */}
+                {/* ************************************************** */}
+                <div className="flip-card-front">
+                  <Card className="postCard shadow-lg" >
+
+                    {tempGalleryArry?.length !== 0 || tempGalleryArry !== undefined
+                      ?
+                      <Carousel interval={null}>
+                        ({
+                          tempGalleryArry?.map(function (img, i) {
+                            return (
+                              <Carousel.Item key={`${Math.floor(Math.random() * 100)}-cork-post-key-${img}-${Math.floor(Math.random() * 100)}`} style={{ cursor: "pointer" }} onClick={handleLightbox}>
+                                <>
+                                  < Image
+                                    key={`image-${img.src} - ${i}`}
+                                    className="d-block"
+                                    style={{
+                                      height: "350px",
+                                      width: "100%",
+                                      objectFit: "cover",
+                                      backgroundColor: "rgba(0, 115, 123, 0.521)"
+                                    }}
+                                    rounded
+                                    src={img.src ? img.src : defaultImage}
+                                    alt={`alt- post-slide - ${img}`}
+                                    onError={event => {
+                                      event.target.onerror = null
+                                      event.target.src = defaultImage
+                                    }}
+                                  />
+                                </>
+                              </ Carousel.Item>
+                            )
+                          })
+                        })
+                      </Carousel>
+                      :
+                      < Image
+                        key={`image-==`}
+                        className="d-block"
+                        style={{
+                          height: "300px",
+                          width: "100%",
+                          objectFit: "contain",
+                          backgroundColor: "rgba(0,0,0,0.2)"
+                        }}
+                        rounded
+                        src={defaultImage}
+                        alt={`alt- post-slide`}
+                      />
+                    }
+                    <Card.Body>
+                      <img
+                        src={pushPinRand[Math.floor(Math.random() * 5)]}
+                        alt="pushpin"
+                        className="pushPin"
+
+                      ></img>
+                      <Badge bg="success" style={{ position: "absolute", top: "0", right: "0", fontSize: "20px" }} className="p-2 mx-0">
+                        ${price} {trade}
+                      </Badge>
+                      <Stack direction="horizontal" className="mb-2 justify-content-center">
+                        <Badge bg="primary" style={{ fontSize: "12px" }} className="p-2 mx-1">
+                          {type}
+                        </Badge>
+                        <Badge bg="primary" style={{ fontSize: "12px" }} className="p-2 mx-1">
+                          {firm_price ? "Firm Price" : "Price Negotiable"}
+                        </Badge>
+                        <Badge bg="primary" style={{ fontSize: "12px" }} className="p-2 mx-1">
+                          {trade ? "Open to trades" : "No Trades"}
+                        </Badge>
+                      </Stack>
+                      <hr />
+                      <Card.Title className="text-center mt-3" style={{ fontSize: "24px" }}>{title}</Card.Title>
+                    </Card.Body>
+                    <Card.Footer className="text-center" style={{ backgroundColor: SITE_COLORS.lightMain }}>
+                      <Button size="sm" onClick={handleFlip} variant="primary" className="mx-2" >More Info</Button>
+                      <Link to={`/post/${_id}`}>
+                        <Button size="sm" variant="secondary" className="mx-2">Go to post</Button>
+                      </Link>
+                      <Button onClick={handleUnderCardClick} size="sm" variant="success" className="mx-2">Contact</Button>
+                    </Card.Footer>
+                  </Card >
+                </div>
+
+                {/* ************************************************** */}
+                {/* BACK OF CARD */}
+                {/* ************************************************** */}
+                <div className="flip-card-back">
+                  <Card className="postCard shadow-lg "    >
+                    <Card.Header style={{ color: "white", backgroundColor: SITE_COLORS.lightMain }}>
+                      <Card.Title className="mt-3" style={{ fontWeight: "bold", fontSize: "18px" }}>{title}</Card.Title>
+                    </Card.Header>
+                    <Card.Body>
+                      <Stack direction="vertical" style={{ fontSize: "14px" }}>
+                        <span><strong>Posted by:</strong> {username}</span>
+                        <span><strong>Date posted:</strong> {dateTransform(date)}</span>
+                        <span><strong>Zipcode:</strong> {zip}</span>
+                      </Stack>
+
+                      <br />
+                      <Stack direction="horizontal">
+                        <Badge bg="success" style={{ fontSize: "12px" }} className="p-2 mx-1">
+                          {price == "0" ? "" : `$${price}`}
+                        </Badge>
+                        <Badge bg="primary" style={{ fontSize: "12px" }} className="p-2 mx-1">
+                          {type}
+                        </Badge>
+                        <Badge bg="primary" style={{ fontSize: "12px" }} className="p-2 mx-1">
+                          {firm_price ? "Firm Price" : "Price Negotiable"}
+                        </Badge>
+                        <Badge bg="primary" style={{ fontSize: "12px" }} className="p-2 mx-1">
+                          {trade ? "Open to trades" : "No Trades"}
+                        </Badge>
+                      </Stack>
+                      <br />
+                      <Card.Text style={{ border: "2px dotted black", fontSize: "16.5px" }} className="p-3">
+                        {body}
+                      </Card.Text>
+                    </Card.Body>
+                    <Card.Footer style={{ height: "auto", backgroundColor: SITE_COLORS.lightMain }} className="text-center">
+
+                      <div onClick={handleFlip} style={{ padding: 0, margin: 0, display: "inline", height: "100%" }}>
+                        <Button size="sm" onClick={handleFlip} variant="primary" className="mx-2 ">Go Back</Button>
+                      </div>
+                      <Button size="sm" onClick={handleUnderCardClick} variant="success" className="mx-2">Contact</Button>
+                      <Button size="sm" variant="danger" className="mx-2">Report</Button>
+                    </Card.Footer>
+                  </Card>
+                </div>
+              </div>
+            </div>
+          </div >
+        </div >
         : <LoadingPostCard />
       }
-
-
     </ >
-
   );
 }
 

@@ -5,35 +5,36 @@
   }
   to {
     transform: translateX(0px);
-  } */
-/* } */
+  }
+} */
 
 .corkboard-card-container {
   position: relative;
-  display: flex;
-  flex-wrap: wrap;
+  display: block;
+  /* height: auto; */
   width: 95%;
   padding: 10px;
-  align-content: center;
-  justify-content: center;
   margin-right: auto;
   margin-left: auto;
-  gap: 20px;
+  height: 100%;
   /* transform: translateX(-5000px); */
   /* animation: corkboardTransistion 1.1s ease-in-out; */
 
   background-image: url("../../assets//imgs/corkboards/User-Corkboard-0.jpg");
   background-color: rgb(90, 88, 88);
   background-blend-mode: hard-light;
+  /* background-size: cover; */
   border: rgb(87, 83, 83) 8px solid;
+  z-index: 20;
 }
 
 @media only screen and (max-width: 475px) {
   .corkboard-card-container {
-    background-image: none;
+    /* background-image: none;
     background-color: transparent;
     border: none;
     width: 100%;
-    padding: 0px;
+    padding: 0px; */
+    width: 100%;
   }
 }

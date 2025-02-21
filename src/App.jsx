@@ -67,7 +67,7 @@ function App() {
             {/* ERROR PAGES */}
             <Route path="*" element={<PageNotFound />} />
           </Routes>
-          <Footer />
+          {/* <Footer /> */}
         </LoggedInContext>
       </Router >
 
