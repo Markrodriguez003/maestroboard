@@ -51,8 +51,6 @@ function CommunityBoard() {
     fetchedPosts: [],
     totalPostCount: 0,
     sort: -1,
-    loading: true
-
   });
 
   // FUNCTION TO PUSH PAGE TO TOP
@@ -65,8 +63,8 @@ function CommunityBoard() {
   {/* ********************************************************************** */ }
   const fetchData = useCallback(async (page = 1, sort = -1) => {
     scrollToTop();
+    setLoading(true);
     try {
-      setLoading(true);
       const response = await axios.get(`http://localhost:3005/api/posts/fetch?limit=${POST_PAGINATION_LIMIT}&page=${page}&sort=${sort}`);
       setPosts((prev) => ({
         ...prev,
@@ -115,14 +113,13 @@ function CommunityBoard() {
       if (currentPage < Math.ceil(posts.totalPostCount / POST_PAGINATION_LIMIT)) {
 
         setCurrentPage(prev => (prev + 1)),
-
-          setPosts((prev) => (
-            {
-              ...prev,
-              loading: true,
-              fetchedPosts: [],
-            }
-          ))
+          setLoading(true);
+        setPosts((prev) => (
+          {
+            ...prev,
+            fetchedPosts: [],
+          }
+        ))
 
         fetchData(currentPage);
       }
@@ -132,19 +129,16 @@ function CommunityBoard() {
       if (currentPage > 1) {
 
         setCurrentPage(prev => (prev - 1)),
-
-          setPosts((prev) => (
-            {
-              ...prev,
-              loading: true,
-              fetchedPosts: [],
-            }
-          ))
+          setLoading(true);
+        setPosts((prev) => (
+          {
+            ...prev,
+            fetchedPosts: [],
+          }
+        ))
         fetchData(currentPage);
       }
     }
-
-
     if (paginationTrigger === true) {
       nextPosts();
     } else if (paginationTrigger === false) {
@@ -165,10 +159,13 @@ function CommunityBoard() {
             ?
             // LOADING POST CARD BOARD
             <Corkboard>
-              <div style={{ backgroundColor: SITE_COLORS.main, position: "relative" }} className="p-5">
+              <div style={{ backgroundColor: SITE_COLORS.main, position: "relative", }} >
                 <Image src={pushPin} style={{ width: "35px", position: "absolute", top: "-15px", left: "50%" }} />
+                <br />
                 <LoadingSpinner title="Loading Posts">
                 </LoadingSpinner>
+                <br />
+
               </div>
             </Corkboard>
             : posts.fetchedPosts.length === 0
@@ -233,7 +230,6 @@ function CommunityBoard() {
                             <PostBoardCard {...p} />
                           </Col>
                         ))}
-
                       </Row>
                     </Corkboard>
                     :
@@ -245,9 +241,8 @@ function CommunityBoard() {
                     </Corkboard>
                 }
 
-
                 {/* BOTTOM FILTER BY DATE + PREV/NEXT BUTTONS */}
-                <Row className="align-items-center justify-content-center mx-auto" >
+                <Row className="align-items-center justify-content-center mx-auto mt-2" >
                   <Col xxl={4} xl={4} lg={4} md={4} sm={4} xs={12} className="text-center mx-auto" >
                     <Button
                       className="mb-2"

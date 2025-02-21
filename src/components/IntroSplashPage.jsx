@@ -41,7 +41,7 @@ import { MusicNoteBeamed, MusicNote } from "react-bootstrap-icons";
 function IntroSplashPage() {
   return (
     <>
-      <div className="mt-5 mx-auto">
+      <div className="mt-1 mx-auto">
         <Corkboard>
           <br />
           {/* **************************************************************/}
@@ -67,7 +67,7 @@ function IntroSplashPage() {
             {/* **************************************************************/}
             {/* WELCOME PANEL */}
             {/* **************************************************************/}
-            <Col xs="11" sm="11" md="7" lg="7" xl="7" className="mt-4">
+            <Col xs="11" sm="11" md="7" lg="7" xl="7" className="mt-0">
               <InfoPanel bgColor={SITE_COLORS.secondary}>
                 <Row>
                   <Col>
@@ -76,7 +76,7 @@ function IntroSplashPage() {
                     <MusicNote style={{ fontSize: "60px" }} />
                   </Col>
                 </Row>
-                <h1 className="display-2 p-2 mt-1" style={{fontWeight:"bold"}} >Welcome to Maestroboard!</h1>
+                <h1 className="display-2 p-2 mt-1" style={{ fontWeight: "bold" }} >Welcome to Maestroboard!</h1>
                 <hr />
                 <p className="lead w-75 mx-auto">This is the premier place for music gear heads and musicians!
                   Check our community posts, articles and forum! </p>
@@ -195,17 +195,20 @@ function IntroSplashPage() {
                 <Button variant="primary" href="/board" className="mt-2">Browse our Community Board!</Button>
               </InfoPanel >
             </Col>
+            <Col >
+              <div>
+                <Image src={artPost2} style={{ width: "320px", float: "right" }} />
+              </div>
+              <div className="" style={{ position: "relative", display: "inline", width: "auto" }}  >
+                <Image src={pushPin_1} style={{ position: "absolute", display: "inline", width: "35px", left: "-190px", top: "42px" }} />
+                <Image src={artPost3} className="mb-5 mt-5 pl-5" style={{ width: "400px", float: "left" }} />
+              </div>
+            </Col>
           </Row>
 
 
           {/* POST IT NOTE ART */}
-          <div>
-            <Image src={artPost2} style={{ width: "320px", float: "right" }} />
-          </div>
-          <div className="mt-5 ml-5 mb-5" style={{ position: "relative", display: "inline", width: "auto" }}  >
-            <Image src={pushPin_1} style={{ position: "absolute", display: "inline", width: "35px", left: "-190px", top: "42px" }} />
-            <Image src={artPost3} className="mb-5 mt-5 pl-5" style={{ width: "400px", float: "left" }} />
-          </div>
+
           <br />
 
         </Corkboard >
