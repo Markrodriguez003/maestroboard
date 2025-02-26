@@ -1,7 +1,7 @@
 {
   "name": "maestroboard",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "author": "Mark Anthony Patrick Rodriguez <Markrodriguez003@gmail.com>",
   "license": "SEE LICENSE IN",
   "description": "The ultimate support site for musicians and artists! Buy, sell and trade music gear and look for your next gig!",
@@ -44,5 +44,6 @@
     "eslint-plugin-react-refresh": "^0.4.16",
     "globals": "^15.14.0",
     "vite": "^6.0.5"
-  }
+  },
+  
 }

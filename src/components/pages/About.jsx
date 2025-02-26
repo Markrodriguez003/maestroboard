@@ -210,6 +210,9 @@ function About() {
                                                         React-Hook-Form
                                                     </li>
                                                     <li>
+                                                        Google ReCaptcha
+                                                    </li>
+                                                    <li>
                                                         Yet-Another-React-Lightbox
                                                     </li>
                                                 </Col>

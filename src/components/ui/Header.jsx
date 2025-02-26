@@ -62,9 +62,6 @@ function Header() {
                 About
               </Nav.Link>
 
-              <Nav.Link href="/about" className="header-list-item " >
-                About
-              </Nav.Link>
               <NavDropdown title={status === true ? "Admin Dashboard" : "Admin Login"} id="navbarScrollingDropdown">
                 <NavDropdown.Item href="#log-in-out" style={{ backgroundColor: "transparent !important", background: "transparent" }}>
                   <Nav.Link eventKey={2} href={"/dashboard"} style={{ display: status === true ? "inline" : "none", backgroundColor: "transparent !important" }}>
