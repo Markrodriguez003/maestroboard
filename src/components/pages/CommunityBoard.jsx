@@ -1,8 +1,6 @@
 // REACT
 import { useState, useEffect, useCallback } from "react";
 
-// CSS
-
 // LIBRARIES
 import axios from "axios";
 
@@ -148,8 +146,6 @@ function CommunityBoard() {
     setPaginationTrigger(null)
 
   }, [paginationTrigger, currentPage, fetchData, posts.totalPostCount, posts.fetchedPosts])
-
-
 
   return (
     <div className="mt-5">

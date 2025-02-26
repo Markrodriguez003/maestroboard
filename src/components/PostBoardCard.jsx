@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 // ? https://freefrontend.com/css-paper-effects/
 
 // LIBRARIES
-import ReactCardFlip from "react-card-flip";
+
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";

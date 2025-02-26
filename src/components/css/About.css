@@ -1,0 +1,102 @@
+@keyframes panel-animation {
+  /* from {
+    left: -1600px;
+  }
+  to {
+    left: 0;
+  } */
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.about-background-canvas {
+  position: relative;
+  display: block;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 800px;
+  width: 100%;
+  color: white;
+  margin: 0;
+  animation: panel-animation 1s ease;
+}
+
+.about-canvas-image {
+  background-image: url("../../assets/imgs/about/bass-guitar-1841186_640.jpg");
+}
+
+.community-posts-image {
+  background-image: url("../../assets/imgs/about/community-board-2.png");
+}
+
+.articles-posts-image {
+  background-image: url("../../assets/imgs/article-imgs/hamstead_soundworks_redwing-1Z6d9c0kRf1n7lq.jlRWhmZyH579VAG6.jpg");
+}
+
+.technology-used-image {
+  background-image: url("../../assets/imgs/about/technology-1283624_640.jpg");
+}
+
+.site-image {
+  background-image: url("../../assets/imgs/about/under-construction-2629947_1280.jpg");
+}
+
+.about-container {
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 100%;
+  height: 100%;
+  padding-top: 60px;
+  transition: 0.5s ease-in-out;
+}
+
+.about-mini-header {
+  /* text-align: center; */
+  font-style: italic;
+  font-size: 1.2rem;
+}
+
+.about-container:hover {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.inner-about-container {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgba(0, 0, 0, 0.9);
+  padding: 20px;
+  /* border-radius: 110px 0px 0px 0px; */
+
+}
+
+.panel-border {
+  /* border-radius: 110px 0px 110px 0px; */
+  /* border-radius: 110px 0px 0px 0px;; */
+  border: white 1px solid
+}
+
+/* .right-panel {
+  border-radius: 0px 110px 0px 110px;
+} */
+
+@media screen and (max-width: 600px) {
+  .about-background-canvas {
+    height: auto;
+    background-image: none;
+    text-align: center;
+  }
+  .inner-about-container {
+    width: 95%;
+    height: auto;
+  }
+  .inner-about-container * {
+    text-align: center !important;
+    width: 100% !important;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
