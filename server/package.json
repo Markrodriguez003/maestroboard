@@ -15,6 +15,7 @@
   "dependencies": {
     "@cloudinary/react": "^1.13.1",
     "cloudinary": "^2.5.1",
+    "axios": "^1.7.9",
     "cors": "^2.8.5",
     "crypto-js": "^4.2.0",
     "dotenv": "^16.4.7",
