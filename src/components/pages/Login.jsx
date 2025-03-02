@@ -83,7 +83,8 @@ function Login(props) {
       }
 
       // const response = await axios.post('http://localhost:3005/api/login',
-      const response = await axios.post('http://localhost:3005/api/auth/login',
+      // const response = await axios.post('http://localhost:3005/api/auth/login',
+      const response = await axios.post(`${import.meta.env.VITE_SERVER_API_URL}/api/auth/login`,
         { email: userChk.email, password: userChk.password, captchaToken: gToken }, config);
       setFormActionResults(prev => (
         {

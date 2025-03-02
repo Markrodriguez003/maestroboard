@@ -6,7 +6,6 @@ import { useState, useEffect, useContext } from "react";
 import { Nav, Navbar, Container, NavDropdown } from "react-bootstrap";
 
 // LIBRARY
-import axios from "axios";
 
 // CONTEXT
 import { isLoggedInContext } from "../context/LoggedInContext";

@@ -63,7 +63,8 @@ function CommunityBoard() {
     scrollToTop();
     setLoading(true);
     try {
-      const response = await axios.get(`http://localhost:3005/api/posts/fetch?limit=${POST_PAGINATION_LIMIT}&page=${page}&sort=${sort}`);
+      // const response = await axios.get(`http://localhost:3005/api/posts/fetch?limit=${POST_PAGINATION_LIMIT}&page=${page}&sort=${sort}`);
+      const response = await axios.get(`${import.meta.env.VITE_SERVER_API_URL}/api/posts/fetch?limit=${POST_PAGINATION_LIMIT}&page=${page}&sort=${sort}`);
       setPosts((prev) => ({
         ...prev,
         fetchedPosts: [...response.data.posts],

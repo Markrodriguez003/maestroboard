@@ -60,7 +60,8 @@ function ProtectedRoutes() {
             }
 
             await axios
-                .get("http://localhost:3005/api/auth/user", config)
+                // .get("http://localhost:3005/api/auth/user", config)
+                .get(`${import.meta.env.VITE_SERVER_API_URL}/api/auth/user`, config)
                 .then((response) => {
                     // console.log(`Response inside auth route::${JSON.stringify(response.data.adminLogin)} + ${JSON.stringify(response.data.login)}`)
 

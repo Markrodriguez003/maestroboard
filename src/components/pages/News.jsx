@@ -91,7 +91,8 @@ function News(props) {
   const fetchArticles = async (cursor) => {
     setLoading(true);
     try {
-      const response = await axios.get(`http://localhost:3005/api/articles/fetch?limit=${ARTICLE_PAGINATION_LIMIT}${cursor ? `&cursor=${cursor}` : ''}`);
+      // const response = await axios.get(`http://localhost:3005/api/articles/fetch?limit=${ARTICLE_PAGINATION_LIMIT}${cursor ? `&cursor=${cursor}` : ''}`);
+      const response = await axios.get(`${import.meta.env.VITE_SERVER_API_URL}/api/articles/fetch?limit=${ARTICLE_PAGINATION_LIMIT}${cursor ? `&cursor=${cursor}` : ''}`);
       setArticles(prevItems => [...prevItems, ...response.data.data]);
       setNextCursor(response.data.nextCursor);
     } catch (error) {

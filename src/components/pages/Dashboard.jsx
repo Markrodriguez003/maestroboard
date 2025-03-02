@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Row, Col, Card, Button, Image, Tab, ListGroup, Container, Spinner } from "react-bootstrap";
 import HeaderPanel from "../ui/HeaderPanel";
- 
+
 import BoardPostModal from "../BoardPostModal";
 import ArticlePostModal from "../ArticlePostModal";
 import { Link } from "react-router-dom";
@@ -186,7 +186,8 @@ function Dashboard(props) {
         // GRABS ALL ARTICLES BASE INFO (_id, title, subTitle,) FROM DB
         async function fetchArticles() {
             await axios
-                .get("http://localhost:3005/api/articles/fetch-all/base-info")
+                // .get("http://localhost:3005/api/articles/fetch-all/base-info")
+                .get(`${import.meta.env.VITE_SERVER_API_URL}/api/articles/fetch-all/base-info`)
                 .then((response) => {
                     setData((prev) => (
                         {
@@ -201,7 +202,8 @@ function Dashboard(props) {
         // GRABS LATEST ARTICLES (5) ARTICLES FROM DB
         async function fetchLatestArticles() {
             await axios
-                .get(`http://localhost:3005/api/articles/fetch-all/limit/${REQUESTED_ELEMENTS}`)
+                // .get(`http://localhost:3005/api/articles/fetch-all/limit/${REQUESTED_ELEMENTS}`)
+                .get(`${import.meta.env.VITE_SERVER_API_URL}/api/articles/fetch-all/limit/${REQUESTED_ELEMENTS}`)
                 .then((response) => {
                     setData((prev) => (
                         {
@@ -217,7 +219,7 @@ function Dashboard(props) {
         // GRABS ALL COMMUNITY POSTS BASE INFO FROM DB
         async function fetchPosts() {
             await axios
-                .get("http://localhost:3005/api/posts/fetch-all/base-info")
+                .get(`${import.meta.env.VITE_SERVER_API_URL}/api/posts/fetch-all/base-info`)
                 .then((response) => {
                     setData((prev) => (
                         {
@@ -232,7 +234,7 @@ function Dashboard(props) {
         // GRABS LATEST ARTICLES (5) ARTICLES FROM DB
         async function fetchLatestPosts() {
             await axios
-                .get(`http://localhost:3005/api/posts/fetch-all/limit/${REQUESTED_ELEMENTS}`)
+                .get(`${import.meta.env.VITE_SERVER_API_URL}/api/posts/fetch-all/limit/${REQUESTED_ELEMENTS}`)
                 .then((response) => {
                     setData((prev) => (
                         {
@@ -248,7 +250,8 @@ function Dashboard(props) {
         async function fetchPostsType(type) {
             let searchType = type.toString().toLowerCase()
             await axios
-                .get(`http://localhost:3005/api/posts/fetch-all/type/${searchType}`)
+                // .get(`http://localhost:3005/api/posts/fetch-all/type/${searchType}`)
+                .get(`${import.meta.env.VITE_SERVER_API_URL}/api/posts/fetch-all/type/${searchType}`)
                 .then((response) => {
                     setData((prev) => (
                         {
@@ -265,7 +268,8 @@ function Dashboard(props) {
             let searchType = type.toString().toLowerCase();
 
             await axios
-                .get(`http://localhost:3005/api/articles/fetch-all/category/${searchType}`)
+                // .get(`http://localhost:3005/api/articles/fetch-all/category/${searchType}`)
+                .get(`${import.meta.env.VITE_SERVER_API_URL}/api/articles/fetch-all/category/${searchType}`)
                 .then((response) => {
 
                     let objectName = searchType.split(' ').join('-')
@@ -284,7 +288,8 @@ function Dashboard(props) {
         // GRABS ALL ARTICLES FROM DB
         async function fetchUserLength() {
             await axios
-                .get("http://localhost:3005/api/load-user-count")
+                // .get("http://localhost:3005/api/load-user-count")
+                .get(`${import.meta.env.VITE_SERVER_API_URL}/api/load-user-count`)
                 .then((response) => {
                     setData((prev) => (
                         {
@@ -301,7 +306,8 @@ function Dashboard(props) {
         // WHEN USER CLICKS ON INDIVIDUAL ARTICLE THIS FUNCTION WILL CALL UP THAT ARTICLE TO PRESENT 
         async function test() {
             await axios
-                .get(`http://localhost:3005/api/articles/fetch-all`, config)
+                // .get(`http://localhost:3005/api/articles/fetch-all`, config)
+                .get(`${import.meta.env.VITE_SERVER_API_URL}/api/articles/fetch-all`, config)
                 .then((response) => {
                     // console.log(`REPONSE THE FUCK!:: ${JSON.stringify(response)}`)
                     setData((prev) => (
@@ -347,7 +353,8 @@ function Dashboard(props) {
         ))
 
         await axios
-            .get(`http://localhost:3005/api/articles/id/${id}`)
+            // .get(`http://localhost:3005/api/articles/id/${id}`)
+            .get(`${import.meta.env.VITE_SERVER_API_URL}/api/articles/id/${id}`)
             .then((response) => {
                 setData((prev) => (
                     {
@@ -371,7 +378,8 @@ function Dashboard(props) {
         ))
 
         await axios
-            .get(`http://localhost:3005/api/posts/id/${id}`)
+            // .get(`http://localhost:3005/api/posts/id/${id}`)
+            .get(`${import.meta.env.VITE_SERVER_API_URL}/api/posts/id/${id}`)
             .then((response) => {
                 setData((prev) => (
                     {

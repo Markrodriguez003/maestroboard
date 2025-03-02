@@ -138,7 +138,8 @@ function PostEdit() {
         // GRABS ALL POST FROM DB
         async function grabPost() {
             await axios
-                .get(`http://localhost:3005/api/posts/id/${params.id}`)
+                // .get(`http://localhost:3005/api/posts/id/${params.id}`)
+                .get(`${import.meta.env.VITE_SERVER_API_URL}/api/posts/id/${params.id}`)
                 .then(async (response) => {
                     setPostLoadingState("loading");
                     console.log(`POST RESPONSE: ${JSON.stringify(response)}`)
@@ -194,7 +195,8 @@ function PostEdit() {
             // console.log(`RESPONSE! ${JSON.stringify(params)}`)
             try {
 
-                axios.put(`http://localhost:3005/api/posts/edit/id/${params.id}`, newPost, config).then((response) => {
+                // axios.put(`http://localhost:3005/api/posts/edit/id/${params.id}`, newPost, config).then((response) => {
+                axios.put(`${import.meta.env.VITE_SERVER_API_URL}/api/posts/edit/id/${params.id}`, newPost, config).then((response) => {
                     console.log(`RESPONSE! ${JSON.stringify(response)}`)
                     console.log(`NEW POST! ${JSON.stringify(newPost)}`)
 

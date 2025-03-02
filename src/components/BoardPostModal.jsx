@@ -97,7 +97,8 @@ function BoardPostModal() {
     // PUSHES ARTICLE TO DB
     async function CREATE_NEW_POST(newPost) {
       try {
-        const response = await axios.post('http://localhost:3005/api/posts/insert',
+        // const response = await axios.post('http://localhost:3005/api/posts/insert',
+        const response = await axios.post(`${import.meta.env.VITE_SERVER_API_URL}/api/posts/insert`,
           newPost, config);
         // SETS TOAST OF SUBMITTED ARTICLE!
         ToastNotificationContext.setToast((prevToast => ({

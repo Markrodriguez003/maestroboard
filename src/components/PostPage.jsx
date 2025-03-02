@@ -59,7 +59,8 @@ function PostPage(props) {
         // GRABS ALL POST FROM DB
         async function grabPost() {
             await axios
-                .get(`http://localhost:3005/api/posts/id/${params.id}`)
+                // .get(`http://localhost:3005/api/posts/id/${params.id}`)
+                .get(`${import.meta.env.VITE_SERVER_API_URL}/api/posts/id/${params.id}`)
                 .then(async (response) => {
                     setPostLoadingState("loading");
                     console.log(`POST DATA: ${JSON.stringify(response.data)}`)

@@ -38,7 +38,8 @@ function LatestItemDisplay(props) {
         // GRABS LATEST ELEMENT BY FETCH COUNTS FROM DB
         async function fetchLatestElements() {
             await axios
-                .get(`http://localhost:3005/api/${fetchType.toLowerCase()}/fetch-all/limit/${fetchCount}`)
+                // .get(`http://localhost:3005/api/${fetchType.toLowerCase()}/fetch-all/limit/${fetchCount}`)
+                .get(`${import.meta.env.VITE_SERVER_API_URL}/api/${fetchType.toLowerCase()}/fetch-all/limit/${fetchCount}`)
                 .then((response) => {
                     setLatestElements({ data: response.data, result: true })
                 })

@@ -62,7 +62,8 @@ function NewsArticlePage(props) {
         // GRABS ALL ARTICLES FROM DB
         async function grabArticle() {
             await axios
-                .get(`http://localhost:3005/api/articles/id/${params.id}`)
+                // .get(`http://localhost:3005/api/articles/id/${params.id}`)
+                .get(`${import.meta.env.VITE_SERVER_API_URL}/api/articles/id/${params.id}`)
                 .then(async (response) => {
                     setArticleLoadingState("loading");
                     console.log(`ARTICLE DATA: ${JSON.stringify(response.data.article)}`)

@@ -97,7 +97,8 @@ function ArticlePostModal(props) {
         // PUSHES ARTICLE TO DB
         async function CREATE_NEW_ARTICLE(newArticle) {
             try {
-                const response = axios.post('http://localhost:3005/api/articles/insert',
+                // const response = axios.post('http://localhost:3005/api/articles/insert',
+                const response = axios.post(`${import.meta.env.VITE_SERVER_API_URL}/api/articles/insert`,
                     newArticle,
                     config
                 );

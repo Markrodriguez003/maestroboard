@@ -111,7 +111,8 @@ function ArticleEdit() {
         // GRABS ALL ARTICLE FROM DB
         async function grabArticle() {
             await axios
-                .get(`http://localhost:3005/api/articles/id/${params.id}`)
+                // .get(`http://localhost:3005/api/articles/id/${params.id}`)
+                .get(`${import.meta.env.VITE_SERVER_API_URL}/api/articles/id/${params.id}`)
                 .then(async (response) => {
                     setArticleLoadingState("loading");
                     setArticle(await response.data.article[0]);
@@ -182,7 +183,8 @@ function ArticleEdit() {
         async function UPDATE_ARTICLE(newArticle) {
             // console.log(`RESPONSE! ${JSON.stringify(params)}`)
             try {
-                axios.put(`http://localhost:3005/api/articles/edit/id/${params.id}`, newArticle, config).then((response) => {
+                // axios.put(`http://localhost:3005/api/articles/edit/id/${params.id}`, newArticle, config).then((response) => {
+                axios.put(`${import.meta.env.VITE_SERVER_API_URL}/api/articles/edit/id/${params.id}`, newArticle, config).then((response) => {
                 })
                 // SETS TOAST OF SUBMITTED ARTICLE!
                 Notification.setToast((prevToast => ({

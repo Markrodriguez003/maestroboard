@@ -3,7 +3,6 @@ import { Row, Button, Container, } from "react-bootstrap";
 
 // ASSETS
 import { FileEarmarkExcelFill } from "react-bootstrap-icons"
-import { PersonFillLock } from "react-bootstrap-icons";
 
 // CSS
 import { SITE_COLORS } from "../css/site";
