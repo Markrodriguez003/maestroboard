@@ -35,8 +35,8 @@ function About() {
                     <div className="inner-about-container ">
 
                         <h1 className="display-2 text-center" >About Us  </h1>
-                        <hr />
                         <p className="about-mini-header text-center">What is maestroboard all about?</p>
+                        <hr />
                         <p className="w-75 mx-auto lead">
                             Imagine you are walking towards the back of a music shop & you see a community corkboard. You see adverts of bands looking for band members, flyers for concert shows, lost and found, ads for various music related services and posts for used gear. This is what we wanted to re-create! The purpose of this website is to give users the ability to see music related community posts, news articles & be a part of our music forum! We like to say..
                         </p >
@@ -49,7 +49,7 @@ function About() {
 
 
             <Row className="p-0 m-0">
-                <Col xl={6} lg={6} md={6} sm={12} xs={12} className="p-0 m-0">
+                <Row xl={6} lg={6} md={6} sm={12} xs={12} className="p-0 m-0">
                     {/* **************************************************************************** */}
                     {/* COMMUNITY BOARD */}
                     {/* **************************************************************************** */}
@@ -91,8 +91,8 @@ function About() {
                             </div>
                         </div>
                     </Container >
-                </Col>
-                <Col xl={6} lg={6} md={6} sm={12} xs={12} className="p-0 m-0">
+                </Row>
+                <Row xl={6} lg={6} md={6} sm={12} xs={12} className="p-0 m-0">
                     {/* **************************************************************************** */}
                     {/* NEWS ARTICLES  */}
                     {/* **************************************************************************** */}
@@ -137,13 +137,13 @@ function About() {
                     </Container >
 
 
-                </Col>
+                </Row>
             </Row>
 
 
 
             <Row className="m-0 p-0 gap-0">
-                <Col xl={6} lg={6} md={6} sm={12} xs={12} className="p-0 m-0">
+                <Row xl={6} lg={6} md={6} sm={12} xs={12} className="p-0 m-0">
 
                     {/* **************************************************************************** */}
                     {/* SITE TECHNOLOGIES TEXT */}
@@ -223,8 +223,8 @@ function About() {
                             </div>
                         </div>
                     </Container >
-                </Col>
-                <Col xl={6} lg={6} md={6} sm={12} xs={12} className="p-0 m-0">
+                </Row>
+                <Row xl={6} lg={6} md={6} sm={12} xs={12} className="p-0 m-0">
 
                     {/* **************************************************************************** */}
                     {/* FUTURE UPDATES TEXT */}
@@ -243,7 +243,7 @@ function About() {
                         </div>
                     </Container >
 
-                </Col>
+                </Row>
 
 
             </Row>
