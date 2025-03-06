@@ -18,6 +18,35 @@ const fetchAllPosts = (req, res) => {
       console.log("posts cannot be loaded from the db!");
     });
 };
+//************************************************************** */
+// LOADS ALL POSTS TYPE BASE DETAILS FROM DB
+// GET --> api/posts/fetch-all/type/total
+//************************************************************** */
+const fetchAllPostsTypeTotal = async (req, res) => {
+  const post_types = ["Buying", "Selling", "Advertisement", "Community"];
+
+  async function processCategoryCount(array) {
+    const results = {};
+    for (const type of array) {
+      await Post.countDocuments({ type: type })
+        .then((count) => {
+          results[`${type}`] = count;
+        })
+        .catch((err) => {
+          console.log("Posts cannot be loaded from the db!");
+        });
+    }
+    return results;
+  }
+
+  processCategoryCount(post_types)
+    .then((results) => {
+      res.json(results);
+    })
+    .catch((error) => {
+      console.log(`An error has occured:: ${error}`);
+    });
+};
 
 //************************************************************** */
 // FETCHES TOTAL AMOUNT OF POSTS IN DB
@@ -217,6 +246,7 @@ const deletePost = async (req, res) => {
 module.exports = {
   fetchAllPostsTotalCount,
   fetchAllPosts,
+  fetchAllPostsTypeTotal,
   fetchBatchedPosts,
   fetchAllPostsByCount,
   fetchAllPostsTypeAmount,

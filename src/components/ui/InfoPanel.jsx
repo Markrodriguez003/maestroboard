@@ -18,8 +18,10 @@ function InfoPanel({ bgColor = SITE_COLORS.main, color = "white", width = "100",
     return (
 
         <Container
-            className={`shadow-lg p-3 text-center w-${width} ${rounded}`}
-            style={{ backgroundColor: bgColor, color: color }
+            className={`shadow-lg p-3 text-center${rounded}`}
+            style={{
+                backgroundColor: bgColor, color: color, width: width
+            }
             }  >
             {children}
         </Container >

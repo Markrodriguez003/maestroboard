@@ -41,7 +41,16 @@ function Header() {
 
       <Navbar bg="dark" expand="lg" variant="dark" className="bg-body-tertiary p-0 m-0 d-flex" >
         <Container style={{ backgroundColor: SITE_COLORS.main }} className="d-flex p-2 " fluid>
-          <Navbar.Brand href="#home" className="pb-3">  <MainLogo /></Navbar.Brand>
+          <Navbar.Brand href="#home" className="pb-3 header-animation">
+            <MainLogo />
+            <div className="muzieknootjes">
+              <div className="noot-1">
+                &#9835; &#9833; &#9835;
+              </div>
+
+            </div>
+
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse className="justify-content-xxl-end justify-content-xl-end justify-content-lg-start justify-content-md-start justify-content-sm-start justify-content-xs-start  " >
             <Nav className="">

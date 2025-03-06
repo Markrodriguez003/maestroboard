@@ -1,0 +1,70 @@
+/* TAPE CSS */
+.img-tape {
+  position: relative;
+  text-align: center;
+  display: inline-block;
+  margin: 20px auto 10px;
+}
+.img-tape:before,
+.img-tape:after {
+  background: rgba(255, 255, 235, 0.6);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  content: "";
+  display: block;
+  height: 30px;
+  position: absolute;
+  margin: auto;
+  width: 100px;
+}
+.img-tape img {
+  background: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  display: inline-block;
+  height: auto;
+  margin: 0 20px;
+  max-width: 100%;
+  padding: 8px;
+  text-align: center;
+  vertical-align: top;
+}
+.img-tape--1:before {
+  left: 50%;
+  margin-left: -50px;
+  top: -10px;
+}
+.img-tape--1:after {
+  display: none;
+}
+.img-tape--2:before {
+  left: 0;
+  top: 10px;
+  transform: rotate(-35deg);
+}
+.img-tape--2:after {
+  right: 0;
+  top: 15px;
+  transform: rotate(45deg);
+}
+.img-tape--3:before {
+  left: 0;
+  top: 10px;
+  transform: rotate(-45deg);
+}
+.img-tape--3:after {
+  bottom: 10px;
+  right: 0;
+  transform: rotate(-35deg);
+}
+.img-tape--4:before {
+  left: -30px;
+  margin-top: -15px;
+  top: 50%;
+  transform: rotate(93deg);
+}
+.img-tape--4:after {
+  margin-top: -30px;
+  right: -30px;
+  top: 50%;
+  transform: rotate(89deg);
+}

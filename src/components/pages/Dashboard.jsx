@@ -250,7 +250,6 @@ function Dashboard(props) {
         async function fetchPostsType(type) {
             let searchType = type.toString().toLowerCase()
             await axios
-                // .get(`http://localhost:3005/api/posts/fetch-all/type/${searchType}`)
                 .get(`${import.meta.env.VITE_SERVER_API_URL}/api/posts/fetch-all/type/${searchType}`)
                 .then((response) => {
                     setData((prev) => (
@@ -306,10 +305,8 @@ function Dashboard(props) {
         // WHEN USER CLICKS ON INDIVIDUAL ARTICLE THIS FUNCTION WILL CALL UP THAT ARTICLE TO PRESENT 
         async function test() {
             await axios
-                // .get(`http://localhost:3005/api/articles/fetch-all`, config)
                 .get(`${import.meta.env.VITE_SERVER_API_URL}/api/articles/fetch-all`, config)
                 .then((response) => {
-                    // console.log(`REPONSE THE FUCK!:: ${JSON.stringify(response)}`)
                     setData((prev) => (
                         {
                             ...prev,

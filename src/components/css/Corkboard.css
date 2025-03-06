@@ -11,9 +11,9 @@
 .corkboard-card-container {
   position: relative;
   display: block;
+  overflow: hidden;
   /* height: auto; */
   width: 95%;
-  padding: 10px;
   margin-right: auto;
   margin-left: auto;
   height: 100%;
@@ -29,13 +29,9 @@
   z-index: 20;
 }
 
-@media only screen and (max-width: 475px) {
+@media only screen and (max-width: 500px) {
   .corkboard-card-container {
-    /* background-image: none;
-    background-color: transparent;
-    border: none;
     width: 100%;
-    padding: 0px; */
-    width: 100%;
+    padding: 5px;
   }
 }

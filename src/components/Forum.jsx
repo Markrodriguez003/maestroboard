@@ -1,5 +1,7 @@
 
+// STYLING
 import "./css/Forum.css";
+// ASSETS
 import {
   MusicNoteBeamed,
   MusicNoteList,
@@ -7,12 +9,23 @@ import {
   PencilSquare,
   NutFill,
 } from "react-bootstrap-icons"; // Importing Bootstrap Icon Components
+// COMPONENTS
 import {
   Button,
   Pagination,
   Card,
   ListGroup,
 } from "react-bootstrap";
+
+import { useEffect } from "react";
+
+/*----------------------------------------------------------------------------
+|   ⚙️ Use: Music related forum (WIP)
+|        
+|   🔧 Todo: Add forum functionality!
+|
+|   📦 Returns: JSX component 
+*----------------------------------------------------------------------------*/
 function Forum() {
   let active = 2;
   let items = [];
@@ -32,6 +45,10 @@ function Forum() {
 |
 |   📦 Returns: JSX component 
 *------------------------------------------------------------------------------------*/
+  // SCROLLS TO TOP WHEN NAVIGATING FROM A PREVIOUS WINDOW
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [])
 
   return (
     <div>

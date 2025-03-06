@@ -4,12 +4,13 @@ import { useState, useEffect, Suspense, lazy } from "react";
 // LIBRARIES
 import axios from "axios";
 
-// DESIGN
-import { Newspaper } from "react-bootstrap-icons";
+// ASSETS
+import defaultImage from "../../assets/imgs/misc/missing-img.png";
+import advertisment from "../../assets/imgs/ads/5541626.jpg"
+
 
 // COMPONENTS
 import { Row, Col, Carousel, Image, Container, Stack, Button } from "react-bootstrap";
-// import NewsArticle from "../NewsArticle";
 import HeaderPanel from "../ui/HeaderPanel";
 import QuickArticlesPanel from "../ui/QuickArticlesPanel";
 const NewsArticle = lazy(() => import('../NewsArticle'));
@@ -37,6 +38,7 @@ import art15 from "../../assets/imgs/article-imgs/tracktion_biotek_3-rck6L30aXYx
 import art16 from "../../assets/imgs/article-imgs/softube_console_1_mkiii_update-lAbiWXNWCaZT.1BkrSgJ8dOOTsjQYBih.jpg";
 import art17 from "../../assets/imgs/article-imgs/hamstead_soundworks_redwing-1Z6d9c0kRf1n7lq.jlRWhmZyH579VAG6.jpg";
 import LoadingSpinner from "../ui/LoadingSpinner";
+import { Link } from "react-router";
 
 
 // TEST IMAGES
@@ -77,6 +79,9 @@ function News(props) {
   // HOLDS PULLED ARTICLES
   const [articles, setArticles] = useState([]);
 
+  // HOLDS PULLED ARTICLES FOR CAROUSEL
+  const [carouselArticles, setCarouselArticles] = useState([]);
+
   // HOLDS NEXT ARTICLE ID PLACE TO PULL NEW SET OF ARTICLES FROM DB
   const [nextCursor, setNextCursor] = useState(null);
 
@@ -91,16 +96,27 @@ function News(props) {
   const fetchArticles = async (cursor) => {
     setLoading(true);
     try {
-      // const response = await axios.get(`http://localhost:3005/api/articles/fetch?limit=${ARTICLE_PAGINATION_LIMIT}${cursor ? `&cursor=${cursor}` : ''}`);
       const response = await axios.get(`${import.meta.env.VITE_SERVER_API_URL}/api/articles/fetch?limit=${ARTICLE_PAGINATION_LIMIT}${cursor ? `&cursor=${cursor}` : ''}`);
       setArticles(prevItems => [...prevItems, ...response.data.data]);
+
+      if (cursor === undefined || cursor.length === 0) {
+        setCarouselArticles(() => [...response.data.data]);
+      }
+
       setNextCursor(response.data.nextCursor);
+
+
     } catch (error) {
       console.error('Error fetching articles!:', error);
     } finally {
       setLoading(false);
     }
   };
+
+  // SCROLLS TO TOP WHEN NAVIGATING FROM A PREVIOUS WINDOW
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [])
 
   useEffect(() => {
     fetchArticles();
@@ -118,17 +134,27 @@ function News(props) {
         ?
         <div>
           <Container fluid className="p-0 m-0 mt-3">
-            <Row lg={2} xs={1} sm={1} className="justify-content-start p-0">
+            <Row lg={2} xs={1} sm={1} className="justify-content-start p-0 m-0">
               <Col lg={8} sm={12} xs={12} md={8} xl={8} className="">
-                <Carousel className="m-0 p-0" style={{ width: "100%" }}>
+                <Carousel className="m-0 p-0">
                   {
-                    articles.map(function (a, i) {
+                    carouselArticles.slice(0, 5).map((article, index) => {
                       return (
-                        <Carousel.Item style={{ textAlign: "center" }} key={`top-carousel-article-${i}`}>
-                          <Image src={exampleImages[i]} width={"100%"} height={"550px"} className="mx-auto" style={{ objectFit: "cover" }} />
+                        <Carousel.Item style={{ textAlign: "center" }} key={`top-carousel-article-${index}`}>
+                          <Image
+                            src={article.image_urls ? article.image_urls[0] : defaultImage}
+                            width={"100%"}
+                            height={"550px"}
+                            className="mx-auto"
+                            style={{ objectFit: "cover" }}
+                            onError={event => {
+                              event.target.onerror = null
+                              event.target.src = defaultImage
+                            }}
+                          />
                           <Carousel.Caption style={{ backgroundColor: "rgba(0,0,0,0.75)" }}>
-                            <h3>{a.title}</h3>
-                            <p>{a.subTitle}</p>
+                            <h3>{article.title}</h3>
+                            <p>{article.subTitle}</p>
                           </Carousel.Caption>
                         </Carousel.Item>
                       )
@@ -144,6 +170,13 @@ function News(props) {
           </Container>
 
           <hr style={{ color: "white" }} />
+
+          {/* ADVERTISMENT */}
+          <Link to={"https://guitarcenter.com"} >
+            <Image src={advertisment} className="w-100" />
+          </Link>
+
+          {/* ARTICLES */}
           <Suspense fallback={<LoadingSpinner type="grow" title="Loading Article" />}>
             {
               articles.map(function (a, i) {

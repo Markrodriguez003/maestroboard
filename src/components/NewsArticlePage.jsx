@@ -124,8 +124,14 @@ function NewsArticlePage(props) {
                             </Row>
                             <Row>
                                 <Image
-                                    src={article.image_urls[0]}
-                                    className="article-img-1"
+                                    src={article.image_urls ? article.image_urls[0] : defaultImage}
+                                    width={"100%"}
+                                    height={"550px"}
+                                    className="mx-auto"
+                                    onError={event => {
+                                        event.target.onerror = null
+                                        event.target.src = defaultImage
+                                    }}
                                     alt="article image"
                                     style={{ width: "100%", height: "500px", objectFit: "cover", cursor: "pointer" }}
                                     onClick={() => setLightBoxOpen(true)}

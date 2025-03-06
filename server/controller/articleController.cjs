@@ -4,6 +4,7 @@ const deleteImages = require("../scripts/deleteImages.cjs");
 // MONGODB
 // ARTICLE DB SCHEMA
 const Article = require("../db/Articles");
+const { json } = require("body-parser");
 
 //************************************************************** */
 // LOADS ALL ARTICLES FROM DB
@@ -16,6 +17,49 @@ const fetchAllArticles = (req, res) => {
     })
     .catch((err) => {
       console.log("Articles cannot be loaded from the db!");
+    });
+};
+
+//************************************************************** */
+// LOADS ALL ARTICLE TYPE BASE DETAILS FROM DB
+// GET --> api/articles/fetch-all/type/total
+//************************************************************** */
+const fetchAllArticleTypeTotal = async (req, res) => {
+  // ARTICLE TYPES
+  // ! REPLACE WITH JSON
+  const article_types = [
+    "General",
+    "Events",
+    "News",
+    "Announcements",
+    "Gear Review",
+    "Electronic Music",
+    "Instruments",
+    "Recording & Studio",
+    "Composition",
+  ];
+
+  async function processCategoryCount(array) {
+    const results = {};
+    for (const type of array) {
+      await Article.countDocuments({ category: type })
+        .then((count) => {
+          // console.log(`${type}: ${JSON.stringify(count)} `);
+          results[`${type}`] = count;
+        })
+        .catch((err) => {
+          console.log("Articles cannot be loaded from the db!");
+        });
+    }
+    return results;
+  }
+
+  processCategoryCount(article_types)
+    .then((results) => {
+      res.json(results);
+    })
+    .catch((error) => {
+      console.log(`An error has occured:: ${error}`);
     });
 };
 
@@ -228,6 +272,7 @@ module.exports = {
   fetchAllArticlesByDate,
   fetchAllArticleIdsByDate,
   fetchAllArticleBaseInfo,
+  fetchAllArticleTypeTotal,
   insertArticle,
   insertEditedArticle,
   deleteArticleById,

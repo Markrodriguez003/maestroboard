@@ -21,6 +21,15 @@ import { fill } from "@cloudinary/url-gen/actions/resize";
 import { ArrowRightCircle } from "react-bootstrap-icons";
 import defaultImage from "../assets/imgs/misc/missing-img.png";
 
+
+/*----------------------------------------------------------------------------
+|   ⚙️ Use: Article page card
+|                  
+|   🔧 Todo: 
+|
+|   📦 Returns: JSX component 
+*----------------------------------------------------------------------------*/
+
 function NewsArticle(props) {
     const [lightBoxOpen, setLightBoxOpen] = useState(false);
 
@@ -117,7 +126,7 @@ function NewsArticle(props) {
                             <a href="#" className="lead continue-reading float-start" style={{ textDecoration: "none" }}>
                                 {" "}
                                 <ArrowRightCircle
-                                    style={{ fontSize: "20px", color: "rgba(250,250,250,0.9)" }}
+                                    className="continue-icon"
                                 />{" "}
                                 <small className="mr-2">Continue Reading {" "} </small>
                             </a>

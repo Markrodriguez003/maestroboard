@@ -61,6 +61,14 @@ router.get(
 //************************************************************** */
 router.get("/fetch-all/base-info", articleController.fetchAllArticleBaseInfo);
 //************************************************************** */
+//************************************************************** */
+// FINDS & SENDS ALL ARTICLES TYPE DETAILS (LENGTH)
+//************************************************************** */
+router.get(
+  "/fetch-all/type/total",
+  articleController.fetchAllArticleTypeTotal
+);
+//************************************************************** */
 // INSERTS NEW ARTICLE TO DB
 //************************************************************** */
 router.post("/insert", authenticateAPI, articleController.insertArticle);

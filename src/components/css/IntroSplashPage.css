@@ -1,7 +1,44 @@
+.push-pin-group-container {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: auto;
+}
+
 .push-pin-group {
   position: relative;
-  width: 500px;
+  display: block;
+  width: auto;
   height: 500px;
+}
+
+.push-pin-group * {
+  display: inline;
+  position: absolute;
+  width: 40px;
+}
+
+/* FIRST PUSH PIN */
+.push-pin-group *:nth-child(0) {
+  left: 0px;
+}
+
+.push-pin-group *:nth-child(1) {
+  left: 40px;
+  top: 10px;
+}
+
+.push-pin-group *:nth-child(2) {
+  left: 10px;
+  top: 40px;
+}
+
+.cool-guy {
+  width: 320px;
+}
+
+.music-notes {
+  font-size: 60px;
 }
 
 .article-container {
@@ -49,4 +86,78 @@
 
 .continue-reading:visited {
   color: white;
+}
+
+/* SLANTED POSTCARDS */
+
+.postcard-slanted {
+  position: relative;
+  background-color: transparent;
+  height: auto;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  padding: 0;
+}
+
+.postcard-inner {
+  padding: 50px;
+}
+.postcard-inner h1 {
+  font-weight: bold;
+}
+
+.postcard-inner p {
+  /* background-color: rgba(0, 0, 0, 0.4); */
+  /* color: white; */
+  font-weight: 500;
+  width: 95%;
+  margin: 0;
+}
+
+.postcard-background-board {
+  background-image: url("../../assets/imgs/post-imgs/notecard3.png");
+}
+
+.postcard-background-news {
+  background-image: url("../../assets/imgs/post-imgs/scratchpad1.png");
+}
+
+.postcard-background-forum {
+  background-image: url("../../assets/imgs/post-imgs/notecard5.png");
+}
+
+/* MISC */
+.make-music-post {
+  width: 392px;
+}
+
+@media screen and (max-width: 400px) {
+  .make-music-post {
+    width: 302px;
+  }
+}
+
+/* COOL GUY */
+@media only screen and (max-width: 964px) {
+  .cool-guy {
+    width: 250px;
+  }
+}
+
+/* POSTERCARDS BELOW */
+@media only screen and (max-width: 995px) {
+  .postcard-slanted {
+    width: 380px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .postcard-slanted {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }

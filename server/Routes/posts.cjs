@@ -27,6 +27,11 @@ router.get("/fetch-total-count", postController.fetchAllPostsTotalCount);
 //************************************************************** */
 router.get("/fetch-all", postController.fetchAllPosts);
 //************************************************************** */
+// FINDS & SENDS ALL POSTS TYPE DETAILS (LENGTH)
+//************************************************************** */
+router.get("/fetch-all/type/total", postController.fetchAllPostsTypeTotal);
+
+//************************************************************** */
 // LOADS ARTICLES BY LIMIT / CURSOR - PAGINATION
 //************************************************************** */
 router.get("/fetch", postController.fetchBatchedPosts);
