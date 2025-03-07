@@ -22,6 +22,18 @@ import defaultImage from "../assets/imgs/misc/missing-img.png";
 // THEME DESIGN
 import { SITE_COLORS } from "./css/site";
 
+
+
+/*----------------------------------------------------------------------------
+|   ⚙️ Use: Individual corkboard post page 
+|        
+|   🔧 Todo:   
+|
+|   📦 Returns: JSX component 
+*----------------------------------------------------------------------------*/
+
+
+
 function PostPage(props) {
 
     // MAKES SURE PAGE GOES TO TOP
@@ -59,7 +71,6 @@ function PostPage(props) {
         // GRABS ALL POST FROM DB
         async function grabPost() {
             await axios
-                // .get(`http://localhost:3005/api/posts/id/${params.id}`)
                 .get(`${import.meta.env.VITE_SERVER_API_URL}/api/posts/id/${params.id}`)
                 .then(async (response) => {
                     setPostLoadingState("loading");

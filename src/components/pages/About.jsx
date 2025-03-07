@@ -7,6 +7,9 @@ import InfoPanel from "../ui/InfoPanel";
 import { SITE_COLORS } from "../css/site";
 import "../css/About.css";
 
+// LIBRARIES
+import { Link } from "react-router-dom";
+
 // ASSETS
 import { HouseGearFill, MusicNoteBeamed, Newspaper, MusicNote, Tools, PostcardHeartFill, Postcard } from "react-bootstrap-icons";
 import about_corkboard from "../../assets/imgs/about/community-board.png"
@@ -86,6 +89,11 @@ function About() {
                                             </li>
 
                                         </ul>
+                                        <div>
+                                            <Link to={"/board"}>
+                                                <Button>Community Board</Button>
+                                            </Link>
+                                        </div>
                                     </Stack>
                                 </div>
                             </div>
@@ -130,6 +138,11 @@ function About() {
                                                 Events
                                             </li>
                                         </ul>
+                                        <div>
+                                            <Link to={"/news"}>
+                                                <Button>News</Button>
+                                            </Link>
+                                        </div>
                                     </Stack>
                                 </div>
                             </div>
@@ -161,7 +174,7 @@ function About() {
                                             Without the support of other developers and their hard work this site would have been much harder to develop! Here are the list of NPM libraries and tools used to develope this website! Please give them some love! </p>
                                         <ul className="lead">
                                             <Row>
-                                                <Col>
+                                                <Col className="gap-0 m-0 p-0">
                                                     <li>
                                                         React
                                                     </li>

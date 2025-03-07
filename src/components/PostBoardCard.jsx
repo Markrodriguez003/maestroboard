@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
+import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
 import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
 
@@ -112,8 +113,6 @@ function PostBoardCard(props) {
   })
 
 
-  // https://www.geeksforgeeks.org/design-a-flip-card-effect-using-reactjs/#approach-1-using-css-styling
-
   // CHECKS TO SEE IF POSTBOARD CARD IS LOADED. PLACE LOADING CARD IN LIEU
   useEffect(() => {
     setIsPostCardLoaded(true);
@@ -140,16 +139,16 @@ function PostBoardCard(props) {
               height: "350px",
             }
           ]}
-        plugins={[Fullscreen, Thumbnails]}
+        plugins={[Fullscreen, Thumbnails, Zoom]}
       />
 
       {isPostCardLoaded ?
-        <div style={{ display: "block", position: "relative", height: "100%", overflow: 'hidden', }}>
+        <div className="main-card">
           {/* **************************************************** */}
           {/* UNDER CARD */}
           {/* **************************************************** */}
           <div className="under-card" style={{ top: revealUnderCard ? "0px" : "600px" }}>
-            <Card className="postCard shadow-lg" >
+            <Card className="postCard postCard-shadow" >
               <Card.Header style={{ color: "white", backgroundColor: SITE_COLORS.secondary }} >
                 <Card.Title className="mt-3" style={{ fontWeight: "bold", fontSize: "18px" }}>{title}</Card.Title>
               </Card.Header>
@@ -218,7 +217,7 @@ function PostBoardCard(props) {
                 {/* FRONT OF CARD */}
                 {/* ************************************************** */}
                 <div className="flip-card-front">
-                  <Card className="postCard shadow-lg" >
+                  <Card className="postCard postCard-shadow" >
 
                     {tempGalleryArry?.length !== 0 || tempGalleryArry !== undefined
                       ?
@@ -230,13 +229,7 @@ function PostBoardCard(props) {
                                 <>
                                   < Image
                                     key={`image-${img.src} - ${i}`}
-                                    className="d-block"
-                                    style={{
-                                      height: "350px",
-                                      width: "100%",
-                                      objectFit: "cover",
-                                      backgroundColor: "rgba(0, 115, 123, 0.521)"
-                                    }}
+                                    className="d-block card-image"
                                     rounded
                                     src={img.src ? img.src : defaultImage}
                                     alt={`alt- post-slide - ${img}`}
@@ -254,13 +247,7 @@ function PostBoardCard(props) {
                       :
                       < Image
                         key={`image-==`}
-                        className="d-block"
-                        style={{
-                          height: "300px",
-                          width: "100%",
-                          objectFit: "contain",
-                          backgroundColor: "rgba(0,0,0,0.2)"
-                        }}
+                        className="d-block card-image"
                         rounded
                         src={defaultImage}
                         alt={`alt- post-slide`}
@@ -304,7 +291,7 @@ function PostBoardCard(props) {
                 {/* BACK OF CARD */}
                 {/* ************************************************** */}
                 <div className="flip-card-back">
-                  <Card className="postCard shadow-lg "    >
+                  <Card className="postCard postCard-shadow"    >
                     <Card.Header style={{ color: "white", backgroundColor: SITE_COLORS.lightMain }}>
                       <Card.Title className="mt-3" style={{ fontWeight: "bold", fontSize: "18px" }}>{title}</Card.Title>
                     </Card.Header>

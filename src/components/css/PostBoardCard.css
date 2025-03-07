@@ -3,14 +3,19 @@
   border: none;
   width: 26rem;
   height: 36rem;
-  background-color: rgba(255, 255, 255, 0.878);
+  background-color: rgba(255, 255, 255, 0.973);
   background-blend-mode: hue;
-
-  /* background-image: url("../../assets/imgs/card-textures/3.jpg") !important; */
-  /* background-image: url("../../assets/imgs/card-textures/9.jpg") !important; */
   background-image: url("../../assets/imgs/card-textures/16.jpg") !important;
   /* background-image: url("../../assets/imgs/card-textures/20.jpg") !important; */
   background-size: contain;
+}
+
+.main-card {
+  display: block;
+  position: relative;
+  height: 579px;
+  overflow: hidden;
+  z-index: 9999999999;
 }
 
 .pushPin {
@@ -26,23 +31,52 @@
   position: absolute;
   width: 26rem;
   height: 36rem;
-  /* left: 7px; */
-  /* top: 600px;   */
   -moz-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
-  /* background-color: "red"; */
   z-index: 200;
 }
 
-@media only screen and (max-width: 375px) {
+@media screen and (max-width: 500px) {
+  .card-container {
+    width: 22rem;
+    height: 32rem;
+  }
   .postCard {
-    width: 100%;
+    width: 22rem;
+    height: 32rem;
+  }
+  .main-card {
+    margin-left: auto;
+    margin-right: auto;
+
+    width: 22rem;
+    height: 32rem;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .card-container {
+    width: 20rem;
+
+    height: 36rem;
+  }
+  .postCard {
+    width: 20rem;
+
     height: 36rem;
   }
   .under-card {
-    width: 100%;
+    width: 20rem;
+
+    height: 36rem;
+  }
+
+  .main-card {
+    margin-left: auto;
+    margin-right: auto;
+    width: 20rem;
     height: 36rem;
   }
 }
@@ -78,4 +112,17 @@
 
 .flip-card-back {
   transform: rotateY(180deg);
+}
+
+.card-image {
+  height: 300px;
+  width: 100%;
+  object-fit: cover;
+  background-color: rgba(0, 0, 0, 0.205);
+  transition: 0.3s linear;
+}
+
+.card-image:hover {
+  height: 350px;
+  transform: scale(1.05);
 }

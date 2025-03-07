@@ -62,9 +62,14 @@ function CommunityBoard() {
   const fetchData = useCallback(async (page = 1, sort = -1) => {
     scrollToTop();
     setLoading(true);
+
     try {
-      // const response = await axios.get(`http://localhost:3005/api/posts/fetch?limit=${POST_PAGINATION_LIMIT}&page=${page}&sort=${sort}`);
       const response = await axios.get(`${import.meta.env.VITE_SERVER_API_URL}/api/posts/fetch?limit=${POST_PAGINATION_LIMIT}&page=${page}&sort=${sort}`);
+
+      setPosts((prev) => ({
+        ...prev,
+        fetchedPosts: [],
+      }));
       setPosts((prev) => ({
         ...prev,
         fetchedPosts: [...response.data.posts],
@@ -224,6 +229,7 @@ function CommunityBoard() {
                             className="p-0 m-0"
                             key={`${p._id} - ${i}`}
                             xs={12} sm={12} md={4} lg={4} xl={4} xxl={4}>
+                            {/* //! LOADING ISSUE HERE? */}
                             <PostBoardCard {...p} />
                           </Col>
                         ))}
