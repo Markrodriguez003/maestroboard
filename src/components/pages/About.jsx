@@ -72,7 +72,7 @@ function About() {
                     </Col>
                     <Col xxl={6} xl={6} lg={6} md={12} sm={12} xs={12} className="mt-5 p-0 mx-auto text-center" style={{ position: "relative" }}>
                         <div className="m-auto p-0">
-                            <Image src={about_splash_img_2} style={{ position: "absolute", width: "85%", top:"10px" }} className="mt- 3 mx-auto text-center" />
+                            <Image src={about_splash_img_2} style={{ position: "absolute", width: "85%", top: "10px" }} className="mt- 3 mx-auto text-center" />
                             <Image src={corkboard} width={"85%"} className="mt-3 mx-auto text-center" />
                         </div>
                     </Col>
@@ -325,7 +325,7 @@ function About() {
                 <Row className="m-0 p-0 gap-3 mx-auto justify-content-center" style={{ backgroundColor: "black" }}>
 
                     <Col className="m-0 p-0" xxl={5} xl={5} lg={5} md={5} sm={12} xs={12}>
-                        <div style={{ position: "relative", height: "100vh", width: "48vw", display: "inline-block", backgroundColor: "" }}>
+                        <div style={{ position: "relative", height: "100vh", width: "100%", display: "inline-block", backgroundColor: "", overflow:"hidden" }}>
 
                             <Image src={about_corkboard} style={{ position: "absolute", width: "400px", height: "auto", left: "220px", bottom: "160px", zIndex: 3 }} />
 
@@ -342,7 +342,7 @@ function About() {
                         <p className="mx-auto lead text-start text-light ">
                             This site is undergoing updates! Since this site is growing to accomodate all of our users, we will be changing our layouts and functionality. Currently, at the moment the only access to post, delete and edit articles/posts is given to the site admin, but stick around as we will be pushing out updates for users to have their own accounts! That's right! Posting community posts, forum posts, gear review scoring and community driven articles! Keep your ear on the ground for further updates!
                         </p >
-                        <Stack direction="horizontal" className="gap-1">
+                        <Stack direction="horizontal" className="gap-1" >
 
                             <Button>Home</Button>
                             <Button>Community Board</Button>
