@@ -322,9 +322,9 @@ function About() {
                 {/* UPCOMING SITE IMPROVEMENTS */}
                 {/* ***************************************************************************************** */}
 
-                <Row className="m-0 p-0 gap-3 mx-auto justify-content-center" style={{ backgroundColor: "black" }}>
+                <Row className="m-0 p-0 gap-3 mx-auto justify-content-center" style={{ backgroundColor: "transparent" }}>
 
-                    <Col className="m-0 p-0" xxl={5} xl={5} lg={5} md={5} sm={12} xs={12}>
+                    <Col className="m-0 p-0 pb-5" xxl={5} xl={5} lg={5} md={5} sm={12} xs={12}>
                         <div style={{ position: "relative", height: "100vh", width: "100%", display: "inline-block", backgroundColor: "", overflow:"hidden" }}>
 
                             <Image src={about_corkboard} style={{ position: "absolute", width: "400px", height: "auto", left: "220px", bottom: "160px", zIndex: 3 }} />
