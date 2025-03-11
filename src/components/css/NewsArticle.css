@@ -36,9 +36,27 @@
   font-size: 25px;
 }
 
-.newsArticleStyling {
+.news-article-styling {
   background-color: rgba(16, 41, 51, 1);
   animation: fadeInAnimation ease 0.5s;
   animation-iteration-count: 1;
   animation-fill-mode: "forwards";
+}
+
+.fold-corner {
+  background: rgba(76, 0, 130, 0);
+}
+.fold-corner::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  border-style: solid;
+  border-width: 0.5rem;
+  border-color: teal teal silver silver;
+  transition: all 0.4s;
+}
+.fold-corner:hover::after {
+  border-width: 3rem;
+  background-color: red;
 }

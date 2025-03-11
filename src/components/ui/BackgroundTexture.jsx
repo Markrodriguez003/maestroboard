@@ -17,6 +17,15 @@ const backgroundStyling = {
 
 }
 
+
+/*----------------------------------------------------------------------------
+|   ⚙️ Use: Background texture for entire website 
+|        
+|   🔧 Todo: Add design custom themes (light & dark mode) 
+|            
+|   📦 Returns: JSX component 
+*----------------------------------------------------------------------------*/
+
 function BackgroundTexture({ children }) {
 
     return (

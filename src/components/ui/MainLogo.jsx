@@ -1,11 +1,10 @@
 
 
 // COMPONENTS
-import { Navbar, Row, Col, Nav, Container, Image } from "react-bootstrap";
+import { Row, Col, Image } from "react-bootstrap";
 
 // ASSETS
 import mainLogo from "../../assets/imgs/logo/Maestro-Logo-R.png"
-
 
 // LIBRARIES
 import { useNavigate } from 'react-router-dom';
@@ -22,7 +21,6 @@ import "../css/MainLogo.css";
 |
 |   📦 Returns: JSX component
 *----------------------------------------------------------------------------*/
-
 
 function MainLogo() {
 

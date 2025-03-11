@@ -1,10 +1,6 @@
-
 // COMPONENTS
 import { Container, Spinner, Stack } from "react-bootstrap";
 import { SITE_COLORS } from "../css/site";
-
-
-
 
 /*----------------------------------------------------------------------------
 |   ⚙️ Use: Loading status panel for articles & posts that are loading  

@@ -2,9 +2,15 @@
 // REACT COMPONENTS
 import { Container, Spinner } from "react-bootstrap";
 
+/*----------------------------------------------------------------------------
+|   ⚙️ Use: Loading Spinner
+|        
+|   🔧 Todo: Add different loading spinner options 
+|
+|   📦 Returns: JSX component 
+*----------------------------------------------------------------------------*/
+
 function LoadingSpinner({ title, type = "border" }) {
-
-
 
     return (
         <Container className="mx-auto text-center mt-5">

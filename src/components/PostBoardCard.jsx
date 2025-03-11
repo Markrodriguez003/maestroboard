@@ -87,12 +87,6 @@ function PostBoardCard(props) {
     setRevealUnderCard(!revealUnderCard);
   }
 
-
-  // function handleFlipClick() {
-  //   setIsFlipped((prev) => !prev);
-  // };
-
-
   const [lightBox, setLightBox] = useState(false);
 
   function handleLightbox() {

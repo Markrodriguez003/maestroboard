@@ -1,11 +1,20 @@
 
+// REACT
 import { useState, useEffect } from "react"; // React module for JSX functionaity
+
+// CSS
 import "../css/PostBoardCard.css"; // CSS file for PostBoardCard
 
-
+// COMPONENTS
 import { Card, Row, Col, Spinner } from "react-bootstrap";
 
-
+/*----------------------------------------------------------------------------
+|   ⚙️ Use: Loading post spinner panel
+|        
+|   🔧 Todo: Add custom themes and spinners  
+|
+|   📦 Returns: JSX component 
+*----------------------------------------------------------------------------*/
 
 function LoadingPostCard(prop) {
     useEffect(() => {

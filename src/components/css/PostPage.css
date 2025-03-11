@@ -1,0 +1,13 @@
+.article-page-image {
+  width: auto;
+  height: auto;
+  cursor: pointer;
+  max-width: 550px;
+  object-fit: cover;
+}
+
+@media screen and (max-width: 440px) {
+  .article-page-image {
+    width: 100%;
+  }
+}

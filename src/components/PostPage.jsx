@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 
 // DESIGN
-import "./css/NewsArticle.css";
+import "./css/PostPage.css";
 import "yet-another-react-lightbox/styles.css";
 
 // COMPONENTS
@@ -22,8 +22,6 @@ import defaultImage from "../assets/imgs/misc/missing-img.png";
 // THEME DESIGN
 import { SITE_COLORS } from "./css/site";
 
-
-
 /*----------------------------------------------------------------------------
 |   ⚙️ Use: Individual corkboard post page 
 |        
@@ -32,18 +30,17 @@ import { SITE_COLORS } from "./css/site";
 |   📦 Returns: JSX component 
 *----------------------------------------------------------------------------*/
 
-
-
 function PostPage(props) {
 
     // MAKES SURE PAGE GOES TO TOP
     const location = useLocation();
 
+    // SCROLLS TO TOP WHEN PAGE IS LOADED
     useEffect(() => {
         window.scrollTo({
             top: 0,
             left: 0,
-            behavior: "smooth" // Optional for smooth scrolling
+            behavior: "smooth"
         });
     }, [location]);
 
@@ -135,9 +132,8 @@ function PostPage(props) {
                         >
                             <Image
                                 src={post.image_urls[0]}
-                                className="p-0 m-0 object-fit-cover"
+                                className="p-0 m-0 article-page-image "
                                 alt="post image"
-                                style={{ cursor: "pointer", width: "auto", height: "auto", }}
                                 onClick={() => setLightBoxOpen(true)}
                             />
                         </Col>
@@ -249,6 +245,13 @@ function PostPage(props) {
                             <Button onClick={() => { console.log('testing b utton') }}>Home</Button>
                         </LoadPageElement>
             }
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
         </Container >
     );
 }

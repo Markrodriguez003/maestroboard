@@ -8,7 +8,7 @@ import { SITE_COLORS } from "../css/site";
 /*----------------------------------------------------------------------------
 |   ⚙️ Use: Side ul panel to hold articles and misc. links
 |                  
-|   🔧 Todo: Offer more robust design options
+|   🔧 Todo: Offer more robust design options / add icons
 |
 |   📦 Returns: JSX component 
 *----------------------------------------------------------------------------*/

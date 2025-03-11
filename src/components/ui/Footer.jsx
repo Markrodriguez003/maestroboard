@@ -1,5 +1,3 @@
-
-
 // COMPONENTS
 import { Navbar, Row, Col, Nav, Container, Image } from "react-bootstrap";
 import MainLogo from "./MainLogo";
@@ -14,6 +12,13 @@ import { useLocation } from 'react-router-dom';
 // CSS
 import "../css/Footer.css";
 
+/*----------------------------------------------------------------------------
+|   ⚙️ Use: Bottom footer panel for site 
+|        
+|   🔧 Todo: Add newsletter submission field?  
+|
+|   📦 Returns: JSX component 
+*----------------------------------------------------------------------------*/
 
 function Footer() {
 
@@ -27,6 +32,7 @@ function Footer() {
     <Navbar
       className="p-0 mt-5 justify-content-center"
       style={{
+        // zIndex: 9999,
         backgroundColor: SITE_COLORS.main,
 
       }}

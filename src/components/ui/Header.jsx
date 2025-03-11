@@ -21,9 +21,9 @@ import { useFormState } from "react-hook-form";
 
 
 /*----------------------------------------------------------------------------
-|   ⚙️ Use: page header nav bar 
+|   ⚙️ Use: site header nav bar 
 |   
-|   🔧 Todo:
+|   🔧 Todo: background texture(?)
 |
 |   📦 Returns: JSX component
 *----------------------------------------------------------------------------*/

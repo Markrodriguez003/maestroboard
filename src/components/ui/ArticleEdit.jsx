@@ -16,8 +16,6 @@ import { Navigate } from 'react-router-dom';
 import deleteArticle from "../../../server/scripts/deleteArticle";
 import { useLocation } from "react-router-dom";
 
-
-
 // ASSETS
 import { Reply, BackspaceReverse, FileEarmarkExcelFill, Search, FilePostFill, XCircleFill, Trash2Fill } from "react-bootstrap-icons";
 // DATA
@@ -26,7 +24,6 @@ import article_types from "../../data/articleTypes.json";
 // DESIGN CSS
 import { SITE_COLORS } from "../css/site";
 // import deleteImage from "../../../server/scripts/deleteImage";
-
 
 // ! move to component
 // LOADING PAGE TO SHOW WHEN FRONT END IS TRYING TO GRAB ARTICLE FROM DB
@@ -48,7 +45,6 @@ function LoadingArticle() {
 |
 |   📦 Returns: JSX component
 *----------------------------------------------------------------------------*/
-
 
 function ArticleEdit() {
 

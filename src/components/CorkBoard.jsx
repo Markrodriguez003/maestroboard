@@ -15,9 +15,6 @@ import { Container } from "react-bootstrap"
 function Corkboard({ children }) {
 
   return (
-
-
-
     <div className="corkboard-card-container shadow-lg"   >
       {children}
     </div >

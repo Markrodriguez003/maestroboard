@@ -19,11 +19,8 @@ import LoadingSpinner from "../ui/LoadingSpinner";
 // LAZY COMPONENTS
 const NewsArticle = lazy(() => import('../NewsArticle'));
 
-
 // TEST ARTICLES
 import testArticles from "../../../server/scripts/quickArticles.json";
-
-
 
 /*----------------------------------------------------------------------------
 |   ⚙️ Use: News page that will show news articles and announcements

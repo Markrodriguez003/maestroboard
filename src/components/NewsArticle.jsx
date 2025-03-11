@@ -54,7 +54,7 @@ function NewsArticle(props) {
     })
 
     return (
-        <Container as={"article"} className={"p-4 mt-5 newsArticleStyling"} >
+        <Container as={"article"} className={"p-4 mt-5 news-article-styling"} >
             <Lightbox
                 open={lightBoxOpen}
                 close={() => setLightBoxOpen(false)}

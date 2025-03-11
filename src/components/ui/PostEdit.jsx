@@ -64,10 +64,11 @@ function LoadingArticle() {
 
 /*----------------------------------------------------------------------------
 |   ⚙️ Use: Form to edit & delete a post via URL params mongoDB id 
-|   
-|   🔧 Todo:
+|        
+|   🔧 Todo: Ease of access options (first image placement / image deletion).
+|             Separate section to view images.
 |
-|   📦 Returns: JSX component
+|   📦 Returns: JSX component 
 *----------------------------------------------------------------------------*/
 
 
