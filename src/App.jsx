@@ -18,7 +18,7 @@ import About from "./components/pages/About";
 
 
 // WIP
-// import SignUpForm from "./components/SignUpForm";
+import SignUpForm from "./components/SignUpForm";
 
 import ProtectedRoutes from "./utils/ProtectedRoutes";
 import Dashboard from "./components/pages/Dashboard";
@@ -56,7 +56,8 @@ function App() {
             <Route path="/forum" element={<Forum />} />
             <Route path="/login" element={<Login />} />
             <Route path="/log-out" element={<Logout />} />
-
+            {/* TEST */}
+            <Route path="/sign-up" element={<SignUpForm />} />
             {/* PROTTECTED ROUTES */}
             <Route element={<ProtectedRoutes />}>
               <Route path="/dashboard" element={<Dashboard />} />

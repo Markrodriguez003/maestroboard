@@ -1,0 +1,11 @@
+.content-container {
+  width: 70%;
+  margin-top: 140px;
+  z-index: 4;
+}
+
+@media screen and (max-width: 975px) {
+  .content-container {
+    width: 90%;
+  }
+}

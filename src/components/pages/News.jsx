@@ -90,7 +90,7 @@ function News(props) {
 
       {articles !== undefined
         ?
-        <div>
+        <div className="mb-5">
           <Container fluid className="p-0 m-0 mt-3">
             <Row lg={2} xs={1} sm={1} className="justify-content-start p-0 m-0">
               <Col lg={8} sm={12} xs={12} md={8} xl={8} className="">

@@ -130,6 +130,9 @@ function IntroSplashPage() {
                   <Link to="/login">
                     <Button>Log-in</Button>
                   </Link>
+                  <Link to="/sign-up">
+                    <Button>Sign-up</Button>
+                  </Link>
                 </Stack>
               </InfoPanel>
             </Col>

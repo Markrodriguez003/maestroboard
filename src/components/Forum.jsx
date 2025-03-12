@@ -51,7 +51,7 @@ function Forum() {
   }, [])
 
   return (
-    <div>
+    <div className="">
       <Card className="forum-container mt-5">
         <Card.Header className="display-4 forum-header">
           <CardHeading /> MaestroBoard Forums
@@ -301,6 +301,10 @@ function Forum() {
           {/* <Pagination className="mt-4 ml-4 ">{items}</Pagination> */}
         </div>
       </Card>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
     </div>
   );
 }

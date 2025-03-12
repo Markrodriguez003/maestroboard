@@ -30,7 +30,7 @@ function Footer() {
   return (
 
     <Navbar
-      className="p-0 mt-5 justify-content-center"
+      className="p-0 m-0 justify-content-center"
       style={{
         // zIndex: 9999,
         backgroundColor: SITE_COLORS.main,

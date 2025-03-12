@@ -2,6 +2,8 @@
 // COMPONENTS
 import { Button, Container, Stack, Row, Col, Image } from "react-bootstrap";
 
+// STYLING
+import "./css/LayeredPanels.css";
 
 /*----------------------------------------------------------------------------
 |   ⚙️ Use: Layered Text panels with header layered (as seen in About page)       
@@ -44,12 +46,11 @@ function LayeredPanels(props) {
 
                 {/* CONTENT BODY */}
                 <div style={{
-                    width: "80%",
+
                     backgroundColor: contentBGColor,
-                    marginTop: "140px",
-                    zIndex: 4
+
                 }}
-                    className="mx-auto p-5 shadow-lg">
+                    className="mx-auto p-5 shadow-lg content-container">
                     <div style={{ overflowWrap: "break-word" }}>
                         {children}
                     </div>

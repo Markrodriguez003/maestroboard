@@ -14,16 +14,30 @@
 }
 
 /* CSS MEDIA QUERIES */
-@media screen and (max-width: 580px) {
+@media screen and (max-width: 854px) {
+  .corkboard-carousel {
+    /* width: 200px !important; */
+    transform: scale(0.95);
+  }
+  .corkboard-carousel * {
+    width: 100% !important;
+  }
 }
 
 .corkboard-carousel {
+  display: inline-block;
   width: 100%;
+  height: auto;
   overflow: hidden;
-  background-color: red;
-  margin: 0;
-  padding: 0;
-  transform: scale(0.8);
-  background-repeat: no-repeat;
-  background-image: url("../../assets//imgs/about/specialty-enclosed-corkboards.png");
+}
+
+.corkboard-carousel div {
+  width: 700px;
+
+  height: auto;
+}
+.corkboard-carousel div * {
+  width: 700px;
+
+  height: auto;
 }

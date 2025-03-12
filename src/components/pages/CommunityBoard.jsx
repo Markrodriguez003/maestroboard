@@ -154,7 +154,7 @@ function CommunityBoard() {
   }, [paginationTrigger, currentPage, fetchData, posts.totalPostCount, posts.fetchedPosts])
 
   return (
-    <div className="mt-5">
+    <div className="mt-5 mb-5">
       <>
         {
           loading
@@ -167,6 +167,9 @@ function CommunityBoard() {
                 <LoadingSpinner title="Loading Posts">
                 </LoadingSpinner>
                 <br />
+                <br />
+                <br />
+                <br />
 
               </div>
             </Corkboard>
@@ -174,16 +177,24 @@ function CommunityBoard() {
               ?
 
               // POST CARD FAILURE
-              <Corkboard>
-                <div style={{ backgroundColor: SITE_COLORS.main, position: "relative" }} className="p-5 text-center">
-                  <Image src={pushPin} style={{ width: "35px", position: "absolute", top: "-15px", left: "50%" }} />
-                  <div className="mx-auto text-center mb-2">
-                    <FileEarmarkXFill size={"128px"} className="text-light" />
+              <>
+                <Corkboard>
+                  <div style={{ backgroundColor: SITE_COLORS.main, position: "relative" }} className="p-5 text-center">
+                    <Image src={pushPin} style={{ width: "35px", position: "absolute", top: "-15px", left: "50%" }} />
+                    <div className="mx-auto text-center mb-2">
+                      <FileEarmarkXFill size={"128px"} className="text-light" />
+                    </div>
+                    <h1 className="text-light">Could not fetch posts! </h1>
+                    <h1 className="text-light">Please try again later!</h1>
                   </div>
-                  <h1 className="text-light">Could not fetch posts! </h1>
-                  <h1 className="text-light">Please try again later!</h1>
-                </div>
-              </Corkboard> : <div>
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                </Corkboard>
+              </>
+
+              : <div>
 
                 {/* ********************************************************************** */}
                 {/* TOP FILTER BY DATE - PREV/NEXT BUTTONS */}
@@ -272,6 +283,10 @@ function CommunityBoard() {
                     </ButtonGroup>
                   </Col>
                 </Row >
+                <br />
+                <br />
+                <br />
+                <br />
               </div >
         }
       </>

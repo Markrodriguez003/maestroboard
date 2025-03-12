@@ -13,18 +13,12 @@ import { Link } from "react-router-dom";
 
 // ASSETS
 import { HouseGearFill, MusicNoteBeamed, Newspaper, MusicNote, Tools, PostcardHeartFill, Postcard } from "react-bootstrap-icons";
-import about_corkboard from "../../assets/imgs/about/community-board.png"
-import about_articles from "../../assets/imgs/about/articles.png"
-import about_technology from "../../assets/imgs/about/technology-1283624_640.jpg"
 
-
-// import corkboard_svg from "../../assets/imgs/about/white-bordered-corkboard-lg.png";
-// import corkboard_svg from "../../assets/imgs/about/corkboard-image.png";
-import corkboard from "../../assets/imgs/about/specialty-enclosed-corkboards.png";
-
-import about_splash_img_1 from "../../assets/imgs/about/corkboard-image-1.png"
-import about_splash_img_2 from "../../assets/imgs/about/corkboard-image-2.png"
-import about_splash_img_3 from "../../assets/imgs/about/corkboard-image-3.png"
+// import corkboard_animation from "../../assets/imgs/about/maestroboard-display.gif";
+import corkboard_animation from "../../assets/imgs/about/articles.png";
+import about_splash_img_1 from "../../assets/imgs/about/Corkboard-1.png"
+import about_splash_img_2 from "../../assets/imgs/about/Corkboard-2.png"
+import about_splash_img_3 from "../../assets/imgs/about/Corkboard-3.png"
 
 
 /*----------------------------------------------------------------------------
@@ -44,62 +38,62 @@ function About() {
                 {/* ***************************************************************************************** */}
                 {/* ABOUT INTRO SPLASH*/}
                 {/* ***************************************************************************************** */}
-                <Row style={{ width: "100%" }} className="pt-4 mx-auto">
+                <Row style={{ width: "100%" }} className="pt-4 mx-auto m-0 justify-content-center">
                     <Col
-                        style={{ backgroundColor: "transparent", position: "relative" }}
-                        className="m-0 p-5 mx-auto"
-                        xxl={6} xl={6} lg={6} md={12} sm={12} xs={12}
+                        style={{ position: "relative" }}
+                        className="m-0 p-4 "
+                        xxl={6} xl={6} lg={6} md={6} sm={12} xs={12}
                     >
-                        <h1 className="display-2 text-start text-light" >ABOUT US </h1>
+                        <h1 className="display-2 text-start text-light m-0 p-0 mt-2" >ABOUT US </h1>
                         <p className="about-mini-header lead-3 text-start text-light">What is Maestroboard all about?</p>
                         <hr style={{ color: "white" }} />
-                        <hr style={{ backgroundColor: "white" }} />
-                        <p className="mx-auto lead text-start text-light ">
-                            Imagine you are walking towards the back of a music shop & you see a community corkboard. You see adverts of bands looking for band members, flyers for concert shows, lost and found, ads for various music related services and posts for used gear. The excitement of meeting fellow musicians and entertaining possibilities for art! This is what we wanted to re-create!
+                        <p className="mx-auto lead text-start text-light m-0 p-0">
+                            Imagine you are walking towards the back of a music shop & you see a community corkboard. Posted on this board are notices of bands looking for members to join their troupe, flyers for concert shows, classifieds of lost & found, ads for various music related services and posts for used gear. The excitement of meeting fellow musicians and entertaining possibilities for art! This is what we wanted to re-create!
                         </p >
                         <p className="mx-auto lead text-start text-light ">
-                            The purpose of this website is to give users the ability to see music related community posts, news articles & be a part of our music forum! We like to say..
+                            The purpose of this website is to give users the ability to see music related community posts, news articles & be a part of our music forum!
                         </p >
                         <p className=" mx-auto lead text-light">Always Remember.... always chase <span style={{ fontStyle: "italic" }}>your</span> <span style={{ color: "darkcyan", textDecoration: "underline", fontWeight: "bold" }}>muse!</span></p>
 
                         <Stack direction="horizontal" className="gap-1">
 
                             <Button>Home</Button>
-                            <Button>Community Board</Button>
+                            <Button>Board</Button>
                             <Button>News</Button>
                             <Button>Login</Button>
                         </Stack>
                     </Col>
-                    <Col xxl={6} xl={6} lg={6} md={12} sm={12} xs={12} className="mt-5 p-0 mx-auto text-center" style={{ position: "relative" }}>
-                        <div className="m-auto p-0">
-                            <Image src={about_splash_img_2} style={{ position: "absolute", width: "85%", top: "10px" }} className="mt- 3 mx-auto text-center" />
-                            <Image src={corkboard} width={"85%"} className="mt-3 mx-auto text-center" />
-                        </div>
-                    </Col>
-                    {/* <Col xxl={6} xl={6} lg={6} md={6} sm={12} xs={12} className="m-0 mt-5 p-0 w-75">
-                        <Carousel
-                            interval={1000}
 
+
+                    {/* CAROUSEL */}
+                    <Col xxl={6} xl={6} lg={6} md={6} sm={12} xs={12} className="w-auto m-0 p-0 mt-5" style={{ order: "-1" }}>
+
+                        <Carousel
+                            interval={4500}
+                            wrap={true}
                             controls={false}
                             indicators={false}
                             className="p-0 m-0 corkboard-carousel"
-
                         >
-                            <Carousel.Item
-                                className="p-0 m-0">
-                                <Image src={about_splash_img_1} text="First slide" />
-
+                            <Carousel.Item >
+                                <div>
+                                    <Image src={about_splash_img_1} text="First slide" />
+                                </div>
                             </Carousel.Item>
-                            <Carousel.Item>
-                                <Image src={about_splash_img_2} text="First slide" />
-
+                            <Carousel.Item >
+                                <div>
+                                    <Image src={about_splash_img_2} text="Second slide" />
+                                </div>
                             </Carousel.Item>
-                            <Carousel.Item>
-                                <Image src={about_splash_img_3} text="First slide" />
-
+                            <Carousel.Item >
+                                <div>
+                                    <Image src={about_splash_img_3} text="Third slide" />
+                                </div>
                             </Carousel.Item>
+
                         </Carousel>
-                    </Col> */}
+
+                    </Col>
                 </Row>
 
                 {/* ***************************************************************************************** */}
@@ -198,38 +192,23 @@ function About() {
                         <h2 className=" text-start" style={{ color: "#a4f9ff" }}>BE A PART OF OUR COMMUNITY!</h2>
                         <hr />
                         <p>
-                            Come join our forum to get into the latest music related community! Ask questions, learn more about gear, make friends and be on the cutting edge of music gear opinions! In addition to music related forum categories we also have off-hour categories that you can join to talk about whatever!
+                            Come join our forum to get into the latest music related community! Ask questions, learn more about gear, make friends and be on the cutting edge of music gear opinions! In addition to music related forum categories we also have off-topic categories that you can join to talk about whatever!
                         </p>
-                        <hr />
 
-                        <h3 className=" text-start" style={{ color: "#b6e8f9" }}>TYPES OF ARTICLES:</h3>
-                        <ul className="lead">
-                            <li>
-                                Music Reviews
-                            </li>
-                            <li>
-                                News
-                            </li>
-                            <li>
-                                Recording & Studio
-                            </li>
-                            <li>
-                                Instruments
-                            </li>
-                            <li>
-                                Advertisements
-                            </li>
-                            <li>
-                                Events
-                            </li>
-                        </ul>
                         <hr style={{ color: "white" }} />
 
-                        <div>
+                        <Stack direction="horizontal" className="gap-2">
                             <Link to={"/news"}>
                                 <Button>News Articles</Button>
                             </Link>
-                        </div>
+                            <Link to={"/home"}>
+                                <Button>Sign-up</Button>
+                            </Link>
+                            or..
+                            <Link to={"/home"}>
+                                <Button>Log-in</Button>
+                            </Link>
+                        </Stack>
                     </div>
 
                 </LayeredPanels>
@@ -322,35 +301,36 @@ function About() {
                 {/* UPCOMING SITE IMPROVEMENTS */}
                 {/* ***************************************************************************************** */}
 
-                <Row className="m-0 p-0 gap-3 mx-auto justify-content-center" style={{ backgroundColor: "transparent" }}>
+                <Row className="m-0 p-0 gap-3 mx-auto justify-content-center mt-5" style={{ backgroundColor: "transparent" }}>
 
-                    <Col className="m-0 p-0 pb-5" xxl={5} xl={5} lg={5} md={5} sm={12} xs={12}>
-                        <div style={{ position: "relative", height: "100vh", width: "100%", display: "inline-block", backgroundColor: "", overflow:"hidden" }}>
+                    <Col
+                        xxl={5} xl={5} lg={5} md={12} sm={12} xs={12}
+                        className="m-0 p-0 pb-5"
+                    >
 
-                            <Image src={about_corkboard} style={{ position: "absolute", width: "400px", height: "auto", left: "220px", bottom: "160px", zIndex: 3 }} />
-
-                            <Image src={about_articles} style={{ position: "absolute", width: "420px", height: "auto", left: "0px", top: "100px", zIndex: 4 }} />
-
-                            <Image src={about_technology} style={{ position: "absolute", width: "420px", height: "auto", left: "30px", bottom: "40px", zIndex: 2 }} />
-                        </div>
+                        <Image src={corkboard_animation} style={{ width: "100%", height: "100%" }} />
                     </Col>
-                    <Col className="p-5 mt-5" style={{ backgroundColor: "" }}
-                        xxl={5} xl={5} lg={5} md={5} sm={12} xs={12}>
+                    <Col className="m-0 p-0" style={{ backgroundColor: "" }}
+                        xxl={5} xl={5} lg={5} md={9} sm={12} xs={12}>
                         <h1 className="display-2 text-start text-light" >FUTURE UPDATES </h1>
                         <p className="about-mini-header lead-3 text-start text-light">What is next for Maestroboard?</p>
                         <hr style={{ backgroundColor: "white" }} />
                         <p className="mx-auto lead text-start text-light ">
                             This site is undergoing updates! Since this site is growing to accomodate all of our users, we will be changing our layouts and functionality. Currently, at the moment the only access to post, delete and edit articles/posts is given to the site admin, but stick around as we will be pushing out updates for users to have their own accounts! That's right! Posting community posts, forum posts, gear review scoring and community driven articles! Keep your ear on the ground for further updates!
                         </p >
-                        <Stack direction="horizontal" className="gap-1" >
+                        <Stack direction="horizontal" className="gap-1 mb-5" >
 
                             <Button>Home</Button>
-                            <Button>Community Board</Button>
+                            <Button>Board</Button>
                             <Button>News</Button>
                             <Button>Login</Button>
                         </Stack>
                     </Col>
                 </Row>
+                <br />
+                <br />
+                <br />
+                <br />
             </div >
         </>
     )
