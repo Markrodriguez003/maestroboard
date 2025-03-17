@@ -21,6 +21,7 @@ import { Card, Badge, ListGroup, Row, Col, Button, Stack, Carousel, Image } from
 import { Link } from "react-router";
 import ReportPostModal from "./ReportPostModal";
 import LoadingPostCard from "./ui/LoadingPostCard";
+import ShareURLPanel from "./ShareURLPanel";
 
 // LIBRARY
 import { dateTransform } from "../utils/dateTransform";
@@ -33,6 +34,9 @@ import pushPinD from "../assets/imgs/post-imgs/push-pin4.png";
 import pushPinE from "../assets/imgs/post-imgs/push-pin5.png";
 import pushPinF from "../assets/imgs/post-imgs/push-pin6.png";
 import defaultImage from "../assets/imgs/misc/missing-img.png";
+// import cardBackgroundA from "../assets/imgs/card-textures/conductor-1-grey.png";
+import cardBackgroundA from "../assets/imgs/card-textures/conductor-1-teal.png";
+import cardBackgroundB from "../assets/imgs/misc/silhouette-3275055_1280.png";
 // import cardTexture from "../assets/imgs/card-textures/background-1921589_640.jpg";
 
 import {
@@ -79,6 +83,9 @@ function PostBoardCard(props) {
   // GRABBING PROP VALUES
   const { title, body, price, email, zip, username, phone, type, subType, firm_price, _id, trade, public_images_id } = props;
 
+  // creates share url for post
+  const postURL = `https://maestroboard.onrender.com/post/${_id}`;
+
   // TRANSFORMS DATE STRING TO BECOME MORE READBABLE.
   const date = dateTransform(props.date, true);
 
@@ -112,7 +119,6 @@ function PostBoardCard(props) {
     setIsPostCardLoaded(true);
   }, []);
 
-
   const [isFlipped, setFlipped] = useState(false);
 
   const handleFlip = () => {
@@ -138,6 +144,8 @@ function PostBoardCard(props) {
 
       {isPostCardLoaded ?
         <div className="main-card">
+          <Image src={cardBackgroundA} className="card-background-image-A" />
+          <Image src={cardBackgroundB} className="card-background-image-B" />
           {/* **************************************************** */}
           {/* UNDER CARD */}
           {/* **************************************************** */}
@@ -193,8 +201,13 @@ function PostBoardCard(props) {
                       <strong>Post Id:</strong>{" "} {_id}
                     </span>
                   </ListGroup.Item>
+                  <ListGroup.Item>
+                    <ShareURLPanel url={postURL} title={"Post"} type={"Corkboard-Post"} />
+
+                  </ListGroup.Item>
                 </ListGroup>
               </Card.Body>
+
               <Card.Footer style={{ backgroundColor: SITE_COLORS.secondary }} className="text-center">
                 <Button size="sm" onClick={handleUnderCardClick} variant="primary" className="mx-2">Go Back</Button>
                 <Button size="sm" variant="danger" className="mx-2">Report</Button>

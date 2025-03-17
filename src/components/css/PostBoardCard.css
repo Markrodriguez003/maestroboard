@@ -3,10 +3,10 @@
   border: none;
   width: 26rem;
   height: 36rem;
-  background-color: rgba(255, 255, 255, 0.973);
-  background-blend-mode: hue;
-  background-image: url("../../assets/imgs/card-textures/16.jpg") !important;
-  /* background-image: url("../../assets/imgs/card-textures/20.jpg") !important; */
+  background-color: rgba(255, 255, 255, 0.822);
+  background-blend-mode: multiply;
+  /* background-image: url("../../assets/imgs/card-textures/16.jpg") !important; */
+  background-image: url("../../assets/imgs/card-textures/20.jpg") !important;
   background-size: contain;
 }
 
@@ -16,6 +16,24 @@
   height: 579px;
   overflow: hidden;
   z-index: 9999999999;
+}
+
+.card-background-image-A {
+  position: absolute;
+  width: 150px;
+  bottom: 50px;
+  right: 0px;
+  z-index: 1;
+  opacity: 0.08;
+}
+
+.card-background-image-B {
+  position: absolute;
+  width: 150px;
+  bottom: 180px;
+  left: 60px;
+  z-index: 1;
+  opacity: 0.08;
 }
 
 .pushPin {
@@ -41,18 +59,18 @@
 @media screen and (max-width: 500px) {
   .card-container {
     width: 22rem;
-    height: 32rem;
+    height: 34rem;
   }
   .postCard {
     width: 22rem;
-    height: 32rem;
+    height: 34rem;
   }
   .main-card {
     margin-left: auto;
     margin-right: auto;
 
     width: 22rem;
-    height: 32rem;
+    height: 34rem;
   }
 }
 

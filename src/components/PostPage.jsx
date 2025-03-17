@@ -9,6 +9,7 @@ import "yet-another-react-lightbox/styles.css";
 import { Row, Col, Container, Button, Image, Spinner } from "react-bootstrap";
 import LoadPageElement from "./ui/LoadingPageElement";
 import ReportPostModal from "./ReportPostModal";
+import ShareURLPanel from "../components/ShareURLPanel";
 
 // LIBRARIES
 import Lightbox from "yet-another-react-lightbox";
@@ -205,9 +206,14 @@ function PostPage(props) {
                             <Row className="justify-content-start align-content-start mb-2" sm={2} style={{ width: "100%" }}>
                                 <div style={{ color: "grey", fontSize: "14px" }}><strong>Post ID:</strong> {post._id}</div>
                             </Row>
-                            <Row className="float-start mb-5" >
-                                <ReportPostModal />
-                            </Row>
+                            <Col className="m-0 p-0">
+                                <Row className="float-start mb-5" >
+                                    <ReportPostModal />
+                                </Row>
+                                <Row className="m-0 p-0">
+                                    <ShareURLPanel url={`https://maestroboard.onrender.com/posts/${post._id}`} />
+                                </Row>
+                            </Col>
                         </Col>
                     </Row >
                 </>
@@ -245,13 +251,13 @@ function PostPage(props) {
                             <Button onClick={() => { console.log('testing b utton') }}>Home</Button>
                         </LoadPageElement>
             }
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
         </Container >
     );
 }

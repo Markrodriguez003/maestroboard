@@ -121,7 +121,7 @@ function SignUpForm() {
           </Row>
           <Row>
             <Col>
-              <Form.Group className="mb-1" controlId="signUpForm">
+              <Form.Group className="mb-1 mx-auto" controlId="signUpForm">
                 <Form.Label>Username</Form.Label>
                 <Form.Control type="text" placeholder="Enter Username"
                   onChange={e => setUserInfo((prev) => ({
@@ -130,8 +130,7 @@ function SignUpForm() {
                   }))} />
               </Form.Group>
             </Col>
-          </Row>
-          <Row>
+
             <Col>
               <Form.Group className="mb-1" controlId="signUpForm">
                 <Form.Label>Password</Form.Label>

@@ -66,13 +66,10 @@ function CommunityBoard() {
     try {
       const response = await axios.get(`${import.meta.env.VITE_SERVER_API_URL}/api/posts/fetch?limit=${POST_PAGINATION_LIMIT}&page=${page}&sort=${sort}`);
 
+
       setPosts((prev) => ({
         ...prev,
-        fetchedPosts: [],
-      }));
-      setPosts((prev) => ({
-        ...prev,
-        fetchedPosts: [...response.data.posts],
+        fetchedPosts: response.data.posts,
         totalPostCount: response.data.totalCount,
       }));
       setLoading(false);
@@ -116,8 +113,7 @@ function CommunityBoard() {
     function nextPosts() {
       if (currentPage < Math.ceil(posts.totalPostCount / POST_PAGINATION_LIMIT)) {
 
-        setCurrentPage(prev => (prev + 1)),
-          setLoading(true);
+
         setPosts((prev) => (
           {
             ...prev,
@@ -125,6 +121,8 @@ function CommunityBoard() {
           }
         ))
 
+        setCurrentPage(prev => (prev + 1)),
+          setLoading(true);
         fetchData(currentPage);
       }
     }
@@ -132,15 +130,18 @@ function CommunityBoard() {
     function previousPosts() {
       if (currentPage > 1) {
 
-        setCurrentPage(prev => (prev - 1)),
-          setLoading(true);
+
         setPosts((prev) => (
           {
             ...prev,
             fetchedPosts: [],
           }
         ))
+
+        setCurrentPage(prev => (prev - 1));
+        setLoading(true);
         fetchData(currentPage);
+
       }
     }
     if (paginationTrigger === true) {
@@ -152,6 +153,21 @@ function CommunityBoard() {
     setPaginationTrigger(null)
 
   }, [paginationTrigger, currentPage, fetchData, posts.totalPostCount, posts.fetchedPosts])
+
+
+
+  // TESTING
+  useEffect(() => {
+    console.log(`**********************************:`);
+    console.log(`PAGE: ${currentPage} - POST DATA:`);
+    posts.fetchedPosts.forEach((i) => {
+      console.log(`Id: ${i._id}`);
+      console.log(`Title: ${i.title}`);
+
+    })
+
+    console.log(`**********************************:`);
+  }, [posts, currentPage])
 
   return (
     <div className="mt-5 mb-5">
