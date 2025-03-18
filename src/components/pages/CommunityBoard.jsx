@@ -63,7 +63,7 @@ function CommunityBoard() {
   function filterPostOrder() {
     setFilterPosts(prev => !prev);
     setCurrentPage((prev) => 1);
-    window.location.reload();
+    // window.location.reload();
   }
 
   {/* ********************************************************************** */ }
@@ -106,7 +106,7 @@ function CommunityBoard() {
       }
     }
     fetch();
-  }, [urlParams, currentPage, posts.totalPostCount, filterPosts, setUrlParams]);
+  }, [urlParams]);
 
 
   // SETS PAGE NUMBER WITHOUT GOING OUTSIDE TOTAL POST # BOUNDARIES
