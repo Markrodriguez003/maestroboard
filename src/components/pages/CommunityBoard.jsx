@@ -7,7 +7,7 @@ import { useSearchParams } from 'react-router-dom';
 import { scrollToTop } from "../../utils/scrollToTop";
 
 // ASSETS
-import { PinAngleFill, Filter, ArrowLeftSquare, ArrowRightSquare, FileEarmarkXFill } from "react-bootstrap-icons";
+import { PinAngleFill, Filter, ArrowLeftSquare, ArrowRightSquare, FileEarmarkXFill, ChevronBarLeft, ChevronBarRight } from "react-bootstrap-icons";
 import pushPin from "../../assets/imgs/post-imgs/push-pin2.png"
 import conductorImage from "../../assets/imgs/misc/MusicNotes2.png";
 
@@ -168,9 +168,21 @@ function CommunityBoard() {
 
                 <Col xxl={4} xl={4} lg={4} md={4} sm={4} xs={12} className="text-center mx-auto">
                   <ButtonGroup size="sm" className="mb-2">
+                    <Button
+                      disabled={isNavBtnsDisabled}
+                      onClick={() => {
+                        setPaginationTrigger(false)
+                        setCurrentPage(1)
+                      }} > <ChevronBarLeft size={"30px"} /></Button>
                     <Button disabled={isNavBtnsDisabled} onClick={() => setPaginationTrigger(false)} > <ArrowLeftSquare size={"30px"} /></Button>
-                    <Button variant="light">  {currentPage} of {Math.ceil(posts.totalPostCount / POST_PAGINATION_LIMIT)}</Button>
+                    <Button disabled={isNavBtnsDisabled} variant="light">  {currentPage} of {Math.ceil(posts.totalPostCount / POST_PAGINATION_LIMIT)}</Button>
                     <Button disabled={isNavBtnsDisabled} onClick={() => setPaginationTrigger(true)} > <ArrowRightSquare size={"30px"} /></Button>
+                    <Button
+                      disabled={isNavBtnsDisabled}
+                      onClick={() => {
+                        setPaginationTrigger(false)
+                        setCurrentPage(() => Math.ceil(posts.totalPostCount / POST_PAGINATION_LIMIT) + 1)
+                      }} > <ChevronBarRight size={"30px"} /></Button>
                   </ButtonGroup>
                 </Col>
               </Row >
@@ -237,9 +249,20 @@ function CommunityBoard() {
 
                   <Col xxl={4} xl={4} lg={4} md={4} sm={4} xs={12} className="text-center mx-auto">
                     <ButtonGroup size="sm" className="mb-2">
+                      <Button
+                        onClick={() => {
+                          setPaginationTrigger(false)
+                          setCurrentPage(1)
+                        }} > <ChevronBarLeft size={"30px"} /></Button>
                       <Button onClick={() => setPaginationTrigger(false)} > <ArrowLeftSquare size={"30px"} /></Button>
                       <Button variant="light">  {currentPage} of {Math.ceil(posts.totalPostCount / POST_PAGINATION_LIMIT)}</Button>
                       <Button onClick={() => setPaginationTrigger(true)} > <ArrowRightSquare size={"30px"} /></Button>
+                      <Button
+
+                        onClick={() => {
+                          setPaginationTrigger(false)
+                          setCurrentPage(() => Math.ceil(posts.totalPostCount / POST_PAGINATION_LIMIT) + 1)
+                        }} > <ChevronBarRight size={"30px"} /></Button>
                     </ButtonGroup>
                   </Col>
                 </Row >
@@ -294,9 +317,20 @@ function CommunityBoard() {
 
                   <Col xxl={4} xl={4} lg={4} md={4} sm={4} xs={12} className="text-center mx-auto">
                     <ButtonGroup size="sm" className="mb-2">
+                      <Button
+                        onClick={() => {
+                          setPaginationTrigger(false)
+                          setCurrentPage(1)
+                        }} > <ChevronBarLeft size={"30px"} /></Button>
                       <Button onClick={() => setPaginationTrigger(false)} > <ArrowLeftSquare size={"30px"} /></Button>
                       <Button variant="light">  {currentPage} of {Math.ceil(posts.totalPostCount / POST_PAGINATION_LIMIT)}</Button>
                       <Button onClick={() => setPaginationTrigger(true)} > <ArrowRightSquare size={"30px"} /></Button>
+                      <Button
+
+                        onClick={() => {
+                          setPaginationTrigger(false)
+                          setCurrentPage(() => Math.ceil(posts.totalPostCount / POST_PAGINATION_LIMIT) + 1)
+                        }} > <ChevronBarRight size={"30px"} /></Button>
                     </ButtonGroup>
                   </Col>
                 </Row >
