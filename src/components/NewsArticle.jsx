@@ -54,7 +54,7 @@ function NewsArticle(props) {
     })
 
     return (
-        <Container as={"article"} className={"p-4 mt-5 news-article-styling"} >
+        <Container as={"article"} className="p-4 mt-5 news-article-styling" fluid={"sm"}  >
             <Lightbox
                 open={lightBoxOpen}
                 close={() => setLightBoxOpen(false)}
@@ -69,17 +69,14 @@ function NewsArticle(props) {
                     ]}
                 plugins={[]}
             />
-            <Row className={props.rowInverse}>
-                <Col xl={5} xxl={5} lg={5} md={12} sm={12} xs={12}>
-                    <Row>
+            <Row className={`${props.rowInverse} m-0 p-0`} >
+                <Col xl={5} xxl={5} lg={5} md={12} sm={12} xs={12} className="m-0 p-0">
+                    <Row >
                         <Image
                             src={image_urls[0] || image_urls[0] === undefined ? image_urls[0] : defaultImage}
                             className="article-img-1"
                             alt="article image"
-                            style={{
-                                width: "100%",
-                                height: "500px", objectFit: "cover", cursor: "pointer"
-                            }}
+
                             onClick={() => setLightBoxOpen(true)}
                             onError={event => {
                                 event.target.onerror = null

@@ -72,11 +72,12 @@ function Header() {
 
               <NavDropdown title={status === true ? "Admin Dashboard" : "Admin Login"} id="navbarScrollingDropdown">
                 <NavDropdown.Item href="#log-in-out" style={{ backgroundColor: "transparent !important", background: "transparent" }}>
-                  <Nav.Link eventKey={2} href={"/dashboard"} style={{ display: status === true ? "inline" : "none", backgroundColor: "transparent !important" }}>
+                  <Nav.Link eventKey={2} className={"login-tab"} href={"/dashboard"} style={{ display: status === true ? "inline" : "none", backgroundColor: "transparent !important" }}>
                     <DatabaseFillGear style={{ verticalAlign: "center", paddingBottom: "5px", fontSize: "20px" }} />
                     Dashboard
                   </Nav.Link>
-                  <Nav.Link eventKey={2} href={status === true ? "/log-out" : "/login"} style={{ backgroundColor: "transparent !important" }}>
+                  <Nav.Link eventKey={2} href={status === true ? "/log-out" : "/login"}
+                    style={{ overflow: "hidden", backgroundColor: "transparent !important" }}>
                     <PersonFillLock style={{ verticalAlign: "center", paddingBottom: "5px", fontSize: "20px" }} />
                     {status === true ? "Log out" : "Log in"}
                   </Nav.Link>

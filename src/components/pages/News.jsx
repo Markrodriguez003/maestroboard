@@ -93,7 +93,7 @@ function News(props) {
         <div className="mb-5">
           <Container fluid className="p-0 m-0 mt-3">
             <Row lg={2} xs={1} sm={1} className="justify-content-start p-0 m-0">
-              <Col lg={8} sm={12} xs={12} md={8} xl={8} className="">
+              <Col lg={8} sm={12} xs={12} md={12} xl={8} className="m-0 p-0 mb-2">
                 {
                   carouselArticles.length !== 0 ? <Carousel className="m-0 p-0">
                     {

@@ -8,6 +8,15 @@
   color: black;
 }
 
+a.dropdown-menu.show {
+  background-color: pink !important;
+  width: 80% !important;
+}
+
+a.dropdown-item {
+  width: auto;
+}
+
 .header-title-a:hover {
   font-style: normal;
   text-decoration: none;
@@ -185,11 +194,21 @@ div.dropdown-menu.show * {
   color: red;
 }
 
+div.dropdown-menu {
+  overflow: hidden !important;
+  left: -50px !important;
+  padding: 0px !important;
+  margin: 0px !important;
+}
+
+div.dropdown-menu *:hover {
+  background-color: rgb(2, 114, 114) !important;
+}
 .header-animation {
   animation: none;
 }
 
-.header-animation:hover .noot-1  {
+.header-animation:hover .noot-1 {
   animation: notes 2s infinite linear;
 }
 
