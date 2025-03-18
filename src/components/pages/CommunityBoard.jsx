@@ -63,6 +63,7 @@ function CommunityBoard() {
   function filterPostOrder() {
     setFilterPosts(prev => !prev);
     setCurrentPage((prev) => 1);
+    window.location.reload();
   }
 
   {/* ********************************************************************** */ }
