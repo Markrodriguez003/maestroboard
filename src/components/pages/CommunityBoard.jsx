@@ -81,7 +81,12 @@ function CommunityBoard() {
   useEffect(() => {
     async function fetch() {
       setLoading(true);
+      setPosts((prev) => ({
+        ...prev,
+        fetchedPosts: [],
+      }));
       try {
+        console.log(`Page: ${urlParams.get("page")} - Sort: ${urlParams.get("sort")} - CurrentPage: ${currentPage}`)
         const response =
           await axios
             .get(`${import.meta.env.VITE_SERVER_API_URL}/api/posts/fetch?limit=${POST_PAGINATION_LIMIT}&page=${urlParams.get("page")}&sort=${urlParams.get("sort")}`);
