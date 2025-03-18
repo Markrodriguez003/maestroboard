@@ -49,6 +49,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
             <Route path="/board" element={<CommunityBoard />} />
+            {/* <Route path="/board/:paginatedPosts" element={<CommunityBoard />} /> */}
             <Route path="/news" element={<News />} />
             <Route path="/about" element={<About />} />
             <Route path="/article/:id" element={<NewsArticlePage />} />

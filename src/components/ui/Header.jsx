@@ -54,7 +54,7 @@ function Header() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse className="justify-content-xxl-end justify-content-xl-end justify-content-lg-start justify-content-md-start justify-content-sm-start justify-content-xs-start  " >
             <Nav className="">
-              <Nav.Link href="/board" className="header-list-item " >
+              <Nav.Link href="/board?page=1&sort=-1" className="header-list-item " >
                 <PinAngleFill style={{ verticalAlign: "center", paddingBottom: "5px", fontSize: "20px" }} /> {" "}
                 Community Board
               </Nav.Link>

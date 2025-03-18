@@ -47,7 +47,7 @@ function Footer() {
           </Row>
           <Row className="p-0 mt-0 justify-content-center justify-content-sm-center ">
             <Nav className="justify-content-lg-center justify-content-md-center justify-content-sm-center text-center mx-auto text-center mt-2">
-              <Nav.Link href="/board" className="header-list-item" >
+              <Nav.Link href="/board?page=1&sort=-1" className="header-list-item" >
                 Community Board
               </Nav.Link>
               <Nav.Link href="/news" className="header-list-item" >

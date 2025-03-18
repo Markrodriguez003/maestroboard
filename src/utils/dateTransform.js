@@ -5,6 +5,7 @@
 | 
 |   📦 Returns: Formatted String of date / time  
 *----------------------------------------------------------------------------*/
+
 export function dateTransform(date, includeTime) {
   // IF NO VALID DATE IS PASSED SEND ERROR
   if (!date) {
