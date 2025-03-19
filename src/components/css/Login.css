@@ -11,6 +11,40 @@
   font-size: 45px !important;
 }
 
+.gcaptcha-container iframe div {
+}
+
+.gCaptcha {
+  max-width: 100%;
+  transform: scale(1);
+  -webkit-transform: scale(1);
+  transform-origin: center center;
+  -webkit-transform-origin: center center;
+}
+
+@media screen and (max-width: 501px) {
+  .gCaptcha {
+    margin-left: -10px;
+    transform: scale(0.95);
+    -webkit-transform: scale(0.95);
+  }
+}
+@media screen and (max-width: 400px) {
+  .gCaptcha {
+    margin-left: -28px;
+    transform: scale(0.78);
+    -webkit-transform: scale(0.78);
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .gCaptcha {
+    margin-left: -35px;
+    transform: scale(0.7);
+    -webkit-transform: scale(0.7);
+  }
+}
+
 .cover-caption {
   padding: 20px;
 
