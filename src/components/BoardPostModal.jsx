@@ -249,7 +249,7 @@ function BoardPostModal() {
   return (
     <>
       <NotificationToast>
-        <Button size="md" className="text-light" onClick={() => setShow(true)}>
+        <Button size="md" className="text-light w-100 m-0 p-2" onClick={() => setShow(true)}>
           Create a Post!
         </Button>
         <Modal

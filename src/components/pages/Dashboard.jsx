@@ -463,7 +463,7 @@ function Dashboard(props) {
                         </Row>
                         <Row className="w-100 m-0 p-0 mb-2 btn-info">
                             <ArticlePostModal>
-                                <Button size="sm" className="text-light w-100 m-0"  >
+                                <Button size="md" className="text-light w-100 m-0 p-2">
                                     Create an Article! </Button>
                             </ArticlePostModal >
                         </Row>

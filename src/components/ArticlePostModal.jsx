@@ -240,7 +240,7 @@ function ArticlePostModal(props) {
 
     return (
         <>
-            <div onClick={() => setShow(true)}>
+            <div onClick={() => setShow(true)} className="m-0 p-0">
 
                 {props.children}
             </div>
@@ -257,7 +257,7 @@ function ArticlePostModal(props) {
                         style={{ display: "inline-block", right: "15px", top: "4px", fontSize: "30px", position: "absolute", cursor: "pointer" }}>
                         <XCircleFill />
                     </span>
-                    <Form className="p-3 m-0 " onSubmit={handleSubmit(onSubmit)}>
+                    <Form className="p-0 m-0 " onSubmit={handleSubmit(onSubmit)}>
                         <Stack>
                             <h1 className="mt-0 text-center"><FilePostFill className="mb-3" /> {" "} Create an Article</h1>
                             <small className="mx-auto" style={{ display: "block" }}> {" "} Fill out all form fields!</small>

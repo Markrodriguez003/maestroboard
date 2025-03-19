@@ -38,10 +38,10 @@ function About() {
                 {/* ***************************************************************************************** */}
                 {/* ABOUT INTRO SPLASH*/}
                 {/* ***************************************************************************************** */}
-                <Row style={{ width: "100%" }} className="pt-4 mx-auto m-0 justify-content-center">
+                <Row style={{ width: "100%" }} className="pt-4 mx-auto m-0 mb-5 justify-content-center">
                     <Col
                         style={{ position: "relative" }}
-                        className="m-0 p-4 "
+                        className="m-0 p-4"
                         xxl={6} xl={6} lg={6} md={6} sm={12} xs={12}
                     >
                         <h1 className="display-2 text-start text-light m-0 p-0 mt-2" >ABOUT US </h1>
@@ -66,7 +66,7 @@ function About() {
 
 
                     {/* CAROUSEL */}
-                    <Col xxl={6} xl={6} lg={6} md={6} sm={12} xs={12} className="w-auto m-0 p-0 mt-5" style={{ order: "-1" }}>
+                    <Col xxl={6} xl={6} lg={6} md={6} sm={12} xs={12} className="w-auto m-0 p-0 mt-5 mb-5" style={{ order: "-1" }}>
 
                         <Carousel
                             interval={4500}
@@ -95,6 +95,9 @@ function About() {
 
                     </Col>
                 </Row>
+                <br />
+                <br />
+
 
                 {/* ***************************************************************************************** */}
                 {/* COMMUNITY BOARD */}
@@ -139,6 +142,9 @@ function About() {
                         </div>
                     </div>
                 </LayeredPanels>
+                <br />
+                <br />
+                <br />
 
                 {/* ***************************************************************************************** */}
                 {/* NEWS & ARTICLES */}
@@ -183,7 +189,9 @@ function About() {
                     </div>
 
                 </LayeredPanels>
-
+                <br />
+                <br />
+                <br />
                 {/* ***************************************************************************************** */}
                 {/* FORUM */}
                 {/* ***************************************************************************************** */}
@@ -212,7 +220,9 @@ function About() {
                     </div>
 
                 </LayeredPanels>
-
+                <br />
+                <br />
+                <br />
                 {/* ***************************************************************************************** */}
                 {/* SITE TECHNOLOGIES USED */}
                 {/* ***************************************************************************************** */}
@@ -227,7 +237,7 @@ function About() {
                         <h3 className=" text-start" style={{ color: "#b6e8f9" }}>LIBRARIES & FRAMEWORKS USED:</h3>
                         <ul className="lead">
                             <Row>
-                                <Col className="gap-0 m-0 p-0">
+                                <Col className="">
                                     <li>
                                         React
                                     </li>
@@ -253,7 +263,7 @@ function About() {
                                         Bootstrap
                                     </li>
                                 </Col>
-                                <Col>
+                                <Col className="m-0">
                                     <li>
                                         Concurrently
                                     </li>
@@ -293,10 +303,10 @@ function About() {
                             </Link>
                         </div>
                     </div>
-
-
                 </LayeredPanels>
-
+                <br />
+                <br />
+                <br />
                 {/* ***************************************************************************************** */}
                 {/* UPCOMING SITE IMPROVEMENTS */}
                 {/* ***************************************************************************************** */}
