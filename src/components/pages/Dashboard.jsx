@@ -287,8 +287,7 @@ function Dashboard(props) {
         // GRABS ALL ARTICLES FROM DB
         async function fetchUserLength() {
             await axios
-                // .get("http://localhost:3005/api/load-user-count")
-                .get(`${import.meta.env.VITE_SERVER_API_URL}/api/load-user-count`)
+                .get(`${import.meta.env.VITE_SERVER_API_URL}/api/users/fetch-all/count`)
                 .then((response) => {
                     setData((prev) => (
                         {
