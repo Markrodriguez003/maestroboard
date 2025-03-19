@@ -16,6 +16,7 @@ import { useState } from "react";
 
 // ASSETS
 import { Clipboard2HeartFill, Paperclip } from "react-bootstrap-icons";
+import { SITE_COLORS } from "../components/css/site"
 
 // COMPONENTS
 import { Button, Stack, Toast } from "react-bootstrap";
@@ -52,12 +53,8 @@ function ShareURLPanel(props) {
 
     return (
         <>
-
             {/* SUCCESSFUL TOAST */}
-            <Toast style={{ position: "absolute", bottom: "-35px", left: "34%", width: "auto", border: "none", backgroundColor: "transparent", background: "none", boxShadow: "none" }} autohide>
-                <Toast.Body>  {isURLCopied ? 'Copied link!' : ''}</Toast.Body>
-            </Toast>
-            <Stack direction="horizontal" className="gap-2 m-0 p-0">
+            <Stack direction="horizontal" className="gap-2 m-0 p-0 text-center">
                 <strong><small>Share:</small></strong>
                 {/* EMAIL */}
                 <div className="Demo__some-network">
@@ -105,7 +102,17 @@ function ShareURLPanel(props) {
                     </WhatsappShareButton>
                 </div>
             </Stack>
-
+            <Toast
+                autohide
+                className="p-0 mt-2"
+                style={{ display: isURLCopied ? 'inline' : 'none', textAlign: "center", }}>
+                <Toast.Body
+                    style={{ backgroundColor: SITE_COLORS.lightMain, color: "white" }}
+                    className="p-0"
+                >
+                    {isURLCopied ? 'Copied link!' : ''}
+                </Toast.Body>
+            </Toast>
         </>
     )
 }
