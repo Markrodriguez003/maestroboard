@@ -349,7 +349,6 @@ function Dashboard(props) {
         ))
 
         await axios
-            // .get(`http://localhost:3005/api/articles/id/${id}`)
             .get(`${import.meta.env.VITE_SERVER_API_URL}/api/articles/id/${id}`)
             .then((response) => {
                 setData((prev) => (
@@ -374,7 +373,6 @@ function Dashboard(props) {
         ))
 
         await axios
-            // .get(`http://localhost:3005/api/posts/id/${id}`)
             .get(`${import.meta.env.VITE_SERVER_API_URL}/api/posts/id/${id}`)
             .then((response) => {
                 setData((prev) => (
@@ -394,11 +392,6 @@ function Dashboard(props) {
             <Container className="w-100 p-4 mt-5 mb-5" style={{ backgroundColor: "black" }}>
 
 
-                {
-                    // console.log(`TEST:::: ${JSON.stringify(data.test)}`)
-
-
-                }
                 {/* MAIN PROFILE HEADER */}
                 <Row className="w-100">
                     <HeaderPanel bgColor={SITE_COLORS.main} width="w-100">

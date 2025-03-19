@@ -6,7 +6,12 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Outlet, Navigate } from "react-router";
 
+// DESIGN
+import { SITE_COLORS } from "../components/css/site";
+import { GearFill } from "react-bootstrap-icons";
+
 // COMPONENTS
+import { Container } from "react-bootstrap";
 import PageNotFound from "../components/pages/PageNotFound";
 import LoadingSpinner from "../components/ui/LoadingSpinner";
 
@@ -82,7 +87,15 @@ function ProtectedRoutes() {
 
     }, [])
 
-    return isAuthenticatedUser ? <Outlet /> : isAuthenticatedUser === null ? <LoadingSpinner title={"Loading page. . ."}></LoadingSpinner> : <Navigate to={"/404"} />
+    return isAuthenticatedUser ? <Outlet /> : isAuthenticatedUser === null ?
+
+        <Container style={{ backgroundColor: SITE_COLORS.main }} className="w-50 p-2 mt-5 mb-5 mx-auto text-center">
+            <GearFill className="text-center mx-auto" style={{ color: "white", fontSize: "85px", marginTop: "90px" }} />
+            <LoadingSpinner title={"Loading page. . ."} />
+            <br />
+            <br />
+        </Container>
+        : <Navigate to={"/404"} />
 }
 
 export default ProtectedRoutes;

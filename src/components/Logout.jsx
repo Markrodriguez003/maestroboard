@@ -32,7 +32,7 @@ function Logout() {
 
     return (
         <>
-            <Container style={{ backgroundColor: SITE_COLORS.main }} className="w-50 p-2 mt-5 mx-auto text-center">
+            <Container style={{ backgroundColor: SITE_COLORS.main }} className="w-50 p-2 mt-5 mb-5 mx-auto text-center">
                 <PersonRaisedHand style={{ fontSize: "110px", color: "white" }} className="mt-5" />
                 <LoadingSpinner title={"Logging out"} />
                 <br />
