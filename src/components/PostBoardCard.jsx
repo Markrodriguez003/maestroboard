@@ -209,8 +209,10 @@ function PostBoardCard(props) {
               </Card.Body>
 
               <Card.Footer style={{ backgroundColor: SITE_COLORS.secondary }} className="text-center">
-                <Button size="sm" onClick={handleUnderCardClick} variant="primary" className="mx-2">Go Back</Button>
-                <Button size="sm" variant="danger" className="mx-2">Report</Button>
+                <Stack direction="horizontal" className="gap-3 p-0 m-0 justify-content-center">
+                  <Button size="sm" onClick={handleUnderCardClick} variant="primary" className="m-0 p-1">Go Back</Button>
+                  <ReportPostModal />
+                </Stack>
               </Card.Footer>
             </Card >
           </div>
@@ -330,12 +332,11 @@ function PostBoardCard(props) {
                       </Card.Text>
                     </Card.Body>
                     <Card.Footer style={{ height: "auto", backgroundColor: SITE_COLORS.lightMain }} className="text-center">
-
-                      <div onClick={handleFlip} style={{ padding: 0, margin: 0, display: "inline", height: "100%" }}>
-                        <Button size="sm" onClick={handleFlip} variant="primary" className="mx-2 ">Go Back</Button>
-                      </div>
-                      <Button size="sm" onClick={handleUnderCardClick} variant="success" className="mx-2">Contact</Button>
-                      <Button size="sm" variant="danger" className="mx-2">Report</Button>
+                      <Stack direction="horizontal" className=" gap-3 mx-auto justify-content-center">
+                        <Button size="sm" onClick={handleFlip} variant="primary" className="m-0 p-1 ">Go Back</Button>
+                        <Button size="sm" onClick={handleUnderCardClick} variant="success" className="m-0 p-1">Contact</Button>
+                        <ReportPostModal />
+                      </Stack>
                     </Card.Footer>
                   </Card>
                 </div>

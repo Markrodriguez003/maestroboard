@@ -11,8 +11,10 @@ import {
     XIcon
 } from "react-share";
 
+import { ToastContext, NotificationToast } from "../components/context/NotificationToast";
+
 // REACT
-import { useState } from "react";
+import { useState, useContext } from "react";
 
 // ASSETS
 import { Clipboard2HeartFill, Paperclip } from "react-bootstrap-icons";
@@ -32,6 +34,10 @@ import { Button, Stack, Toast } from "react-bootstrap";
 
 function ShareURLPanel(props) {
 
+    // HOLDS TOAST TOGGLE AND VALUE
+    // CONTEXT SETTERS & GETTERS FOR NOTIFICATION TOAST 
+    const ToastNotificationContext = useContext(ToastContext);
+
     // COPY LINK STATE
     const [isURLCopied, setIsURLCopied] = useState(false);
 
@@ -44,9 +50,22 @@ function ShareURLPanel(props) {
     const copyURLToClipboard = async () => {
         try {
             await navigator.clipboard.writeText(url);
-            setIsURLCopied(true);
+            ToastNotificationContext.setToast((prevToast => ({
+                ...prevToast,
+                show: true,
+                header: "Link copied!",
+                message: "This post URL has been copied to your clipboard! Go share it!",
+                error: false
+            })))
             setTimeout(() => setIsURLCopied(false), 2000); // Reset state after 2 seconds
         } catch (err) {
+            ToastNotificationContext.setToast((prevToast => ({
+                ...prevToast,
+                show: true,
+                header: "Link could not copied!",
+                message: "We ran into an error copying this URL link! Please try again later!",
+                error: true
+            })))
             console.error('Failed to copy: ', err);
         }
     };

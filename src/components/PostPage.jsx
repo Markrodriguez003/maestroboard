@@ -14,7 +14,7 @@ import ShareURLPanel from "../components/ShareURLPanel";
 // LIBRARIES
 import Lightbox from "yet-another-react-lightbox";
 import axios from "axios";
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams, useLocation, Link } from 'react-router-dom';
 
 // ASSETS
 import { FileEarmarkExcelFill, Search } from "react-bootstrap-icons";
@@ -59,7 +59,7 @@ function PostPage(props) {
 
     // GRABS ID FROM URL
     let params = useParams();
-    console.log(`Post ID: ${JSON.stringify(params)}`)
+
 
     {/* ********************************************************************** */ }
     {/* GRABS POST FROM BACK-END via ID*/ }
@@ -72,7 +72,6 @@ function PostPage(props) {
                 .get(`${import.meta.env.VITE_SERVER_API_URL}/api/posts/id/${params.id}`)
                 .then(async (response) => {
                     setPostLoadingState("loading");
-                    console.log(`POST DATA: ${JSON.stringify(response.data)}`)
                     setPost(await response.data.post[0]);
 
                     // GATHERS IMAGES INTO AN ARRAY FOR LIGHTBOX (USESTATE)
@@ -237,7 +236,10 @@ function PostPage(props) {
                         >
                             <hr />
                             <p>Sorry about that! We could not find this post!</p>
-                            <Button onClick={() => { console.log('testing b utton') }}>Home</Button>
+
+                            <Link to="/home">
+                                <Button>Home</Button>
+                            </Link>
                         </LoadPageElement>
                         :
                         <LoadPageElement
@@ -248,7 +250,9 @@ function PostPage(props) {
                         >
                             <hr />
                             <p>Sorry about that! We could not find this post!</p>
-                            <Button onClick={() => { console.log('testing b utton') }}>Home</Button>
+                            <Link to={"/home"}>
+                                <Button>Home</Button>
+                            </Link>
                         </LoadPageElement>
             }
             <br />
