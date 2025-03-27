@@ -361,7 +361,7 @@ function ArticleEdit() {
 
     return (
         <>
-            <Container style={{ backgroundColor: SITE_COLORS.lightMain, color: "white" }} className="w-75" fluid>
+            <Container style={{ backgroundColor: SITE_COLORS.lightMain, color: "white" }} className="mb-5 w-75" fluid>
                 {articleLoadingState === "successful" ?
                     <Form className="p-3 m-0 mt-4 " onSubmit={handleSubmit(onSubmit)}>
                         <Stack>
@@ -563,6 +563,10 @@ function ArticleEdit() {
                 }
 
             </Container >
+            <br/>
+            <br/>
+            <br/>
+            <br/>
         </>
     )
 

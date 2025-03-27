@@ -94,109 +94,114 @@ function NewsArticlePage(props) {
     }, [])
 
     return (
-        <Container as={"article"} className={"p-5 mt-5 w-100 shadow-lg rounded"} style={{ backgroundColor: "rgba(16, 41, 51, 1)" }}>
-            {articleLoadingState === "successful" ?
-                <>
-                    <Lightbox
-                        open={lightBoxOpen}
-                        close={() => setLightBoxOpen(false)}
-                        slides={articleImageGallery ? articleImageGallery :
-                            [
-                                {
-                                    src: `${defaultImage} `,
-                                    alt: `Article-image-upload-error`,
-                                    width: "350px",
-                                    height: "350px",
-                                }
-                            ]}
-                        plugins={[]}
-                    />
-                    <Row className="justify-content-center">
-                        <Col>
-                            <Row>
-                                <h2 style={{ color: "white", borderTop: "3px solid white", paddingTop: "6px" }}>{article.title} </h2>
-                            </Row>
-                            <Row>
-                                <h6 style={{ color: "grey", borderBottom: "1px solid white", paddingBottom: "12px" }}>{article.subTitle} </h6>
-                            </Row>
-                            <Row>
-                                <br />
-                            </Row>
-                            <Row>
-                                <Image
-                                    src={article.image_urls ? article.image_urls[0] : defaultImage}
-                                    width={"100%"}
-                                    height={"550px"}
-                                    className="mx-auto"
-                                    onError={event => {
-                                        event.target.onerror = null
-                                        event.target.src = defaultImage
-                                    }}
-                                    alt="article image"
-                                    style={{ width: "100%", height: "500px", objectFit: "cover", cursor: "pointer" }}
-                                    onClick={() => setLightBoxOpen(true)}
-                                />
-                            </Row>
-                            <Row className="justify-content-end align-content-end" sm={1} style={{ width: "100%" }}>
-                                <div style={{ color: "darkcyan" }}>{article.category} : {article.subCategory}</div>
-                            </Row>
-                            <Row className="justify-content-start align-content-start" sm={2} style={{ width: "100%" }}>
-                                <div className="" style={{ color: "grey", fontSize: "14px" }}>Written by: {article.author} -Published on: {dateTransform(article.date, false)}</div>
-                            </Row>
-                            <Row>
-                                <hr style={{ color: "white" }} className="mt-2 mb-0" />
-                            </Row>
-                            <Row>
-                                <p style={{
-                                    whiteSpace: "pre-wrap",
-                                    width: "100%",
-                                    color: "white",
-                                    textAlign: "start",
-                                    overflow: "hidden",
-                                    textOverflow: "ellipsis",
-                                }}>
+        <>
+            <Container as={"article"} className={"p-5 mb-5 mt-5 w-100 shadow-lg rounded"} style={{ backgroundColor: "rgba(16, 41, 51, 1)" }}>
+                {articleLoadingState === "successful" ?
+                    <>
+                        <Lightbox
+                            open={lightBoxOpen}
+                            close={() => setLightBoxOpen(false)}
+                            slides={articleImageGallery ? articleImageGallery :
+                                [
+                                    {
+                                        src: `${defaultImage} `,
+                                        alt: `Article-image-upload-error`,
+                                        width: "350px",
+                                        height: "350px",
+                                    }
+                                ]}
+                            plugins={[]}
+                        />
+                        <Row className="justify-content-center">
+                            <Col>
+                                <Row>
+                                    <h2 style={{ color: "white", borderTop: "3px solid white", paddingTop: "6px" }}>{article.title} </h2>
+                                </Row>
+                                <Row>
+                                    <h6 style={{ color: "grey", borderBottom: "1px solid white", paddingBottom: "12px" }}>{article.subTitle} </h6>
+                                </Row>
+                                <Row>
+                                    <br />
+                                </Row>
+                                <Row>
+                                    <Image
+                                        src={article.image_urls ? article.image_urls[0] : defaultImage}
+                                        className="mx-auto"
+                                        onError={event => {
+                                            event.target.onerror = null
+                                            event.target.src = defaultImage
+                                        }}
+                                        alt="article image"
+                                        style={{ width: "80%", height: "500px", objectFit: "cover", cursor: "pointer" }}
+                                        onClick={() => setLightBoxOpen(true)}
+                                    />
+                                </Row>
+                                <Row className="justify-content-end align-content-end" sm={1} style={{ width: "100%" }}>
+                                    <div style={{ color: "darkcyan" }}>{article.category} : {article.subCategory}</div>
+                                </Row>
+                                <Row className="justify-content-start align-content-start" sm={2} style={{ width: "100%" }}>
+                                    <div className="" style={{ color: "grey", fontSize: "14px" }}>Written by: {article.author} -Published on: {dateTransform(article.date, false)}</div>
+                                </Row>
+                                <Row>
+                                    <hr style={{ color: "white" }} className="mt-2 mb-0" />
+                                </Row>
+                                <Row>
+                                    <p style={{
+                                        whiteSpace: "pre-wrap",
+                                        width: "100%",
+                                        color: "white",
+                                        textAlign: "start",
+                                        overflow: "hidden",
+                                        textOverflow: "ellipsis",
+                                    }}>
 
-                                    {article.body}
-                                </p>
-                            </Row>
-                        </Col>
-                    </Row >
-                </>
-                :
-                articleLoadingState === "loading" ?
-                    <LoadPageElement
-                        bgColor={SITE_COLORS.secondary}
-                        header="Loading article!"
-                        icon={<Search style={{ fontSize: "120px", marginLeft: "auto", marginRight: "auto" }} />}
-                        spinner={true}
-                    >
-                        <hr />
-                    </LoadPageElement>
+                                        {article.body}
+                                    </p>
+                                </Row>
+                            </Col>
+                        </Row >
+                    </>
                     :
-                    articleLoadingState === "error" ?
+                    articleLoadingState === "loading" ?
                         <LoadPageElement
                             bgColor={SITE_COLORS.secondary}
-                            header="Error trying to find article!"
-                            icon={<FileEarmarkExcelFill style={{ fontSize: "120px", marginLeft: "auto", marginRight: "auto" }} />}
-                            spinner={false}
+                            header="Loading article!"
+                            icon={<Search style={{ fontSize: "120px", marginLeft: "auto", marginRight: "auto" }} />}
+                            spinner={true}
                         >
                             <hr />
-                            <p>Sorry about that! We could not find this article!</p>
-                            <Button onClick={() => { console.log('testing b utton') }}>Home</Button>
                         </LoadPageElement>
                         :
-                        <LoadPageElement
-                            bgColor={SITE_COLORS.secondary}
-                            header="Error trying to find article!"
-                            icon={<FileEarmarkExcelFill style={{ fontSize: "120px", marginLeft: "auto", marginRight: "auto" }} />}
-                            spinner={false}
-                        >
-                            <hr />
-                            <p>Sorry about that! We could not find this article!</p>
-                            <Button onClick={() => { console.log('testing b utton') }}>Home</Button>
-                        </LoadPageElement>
-            }
-        </Container >
+                        articleLoadingState === "error" ?
+                            <LoadPageElement
+                                bgColor={SITE_COLORS.secondary}
+                                header="Error trying to find article!"
+                                icon={<FileEarmarkExcelFill style={{ fontSize: "120px", marginLeft: "auto", marginRight: "auto" }} />}
+                                spinner={false}
+                            >
+                                <hr />
+                                <p>Sorry about that! We could not find this article!</p>
+                                <Button onClick={() => { console.log('testing b utton') }}>Home</Button>
+                            </LoadPageElement>
+                            :
+                            <LoadPageElement
+                                bgColor={SITE_COLORS.secondary}
+                                header="Error trying to find article!"
+                                icon={<FileEarmarkExcelFill style={{ fontSize: "120px", marginLeft: "auto", marginRight: "auto" }} />}
+                                spinner={false}
+                            >
+                                <hr />
+                                <p>Sorry about that! We could not find this article!</p>
+                                <Button onClick={() => { console.log('testing b utton') }}>Home</Button>
+                            </LoadPageElement>
+                }
+
+            </Container >
+            <br />
+            <br />
+            <br />
+            <br />
+        </>
     );
 }
 

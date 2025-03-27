@@ -379,10 +379,10 @@ function PostEdit() {
     return (
         <>
 
-            <Container style={{ backgroundColor: SITE_COLORS.secondary, color: "white" }} className="" fluid>
+            <Container style={{ backgroundColor: SITE_COLORS.secondary, color: "white" }} className="mb-5 mt-3 w-75" fluid>
                 {postLoadingState === "successful" ?
                     <Form className="p-3 m-0 " onSubmit={handleSubmit(onSubmit)}>
-                        <Stack>
+                        <Stack className="gap-0 m-0 p-0" >
                             <h1 className="mt-0 text-center"><PinAngleFill className="mb-3" /> {" "} Edit a Post</h1>
                             <small className="mx-auto" style={{ display: "block" }}> {" "} Fill out all form fields!</small>
                         </Stack>
@@ -697,7 +697,10 @@ function PostEdit() {
                 }
 
             </Container>
-
+            <br />
+            <br />
+            <br />
+            <br />
         </>
     )
 

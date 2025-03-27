@@ -37,6 +37,7 @@ import defaultImage from "../assets/imgs/misc/missing-img.png";
 // import cardBackgroundA from "../assets/imgs/card-textures/conductor-1-grey.png";
 import cardBackgroundA from "../assets/imgs/card-textures/conductor-1-teal.png";
 import cardBackgroundB from "../assets/imgs/misc/silhouette-3275055_1280.png";
+import cardBackgroundC from "../assets/imgs/misc/musicStand.png";
 // import cardTexture from "../assets/imgs/card-textures/background-1921589_640.jpg";
 
 import {
@@ -144,8 +145,7 @@ function PostBoardCard(props) {
 
       {isPostCardLoaded ?
         <div className="main-card">
-          <Image src={cardBackgroundA} className="card-background-image-A" />
-          <Image src={cardBackgroundB} className="card-background-image-B" />
+
           {/* **************************************************** */}
           {/* UNDER CARD */}
           {/* **************************************************** */}
@@ -227,7 +227,8 @@ function PostBoardCard(props) {
                 {/* ************************************************** */}
                 <div className="flip-card-front">
                   <Card className="postCard postCard-shadow" >
-
+                    <Image src={cardBackgroundA} className="card-background-image-A" />
+                    <Image src={cardBackgroundB} className="card-background-image-B" />
                     {tempGalleryArry?.length !== 0 || tempGalleryArry !== undefined
                       ?
                       <Carousel interval={null}>
@@ -300,7 +301,9 @@ function PostBoardCard(props) {
                 {/* BACK OF CARD */}
                 {/* ************************************************** */}
                 <div className="flip-card-back">
-                  <Card className="postCard postCard-shadow"    >
+                  <Card className="postCard postCard-shadow">
+                  <Image src={cardBackgroundC} className="card-background-image-A" />
+
                     <Card.Header style={{ color: "white", backgroundColor: SITE_COLORS.lightMain }}>
                       <Card.Title className="mt-3" style={{ fontWeight: "bold", fontSize: "18px" }}>{title}</Card.Title>
                     </Card.Header>
